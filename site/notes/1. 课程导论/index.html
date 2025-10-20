@@ -1,0 +1,1778 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="课程笔记与代码（Erwin Frey, LMU Munich, 2025）">
+      
+      
+        <meta name="author" content="Zhihang Liu">
+      
+      
+        <link rel="canonical" href="https://liu-zhihang.github.io/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/notes/1.%20%E8%AF%BE%E7%A8%8B%E5%AF%BC%E8%AE%BA/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../2.%20%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>1. 课程导论 - Nonequilibrium Field Theories and Stochastic Dynamics</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-header__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nonequilibrium Field Theories and Stochastic Dynamics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. 课程导论
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换为深色"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换为深色" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换为浅色"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换为浅色" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../en/notes/1.%20%E8%AF%BE%E7%A8%8B%E5%AF%BC%E8%AE%BA/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-nav__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nonequilibrium Field Theories and Stochastic Dynamics
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    首页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    1. 课程导论
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. 课程导论
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      鏁欏鐞嗗康
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.%20%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. 简单随机游走
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20%E9%AB%98%E6%96%AF%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0%E4%B8%8E%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. 高斯随机游走与泊松过程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20Gillespie%20%E7%AE%97%E6%B3%95%E3%80%81%E4%B8%BB%E6%96%B9%E7%A8%8B%E3%80%81%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%8D%E7%BE%A4%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Gillespie 算法、主方程、生成函数与种群动力学
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.%20%E7%A7%8D%E7%BE%A4%E5%8A%A8%E6%80%81%E5%AD%A6%EF%BC%9A%E7%BA%BF%E6%80%A7%E6%AD%BB%E4%BA%A1%E8%BF%87%E7%A8%8B%E4%B8%8ELotka-Volterra%20%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5. 种群动态学：线性死亡过程与Lotka-Volterra 系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.%20%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E7%A8%8B%EF%BC%9A%E6%9F%A5%E6%99%AE%E6%9B%BC-%E7%A7%91%E5%B0%94%E8%8E%AB%E6%88%88%E7%BD%97%E5%A4%AB%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6. 马尔可夫过程的基本方程：查普曼-科尔莫戈罗夫方程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.%20%E5%89%8D%E5%90%91%E4%B8%BB%E6%96%B9%E7%A8%8B%E4%B8%8EQ%E7%9F%A9%E9%98%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    7. 前向主方程与Q矩阵
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.%20%E4%BD%A9%E9%BE%99-%E5%BC%97%E7%BD%97%E8%B4%9D%E5%B0%BC%E4%B9%8C%E6%96%AF%E5%AE%9A%E7%90%86%E3%80%81%E7%A8%B3%E6%80%81%E4%B8%8E%E7%BB%86%E8%87%B4%E5%B9%B3%E8%A1%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    8. 佩龙-弗罗贝尼乌斯定理、稳态与细致平衡
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81%EF%BC%9A%E4%B8%8D%E5%8F%AF%E9%80%86%E6%80%A7%E4%B8%8E%E7%86%B5%E4%BA%A7%E7%94%9F%E7%9A%84%E6%8E%A8%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    9. 非平衡态：不可逆性与熵产生的推论
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.%20%E5%9F%83%E4%BC%A6%E8%B4%B9%E6%96%AF%E7%89%B9%E6%A8%A1%E5%9E%8B%E3%80%81%E7%86%B5%E4%B8%8EKL%E6%95%A3%E5%BA%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10. 埃伦费斯特模型、熵与KL散度
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.%20%E8%BF%9E%E7%BB%AD%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E4%B8%8E%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11. 连续马尔可夫过程与福克-普朗克方程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12.%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8%E4%B8%8E%E5%A5%A5%E6%81%A9%E6%96%AF%E5%9D%A6-%E4%B9%8C%E4%BC%A6%E8%B4%9D%E5%85%8B%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12. 布朗运动与奥恩斯坦-乌伦贝克过程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13.%20%E4%BD%9C%E4%B8%BA%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13. 作为随机过程的蒙特卡洛采样
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14.%20%E5%93%88%E5%AF%86%E5%B0%94%E9%A1%BF%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14. 哈密尔顿蒙特卡洛采样
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15.%20%E8%B6%8B%E5%8C%96%E6%80%A7%E3%80%81%E8%B7%91%E5%8A%A8-%E7%BF%BB%E6%BB%9A%E8%BF%90%E5%8A%A8%E4%B8%8EKeller-Segel%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15. 趋化性、跑动-翻滚运动与Keller-Segel模型
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16.%20Schnitzer%E6%A8%A1%E5%9E%8B%E3%80%81%E5%8F%8D%E5%B8%B8%E6%89%A9%E6%95%A3%E4%B8%8E%E8%BF%90%E5%8A%A8%E8%AF%B1%E5%AF%BC%E7%9B%B8%E5%88%86%E7%A6%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16. Schnitzer模型、反常扩散与运动诱导相分离
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17.%20%E6%9C%97%E4%B9%8B%E4%B8%87%E6%96%B9%E7%A8%8B%E3%80%81%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17. 朗之万方程、布朗粒子与涨落-耗散定理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18.%20%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B%E4%B8%8E%E6%96%AF%E6%91%A9%E6%A3%B1%E9%9C%8D%E5%A4%AB%E6%96%AF%E5%9F%BA%E6%96%B9%E7%A8%8B%EF%BC%9A%E4%BB%8E%E9%9A%8F%E6%9C%BA%E8%BD%A8%E8%BF%B9%E5%88%B0%E6%A6%82%E7%8E%87%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    18. 福克-普朗克方程与斯摩棱霍夫斯基方程：从随机轨迹到概率动力学
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19.%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    19. 随机过程的路径积分表述
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20.%20%E9%9A%8F%E6%9C%BA%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    20. 随机微分方程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21.%20%E4%BC%8A%E8%97%A4%E7%A7%AF%E5%88%86%E4%B8%8E%E7%BB%9F%E4%B8%80%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    21. 伊藤积分与统一的随机过程框架
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22.%20%E5%90%AB%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    22. 含乘性噪声系统的路径积分
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23.%20%E4%BB%8E%E7%B2%97%E7%B2%92%E5%8C%96%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA%E6%B6%A8%E8%90%BD%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    23. 从粗粒化到连续场论涨落动力学
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24.%20%E6%98%82%E8%90%A8%E6%A0%BC%E7%B3%BB%E6%95%B0%E3%80%81%E5%80%92%E6%98%93%E5%85%B3%E7%B3%BB%E4%B8%8E%E5%8A%A8%E6%80%81%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    24. 昂萨格系数、倒易关系与动态涨落-耗散定理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25.%20%E6%A2%AF%E5%BA%A6%E5%8A%A8%E5%8A%9B%E5%AD%A6%E3%80%81%E7%9B%B8%E5%8F%98%E4%B8%8E%E5%BC%9B%E8%B1%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    25. 梯度动力学、相变与弛豫
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26.%20%E4%B8%B4%E7%95%8C%E6%85%A2%E5%8C%96%E3%80%81%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%B8%8E%E5%AE%88%E6%81%92%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    26. 临界慢化、动态响应与守恒律
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27.%20%E7%AE%80%E5%8D%95%E6%B5%81%E4%BD%93%E3%80%81%E6%97%A0%E6%91%A9%E6%93%A6%E6%B5%81%E4%BD%93%E4%B8%8E%E6%AC%A7%E6%8B%89%E6%96%B9%E7%A8%8B%E7%9A%84%E6%B5%81%E4%BD%93%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    27. 简单流体、无摩擦流体与欧拉方程的流体动力学
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28.%20%E7%B2%98%E6%80%A7%E6%B5%81%E4%BD%93%E3%80%81%E7%BA%B3%E7%BB%B4-%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%96%B9%E7%A8%8B%E3%80%81%E7%86%B5%E5%B9%B3%E8%A1%A1%E4%B8%8E%E7%83%AD%E4%BC%A0%E5%AF%BC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    28. 粘性流体、纳维-斯托克斯方程、熵平衡与热传导
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29.%20%E4%B8%8D%E5%8F%AF%E9%80%86%E7%BA%BF%E6%80%A7%E7%83%AD%E5%8A%9B%E5%AD%A6%E4%B8%8E%E5%B9%B2%E6%80%A7%E6%89%A9%E6%95%A3%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    29. 不可逆线性热力学与干性扩散粒子系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30.%20%E6%82%AC%E6%B5%AE%E5%9C%A8%E6%B5%81%E4%BD%93%E4%B8%AD%E7%9A%84%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%20%E2%80%94%20H%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    30. 悬浮在流体中的布朗粒子 — H模型
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31.%20%E5%8A%A8%E6%80%81%E6%B3%9B%E5%87%BD%E3%80%81%E5%8A%A0%E6%80%A7%E5%99%AA%E5%A3%B0%E5%9C%BA%E8%AE%BA%E4%B8%8EOnsager-Machlup%E6%B3%9B%E5%87%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    31. 动态泛函、加性噪声场论与Onsager-Machlup泛函
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32.%20Janssen-De%20Dominicis%20%E5%93%8D%E5%BA%94%E6%B3%9B%E5%87%BD%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    32. Janssen-De Dominicis 响应泛函与涨落-耗散关系
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E5%8A%9F%E4%B8%8E%E6%B6%A8%E8%90%BD%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    33. 非平衡功与涨落定理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../34.%20%E6%9C%89%E5%90%91%E6%B8%97%E6%B5%81%E3%80%81%E5%90%B8%E6%94%B6%E6%80%81%E4%B8%8E%E8%B0%B1%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    34. 有向渗流、吸收态与谱方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../35.%20%E4%B8%BB%E6%96%B9%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E7%A4%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    35. 主方程的路径积分表示
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../36.%20%E7%9B%B8%E5%B9%B2%E6%80%81%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E3%80%81%E7%AE%97%E7%AC%A6%E4%BB%A3%E6%95%B0%E4%B8%8E%E8%99%9A%E5%99%AA%E5%A3%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    36. 相干态路径积分、算符代数与虚噪声
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../37.%20Kramers-Moyal%20%E5%B1%95%E5%BC%80%E4%B8%8E%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E7%9A%84%E4%BD%8E%E5%99%AA%E5%A3%B0%E6%9E%81%E9%99%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    37. Kramers-Moyal 展开与路径积分的低噪声极限
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../38.%20%E5%A4%9A%E7%89%A9%E7%A7%8D%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E4%B8%8E%E5%BE%AA%E7%8E%AF%E7%AB%9E%E4%BA%89%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    38. 多物种路径积分与循环竞争动力学
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../39.%20%E4%BB%8E%E7%B2%92%E5%AD%90%E8%B7%B3%E8%B7%83%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    39. 从粒子跳跃到连续场论
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../40.%20%E7%BB%9F%E4%B8%80%E7%9A%84%E5%9C%BA%E8%AE%BA%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    40. 统一的场论框架
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<p>杩欐槸璇剧▼ <a href="https://www.theorie.physik.uni-muenchen.de/lsfrey/teaching/index.html"><strong>闈炲钩琛″満璁轰笌闅忔満鍔ㄥ姏瀛?* </strong>Nonequilibrium Field Theories and Stochastic Dynamics, Prof. Erwin Frey, LMU Munich, Summer Semester 2025**</a>鐨勮嚜瀛︾瑪璁般€俒<strong>Erwin Frey 鏁欐巿</strong>](https://www.theorie.physik.uni-muenchen.de/lsfrey/members/group_leaders/erwin_frey/index.html)鍠滄鍦ㄩ粦鏉夸笂鍐欐澘涔︼紝涓鸿褰曞涔犺繃绋嬶紝灏嗘墍瀛︾瑪璁版暣鐞嗕负鏂囷紝骞舵挵鍐檖ython浠ｇ爜鍔犳繁鐞嗚В銆傚叡璁?0绔犲涔犵瑪璁帮紝鏈珷鏄绋嬬殑瀵艰銆?</p>
+<p><img alt="璇剧▼閾炬帴锛歨ttps://www.youtube.com/watch?v=MZUqBwZMN_o&amp;ab_channel=PhysicsOfLifeLMU " src="../../assets/images/remote/977886f7-e278-42d9-91f9-f61731ec8b97-0c84ad685f.png" /></p>
+<p><strong>娉細</strong>闇€瑕佽鏄庣殑鏄紝鏈汉鍙湪Youtube涓婂涔犺璇剧▼锛屽苟娌℃湁璁蹭箟锛岄兘鏄厛鍚鍋氱瑪璁帮紝鍐嶆挵鏂囩珷锛屽師濮嬬瑪璁扮ず渚嬪涓嬶細</p>
+<p><img alt="涓汉绗旇绀轰緥" src="../../assets/images/remote/18cc2947-7f4d-40d0-ab59-51347e927534-cc2cae9ca4.png" /></p>
+<h1 id="_1">璇剧▼绠€浠?<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>杩欓棬璇句粙缁嶉潪骞宠　鍦鸿鍜岄殢鏈哄姩鍔涘鐨勫熀鏈師鐞嗗拰楂樼骇姒傚康锛岄噸鐐瑰叧娉ㄧ矑瀛愬拰鍦虹郴缁熶腑鐨勯殢鏈鸿繃绋嬶紝寮鸿皟鏈椾箣涓囨柟绋嬨€佺鍏?鏅湕鍏嬫柟绋嬪拰璺緞绉垎绛夋暟瀛﹀舰寮忋€?</p>
+<p>鍐呭娑电洊浠庡熀纭€闅忔満杩囩▼鐞嗚鍒扮幇浠ｉ潪骞宠　鍦鸿鏂规硶鐨勫畬鏁寸煡璇嗕綋绯伙紝鍖呮嫭鍔ㄦ€佹硾鍑藉拰娑ㄨ惤瀹氱悊绛夐珮绾х悊璁烘柟娉曘€傜壒鍒叧娉↘ardar-Parisi-Zhang鏂圭▼锛岃鏂圭▼鎻忚堪浜嗛潪骞宠　鐢熼暱杩囩▼鐨勬櫘閫傛€х壒寰併€傛澶栵紝杩樺皢鎺㈣娲绘€х墿璐ㄧ郴缁燂紝鍏朵腑闆嗕綋琛屼负浠庨潪骞宠　鐩镐簰浣滅敤涓秾鐜般€?</p>
+<p>搴旂敤棰嗗煙鍖呮嫭杞墿璐ㄧ墿鐞嗐€佹椿鎬х墿璐ㄥ拰闈炲钩琛＄粺璁″姏瀛︼紝涓虹悊瑙ｄ粠鐢熺墿杩囩▼鍒版箥娴佹祦浣撶瓑澶嶆潅绯荤粺鎻愪緵鐞嗚鍩虹銆傚涔犺矾寰勪粠鍩虹闅忔満妯″瀷寮€濮嬶紝閫愭娣卞叆椹皵鍙か杩囩▼鐨勫熀鏈柟绋嬶紝鏈€缁堟帰绱㈠寘鎷姩鎬佹硾鍑藉拰娑ㄨ惤瀹氱悊鍦ㄥ唴鐨勯珮绾у満璁烘柟娉曘€?</p>
+<h2 id="_2">鏁欏鐞嗗康<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Erwin Frey 鏁欐巿鍦ㄦ暀瀛﹁繖闂ㄨ涓皢閬靛惊浠ヤ笅鍥涗釜鏁欏鐞嗗康锛?</p>
+<p><img alt="璇惧爞PPT鎴浘" src="../../assets/images/remote/4be6519e-371d-4a41-bba0-c66c12fc6a77-a88054fac1.png" /></p>
+<ul>
+<li>
+<p><strong>鐗╃悊浼樺厛锛屾蹇典赴瀵?(Physics-first and conceptually rich)</strong>: 璇剧▼寮鸿皟鍦ㄥ紩鍏ユ暟瀛﹀舰寮忎箣鍓嶅缓绔嬬墿鐞嗙洿瑙夛紝娉ㄩ噸鐞嗚В鐜拌薄鑳屽悗鐨勭墿鐞嗘満鍒惰€岄潪鍗曠函鐨勬暟瀛︽搷浣溿€傛暀瀛﹀唴瀹逛粠鍏蜂綋鐗╃悊闂鍑哄彂锛岄€愭寮曞鑷崇浉搴旂殑鐞嗚妗嗘灦銆?</p>
+</li>
+<li>
+<p><strong>妞嶆牴浜庣湡瀹炵墿鐞嗙幇璞?(Grounded in real phenomena)</strong>: 璇剧▼鍐呭涓庡彲瑙傛祴鐨勭墿鐞嗙幇璞＄揣瀵嗚仈绯伙紝鍖呮嫭鐢熺墿绯荤粺涓殑妯″紡褰㈡垚鍜岃蒋鐗╄川绯荤粺鐨勫姩鍔涘琛屼负绛夈€傜悊璁烘柟娉曚笌瀹為檯搴旂敤鐩哥粨鍚堬紝浣撶幇鐗╃悊瀛︿綔涓烘弿杩拌嚜鐒朵笘鐣岀瀛︾殑浠峰€笺€?</p>
+</li>
+<li>
+<p><strong>涔犻鏄牳蹇冪粍鎴愰儴鍒?(Problem sets as a core component)</strong>: 涔犻璁捐鏄绋嬬殑閲嶈缁勬垚閮ㄥ垎锛屾棬鍦ㄦ繁鍖栨蹇电悊瑙ｃ€佸煿鍏婚棶棰樿В鍐宠兘鍔涘苟鎵╁睍璇剧▼鍐呭銆傞€氳繃绯荤粺鎬х殑缁冧範宸╁浐鍜屾嫇灞曟墍瀛︾煡璇嗐€?</p>
+</li>
+<li>
+<p><strong>涓庡墠娌跨爺绌剁浉缁撳悎 (Connected to current research)</strong>: 璇剧▼寮曞叆褰撲唬鐗╃悊瀛︾爺绌朵腑鐨勪富棰樺拰妗堜緥锛屽皢鍩虹鐞嗚涓庡墠娌垮彂灞曠浉缁撳悎锛屼负瀛︾敓鐨勮繘涓€姝ョ爺绌舵彁渚涘熀纭€銆?</p>
+</li>
+</ul>
+<h1 id="1">1. 鐗╃悊瀛︾悊璁虹殑鍏ㄦ櫙鍥?<a class="headerlink" href="#1" title="Permanent link">&para;</a></h1>
+<p>涓轰簡鍑嗙‘鍦板畾浣嶉潪骞宠　鐗╃悊瀛﹀湪鏁翠釜鐗╃悊瀛︾煡璇嗕綋绯讳腑鐨勪綅缃紝Erwin Frey 鏁欐巿棣栧厛鍥為【浜嗕笁涓浉浜掑叧鑱斾絾鍙堝悇鏈変晶閲嶇殑鐞嗚妗嗘灦锛?<em>鐑姏瀛︺€佺粺璁＄墿鐞嗗鍜岄潪骞宠　鐗╃悊瀛︺€?</em>鐞嗚В瀹冧滑鐨勫尯鍒笌鑱旂郴锛屾槸寮€鍚湰璇剧▼瀛︿範鐨勫繀瑕佸墠鎻愩€?</p>
+<h2 id="11">1.1 鐑姏瀛︼細瀹忚涓栫晫鐨勬櫘閫傛硶鍒?<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
+<p><img alt="璇惧爞PPT鎴浘" src="../../assets/images/remote/28870d7f-b7f2-4f47-9ee2-4a9026b09c19-88619d5a6f.PNG" /></p>
+<p>鐑姏瀛︽槸鐮旂┒鑳介噺銆佺儹閲忓拰鍔熷浣曟敮閰嶇墿璐ㄥ畯瑙傝涓虹殑瀛︾銆傚畠鐨勫己澶т箣澶勫湪浜庡叾瀹氬緥鐨勬櫘閫傛€р€斺€旇繖浜涘畾寰嬶紙濡傝兘閲忓畧鎭掋€佺喌澧炲師鐞嗭級閫傜敤浜庢墍鏈夊畯瑙傜郴缁燂紝鑰屾棤闇€鍏冲績鏋勬垚杩欎簺绯荤粺鐨勫井瑙傜矑瀛愶紙鍘熷瓙銆佸垎瀛愶級鐨勫叿浣撶粏鑺傘€?</p>
+<h3 id="_3">鍩烘湰姒傚康涓庡彉閲?<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>瑕佹瀯寤虹儹鍔涘鐞嗚锛岄鍏堥渶瑕佸缓绔嬫弿杩扮郴缁熺姸鎬佺殑璇█銆傜儹鍔涘寮曞叆浜嗕袱绫绘牴鏈笉鍚岀殑鐗╃悊閲忔潵鍒荤敾瀹忚绯荤粺锛?</p>
+<p><strong>寮哄害閲忎笌骞垮欢閲?(Intensive and Extensive Variables)</strong> 鐨勫尯鍒嗘槸鐞嗚В鐑姏瀛︾殑绗竴姝ャ€傚己搴﹂噺濡傛俯搴?<span class="arithmatex">\(T\)</span>)銆佸帇寮?<span class="arithmatex">\(P\)</span>)銆佸寲瀛﹀娍(<span class="arithmatex">\(\mu\)</span>)锛屽畠浠笉渚濊禆浜庣郴缁熺殑澶у皬鈥斺€旀棤璁轰竴鏉按杩樻槸涓€婀栨按锛屽叾娓╁害閮藉彲浠ユ槸鐩稿悓鐨勩€傜浉鍙嶏紝骞垮欢閲忓浣撶Н(<span class="arithmatex">\(V\)</span>)銆佸唴鑳?<span class="arithmatex">\(E\)</span>)銆佺喌(<span class="arithmatex">\(S\)</span>)涓庣郴缁熺殑澶у皬鎴愭姣旓紝鍏锋湁鍙姞鎬с€傝繖绉嶅尯鍒嗕笉浠呮槸鏁板涓婄殑渚垮埄锛屾洿鍙嶆槧浜嗙墿鐞嗕笘鐣岀殑娣卞眰缁撴瀯锛氬己搴﹂噺鎻忚堪绯荤粺鐨?鍝佽川"锛屽箍寤堕噺鎻忚堪绯荤粺鐨?鏁伴噺"銆?</p>
+<p>鍦ㄦ鍩虹涓婏紝<strong>鐑姏瀛﹀娍 (Thermodynamic Potentials)</strong> 鐨勬蹇靛簲杩愯€岀敓銆傚唴鑳?U<span class="arithmatex">\(銆佷亥濮嗛湇鍏硅嚜鐢辫兘\)</span>F=U-TS<span class="arithmatex">\(銆佸悏甯冩柉鑷敱鑳?G=U-TS+PV\)</span>绛夛紝瀹冧滑鏄笉鍚岀害鏉熸潯浠朵笅鐨勭壒寰佸嚱鏁般€傛瘡涓娍鍑芥暟閮介€夋嫨浜嗕竴缁?鑷劧鍙橀噺"鈥斺€斾緥濡傦紝鍚夊竷鏂嚜鐢辫兘<span class="arithmatex">\(G(T,P)\)</span>浠ユ俯搴﹀拰鍘嬪己涓鸿嚜鐒跺彉閲忥紝杩欐鏄疄楠屼腑鏈€瀹规槗鎺у埗鐨勬潯浠躲€傚娍鍑芥暟鐨勯噸瑕佹€у湪浜庯紝瀹冧滑鍦ㄧ浉搴旂害鏉熶笅杈惧埌鏋佸€兼椂瀵瑰簲鐫€骞宠　鎬侊紝鍏跺鏁扮粰鍑烘墍鏈夊叾浠栫儹鍔涘閲忋€?</p>
+<p><strong>鐑笌鍔?(Heat &amp; Work)</strong> 鐨勬蹇靛垯瑙勫畾浜嗚兘閲忎氦鎹㈢殑璁拌处鏂瑰紡銆傚姛鏄湁搴忕殑鑳介噺浼犻€掞紙濡傛椿濉炲帇缂╂皵浣擄級锛岃€岀儹鏄棤搴忕殑鑳介噺浼犻€掞紙濡傚垎瀛愮鎾烇級銆傝繖涓€鍖哄垎鐪嬩技绠€鍗曪紝瀹炲垯娣卞埢锛氬畠鏆楃ず浜嗚兘閲忓搧璐ㄧ殑宸紓锛屼负绗簩瀹氬緥鐨勮〃杩板瀹氫簡鍩虹銆?</p>
+<p><strong>骞宠　鎬佷笌鐘舵€佸嚱鏁?(Equilibrium &amp; State Functions)</strong> 鏄儹鍔涘鐨勬牳蹇冩蹇点€傚钩琛℃€佹槸绯荤粺瀹忚鎬ц川涓嶉殢鏃堕棿鍙樺寲鐨勭姸鎬侊紝瀹冩槸鐑姏瀛﹀垎鏋愮殑璧风偣銆傜姸鎬佸嚱鏁板鍐呰兘<span class="arithmatex">\(U\)</span>銆佺喌<span class="arithmatex">\(S\)</span>銆佺創<span class="arithmatex">\(H\)</span>绛夛紝鍙緷璧栦簬绯荤粺鐨勫綋鍓嶇姸鎬侊紝鑰屼笉渚濊禆浜庤揪鍒拌鐘舵€佺殑璺緞銆傝繖绉嶈矾寰勬棤鍏虫€т娇寰楁垜浠彲浠ラ€氳繃浠绘剰鍙€嗚矾寰勬潵璁＄畻鐘舵€佸嚱鏁扮殑鍙樺寲锛屾瀬澶у湴绠€鍖栦簡鐑姏瀛﹁绠椼€傜姸鎬佸嚱鏁扮殑鍏ㄥ井鍒嗘€ц川淇濊瘉浜嗙儹鍔涘鍏崇郴寮忕殑涓€鑷存€э紝濡傞害鍏嬫柉闊﹀叧绯荤瓑銆?</p>
+<h3 id="_4">鐑姏瀛﹀畾寰嬬殑缁熼浣滅敤<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><strong>鐑姏瀛﹀洓瀹氬緥 (Laws of Thermodynamics)</strong> 鏋勬垚浜嗘暣涓悊璁虹殑鍏悊鍩虹銆傜闆跺畾寰嬬‘绔嬩簡娓╁害姒傚康鐨勪竴鑷存€э紱绗竴瀹氬緥琛ㄨ堪鑳介噺瀹堟亽<span class="arithmatex">\(dU = \delta Q - \delta W\)</span>锛涚浜屽畾寰嬪紩鍏ョ喌鐨勬蹇碉紝鎸囧嚭瀛ょ珛绯荤粺鐨勭喌姘镐笉鍑忓皯<span class="arithmatex">\(dS \geq 0\)</span>锛涚涓夊畾寰嬪垯瑙勫畾浜嗙喌鐨勭粷瀵规爣搴︺€?</p>
+<p>鍏朵腑锛?<em>绗簩瀹氬緥涓庝笉鍙€嗘€?(Entropy &amp; Irreversibility)</em>* 鐨勫叧绯绘渶涓烘繁鍒汇€傜喌澧炲師鐞嗕笉浠呯粰鍑轰簡杩囩▼杩涜鐨勬柟鍚戯紝鏇翠负瀹忚涓栫晫寮曞叆浜?鏃堕棿涔嬬"銆備负浠€涔堢儹閲忔€绘槸浠庨珮娓╃墿浣撴祦鍚戜綆娓╃墿浣擄紵涓轰粈涔堟皵浣撴€绘槸浠庨珮鍘嬪尯鎵╂暎鍒颁綆鍘嬪尯锛熺瓟妗堥兘钑村惈鍦ㄧ喌澧炲師鐞嗕腑鈥斺€旇嚜鐒惰繃绋嬫€绘槸鏈濈潃澧炲姞绯荤粺鎬荤喌鐨勬柟鍚戣繘琛屻€?</p>
+<h3 id="_5">浠庡熀纭€鍒板簲鐢ㄧ殑鐞嗚浣撶郴<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>鏈変簡杩欎簺鍩烘湰姒傚康锛岀儹鍔涘渚胯兘鏋勫缓鍑轰赴瀵岀殑鐞嗚浣撶郴锛?</p>
+<p><strong>鐘舵€佹柟绋?(Equations of State)</strong> 濡傜悊鎯虫皵浣撳畾寰?PV=nRT$锛岃繛鎺ヤ簡鍙洿鎺ユ祴閲忕殑瀹忚閲忥紝浣跨悊璁轰笌瀹為獙鐩哥粨鍚堛€傛洿澶嶆潅鐨勭郴缁熼渶瑕佹洿绮剧粏鐨勭姸鎬佹柟绋嬶紝濡傝寖寰风摝灏旀柉鏂圭▼绛夈€?</p>
+<p><strong>Gibbs-Thomson鍏崇郴 (Gibbs-Thomson Relation)</strong> 绛夌儹鍔涘鍏崇郴寮忔彮绀轰簡琛ㄩ潰鏁堝簲瀵圭浉骞宠　鐨勫奖鍝嶃€傝鍏崇郴鎻忚堪浜嗗皬娑叉淮鎴栨櫠浣撶殑骞宠　钂告皵鍘嬪浣曢殢鏇茬巼鍗婂緞鍙樺寲锛?\ln(p/p_0) = \frac{2\gamma V_m}{rRT}<span class="arithmatex">\(锛屽叾涓?\gamma\)</span>鏄〃闈㈠紶鍔涳紝<span class="arithmatex">\(V_m\)</span>鏄懇灏斾綋绉紝<span class="arithmatex">\(r\)</span>鏄洸鐜囧崐寰勩€傝繖绉嶅叧绯昏В閲婁簡涓轰粈涔堝皬娑叉淮鏇村鏄撹捀鍙戯紝灏忔櫠浣撴洿瀹规槗婧惰В锛屾槸鐞嗚В鎴愭牳銆佺敓闀垮拰濂ユ柉鐗圭摝灏斿痉鐔熷寲绛夌幇璞＄殑鍏抽敭銆?</p>
+<p><strong>鐑姏瀛﹀搷搴斿嚱鏁?(Thermodynamic Response Functions)</strong> 鈥斺€旀瘮鐑€佺瓑娓╁彲鍘嬬缉鎬с€佺儹鑶ㄨ儉绯绘暟绛夆€斺€旀弿杩扮郴缁熷澶栫晫寰皬鎵板姩鐨勫搷搴斻€傚畠浠笉浠呮槸鏉愭枡鐨勭壒寰佸弬鏁帮紝鏇存槸鐑姏瀛︾ǔ瀹氭€х殑鍒ゆ嵁锛氳礋姣旂儹鎴栬礋鍙帇缂╂€ф剰鍛崇潃绯荤粺鐨勪笉绋冲畾銆?</p>
+<p>褰撶郴缁熷弬鏁板彉鍖栨椂锛屽彲鑳藉彂鐢?<em>鐩稿彉涓庢秾鐜扮幇璞?(Phase Transitions &amp; Emergence)</em>*銆傛按鐨勬哺鑵俱€佺浣撶殑灞呴噷杞彉銆佽秴瀵间綋鐨勮浆鍙樼瓑锛岄兘鏄畯瑙傛湁搴忎粠寰鏃犲簭涓秾鐜扮殑渚嬪瓙銆傚湪鐩稿彉涓寸晫鐐归檮杩戯紝绯荤粺琛ㄧ幇鍑烘爣搴︿笉鍙樻€у拰鏅€傝涓猴紝杩欎负鐞嗚В澶嶆潅绯荤粺鎻愪緵浜嗛噸瑕佺嚎绱€?</p>
+<p><strong>Ginzburg-Landau鑷敱鑳?(Ginzburg-Landau Free Energy)</strong> 鐞嗚鍒欐彁渚涗簡鎻忚堪鐩稿彉鐨勭粺涓€妗嗘灦銆傞€氳繃寮曞叆搴忓弬閲忊€斺€旀弿杩版湁搴忕▼搴︾殑瀹忚鍙橀噺鈥斺€斿苟鏋勯€犲叾鏈夋晥鑷敱鑳斤紝鍙互绯荤粺鍦板垎鏋愬悇绉嶇浉鍙樼幇璞°€?</p>
+<p>褰撶郴缁熷亸绂诲钩琛℃椂锛?<em>杈撹繍瀹氬緥 (Transport Laws)</em>* 寮€濮嬪彂鎸ヤ綔鐢ㄣ€傚倕閲屽彾瀵肩儹瀹氬緥銆侀粡鎬ф祦浣撶殑鏈瀯鍏崇郴绛夛紝鎻忚堪浜嗙郴缁熷浣曢€氳繃杈撹繍杩囩▼鍥炲埌骞宠　銆傝繖浜涚湅浼肩嫭绔嬬殑瀹氬緥锛屽疄闄呬笂閮藉彲浠ヤ粠绾挎€ч潪骞宠　鐑姏瀛︾殑妗嗘灦涓粺涓€瀵煎嚭銆?</p>
+<p><strong>鏄傝惃鏍煎€掓槗鍏崇郴 (Onsager Relations)</strong> <span class="arithmatex">\(L_{ij}=L_{ji}\)</span>鍒欐彮绀轰簡涓嶅悓杈撹繍杩囩▼涔嬮棿鐨勬繁鍒昏仈绯汇€備緥濡傦紝娓╁害姊害涓嶄粎寮曡捣鐑祦锛岃繕鍙兘寮曡捣鐢垫祦锛堝璐濆厠鏁堝簲锛夛紱鍙嶄箣锛岀數娴佷篃鍙兘寮曡捣鐑祦锛堝笗灏斿笘鏁堝簲锛夈€傛槀钀ㄦ牸璇佹槑锛岃繖浜涗氦鍙夋晥搴旂殑绯绘暟蹇呴』婊¤冻瀵圭О鍏崇郴锛屽叾鏍规簮鍦ㄤ簬寰鍔ㄥ姏瀛︾殑鏃堕棿鍙嶆紨瀵圭О鎬с€?</p>
+<p>杩欐牱锛屼粠鍩烘湰姒傚康鍑哄彂锛岀儹鍔涘鏋勫缓浜嗕竴涓€昏緫涓ュ瘑銆佸簲鐢ㄥ箍娉涚殑鐞嗚浣撶郴锛屼负鐞嗚В瀹忚鐗╃悊涓栫晫鎻愪緵浜嗗己鏈夊姏鐨勫伐鍏枫€?</p>
+<h2 id="12">1.2 缁熻鐗╃悊锛氳繛鎺ュ井瑙備笌瀹忚鐨勬ˉ姊?<a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
+<p><img alt="璇惧爞PPT鎴浘" src="../../assets/images/remote/f18b387f-1d77-49f1-b064-daf0c0e5d698-f878faad55.PNG" /></p>
+<p>濡傛灉璇寸儹鍔涘鎴愬姛鍦版弿杩颁簡瀹忚涓栫晫"鏄粈涔?鏍凤紝閭ｄ箞缁熻鐗╃悊鍒欐繁鍒诲湴瑙ｉ噴浜?涓轰粈涔?鏄繖鏍枫€傜粺璁＄墿鐞嗗鏄В閲婄儹鍔涘瀹忚瀹氬緥鍜屾秾鐜伴泦浣撹涓哄浣曚粠寰鑷敱搴︾殑姒傜巼鍔ㄥ姏瀛︿腑浜х敓鐨勭悊璁烘鏋讹紝瀹冧娇鐢ㄧ郴缁笺€佹定钀藉拰绮楃矑鍖栫瓑姒傚康灏嗗井瑙傛€佽繛鎺ュ埌鍙娴嬬幇璞°€?</p>
+<h3 id="_6">寰鍩虹涓庢鐜囨弿杩?<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>缁熻鐗╃悊鐨勫嚭鍙戠偣鏄壙璁や竴涓牴鏈簨瀹烇細鎴戜滑鏃犳硶涔熸棤闇€杩借釜姣忎釜寰绮掑瓙鐨勭簿纭繍鍔ㄣ€傜浉鍙嶏紝鎴戜滑閲囩敤姒傜巼鐨勮瑷€鏉ユ弿杩扮郴缁熴€?</p>
+<p><strong>寰鎬?(Microstate)</strong> 鏄郴缁熸渶绮剧粏鐨勬弿杩扳€斺€旀寚瀹氭瘡涓矑瀛愮殑浣嶇疆鍜屽姩閲忋€傛兂璞′竴涓寘鍚?10^{23}$涓垎瀛愮殑姘斾綋锛屽叾寰鎬佸氨鏄繖澶╂枃鏁板瓧涓矑瀛愮殑瀹屾暣"蹇収"銆傜劧鑰岋紝瀹忚娴嬮噺锛堝娓╁害銆佸帇寮猴級瀵瑰簲鐨勪笉鏄崟涓€寰鎬侊紝鑰屾槸鏃犳暟涓井瑙傛€佺殑闆嗗悎銆傝繖灏卞紩鍑轰簡涓€涓繁鍒荤殑璁よ瘑锛氬畯瑙傛€ц川鏄井瑙傛€佺殑缁熻骞冲潎銆?</p>
+<p>涓轰簡澶勭悊杩欑缁熻鎬ц川锛岀粺璁＄墿鐞嗗紩鍏ヤ簡<strong>姒傜巼鍒嗗竷 (Probability Distribution)</strong> 鐨勬蹇点€備笉鍚屽井瑙傛€佸嚭鐜扮殑姒傜巼涓嶅悓锛岃繖涓鐜囧垎甯冨寘鍚簡绯荤粺鐨勫叏閮ㄧ粺璁′俊鎭€傚叧閿棶棰樻槸锛氫粈涔堝喅瀹氫簡杩欎釜姒傜巼鍒嗗竷锛?</p>
+<h3 id="_7">绯荤患鐞嗚涓庨厤鍒嗗嚱鏁?<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><strong>绯荤患 (Ensemble)</strong> 鏄粺璁＄墿鐞嗙殑鏍稿績姒傚康鈥斺€斿畠鏄ぇ閲忓浜庣浉鍚屽畯瑙傜害鏉熶笅鐨勭郴缁熷鍒跺搧鐨勯泦鍚堛€備笉鍚岀殑绾︽潫鏉′欢瀵瑰簲涓嶅悓鐨勭郴缁硷細姝ｅ垯绯荤患鍥哄畾娓╁害锛屽法姝ｅ垯绯荤患鍥哄畾娓╁害鍜屽寲瀛﹀娍绛夈€?</p>
+<p><strong>閰嶅垎鍑芥暟 (Partition Function)</strong> <span class="arithmatex">\(Z = \sum_i e^{-E_i/k_B T}\)</span>鏄郴缁肩悊璁虹殑鏁板鏍稿績銆傚畠鐪嬩技绠€鍗曪紝瀹炲垯鍖呭惈浜嗙郴缁熺殑鍏ㄩ儴鐑姏瀛︿俊鎭€傞厤鍒嗗嚱鏁扮殑鐗╃悊鎰忎箟鏄粈涔堬紵瀹冩槸鎵€鏈夊彲鑳藉井瑙傛€佺殑"鏉冮噸"涔嬪拰锛屽叾涓瘡涓€佺殑鏉冮噸鐢辩幓灏斿吂鏇煎洜瀛?e^{-E_i/k_B T}$缁欏嚭鈥斺€旇兘閲忚秺楂樼殑鎬侊紝鍑虹幇姒傜巼瓒婂皬銆?</p>
+<p>涓€鏃︽眰寰楅厤鍒嗗嚱鏁帮紝鐑姏瀛︿究浠庣粺璁＄墿鐞嗕腑鑷劧娑岀幇锛氳嚜鐢辫兘<span class="arithmatex">\(F = -k_B T \ln Z\)</span>锛岀喌<span class="arithmatex">\(S = -\partial F/\partial T\)</span>锛屽唴鑳?U = \langle E \rangle$绛夈€傝繖绉嶄粠寰鍒板畯瑙傜殑鎺ㄥ锛屽睍绀轰簡缁熻鐗╃悊鐨勮В閲婂姏閲忋€?</p>
+<h3 id="_8">缁熻鐔电殑娣卞埢鍐呮兜<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p><strong>缁熻鐔?(Statistical Entropy)</strong> 鐨勬蹇靛皢鐑姏瀛︾殑鎶借薄閲忚祴浜堜簡寰鎰忎箟銆傜幓灏斿吂鏇肩殑鍏紡<span class="arithmatex">\(S = k_B \ln \Omega\)</span>鍛婅瘔鎴戜滑锛岀喌琛￠噺鐨勬槸绯荤粺寰鎬佺殑"澶氭牱鎬?鈥斺€斿彲鑳界殑寰鎬佽秺澶氾紝鐔佃秺澶с€傚悏甯冩柉鐨勬洿涓€鑸〃杩?S = -k_B \sum_i p_i \ln p_i$鍒欏皢鐔电悊瑙ｄ负姒傜巼鍒嗗竷鐨?淇℃伅閲?鎴?涓嶇‘瀹氭€?銆?</p>
+<p>杩欑鐞嗚В瑙ｉ噴浜嗕负浠€涔堢喌鎬绘槸澧炲姞锛氬绔嬬郴缁熸€绘槸浠庡皯鏁扮壒娈婄殑寰鎬侊紙浣庣喌锛夋紨鍖栧埌澶ч噺鏅€氱殑寰鎬侊紙楂樼喌锛夛紝杩欑函绮规槸姒傜巼鐨勭粨鏋溾€斺€?鏅€?鐨勬儏鍐垫瘮"鐗规畩"鐨勬儏鍐垫洿鍙兘鍑虹幇銆?</p>
+<h3 id="_9">娑ㄨ惤鐜拌薄涓庡叧鑱斿嚱鏁?<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>缁熻鐗╃悊涓嶄粎棰勬祴骞冲潎琛屼负锛屾洿鎻ず浜?<em>娑ㄨ惤 (Fluctuations)</em>* 鐨勬櫘閬嶆€с€傜敱浜庡井瑙傜矑瀛愮殑闅忔満杩愬姩锛屼换浣曞畯瑙傞噺閮戒細鍦ㄥ叾骞冲潎鍊奸檮杩戞定钀姐€傝繖浜涙定钀戒笉鏄?鍣煶"锛岃€屾槸鎼哄甫閲嶈淇℃伅鐨勭墿鐞嗙幇璞°€?</p>
+<p><strong>鍏宠仈鍑芥暟 (Correlation Functions)</strong> 鎻忚堪涓嶅悓鏃剁┖鐐圭殑娑ㄨ惤濡備綍鐩镐簰鍏宠仈锛屽畠浠槸鐞嗚В闆嗕綋琛屼负鐨勫叧閿€傚湪鐩稿彉涓寸晫鐐归檮杩戯紝鍏宠仈闀垮害鍙戞暎锛岀郴缁熻〃鐜板嚭闀跨▼鍏宠仈鈥斺€旇繖姝ｆ槸瀹忚鏈夊簭浠庡井瑙傛棤搴忎腑娑岀幇鐨勬満鍒躲€?</p>
+<p><strong>搴忓弬閲?(Order Parameter)</strong> 鏄弿杩扮郴缁熸湁搴忕▼搴︾殑瀹忚鍙橀噺锛屽畠鍦ㄧ浉鍙樼悊璁轰腑鍗犳嵁鏍稿績鍦颁綅銆傚湪鏈夊簭鐩镐腑搴忓弬閲忛潪闆讹紝鍦ㄦ棤搴忕浉涓负闆躲€備緥濡傦紝鍦ㄩ搧纾佷綋涓紝纾佸寲寮哄害鏄簭鍙傞噺锛涘湪娑?姘旂浉鍙樹腑锛屽瘑搴﹀樊鏄簭鍙傞噺銆傚簭鍙傞噺鐨勬蹇典娇鎴戜滑鑳藉鐢ㄧ粺涓€鐨勬暟瀛﹁瑷€鎻忚堪鍚勭鐪嬩技涓嶅悓鐨勭浉鍙樼幇璞★紝鎻ず瀹冧滑鐨勫叡鍚屾湰璐ㄣ€?</p>
+<p><strong>閲嶆暣鍖栫兢 (Renormalization Group)</strong> 鏄鐞嗗灏哄害鐗╃悊闂鐨勫己澶х悊璁哄伐鍏枫€傚畠鐨勬牳蹇冩€濇兂鏄爺绌剁墿鐞嗙郴缁熷湪涓嶅悓瑙傚療灏哄害涓嬬殑琛屼负鍙樺寲銆傞€氳繃绯荤粺鍦?绮楃矑鍖?鈥斺€斿嵆蹇界暐鐭▼缁嗚妭鑰屼繚鐣欓暱绋嬭涓衡€斺€旈噸鏁村寲缇ゆ彮绀轰簡涓寸晫鐜拌薄鐨勬櫘閫傛€э細涓嶅悓鐨勫井瑙傜郴缁熷湪涓寸晫鐐归檮杩戝彲鑳借〃鐜板嚭鐩稿悓鐨勫畯瑙傝涓猴紝鍥犱负瀹冧滑灞炰簬鍚屼竴涓?鏅€傜被"銆傝繖涓€鐞嗚涓嶄粎瑙ｉ噴浜嗙浉鍙樼殑鏅€傛€э紝鏇翠负鐞嗚В澶嶆潅绯荤粺涓殑鏍囧害琛屼负鎻愪緵浜嗘繁鍒绘礊瀵熴€?</p>
+<h3 id="_10">浠庡井瑙傚埌瀹忚鐨勭悊璁哄伐鍏?<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>缁熻鐗╃悊鍙戝睍鍑轰簡涓€绯诲垪寮哄ぇ鐨勭悊璁哄伐鍏锋潵澶勭悊澶嶆潅绯荤粺锛?</p>
+<p><strong>澶ф暟瀹氬緥 (Law of Large Numbers)</strong> 淇濊瘉浜嗗畯瑙傞噺鐨勭‘瀹氭€э細铏界劧鍗曚釜绮掑瓙鐨勮涓烘槸闅忔満鐨勶紝浣嗗ぇ閲忕矑瀛愮殑骞冲潎琛屼负鏄‘瀹氱殑銆傝繖瑙ｉ噴浜嗕负浠€涔堝畯瑙備笘鐣岀湅璧锋潵鏄‘瀹氭€х殑锛屽敖绠″叾寰鍩虹鏄殢鏈虹殑銆?</p>
+<p><strong>鐜诲皵鍏规浖鍒嗗竷 (Boltzmann Distribution)</strong> <span class="arithmatex">\(p_i \propto e^{-E_i/k_B T}\)</span>鏄钩琛℃€佺殑鏅€傛鐜囧垎甯冿紝瀹冧笉渚濊禆浜庣郴缁熺殑鍏蜂綋缁嗚妭锛屽彧鍙栧喅浜庤兘閲忓拰娓╁害銆傝繖绉嶆櫘閫傛€ф槸缁熻鐗╃悊棰勬祴鍔涚殑婧愭硥銆?</p>
+<p><strong>娑ㄨ惤-鑰楁暎瀹氱悊 (Fluctuation-Dissipation Theorems)</strong> 寤虹珛浜嗗钩琛℃定钀戒笌闈炲钩琛″搷搴斾箣闂寸殑瀹氶噺鍏崇郴锛屽畠鍛婅瘔鎴戜滑鍙互閫氳繃瑙傚療绯荤粺鐨勮嚜鍙戞定钀芥潵棰勬祴鍏跺澶栫晫鎵板姩鐨勫搷搴斻€?</p>
+<p>褰撶郴缁熸帴杩戠浉鍙樻椂锛?<em>涓寸晫鐜拌薄 (Critical Phenomena)</em><em> 灞曠幇浜嗙粺璁＄墿鐞嗙殑鍙︿竴闈細绯荤粺鍦ㄤ复鐣岀偣闄勮繎琛ㄧ幇鍑?</em>鏅€傛€у拰鏍囧害寰?(Universality &amp; Scaling Laws)**锛屼笉鍚岀殑寰绯荤粺鍙兘琛ㄧ幇鍑虹浉鍚岀殑瀹忚琛屼负銆傝繖绉嶆櫘閫傛€ф殫绀哄瓨鍦ㄦ洿娣卞眰鐨勫绉版€у拰涓嶅彉鎬с€?</p>
+<p><strong>搴忓弬閲?(Order Parameter)</strong> 姒傚康涓烘弿杩版湁搴?鏃犲簭杞彉鎻愪緵浜嗙粺涓€璇█锛岃€?<em>閲嶆暣鍖栫兢 (Renormalization Group)</em>* 鐞嗚鍒欐彮绀轰簡涓嶅悓灏哄害涓婄墿鐞嗚寰嬬殑鍏宠仈锛屾垚涓虹悊瑙ｄ复鐣岀幇璞″拰澶氬昂搴︾墿鐞嗙殑寮哄ぇ宸ュ叿銆?</p>
+<p><strong>绾挎€у搷搴旂悊璁?(Linear Response Theory)</strong> 澶勭悊绯荤粺瀵瑰井灏忓鐣屾壈鍔ㄧ殑鍝嶅簲锛屽畠灏嗛潪骞宠　闂杞寲涓哄钩琛℃€佹€ц川鐨勮绠楋紝涓虹悊瑙ｈ緭杩愮幇璞″瀹氫簡鍩虹銆?</p>
+<p>鏈€缁堬紝缁熻鐗╃悊杩樺繀椤婚潰瀵逛竴涓繁鍒婚棶棰橈細<strong>涓嶅彲閫嗘€х殑娑岀幇 (Emergence of Irreversibility)</strong>銆傚井瑙傚姩鍔涘鏄椂闂村彲閫嗙殑锛屼絾瀹忚鐜拌薄鍗磋〃鐜板嚭鏄庢樉鐨勬柟鍚戞€с€傜粺璁＄墿鐞嗛€氳繃姒傜巼璁哄拰澶ф暟瀹氬緥瑙ｉ噴浜嗚繖绉嶈〃瑙傜煕鐩撅細涓嶅彲閫嗘€т笉鏄粷瀵圭殑锛岃€屾槸鍘嬪€掓€ф鐜囩殑缁撴灉銆?</p>
+<p>閫氳繃杩欎簺姒傚康鍜屽伐鍏凤紝缁熻鐗╃悊鎴愬姛鍦版灦璧蜂簡寰涓庡畯瑙備箣闂寸殑妗ユ锛屼笉浠呰В閲婁簡鐑姏瀛﹀畾寰嬬殑璧锋簮锛屾洿涓虹悊瑙ｅ鏉傜郴缁熺殑娑岀幇琛屼负鎻愪緵浜嗗潥瀹炵殑鐞嗚鍩虹銆?</p>
+<h2 id="13">1.3 闈炲钩琛＄墿鐞嗗锛氳秴瓒婂钩琛＄殑骞块様棰嗗煙<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
+<p><img alt="璇惧爞PPT鎴浘" src="../../assets/images/remote/5ee36f22-892b-47b6-bb4c-5ca02da8413e-3f9ab89080.png" />
+闈炲钩琛＄墿鐞嗗鏄爺绌惰繙绂荤儹鍔涘骞宠　绯荤粺鐨勯鍩燂紝瀹冩暣鍚堝畯瑙傜儹鍔涘瀹氬緥涓庡井瑙傜粺璁℃弿杩帮紝浠ョ悊瑙ｈ緭杩愩€佽€楁暎銆佹定钀戒互鍙婅法灏哄害娑岀幇琛屼负銆傜儹鍔涘鍜屽钩琛＄粺璁＄墿鐞嗚櫧鐒舵垚灏辫緣鐓岋紝浣嗗叾閫傜敤鑼冨洿涓昏灞€闄愪簬骞宠　鎬佹垨杩戝钩琛℃€佺郴缁熴€傜劧鑰岋紝瀹囧畽涓粷澶у鏁板紩浜哄叆鑳滅殑鐜拌薄鈥斺€斾粠缁嗚優鐨勭敓鍛芥椿鍔ㄥ埌姘旇薄鐨勬紨鍙樷€斺€旈兘鍙戠敓鍦ㄨ繙绂诲钩琛＄殑鐘舵€併€?</p>
+<h3 id="_11">闈炲钩琛＄郴缁熺殑鍩烘湰鐗瑰緛<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>瑕佺悊瑙ｉ潪骞宠　鐗╃悊瀛︼紝棣栧厛闇€瑕佽璇嗛潪骞宠　绯荤粺涓庡钩琛＄郴缁熺殑鏍规湰宸紓銆?</p>
+<p>*<em>椹卞姩涓庤€楁暎鐨勫钩琛?</em>鏄潪骞宠　绯荤粺鐨勬牳蹇冪壒寰併€備笌骞宠　绯荤粺涓嶅悓锛岄潪骞宠　绯荤粺闇€瑕佹寔缁殑鑳介噺鎴栫墿璐ㄨ緭鍏ユ潵缁存寔鍏剁姸鎬併€傝繖绉嶅閮ㄩ┍鍔ㄤ笌绯荤粺鍐呴儴鐨勮€楁暎杩囩▼杈炬垚鍔ㄦ€佸钩琛★紝浣跨郴缁熻兘澶熺淮鎸佸湪杩滅鐑姏瀛﹀钩琛＄殑鐘舵€併€?</p>
+<p><strong>娴佷笌浜х敓鐜?(Fluxes and Production Rates)</strong> 鐨勬蹇靛湪闈炲钩琛＄墿鐞嗕腑鍗犳嵁涓績鍦颁綅銆傚湪杩欎簺绯荤粺涓紝鑳介噺銆佺墿璐ㄣ€佺數鑽风瓑浼氭寔缁祦鍔紝褰㈡垚鍚勭"娴?鈥斺€旂儹娴併€佺矑瀛愭祦銆佺數娴佺瓑銆傚悓鏃讹紝绯荤粺浼氭寔缁骇鐢熺喌锛岃繖鏄笉鍙€嗚繃绋嬬殑鐩存帴浣撶幇銆傝繖浜涙祦涓嶆槸鐬椂鐨勬壈鍔紝鑰屾槸绯荤粺绋冲畾瀛樺湪鐨勭壒寰併€?</p>
+<p><strong>闈炲钩琛＄ǔ鎬?(Nonequilibrium Steady State, NESS)</strong> 鏄潪骞宠　鐗╃悊瀛︿腑鐨勪竴涓叧閿蹇点€傝澶氶潪骞宠　绯荤粺鍦ㄦ寔缁殑椹卞姩涓嬶紝浼氳揪鍒颁竴绉嶈〃闈笂"绋冲畾"鐨勭姸鎬侊細瀹忚鎬ц川涓嶉殢鏃堕棿鏀瑰彉锛屼絾鍐呴儴瀛樺湪鎸佺画鐨勫噣娴佸拰鐔典骇鐢熴€傜敓鍛界郴缁熸槸NESS鐨勫吀鍨嬩緥瀛愨€斺€旀椿缁嗚優閫氳繃鎸佺画鐨勬柊闄堜唬璋㈢淮鎸佸叾楂樺害鏈夊簭鐨勭姸鎬侊紝鐪嬩技闈欐锛屽疄鍒欏厖婊″姩鎬佽繃绋嬨€?</p>
+<h3 id="_12">缁嗚妭骞宠　鐨勭牬缂轰笌寰幆娴?<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p><strong>缁嗚妭骞宠　鐮寸己 (Breaking of Detailed Balance)</strong> 鏄尯鍒嗗钩琛′笌闈炲钩琛＄郴缁熺殑鏍规湰鏍囧織銆傚湪骞宠　鎬侊紝寰鍙€嗘€ц姹備换浣曞熀鍏冭繃绋嬩笌鍏堕€嗚繃绋嬬殑閫熺巼蹇呴』鐩哥瓑锛岃繖灏辨槸缁嗚妭骞宠　鍘熺悊銆傛暟瀛︿笂琛ㄨ揪涓猴細瀵逛簬浠绘剰涓や釜鐘舵€?i<span class="arithmatex">\(鍜?j\)</span>锛屽繀椤绘弧瓒?\pi_i W_{i \to j} = \pi_j W_{j \to i}<span class="arithmatex">\(锛屽叾涓?\pi_i\)</span>鏄钩琛℃鐜囷紝<span class="arithmatex">\(W_{i \to j}\)</span>鏄浆绉婚€熺巼銆?</p>
+<p>鍦ㄩ潪骞宠　绯荤粺涓紝杩欎竴鍘熺悊琚郴缁熸€у湴杩濊儗銆傚閮ㄩ┍鍔ㄦ墦鐮翠簡寰杩囩▼鐨勫绉版€э紝瀵艰嚧鍑€鐨勫惊鐜祦鍜屽畾鍚戣繍鍔ㄣ€傝繖绉嶇牬缂轰笉鏄伓鐒剁殑鎵板姩锛岃€屾槸绯荤粺鍔熻兘鐨勫熀纭€鈥斺€旀鏄繖绉嶄笉瀵圭О鎬т娇寰楀垎瀛愰┈杈捐兘澶熷畾鍚戣繍鍔紝浣垮緱缁嗚優鑳藉涓诲姩杈撹繍鐗╄川銆?</p>
+<h3 id="_13">浠庨殢鏈鸿繃绋嬪埌鍦鸿鐨勭悊璁轰綋绯?<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>鏍规嵁PPT鏄剧ず鐨勮绋嬬粨鏋勶紝闈炲钩琛＄墿鐞嗗鐨勭悊璁轰綋绯诲彲浠ュ垎涓哄洓涓€掕繘鐨勫眰娆★細</p>
+<p><strong>绗竴閮ㄥ垎锛氶殢鏈鸿繃绋嬪熀纭€ (Foundations of Stochastic Processes)</strong> 寤虹珛浜嗘弿杩伴殢鏈烘€х殑鏁板璇█銆備粠<strong>闅忔満娓歌蛋涓庡竷鏈楄繍鍔?(Random Walks and Brownian Motion)</strong> 寮€濮嬶紝鎴戜滑瀛︿範浼姫鍒?楂樻柉娓歌蛋鍜屾墿鏁ｆ柟绋嬬瓑鍩烘湰妯″瀷銆?<em>鍩虹闅忔満妯″瀷 (Elementary Stochastic Models)</em><em> 寮曞叆娉婃澗杩囩▼銆佺敓鐏姩鍔涘鍜屽垎瀛愰┈杈剧瓑鍏蜂綋渚嬪瓙銆?</em>椹皵鍙か杩囩▼涓庝富鏂圭▼ (Markov Processes and Master Equations)** 鍒欏缓绔嬩簡Chapman-Kolmogorov鏂圭▼鍜岀鏁?杩炵画鐘舵€佺┖闂寸殑缁熶竴妗嗘灦銆?</p>
+<ul>
+<li>[2. 绠€鍗曢殢鏈烘父璧癩(2.%20绠€鍗曢殢鏈烘父璧?md)</li>
+<li>[3. 楂樻柉闅忔満娓歌蛋涓庢硦鏉捐繃绋媇(3.%20楂樻柉闅忔満娓歌蛋涓庢硦鏉捐繃绋?md)</li>
+<li>[4. Gillespie 绠楁硶銆佷富鏂圭▼銆佺敓鎴愬嚱鏁颁笌绉嶇兢鍔ㄥ姏瀛(4.%20Gillespie%20绠楁硶銆佷富鏂圭▼銆佺敓鎴愬嚱鏁颁笌绉嶇兢鍔ㄥ姏瀛?md)</li>
+<li><a href="5.%20绉嶇兢鍔ㄦ€佸锛氱嚎鎬ф浜¤繃绋嬩笌Lotka-Volterra%20绯荤粺.md">5. 绉嶇兢鍔ㄦ€佸锛氱嚎鎬ф浜¤繃绋嬩笌Lotka-Volterra 绯荤粺</a></li>
+<li><a href="6.%20椹皵鍙か杩囩▼鐨勫熀鏈柟绋嬶細鏌ユ櫘鏇?绉戝皵鑾垐缃楀か鏂圭▼.md">6. 椹皵鍙か杩囩▼鐨勫熀鏈柟绋嬶細鏌ユ櫘鏇?绉戝皵鑾垐缃楀か鏂圭▼</a></li>
+<li><a href="7.%20鍓嶅悜涓绘柟绋嬩笌Q鐭╅樀.md">7. 鍓嶅悜涓绘柟绋嬩笌Q鐭╅樀</a></li>
+<li><a href="8.%20浣╅緳-寮楃綏璐濆凹涔屾柉瀹氱悊銆佺ǔ鎬佷笌缁嗚嚧骞宠　.md">8. 浣╅緳-寮楃綏璐濆凹涔屾柉瀹氱悊銆佺ǔ鎬佷笌缁嗚嚧骞宠　</a></li>
+<li><a href="9.%20闈炲钩琛℃€侊細涓嶅彲閫嗘€т笌鐔典骇鐢熺殑鎺ㄨ.md">9. 闈炲钩琛℃€侊細涓嶅彲閫嗘€т笌鐔典骇鐢熺殑鎺ㄨ</a></li>
+<li><a href="10.%20鍩冧鸡璐规柉鐗规ā鍨嬨€佺喌涓嶬L鏁ｅ害.md">10. 鍩冧鸡璐规柉鐗规ā鍨嬨€佺喌涓嶬L鏁ｅ害</a></li>
+</ul>
+<p><strong>绗簩閮ㄥ垎锛氱矑瀛愮殑闅忔満鍔ㄥ姏瀛?(Stochastic Dynamics of Particles)</strong> 灏嗘娊璞＄殑鏁板宸ュ叿搴旂敤浜庡叿浣撶殑鐗╃悊瀵硅薄銆?<em>鏈椾箣涓囦笌绂忓厠-鏅湕鍏嬫柟绋?(Langevin and Fokker-Planck Equations)</em><em> 澶勭悊璺緞绉垎鍜屼箻鎬у櫔澹伴棶棰樸€?</em>闅忔満妯℃嫙鎶€鏈?(Stochastic Simulation Techniques)<strong> 浠嬬粛Gillespie绠楁硶鍜岄殢鏈虹Н鍒嗘柟娉曘€?*闅忔満鐑姏瀛?(Stochastic Thermodynamics)</strong> 鍒欏湪杞ㄨ抗灞傞潰璁ㄨ鐔典骇鐢熴€佺粏鑺傚钩琛″拰娑ㄨ惤瀹氱悊銆?</p>
+<ul>
+<li>[11. 杩炵画椹皵鍙か杩囩▼涓庣鍏?鏅湕鍏嬫柟绋媇(11.%20杩炵画椹皵鍙か杩囩▼涓庣鍏?鏅湕鍏嬫柟绋?md)</li>
+<li><a href="12.%20甯冩湕杩愬姩涓庡ゥ鎭╂柉鍧?涔屼鸡璐濆厠杩囩▼.md">12. 甯冩湕杩愬姩涓庡ゥ鎭╂柉鍧?涔屼鸡璐濆厠杩囩▼</a></li>
+<li>[13. 浣滀负闅忔満杩囩▼鐨勮挋鐗瑰崱娲涢噰鏍穄(13.%20浣滀负闅忔満杩囩▼鐨勮挋鐗瑰崱娲涢噰鏍?md)</li>
+<li><a href="14.%20鍝堝瘑灏旈】钂欑壒鍗℃礇閲囨牱.md">14. 鍝堝瘑灏旈】钂欑壒鍗℃礇閲囨牱</a></li>
+<li><a href="15.%20瓒嬪寲鎬с€佽窇鍔?缈绘粴杩愬姩涓嶬eller-Segel妯″瀷.md">15. 瓒嬪寲鎬с€佽窇鍔?缈绘粴杩愬姩涓嶬eller-Segel妯″瀷</a></li>
+<li>[16. Schnitzer妯″瀷銆佸弽甯告墿鏁ｄ笌杩愬姩璇卞鐩稿垎绂籡(16.%20Schnitzer妯″瀷銆佸弽甯告墿鏁ｄ笌杩愬姩璇卞鐩稿垎绂?md)</li>
+<li><a href="17.%20鏈椾箣涓囨柟绋嬨€佸竷鏈楃矑瀛愪笌娑ㄨ惤-鑰楁暎瀹氱悊.md">17. 鏈椾箣涓囨柟绋嬨€佸竷鏈楃矑瀛愪笌娑ㄨ惤-鑰楁暎瀹氱悊</a></li>
+<li>[18. 绂忓厠-鏅湕鍏嬫柟绋嬩笌鏂懇妫遍湇澶柉鍩烘柟绋嬶細浠庨殢鏈鸿建杩瑰埌姒傜巼鍔ㄥ姏瀛(18.%20绂忓厠-鏅湕鍏嬫柟绋嬩笌鏂懇妫遍湇澶柉鍩烘柟绋嬶細浠庨殢鏈鸿建杩瑰埌姒傜巼鍔ㄥ姏瀛?md)</li>
+<li>[19. 闅忔満杩囩▼鐨勮矾寰勭Н鍒嗚〃杩癩(19.%20闅忔満杩囩▼鐨勮矾寰勭Н鍒嗚〃杩?md)</li>
+<li><a href="20.%20闅忔満寰垎鏂圭▼.md">20. 闅忔満寰垎鏂圭▼</a></li>
+<li>[21. 浼婅棨绉垎涓庣粺涓€鐨勯殢鏈鸿繃绋嬫鏋禲(21.%20浼婅棨绉垎涓庣粺涓€鐨勯殢鏈鸿繃绋嬫鏋?md)</li>
+<li><a href="22.%20鍚箻鎬у櫔澹扮郴缁熺殑璺緞绉垎.md">22. 鍚箻鎬у櫔澹扮郴缁熺殑璺緞绉垎</a></li>
+</ul>
+<p><strong>绗笁閮ㄥ垎锛氫粠绂绘暎鎬佸埌鍦?(From Discrete States to Fields)</strong> 瀹炵幇浜嗗叧閿殑鎶借薄璺冭縼銆?<em>鍙嶅簲缃戠粶涓庡満璁?(Reaction Networks and Field Theories)</em><em> 閫氳繃涓绘柟绋嬪拰Kramers-Moyal灞曞紑灏嗙鏁ｈ繃绋嬭繛缁寲銆?</em>鍦虹殑绮楃矑鍖栧姩鍔涘 (Coarse-Grained Dynamics of Fields)** 鐮旂┒寮涜鲍鍔ㄥ姏瀛︿互鍙婂畧鎭掑満涓庨潪瀹堟亽鍦虹殑鍖哄埆銆?</p>
+<ul>
+<li><a href="24.%20浠庣矖绮掑寲鍒拌繛缁満璁烘定钀藉姩鍔涘.md">23. 浠庣矖绮掑寲鍒拌繛缁満璁烘定钀藉姩鍔涘</a></li>
+<li><a href="25.%20鏄傝惃鏍肩郴鏁般€佸€掓槗鍏崇郴涓庡姩鎬佹定钀?鑰楁暎瀹氱悊.md">24. 鏄傝惃鏍肩郴鏁般€佸€掓槗鍏崇郴涓庡姩鎬佹定钀?鑰楁暎瀹氱悊</a></li>
+<li><a href="25.%20姊害鍔ㄥ姏瀛︺€佺浉鍙樹笌寮涜鲍.md">25. 姊害鍔ㄥ姏瀛︺€佺浉鍙樹笌寮涜鲍</a></li>
+<li>[26. 涓寸晫鎱㈠寲銆佸姩鎬佸搷搴斾笌瀹堟亽寰媇(26.%20涓寸晫鎱㈠寲銆佸姩鎬佸搷搴斾笌瀹堟亽寰?md)</li>
+<li>[27. 绠€鍗曟祦浣撱€佹棤鎽╂摝娴佷綋涓庢鎷夋柟绋嬬殑娴佷綋鍔ㄥ姏瀛(27.%20绠€鍗曟祦浣撱€佹棤鎽╂摝娴佷綋涓庢鎷夋柟绋嬬殑娴佷綋鍔ㄥ姏瀛?md)</li>
+<li><a href="28.%20绮樻€ф祦浣撱€佺撼缁?鏂墭鍏嬫柉鏂圭▼銆佺喌骞宠　涓庣儹浼犲.md">28. 绮樻€ф祦浣撱€佺撼缁?鏂墭鍏嬫柉鏂圭▼銆佺喌骞宠　涓庣儹浼犲</a></li>
+<li>[29. 涓嶅彲閫嗙嚎鎬х儹鍔涘涓庡共鎬ф墿鏁ｇ矑瀛愮郴缁焆(29.%20涓嶅彲閫嗙嚎鎬х儹鍔涘涓庡共鎬ф墿鏁ｇ矑瀛愮郴缁?md)</li>
+<li><a href="30.%20鎮诞鍦ㄦ祦浣撲腑鐨勫竷鏈楃矑瀛?20鈥?20H妯″瀷.md">30. 鎮诞鍦ㄦ祦浣撲腑鐨勫竷鏈楃矑瀛?鈥?H妯″瀷</a></li>
+</ul>
+<p><strong>绗洓閮ㄥ垎锛氶潪骞宠　绯荤粺鐨勫満璁?(Field Theories of Nonequilibrium Systems)</strong> 杩愮敤鏈€鍏堣繘鐨勭悊璁哄伐鍏枫€?<em>鍔ㄦ€佹硾鍑戒笌MSR褰㈠紡 (Dynamical Functionals and MSR Formalism)</em><em> 鍙戝睍Onsager-Machlup鍜孞anssen-de Dominicis璺緞绉垎鏂规硶銆?</em>娴佷綋鍔ㄥ姏瀛︿笌娑ㄨ惤娴佷綋 (Hydrodynamics and Fluctuating Fluids)<strong> 搴旂敤妯″瀷H銆佸姩閲忓畧鎭掑拰鎮诞鍔ㄥ姏瀛︺€?*闈炲钩琛℃ā寮忓舰鎴?(Nonequilibrium Pattern Formation)</strong> 鐮旂┒澶辩ǔ鍜岄潪骞宠　绋虫€併€?<em>娲绘€х墿璐ㄥ満璁?(Field Theory of Active Matter)</em>* 鍒欐帰璁ㄨ嚜鎺ㄨ繘鍜岃嚜缁勭粐鐜拌薄銆?</p>
+<ul>
+<li><a href="31.%20鍔ㄦ€佹硾鍑姐€佸姞鎬у櫔澹板満璁轰笌Onsager-Machlup娉涘嚱.md">31. 鍔ㄦ€佹硾鍑姐€佸姞鎬у櫔澹板満璁轰笌Onsager-Machlup娉涘嚱</a></li>
+<li><a href="32.%20Janssen-De%20Dominicis%20鍝嶅簲娉涘嚱涓庢定钀?鑰楁暎鍏崇郴.md">32. Janssen-De Dominicis 鍝嶅簲娉涘嚱涓庢定钀?鑰楁暎鍏崇郴</a></li>
+<li>[33. 闈炲钩琛″姛涓庢定钀藉畾鐞哴(33.%20闈炲钩琛″姛涓庢定钀藉畾鐞?md)</li>
+<li>[34. 鏈夊悜娓楁祦銆佸惛鏀舵€佷笌璋辨柟娉昡(34.%20鏈夊悜娓楁祦銆佸惛鏀舵€佷笌璋辨柟娉?md)</li>
+<li><a href="35.%20涓绘柟绋嬬殑璺緞绉垎琛ㄧず.md">35. 涓绘柟绋嬬殑璺緞绉垎琛ㄧず</a></li>
+<li>[36. 鐩稿共鎬佽矾寰勭Н鍒嗐€佺畻绗︿唬鏁颁笌铏氬櫔澹癩(36.%20鐩稿共鎬佽矾寰勭Н鍒嗐€佺畻绗︿唬鏁颁笌铏氬櫔澹?md)</li>
+<li>[37. Kramers-Moyal 灞曞紑涓庤矾寰勭Н鍒嗙殑浣庡櫔澹版瀬闄怾(37.%20Kramers-Moyal%20灞曞紑涓庤矾寰勭Н鍒嗙殑浣庡櫔澹版瀬闄?md)</li>
+<li>[38. 澶氱墿绉嶈矾寰勭Н鍒嗕笌寰幆绔炰簤鍔ㄥ姏瀛(38.%20澶氱墿绉嶈矾寰勭Н鍒嗕笌寰幆绔炰簤鍔ㄥ姏瀛?md)</li>
+<li><a href="39.%20浠庣矑瀛愯烦璺冨埌杩炵画鍦鸿.md">39. 浠庣矑瀛愯烦璺冨埌杩炵画鍦鸿</a></li>
+<li>[40. 缁熶竴鐨勫満璁烘鏋禲(40.%20缁熶竴鐨勫満璁烘鏋?md)</li>
+</ul>
+<h3 id="_14">鐞嗚鏂规硶鐨勫眰娆￠€掕繘<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>杩欑璇剧▼缁撴瀯浣撶幇浜嗛潪骞宠　鐗╃悊瀛︾悊璁烘柟娉曠殑灞傛鎬э細浠庢弿杩板崟涓矑瀛愮殑闅忔満杞ㄨ抗锛屽埌鎻忚堪绮掑瓙绯荤患鐨勬鐜囨紨鍖栵紱浠庡鐞嗙鏁ｇ殑璺宠穬杩囩▼锛屽埌鏋勫缓杩炵画鐨勫満璁猴紱浠庡垎鏋愯繎骞宠　鐨勭嚎鎬у搷搴旓紝鍒版帰绱㈣繙绂诲钩琛＄殑澶嶆潅琛屼负銆?</p>
+<p>姣忎竴灞傛閮芥湁鍏剁嫭鐗圭殑鏁板宸ュ叿鍜岀墿鐞嗘礊瀵熴€傞殢鏈鸿繃绋嬬悊璁烘彁渚涗簡澶勭悊涓嶇‘瀹氭€х殑璇█锛涙湕涔嬩竾鍜岀鍏?鏅湕鍏嬫柟绋嬭繛鎺ヤ簡寰闅忔満鎬т笌瀹忚纭畾鎬э紱涓绘柟绋嬪埌鍦鸿鐨勮浆鎹㈠疄鐜颁簡浠庣鏁ｅ埌杩炵画鐨勬娊璞★紱鑰屽姩鎬佹硾鍑芥柟娉曞垯涓哄鐞嗗鏉傜殑澶氫綋鐩镐簰浣滅敤鎻愪緵浜嗗己澶х殑宸ュ叿銆?</p>
+<p>閫氳繃杩欐牱鐨勭悊璁轰綋绯伙紝闈炲钩琛＄墿鐞嗗涓嶄粎鑳藉鎻忚堪鍜岄娴嬭繙绂诲钩琛＄郴缁熺殑琛屼负锛屾洿鑳芥彮绀鸿繖浜涚郴缁熶腑娑岀幇鐨勬柊濂囩幇璞♀€斺€斾粠绠€鍗曠殑鎵╂暎杩囩▼鍒板鏉傜殑鐢熷懡娲诲姩锛屼粠涓綋鐨勯殢鏈鸿繍鍔ㄥ埌闆嗕綋鐨勬湁搴忚涓恒€?</p>
+<p>涓轰簡鏇存竻鏅板湴鐞嗚В杩欎笁涓悊璁烘鏋剁殑瀹氫綅锛屽彲浠ュ弬鑰冧笅琛細</p>
+<table>
+<thead>
+<tr>
+<th>鐗规€?(Property)</th>
+<th>鐑姏瀛?(Thermodynamics)</th>
+<th>缁熻鐗╃悊 (Statistical Physics)</th>
+<th>闈炲钩琛＄墿鐞?(Nonequilibrium Physics)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>鐮旂┒鑼冪暣 (Scope)</strong></td>
+<td>瀹忚绯荤粺 (Macroscopic systems)</td>
+<td>浠庡井瑙傚埌瀹忚 (Microscopic to Macroscopic)</td>
+<td>鍔ㄦ€併€佹紨鍖栦腑鐨勭郴缁?(Dynamic, evolving systems)</td>
+</tr>
+<tr>
+<td><strong>鏍稿績鐘舵€?(Core State)</strong></td>
+<td>骞宠　鎬?(Equilibrium)</td>
+<td>骞宠　绯荤患 (Equilibrium Ensemble)</td>
+<td>闈炲钩琛＄ǔ鎬?(NESS), 鐬€?(Transient states)</td>
+</tr>
+<tr>
+<td><strong>鍏抽敭鍙橀噺 (Key Variables)</strong></td>
+<td>$ T, P, V, E, S $ (瀹忚閲?</td>
+<td>寰鎬? 姒傜巼鍒嗗竷, 閰嶅垎鍑芥暟</td>
+<td>娴?(Fluxes), 浜х敓鐜?(Production rates), 娑ㄨ惤</td>
+</tr>
+<tr>
+<td><strong>鍩烘湰鍘熺悊 (Principles)</strong></td>
+<td>鐑姏瀛﹀畾寰?(Laws of Thermodynamics)</td>
+<td>缁熻绯荤患, 鐜诲皵鍏规浖鍒嗗竷</td>
+<td>娑ㄨ惤瀹氱悊, 鐔典骇鐢? 缁嗚妭骞宠　鐮寸己</td>
+</tr>
+</tbody>
+</table>
+<h1 id="2">2. 闅忔満杩囩▼鐨勮寖渚嬧€斺€斿竷鏈楄繍鍔?<a class="headerlink" href="#2" title="Permanent link">&para;</a></h1>
+<p>鍘嗗彶甯稿父涓烘垜浠彁渚涜繘鍏ヤ竴涓鏉傞鍩熺殑鍏ュ彛銆傚竷鏈楄繍鍔ㄤ笉浠呮槸涓€涓湁瓒ｇ殑鍘嗗彶鏁呬簨锛屾洿鏄悊瑙ｉ殢鏈鸿繃绋嬪拰闈炲钩琛＄墿鐞嗘牳蹇冩€濇兂鐨勮寖渚嬨€傚畠灞曠ず浜嗗井瑙備笘鐣岀殑闅忔満娑ㄨ惤濡備綍涓诲浠嬭灏哄害涓婄殑鐗╀綋杩愬姩銆?</p>
+<h2 id="21">2.1 甯冩湕鐨勨€滃皬绉樺瘑鈥濓細鍘嗗彶鐨勫紑绔?<a class="headerlink" href="#21" title="Permanent link">&para;</a></h2>
+<p><img alt="璇惧爞PPT鎴浘" src="../../assets/images/remote/7400d880-05d3-4389-bf31-c20aaafd66eb-d63fec73c1.png" /></p>
+<p>1827骞达紝鑻忔牸鍏版鐗╁瀹剁綏浼壒路甯冩湕 (Robert Brown) 鍦ㄦ樉寰暅涓嬭瀵熸偓娴湪姘翠腑鐨勮姳绮夐绮掓椂锛屽彂鐜拌繖浜涘井灏忕殑棰楃矑姘镐笉鍋滄瓏鍦拌繘琛岀潃蹇€熴€佹棤瑙勫垯鐨勮繍鍔ㄣ€傝繖绉嶇幇璞″悗鏉ヨ绉颁负鈥滃竷鏈楄繍鍔ㄢ€濄€傚湪杈惧皵鏂囩殑鍥炲繂涓紝甯冩湕鏇惧悜浠栧睍绀轰簡杩欎竴鐜拌薄锛屼絾褰撹闂強鍏跺師鍥犳椂锛屽竷鏈楀彧鏄绉樺湴鍥炵瓟锛氣€滈偅鏄垜鐨勪竴鐐瑰皬绉樺瘑鈥濄€傚湪褰撴椂锛屼汉浠棤娉曡В閲婅繖绉嶈繍鍔ㄧ殑鏉ユ簮锛屾湁浜虹敋鑷崇寽娴嬭繖婧愪簬鑺辩矇鑷韩鐨勨€滅敓鍛藉姏鈥濄€?</p>
+<h2 id="22">2.2 鐖卞洜鏂潶鐨勮В閲婁笌浣╁叞鐨勯獙璇?<a class="headerlink" href="#22" title="Permanent link">&para;</a></h2>
+<p><img alt="璇惧爞PPT鎴浘" src="../../assets/images/remote/7bb6afd8-bd70-427e-b5ad-f9cad9ce217a-f7c82c619a.png" /></p>
+<p>杩欎釜鈥滅瀵嗏€濈洿鍒拌繎80骞村悗鎵嶈闃垮皵浼壒路鐖卞洜鏂潶 (Albert Einstein) 鍦ㄥ叾1905骞寸殑鈥滃杩瑰勾鈥濅腑褰诲簳鎻紑銆傜埍鍥犳柉鍧︽寚鍑猴紝甯冩湕杩愬姩骞堕潪婧愪簬绮掑瓙鍐呴儴锛岃€屾槸澶栭儴鐜浣滅敤鐨勭粨鏋溿€備粬鍦ㄨ鏂囦腑鍐欓亾锛氣€滄牴鎹儹鐨勫垎瀛愬姩鐞嗚锛屾偓娴湪娑蹭綋涓殑寰鍙澶у皬鐨勭墿浣擄紝蹇呴』杩涜涓€瀹氱▼搴︾殑杩愬姩锛岃繖绉嶈繍鍔ㄧ殑骞呭害鍙互閫氳繃鏄惧井闀滆交鏄撹瀵熷埌銆傗€?</p>
+<p>鐖卞洜鏂潶鐨勬礊瑙佸湪浜庯紝浠栬璇嗗埌鎮诞棰楃矑鏃跺埢鍙楀埌鏉ヨ嚜鍛ㄥ洿澶ч噺娑蹭綋鍒嗗瓙鐨勭鎾炪€傝繖浜涘垎瀛愬湪杩涜鐫€姘镐笉鍋滄伅鐨勭儹杩愬姩銆傚浜庝竴涓畯瑙傜墿浣擄紝鏉ヨ嚜鍥涢潰鍏柟鐨勭鎾炲湪缁熻涓婃槸鍧囧寑鐨勶紝鍏跺悎鍔涗负闆躲€備絾瀵逛簬涓€涓井灏忛绮掞紝鐢变簬鍒嗗瓙鏁伴噺鏈夐檺锛屽湪浠讳綍涓€涓灛闂达紝鏉ヨ嚜涓嶅悓鏂瑰悜鐨勭鎾炴槸涓嶅畬鍏ㄥ钩琛＄殑銆傝繖绉嶄笉骞宠　鐨勩€侀殢鏈虹殑纰版挒鍔涘鑷翠簡棰楃矑鐨勬棤瑙勫垯杩愬姩銆?</p>
+<p>杩欎竴瑙ｉ噴鍏锋湁鍒掓椂浠ｇ殑鎰忎箟锛?</p>
+<ol>
+<li>
+<p>*<em>瀹冧负鍘熷瓙鍜屽垎瀛愮殑瀛樺湪鎻愪緵浜嗙洿鎺ャ€佸彲瑙佺殑璇佹嵁銆?</em> 甯冩湕杩愬姩鎴愪负浜嗚繛鎺ヤ笉鍙鐨勫井瑙備笘鐣岋紙鍒嗗瓙纰版挒锛夊拰鍙鐨勪粙瑙備笘鐣岋紙棰楃矑杩愬姩锛夌殑妗ユ銆?</p>
+</li>
+<li>
+<p>*<em>瀹冨紩鍏ヤ簡鈥滈殢鏈哄姏鈥?(random force) 鐨勬蹇?</em>锛岃繖鏄幇浠ｉ殢鏈哄姩鍔涘鐞嗚鐨勫熀鐭炽€?</p>
+</li>
+<li>
+<p>*<em>瀹冩彮绀轰簡娑ㄨ惤涓庤€楁暎鐨勫唴鍦ㄨ仈绯汇€?</em> 瀵艰嚧棰楃矑闅忔満杩愬姩鐨勫垎瀛愮鎾烇紝鍚屾牱涔熸槸褰撻绮掑湪澶栧姏涓嬭繍鍔ㄦ椂浜х敓绮樻€ч樆鍔涳紙鎽╂摝鍔涳級鐨勫師鍥犮€傝繖涓€鎬濇兂鐨勮悓鑺斤紝鏈€缁堝皢鍙戝睍涓烘繁鍒荤殑娑ㄨ惤鑰楁暎瀹氱悊銆?</p>
+</li>
+</ol>
+<p>娉曞浗鐗╃悊瀛﹀璁┞峰反钂傛柉鐗孤蜂僵鍏?(Jean Baptiste Perrin) 閫氳繃瀵瑰竷鏈楄繍鍔ㄧ殑绮剧粏瀹氶噺瀹為獙鐮旂┒锛屾祴閲忎簡棰楃矑鐨勫潎鏂逛綅绉伙紝骞舵嵁姝ょ簿纭湴璁＄畻鍑洪樋浼忎冀寰风綏甯告暟锛屽叾瀹為獙缁撴灉涓庣悊璁洪娴嬮珮搴﹀惢鍚堛€傝繖椤瑰伐浣滀负鐖卞洜鏂潶鐨勭悊璁烘彁渚涗簡鍐冲畾鎬х殑瀹為獙楠岃瘉锛屼篃涓虹墿璐ㄧ殑鍘熷瓙-鍒嗗瓙缁撴瀯瀛﹁鐢讳笂浜嗗渾婊＄殑鍙ュ彿銆備僵鍏板洜姝よ崳鑾?926骞寸殑璇鸿礉灏旂墿鐞嗗濂栥€?</p>
+<h1 id="3">3. 闈炲钩琛＄墿鐞嗗鐨勫彂灞曡剦缁?<a class="headerlink" href="#3" title="Permanent link">&para;</a></h1>
+<p><img alt="璇惧爞PPT鎴浘" src="../../assets/images/remote/c2b41f13-a1ba-4197-b5bf-1093c6b78a98-1fe6101f03.png" /></p>
+<p>甯冩湕杩愬姩鐨勬垚鍔熻В閲婂紑鍚簡闈炲钩琛＄墿鐞嗗鍙戝睍鐨勫ぇ闂ㄣ€傚湪鏁翠釜20涓栫邯锛岀墿鐞嗗瀹朵滑閫愭寤虹珛璧蜂竴濂楁弿杩板拰鐞嗚В闈炲钩琛＄幇璞＄殑鐞嗚宸ュ叿绠便€傝繖涓彂灞曡繃绋嬪苟闈炰竴韫磋€屽氨锛岃€屾槸涓€涓蹇典笉鏂繁鍖栥€佹娊璞″眰娆′笉鏂彁鍗囩殑鈥滈樁姊€濄€?</p>
+<h2 id="31-1900s-1940s">3.1 闅忔満鍔ㄥ姏瀛?(1900s-1940s): 鎻忚堪浠嬭灏哄害涓婄殑鍚櫔鍔ㄥ姏瀛?<a class="headerlink" href="#31-1900s-1940s" title="Permanent link">&para;</a></h2>
+<p>杩欎竴鏃舵湡鐨勬牳蹇冪洰鏍囨槸涓哄竷鏈楄繍鍔ㄨ繖鏍风殑闅忔満鐜拌薄寤虹珛鏁板鍖栫殑鍔ㄥ姏瀛︽柟绋嬨€?</p>
+<ul>
+<li><strong>鏈椾箣涓囨柟绋?(Langevin Equation)</strong></li>
+</ul>
+<p>杩欐槸瀵瑰崟涓竷鏈楃矑瀛愯繍鍔ㄨ建杩圭殑鎻忚堪銆備繚缃椔锋湕涔嬩竾 (Paul Langevin) 鍦ㄧ墰椤跨浜屽畾寰?(<span class="arithmatex">\(m\ddot{x} = F\)</span>) 鐨勫熀纭€涓婏紝澶╂墠鍦板皢浣滅敤鍔涘垎瑙ｄ负涓ら儴鍒嗭細</p>
+<ol>
+<li>
+<p>涓€涓郴缁熺殑銆佸彲棰勬祴鐨?<em>鑰楁暎鍔?(dissipative force)</em>*锛屽嵆涓庣矑瀛愰€熷害鎴愭姣旂殑绮樻€ч樆鍔涳紝<span class="arithmatex">\(-\gamma \dot{x}\)</span>銆?</p>
+</li>
+<li>
+<p>涓€涓揩閫熸定钀界殑銆佷笉鍙娴嬬殑闅忔満鍔?(random force)锛?\eta(t)$锛屼唬琛ㄤ簡鏉ヨ嚜娴佷綋鍒嗗瓙鐨勯殢鏈虹鎾炪€?</p>
+</li>
+<li>
+<p>浜庢槸锛屾湕涔嬩竾鏂圭▼鍙互姒傚康鎬у湴鍐欎负锛?</p>
+</li>
+</ol>
+<div class="arithmatex">\[
+     m \ddot{x} = -\gamma \dot{x} + \eta(t)
+\]</div>
+<p>杩欎釜鏂圭▼鐨勭墿鐞嗘剰涔夋瀬涓烘繁鍒伙細瀹冮娆″皢瀹忚鐨勮€楁暎锛堢敱鎽╂摝绯绘暟 <span class="arithmatex">\(\gamma\)</span> 琛ㄥ緛锛夊拰寰鐨勬定钀斤紙鐢遍殢鏈哄姏 <span class="arithmatex">\(\eta(t)\)</span> 琛ㄥ緛锛夋斁鍦ㄤ簡鍚屼竴涓姩鍔涘鏂圭▼涓€傚畠鎻忚堪鐨勬槸涓€鏉￠殢鏈虹殑杞ㄨ抗锛屾槸闅忔満寰垎鏂圭▼鐨勬互瑙炪€?</p>
+<ul>
+<li><strong>绂忓厠-鏅湕鍏嬫柟绋?(Fokker-Planck Equation)</strong></li>
+</ul>
+<p>鏈椾箣涓囨柟绋嬫弿杩扮殑鏄崟涓矑瀛愮殑鍛借繍锛屼絾閫氬父鎴戜滑鏇村叧蹇冨ぇ閲忕矑瀛愮粍鎴愮殑绯荤粺鐨勯泦浣撹涓恒€傜鍏?鏅湕鍏嬫柟绋嬫鏄负姝よ€岀敓銆傚畠涓嶈拷韪崟涓建杩癸紝鑰屾槸鎻忚堪绮掑瓙绯荤患鐨勬鐜囧瘑搴﹀嚱鏁?<span class="arithmatex">\(P(x,t)\)</span> 濡備綍闅忔椂闂存紨鍖栥€?</p>
+<p>鍏朵竴鑸舰寮忓彲浠ュ啓涓猴細</p>
+<div class="arithmatex">\[
+  \frac{\partial P}{\partial t} = -\nabla \cdot (\mathbf{A} P) + \frac{1}{2} \nabla^2 (\mathbf{B} P)
+\]</div>
+<p>杩欎釜鏂圭▼鐨勭墿鐞嗘剰涔夋槸姒傜巼鐨勬祦浣撳姩鍔涘鏂圭▼锛?</p>
+<ol>
+<li>
+<p><strong>婕傜Щ椤?(Drift Term)</strong>: 绗竴椤癸紝涓庢紓绉荤煝閲?<span class="arithmatex">\(\mathbf{A}\)</span> 鐩稿叧锛屾弿杩颁簡鐢辩郴缁熸€т綔鐢紙濡傚鍔涘満锛夊紩璧风殑姒傜巼瀵嗗害鐨勭‘瀹氭€ф紓绉汇€?</p>
+</li>
+<li>
+<p><strong>鎵╂暎椤?(Diffusion Term)</strong>: 绗簩椤癸紝涓庢墿鏁ｅ紶閲?<span class="arithmatex">\(\mathbf{B}\)</span> 鐩稿叧锛屾弿杩颁簡鐢遍殢鏈哄姏寮曡捣鐨勬鐜囧瘑搴︾殑鎵╂暎鍜屽睍瀹姐€?</p>
+</li>
+<li>
+<p>绂忓厠-鏅湕鍏嬫柟绋嬪拰鏈椾箣涓囨柟绋嬫槸鎻忚堪鍚屼竴涓殢鏈鸿繃绋嬬殑涓ょ绛変环瑙嗚锛氬墠鑰呮槸鍩轰簬姒傜巼鍒嗗竷鐨勨€滄鎷夋弿杩扳€濓紝鍚庤€呮槸鍩轰簬绮掑瓙杞ㄨ抗鐨勨€滄媺鏍兼湕鏃ユ弿杩扳€濄€?</p>
+</li>
+</ol>
+<h2 id="32-1930s-1960s">3.2 绾挎€ч潪骞宠　鐑姏瀛?(1930s-1960s): 杩戝钩琛″尯鐨勮緭杩愮悊璁?<a class="headerlink" href="#32-1930s-1960s" title="Permanent link">&para;</a></h2>
+<p>褰撶郴缁熷彧鏄暐寰亸绂诲钩琛℃€佹椂锛屽悇绉嶇儹鍔涘鈥滄祦鈥?(<span class="arithmatex">\(J_i\)</span>)锛屽鐑祦銆佺數娴併€佺矑瀛愭祦锛屽彲浠ヨ繎浼煎湴鐪嬩綔鏄笌寮曡捣瀹冧滑鐨勭儹鍔涘鈥滃姏鈥?(<span class="arithmatex">\(X_j\)</span>)锛屽娓╁害姊害銆佺數鍔挎搴︺€佸寲瀛﹀娍姊害锛屾垚绾挎€у叧绯伙細</p>
+<div class="arithmatex">\[
+J_i = \sum_j L_{ij} X_j
+\]</div>
+<p>鍏朵腑 <span class="arithmatex">\(L_{ij}\)</span> 琚О涓哄姩鍔涘绯绘暟鎴栬緭杩愮郴鏁般€傚瑙掗」 <span class="arithmatex">\(L_{ii}\)</span> 鎻忚堪浜嗙洿鎺ユ晥搴旓紝濡傚倕閲屽彾瀹氬緥锛堢儹娴佹姣斾簬娓╁害姊害锛夋垨娆у瀹氬緥锛堢數娴佹姣斾簬鐢靛娍姊害锛夈€?</p>
+<ul>
+<li><strong>鏄傝惃鏍煎€掓槗鍏崇郴 (Onsager Reciprocal Relations)</strong></li>
+</ul>
+<p>鎷夋柉路鏄傝惃鏍?(Lars Onsager) 鐨勬澃鍑鸿础鐚湪浜庢彮绀轰簡闈炲瑙掗」锛堜氦鍙夋晥搴旓級鐨勬繁鍒绘€ц川銆備緥濡傦紝娓╁害姊害涓嶄粎鑳藉紩璧风儹娴侊紝杩樿兘寮曡捣鐢垫祦锛堝璐濆厠鏁堝簲锛夛紝杩欑敱绯绘暟 <span class="arithmatex">\(L_{\text{鐢祡,\text{娓﹠}\)</span> 鎻忚堪锛涘弽涔嬶紝鐢靛娍姊害涔熻兘寮曡捣鐑祦锛堝笗灏斿笘鏁堝簲锛夛紝杩欑敱绯绘暟 <span class="arithmatex">\(L_{\text{鐑瓆,\text{鐢祡}\)</span> 鎻忚堪銆傛槀钀ㄦ牸璇佹槑锛屽湪娌℃湁纾佸満绛夌牬鍧忔椂闂村弽婕斿绉版€х殑鍥犵礌瀛樺湪鏃讹紝鍔ㄥ姏瀛︾郴鏁扮煩闃垫槸瀵圭О鐨勶細</p>
+<div class="arithmatex">\[
+  L_{ij} = L_{ji}
+\]</div>
+<p>杩欎釜瀹忚鐨勫绉版€у叧绯伙紝鍏舵牴婧愬湪浜庡井瑙傚姩鍔涘鍦ㄦ椂闂村弽婕斾笅鐨勪笉鍙樻€э紙鍗冲井瑙傚彲閫嗘€у師鐞嗭級銆傝繖鏄潪骞宠　鐗╃悊瀛︿腑鐨勭涓€涓繁鍒荤殑銆佸叿鏈夋櫘閫傛€х殑瀵圭О鎬у師鐞嗭紝鏄傝惃鏍间篃鍥犳鑾峰緱浜?968骞寸殑璇鸿礉灏斿寲瀛﹀銆?</p>
+<h2 id="33-1950s-1970s">3.3 娑ㄨ惤鑰楁暎瀹氱悊 (1950s-1970s): 杩炴帴鍝嶅簲涓庢定钀?<a class="headerlink" href="#33-1950s-1970s" title="Permanent link">&para;</a></h2>
+<p>娑ㄨ惤鑰楁暎瀹氱悊 (Fluctuation-Dissipation Theorem, FDT) 鏄鏈椾箣涓囧拰鏄傝惃鏍兼€濇兂鐨勯泦澶ф垚涓庡崌鍗庯紝鏄潪骞宠　缁熻鐗╃悊鐨勫熀鐭充箣涓€銆?</p>
+<p>璇ュ畾鐞嗙殑鐗╃悊鎬濇兂鍙互鐩磋鍦扮悊瑙ｄ负锛?<em>涓€涓郴缁熷澶栭儴寰皬鎵板姩鐨勫搷搴旓紙鑰楁暎锛夛紝涓庡叾鍦ㄥ钩琛℃€佷笅鐨勮嚜鍙戞定钀戒箣闂村瓨鍦ㄧ潃瀹氶噺鐨勩€佹繁鍒荤殑鑱旂郴</em>*銆?</p>
+<ul>
+<li>
+<p><strong>鐩磋渚嬪瓙</strong>:</p>
+</li>
+<li>
+<p><strong>甯冩湕杩愬姩</strong>: 鎺ㄥ姩甯冩湕绮掑瓙杩愬姩鐨勯殢鏈哄姏锛堟定钀斤級鍜岄樆纰嶅叾杩愬姩鐨勭矘婊炲姏锛堣€楁暎锛夋簮浜庡悓涓€涓墿鐞嗚繃绋嬧€斺€斾笌鍛ㄥ洿娴佷綋鍒嗗瓙鐨勭鎾炪€侳DT瀹氶噺鍦板皢鎵╂暎绯绘暟锛堟弿杩版定钀藉ぇ灏忥級鍜岃縼绉荤巼锛堟弿杩板鍔涚殑鍝嶅簲锛夎仈绯昏捣鏉ャ€?</p>
+</li>
+<li>
+<p>*<em>绾︾堪閫婂櫔澹?</em>: 鐢甸樆鍣ㄤ腑鐨勭數闃伙紙鑰楁暎鐢佃兘锛夊拰鍏朵腑鑷彂浜х敓鐨勭儹鍣０鐢垫祦锛堟定钀斤級閮芥簮浜庣數瀛愪笌鏅舵牸鐨勬暎灏勩€侳DT瀹氶噺鍦板皢鐢甸樆鍊间笌鍣０鐢靛帇鐨勮氨瀵嗗害鑱旂郴璧锋潵銆?</p>
+</li>
+</ul>
+<p>FDT鐨勬繁鍒讳箣澶勫湪浜庯紝瀹冩柇瑷€鎴戜滑鍙互閫氳繃浠呬粎瑙傚療涓€涓郴缁熷湪骞宠　鎬佷笅鈥滃浣曡嚜鍙戝湴鎶栧姩鈥濓紙娴嬮噺鍏跺钩琛℃定钀界殑鍏宠仈鍑芥暟锛夛紝灏辫兘瀹屽叏棰勬祴鍑哄綋鎴戜滑鈥滆交杞绘帹瀹冧竴涓嬧€濇椂瀹冧細濡備綍鍙嶅簲锛堣绠楀叾瀵瑰井寮卞鍦虹殑绾挎€у搷搴斿嚱鏁帮級銆傝繖涓畾鐞嗙殑鎴愮珛渚濊禆浜庣郴缁熸帴杩戝钩琛℃€併€傚洜姝わ紝<strong>娑ㄨ惤鑰楁暎瀹氱悊鐨勫け鏁堬紝鎴愪负浜嗗垽鏂竴涓郴缁熸槸鍚﹀浜庤繙绂诲钩琛＄姸鎬佺殑閲嶈鏍囧織</strong>銆?</p>
+<h2 id="34">3.4 浠庣粡鍏稿埌鐜颁唬锛氫粠妯″紡褰㈡垚鍒版椿鎬х墿璐?<a class="headerlink" href="#34" title="Permanent link">&para;</a></h2>
+<p>闅忕潃鐞嗚宸ュ叿鐨勪笉鏂彂灞曪紝闈炲钩琛＄墿鐞嗗鐨勭爺绌跺璞′篃浠庣畝鍗曠殑绮掑瓙绯荤粺鎵╁睍鍒板叿鏈夊鏉傛椂绌虹粨鏋勭殑銆佽繙绂诲钩琛＄殑绯荤粺銆?</p>
+<ul>
+<li>
+<p><strong>缁忓吀妯″紡褰㈡垚 (Classical Pattern Formation, 1960s-1980s)</strong>: 杩欎竴鏃舵湡锛屼汉浠紑濮嬪叧娉ㄥ弽搴?鎵╂暎绯荤粺銆傛渶钁楀悕鐨勪緥瀛愭槸鍥剧伒鏂戝浘 (Turing pattern)锛屽畠瑙ｉ噴浜嗗湪杩滅骞宠　鐨勫寲瀛﹀弽搴旂郴缁熶腑锛屼袱绉嶆墿鏁ｉ€熺巼涓嶅悓鐨勫寲瀛︾墿璐ㄥ浣曢€氳繃鐩镐簰浣滅敤锛岃嚜鍙戝湴浠庝竴涓潎鍖€鐨勭姸鎬佹紨鍖栧嚭绋冲畾鐨勭┖闂存枒鍥撅紙濡傛枒鐐广€佹潯绾癸級锛屼负鐢熺墿褰㈡€佸彂鐢熸彁渚涗簡鐞嗚妯″瀷銆?</p>
+</li>
+<li>
+<p><strong>鍦鸿鏂规硶 (Field-Theoretic Approaches, 1970s-present)</strong>: 涓轰簡澶勭悊鍖呭惈澶ч噺鐩镐簰浣滅敤绮掑瓙鐨勫鏉傞殢鏈鸿繃绋嬶紝鐗╃悊瀛﹀鍙戝睍浜嗗己澶х殑鍦鸿鏂规硶銆備緥濡傦紝<strong>Doi-Peliti 褰㈠紡</strong> 鍜?<strong>Martin-Siggia-Rose-Janssen-de Dominicis (MSRJD) 褰㈠紡</strong>锛岃兘澶熷皢鎻忚堪绮掑瓙鏁扮敓鐏€佸弽搴斿拰鎵╂暎鐨勭鏁ｄ富鏂圭▼ (Master Equation)锛屼弗鏍煎湴杞寲涓轰竴涓瓑浠风殑銆佹弿杩拌繛缁満鐨勮矾寰勭Н鍒嗭紙鎴栧満璁猴級銆傝繖绉?绮楃矑鍖? (Coarse-graining) 鐨勬€濇兂锛屼娇寰椾汉浠彲浠ヨ繍鐢ㄩ噺瀛愬満璁轰腑寮哄ぇ鐨勯噸鏁村寲缇ょ瓑鎶€鏈潵鍒嗘瀽闈炲钩琛＄郴缁熶腑鐨勪复鐣岀幇璞″拰鏍囧害琛屼负銆?</p>
+</li>
+<li>
+<p><strong>閲嶆暣鍖栫兢鐞嗚 (Renormalization Group Theory, 1970s-present)</strong>: 閲嶆暣鍖栫兢鏂规硶鍦ㄩ潪骞宠　鐗╃悊瀛︿腑鐨勫簲鐢ㄦ爣蹇楃潃鐞嗚鐨勯噸澶х獊鐮淬€傚畠涓嶄粎鑳藉澶勭悊骞宠　鎬佺殑涓寸晫鐜拌薄锛屾洿鑳芥彮绀洪潪骞宠　娑ㄨ惤涓殑鏍囧害渚濊禆琛屼负鍜屾櫘閫傛€с€傚湪杞墿璐ㄧ郴缁熶腑锛岄噸鏁村寲缇ょ悊璁哄府鍔╂垜浠悊瑙ｄ负浠€涔堜笉鍚岀殑寰绯荤粺鍦ㄩ暱绋嬨€佷綆棰戠殑琛屼负涓婅〃鐜板嚭鐩稿悓鐨勬櫘閫傜壒寰併€備緥濡傦紝鍦ㄤ复鐣岀偣闄勮繎锛岀郴缁熺殑鍏宠仈闀垮害鍜屽紱璞椂闂撮兘琛ㄧ幇鍑哄箓寰嬫爣搴﹁涓猴紝鑰岃繖浜涙爣搴︽寚鏁板叿鏈夋櫘閫傛€р€斺€斿畠浠彧渚濊禆浜庣郴缁熺殑瀵圭О鎬у拰缁村害锛岃€屼笉渚濊禆浜庡井瑙傜粏鑺傘€?</p>
+</li>
+<li>
+<p><strong>澶у亸宸悊璁?(Large Deviation Theory, 1980s-present)</strong>: 杩欎竴鐞嗚妗嗘灦涓虹爺绌剁█鏈変簨浠跺拰娑ㄨ惤璇卞鐨勮浆鍙樻彁渚涗簡寮烘湁鍔涚殑宸ュ叿銆傚ぇ鍋忓樊鐞嗚閲囩敤鍩轰簬璺緞鐨勭粺璁″姏瀛︽柟娉曪紝鑳藉绮剧‘璁＄畻閭ｄ簺鍦ㄥ吀鍨嬫定钀界悊璁轰腑琚拷鐣ョ殑鏋佺浜嬩欢鐨勬鐜囥€傚湪闈炲钩琛＄郴缁熶腑锛屽ぇ鍋忓樊鐞嗚鐗瑰埆閲嶈锛屽洜涓哄畠鑳藉閲忓寲鐔典骇鐢熺殑娑ㄨ惤锛屽苟棰勬祴绯荤粺浣曟椂浼氬彂鐢熷弽甯哥殑銆佺湅浼艰繚鍙嶇浜屽畾寰嬬殑娑ㄨ惤銆傝繖绉嶇悊璁轰笉浠呭姞娣变簡鎴戜滑瀵规定钀藉畾鐞嗙殑鐞嗚В锛屾洿涓虹悊瑙ｇ敓鐗╃郴缁熶腑鐨勭█鏈変絾鍏抽敭鐨勪簨浠讹紙濡傝泲鐧借川鎶樺彔銆佸熀鍥犺〃杈剧殑绐佸彂绛夛級鎻愪緵浜嗙悊璁哄熀纭€銆?</p>
+</li>
+<li>
+<p><strong>闈炲钩琛℃ā寮忓舰鎴?(Nonequilibrium Pattern Formation, 2000s-present)</strong>: 杩涘叆21涓栫邯锛岄潪骞宠　妯″紡褰㈡垚鐮旂┒杩涘叆浜嗕竴涓柊鐨勯樁娈点€備笌缁忓吀鐨勫弽搴?鎵╂暎绯荤粺涓嶅悓锛岀幇浠ｇ爺绌舵洿鍏虫敞鍦ㄩ殢鏈恒€佹椿鎬ф垨澶栭儴椹卞姩鐨勭郴缁熶腑杩滅骞宠　鐨勬椂绌虹粍缁囥€傝繖浜涚郴缁熻兘澶熷湪鍣０鐜涓淮鎸佸鏉傜殑绌洪棿缁撴瀯锛岀敋鑷冲埄鐢ㄥ櫔澹版潵澧炲己妯″紡鐨勭ǔ瀹氭€с€備緥濡傦紝鍦ㄩ殢鏈烘縺鍙戠殑浠嬭川涓紝鍣０鍙互璇卞鐩稿共缁撴瀯鐨勫舰鎴愶紱鍦ㄦ椿鎬х郴缁熶腑锛屽眬閮ㄧ殑闈炲钩琛℃椿鍔ㄥ彲浠ラ┍鍔ㄥ叏灞€妯″紡鐨勬秾鐜般€傝繖涓€棰嗗煙鐨勭爺绌舵彮绀轰簡鍣０涓嶄粎浠呮槸鐮村潖鏈夊簭鐨勫洜绱狅紝鍦ㄦ煇浜涙潯浠朵笅鍙嶈€屾槸鍒涢€犲拰缁存寔澶嶆潅缁撴瀯鐨勫叧閿満鍒躲€?</p>
+</li>
+<li>
+<p><strong>娲绘€х墿璐?(Active Matter, 2000s-present)</strong>: 杩欐槸闈炲钩琛＄墿鐞嗗鍦?1涓栫邯鏈€婵€鍔ㄤ汉蹇冪殑鍓嶆部涔嬩竴銆傛椿鎬х墿璐ㄧ敱鑳藉灏嗗瓨鍌ㄧ殑鎴栫幆澧冧腑鐨勮兘閲忔寔缁浆鍖栦负鏈烘杩愬姩鎴栧姏鐨?娲绘€х矑瀛?缁勬垚銆備緥瀛愬寘鎷粏鑿岀兢銆佺粏鑳為鏋惰泲鐧姐€侀笩缇ゅ拰楸肩兢绛夈€傚叾鏍稿績鐗╃悊鐗瑰緛鏄湪鍗曚釜绮掑瓙灏哄害涓?<em>鎸佺画鍦版墦鐮寸粏鑺傚钩琛?</em>銆傝繖鎰忓懗鐫€绯荤粺鍐呴儴瀛樺湪鎸佺画鐨勮兘閲忛€氶噺鍜岀喌浜х敓锛屼粠鑰岃兘澶熸秾鐜板嚭绯荤粺涓墠鎵€鏈鐨勯泦浣撹涓猴紝渚嬪妞嬮笩缇わ紙starlings锛夊睍鐜板嚭鐨勫．瑙傜殑銆侀暱绋嬫湁搴忕殑闆嗕綋椋炶妯″紡銆?</p>
+</li>
+<li>
+<p><strong>鐢熷懡绯荤粺鐗╃悊瀛?(Physics of Living Systems, 2000s-present)</strong>: 杩欎竴鏂板叴棰嗗煙灏嗛潪骞宠　鐗╃悊瀛︾殑鐞嗚宸ュ叿搴旂敤浜庣悊瑙ｇ敓鐗╃粍缁囩殑瀹氶噺瑙勫緥銆傜敓鍛界郴缁熸湰璐ㄤ笂鏄鏉傜殑闈炲钩琛＄郴缁燂紝瀹冧滑閫氳繃鎸佺画鐨勮兘閲忔秷鑰楃淮鎸侀珮搴︾殑缁勭粐鎬у拰鍔熻兘鎬с€傝棰嗗煙鐨勭爺绌跺寘鎷満姊板寲瀛﹀弽棣堟満鍒讹紙濡傜粏鑳為鏋剁殑鍔ㄦ€侀噸缁勶級銆佹秾鐜扮殑闆嗕綋琛屼负锛堝缁嗚優杩佺Щ涓殑缇や綋鏁堝簲锛夈€佷互鍙婄敓鐗╃綉缁滀腑鐨勯殢鏈哄姩鍔涘銆備緥濡傦紝缁嗚優鍒嗚杩囩▼涓汉閿や綋鐨勮嚜缁勮銆佺缁忕綉缁滀腑鐨勫悓姝ユ尟鑽°€佷互鍙婄粍缁囧彂鑲蹭腑鐨勫舰鎬佸彂鐢燂紝閮藉彲浠ョ敤闈炲钩琛＄粺璁＄墿鐞嗙殑璇█鏉ョ悊瑙ｃ€傝繖绉嶅畾閲忔柟娉曚笉浠呭姞娣变簡鎴戜滑瀵圭敓鍛界幇璞＄殑鐞嗚В锛屾洿涓虹敓鐗╁尰瀛﹀拰鍚堟垚鐢熺墿瀛︽彁渚涗簡鐞嗚鎸囧銆?</p>
+</li>
+</ul>
+<p>杩欎釜鍙戝睍鍘嗙▼娓呮櫚鍦板睍绀轰簡闈炲钩琛＄墿鐞嗗鐨勪竴鏉′富绾匡細浠庢弿杩板崟涓矑瀛愮殑闅忔満杞ㄨ抗锛屽埌鎻忚堪绮掑瓙绯荤患鐨勬鐜囧垎甯冿紱浠庣爺绌惰繎骞宠　鐨勭嚎鎬у搷搴旓紝鍒版彮绀烘定钀戒笌鑰楁暎鐨勬櫘閫傝仈绯伙紱鏈€缁堝彂灞曞嚭寮哄ぇ鐨勫満璁哄伐鍏凤紝鐢ㄤ互鎺㈢储杩滅骞宠　鐨勫鏉傜郴缁熶腑娑岀幇鍑虹殑鑷粍缁囧拰闆嗕綋琛屼负銆?</p>
+<h1 id="4">4. 鍓嶆部浜ゅ弶锛氱敓鍛界郴缁熶腑鐨勯潪骞宠　鐗╃悊<a class="headerlink" href="#4" title="Permanent link">&para;</a></h1>
+<p>鐢熷懡鏈韩灏辨槸鏈€鏋佽嚧鐨勯潪骞宠　鐜拌薄銆備竴涓敓鍛戒綋閫氳繃涓嶆柇鍦颁粠鐜涓憚鍙栬兘閲忓拰鐗╄川锛岀淮鎸佸叾鍐呴儴楂樺害鏈夊簭鐨勩€佽繙绂诲钩琛＄殑鐘舵€併€傚洜姝わ紝鐢熷懡绯荤粺涓洪潪骞宠　鐗╃悊瀛︽彁渚涗簡鏈€涓板瘜鐨勭爺绌跺璞″拰鏈€涓ュ郴鐨勬寫鎴樸€?</p>
+<h2 id="41">4.1 钖涘畾璋旓細鈥滅敓鍛芥槸浠€涔堬紵鈥?<a class="headerlink" href="#41" title="Permanent link">&para;</a></h2>
+<p><img alt="璇惧爞PPT鎴浘" src="../../assets/images/remote/d747a11e-a2aa-442f-ad42-5d13f00c717e-b6dfb22ae8.png" /></p>
+<p>1944骞达紝鐗╃悊瀛﹀鍩冨皵娓┞疯枦瀹氳皵 (Erwin Schr枚dinger) 鍦ㄥ叾钁椾綔銆婄敓鍛芥槸浠€涔堬紵銆嬩腑鎻愬嚭浜嗕竴涓繁鍒荤殑棰勮█锛氣€滅敓鍛界墿璐紝铏界劧娌℃湁閫冭劚鈥樼墿鐞嗗瀹氬緥鈥欌€︹€︿絾寰堝彲鑳藉寘鍚潃鈥樿縿浠婃湭鐭ョ殑鍏朵粬鐗╃悊瀛﹀畾寰嬧€欙紝鐒惰€岋紝涓€鏃﹁繖浜涘畾寰嬭鎻ず锛屽畠浠皢鍍忓墠鑰呬竴鏍凤紝鏋勬垚杩欓棬绉戝涓嶅彲鍒嗗壊鐨勪竴閮ㄥ垎銆傗€濊繖鍙ヨ瘽婵€鍔变簡鍑犱唬鐗╃悊瀛﹀鎶曡韩浜庣敓鍛界幇璞＄殑鐮旂┒銆備粖澶╂垜浠煡閬擄紝杩欎簺鈥滃叾浠栧畾寰嬧€濆緢澶х▼搴︿笂灏辨槸闈炲钩琛＄墿鐞嗗鐨勫畾寰嬶紝瀹冧滑鎻忚堪浜嗗紑鏀俱€佽€楄兘绯荤粺濡備綍鑷彂鍦板舰鎴愭湁搴忕粨鏋勫拰瀹炵幇澶嶆潅鍔熻兘銆?</p>
+<h2 id="42-frey">4.2 Frey鏁欐巿鐮旂┒缁勭殑瀹炰緥<a class="headerlink" href="#42-frey" title="Permanent link">&para;</a></h2>
+<p><img alt="璇惧爞PPT鎴浘" src="../../assets/images/remote/f693431d-45a9-43d6-af8d-60b82660a83e-708cdeacc7.png" /></p>
+<p>Frey鏁欐巿鐨勮搴ч€氳繃浠嬬粛鍏剁爺绌剁粍鐨勫伐浣滐紝鍏蜂綋灞曠ず浜嗛潪骞宠　鐗╃悊瀛︾殑鎬濇兂鍜屾柟娉曞浣曡鐢ㄦ潵瑙ｅ喅鐪熷疄鐨勭敓鐗╁闂銆?</p>
+<ul>
+<li><a href="https://doi.org/10.1038/s41467-023-42100-0"><strong>閰垫瘝鑿岀殑缁嗚優鏋佹€?(Cell polarity of yeast)</strong></a></li>
+<li>
+<p>*<em>鐢熺墿瀛﹂棶棰?</em>: 鍗曠粏鑳炵殑鑺芥畺閰垫瘝鍦ㄥ嚭鑺界敓娈栧墠锛屽繀椤讳粠涓€涓師鏈繎涔庣悆瀵圭О鐨勭粏鑳炶〃闈㈤€夋嫨涓€涓壒瀹氱殑鐐癸紝骞跺皢缁嗚優鐢熼暱鐨勬墍鏈夎祫婧愰兘闆嗕腑鍒拌鐐癸紝褰㈡垚涓€涓€滆娊鈥濄€傝繖鏄竴涓吀鍨嬬殑瀵圭О鎬х牬缂?(symmetry breaking) 闂銆?</p>
+</li>
+<li>
+<p><strong>鐗╃悊鏈哄埗</strong>: 杩欎釜杩囩▼鐨勬牳蹇冩槸鍚嶄负 Cdc42 鐨凣TP閰躲€傚湪缁嗚優鑶滀笂锛屾椿鍖栫殑Cdc42鍒嗗瓙鍙互閫氳繃涓€涓鍙嶉寰幆锛屾嫑鍕熷苟婵€娲绘洿澶氱殑Cdc42鍒嗗瓙銆傝繖涓€滃瘜鑰呮剤瀵屸€濈殑鏈哄埗锛岀粨鍚堝垎瀛愬湪缁嗚優鑶滀笂鐨勬參鎵╂暎鍜屽湪缁嗚優璐ㄤ腑鐨勫揩鎵╂暎锛岃兘澶熷皢鍘熸湰鍧囧寑鍒嗗竷鐨凜dc42鍒嗗瓙鑷彂鍦版眹鑱氭垚涓€涓崟涓€鐨勩€佺ǔ瀹氱殑鈥滄瀬鍖栧附鈥濓紝浠庤€屾爣璁板嚭鏈潵鐨勭敓闀跨偣銆傝繖鏄竴涓敱鍙嶅簲-鎵╂暎 (reaction-diffusion) 鏈哄埗椹卞姩鐨勮嚜缁勭粐杩囩▼銆侳rey鏁欐巿鍙婂叾鍚堜綔鑰呯殑鐮旂┒杩涗竴姝ユ彮绀猴紝杩欎釜鐪嬩技鍗曚竴鐨勮繃绋嬩腑瀹為檯鍖呭惈浜嗗涓€佸姛鑳藉啑浣欑殑鑷粍缁囨満鍒讹紝杩欎娇寰楅叺姣嶇殑鏋佸寲杩囩▼瀵瑰熀鍥犵獊鍙樻垨鐜鎵板姩琛ㄧ幇鍑烘瀬寮虹殑绋冲仴鎬?(robustness)锛屽苟瑙ｉ噴浜嗗叾楂樺害鐨勫彲婕斿寲鎬с€?</p>
+</li>
+<li>
+<p><a href="https://www.nature.com/articles/s41567-025-02878-w"><strong>澶ц偁鏉嗚弻涓殑Min铔嬬櫧鎸崱 (Min oscillations in E. coli)</strong></a></p>
+</li>
+<li>
+<p>*<em>鐢熺墿瀛﹂棶棰?</em>: 鏉嗙姸鐨勫ぇ鑲犳潌鑿岄渶瑕佺簿纭湴鍦ㄧ粏鑳炵殑鍑犱綍涓績杩涜鍒嗚锛屼互纭繚涓や釜瀛愪唬缁嗚優澶у皬鍧囩瓑銆傜粏鑳炲浣曗€滄壘鍒扳€濆畠鐨勪腑鐐癸紵</p>
+</li>
+<li>
+<p><strong>鐗╃悊鏈哄埗</strong>: 澶ц偁鏉嗚弻鍒╃敤浜嗕竴涓簿濡欑殑鍔ㄦ€佸畾浣嶇郴缁熲€斺€擬in铔嬬櫧绯荤粺銆傝绯荤粺鐢盡inC銆丮inD銆丮inE涓夌铔嬬櫧缁勬垚銆傚叾涓紝MinD鏄竴绉嶆秷鑰桝TP鐨勯┈杈捐泲鐧斤紝瀹冨彲浠ュ湪ATP椹卞姩涓嬬粨鍚堝埌缁嗚優鑶滀笂锛汳inE鍒欏彲浠ヤ績杩汳inD姘磋ВATP锛屼娇鍏朵粠鑶滀笂鑴辫惤銆傝繖涓ょ铔嬬櫧鐨勭浉浜掍綔鐢ㄥ拰鍦ㄧ粏鑳炲唴鐨勬墿鏁ｏ紝鍏卞悓鏋勬垚浜嗕竴涓弽搴?鎵╂暎鎸崱鍣ㄣ€傚湪缁嗚優涓紝MinD鍜孧inE浼氬舰鎴愪竴涓粠涓€鏋佸埌鍙︿竴鏋佹潵鍥炵┛姊殑椹绘尝锛屽懆鏈熺害涓?鍒嗛挓銆備綔涓哄垎瑁傜殑鎶戝埗鍓傦紝MinC铔嬬櫧浼氳窡闅忕潃MinD涓€璧疯繍鍔ㄣ€傜敱浜庤繖绉嶆潵鍥炴尟鑽★紝MinC铔嬬櫧鍦ㄤ袱鏋佺殑鏃堕棿骞冲潎娴撳害鏈€楂橈紝鑰屽湪缁嗚優鐨勫嚑浣曚腑蹇冿紝鍏舵椂闂村钩鍧囨祿搴︽渶浣庛€傝繖鏍凤紝缁嗚優涓績灏辨垚涓轰簡鍞竴"鍏佽"鍒嗚鏈哄櫒锛團tsZ鐜級缁勮鐨勪綅缃紝浠庤€岀‘淇濅簡鍒嗚鐨勭簿纭眳涓€傝繖涓繃绋嬫槸涓€涓吀鍨嬬殑闈炲钩琛＄ǔ鎬?(NESS)锛屽畠鎸佺画娑堣€楄兘閲忥紙ATP姘磋В锛夋潵缁存寔涓€涓姩鎬佺殑銆佸叿鏈夌敓鐗╁鍔熻兘鐨勭┖闂存ā寮忋€?</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1038/s41567-021-01164-9"><strong>娴锋槦鍗垫瘝缁嗚優涓殑铔嬬櫧妯″紡涓庣粏鑳炲舰鐘惰В鐮?(Starfish oocytes)</strong></a></p>
+</li>
+<li>
+<p>*<em>鐢熺墿瀛﹂棶棰?</em>: 鍦ㄧ粏鑳炲垎瑁傜瓑鐢熷懡娲诲姩涓紝缁嗚優鍐呴儴鐨勪俊鍙凤紙渚嬪铔嬬櫧娴撳害娉級闇€瑕佸湪澶嶆潅鐨勩€佸姩鎬佸彉鍖栫殑缁嗚優鍑犱綍褰㈢姸涓簿纭紶鎾紝骞跺埌杈剧壒瀹氱殑闈剁偣銆傜粏鑳炴槸濡備綍鍦ㄤ笉鍚屽舰鐘朵笅锛屼緷鐒惰兘澶熷噯纭湴"瑙ｇ爜"鑷韩鐨勫嚑浣曚俊鎭紝浠庤€岀‘淇濈敓鐗╁鍔熻兘鐨勭簿鍑嗘墽琛岋紵渚嬪锛屽湪宸ㄥぇ鐨勬捣鏄熷嵉姣嶇粏鑳炰腑锛屼竴涓叧閿殑RhoA铔嬬櫧娲绘€ф尝鎬绘槸鑳戒粠缁嗚優琛ㄩ潰绮剧‘鍦颁紶鎾埌缁嗚優鏍哥殑鎵€鍦ㄤ綅缃紝鏃犺缁嗚優鏄鎷変几鎴愭き鐞冭繕鏄尋鍘嬫垚鏄熷舰銆?</p>
+</li>
+<li>
+<p><strong>鐗╃悊鏈哄埗</strong>: 杩欓」鐮旂┒鎻ず浜嗕竴绉嶇簿濡欑殑銆佸垎灞傜骇鐨勬ā寮忓舰鎴愭満鍒讹紙"patterns forming patterns"锛夈€傜粏鑳炵殑鍑犱綍褰㈢姸淇℃伅棣栧厛琚紪鐮佹垚涓€绉嶉暱绋嬬殑銆佺ǔ瀹氱殑缁嗚優鍛ㄦ湡铔嬬櫧锛圕dk1锛夌殑娴撳害姊害銆傝繖涓搴︽湰韬槸涓€涓弽搴?鎵╂暎绯荤粺褰㈡垚鐨?鑳屾櫙妯″紡"銆傛帴鐫€锛岀浜屼釜鍙嶅簲-鎵╂暎绯荤粺鈥斺€擱hoA铔嬬櫧寰幆鈥斺€斾細"璇诲彇"杩欎釜鑳屾櫙姊害銆傝繖涓郴缁熷儚涓€涓弻绋虫€佸紑鍏筹紝鍙湁鍦–dk1娴撳害瓒呰繃鏌愪釜闃堝€兼椂鎵嶄細琚縺娲伙紝浠庤€屽舰鎴愪竴涓湪缁嗚優鐨眰涓婁紶鎾殑銆佽婵€鍙戠殑琛屾尝銆傝繖涓尝鐨勪紶鎾矾寰勫拰鏈€缁堜綅缃紝姝ｆ槸鐢辩涓€涓ā寮忥紙Cdk1姊害锛夋墍寮曞鍜屽喅瀹氱殑銆傞€氳繃杩欑"妯″紡寮曞妯″紡"鐨勭骇鑱旀柟寮忥紝缁嗚優宸у鍦板皢澶嶆潅鐨勫嚑浣曚俊鎭浆鍖栦负椴佹鐨勭敓鍖栦俊鍙凤紝纭繚浜嗗嵆渚垮湪鍓х儓鐨勫舰鐘舵壈鍔ㄤ笅锛屽叧閿俊鍙蜂緷鐒惰兘澶熺簿纭綊浣嶃€?</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1038/s41567-023-02058-8"><strong>浜洪€犵粏鑳炵殑鑷┍鍔ㄨ繍鍔?(Synthetic cell motility)</strong></a></p>
+</li>
+<li>
+<p><strong>鐢熺墿瀛﹂棶棰?鐩爣</strong>: 缁嗚優鐨勮嚜涓昏繍鍔ㄦ槸鐢熷懡鏈€鍩烘湰鐨勭壒寰佷箣涓€锛屽畠渚濊禆浜庡鏉傜殑缁嗚優楠ㄦ灦鍜岄┈杈捐泲鐧界郴缁熴€傝兘鍚﹀湪娌℃湁杩欎簺澶嶆潅"鑲岃倝楠ㄩ"鐨勬儏鍐典笅锛屼粎鐢ㄦ渶灏戠殑缁勫垎鏋勫缓鍑轰竴涓彲浠ヨ嚜涓昏繍鍔ㄧ殑"浜洪€犵粏鑳?锛熻繖鏄?鑷笅鑰屼笂"鍚堟垚鐢熺墿瀛﹂鍩熺殑涓€涓牳蹇冩寫鎴橈紝鏃ㄥ湪鎺㈢储椹卞姩鐢熷懡鐜拌薄鐨勬渶灏忕墿鐞嗗寲瀛﹀師鐞嗐€?</p>
+</li>
+<li>
+<p><strong>鐗╃悊鏈哄埗</strong>: 璇ョ爺绌舵垚鍔熷湴鍒╃敤澶ц偁鏉嗚弻鐨凪in铔嬬櫧绯荤粺瀹炵幇浜嗕竴涓剛璐ㄤ綋锛堜汉閫犵粏鑳炴ā鍨嬶級鍦ㄥ钩闈笂鐨勬寔缁畾鍚戣繍鍔ㄣ€傚叾鏍稿績鏄竴涓姏鍖栧鍙嶉寰幆銆傞鍏堬紝MinD鍜孧inE铔嬬櫧鍦ˋTP鐨勯┍鍔ㄤ笅锛屽湪鑴傝川浣撹啘鐨勫唴澶栬〃闈互鍙婃敮鎾戝钩闈笂鑷粍缁囧舰鎴愰潪瀵圭О鐨勮泲鐧借川娴撳害鍒嗗竷锛堝寲瀛﹂儴鍒嗭級銆傝繖绉嶄笉鍧囧寑鐨勮泲鐧藉垎甯冿紝閫氳繃涓ょ鍙兘鐨勬満鍒讹紝瀵艰嚧浜嗚剛璐ㄤ綋褰㈢姸鐨勫绉版€х牬缂哄苟浜х敓浜嗛┍鍔ㄥ姏锛堝姏瀛﹂儴鍒嗭級锛?) 铔嬬櫧鍍?鎷夐摼"涓€鏍峰湪鑴傝川浣撲笌鏀拺骞抽潰闂村舰鎴愬拰鏂紑涓嶅潎琛＄殑杩炴帴锛?) 铔嬬櫧鐨勮仛闆嗙洿鎺ユ敼鍙樹簡鑶滅殑灞€閮ㄦ洸鐜囧拰寮犲姏銆傝繖绉嶇敱鍖栧妯″紡椹卞姩鐨勫舰鍙樺拰杩愬姩锛屽弽杩囨潵鍙堜細褰卞搷Min铔嬬櫧鑷韩鐨勫弽搴?鎵╂暎鍔ㄥ姏瀛︼紝鍥犱负Min绯荤粺瀵瑰嚑浣曞舰鐘堕潪甯告晱鎰熴€傝繖绉?鍖栧妯″紡褰卞搷褰㈢姸锛屽舰鐘跺彉鍖栧弽棣堜簬鍖栧妯″紡"鐨勫惊鐜紝鏈€缁堥┍鍔ㄧ潃杩欎釜鏋佺畝鐨勪汉閫犵粏鑳炲疄鐜颁簡鍓嶆墍鏈湁鐨勩€佹棤闇€缁嗚優楠ㄦ灦鐨勬寔缁埇琛岃繍鍔ㄣ€?</p>
+</li>
+</ul>
+<h2 id="43">4.3 澶嶆潅鎬х瀛︼細璇鸿礉灏斿涓庡叾浠栬崳瑾?<a class="headerlink" href="#43" title="Permanent link">&para;</a></h2>
+<p>闈炲钩琛＄墿鐞嗗鍜屽鏉傛€х瀛︾殑鎬濇兂涓嶄粎鍦ㄧ敓鐗╁涓彇寰椾簡宸ㄥぇ鎴愬姛锛屽叾娣辫繙褰卞搷涔熷緱鍒颁簡绉戝鐣岀殑鏈€楂樿鍙€?</p>
+<p><img alt="璇惧爞PPT鎴浘" src="../../assets/images/remote/dcc4eb52-2ac4-44eb-a125-683c799787ce-449c8d8056.png" /></p>
+<ul>
+<li>
+<p><strong>2021骞磋璐濆皵鐗╃悊瀛﹀</strong>: 鎺堜簣浜哠yukuro Manabe, Klaus Hasselmann 鍜?Giorgio Parisi锛屼互琛ㄥ桨浠栦滑鈥滃鎴戜滑鐞嗚В澶嶆潅鐗╃悊绯荤粺鐨勫紑鍒涙€ц础鐚€濄€傜壒鍒槸Parisi鐨勫伐浣滐紝浠栨彮绀轰簡鍍忚嚜鏃嬬幓鐠冭繖鏍风殑鏃犲簭绯荤粺涓殣钘忕殑娣卞埢缁撴瀯鍜屾定钀借寰嬨€侾arisi鍙戝睍鐨勭悊璁哄伐鍏凤紝涓虹悊瑙ｅ悇绉嶅厖婊￠殢鏈烘€у拰鈥滈亶鍘嗘€х牬缂衡€濈殑澶嶆潅绯荤粺鎻愪緵浜嗘櫘閫傜殑妗嗘灦锛岃繖涓庢湰璇剧▼灏嗚瀛︿範鐨勯殢鏈鸿繃绋嬪拰缁熻鍦鸿鎬濇兂鎭伅鐩稿叧銆?</p>
+</li>
+<li>
+<p><strong>2024骞磋璐濆皵鐗╃悊瀛﹀</strong>: 鎺堜簣浜咼ohn J. Hopfield 鍜?Geoffrey E. Hinton锛屼互琛ㄥ桨浠栦滑鈥滀娇寰楀埄鐢ㄤ汉宸ョ缁忕綉缁滆繘琛屾満鍣ㄥ涔犳垚涓哄彲鑳界殑濂犲熀鎬у彂鐜板拰鍙戞槑鈥濄€傚€煎緱娉ㄦ剰鐨勬槸锛孒opfield鎻愬嚭鐨勮仈鎯宠蹇嗙綉缁滐紙Hopfield缃戠粶锛夌殑鏁板妯″瀷锛屽叾鎬濇兂姝ｆ槸婧愪簬缁熻鐗╃悊涓殑鑷棆鐜荤拑妯″瀷銆傝繖闆勮京鍦拌瘉鏄庝簡缁熻鐗╃悊锛岀壒鍒槸澶勭悊澶氫綋鐩镐簰浣滅敤鍜岄泦浣撹涓虹殑鎬濇兂锛屽凡缁忔垚涓轰汉宸ユ櫤鑳藉拰淇℃伅绉戝绛夐鍩熺殑鐞嗚鍩虹煶銆?</p>
+</li>
+</ul>
+<p><img alt="璇惧爞PPT鎴浘" src="../../assets/images/remote/70b7caa6-e8ec-47ef-9b0b-b739bd097f7b-8f5ca06e30.png" /></p>
+<ul>
+<li>*<em>2025骞寸幓灏斿吂鏇煎绔?</em>: 鎺堜簣浜哅ehran Kardar 鍜?Yoshiki Kuramoto銆侹ardar鍦ㄧ粺涓€鐞嗚В骞宠　涓庨潪骞宠　绯荤粺涓殑娑ㄨ惤銆佺晫闈㈢敓闀跨瓑鐜拌薄鏂归潰鍋氬嚭浜嗛噸瑕佸伐浣滐紙濡傝憲鍚嶇殑KPZ鏂圭▼锛夈€侹uramoto鍒欏紑鍒涗簡澶嶆潅绯荤粺涓悓姝ョ幇璞＄殑鐞嗚锛堝Kuramoto妯″瀷锛夛紝鎻ず浜嗕粠绁炵粡鍏冪綉缁滃埌钀ょ伀铏棯鐑佺瓑鍚勭闆嗕綋鍔ㄥ姏瀛﹁涓虹殑鏅€傚師鐞嗐€傝繖涓や綅瀛﹁€呯殑宸ヤ綔浠ｈ〃浜嗛潪骞宠　鐗╃悊瀛︾殑鏍稿績鍓嶆部锛屼篃姝ｆ槸鏈绋嬪悗缁皢瑕佹繁鍏ユ帰璁ㄧ殑涓婚銆?</li>
+</ul>
+<p><img alt="璇惧爞PPT鎴浘" src="../../assets/images/remote/d546f271-6617-4977-bed3-2fc4caaf86d0-0b14432763.png" /></p>
+<p>杩欎簺渚嬪瓙娓呮櫚鍦拌〃鏄庯紝杩欓棬璇炬墍浠嬬粛鐨勬蹇靛拰鏂规硶锛屽苟闈炶薄鐗欏涓殑灞犻緳涔嬫妧锛岃€屾槸鐞嗚В浠庣敓鍛藉埌鏅鸿兘绛変竴绯诲垪澶嶆潅鐜拌薄鐨勯挜鍖欙紝鏄綋浠ｇ瀛︾爺绌朵腑鏈€鍏锋椿鍔涘拰褰卞搷鍔涚殑鎬濇兂瀹濆簱涔嬩竴銆?</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.highlight"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../assets/javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>
