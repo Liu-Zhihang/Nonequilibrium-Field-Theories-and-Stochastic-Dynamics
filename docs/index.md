@@ -9,7 +9,7 @@
 
 <div style="text-align: center; margin: 20px 0;">
   <a href="https://www.youtube.com/watch?v=MZUqBwZMN_o&ab_channel=PhysicsOfLifeLMU" target="_blank">
-    <img src="../assets/images/remote/977886f7-e278-42d9-91f9-f61731ec8b97-0c84ad685f.png" 
+    <img src="assets/images/remote/977886f7-e278-42d9-91f9-f61731ec8b97-0c84ad685f.png" 
          alt="Course Overview" 
          style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
   </a>
