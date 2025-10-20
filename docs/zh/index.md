@@ -1,17 +1,106 @@
 # 非平衡场论与随机动力学
 
-课程:Nonequilibrium Field Theories and Stochastic Dynamics(Erwin Frey, LMU Munich, 2025)
+**课程**: Nonequilibrium Field Theories and Stochastic Dynamics  
+**授课教师**: Prof. Erwin Frey  
+**学校**: Ludwig-Maximilians-Universität München (LMU Munich)  
+**学期**: 2025年夏季学期
 
-视频播放列表:<https://www.youtube.com/watch?v=-pEPKnuN1iY&list=PL2IEUF-u3gRdSbgtuqH5RNTuT798s0GqX>
+## 📺 课程视频
 
-## 内容简介
-整理课程要点、推导与计算实验(Python/Jupyter),涵盖随机过程、主方程、Fokker-Planck、Langevin、路径积分、MCMC/HMC、活性物质等。
+<div style="text-align: center; margin: 20px 0;">
+  <a href="https://www.youtube.com/watch?v=MZUqBwZMN_o&ab_channel=PhysicsOfLifeLMU" target="_blank">
+    <img src="../assets/images/remote/977886f7-e278-42d9-91f9-f61731ec8b97-0c84ad685f.png" 
+         alt="课程概览" 
+         style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+  </a>
+  <p><strong>YouTube播放列表</strong>: <a href="https://www.youtube.com/watch?v=-pEPKnuN1iY&list=PL2IEUF-u3gRdSbgtuqH5RNTuT798s0GqX" target="_blank">完整课程视频</a></p>
+</div>
 
-## 使用说明
-- 左侧目录按讲次导航
-- 公式基于 MathJax 渲染
-- 代码片段可一键复制
+## 📚 关于本网站
 
-## 致谢与引用
-风格参考:Physics-based Deep Learning(见 https://physicsbaseddeeplearning.org/intro.html)
+本网站包含**非平衡场论与随机动力学**课程的完整学习资料，涵盖40讲详细的中文学习笔记和对应的Python代码实现。
 
+### 🎯 课程内容
+
+本课程探索非平衡场论和随机动力学的基本原理和高级概念，重点关注粒子和场系统中的随机过程，强调数学形式主义，如朗之万方程、福克-普朗克方程和路径积分。此外，讲座还涵盖了软物质物理、活性物质和非平衡统计力学的应用。
+
+### 📖 学习资料
+
+- **40章中文学习笔记**: 详细的理论推导、物理解释和数学证明
+- **65个Python代码实现**: 与每讲对应的计算实验和可视化
+- **完整图片资源**: 课程中使用的所有图表和示意图
+- **术语表**: 中英文对照的专业术语
+
+### 🗂️ 课程结构
+
+#### 第一部分：随机过程基础 (第1-10讲)
+- 随机游走与布朗运动
+- 基础随机模型  
+- 马尔可夫过程与主方程
+
+#### 第二部分：粒子的随机动力学 (第11-25讲)
+- 朗之万与福克-普朗克方程
+- 随机模拟技术
+- 随机热力学
+
+#### 第三部分：从离散态到场 (第26-35讲)
+- 反应网络与场论
+- 场的粗粒化动力学
+
+#### 第四部分：非平衡系统的场论 (第36-40讲)
+- 动态泛函与MSR形式
+- 流体动力学与涨落流体
+- 非平衡模式形成
+- 活性物质场论
+
+## 🚀 快速开始
+
+### 浏览笔记
+- 使用左侧导航菜单浏览各章内容
+- 每章包含完整的理论推导和物理解释
+- 数学公式基于MathJax渲染，支持交互式查看
+
+### 运行代码
+- 所有Python代码位于`code/`目录
+- 每个文件对应特定课程内容
+- 代码包含详细注释和可视化结果
+
+### 搜索功能
+- 使用顶部搜索框快速查找内容
+- 支持中英文搜索
+- 可搜索数学公式、代码和文本内容
+
+## 🛠️ 技术特性
+
+- **响应式设计**: 支持桌面和移动设备
+- **深色/浅色主题**: 可切换的界面主题
+- **数学公式渲染**: 基于MathJax的高质量数学显示
+- **代码高亮**: 语法高亮的Python代码
+- **一键复制**: 代码片段可快速复制
+- **多语言支持**: 中英文双语界面
+
+## 📝 使用说明
+
+1. **导航**: 使用左侧目录按讲次浏览内容
+2. **搜索**: 点击顶部搜索图标查找特定内容
+3. **主题切换**: 使用右上角按钮切换深色/浅色主题
+4. **代码运行**: 复制代码到Python环境中运行
+5. **数学公式**: 公式支持缩放和交互式查看
+
+## 🙏 致谢与引用
+
+### 课程来源
+本学习资料基于Erwin Frey教授在LMU Munich的课程制作，所有理论内容归功于原课程。
+
+### 风格参考
+网站设计风格参考了[Physics-based Deep Learning](https://physicsbaseddeeplearning.org/intro.html)项目。
+
+### 开源协议
+本项目采用[Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/)开源协议。
+
+---
+
+<div style="text-align: center; margin-top: 40px; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 10px;">
+  <h3 style="margin: 0 0 10px 0;">🎓 开始您的学习之旅</h3>
+  <p style="margin: 0; opacity: 0.9;">从随机过程到非平衡场论，探索现代统计物理学的精彩世界</p>
+</div>
