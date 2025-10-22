@@ -1,0 +1,220 @@
+| Lagrangian | $\mathcal{L}_{FW} = \tfrac{1}{4D}(\dot{x} - A(x))^2$ | $\mathcal{L}_{OM} = \tfrac{1}{4D}(\dot{x} - A(x))^2 + \tfrac{1}{2}A'(x)$ |
+| Origin | Emerges in weak?noise ($D \to 0$) limit; It? discretization ($\theta=0$) | From variable change with correct Jacobian; Stratonovich ($\theta=1/2$) |
+| Applicability | Accurate for most?probable paths only at asymptotically low T or very fast transitions | Accurate at finite temperature for path probabilities and most?probable paths |
+| Experimental test | Disagrees with room?temperature colloid data | Agrees excellently with experiment |
+| Core physics | Captures cost of deviations from deterministic dynamics | Captures both deviation cost and curvature effects on fluctuations |
+
+## 4.3. Python Simulation 1: Instanton in a Double?Well Potential
+
+To compare FW and OM instantons, we discretize the path and minimize the corresponding discrete action.
+
+Below Python code defines a double?well potential and computes the FW and OM instantons connecting the two wells.
+
+
+* Purpose: numerically compute and visualize the most probable path (instanton) for the double?well $U(x)=(x^2-1)^2$ from $x=-1$ to $x=1$.
+
+Two cost functionals are defined:
+
+* Freidlin每Wentzell (FW) action:
+
+  Defined by $\mathcal{S}_{\text{FW}} = \int \tfrac{(\dot{x}-A)^2}{4D}  dt$, with Lagrangian
+  $$
+  \text{Lagrangian\_fw} = \tfrac{(\dot{x} - A)^2}{4D}
+  $$
+  (main term of OM, only deviation cost).
+
+* Onsager每Machlup (OM) action:
+
+  Adds a correction term:
+  $$
+  \mathcal{S}_{\text{OM}} = \int \left[ \tfrac{(\dot{x} - A)^2}{4D} + \tfrac{1}{2} \nabla A \right] dt
+  $$
+  with correction $\text{Lagrangian\_om} = 0.5 \times A'$, $A'=dA/dx$ from the Jacobian of the noise↙path transform.
+
+
+Two cost functionals are defined:
+
+* Freidlin每Wentzell (FW) action:
+
+  Defined by $\\mathcal{S}_{FW} = \\int \\tfrac{(\\dot{x}-A)^2}{4D} dt$, with Lagrangian
+  
+  \\text{Lagrangian\\_fw} = \\tfrac{(\\dot{x} - A)^2}{4D}
+  
+  (main term of OM, only deviation cost).
+
+* Onsager每Machlup (OM) action:
+
+  Adds a correction term:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.optimize import minimize
+
+# Define physical parameters
+gamma = 1.0  # Friction coefficient
+D = 0.05     # Reduce diffusion coefficient to enhance differences
+
+# 1. Define double-well potential and its derivatives
+def potential(x):
+    """Double-well potential U(x) = (x^2 - 1)^2"""
+    return (x**2 - 1)**2
+
+def force(x):
+    """Force F(x) = -U'(x)"""
+    return -4 * x * (x**2 - 1)
+
+def drift(x):
+    """Drift term A(x) = F(x) / gamma"""
+    return force(x) / gamma
+
+def drift_prime(x):
+    """Derivative of drift term A'(x)"""
+    return (-12 * x**2 + 4) / gamma
+
+# 2. Discretized action
+def get_action(path, dt, action_type='OM'):
+    """Calculate discrete action of path"""
+    x = path
+    x_dot = np.diff(x) / dt
+    x_mid = (x[:-1] + x[1:]) / 2  # Midpoints for evaluating A(x) and A'(x)
+    
+    A = drift(x_mid)
+    A_prime = drift_prime(x_mid)
+    
+    # FW Lagrangian
+    lagrangian_fw = (x_dot - A)**2 / (4 * D)
+    
+    if action_type == 'FW':
+        action = np.sum(lagrangian_fw * dt)
+    elif action_type == 'OM':
+        # OM correction term
+        lagrangian_om_corr = 0.5 * A_prime
+        action = np.sum((lagrangian_fw + lagrangian_om_corr) * dt)
+    else:
+        raise ValueError("action_type must be 'FW' or 'OM'")
+        
+    return action
+
+# 3. Numerical optimization to find instanton
+# Time and path settings
+T_total = 8.0  # Increase total time
+N_points = 201  # Increase number of path points
+dt = T_total / (N_points - 1)
+time = np.linspace(0, T_total, N_points)
+
+# Initial path guess (straight line from -1 to +1)
+initial_path = np.linspace(-1, 1, N_points)
+
+# Optimization functions
+def objective_fw(p):
+    return get_action(p, dt, 'FW')
+
+def objective_om(p):
+    return get_action(p, dt, 'OM')
+
+# Run optimization
+# Fix start and end points of path
+cons = ({'type': 'eq', 'fun': lambda x: x[0] + 1},
+        {'type': 'eq', 'fun': lambda x: x[-1] - 1})
+
+print("Minimizing FW action...")
+result_fw = minimize(objective_fw, initial_path, constraints=cons, method='SLSQP', 
+                     options={'maxiter': 1000, 'ftol': 1e-9})
+path_fw = result_fw.x
+print("FW minimization successful:", result_fw.success)
+print("FW action value:", result_fw.fun)
+
+print("Minimizing OM action...")
+# Use FW result as initial guess for OM
+result_om = minimize(objective_om, path_fw, constraints=cons, method='SLSQP',
+                     options={'maxiter': 1000, 'ftol': 1e-9})
+path_om = result_om.x
+print("OM minimization successful:", result_om.success)
+print("OM action value:", result_om.fun)
+
+
+# 4. Plotting
+plt.figure(figsize=(10, 6))
+x_plot = np.linspace(-1.5, 1.5, 200)
+U_plot = potential(x_plot)
+
+plt.plot(x_plot, U_plot, 'k-', label='Potential $U(x)=(x^2-1)^2$')
+plt.plot(path_fw, potential(path_fw), 'r.--', label='FW Instanton')
+plt.plot(path_om, potential(path_om), 'b.--', label='OM Instanton')
+
+plt.title('Most Probable Paths (Instantons) in a Double-Well Potential')
+plt.xlabel('Position $x$')
+plt.ylabel('Potential Energy $U(x)$')
+plt.ylim(-0.2, 2)
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Plot path vs. time
+plt.figure(figsize=(10, 6))
+plt.plot(time, path_fw, 'r-', label='FW Instanton')
+plt.plot(time, path_om, 'b-', label='OM Instanton')
+plt.axhline(-1, color='k', linestyle='--', alpha=0.5)
+plt.axhline(1, color='k', linestyle='--', alpha=0.5)
+plt.title('Path vs. Time')
+plt.xlabel('Time $t$')
+plt.ylabel('Position $x(t)$')
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+![Program output (running code)](../assets/images/remote/bd8e1330-6a71-4f81-a154-90eebc078d5f-cedf66e1e6.png)
+
+![Program output (running code)](../assets/images/remote/889044de-b25f-4cbe-943e-5157a517441d-c5f1d34c7f.png)
+
+- Results: FW instanton (red) tends to move at near?constant speed directly between wells (it minimizes the drift?deviation cost only). OM instanton (blue) leaves the initial well faster, crosses the barrier quickly, then spends more time approaching/stabilizing in the target well.
+
+- Physical meaning: this difference reflects the $A'(x)$ term. Near well bottoms, $A'(x)<0$ lowers the action, so OM paths prefer to spend time there. The simple simulation reproduces the theory qualitatively and matches the experimental observations of Gladrow et al.
+
+# 5. Advanced Tool: Response?Field (MSRJD) Formulation
+
+The OM action is physically complete but can be inconvenient for explicit calculations (nonlinear in x when $A$ and $A'$ are complex). Borrowing from quantum field theory leads to the Martin每Siggia每Rose每Janssen每de Dominicis (MSRJD) response?field formalism.
+
+Its idea: introduce an auxiliary (response) field $\tilde{x}(\tau)$ to rewrite the action as one linear (or at most quadratic) in $x$ and $\tilde{x}$, simplifying calculations.
+
+## 5.1. Derivation Idea (Hubbard每Stratonovich Transform)
+
+Start from the discretized path probability
+
+$$P[\{x_i\}] \sim \exp \left(-\tfrac{1}{4D}\sum_i (x_{i+1}-x_i-\Delta t A(x_i))^2\right) \times \text{Jacobian}$$
+
+and use the Gaussian identity
+
+$$e^{-ay^2} = \sqrt{\tfrac{\pi}{a}} \int \frac{d\tilde{y}}{2\pi} e^{-\tilde{y}^2/(4a) + i\tilde{y}y}$$
+
+Applying this to $(\dot{x}-A)$ with one $\tilde{x}_i$ per time step and taking the continuum limit yields a new action $S'[x, \tilde{x}]$.
+
+## 5.2. MSRJD Action
+
+With a purely imaginary response field $i\tilde{x}$ (Stratonovich, $\theta=1/2$), the path probability becomes
+
+$$P \sim \int \mathcal{D}[x]\mathcal{D}[\tilde{x}] \exp(-S'[x, \tilde{x}])$$
+
+with
+
+$$S'[x, \tilde{x}] = \int_0^t d\tau \left[\tilde{x}(\dot{x}-A(x)) + iD\tilde{x}^2\right]$$
+
+Advantages:
+
+1. Linear in $\dot{x}$ (easy time derivatives).
+
+2. Quadratic in $\tilde{x}$; nonlinearity is isolated in $i\tilde{x}A(x)$.
+
+3. Starting point for perturbation theory (e.g., Feynman diagrams) by splitting into ※free§ (quadratic) and ※interaction§ parts.
+
+# 6. Simulation Practice: Visualizing Random Paths
+
+We now solve the Langevin equation and generate many stochastic trajectories to compare with the most probable path.
+
+## 6.1. Python Simulation 2: Langevin Dynamics and Path Distributions
+
+We use Euler每Maruyama to integrate the overdamped Langevin equation in the double?well.
+
+```python
+import numpy as np

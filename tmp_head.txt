@@ -1,0 +1,220 @@
+# Introduction: A New View of Stochastic Dynamics
+
+In previous lectures, we studied two principal ways to describe stochastic processes: Langevin equations and Fokker每Planck equations. Langevin equations track single?particle trajectories under deterministic and random forces (a microscopic view), while Fokker每Planck equations describe how the probability density of an ensemble evolves in time (a macroscopic statistical view). These correspond to following ※a single tree§ versus describing ※the whole forest.§
+
+This lecture introduces a powerful framework 〞 the path integral. It provides a third perspective: rather than stepping state?to?state, we consider the complete history (trajectory) $x(\tau)$ over a time interval. The core idea is to assign a probability weight to each possible path and then ※sum§ (i.e., perform a functional integral) over all paths to compute observables such as transition probabilities between states.
+
+The idea parallels Feynman＊s path integral in quantum mechanics: a particle＊s transition amplitude from $A$ to $B$ is obtained by integrating over all paths connecting $A$ and $B$ with phase weight $e^{iS/\hbar}$, where $S$ is the classical action. In stochastic dynamics, we use real probabilities rather than complex phases; weights typically take the form $e^{-S}$, where $S$ is an action functional measuring how ※unlikely§ or ※costly§ a path is.
+
+With this framework we can ask not only ※Where will the particle be next?§ but also ※Over a time interval, which path from $A$ to $B$ is most probable?§ Beyond elegance, this perspective is useful in soft matter physics, biophysics, and quantitative finance.
+
+# 1. Recap: Theoretical Landscape of Stochastic Models
+
+Before building the path?integral machinery, Prof. Erwin Frey recaps common models to situate path integrals within the broader theory.
+![Classroom slides snapshot](../assets/images/remote/32446032-6924-436f-8a03-0452ec8cc7f5-a89209098d.png)
+
+We can classify along two axes: discrete vs continuous space, and ensemble vs trajectory descriptions.
+
+- Discrete vs continuous systems:
+
+  - Lattice gas models: particles live on discrete lattice sites; used for crystals, spins, etc.
+
+  - Continuum systems: particles move in continuous space and interact via collisions; e.g., colloids in solution.
+
+- Ensemble vs trajectory descriptions 〞 the key conceptual split:
+
+  - Ensemble view (forest): focus on the time evolution of the probability distribution $P(x,t)$.
+
+    - Master equations: probability evolution on discrete state spaces 〞 the backbone of ensemble descriptions.
+
+    - Fokker每Planck equations: the continuum counterpart of master equations; PDEs for $P(x,t)$ under drift and diffusion.
+
+  - Trajectory view (a tree): focus on individual realizations $x(t)$.
+
+    - Gillespie algorithm: exact stochastic simulation for jump processes; widely used in reaction networks.
+
+    - Langevin equations: SDEs for continuous variables (e.g., position) with deterministic drift and random noise; solutions are random trajectories.
+
+    - Brownian dynamics simulations: numerical trajectories based on Langevin equations.
+
+We start from the familiar overdamped Langevin equation in 1D:
+
+$$\dot{x}(t)=A(x(t))+\xi(t)$$
+
+Here $x(t)$ is position, $\dot{x}(t)$ the velocity, $A(x)$ the deterministic drift (e.g., force $F(x)$ from a potential $U(x)$ divided by friction $\gamma$: $A=F/\gamma$), and $\xi(t)$ is random noise from the environment.
+
+For Gaussian white noise we use:
+
+1. Zero mean: $\langle \xi(t) \rangle = 0$.
+
+2. Delta correlation (memoryless): $\langle \xi(t)\,\xi(t') \rangle = 2D\,\delta(t-t')$, where $D$ is the noise strength (diffusion coefficient; in equilibrium, $D = k_B T/\gamma$).
+
+# 2. Probability of Noise: From Discrete Steps to Continuous Paths
+
+The first and most basic step in constructing the path-integral is to build a probability functional for the noise $\xi(\tau)$ itself. The strategy is "discretize first, then take the continuum limit".
+
+A functional is a ※function of a function§. Ordinary functions input a number (e.g., time $t$) and return a number (e.g., temperature $T(t)$). A functional inputs an entire function (e.g., a full curve $T(t)$) and returns a number (e.g., the average energy or total path length associated with that curve).
+
+## 2.1. Time Discretization
+
+Divide $[0,t]$ into $n$ small steps of size $\Delta t$ so that $t=n\Delta t$. At each time $\tau_i=i\Delta t$ ($i=0,1,\ldots,n-1$), define $\xi_i=\xi(\tau_i)$. For white noise, different times are statistically independent, so each $\xi_i$ is an independent Gaussian:
+
+$$p(\xi_i) = \frac{1}{\sqrt{2\pi\sigma_\xi^2}} \exp\left[-\frac{\xi_i^2}{2\sigma_\xi^2}\right]$$
+
+where $\sigma_\xi^2$ is the variance of the noise over one step $\Delta t$.
+
+## 2.2. Joint Probability of a Discrete Path
+
+Since the $\xi_i$ are IID, the probability of a particular discrete noise path $(\xi_0,\xi_1,\ldots,\xi_{n-1})$ is the product:
+
+$$
+p(\xi_0, \xi_1, \ldots, \xi_{n-1}) = \prod_{i=0}^{n-1} p(\xi_i) = \left( \frac{1}{2\pi\sigma_\xi^2} \right)^{n/2} \exp \left( -\sum_{i=0}^{n-1} \frac{\xi_i^2}{2\sigma_\xi^2} \right)
+$$
+We focus on the exponential, which sets relative weights.
+
+## 2.3. Continuum Limit
+
+Now take $\Delta t \to 0$ and $n \to \infty$ with $t=n\Delta t$ fixed so sums become integrals.
+
+Match the discrete variance $\sigma_\xi^2$ to the continuum diffusion $D$ by equating correlations. Discrete: $\langle\xi_i\xi_j\rangle=\sigma_\xi^2\delta_{ij}$. Continuum: $\langle\xi(t)\xi(t')\rangle=2D\,\delta(t-t')$. Averaging the continuum over discrete bins gives
+
+$$
+\langle \xi_i \xi_j \rangle = \int_{\tau_i}^{\tau_{i+1}} d\tau \int_{\tau_j}^{\tau_{j+1}} d\tau' \frac{\langle \xi(\tau) \xi(\tau') \rangle}{(\Delta t)^2} \approx \frac{2D}{\Delta t}\, \delta_{ij}.
+$$
+
+Hence $\sigma_\xi^2=2D/\Delta t$. Substituting into the exponent,
+
+$$- \sum_{i=0}^{n-1} \frac{\xi_i^2}{2\sigma_{\xi}^2} = - \frac{1}{4D} \sum_{i=0}^{n-1} \xi_i^2 \Delta t$$
+
+and as $\Delta t \to 0$ the Riemann sum becomes
+
+$$\sum_{i=0}^{n-1} \xi_i^2 \Delta t \;\to\; \int_0^t d\tau \, \xi^2(\tau).$$
+
+## 2.4. Probability Functional of Noise
+
+Thus the probability functional of a continuous noise history $\xi(\tau)$ is
+
+$$P[\xi(\tau)] \sim \exp\left(-\frac{1}{4D}\int_0^t d\tau\, \xi^2(\tau)\right).$$
+
+This is the cornerstone of the path?integral description. It says that a noise history＊s probability decays exponentially with its ※energy§ $\int \xi^2\,d\tau$: larger amplitude and longer duration noise fluctuations are less likely.
+
+Formally, the path integral is
+
+$$\langle \mathcal{O}[\xi(\tau)] \rangle = \int \mathcal{D}[\xi(\tau)] \, \mathcal{O}[\xi(\tau)] \exp\left(-\frac{1}{4D}\int_0^t d\tau\, \xi^2(\tau)\right),$$
+
+with $\mathcal{O}[\xi(\tau)]$ a functional observable and $\mathcal{D}[\xi(\tau)]$ the measure over paths (formally $\lim_{n\to\infty}\prod_{i=0}^{n-1}\tfrac{d\xi_i}{\sqrt{2\pi\sigma_\xi^2}}$, including normalization).
+
+# 3. From Noise to Particle: The Onsager每Machlup Action
+
+We have the probability functional for noise. Our goal is the probability functional for particle paths $x(\tau)$: $P[x(\tau)]$. The key is a change of variables in the functional integral from $\xi(\tau)$ to $x(\tau)$.
+
+## 3.1. Change of Variables
+
+In the functional integral the Jacobian is $\det\!\left(\tfrac{\delta \xi(\tau')}{\delta x(\tau)}\right)$. A direct evaluation is involved, so return to a discrete picture.
+
+Write the discretized Langevin equation as
+
+$$\frac{x_{i+1}-x_i}{\Delta t} = \theta A(x_{i+1})+(1-\theta)A(x_i)+\xi_i$$
+
+with $\theta\in[0,1]$ selecting where we sample $A(x)$ in the interval.
+
+- $\theta=0$ (It?): use $x_i$ at the beginning of the step.
+
+- $\theta=1$ (anti?It?): use $x_{i+1}$ at the end of the step.
+
+- $\theta=1/2$ (Stratonovich): midpoint sampling.
+
+Numerically, these correspond to evaluating $A(x)$ at different points in $[t_i,t_{i+1}]$, controlled by $\theta$. It? ($\theta=0$) samples at the start (finance; martingales); Stratonovich ($\theta=1/2$) approximates the midpoint, preserving the usual chain rule and matching limits of continuous noise in physical systems; anti?It? ($\theta=1$) samples at the end (mainly of theoretical interest). The choice affects stability and, crucially, the Jacobian correction in the path integral, leading to different continuum limits and interpretations.
+
+Solving for $\xi_i$ gives
+
+$$\xi_i = \frac{x_{i+1}-x_i}{\Delta t} - [\theta A(x_{i+1})+(1-\theta)A(x_i)].$$
+
+The Jacobian matrix has elements $J_{ij}=\tfrac{\partial \xi_i}{\partial x_j}$, a lower?triangular form with determinant the product of diagonal entries. The diagonals are
+
+$$J_{ii} = \frac{\partial \xi_i}{\partial x_i} = -\frac{1}{\Delta t}-(1-\theta)A'(x_i).$$
+
+(A fully rigorous derivation tracks the $x_{i+1}$ dependence on $x_i$, but the final structure is the same.) In the continuum limit the Jacobian contributes an additive term to the action. One finds
+
+$$\ln(\text{Jacobian}) = -\theta \int_0^t d\tau\, A'(x(\tau)).$$
+
+Thus the path weight depends not only on deviations from the deterministic trajectory but also on the local gradient of the drift field, with a coefficient set by the discretization choice $\theta$.
+
+## 3.3. Onsager每Machlup Action
+
+Combining the Jacobian with the Gaussian weight yields the full path probability for $x(\tau)$:
+
+$$P[x(\tau)] \sim \exp(-S[x(\tau)])$$
+
+with action
+
+$$S[x(\tau)] = \int_0^t d\tau \left[\frac{(\dot{x}-A(x))^2}{4D} + \theta A'(x)\right].$$
+
+For physical stochastic processes the Stratonovich interpretation ($\theta=1/2$) is most natural, giving the Onsager每Machlup (OM) action
+
+$$S_{OM}[x(\tau)] = \int_0^t d\tau \left[\frac{(\dot{x}-A(x))^2}{4D} + \frac{1}{2} A'(x)\right].$$
+
+This action is the core result: it assigns a number to each path $x(\tau)$ whose negative exponential is proportional to the path＊s probability. Smaller action means higher probability.
+
+Introduced by Lars Onsager and Stefan Machlup (1953, ※Fluctuations and Irreversible Processes§), the OM theory gives a least?action?like description of thermal fluctuations: each possible Brownian path has probability proportional to $\exp(-S_{OM}[x])$, where $S_{OM}$ contains both the ※kinetic§ deviation from drift and a curvature/Jacobian correction from $A'(x)$. It connects broken time?reversal symmetry to path weights and bridges microscopic fluctuations to macroscopic irreversibility. Today OM actions are used across physics, biophysics (single?molecule trajectories), soft?matter dynamics, path?sampling algorithms, etc., as a basis for most?probable paths, transition states, entropy production, and more.
+
+# 4. Physical Meaning: Most Probable Paths and Experiments
+
+The OM action carries deep physical meaning and, as discussed in class, is supported by modern high?precision experiments.
+
+## 4.1. Deconstructing the Action
+
+The OM action has two parts:
+
+- Freidlin每Wentzell (FW) part
+
+  $$
+  \mathcal{L}_{FW} = \frac{1}{4D}(\dot{x} - A(x))^2
+  $$
+
+  It quantifies the ※cost§ of deviating from deterministic drift: if $\dot{x}=A(x)$, this vanishes (minimal cost). Any noise?induced deviation increases the action and lowers the path probability. In the weak?noise limit ($D\to 0$), minimizing the total action favors $\dot{x}=A(x)$, i.e., the classical deterministic path.
+
+- Jacobian/curvature correction
+
+  $$ \mathcal{L}_{corr} = \frac{1}{2}A'(x)$$
+
+  This distinguishes OM from FW. Using $A(x)=F/\gamma=-U'(x)/\gamma$ it can be written
+
+$$
+\frac{1}{2}A'(x) = -\frac{1}{2\gamma}U''(x).
+$$
+
+  ? At a potential minimum (stable point), $U''(x)>0$, so $A'(x)<0$ reduces the action and increases path probability 〞 the system ※lingers§ in wells.
+
+  ? At a barrier top (unstable point), $U''(x)<0$, so $A'(x)>0$ raises the action and suppresses paths lingering at the barrier.
+
+Thus at finite temperature ($D>0$) path probabilities depend both on following the drift and on the local stability (curvature) of the explored landscape.
+
+## 4.2. Link to Experiment: Gladrow et al. (2021)
+
+Prof. Frey highlighted an experiment that ※measures§ relative path probabilities, providing evidence for the theory:
+
+Gladrow, J., Keyser, U. F., Adhikari, R., & Kappler, J. (2021). Experimental measurement of relative path probabilities and stochastic actions. Physical Review X, 11(3), 031022.
+
+### 4.2.1. Experimental Challenge and Sojourn Probability
+
+Any exact continuous path $x(\tau)$ has zero probability measure, making direct path probabilities unobservable. The workaround is the sojourn probability: measure the probability that a trajectory remains within a thin tube of radius $R$ around a reference path $\varphi(t)$ over a time interval, $P_R^{\varphi}(t)$. This is finite and measurable. Taking ratios for two references $\varphi_1,\varphi_2$ and extrapolating $R\to 0$ yields $e^{-S[\varphi_1]}/e^{-S[\varphi_2]}$ 〞 the relative path probability from theory.
+
+### 4.2.2. Experimental Verdict: OM Wins
+
+
+![Experimental setup, Gladrow, Jannes, et al., 2021](../assets/images/remote/aed0cf5e-ad44-4985-ba67-649f1da5ae7e-2fc72191fe.png)
+
+The key finding: at room temperature (a typical finite?temperature setting), measured relative path probabilities match the theoretical prediction using the OM action, while predictions using the simpler FW action show significant deviations. This proves that the Jacobian correction $\\tfrac{1}{2}A'(x)$ is not a dispensable mathematical detail but has real, measurable physical effects at finite temperature; it is essential for correctly describing fluctuations.
+
+This dialogue between theory and experiment elevates the choice between It? and Stratonovich interpretations from a mere mathematical convention to a principle set by physical reality.
+The setup traps a colloidal particle in a laser?made double?well potential inside a microchannel and tracks its position by high?speed imaging.
+
+### 4.2.3. Most Probable Paths as Physical Entities (Instantons)
+
+Theoretically, transitions between stable states (e.g., wells) are rare events. Among all paths that realize such a transition, some have the highest probability 〞 the most probable paths, or instantons 〞 obtained by minimizing the action $S[x(\tau)]$.
+
+In the experiment, the instanton concept was made tangible: analyzing data, the authors identified the path minimizing the integral escape rate within the tube, and took it as the measured instanton. This data?extracted path agrees strikingly with the instanton from minimizing the OM action, showing that instantons are not merely theoretical 〞 they represent the typical/central paths followed in rare events such as barrier crossings.
+
+| Feature | Freidlin每Wentzell (FW) action | Onsager每Machlup (OM) action |
+|---|---|---|
