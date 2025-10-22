@@ -1,0 +1,2337 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Course Notes and Code (Erwin Frey, LMU Munich, 2025)">
+      
+      
+        <meta name="author" content="Zhihang Liu">
+      
+      
+        <link rel="canonical" href="https://liu-zhihang.github.io/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/notes/9.%20Nonequilibrium%20States%20%E2%80%94%20Irreversibility%20and%20Entropy%20Production/">
+      
+      
+        <link rel="prev" href="../8.%20Perron%E2%80%93Frobenius%20Theorem%2C%20Steady%20States%2C%20and%20Detailed%20Balance/">
+      
+      
+        <link rel="next" href="../10.%20Ehrenfest%20Model%2C%20Entropy%2C%20and%20KL%20Divergence/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>9. Nonequilibrium States — Irreversibility and Entropy Production - Nonequilibrium Field Theories and Stochastic Dynamics</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-header__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nonequilibrium Field Theories and Stochastic Dynamics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              9. Nonequilibrium States — Irreversibility and Entropy Production
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-nav__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nonequilibrium Field Theories and Stochastic Dynamics
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Course Notes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Course Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.%20Course%20Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. Course Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.%20Simple%20Random%20Walk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. Simple Random Walk
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20Gaussian%20Random%20Walk%20and%20Poisson%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Gaussian Random Walk and Poisson Process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20Gillespie%20Algorithm%2C%20Master%20Equation%2C%20Generating%20Functions%20and%20Population%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Gillespie Algorithm, Master Equation, Generating Functions and Population Dynamics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.%20Population%20Dynamics%20-%20Linear%20Death%20Process%20and%20Lotka-Volterra%20System/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5. Population Dynamics - Linear Death Process and Lotka-Volterra System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.%20Fundamental%20Equations%20of%20Markov%20Processes%20%E2%80%94%20Chapman%E2%80%93Kolmogorov%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6. Fundamental Equations of Markov Processes — Chapman–Kolmogorov Equation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.%20Forward%20Master%20Equation%20and%20the%20Q%20Matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    7. Forward Master Equation and the Q Matrix
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.%20Perron%E2%80%93Frobenius%20Theorem%2C%20Steady%20States%2C%20and%20Detailed%20Balance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    8. Perron–Frobenius Theorem, Steady States, and Detailed Balance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    9. Nonequilibrium States — Irreversibility and Entropy Production
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    9. Nonequilibrium States — Irreversibility and Entropy Production
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reversible-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reversible Process
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#irreversible-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Irreversible Process
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.%20Ehrenfest%20Model%2C%20Entropy%2C%20and%20KL%20Divergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10. Ehrenfest Model, Entropy, and KL Divergence
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.%20Continuous%20Markov%20Processes%20and%20the%20Fokker%E2%80%93Planck%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11. Continuous Markov Processes and the Fokker–Planck Equation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12.%20Brownian%20Motion%20and%20the%20Ornstein%E2%80%93Uhlenbeck%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12. Brownian Motion and the Ornstein–Uhlenbeck Process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13.%20Monte%20Carlo%20Sampling%20as%20a%20Stochastic%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13. Monte Carlo Sampling as a Stochastic Process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14.%20Hamiltonian%20Monte%20Carlo%20Sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14. Hamiltonian Monte Carlo Sampling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15.%20Chemotaxis%2C%20Run-and-Tumble%20Motion%2C%20and%20the%20Keller%E2%80%93Segel%20Model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15. Chemotaxis, Run-and-Tumble Motion, and the Keller–Segel Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16.%20The%20Schnitzer%20Model%2C%20Anomalous%20Diffusion%2C%20and%20Motility%E2%80%91Induced%20Phase%20Separation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16. The Schnitzer Model, Anomalous Diffusion, and Motility‑Induced Phase Separation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17.%20Langevin%20Equation%2C%20Brownian%20Particle%2C%20and%20the%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17. Langevin Equation, Brownian Particle, and the Fluctuation–Dissipation Theorem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18.%20Fokker%E2%80%93Planck%20Equation%20and%20the%20Smoluchowski%20Equation%20%E2%80%94%20From%20Random%20Trajectories%20to%20Probability%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    18. Fokker–Planck Equation and the Smoluchowski Equation — From Random Trajectories to Probability Dynamics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19.%20Path%20Integral%20Formulation%20of%20Stochastic%20Processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    19. Path Integral Formulation of Stochastic Processes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20.%20Stochastic%20Differential%20Equations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    20. Stochastic Differential Equations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    中文笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            中文笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    首页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/1.%20%E8%AF%BE%E7%A8%8B%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. 课程导论
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/2.%20%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. 简单随机游走
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/3.%20%E9%AB%98%E6%96%AF%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0%E4%B8%8E%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. 高斯随机游走与泊松过程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/4.%20Gillespie%20%E7%AE%97%E6%B3%95%E3%80%81%E4%B8%BB%E6%96%B9%E7%A8%8B%E3%80%81%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%8D%E7%BE%A4%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Gillespie 算法、主方程、生成函数与种群动力学
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/5.%20%E7%A7%8D%E7%BE%A4%E5%8A%A8%E6%80%81%E5%AD%A6%EF%BC%9A%E7%BA%BF%E6%80%A7%E6%AD%BB%E4%BA%A1%E8%BF%87%E7%A8%8B%E4%B8%8ELotka-Volterra%20%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5. 种群动态学：线性死亡过程与Lotka-Volterra 系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/6.%20%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E7%A8%8B%EF%BC%9A%E6%9F%A5%E6%99%AE%E6%9B%BC-%E7%A7%91%E5%B0%94%E8%8E%AB%E6%88%88%E7%BD%97%E5%A4%AB%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6. 马尔可夫过程的基本方程：查普曼-科尔莫戈罗夫方程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/7.%20%E5%89%8D%E5%90%91%E4%B8%BB%E6%96%B9%E7%A8%8B%E4%B8%8EQ%E7%9F%A9%E9%98%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    7. 前向主方程与Q矩阵
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/8.%20%E4%BD%A9%E9%BE%99-%E5%BC%97%E7%BD%97%E8%B4%9D%E5%B0%BC%E4%B9%8C%E6%96%AF%E5%AE%9A%E7%90%86%E3%80%81%E7%A8%B3%E6%80%81%E4%B8%8E%E7%BB%86%E8%87%B4%E5%B9%B3%E8%A1%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    8. 佩龙-弗罗贝尼乌斯定理、稳态与细致平衡
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/9.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81%EF%BC%9A%E4%B8%8D%E5%8F%AF%E9%80%86%E6%80%A7%E4%B8%8E%E7%86%B5%E4%BA%A7%E7%94%9F%E7%9A%84%E6%8E%A8%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    9. 非平衡态：不可逆性与熵产生的推论
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/10.%20%E5%9F%83%E4%BC%A6%E8%B4%B9%E6%96%AF%E7%89%B9%E6%A8%A1%E5%9E%8B%E3%80%81%E7%86%B5%E4%B8%8EKL%E6%95%A3%E5%BA%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10. 埃伦费斯特模型、熵与KL散度
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/11.%20%E8%BF%9E%E7%BB%AD%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E4%B8%8E%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11. 连续马尔可夫过程与福克-普朗克方程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/12.%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8%E4%B8%8E%E5%A5%A5%E6%81%A9%E6%96%AF%E5%9D%A6-%E4%B9%8C%E4%BC%A6%E8%B4%9D%E5%85%8B%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12. 布朗运动与奥恩斯坦-乌伦贝克过程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/13.%20%E4%BD%9C%E4%B8%BA%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13. 作为随机过程的蒙特卡洛采样
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/14.%20%E5%93%88%E5%AF%86%E5%B0%94%E9%A1%BF%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14. 哈密尔顿蒙特卡洛采样
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/15.%20%E8%B6%8B%E5%8C%96%E6%80%A7%E3%80%81%E8%B7%91%E5%8A%A8-%E7%BF%BB%E6%BB%9A%E8%BF%90%E5%8A%A8%E4%B8%8EKeller-Segel%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15. 趋化性、跑动-翻滚运动与Keller-Segel模型
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/16.%20Schnitzer%E6%A8%A1%E5%9E%8B%E3%80%81%E5%8F%8D%E5%B8%B8%E6%89%A9%E6%95%A3%E4%B8%8E%E8%BF%90%E5%8A%A8%E8%AF%B1%E5%AF%BC%E7%9B%B8%E5%88%86%E7%A6%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16. Schnitzer模型、反常扩散与运动诱导相分离
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/17.%20%E6%9C%97%E4%B9%8B%E4%B8%87%E6%96%B9%E7%A8%8B%E3%80%81%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17. 朗之万方程、布朗粒子与涨落-耗散定理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/18.%20%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B%E4%B8%8E%E6%96%AF%E6%91%A9%E6%A3%B1%E9%9C%8D%E5%A4%AB%E6%96%AF%E5%9F%BA%E6%96%B9%E7%A8%8B%EF%BC%9A%E4%BB%8E%E9%9A%8F%E6%9C%BA%E8%BD%A8%E8%BF%B9%E5%88%B0%E6%A6%82%E7%8E%87%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    18. 福克-普朗克方程与斯摩棱霍夫斯基方程：从随机轨迹到概率动力学
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/19.%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    19. 随机过程的路径积分表述
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/20.%20%E9%9A%8F%E6%9C%BA%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    20. 随机微分方程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/21.%20%E4%BC%8A%E8%97%A4%E7%A7%AF%E5%88%86%E4%B8%8E%E7%BB%9F%E4%B8%80%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    21. 伊藤积分与统一的随机过程框架
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/22.%20%E5%90%AB%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    22. 含乘性噪声系统的路径积分
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/23.%20%E4%BB%8E%E7%B2%97%E7%B2%92%E5%8C%96%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA%E6%B6%A8%E8%90%BD%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    23. 从粗粒化到连续场论涨落动力学
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/24.%20%E6%98%82%E8%90%A8%E6%A0%BC%E7%B3%BB%E6%95%B0%E3%80%81%E5%80%92%E6%98%93%E5%85%B3%E7%B3%BB%E4%B8%8E%E5%8A%A8%E6%80%81%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    24. 昂萨格系数、倒易关系与动态涨落-耗散定理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/25.%20%E6%A2%AF%E5%BA%A6%E5%8A%A8%E5%8A%9B%E5%AD%A6%E3%80%81%E7%9B%B8%E5%8F%98%E4%B8%8E%E5%BC%9B%E8%B1%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    25. 梯度动力学、相变与弛豫
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/26.%20%E4%B8%B4%E7%95%8C%E6%85%A2%E5%8C%96%E3%80%81%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%B8%8E%E5%AE%88%E6%81%92%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    26. 临界慢化、动态响应与守恒律
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/27.%20%E7%AE%80%E5%8D%95%E6%B5%81%E4%BD%93%E3%80%81%E6%97%A0%E6%91%A9%E6%93%A6%E6%B5%81%E4%BD%93%E4%B8%8E%E6%AC%A7%E6%8B%89%E6%96%B9%E7%A8%8B%E7%9A%84%E6%B5%81%E4%BD%93%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    27. 简单流体、无摩擦流体与欧拉方程的流体动力学
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/28.%20%E7%B2%98%E6%80%A7%E6%B5%81%E4%BD%93%E3%80%81%E7%BA%B3%E7%BB%B4-%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%96%B9%E7%A8%8B%E3%80%81%E7%86%B5%E5%B9%B3%E8%A1%A1%E4%B8%8E%E7%83%AD%E4%BC%A0%E5%AF%BC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    28. 粘性流体、纳维-斯托克斯方程、熵平衡与热传导
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/29.%20%E4%B8%8D%E5%8F%AF%E9%80%86%E7%BA%BF%E6%80%A7%E7%83%AD%E5%8A%9B%E5%AD%A6%E4%B8%8E%E5%B9%B2%E6%80%A7%E6%89%A9%E6%95%A3%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    29. 不可逆线性热力学与干性扩散粒子系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/30.%20%E6%82%AC%E6%B5%AE%E5%9C%A8%E6%B5%81%E4%BD%93%E4%B8%AD%E7%9A%84%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%20%E2%80%94%20H%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    30. 悬浮在流体中的布朗粒子 — H模型
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/31.%20%E5%8A%A8%E6%80%81%E6%B3%9B%E5%87%BD%E3%80%81%E5%8A%A0%E6%80%A7%E5%99%AA%E5%A3%B0%E5%9C%BA%E8%AE%BA%E4%B8%8EOnsager-Machlup%E6%B3%9B%E5%87%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    31. 动态泛函、加性噪声场论与Onsager-Machlup泛函
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/32.%20Janssen-De%20Dominicis%20%E5%93%8D%E5%BA%94%E6%B3%9B%E5%87%BD%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    32. Janssen-De Dominicis 响应泛函与涨落-耗散关系
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/33.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E5%8A%9F%E4%B8%8E%E6%B6%A8%E8%90%BD%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    33. 非平衡功与涨落定理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/34.%20%E6%9C%89%E5%90%91%E6%B8%97%E6%B5%81%E3%80%81%E5%90%B8%E6%94%B6%E6%80%81%E4%B8%8E%E8%B0%B1%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    34. 有向渗流、吸收态与谱方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/35.%20%E4%B8%BB%E6%96%B9%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E7%A4%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    35. 主方程的路径积分表示
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/36.%20%E7%9B%B8%E5%B9%B2%E6%80%81%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E3%80%81%E7%AE%97%E7%AC%A6%E4%BB%A3%E6%95%B0%E4%B8%8E%E8%99%9A%E5%99%AA%E5%A3%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    36. 相干态路径积分、算符代数与虚噪声
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/37.%20Kramers-Moyal%20%E5%B1%95%E5%BC%80%E4%B8%8E%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E7%9A%84%E4%BD%8E%E5%99%AA%E5%A3%B0%E6%9E%81%E9%99%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    37. Kramers-Moyal 展开与路径积分的低噪声极限
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/38.%20%E5%A4%9A%E7%89%A9%E7%A7%8D%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E4%B8%8E%E5%BE%AA%E7%8E%AF%E7%AB%9E%E4%BA%89%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    38. 多物种路径积分与循环竞争动力学
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/39.%20%E4%BB%8E%E7%B2%92%E5%AD%90%E8%B7%B3%E8%B7%83%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    39. 从粒子跳跃到连续场论
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/40.%20%E7%BB%9F%E4%B8%80%E7%9A%84%E5%9C%BA%E8%AE%BA%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    40. 统一的场论框架
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h1>
+<p>This lecture marks a key step in our study of stochastic processes. In previous lectures we established the master equation framework that describes how probabilities evolve among states. Now we move from describing “how” evolution happens to understanding “why” — the thermodynamic meaning behind these evolutions.</p>
+<p>We leave the ideal world of equilibrium and step into the broader, real realm of nonequilibrium physics. When detailed balance is broken, the system supports persistent probability currents, like steady water flow in a river. Such one‑way, irreversible flow is a hallmark of living processes, chemical reactions, and all systems driven by external energy. We will start from a single stochastic trajectory, quantify irreversibility, and arrive at entropy production — the direct microscopic manifestation of the second law of thermodynamics.</p>
+<p>This lecture is the bridge between microscopic randomness and the macroscopic “arrow of time.”</p>
+<p>We first contrast two fundamentally different classes of stochastic processes.</p>
+<h2 id="reversible-process">Reversible Process<a class="headerlink" href="#reversible-process" title="Permanent link">&para;</a></h2>
+<p>Reversible processes microscopically realize thermodynamic equilibrium and satisfy detailed balance. Time has no preferred direction; past and future are statistically indistinguishable.</p>
+<p>1) Time symmetry: film a reversible process and play it backward; the backward movie is statistically indistinguishable from the forward one. A Brownian pollen grain in equilibrium water looks equally random in either direction.</p>
+<p>2) Microscopic balance (detailed balance):</p>
+<div class="arithmatex">\[
+\pi_j w_{j\to k} = \pi_k w_{k\to j}.
+\]</div>
+<p>In steady state, every directly connected pair <span class="arithmatex">\(j,k\)</span> has exactly equal opposing fluxes. This is more than global balance; it is pairwise balance on every edge.</p>
+<p>3) No net cycles: with every microscopic path balanced by its reverse, there are no persistent probability cycles. Like a lake: the water level is steady and every microscopic flow A→B is canceled by B→A; macroscopically there is no current.</p>
+<p>4) Simple relaxation: dynamics are “pure” — monotone, non‑oscillatory exponential relaxation to equilibrium.</p>
+<h2 id="irreversible-process">Irreversible Process<a class="headerlink" href="#irreversible-process" title="Permanent link">&para;</a></h2>
+<p>Irreversible processes break detailed balance and characterize active, energy‑consuming nonequilibrium systems. They endow time with a direction.</p>
+<p>1) Time asymmetry: backward movies are statistically different. A molecular motor consumes ATP and walks directionally; the reversed movie would synthesize ATP while walking backward — not spontaneous.</p>
+<p>2) Persistent microscopic currents: breaking detailed balance, <span class="arithmatex">\(\pi_j w_{j\to k} \ne \pi_k w_{k\to j}\)</span>, yields net probability currents. When these currents form cycles (violating Kolmogorov’s loop criterion), the system is in a nonequilibrium steady state (NESS).</p>
+<p>3) Driven “dynamic” balance: like a river with steady level maintained by continuous inflow (energy input). At any cross‑section, inflow equals outflow (steady level), yet there is a net downstream current — the “arrow of time.”</p>
+<h1 id="1-detailed-balance">1. Detailed Balance<a class="headerlink" href="#1-detailed-balance" title="Permanent link">&para;</a></h1>
+<h2 id="11-revisiting-the-master-equation-rules-of-the-game">1.1 Revisiting the Master Equation: Rules of the Game<a class="headerlink" href="#11-revisiting-the-master-equation-rules-of-the-game" title="Permanent link">&para;</a></h2>
+<p><img alt="Lecture blackboard screenshot" src="../../assets/images/remote/0a3803ab-54cd-47f8-b070-26b379ba1408-96a6c2ee27.jpg" /></p>
+<p>The master equation is the cornerstone:</p>
+<div class="arithmatex">\[
+\frac{d\mathbf{p}(t)}{dt} = Q\,\mathbf{p}(t).
+\]</div>
+<p>In components,</p>
+<div class="arithmatex">\[
+\frac{dp_n(t)}{dt} = \sum_{m\ne n}\big(p_m(t)\,w_{m\to n} - p_n(t)\,w_{n\to m}\big).
+\]</div>
+<ul>
+<li>Gain: <span class="arithmatex">\(\sum_{m\ne n} p_m(t)\,w_{m\to n}\)</span> — total inflow from other states into <span class="arithmatex">\(n\)</span>.</li>
+<li>Loss: <span class="arithmatex">\(\sum_{m\ne n} p_n(t)\,w_{n\to m}=p_n(t)\sum_{m\ne n} w_{n\to m}\)</span> — total outflow from <span class="arithmatex">\(n\)</span>.</li>
+</ul>
+<p>Q has column sums zero (probability conservation): <span class="arithmatex">\(\sum_n Q_{n m}=0\)</span>. With <span class="arithmatex">\(Q_{m m}=-\sum_{n\ne m}w_{m\to n}\)</span> and <span class="arithmatex">\(\sum_{n\ne m}Q_{n m}=\sum_{n\ne m}w_{m\to n}\)</span>, their sum vanishes, ensuring total probability remains 1.</p>
+<h2 id="12-detailed-balance-hallmark-of-equilibrium">1.2 Detailed Balance: Hallmark of Equilibrium<a class="headerlink" href="#12-detailed-balance-hallmark-of-equilibrium" title="Permanent link">&para;</a></h2>
+<p>For reversible processes, the steady state is defined by detailed balance (DB):</p>
+<div class="arithmatex">\[
+\pi_i\,w_{i\to j}=\pi_j\,w_{j\to i}.
+\]</div>
+<p>Here <span class="arithmatex">\(\pi_i\)</span> are steady‑state probabilities; <span class="arithmatex">\(\pi_i w_{i\to j}\)</span> is the probability flux from <span class="arithmatex">\(i\)</span> to <span class="arithmatex">\(j\)</span> per unit time. DB expresses microscopic reversibility: for all pairs <span class="arithmatex">\((i,j)\)</span>, the net flux <span class="arithmatex">\(J_{ij}=\pi_i w_{i\to j}-\pi_j w_{j\to i}\)</span> vanishes.</p>
+<p>Important: DB is sufficient but not necessary for a steady state. A steady state satisfies <span class="arithmatex">\(Q\,\boldsymbol\pi=0\)</span>; if DB holds, steadiness follows, but the converse need not hold. Systems can have constant <span class="arithmatex">\(\boldsymbol\pi\)</span> yet nonzero currents (NESS). Thus DB defines the special subclass “equilibrium states.”</p>
+<h2 id="13-power-of-symmetry-simplifying-dynamics">1.3 Power of Symmetry: Simplifying Dynamics<a class="headerlink" href="#13-power-of-symmetry-simplifying-dynamics" title="Permanent link">&para;</a></h2>
+<p>When DB holds, Q can be symmetrized by a similarity transform. Define</p>
+<div class="arithmatex">\[
+\tilde Q_{m n}:=\pi_m^{-1/2}\,Q_{m n}\,\pi_n^{1/2}.
+\]</div>
+<p>Using <span class="arithmatex">\(Q_{m n}=w_{n\to m}\)</span> and DB,</p>
+<div class="arithmatex">\[
+\tilde Q_{m n}=\pi_m^{-1/2}w_{n\to m}\,\pi_n^{1/2}
+ = \pi_m^{-1/2}\Big(w_{m\to n}\,\frac{\pi_n}{\pi_m}\Big)\pi_n^{1/2}
+ = \pi_m^{1/2} w_{m\to n}\,\pi_n^{-1/2} = \tilde Q_{n m},
+\]</div>
+<p>so <span class="arithmatex">\(\tilde Q\)</span> is symmetric. Consequences:</p>
+<p>1) Real eigenvalues: Q’s nonsteady eigenvalues <span class="arithmatex">\(-\lambda\)</span> are real (<span class="arithmatex">\(\lambda&gt;0\)</span> for decaying modes).</p>
+<p>2) Non‑oscillatory relaxation: the general solution is a sum of pure exponentials <span class="arithmatex">\(p(t)=\sum_\lambda c_\lambda\,\Phi(\lambda)\,e^{-\lambda t}\)</span>; relaxation to <span class="arithmatex">\(\boldsymbol\pi\)</span> (the <span class="arithmatex">\(\lambda=0\)</span> mode) is smooth and non‑oscillatory.</p>
+<p>3) Orthogonal eigenbasis: symmetric matrices have orthogonal eigenvectors; any initial distribution decomposes uniquely into relaxation modes.</p>
+<h2 id="14-kolmogorovs-loop-criterion-an-intuitive-equilibrium-test">1.4 Kolmogorov’s Loop Criterion: An Intuitive Equilibrium Test<a class="headerlink" href="#14-kolmogorovs-loop-criterion-an-intuitive-equilibrium-test" title="Permanent link">&para;</a></h2>
+<p>For a three‑state loop <span class="arithmatex">\(\{1,2,3\}\)</span>, reversibility requires</p>
+<div class="arithmatex">\[
+w_{1\to2}\,w_{2\to3}\,w_{3\to1}=w_{2\to1}\,w_{3\to2}\,w_{1\to3}.
+\]</div>
+<p>If this fails (e.g., clockwise product &gt; counter‑clockwise), there is a persistent net probability circulation — a hallmark of irreversibility. A single violating loop implies a nonequilibrium state requiring external energy input to maintain.</p>
+<h1 id="2-beyond-equilibrium-irreversibility-and-the-arrow-of-time">2. Beyond Equilibrium — Irreversibility and the Arrow of Time<a class="headerlink" href="#2-beyond-equilibrium-irreversibility-and-the-arrow-of-time" title="Permanent link">&para;</a></h1>
+<p>We now quantify directional behavior in nonequilibrium.</p>
+<h2 id="21-when-equilibrium-is-broken-ness">2.1 When Equilibrium Is Broken: NESS<a class="headerlink" href="#21-when-equilibrium-is-broken-ness" title="Permanent link">&para;</a></h2>
+<p>When detailed balance fails, the system can still reach a steady distribution <span class="arithmatex">\(\frac{d\mathbf{p}}{dt}=0\)</span>, but with nonzero net currents</p>
+<div class="arithmatex">\[
+J_{ij}=\pi_i w_{i\to j}-\pi_j w_{j\to i} \ne 0.
+\]</div>
+<p>Think of a fountain: the water level (probability) is constant but a pump continuously lifts water and it flows back — steady only by constant energy input. Living systems, circuits, and molecular machines operate as NESS.</p>
+<h2 id="22-forward-and-backward-trajectories">2.2 Forward and Backward Trajectories<a class="headerlink" href="#22-forward-and-backward-trajectories" title="Permanent link">&para;</a></h2>
+<p><img alt="Lecture blackboard screenshot" src="../../assets/images/remote/753f43e4-2aca-4959-8ec4-2fcaeb4bd3e5-803145793f.png" /></p>
+<p>Define a forward trajectory <span class="arithmatex">\(\gamma\)</span> by a sequence of states and dwell times:</p>
+<div class="arithmatex">\[
+\gamma: 0 \xrightarrow{\tau_1} 1 \xrightarrow{\tau_2} \cdots \xrightarrow{\tau_n} n.
+\]</div>
+<p>Its probability density <span class="arithmatex">\(P[\gamma]\)</span> factors into events:</p>
+<p>1) Initial probability <span class="arithmatex">\(\pi_0\)</span> at <span class="arithmatex">\(t=0\)</span>.
+2) Waiting in state <span class="arithmatex">\(k\)</span> for time <span class="arithmatex">\(\tau_k\)</span> without jumping: <span class="arithmatex">\(e^{-\alpha_k\tau_k}\)</span>, with exit rate <span class="arithmatex">\(\alpha_k=\sum_{\ell\ne k} w_{k\to\ell}\)</span>.
+3) Jump probability <span class="arithmatex">\(\propto w_{k\to k+1}\)</span>.</p>
+<p>Altogether,</p>
+<div class="arithmatex">\[
+P[\gamma]=\pi_0\,e^{-\alpha_0\tau_0}\,w_{0\to1}\,e^{-\alpha_1\tau_1}\,w_{1\to2}\cdots w_{n-1\to n}\,e^{-\alpha_n\tau_n}.
+\]</div>
+<p>The time‑reversed path <span class="arithmatex">\(\bar\gamma\)</span> starts at <span class="arithmatex">\(n\)</span> and traverses the same states in reverse order back to 0:</p>
+<div class="arithmatex">\[
+P[\bar\gamma]=\pi_n\,e^{-\alpha_n\tau_n}\,w_{n\to n-1}\cdots w_{1\to0}\,e^{-\alpha_0\tau_0}.
+\]</div>
+<h2 id="23-quantifying-irreversibility-entropy-produced-along-a-path">2.3 Quantifying Irreversibility: Entropy Produced Along a Path<a class="headerlink" href="#23-quantifying-irreversibility-entropy-produced-along-a-path" title="Permanent link">&para;</a></h2>
+<p>The core asymmetry is <span class="arithmatex">\(P[\gamma]\ne P[\bar\gamma]\)</span>. Consider the ratio</p>
+<div class="arithmatex">\[
+\frac{P[\bar\gamma]}{P[\gamma]}=\frac{\pi_n e^{-\alpha_n\tau_n} w_{n\to n-1}\cdots w_{1\to0} e^{-\alpha_0\tau_0}}{\pi_0 e^{-\alpha_0\tau_0} w_{0\to1}\cdots w_{n-1\to n} e^{-\alpha_n\tau_n}}.
+\]</div>
+<p>All exponential waiting factors cancel — irreversibility (and entropy production) arises from jumps, not waiting. Thus</p>
+<div class="arithmatex">\[
+\frac{P[\bar\gamma]}{P[\gamma]}=\frac{\pi_n}{\pi_0}\,\frac{w_{n\to n-1}\,w_{n-1\to n-2}\cdots w_{1\to0}}{w_{0\to1}\,w_{1\to2}\cdots w_{n-1\to n}}.
+\]</div>
+<p>Define the total entropy production along <span class="arithmatex">\(\gamma\)</span> by</p>
+<div class="arithmatex">\[
+\Delta s[\gamma]=\ln\frac{P[\bar\gamma]}{P[\gamma]}.
+\]</div>
+<p>This log‑ratio mirrors the Kullback–Leibler divergence in information theory. Physically, <span class="arithmatex">\(\Delta s[\gamma]\)</span> measures our ability to tell forward from backward: large positive values indicate a clear arrow of time. Under detailed balance, <span class="arithmatex">\(\Delta s[\gamma]\)</span> fluctuates around 0.</p>
+<h2 id="24-decomposing-entropy-system-and-environment">2.4 Decomposing Entropy: System and Environment<a class="headerlink" href="#24-decomposing-entropy-system-and-environment" title="Permanent link">&para;</a></h2>
+<p><img alt="Lecture blackboard screenshot" src="../../assets/images/remote/d723de81-a899-417c-b628-84c13c7759d1-161752927f.jpg" /></p>
+<p>The total entropy production splits into two parts with clear meaning:</p>
+<div class="arithmatex">\[
+\Delta s[\gamma]=\ln\Big(\frac{\pi_n}{\pi_0}\Big) + \sum_{k=1}^n \ln\Big(\frac{w_{k\to k-1}}{w_{k-1\to k}}\Big).
+\]</div>
+<p>1) System entropy change:</p>
+<div class="arithmatex">\[
+(\Delta s)_\mathrm{system}=\ln\Big(\frac{\pi_n}{\pi_0}\Big)=-\ln\pi_n-(-\ln\pi_0).
+\]</div>
+<p>State function — depends only on endpoints, analogous to Boltzmann entropy <span class="arithmatex">\(S=-k_B\ln p\)</span>.</p>
+<p>2) Environment entropy change:</p>
+<div class="arithmatex">\[
+(\Delta s)_\mathrm{env}=\sum_{k=1}^n \ln\Big(\frac{w_{k\to k-1}}{w_{k-1\to k}}\Big).
+\]</div>
+<p>Path function — sum over jumps, analogous to heat/work exchanges.</p>
+<p>Altogether <span class="arithmatex">\(\Delta s_\mathrm{total}=\Delta s_\mathrm{sys}+\Delta s_\mathrm{env}\)</span>.</p>
+<h2 id="25-mean-entropy-production-rate-sigma">2.5 Mean Entropy Production Rate <span class="arithmatex">\(\sigma\)</span><a class="headerlink" href="#25-mean-entropy-production-rate-sigma" title="Permanent link">&para;</a></h2>
+<p>For NESS we care about sustained production:</p>
+<div class="arithmatex">\[
+\sigma=\lim_{T\to\infty}\frac{1}{T}\,\langle\Delta s[\gamma]\rangle.
+\]</div>
+<p>In the long‑time limit the system term averages out (endpoint‑only); the environment term dominates. One obtains</p>
+<div class="arithmatex">\[
+\sigma=\frac{1}{2}\sum_{i,j}\Big(\pi_i w_{i\to j}-\pi_j w_{j\to i}\Big)\,\ln\Big(\frac{\pi_j w_{j\to i}}{\pi_i w_{i\to j}}\Big)
+ = \sum_{i&lt;j} J_{ij}\,\ln\Big(\frac{w_{i\to j}}{w_{j\to i}}\Big).
+\]</div>
+<p>Structure: (flux)<span class="arithmatex">\(\times\)</span>(thermodynamic force). Here <span class="arithmatex">\(J_{ij}=\pi_i w_{i\to j}-\pi_j w_{j\to i}\)</span> is the net probability current and <span class="arithmatex">\(A_{ij}=\ln(\frac{w_{j\to i}}{w_{i\to j}})\)</span> the thermodynamic force (affinity). Using <span class="arithmatex">\((x-y)\ln(x/y)\ge 0\)</span> shows <span class="arithmatex">\(\sigma\ge 0\)</span>, with equality iff all <span class="arithmatex">\(J_{ij}=0\)</span> (detailed balance). Any NESS must have <span class="arithmatex">\(\sigma&gt;0\)</span>.</p>
+<h1 id="3-python-simulation">3. Python Simulation<a class="headerlink" href="#3-python-simulation" title="Permanent link">&para;</a></h1>
+<h2 id="31-reversible-system-thermal-motion-in-a-triplewell">3.1 Reversible System: Thermal Motion in a Triple‑Well<a class="headerlink" href="#31-reversible-system-thermal-motion-in-a-triplewell" title="Permanent link">&para;</a></h2>
+<p>We model a particle thermally hopping among three potential wells (A,B,C) in contact with a single‑temperature bath (detailed balance holds).</p>
+<ul>
+<li>Energy landscape: well depths <span class="arithmatex">\((E_A,E_B,E_C)\)</span> and barriers.</li>
+<li>Rates: Arrhenius law <span class="arithmatex">\(w_{i\to j}\propto\exp[-(E_\mathrm{barrier}-E_i)/(k_BT)]\)</span>.</li>
+<li>Theoretical steady state: Boltzmann <span class="arithmatex">\(\pi_i\propto e^{-E_i/(k_BT)}\)</span>.</li>
+<li>Verify no net loop current and convergence to Boltzmann.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gillespie_simulation</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">initial_state</span><span class="p">,</span> <span class="n">T_max</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simulates a continuous-time Markov process using the Gillespie algorithm.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        Q (np.array): Transition rate matrix (Q_ij = w_j-&gt;i).</span>
+<span class="sd">        initial_state (int): Starting state.</span>
+<span class="sd">        T_max (float): Maximum simulation time.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: (times, states, transitions)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">num_states</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">states</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_states</span><span class="p">)</span>
+    <span class="n">current_state</span> <span class="o">=</span> <span class="n">initial_state</span><span class="p">;</span> <span class="n">t</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">time_points</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">];</span> <span class="n">state_trajectory</span> <span class="o">=</span> <span class="p">[</span><span class="n">current_state</span><span class="p">];</span> <span class="n">transitions</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">T_max</span><span class="p">:</span>
+        <span class="n">rates_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">Q</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">current_state</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">states</span> <span class="k">if</span> <span class="n">j</span> <span class="o">!=</span> <span class="n">current_state</span><span class="p">])</span>
+        <span class="n">total_rate_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">rates_out</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">total_rate_out</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">break</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">total_rate_out</span><span class="p">)</span>
+        <span class="n">t</span> <span class="o">+=</span> <span class="n">dt</span>
+        <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="n">T_max</span><span class="p">:</span> <span class="k">break</span>
+        <span class="n">possible_next</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">states</span> <span class="k">if</span> <span class="n">j</span> <span class="o">!=</span> <span class="n">current_state</span><span class="p">]</span>
+        <span class="n">next_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">possible_next</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">rates_out</span><span class="o">/</span><span class="n">total_rate_out</span><span class="p">)</span>
+        <span class="n">transitions</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">current_state</span><span class="p">,</span> <span class="n">next_state</span><span class="p">))</span>
+        <span class="n">current_state</span> <span class="o">=</span> <span class="n">next_state</span>
+        <span class="n">time_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="n">state_trajectory</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_state</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">time_points</span><span class="p">,</span> <span class="n">state_trajectory</span><span class="p">,</span> <span class="n">transitions</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Simulating Reversible System (Thermal Equilibrium) ---&quot;</span><span class="p">)</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">])</span>
+<span class="n">E_barrier_base</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span> <span class="n">prefactor</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">E</span><span class="p">));</span> <span class="n">pi_theory</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">E</span><span class="p">)</span> <span class="o">/</span> <span class="n">Z</span>
+
+<span class="n">rates</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">rates</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">E_barrier_base</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="n">E</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">E</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">E</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">rates</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">E_barrier_base</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="n">E</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">E</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">E</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">rates</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">E_barrier_base</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="n">E</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">E</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">-</span> <span class="n">E</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">rates</span><span class="p">[(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">E_barrier_base</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="n">E</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">E</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">-</span> <span class="n">E</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+<span class="n">rates</span><span class="p">[(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">E_barrier_base</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="n">E</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">E</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">E</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+<span class="n">rates</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">E_barrier_base</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="n">E</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">E</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">E</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+<span class="n">Q_rev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">),</span> <span class="n">rate</span> <span class="ow">in</span> <span class="n">rates</span><span class="o">.</span><span class="n">items</span><span class="p">():</span> <span class="n">Q_rev</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">rate</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span> <span class="n">Q_rev</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Q_rev</span><span class="p">[:,</span><span class="n">i</span><span class="p">])</span>
+
+<span class="n">prod_cw</span>  <span class="o">=</span> <span class="n">rates</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span><span class="o">*</span><span class="n">rates</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span><span class="o">*</span><span class="n">rates</span><span class="p">[(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)]</span>
+<span class="n">prod_ccw</span> <span class="o">=</span> <span class="n">rates</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span><span class="o">*</span><span class="n">rates</span><span class="p">[(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span><span class="o">*</span><span class="n">rates</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kolmogorov&#39;s Loop Criterion Check:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Clockwise rate product = </span><span class="si">{</span><span class="n">prod_cw</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Counter-clockwise rate product = </span><span class="si">{</span><span class="n">prod_ccw</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Ratio (should be 1.0): </span><span class="si">{</span><span class="n">prod_cw</span><span class="o">/</span><span class="n">prod_ccw</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">T_max_rev</span> <span class="o">=</span> <span class="mi">200000</span>
+<span class="n">times</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">transitions</span> <span class="o">=</span> <span class="n">gillespie_simulation</span><span class="p">(</span><span class="n">Q_rev</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">T_max_rev</span><span class="p">)</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">cnt</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">transitions</span><span class="p">)</span>
+<span class="n">cw</span>  <span class="o">=</span> <span class="n">cnt</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="n">cnt</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="n">cnt</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ccw</span> <span class="o">=</span> <span class="n">cnt</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="n">cnt</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="n">cnt</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;In a simulation of T=</span><span class="si">{</span><span class="n">T_max_rev</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Total clockwise jumps: </span><span class="si">{</span><span class="n">cw</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Total counter-clockwise jumps: </span><span class="si">{</span><span class="n">ccw</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The counts are very close, indicating no net probability flux.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">occupancy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">times</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span> <span class="n">occupancy</span><span class="p">[</span><span class="n">states</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">times</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">times</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="n">occupancy</span><span class="p">[</span><span class="n">states</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">T_max_rev</span> <span class="o">-</span> <span class="n">times</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">pi_sim</span> <span class="o">=</span> <span class="n">occupancy</span> <span class="o">/</span> <span class="n">T_max_rev</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Steady-State Distribution (Boltzmann) Comparison:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Theoretical pi = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">pi_theory</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Simulated pi   = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">pi_sim</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-v0_8-whitegrid&#39;</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">9</span><span class="p">));</span> <span class="n">gs</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_gridspec</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,:])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">U</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">6</span> <span class="o">-</span> <span class="mi">12</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">47</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">4</span> <span class="o">-</span> <span class="mi">60</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">16</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+<span class="n">U</span> <span class="o">-=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+<span class="n">U</span><span class="p">[</span><span class="n">x</span><span class="o">&lt;</span><span class="mf">1.5</span><span class="p">]</span> <span class="o">+=</span> <span class="n">E</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">U</span><span class="p">[</span><span class="n">x</span><span class="o">&lt;</span><span class="mf">1.5</span><span class="p">])</span><span class="o">+</span><span class="mf">2.5</span>
+<span class="n">U</span><span class="p">[(</span><span class="n">x</span><span class="o">&gt;=</span><span class="mf">1.5</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">x</span><span class="o">&lt;=</span><span class="mf">3.5</span><span class="p">)]</span> <span class="o">+=</span> <span class="n">E</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">U</span><span class="p">[(</span><span class="n">x</span><span class="o">&gt;=</span><span class="mf">1.5</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">x</span><span class="o">&lt;=</span><span class="mf">3.5</span><span class="p">)])</span><span class="o">+</span><span class="mf">2.5</span>
+<span class="n">U</span><span class="p">[</span><span class="n">x</span><span class="o">&gt;</span><span class="mf">3.5</span><span class="p">]</span> <span class="o">+=</span> <span class="n">E</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">U</span><span class="p">[</span><span class="n">x</span><span class="o">&gt;</span><span class="mf">3.5</span><span class="p">])</span><span class="o">+</span><span class="mf">2.5</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">U</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Physical Model: Particle in a Triple-Well Potential&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Position (arbitrary units)&#39;</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Potential Energy $U(x)$&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">E</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">2.8</span><span class="p">,</span> <span class="s1">&#39;Well A (State 0)&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">E</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">2.8</span><span class="p">,</span> <span class="s1">&#39;Well B (State 1)&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="n">E</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="mf">2.8</span><span class="p">,</span> <span class="s1">&#39;Well C (State 2)&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Well A (0)&#39;</span><span class="p">,</span><span class="s1">&#39;Well B (1)&#39;</span><span class="p">,</span><span class="s1">&#39;Well C (2)&#39;</span><span class="p">]</span>
+<span class="n">limit</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="n">T_max_rev</span><span class="p">);</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">times</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">limit</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">times</span><span class="p">)[</span><span class="n">idx</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">states</span><span class="p">)[</span><span class="n">idx</span><span class="p">],</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Sample Trajectory (First </span><span class="si">{</span><span class="n">limit</span><span class="si">}</span><span class="s1"> time units)&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;State&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">)</span>
+
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">pi_sim</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cornflowerblue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Simulation Result&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">pi_theory</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Theory (Boltzmann $\pi$)&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Steady-State Probability Distribution&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">);</span> <span class="n">ax3</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>Code execution output:</p>
+<div class="highlight"><pre><span></span><code>--- Simulating Reversible System (Thermal Equilibrium) ---
+Kolmogorov&#39;s Loop Criterion Check:
+  Clockwise rate product = 0.0498
+  Counter-clockwise rate product = 0.0498
+  Ratio (should be 1.0): 1.0000
+
+In a simulation of T=200000:
+  Total clockwise jumps: 69792
+  Total counter-clockwise jumps: 69734
+The counts are very close, indicating no net probability flux.
+
+Steady-State Distribution (Boltzmann) Comparison:
+  Theoretical pi = [0.3315 0.5465 0.122 ]
+  Simulated pi   = [0.3318 0.5461 0.122 ]
+</code></pre></div>
+<p><img alt="Code execution output" src="../../assets/images/remote/213a78ef-278d-4eea-8b03-8dd127f0a9b2-15341ba412.png" /></p>
+<p>Top: the energy landscape with three wells (B deepest, C shallowest). Bottom‑left: a sample trajectory (thermal hopping). Bottom‑right: simulated steady distribution (bars) matches the Boltzmann prediction (red dots).</p>
+<h2 id="32-irreversible-system-driven-ring">3.2 Irreversible System: Driven Ring<a class="headerlink" href="#32-irreversible-system-driven-ring" title="Permanent link">&para;</a></h2>
+<p>We model a charged particle on three discrete sites (A,B,C) arranged in a ring and subject to a constant circulating field (nonconservative force). The field biases clockwise jumps; thermal fluctuations allow occasional counter‑clockwise jumps, but there is a persistent net current. Energy input is continuously dissipated as heat: a prototypical NESS.</p>
+<p>Implementation:</p>
+<p>1) Set clockwise rates <span class="arithmatex">\(w_{\mathrm{cw}}\)</span> ≫ counter‑clockwise <span class="arithmatex">\(w_{\mathrm{ccw}}\)</span>.
+2) Verify violation of Kolmogorov’s criterion and simulate.
+3) Analyze net clockwise vs counter‑clockwise jumps; compute cumulative entropy production and its slope <span class="arithmatex">\(\sigma\)</span>.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">patches</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gillespie_simulation</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">initial_state</span><span class="p">,</span> <span class="n">T_max</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simulates a continuous-time Markov process using the Gillespie algorithm.&quot;&quot;&quot;</span>
+    <span class="n">num_states</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">states</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_states</span><span class="p">)</span>
+    <span class="n">current_state</span> <span class="o">=</span> <span class="n">initial_state</span><span class="p">;</span> <span class="n">t</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">time_points</span><span class="o">=</span><span class="p">[</span><span class="n">t</span><span class="p">];</span> <span class="n">state_traj</span><span class="o">=</span><span class="p">[</span><span class="n">current_state</span><span class="p">];</span> <span class="n">transitions</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">T_max</span><span class="p">:</span>
+        <span class="n">rates_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">Q</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">current_state</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">states</span> <span class="k">if</span> <span class="n">j</span> <span class="o">!=</span> <span class="n">current_state</span><span class="p">])</span>
+        <span class="n">tot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">rates_out</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">tot</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">break</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">tot</span><span class="p">);</span> <span class="n">t</span> <span class="o">+=</span> <span class="n">dt</span>
+        <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="n">T_max</span><span class="p">:</span> <span class="k">break</span>
+        <span class="n">next_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">states</span> <span class="k">if</span> <span class="n">j</span> <span class="o">!=</span> <span class="n">current_state</span><span class="p">],</span> <span class="n">p</span><span class="o">=</span><span class="n">rates_out</span><span class="o">/</span><span class="n">tot</span><span class="p">)</span>
+        <span class="n">transitions</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">current_state</span><span class="p">,</span><span class="n">next_state</span><span class="p">));</span> <span class="n">current_state</span><span class="o">=</span><span class="n">next_state</span>
+        <span class="n">time_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="n">state_traj</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_state</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">time_points</span><span class="p">,</span> <span class="n">state_traj</span><span class="p">,</span> <span class="n">transitions</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Simulating Irreversible System (Non-Equilibrium Steady State) ---&quot;</span><span class="p">)</span>
+<span class="n">Q_irrev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">w_cw</span><span class="p">,</span> <span class="n">w_ccw</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.5</span>
+<span class="n">w01_i</span><span class="p">,</span> <span class="n">w12_i</span><span class="p">,</span> <span class="n">w20_i</span> <span class="o">=</span> <span class="n">w_cw</span><span class="p">,</span> <span class="n">w_cw</span><span class="p">,</span> <span class="n">w_cw</span>
+<span class="n">w10_i</span><span class="p">,</span> <span class="n">w21_i</span><span class="p">,</span> <span class="n">w02_i</span> <span class="o">=</span> <span class="n">w_ccw</span><span class="p">,</span> <span class="n">w_ccw</span><span class="p">,</span> <span class="n">w_ccw</span>
+<span class="n">Q_irrev</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">w01_i</span><span class="p">;</span> <span class="n">Q_irrev</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">w10_i</span>
+<span class="n">Q_irrev</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">w12_i</span><span class="p">;</span> <span class="n">Q_irrev</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="n">w21_i</span>
+<span class="n">Q_irrev</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="n">w20_i</span><span class="p">;</span> <span class="n">Q_irrev</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">w02_i</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span> <span class="n">Q_irrev</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Q_irrev</span><span class="p">[:,</span><span class="n">i</span><span class="p">])</span>
+<span class="n">prod_cw</span>  <span class="o">=</span> <span class="n">w01_i</span><span class="o">*</span><span class="n">w12_i</span><span class="o">*</span><span class="n">w20_i</span>
+<span class="n">prod_ccw</span> <span class="o">=</span> <span class="n">w02_i</span><span class="o">*</span><span class="n">w21_i</span><span class="o">*</span><span class="n">w10_i</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kolmogorov&#39;s Loop Criterion Check:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Clockwise rate product = </span><span class="si">{</span><span class="n">prod_cw</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Counter-clockwise rate product = </span><span class="si">{</span><span class="n">prod_ccw</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The products are unequal, confirming the system is irreversible.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">T</span><span class="o">=</span><span class="mi">5000</span>
+<span class="n">times</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">transitions</span> <span class="o">=</span> <span class="n">gillespie_simulation</span><span class="p">(</span><span class="n">Q_irrev</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+<span class="n">cnt</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">transitions</span><span class="p">)</span>
+<span class="n">cw</span>  <span class="o">=</span> <span class="n">cnt</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="n">cnt</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="n">cnt</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ccw</span> <span class="o">=</span> <span class="n">cnt</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="n">cnt</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="n">cnt</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;In a simulation of T=</span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Total clockwise jumps: </span><span class="si">{</span><span class="n">cw</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Total counter-clockwise jumps: </span><span class="si">{</span><span class="n">ccw</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A strong net clockwise probability current is observed.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Cumulative entropy production</span>
+<span class="n">entropy_times</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">];</span> <span class="n">cumulative_entropy</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span>
+<span class="n">avg_sigma</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">transitions</span><span class="p">:</span>
+    <span class="c1"># local increment: ln(w_{i-&gt;j}/w_{j-&gt;i})</span>
+    <span class="n">inc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Q_irrev</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">Q_irrev</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span> <span class="k">if</span> <span class="n">Q_irrev</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mf">0.0</span>
+    <span class="n">cumulative_entropy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cumulative_entropy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">inc</span><span class="p">)</span>
+<span class="n">entropy_times</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">times</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="n">avg_sigma</span> <span class="o">=</span> <span class="n">cumulative_entropy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">entropy_times</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">entropy_times</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mf">0.0</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">));</span> <span class="n">gs</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_gridspec</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">1</span><span class="p">:(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">2</span><span class="p">:(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.866</span><span class="p">)}</span>
+<span class="k">for</span> <span class="n">s</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="n">pos</span><span class="o">.</span><span class="n">items</span><span class="p">():</span> <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;ko&#39;</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="mf">0.08</span><span class="p">,</span><span class="sa">f</span><span class="s1">&#39;State </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<span class="c1"># Clockwise (strong)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">patches</span><span class="o">.</span><span class="n">FancyArrowPatch</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;arc3,rad=.3&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">arrowstyle</span><span class="o">=</span><span class="s1">&#39;-&gt;,head_length=10,head_width=8&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">patches</span><span class="o">.</span><span class="n">FancyArrowPatch</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;arc3,rad=.3&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">arrowstyle</span><span class="o">=</span><span class="s1">&#39;-&gt;,head_length=10,head_width=8&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">patches</span><span class="o">.</span><span class="n">FancyArrowPatch</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;arc3,rad=.3&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">arrowstyle</span><span class="o">=</span><span class="s1">&#39;-&gt;,head_length=10,head_width=8&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">))</span>
+<span class="c1"># Counter-clockwise (weak)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">patches</span><span class="o">.</span><span class="n">FancyArrowPatch</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;arc3,rad=.3&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">arrowstyle</span><span class="o">=</span><span class="s1">&#39;-&gt;,head_length=5,head_width=4&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">patches</span><span class="o">.</span><span class="n">FancyArrowPatch</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;arc3,rad=.3&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">arrowstyle</span><span class="o">=</span><span class="s1">&#39;-&gt;,head_length=5,head_width=4&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">patches</span><span class="o">.</span><span class="n">FancyArrowPatch</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;arc3,rad=.3&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">arrowstyle</span><span class="o">=</span><span class="s1">&#39;-&gt;,head_length=5,head_width=4&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="s1">&#39;Driving Force&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;italic&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkred&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.0</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Physical Model: Driven Particle on a Ring&#39;</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">entropy_times</span><span class="p">,</span> <span class="n">cumulative_entropy</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Cumulative Entropy Production $\Delta s(t)$&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">entropy_times</span><span class="p">,</span> <span class="n">avg_sigma</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">entropy_times</span><span class="p">),</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">fr</span><span class="s1">&#39;Average Rate $\sigma \approx </span><span class="si">{</span><span class="n">avg_sigma</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Entropy Production in the Driven System&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Total Entropy Production, $\Delta s(t)$&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>Code execution output</p>
+<div class="highlight"><pre><span></span><code>--- Simulating Irreversible System (Non-Equilibrium Steady State) ---
+Kolmogorov&#39;s Loop Criterion Check:
+  Clockwise rate product = 1000.0000
+  Counter-clockwise rate product = 0.1250
+The products are unequal, confirming the system is irreversible.
+
+In a simulation of T=5000:
+  Total clockwise jumps: 50008
+  Total counter-clockwise jumps: 2508
+A strong net clockwise probability current is observed.
+
+Simulated average entropy production rate (sigma) ~ 28.4600
+</code></pre></div>
+<p><img alt="Code execution output" src="../../assets/images/remote/5a440c99-1910-4a67-bce4-ad6c16e0a896-a2c17b4778.png" /></p>
+<p>Left: the driven ring (strong clockwise arrows, weak counter‑clockwise dashed arrows). Right: cumulative entropy production grows roughly linearly; the slope is the average production rate <span class="arithmatex">\(\sigma\)</span>.</p>
+<h1 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h1>
+<p>We moved from equilibrium to nonequilibrium physics.</p>
+<ul>
+<li>Equilibrium: detailed balance, no net currents (<span class="arithmatex">\(J_{ij}=0\)</span>), zero average entropy production (<span class="arithmatex">\(\sigma=0\)</span>), time‑reversal symmetry; Q can be symmetrized.</li>
+<li>Nonequilibrium: detailed balance broken, sustained currents (<span class="arithmatex">\(J_{ij}\ne 0\)</span>), strictly positive entropy production rate (<span class="arithmatex">\(\sigma&gt;0\)</span>), a clear arrow of time.</li>
+<li>Trajectory‑level thermodynamics: define system, environment, and total entropy along single trajectories; obtain the mean rate <span class="arithmatex">\(\sigma=\sum J\cdot A\)</span> (flux times force), the universal dissipative structure.</li>
+</ul>
+<p>Entropy production is the necessary cost to maintain function and directionality — from molecular motors and ion pumps to information processing, electric circuits, combustion, and weather systems. To stay far from heat death, complex systems must draw energy and dissipate entropy. In nonequilibrium, entropy production is not merely decay; it is the prerequisite for complexity, function, and life.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.highlight"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../assets/javascripts/mathjax.js"></script>
+      
+        <script src="../../assets/javascripts/language-nav.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>
