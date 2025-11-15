@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import comb
 
-# --- Simulation parameters (inferred from PPT) ---
+# --- Simulation parameters ---
 p = 0.75  # Probability of moving right
 q = 1 - p # Probability of moving left
 a = 1     # Step size
