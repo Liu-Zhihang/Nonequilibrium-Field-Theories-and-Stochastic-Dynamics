@@ -1,0 +1,3343 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Course Notes and Code (Erwin Frey, LMU Munich, 2025)">
+      
+      
+        <meta name="author" content="Zhihang Liu">
+      
+      
+        <link rel="canonical" href="https://liu-zhihang.github.io/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/notes/2.%20Simple%20Random%20Walk/">
+      
+      
+        <link rel="prev" href="../1.%20Course%20Introduction/">
+      
+      
+        <link rel="next" href="../3.%20Gaussian%20Random%20Walk%20and%20Poisson%20Process/">
+      
+      
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en">
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>2. Simple Random Walk - Nonequilibrium Field Theories and Stochastic Dynamics</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/video.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-from-random-steps-to-physical-laws" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-header__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nonequilibrium Field Theories and Stochastic Dynamics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. Simple Random Walk
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-nav__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nonequilibrium Field Theories and Stochastic Dynamics
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.%20Course%20Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Simple Random Walk
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Simple Random Walk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#defining-random-walk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Defining Random Walk
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mathematical-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mathematical Formulation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mathematical Formulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#table-1-key-variables-and-parameters-of-the-simple-random-walk-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table 1: Key variables and parameters of the simple random walk model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-statistical-averages-and-the-emergence-of-physical-laws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Statistical Averages and the Emergence of Physical Laws
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-average-position-revealing-drift-phenomena" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Average Position: Revealing Drift Phenomena
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-variance-the-mathematical-fingerprint-of-diffusion-phenomena" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Variance: The Mathematical Fingerprint of Diffusion Phenomena
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-application-example-random-walk-of-e-coli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Application Example: Random Walk of E. coli
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-complete-probability-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Complete Probability Distribution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21-combinatorial-method-binomial-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Combinatorial Method: Binomial Distribution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-continuous-limit-emergence-of-gaussian-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Continuous Limit: Emergence of Gaussian Distribution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-python-computational-simulation-and-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Python Computational Simulation and Visualization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Python Computational Simulation and Visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Note
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#31-simulation-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Simulation Algorithm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-the-powerful-force-of-a-simple-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary: The Powerful Force of a Simple Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20Gaussian%20Random%20Walk%20and%20Poisson%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Gaussian Random Walk and Poisson Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20Gillespie%20Algorithm%2C%20Master%20Equation%2C%20Generating%20Functions%20and%20Population%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie Algorithm, Master Equation, Generating Functions and Population Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.%20Population%20Dynamics%20-%20Linear%20Death%20Process%20and%20Lotka-Volterra%20System/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Population Dynamics - Linear Death Process and Lotka-Volterra System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.%20Fundamental%20Equations%20of%20Markov%20Processes%20%E2%80%94%20Chapman%E2%80%93Kolmogorov%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Fundamental Equations of Markov Processes — Chapman–Kolmogorov Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.%20Forward%20Master%20Equation%20and%20the%20Q%20Matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Forward Master Equation and the Q Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.%20Perron%E2%80%93Frobenius%20Theorem%2C%20Steady%20States%2C%20and%20Detailed%20Balance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Perron–Frobenius Theorem, Steady States, and Detailed Balance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.%20Nonequilibrium%20States%20%E2%80%94%20Irreversibility%20and%20Entropy%20Production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Nonequilibrium States — Irreversibility and Entropy Production
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.%20Ehrenfest%20Model%2C%20Entropy%2C%20and%20KL%20Divergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Ehrenfest Model, Entropy, and KL Divergence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.%20Continuous%20Markov%20Processes%20and%20the%20Fokker%E2%80%93Planck%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Continuous Markov Processes and the Fokker–Planck Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12.%20Brownian%20Motion%20and%20the%20Ornstein%E2%80%93Uhlenbeck%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Brownian Motion and the Ornstein–Uhlenbeck Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13.%20Monte%20Carlo%20Sampling%20as%20a%20Stochastic%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Monte Carlo Sampling as a Stochastic Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14.%20Hamiltonian%20Monte%20Carlo%20Sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Hamiltonian Monte Carlo Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15.%20Chemotaxis%2C%20Run-and-Tumble%20Motion%2C%20and%20the%20Keller%E2%80%93Segel%20Model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Chemotaxis, Run-and-Tumble Motion, and the Keller–Segel Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16.%20The%20Schnitzer%20Model%2C%20Anomalous%20Diffusion%2C%20and%20Motility%E2%80%91Induced%20Phase%20Separation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. The Schnitzer Model, Anomalous Diffusion, and Motility‑Induced Phase Separation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17.%20Langevin%20Equation%2C%20Brownian%20Particle%2C%20and%20the%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Langevin Equation, Brownian Particle, and the Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18.%20Fokker%E2%80%93Planck%20Equation%20and%20the%20Smoluchowski%20Equation%20%E2%80%94%20From%20Random%20Trajectories%20to%20Probability%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Fokker–Planck Equation and the Smoluchowski Equation — From Random Trajectories to Probability Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19.%20Path%20Integral%20Formulation%20of%20Stochastic%20Processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Path Integral Formulation of Stochastic Processes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20.%20Stochastic%20Differential%20Equations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Stochastic Differential Equations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21.%20Ito%20Integral%20and%20Unified%20Stochastic%20Process%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Ito Integral and Unified Stochastic Process Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22.%20Path%20Integrals%20for%20Systems%20with%20Multiplicative%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Path Integrals for Systems with Multiplicative Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23.%20From%20Coarse-Graining%20to%20Fluctuation%20Dynamics%20of%20Continuous%20Field%20Theories/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. From Coarse-Graining to Fluctuation Dynamics of Continuous Field Theories
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24.%20Onsager%20Coefficients%2C%20Reciprocity%2C%20and%20the%20Dynamic%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Onsager Coefficients, Reciprocity, and the Dynamic Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25.%20Gradient%20Dynamics%2C%20Phase%20Transitions%2C%20and%20Relaxation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. Gradient Dynamics, Phase Transitions, and Relaxation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26.%20Critical%20Slowing%20Down%2C%20Dynamic%20Response%2C%20and%20Conservation%20Laws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Critical Slowing Down, Dynamic Response, and Conservation Laws
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27.%20Hydrodynamics%20of%20Simple%20Fluids%2C%20Inviscid%20Flow%2C%20and%20the%20Euler%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. Hydrodynamics of Simple Fluids, Inviscid Flow, and the Euler Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28.%20Viscous%20Fluids%2C%20the%20Navier%E2%80%93Stokes%20Equation%2C%20Entropy%20Balance%2C%20and%20Heat%20Conduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. Viscous Fluids, the Navier–Stokes Equation, Entropy Balance, and Heat Conduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29.%20Irreversible%20Linear%20Thermodynamics%20and%20Dry%20Diffusive%20Particle%20Systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. Irreversible Linear Thermodynamics and Dry Diffusive Particle Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30.%20Brownian%20Particles%20Suspended%20in%20a%20Fluid%20%E2%80%94%20Model%20H/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. Brownian Particles Suspended in a Fluid — Model H
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31.%20Dynamical%20Functionals%2C%20Additive%E2%80%91Noise%20Field%20Theory%2C%20and%20the%20Onsager%E2%80%93Machlup%20Functional/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. Dynamical Functionals, Additive‑Noise Field Theory, and the Onsager–Machlup Functional
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32.%20Janssen%E2%80%93De%20Dominicis%20Response%20Functional%20and%20the%20Fluctuation%E2%80%93Dissipation%20Relation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen–De Dominicis Response Functional and the Fluctuation–Dissipation Relation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33.%20Nonequilibrium%20Work%20and%20Fluctuation%20Theorems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. Nonequilibrium Work and Fluctuation Theorems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../34.%20Directed%20Percolation%2C%20Absorbing%20States%2C%20and%20Spectral%20Methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. Directed Percolation, Absorbing States, and Spectral Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../35.%20Path-Integral%20Representation%20of%20the%20Master%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. Path-Integral Representation of the Master Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../36.%20Coherent-State%20Path%20Integrals%2C%20Operator%20Algebra%2C%20and%20Imaginary%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. Coherent-State Path Integrals, Operator Algebra, and Imaginary Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../37.%20Kramers-Moyal%20Expansion%20and%20the%20Low-Noise%20Limit%20of%20Path%20Integrals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal Expansion and the Low-Noise Limit of Path Integrals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../38.%20Multi-Species%20Path%20Integrals%20and%20Cyclic%20Competition%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. Multi-Species Path Integrals and Cyclic Competition Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../39.%20From%20Particle%20Jumps%20to%20Continuous%20Field%20Theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. From Particle Jumps to Continuous Field Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../40.%20Unified%20Field%20Theory%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. Unified Field Theory Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    中文笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/1.%20%E8%AF%BE%E7%A8%8B%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 课程导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/2.%20%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 简单随机游走
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/3.%20%E9%AB%98%E6%96%AF%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0%E4%B8%8E%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 高斯随机游走与泊松过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/4.%20Gillespie%20%E7%AE%97%E6%B3%95%E3%80%81%E4%B8%BB%E6%96%B9%E7%A8%8B%E3%80%81%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%8D%E7%BE%A4%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie 算法、主方程、生成函数与种群动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/5.%20%E7%A7%8D%E7%BE%A4%E5%8A%A8%E6%80%81%E5%AD%A6%EF%BC%9A%E7%BA%BF%E6%80%A7%E6%AD%BB%E4%BA%A1%E8%BF%87%E7%A8%8B%E4%B8%8ELotka-Volterra%20%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 种群动态学：线性死亡过程与Lotka-Volterra 系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/6.%20%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E7%A8%8B%EF%BC%9A%E6%9F%A5%E6%99%AE%E6%9B%BC-%E7%A7%91%E5%B0%94%E8%8E%AB%E6%88%88%E7%BD%97%E5%A4%AB%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 马尔可夫过程的基本方程：查普曼-科尔莫戈罗夫方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/7.%20%E5%89%8D%E5%90%91%E4%B8%BB%E6%96%B9%E7%A8%8B%E4%B8%8EQ%E7%9F%A9%E9%98%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 前向主方程与Q矩阵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/8.%20%E4%BD%A9%E9%BE%99-%E5%BC%97%E7%BD%97%E8%B4%9D%E5%B0%BC%E4%B9%8C%E6%96%AF%E5%AE%9A%E7%90%86%E3%80%81%E7%A8%B3%E6%80%81%E4%B8%8E%E7%BB%86%E8%87%B4%E5%B9%B3%E8%A1%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 佩龙-弗罗贝尼乌斯定理、稳态与细致平衡
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/9.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81%EF%BC%9A%E4%B8%8D%E5%8F%AF%E9%80%86%E6%80%A7%E4%B8%8E%E7%86%B5%E4%BA%A7%E7%94%9F%E7%9A%84%E6%8E%A8%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 非平衡态：不可逆性与熵产生的推论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/10.%20%E5%9F%83%E4%BC%A6%E8%B4%B9%E6%96%AF%E7%89%B9%E6%A8%A1%E5%9E%8B%E3%80%81%E7%86%B5%E4%B8%8EKL%E6%95%A3%E5%BA%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 埃伦费斯特模型、熵与KL散度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/11.%20%E8%BF%9E%E7%BB%AD%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E4%B8%8E%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. 连续马尔可夫过程与福克-普朗克方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/12.%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8%E4%B8%8E%E5%A5%A5%E6%81%A9%E6%96%AF%E5%9D%A6-%E4%B9%8C%E4%BC%A6%E8%B4%9D%E5%85%8B%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. 布朗运动与奥恩斯坦-乌伦贝克过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/13.%20%E4%BD%9C%E4%B8%BA%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. 作为随机过程的蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/14.%20%E5%93%88%E5%AF%86%E5%B0%94%E9%A1%BF%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. 哈密尔顿蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/15.%20%E8%B6%8B%E5%8C%96%E6%80%A7%E3%80%81%E8%B7%91%E5%8A%A8-%E7%BF%BB%E6%BB%9A%E8%BF%90%E5%8A%A8%E4%B8%8EKeller-Segel%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. 趋化性、跑动-翻滚运动与Keller-Segel模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/16.%20Schnitzer%E6%A8%A1%E5%9E%8B%E3%80%81%E5%8F%8D%E5%B8%B8%E6%89%A9%E6%95%A3%E4%B8%8E%E8%BF%90%E5%8A%A8%E8%AF%B1%E5%AF%BC%E7%9B%B8%E5%88%86%E7%A6%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Schnitzer模型、反常扩散与运动诱导相分离
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/17.%20%E6%9C%97%E4%B9%8B%E4%B8%87%E6%96%B9%E7%A8%8B%E3%80%81%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. 朗之万方程、布朗粒子与涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/18.%20%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B%E4%B8%8E%E6%96%AF%E6%91%A9%E6%A3%B1%E9%9C%8D%E5%A4%AB%E6%96%AF%E5%9F%BA%E6%96%B9%E7%A8%8B%EF%BC%9A%E4%BB%8E%E9%9A%8F%E6%9C%BA%E8%BD%A8%E8%BF%B9%E5%88%B0%E6%A6%82%E7%8E%87%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. 福克-普朗克方程与斯摩棱霍夫斯基方程：从随机轨迹到概率动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/19.%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. 随机过程的路径积分表述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/20.%20%E9%9A%8F%E6%9C%BA%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. 随机微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/21.%20%E4%BC%8A%E8%97%A4%E7%A7%AF%E5%88%86%E4%B8%8E%E7%BB%9F%E4%B8%80%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. 伊藤积分与统一的随机过程框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/22.%20%E5%90%AB%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. 含乘性噪声系统的路径积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/23.%20%E4%BB%8E%E7%B2%97%E7%B2%92%E5%8C%96%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA%E6%B6%A8%E8%90%BD%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. 从粗粒化到连续场论涨落动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/24.%20%E6%98%82%E8%90%A8%E6%A0%BC%E7%B3%BB%E6%95%B0%E3%80%81%E5%80%92%E6%98%93%E5%85%B3%E7%B3%BB%E4%B8%8E%E5%8A%A8%E6%80%81%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. 昂萨格系数、倒易关系与动态涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/25.%20%E6%A2%AF%E5%BA%A6%E5%8A%A8%E5%8A%9B%E5%AD%A6%E3%80%81%E7%9B%B8%E5%8F%98%E4%B8%8E%E5%BC%9B%E8%B1%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. 梯度动力学、相变与弛豫
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/26.%20%E4%B8%B4%E7%95%8C%E6%85%A2%E5%8C%96%E3%80%81%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%B8%8E%E5%AE%88%E6%81%92%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. 临界慢化、动态响应与守恒律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/27.%20%E7%AE%80%E5%8D%95%E6%B5%81%E4%BD%93%E3%80%81%E6%97%A0%E6%91%A9%E6%93%A6%E6%B5%81%E4%BD%93%E4%B8%8E%E6%AC%A7%E6%8B%89%E6%96%B9%E7%A8%8B%E7%9A%84%E6%B5%81%E4%BD%93%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. 简单流体、无摩擦流体与欧拉方程的流体动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/28.%20%E7%B2%98%E6%80%A7%E6%B5%81%E4%BD%93%E3%80%81%E7%BA%B3%E7%BB%B4-%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%96%B9%E7%A8%8B%E3%80%81%E7%86%B5%E5%B9%B3%E8%A1%A1%E4%B8%8E%E7%83%AD%E4%BC%A0%E5%AF%BC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. 粘性流体、纳维-斯托克斯方程、熵平衡与热传导
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/29.%20%E4%B8%8D%E5%8F%AF%E9%80%86%E7%BA%BF%E6%80%A7%E7%83%AD%E5%8A%9B%E5%AD%A6%E4%B8%8E%E5%B9%B2%E6%80%A7%E6%89%A9%E6%95%A3%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. 不可逆线性热力学与干性扩散粒子系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/30.%20%E6%82%AC%E6%B5%AE%E5%9C%A8%E6%B5%81%E4%BD%93%E4%B8%AD%E7%9A%84%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%20%E2%80%94%20H%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. 悬浮在流体中的布朗粒子 — H模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/31.%20%E5%8A%A8%E6%80%81%E6%B3%9B%E5%87%BD%E3%80%81%E5%8A%A0%E6%80%A7%E5%99%AA%E5%A3%B0%E5%9C%BA%E8%AE%BA%E4%B8%8EOnsager-Machlup%E6%B3%9B%E5%87%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. 动态泛函、加性噪声场论与Onsager-Machlup泛函
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/32.%20Janssen-De%20Dominicis%20%E5%93%8D%E5%BA%94%E6%B3%9B%E5%87%BD%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen-De Dominicis 响应泛函与涨落-耗散关系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/33.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E5%8A%9F%E4%B8%8E%E6%B6%A8%E8%90%BD%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. 非平衡功与涨落定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/34.%20%E6%9C%89%E5%90%91%E6%B8%97%E6%B5%81%E3%80%81%E5%90%B8%E6%94%B6%E6%80%81%E4%B8%8E%E8%B0%B1%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. 有向渗流、吸收态与谱方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/35.%20%E4%B8%BB%E6%96%B9%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E7%A4%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. 主方程的路径积分表示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/36.%20%E7%9B%B8%E5%B9%B2%E6%80%81%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E3%80%81%E7%AE%97%E7%AC%A6%E4%BB%A3%E6%95%B0%E4%B8%8E%E8%99%9A%E5%99%AA%E5%A3%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. 相干态路径积分、算符代数与虚噪声
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/37.%20Kramers-Moyal%20%E5%B1%95%E5%BC%80%E4%B8%8E%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E7%9A%84%E4%BD%8E%E5%99%AA%E5%A3%B0%E6%9E%81%E9%99%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal 展开与路径积分的低噪声极限
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/38.%20%E5%A4%9A%E7%89%A9%E7%A7%8D%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E4%B8%8E%E5%BE%AA%E7%8E%AF%E7%AB%9E%E4%BA%89%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. 多物种路径积分与循环竞争动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/39.%20%E4%BB%8E%E7%B2%92%E5%AD%90%E8%B7%B3%E8%B7%83%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. 从粒子跳跃到连续场论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/40.%20%E7%BB%9F%E4%B8%80%E7%9A%84%E5%9C%BA%E8%AE%BA%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. 统一的场论框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="introduction-from-random-steps-to-physical-laws">Introduction: From Random Steps to Physical Laws<a class="headerlink" href="#introduction-from-random-steps-to-physical-laws" title="Permanent link">&para;</a></h1>
+<p>A stochastic process (随机过程(stochastic process)) is a mathematical framework for describing systems that evolve probabilistically over time. Among the many stochastic processes, the random walk (随机游走(random walk)) is undoubtedly the most typical and fundamental model. Its applications are ubiquitous, from the diffusion of molecules within cells to price fluctuations in financial markets, where its basic ideas play a central role. This note aims to systematically organize and explain the one-dimensional simple random walk model based on Prof. Erwin Frey's lecture content.</p>
+<h2 id="defining-random-walk">Defining Random Walk<a class="headerlink" href="#defining-random-walk" title="Permanent link">&para;</a></h2>
+<p>Based on Prof. Frey's blackboard work at the beginning of the lecture, we can construct the basic model of a one-dimensional random walk.</p>
+<p><img alt="Lecture blackboard screenshot" src="../../assets/images/remote/c5cbb0cd-23ac-4839-93d2-2a0025a24dae-17832e1fc9.png" /></p>
+<p><strong>Basic model elements</strong>: Imagine a particle (or "walker") moving on a one-dimensional straight line. Its motion is not continuous but occurs at discrete time points <span class="arithmatex">\(t_k = k\tau\)</span>, where <span class="arithmatex">\(k = 1, 2, 3, \ldots\)</span> is the step number and <span class="arithmatex">\(\tau\)</span> is the time interval between each jump. The particle's position observed at any time <span class="arithmatex">\(t_k\)</span> is denoted as <span class="arithmatex">\(X_k\)</span>.</p>
+<p><strong>Core random variable: step length <span class="arithmatex">\(\xi_k\)</span> (核心随机变量:步长 <span class="arithmatex">\(\xi_k\)</span>)</strong>: The displacement of each jump, i.e., the step length <span class="arithmatex">\(\xi_k\)</span>, is a random variable. The key assumption of this model is that all step lengths <span class="arithmatex">\(\xi_k\)</span> are <strong>independent and identically distributed (IID) (独立同分布(Independent and Identically Distributed, IID))</strong> random variables. "Identically distributed" means that each jump follows the same probability rules; "independent" means that the result of any step does not affect any other step.</p>
+<p><strong>Discrete vs. continuous step lengths (离散步长与连续步长)</strong>: The distribution of step lengths can be either discrete or continuous.</p>
+<p><strong>Discrete case (离散情况)</strong>: Step lengths can only take a finite number of specific values. The simplest case is that the particle can only move right by distance <span class="arithmatex">\(a\)</span> or left by distance <span class="arithmatex">\(a\)</span> in each step. That is, <span class="arithmatex">\(\xi_k \in \{+a, -a\}\)</span>. The probability of moving right is <span class="arithmatex">\(p\)</span>, and the probability of moving left is <span class="arithmatex">\(q\)</span>, with <span class="arithmatex">\(p + q = 1\)</span>. This is the core of this lecture - the <strong>simple random walk (简单随机游走(Simple Random Walk))</strong>.</p>
+<p><strong>Continuous case (连续情况)</strong>: Step lengths can take any real value, with their probability described by a probability density function <span class="arithmatex">\(W(\xi)\)</span>, i.e., the probability that the step length falls in the interval <span class="arithmatex">\([\xi, \xi + d\xi]\)</span> is <span class="arithmatex">\(W(\xi)d\xi\)</span>.</p>
+<h2 id="mathematical-formulation">Mathematical Formulation<a class="headerlink" href="#mathematical-formulation" title="Permanent link">&para;</a></h2>
+<p>The dynamic evolution of this model can be described by a simple recurrence relation:</p>
+<div class="arithmatex">\[
+X_k = X_{k-1} + \xi_k
+\]</div>
+<p>This formula expresses the "local" motion rule of the model: the new position equals the old position plus a random step length.</p>
+<p>If we assume the particle starts from the origin, i.e., <span class="arithmatex">\(X_0 = 0\)</span>, then by iteratively expanding the above recurrence relation, we can obtain the explicit solution for the particle's position at the <span class="arithmatex">\(k\)</span>-th step:</p>
+<div class="arithmatex">\[
+X_k = \sum_{j=1}^{k} \xi_j
+\]</div>
+<p>This formula reveals the most profound mathematical structure of the model: the macroscopic physical quantity we observe (position <span class="arithmatex">\(X_k\)</span>) is essentially the sum of a large number of microscopic, independent random variables (step lengths <span class="arithmatex">\(\xi_j\)</span>). It is precisely this "summation" structure that allows us to use powerful statistical tools such as the law of large numbers and the central limit theorem to analyze this seemingly completely random process and discover deterministic, predictable macroscopic laws. The IID assumption is the cornerstone of all this analysis, ensuring that the statistical properties of the process do not change over time, thus allowing us to derive physical constants such as drift velocity and diffusion coefficient that do not depend on time.</p>
+<p>For clarity, we summarize the key variables and parameters in the model as follows.</p>
+<h3 id="table-1-key-variables-and-parameters-of-the-simple-random-walk-model">Table 1: Key variables and parameters of the simple random walk model<a class="headerlink" href="#table-1-key-variables-and-parameters-of-the-simple-random-walk-model" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Description</th>
+<th>Definition/Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(k\)</span></td>
+<td>Step number</td>
+<td>Integer, <span class="arithmatex">\(1, 2, 3, \ldots\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\tau\)</span></td>
+<td>Time step</td>
+<td>Duration of each jump</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(t_k\)</span></td>
+<td>Physical time</td>
+<td><span class="arithmatex">\(k\tau\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(a\)</span></td>
+<td>Step size</td>
+<td>Fixed distance of single-step movement</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(p\)</span></td>
+<td>Probability of jumping right</td>
+<td><span class="arithmatex">\(P(\xi_k = +a)\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(q\)</span></td>
+<td>Probability of jumping left</td>
+<td><span class="arithmatex">\(P(\xi_k = -a)\)</span>, <span class="arithmatex">\(q = 1 - p\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\xi_k\)</span></td>
+<td>Step length of the <span class="arithmatex">\(k\)</span>-th step</td>
+<td>Random variable, takes values <span class="arithmatex">\(+a\)</span> or <span class="arithmatex">\(-a\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(X_k\)</span></td>
+<td>Position after the <span class="arithmatex">\(k\)</span>-th step</td>
+<td><span class="arithmatex">\(\sum_{j=1}^{k} \xi_j\)</span> (assuming <span class="arithmatex">\(X_0 = 0\)</span>)</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(v\)</span></td>
+<td>Drift velocity</td>
+<td><span class="arithmatex">\(\frac{a(p-q)}{\tau}\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(D\)</span></td>
+<td>Diffusion coefficient</td>
+<td><span class="arithmatex">\(\frac{2a^2pq}{\tau}\)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="1-statistical-averages-and-the-emergence-of-physical-laws">1. Statistical Averages and the Emergence of Physical Laws<a class="headerlink" href="#1-statistical-averages-and-the-emergence-of-physical-laws" title="Permanent link">&para;</a></h2>
+<p>For a stochastic process, we cannot accurately predict the exact position of the walker in a single experiment. However, by analyzing the statistical average behavior of a large number of such processes, we can extract deterministic physical information. We no longer ask "Where is the particle?" but rather "Where is the particle <strong>on average</strong>?" and "How dispersed are the possible positions of the particle?" These questions can be answered by calculating the moments of random variables (such as mean and variance).</p>
+<h2 id="11-average-position-revealing-drift-phenomena">1.1 Average Position: Revealing Drift Phenomena<a class="headerlink" href="#11-average-position-revealing-drift-phenomena" title="Permanent link">&para;</a></h2>
+<p>We first calculate the expected value (or mean) of the particle's position after <span class="arithmatex">\(k\)</span> steps, denoted as <span class="arithmatex">\(\langle X_k \rangle\)</span>.</p>
+<p><strong>Derivation process</strong>:</p>
+<p>Using the linearity property of expectation, the expected value of the total displacement equals the sum of the expected values of each step's displacement:</p>
+<div class="arithmatex">\[
+\langle X_k \rangle = \left\langle \sum_{j=1}^{k} \xi_j \right\rangle = \sum_{j=1}^{k} \langle \xi_j \rangle
+\]</div>
+<p>Calculate the expected value of single-step displacement <span class="arithmatex">\(\langle \xi_j \rangle\)</span>. According to the definition of expectation, it equals the sum of all possible values multiplied by their corresponding probabilities:</p>
+<div class="arithmatex">\[
+\langle \xi_j \rangle = (+a) \cdot P(\xi_j = a) + (-a) \cdot P(\xi_j = -a) = ap - aq = a(p-q)
+\]</div>
+<p>This value represents the average displacement per step.</p>
+<p>Since all step lengths are identically distributed, the expectation of each step is the same. Therefore, the expected value of the total displacement is:</p>
+<div class="arithmatex">\[
+\langle X_k \rangle = \sum_{j=1}^{k} a(p-q) = k \cdot a(p-q)
+\]</div>
+<p><strong>Physical interpretation</strong>:</p>
+<p>This mathematical result tells us that the particle's average position is proportional to the number of steps <span class="arithmatex">\(k\)</span>. Introducing physical time <span class="arithmatex">\(t_k = k\tau\)</span>, we can define an average velocity, the drift velocity <span class="arithmatex">\(v\)</span>:</p>
+<div class="arithmatex">\[
+v = \frac{\langle X_k \rangle}{t_k} = \frac{k a(p-q)}{k\tau} = \frac{a(p-q)}{\tau}
+\]</div>
+<p>This means that although the motion trajectory of a single particle is tortuous and unpredictable, from a macroscopic perspective, the particle population appears to be moving in a directed manner at a constant velocity <span class="arithmatex">\(v\)</span>. This macroscopic directed motion caused by probability asymmetry is <strong>drift (漂移(drift))</strong>.</p>
+<p><strong>Symmetric vs. asymmetric walks (对称与非对称游走)</strong>:</p>
+<p>The expression for the average position is entirely determined by the nature of the term <span class="arithmatex">\((p-q)\)</span>. This reveals two fundamental modes of model behavior:</p>
+<ol>
+<li>
+<p><strong>Symmetric random walk <span class="arithmatex">\((p = q = 1/2)\)</span> (对称随机游走 <span class="arithmatex">\((p=q=1/2)\)</span>)</strong>: In this case, <span class="arithmatex">\(p - q = 0\)</span>, so <span class="arithmatex">\(\langle X_k \rangle = 0\)</span>. The particle has equal probability of moving left and right, with no directional preference. On average, the particle always stays near the origin. This is a <strong>pure diffusion (纯扩散(pure diffusion))</strong> process.</p>
+</li>
+<li>
+<p><strong>Biased/asymmetric random walk <span class="arithmatex">\((p \neq q)\)</span> (有偏/非对称随机游走 <span class="arithmatex">\((p \neq q)\)</span>)</strong>: In this case, <span class="arithmatex">\(p - q \neq 0\)</span>, resulting in a non-zero drift velocity. The particle will move in the direction of higher probability on average. In the PPT slide (Image 4), the dashed line showing the average position <span class="arithmatex">\(\langle x \rangle\)</span> increasing linearly with time clearly depicts a biased random walk with <span class="arithmatex">\(p &gt; q\)</span>.</p>
+</li>
+</ol>
+<p>Therefore, the value of parameter <span class="arithmatex">\(p\)</span> connects the abstract mathematical model with specific physical scenarios. A dye molecule diffusing in a stationary solvent can be described by a symmetric model, while a charged particle moving in an external electric field (electrophoresis) or a particle suspended in a flowing liquid requires a biased model.</p>
+<h2 id="12-variance-the-mathematical-fingerprint-of-diffusion-phenomena">1.2 Variance: The Mathematical Fingerprint of Diffusion Phenomena<a class="headerlink" href="#12-variance-the-mathematical-fingerprint-of-diffusion-phenomena" title="Permanent link">&para;</a></h2>
+<p>Next, we analyze the variance <span class="arithmatex">\(\mathrm{Var}[X_k]\)</span> of the particle's position, which measures the dispersion or width of the position distribution.</p>
+<p><strong>Derivation process</strong>:</p>
+<p>According to the definition of variance: <span class="arithmatex">\(\mathrm{Var}[X_k] = \langle X_k^2 \rangle - \langle X_k \rangle^2\)</span>. We have already calculated <span class="arithmatex">\(\langle X_k \rangle\)</span>; now the task is to calculate the second moment <span class="arithmatex">\(\langle X_k^2 \rangle\)</span>.</p>
+<p>Expanding <span class="arithmatex">\(X_k^2\)</span>:</p>
+<div class="arithmatex">\[
+\langle X_k^2 \rangle = \left\langle \left( \sum_{j=1}^{k} \xi_j \right)^2 \right\rangle = \left\langle \left( \sum_{i=1}^{k} \xi_i \right) \left( \sum_{j=1}^{k} \xi_j \right) \right\rangle = \sum_{i=1}^{k} \sum_{j=1}^{k} \langle \xi_i \xi_j \rangle
+\]</div>
+<p><strong>Key step: separating diagonal and off-diagonal terms</strong>. This is a core technique in the solution process. We split the double sum into two parts:</p>
+<ul>
+<li>
+<p>Diagonal terms <span class="arithmatex">\((i = j)\)</span>: <span class="arithmatex">\(\sum_{j=1}^{k} \langle \xi_j^2 \rangle\)</span></p>
+</li>
+<li>
+<p>Off-diagonal terms <span class="arithmatex">\((i \neq j)\)</span>: <span class="arithmatex">\(\sum_{i \neq j} \langle \xi_i \xi_j \rangle\)</span></p>
+</li>
+</ul>
+<p><strong>Applying IID properties</strong>:</p>
+<p>For off-diagonal terms <span class="arithmatex">\((i \neq j)\)</span>, since step lengths <span class="arithmatex">\(\xi_i\)</span> and <span class="arithmatex">\(\xi_j\)</span> are mutually independent, the expectation of their product equals the product of their individual expectations:</p>
+<div class="arithmatex">\[
+\langle \xi_i \xi_j \rangle = \langle \xi_i \rangle \langle \xi_j \rangle = (a(p-q))^2
+\]</div>
+<p>For diagonal terms <span class="arithmatex">\((i = j)\)</span>, we calculate the expectation of the square of step length:</p>
+<div class="arithmatex">\[
+\langle \xi_j^2 \rangle = (+a)^2 \cdot p + (-a)^2 \cdot q = a^2(p+q) = a^2
+\]</div>
+<p><strong>Combining calculations</strong>: There are <span class="arithmatex">\(k\)</span> diagonal terms and <span class="arithmatex">\(k(k-1)\)</span> off-diagonal terms in total. Therefore,</p>
+<div class="arithmatex">\[
+\langle X_k^2 \rangle = k \cdot a^2 + k(k-1) \cdot (a(p-q))^2
+\]</div>
+<p><strong>Final variance calculation</strong>: Substituting <span class="arithmatex">\(\langle X_k^2 \rangle\)</span> and <span class="arithmatex">\(\langle X_k \rangle^2 = (ka(p-q))^2\)</span> into the variance definition:</p>
+<div class="arithmatex">\[
+\mathrm{Var}[X_k] = (k a^2 + k(k-1)a^2(p-q)^2) - (k a(p-q))^2
+\]</div>
+<div class="arithmatex">\[
+= k a^2 + (k^2-k)a^2(p-q)^2 - k^2 a^2(p-q)^2
+\]</div>
+<div class="arithmatex">\[
+= k a^2 - k a^2(p-q)^2 = k a^2 (1 - (p-q)^2)
+\]</div>
+<p>Using <span class="arithmatex">\(p + q = 1\)</span>, we have <span class="arithmatex">\(1 - (p-q)^2 = (p+q)^2 - (p-q)^2 = 4pq\)</span>. So we finally obtain:</p>
+<div class="arithmatex">\[
+\mathrm{Var}[X_k] = 4k a^2 pq
+\]</div>
+<p><strong>Physical interpretation</strong>:</p>
+<p>The most important feature of this result is that the variance is proportional to the number of steps <span class="arithmatex">\(k\)</span>, and therefore also proportional to physical time <span class="arithmatex">\(t_k\)</span>. This property of variance growing linearly with time is precisely the hallmark of a <strong>diffusive process</strong>.</p>
+<p>We can define the <strong>diffusion coefficient</strong> <span class="arithmatex">\(D\)</span> through the relation <span class="arithmatex">\(\mathrm{Var}[X_k] = 2D t_k\)</span>. By comparing with our derived result, we obtain:</p>
+<div class="arithmatex">\[
+2D = \frac{4k a^2 pq}{t_k} = \frac{4k a^2 pq}{k\tau} = \frac{4 a^2 pq}{\tau} \implies D = \frac{2 a^2 pq}{\tau}
+\]</div>
+<p>The diffusion coefficient <span class="arithmatex">\(D\)</span> is a physical quantity that measures the speed of random diffusion.</p>
+<p><strong>"Funnel of uncertainty" and square root scaling</strong>:</p>
+<p>The physical meaning of variance growing linearly with time (<span class="arithmatex">\(\mathrm{Var} \propto t\)</span>) is that the width of the particle position distribution, i.e., the standard deviation <span class="arithmatex">\(\sigma = \sqrt{\mathrm{Var}}\)</span>, grows with the square root of time (<span class="arithmatex">\(\sigma \propto \sqrt{t}\)</span>). This sub-linear growth pattern is a universal characteristic of diffusive processes, fundamentally different from ballistic motion (where position <span class="arithmatex">\(x \propto t\)</span>). The conical region formed by <span class="arithmatex">\(\langle x \rangle \pm \sigma\)</span> in the PPT is an excellent visualization of this fundamental scaling law. The <span class="arithmatex">\(\sqrt{t}\)</span> scaling explains why diffusion is efficient at microscopic scales (such as within cells) but extremely slow at macroscopic scales.</p>
+<p><img alt="Lecture PPT screenshot" src="../../assets/images/remote/0cbd59e2-579d-45b6-84d3-a86ce89bc828-c41be9331d.png" /></p>
+<h2 id="13-application-example-random-walk-of-e-coli">1.3 Application Example: Random Walk of E. coli<a class="headerlink" href="#13-application-example-random-walk-of-e-coli" title="Permanent link">&para;</a></h2>
+<p>To connect abstract theory with the real world, Prof. Frey performed an estimation in the lecture, which in physics is called a "back-of-the-envelope calculation" to test the model's reasonableness.</p>
+<p><strong>Problem</strong>: How long does it take for a molecule to diffuse across an E. coli cell?</p>
+<p><strong>Estimation</strong>: We know the cell size <span class="arithmatex">\(L \approx 1\,\mu\mathrm{m}\)</span> and the diffusion coefficient of similar-sized molecules in the cytoplasm <span class="arithmatex">\(D \approx 10\,\mu\mathrm{m}^2/\mathrm{s}\)</span>. We can estimate the characteristic time <span class="arithmatex">\(t\)</span> by setting the variance of the position distribution approximately equal to the square of the distance, i.e., <span class="arithmatex">\(L^2 \approx 2Dt\)</span>.</p>
+<p><strong>Calculation</strong>:</p>
+<div class="arithmatex">\[
+t \approx \frac{L^2}{2D} \approx \frac{(1\,\mu\mathrm{m})^2}{2 \cdot (10\,\mu\mathrm{m}^2/\mathrm{s})} = 0.05\,\mathrm{s}
+\]</div>
+<p><strong>Significance</strong>: This simple calculation demonstrates the power of the diffusion coefficient <span class="arithmatex">\(D\)</span> as a key physical parameter, connecting microscopic random steps with macroscopic diffusion time scales, enabling us to make quantitative predictions about real biological or chemical systems.</p>
+<h2 id="2-complete-probability-distribution">2. Complete Probability Distribution<a class="headerlink" href="#2-complete-probability-distribution" title="Permanent link">&para;</a></h2>
+<p>Mean and variance describe the center and width of the distribution, but to obtain complete information about the particle's position, we need to solve its complete probability distribution function <span class="arithmatex">\(P(X_k = x)\)</span>. It answers the question: "What is the exact probability of finding the particle at position <span class="arithmatex">\(x\)</span> after <span class="arithmatex">\(k\)</span> steps?"</p>
+<h2 id="21-combinatorial-method-binomial-distribution">2.1 Combinatorial Method: Binomial Distribution<a class="headerlink" href="#21-combinatorial-method-binomial-distribution" title="Permanent link">&para;</a></h2>
+<p>We can solve this problem precisely using combinatorial methods.</p>
+<p><strong>Problem setup</strong>: Suppose the particle takes <span class="arithmatex">\(k_+\)</span> steps to the right (<span class="arithmatex">\(+a\)</span>) and <span class="arithmatex">\(k_-\)</span> steps to the left (<span class="arithmatex">\(-a\)</span>) in <span class="arithmatex">\(k\)</span> steps. Then the total number of steps <span class="arithmatex">\(k = k_+ + k_-\)</span>. The final position is <span class="arithmatex">\(X_k = (k_+ - k_-)a\)</span>. For convenience, we define a dimensionless position <span class="arithmatex">\(n = k_+ - k_-\)</span>, so <span class="arithmatex">\(X_k = na\)</span>.</p>
+<p><strong>Derivation process</strong>:</p>
+<p><strong>Solving for <span class="arithmatex">\(k_+\)</span> and <span class="arithmatex">\(k_-\)</span></strong>: We can express <span class="arithmatex">\(k_+\)</span> and <span class="arithmatex">\(k_-\)</span> in terms of the known <span class="arithmatex">\(k\)</span> and <span class="arithmatex">\(n\)</span>:</p>
+<div class="arithmatex">\[
+k_+ = \frac{k+n}{2}, \quad k_- = \frac{k-n}{2}
+\]</div>
+<p>It is worth noting that for <span class="arithmatex">\(k_+\)</span> and <span class="arithmatex">\(k_-\)</span> to be integers, <span class="arithmatex">\(k\)</span> and <span class="arithmatex">\(n\)</span> must have the same parity (both even or both odd); otherwise, the particle cannot reach position <span class="arithmatex">\(na\)</span>, and its probability is zero.</p>
+<p><strong>Calculating the probability of a single path</strong>: Any specific path containing <span class="arithmatex">\(k_+\)</span> steps to the right and <span class="arithmatex">\(k_-\)</span> steps to the left (e.g., "right-right-left-right-..."), since each step is independent, has a probability of:</p>
+<div class="arithmatex">\[
+p^{k_+} q^{k_-} = p^{k_+} (1-p)^{k_-}
+\]</div>
+<p><strong>Calculating the total number of paths</strong>: How many different paths can reach the final position <span class="arithmatex">\(na\)</span>? This is a classic combinatorial problem: in <span class="arithmatex">\(k\)</span> total positions, choose <span class="arithmatex">\(k_+\)</span> positions to place "right steps." The number of ways is given by the binomial coefficient:</p>
+<div class="arithmatex">\[
+\binom{k}{k_+} = \frac{k!}{k_+!(k-k_+)!} = \frac{k!}{k_+! k_-!}
+\]</div>
+<p><strong>Final result (最终结果)</strong>: Multiplying the probability of a single path by the total number of paths, we obtain the total probability that the particle is at position <span class="arithmatex">\(na\)</span> after the <span class="arithmatex">\(k\)</span>-th step, which is precisely the <strong>binomial distribution (二项分布(Binomial Distribution))</strong>:</p>
+<div class="arithmatex">\[
+P(X_k = na) = \binom{k}{k_+} p^{k_+} (1-p)^{k_-}
+\]</div>
+<p><strong>Connection between microstates and macrostates (微观态与宏观态的联系)</strong>:</p>
+<p>The structure of this formula profoundly embodies the basic ideas of statistical mechanics. Each specific sequence of steps (such as RRLR...) is a microstate. The final net displacement (such as <span class="arithmatex">\(n = 2\)</span>) is a macrostate. The formula shows that the probability of a macrostate occurring equals the probability of a single microstate leading to that macrostate (<span class="arithmatex">\(p^{k_+} q^{k_-}\)</span>) multiplied by the degeneracy or multiplicity of that macrostate (<span class="arithmatex">\(\binom{k}{k_+}\)</span>), i.e., how many different microstates can produce the same macroscopic result. The most likely macrostates are those corresponding to the most microstate paths. The combinatorial coefficient here plays a role similar to "entropy."</p>
+<h2 id="22-continuous-limit-emergence-of-gaussian-distribution">2.2 Continuous Limit: Emergence of Gaussian Distribution<a class="headerlink" href="#22-continuous-limit-emergence-of-gaussian-distribution" title="Permanent link">&para;</a></h2>
+<p>The binomial distribution is exact, but when the number of steps <span class="arithmatex">\(k\)</span> is large, its calculation becomes very cumbersome. In physics, we are often more concerned with macroscopic behavior after many steps.</p>
+<p><strong>Central Limit Theorem (CLT)</strong>:</p>
+<p>The professor pointed out that when the number of steps <span class="arithmatex">\(k\)</span> is very large (<span class="arithmatex">\(k \gg 1\)</span>), the binomial distribution can be approximated by a Gaussian distribution, also called a normal distribution:</p>
+<div class="arithmatex">\[
+P(n) \approx \frac{1}{\sqrt{2\pi \mathrm{Var}[n]}} \exp\left(-\frac{(n-\langle n \rangle)^2}{2\mathrm{Var}[n]}\right)
+\]</div>
+<p>This transition is not merely a mathematical approximation (such as using Stirling's formula for factorials), but a manifestation of a deeper physical principle - the <strong>Central Limit Theorem</strong>. This theorem states that the distribution of the sum of a large number of independent and identically distributed random variables (in our model, <span class="arithmatex">\(X_k = \sum \xi_j\)</span>) will tend toward a Gaussian distribution, regardless of the distribution form of the individual random variables themselves (here, the distribution of individual step lengths is a simple two-point Bernoulli distribution). This explains why in nature, processes involving the accumulation of many random factors often exhibit Gaussian distributions.</p>
+<p><strong>Parameters of the Gaussian distribution</strong>:</p>
+<p>The mean and variance of this approximate Gaussian distribution are exactly the mean and variance we directly calculated in the first section.</p>
+<p><strong>Mean</strong>: <span class="arithmatex">\(\langle n \rangle = k(p-q)\)</span>, corresponding to a position mean of <span class="arithmatex">\(\langle X_k \rangle = a\langle n \rangle = ak(p-q)\)</span>.</p>
+<p><strong>Variance</strong>: <span class="arithmatex">\(\mathrm{Var}[n] = 4kpq\)</span>, corresponding to a position variance of <span class="arithmatex">\(\mathrm{Var}[X_k] = a^2\mathrm{Var}[n] = 4k a^2 pq\)</span>.</p>
+<p>This perfectly demonstrates the self-consistency of the model. The results obtained by directly calculating moments are completely consistent with the results obtained by solving the complete distribution and then taking the limit. <strong>This process clearly shows how macroscopic diffusion laws (whose solution is a Gaussian function) "emerge" from microscopic random walk rules.</strong></p>
+<h2 id="3-python-computational-simulation-and-visualization">3. Python Computational Simulation and Visualization<a class="headerlink" href="#3-python-computational-simulation-and-visualization" title="Permanent link">&para;</a></h2>
+<h3 id="note">Note<a class="headerlink" href="#note" title="Permanent link">&para;</a></h3>
+<p>The following content is written by the author after studying the course and is not part of the lecture content</p>
+<p>Theoretical analysis provides profound insights, while computational simulation is the "third method" of physics research, helping us build intuitive physical images and verify the correctness of theoretical predictions.</p>
+<h2 id="31-simulation-algorithm">3.1 Simulation Algorithm<a class="headerlink" href="#31-simulation-algorithm" title="Permanent link">&para;</a></h2>
+<p>The algorithm for simulating a single random walk trajectory is very simple:</p>
+<ol>
+<li>
+<p>Initialize position <span class="arithmatex">\(x = 0\)</span> and time <span class="arithmatex">\(t = 0\)</span>.</p>
+</li>
+<li>
+<p>Perform <span class="arithmatex">\(k\)</span> iterations.</p>
+</li>
+<li>
+<p>In each step, generate a random number in the interval <span class="arithmatex">\([0,1]\)</span>. If this number is less than <span class="arithmatex">\(p\)</span>, move one step to the right (<span class="arithmatex">\(x \leftarrow x + a\)</span>); otherwise, move one step to the left (<span class="arithmatex">\(x \leftarrow x - a\)</span>).</p>
+</li>
+<li>
+<p>Record the position at each step.</p>
+</li>
+</ol>
+<p>To analyze the overall behavior of a particle ensemble, we simply repeat the above process <span class="arithmatex">\(N_{\text{walkers}}\)</span> times.</p>
+<p>Below is a complete Python code using <code>numpy</code> and <code>matplotlib</code> libraries to simulate simple random walks and reproduce the two figures from the course PPT slides.</p>
+<p><img alt="Lecture PPT screenshot" src="../../assets/images/remote/0cbd59e2-579d-45b6-84d3-a86ce89bc828-c41be9331d.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">comb</span>
+
+<span class="c1"># --- Simulation parameters (inferred from PPT) ---</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.75</span>  <span class="c1"># Probability of moving right</span>
+<span class="n">q</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p</span> <span class="c1"># Probability of moving left</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>     <span class="c1"># Step size</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1"># Time interval</span>
+
+<span class="c1"># --- Figure 1: Probability distribution (left plot) ---</span>
+<span class="n">num_steps_dist</span> <span class="o">=</span> <span class="mi">50</span>       <span class="c1"># Total number of steps</span>
+<span class="n">num_walkers_dist</span> <span class="o">=</span> <span class="mi">50000</span>  <span class="c1"># Number of simulated particles for statistical distribution</span>
+
+<span class="c1"># Simulation</span>
+<span class="c1"># Generate displacement for each step (+a or -a)</span>
+<span class="n">steps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="o">-</span><span class="n">a</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">num_walkers_dist</span><span class="p">,</span> <span class="n">num_steps_dist</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">])</span>
+<span class="c1"># Calculate final position of each particle</span>
+<span class="n">final_positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">steps</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Plot histogram of simulation results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Use bins to center on even or odd positions</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">final_positions</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">final_positions</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">final_positions</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Simulation (N=</span><span class="si">{</span><span class="n">num_walkers_dist</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Calculate and plot theoretical binomial distribution</span>
+<span class="n">n_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">num_steps_dist</span><span class="p">,</span> <span class="n">num_steps_dist</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># Possible final positions n = k+ - k-</span>
+<span class="n">k_plus</span> <span class="o">=</span> <span class="p">(</span><span class="n">num_steps_dist</span> <span class="o">+</span> <span class="n">n_values</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">prob_theory</span> <span class="o">=</span> <span class="n">comb</span><span class="p">(</span><span class="n">num_steps_dist</span><span class="p">,</span> <span class="n">k_plus</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span><span class="o">**</span><span class="n">k_plus</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">q</span><span class="o">**</span><span class="p">(</span><span class="n">num_steps_dist</span> <span class="o">-</span> <span class="n">k_plus</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_values</span> <span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="n">prob_theory</span><span class="p">,</span> <span class="s1">&#39;ko&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical (Binomial)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Probability Distribution at k=</span><span class="si">{</span><span class="n">num_steps_dist</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Position x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability P(x, t)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+
+
+<span class="c1"># --- Figure 2: Trajectories and statistical moments (right plot) ---</span>
+<span class="n">num_steps_traj</span> <span class="o">=</span> <span class="mi">80</span>       <span class="c1"># Total number of steps</span>
+<span class="n">num_walkers_traj_show</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># Number of displayed trajectories</span>
+<span class="n">num_walkers_traj_stat</span> <span class="o">=</span> <span class="mi">2000</span> <span class="c1"># Number of particles for calculating mean and variance statistics</span>
+
+<span class="c1"># Simulation</span>
+<span class="n">steps_stat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="o">-</span><span class="n">a</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">num_walkers_traj_stat</span><span class="p">,</span> <span class="n">num_steps_traj</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">])</span>
+<span class="c1"># Calculate position of each particle at each step (cumulative sum)</span>
+<span class="n">trajectories</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">steps_stat</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Add initial position 0 before trajectories</span>
+<span class="n">trajectories</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">trajectories</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">time_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_steps_traj</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">tau</span>
+
+<span class="c1"># Plot sample trajectories</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_walkers_traj_show</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_points</span><span class="p">,</span> <span class="n">trajectories</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Calculate and plot statistical mean (from simulation)</span>
+<span class="n">mean_sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">trajectories</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># Calculate and plot theoretical mean</span>
+<span class="n">mean_theory</span> <span class="o">=</span> <span class="n">time_points</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="n">q</span><span class="p">)</span> <span class="o">/</span> <span class="n">tau</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_points</span><span class="p">,</span> <span class="n">mean_theory</span><span class="p">,</span> <span class="s1">&#39;k:&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\langle x \rangle$&#39;</span><span class="p">)</span>
+
+<span class="c1"># Calculate and plot theoretical standard deviation range</span>
+<span class="n">variance_theory</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="n">time_points</span><span class="o">/</span><span class="n">tau</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span> <span class="o">*</span> <span class="n">q</span>
+<span class="n">std_theory</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">variance_theory</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_points</span><span class="p">,</span> <span class="n">mean_theory</span> <span class="o">+</span> <span class="n">std_theory</span><span class="p">,</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\langle x \rangle \pm \sigma$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_points</span><span class="p">,</span> <span class="n">mean_theory</span> <span class="o">-</span> <span class="n">std_theory</span><span class="p">,</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Random Walk Trajectories and Moments&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Position&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Code execution output" src="../../assets/images/remote/e88e0f0f-bc3c-497c-9ccc-f33074829199-a89237a45f.png" /></p>
+<p>The probability distribution plot on the left is actually equivalent to taking a "vertical slice" at a specific time point (e.g., <span class="arithmatex">\(t = 50\)</span>) in the right plot and then counting the distribution of all simulated particle positions at that moment.</p>
+<h2 id="summary-the-powerful-force-of-a-simple-model">Summary: The Powerful Force of a Simple Model<a class="headerlink" href="#summary-the-powerful-force-of-a-simple-model" title="Permanent link">&para;</a></h2>
+<p>Prof. Erwin Frey's lecture, starting from an extremely simple model, led us to appreciate the core ideas of statistical physics: <strong>how to derive observable, deterministic physical laws in the macroscopic world from the basic random rules of the microscopic world</strong>.</p>
+<p>We saw that the <strong>mean of particle position grows linearly with time</strong> (<span class="arithmatex">\(\langle X_k \rangle \propto t\)</span>), which is the macroscopic manifestation of <strong>drift</strong>; while its <strong>variance also grows linearly with time</strong> (<span class="arithmatex">\(\mathrm{Var}[X_k] \propto t\)</span>), which is the universal characteristic of <strong>diffusion</strong>. The linear growth of variance is equivalent to the <strong>square root growth</strong> of standard deviation with time (<span class="arithmatex">\(\sigma_k \propto \sqrt{t}\)</span>), which is the key scaling law distinguishing diffusion from other transport processes.</p>
+<p>From defining the most basic random steps, to calculating their statistical moments, to solving the complete probability distribution and revealing its universality in the Gaussian distribution, this entire process is not only a mathematical derivation but also a brilliant lesson on how order emerges from disorder in the physical world. Although the simple random walk model is simple, it provides a solid foundation and profound physical intuition for understanding more complex stochastic phenomena.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.highlight"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../assets/javascripts/mathjax.js"></script>
+      
+        <script src="../../assets/javascripts/language-nav.js"></script>
+      
+        <script src="../../assets/javascripts/video-init.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

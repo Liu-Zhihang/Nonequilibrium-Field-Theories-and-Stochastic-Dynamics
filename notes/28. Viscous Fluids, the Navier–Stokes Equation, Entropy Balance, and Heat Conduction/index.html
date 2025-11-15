@@ -1,0 +1,3345 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Course Notes and Code (Erwin Frey, LMU Munich, 2025)">
+      
+      
+        <meta name="author" content="Zhihang Liu">
+      
+      
+        <link rel="canonical" href="https://liu-zhihang.github.io/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/notes/28.%20Viscous%20Fluids%2C%20the%20Navier%E2%80%93Stokes%20Equation%2C%20Entropy%20Balance%2C%20and%20Heat%20Conduction/">
+      
+      
+        <link rel="prev" href="../27.%20Hydrodynamics%20of%20Simple%20Fluids%2C%20Inviscid%20Flow%2C%20and%20the%20Euler%20Equation/">
+      
+      
+        <link rel="next" href="../29.%20Irreversible%20Linear%20Thermodynamics%20and%20Dry%20Diffusive%20Particle%20Systems/">
+      
+      
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en">
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>28. Viscous Fluids, the Navier–Stokes Equation, Entropy Balance, and Heat Conduction - Nonequilibrium Field Theories and Stochastic Dynamics</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/video.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-from-ideal-to-real-fluids-dissipation-and-irreversibility" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-header__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nonequilibrium Field Theories and Stochastic Dynamics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              28. Viscous Fluids, the Navier–Stokes Equation, Entropy Balance, and Heat Conduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-nav__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nonequilibrium Field Theories and Stochastic Dynamics
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.%20Course%20Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.%20Simple%20Random%20Walk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Simple Random Walk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20Gaussian%20Random%20Walk%20and%20Poisson%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Gaussian Random Walk and Poisson Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20Gillespie%20Algorithm%2C%20Master%20Equation%2C%20Generating%20Functions%20and%20Population%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie Algorithm, Master Equation, Generating Functions and Population Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.%20Population%20Dynamics%20-%20Linear%20Death%20Process%20and%20Lotka-Volterra%20System/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Population Dynamics - Linear Death Process and Lotka-Volterra System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.%20Fundamental%20Equations%20of%20Markov%20Processes%20%E2%80%94%20Chapman%E2%80%93Kolmogorov%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Fundamental Equations of Markov Processes — Chapman–Kolmogorov Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.%20Forward%20Master%20Equation%20and%20the%20Q%20Matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Forward Master Equation and the Q Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.%20Perron%E2%80%93Frobenius%20Theorem%2C%20Steady%20States%2C%20and%20Detailed%20Balance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Perron–Frobenius Theorem, Steady States, and Detailed Balance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.%20Nonequilibrium%20States%20%E2%80%94%20Irreversibility%20and%20Entropy%20Production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Nonequilibrium States — Irreversibility and Entropy Production
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.%20Ehrenfest%20Model%2C%20Entropy%2C%20and%20KL%20Divergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Ehrenfest Model, Entropy, and KL Divergence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.%20Continuous%20Markov%20Processes%20and%20the%20Fokker%E2%80%93Planck%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Continuous Markov Processes and the Fokker–Planck Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12.%20Brownian%20Motion%20and%20the%20Ornstein%E2%80%93Uhlenbeck%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Brownian Motion and the Ornstein–Uhlenbeck Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13.%20Monte%20Carlo%20Sampling%20as%20a%20Stochastic%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Monte Carlo Sampling as a Stochastic Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14.%20Hamiltonian%20Monte%20Carlo%20Sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Hamiltonian Monte Carlo Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15.%20Chemotaxis%2C%20Run-and-Tumble%20Motion%2C%20and%20the%20Keller%E2%80%93Segel%20Model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Chemotaxis, Run-and-Tumble Motion, and the Keller–Segel Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16.%20The%20Schnitzer%20Model%2C%20Anomalous%20Diffusion%2C%20and%20Motility%E2%80%91Induced%20Phase%20Separation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. The Schnitzer Model, Anomalous Diffusion, and Motility‑Induced Phase Separation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17.%20Langevin%20Equation%2C%20Brownian%20Particle%2C%20and%20the%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Langevin Equation, Brownian Particle, and the Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18.%20Fokker%E2%80%93Planck%20Equation%20and%20the%20Smoluchowski%20Equation%20%E2%80%94%20From%20Random%20Trajectories%20to%20Probability%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Fokker–Planck Equation and the Smoluchowski Equation — From Random Trajectories to Probability Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19.%20Path%20Integral%20Formulation%20of%20Stochastic%20Processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Path Integral Formulation of Stochastic Processes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20.%20Stochastic%20Differential%20Equations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Stochastic Differential Equations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21.%20Ito%20Integral%20and%20Unified%20Stochastic%20Process%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Ito Integral and Unified Stochastic Process Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22.%20Path%20Integrals%20for%20Systems%20with%20Multiplicative%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Path Integrals for Systems with Multiplicative Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23.%20From%20Coarse-Graining%20to%20Fluctuation%20Dynamics%20of%20Continuous%20Field%20Theories/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. From Coarse-Graining to Fluctuation Dynamics of Continuous Field Theories
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24.%20Onsager%20Coefficients%2C%20Reciprocity%2C%20and%20the%20Dynamic%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Onsager Coefficients, Reciprocity, and the Dynamic Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25.%20Gradient%20Dynamics%2C%20Phase%20Transitions%2C%20and%20Relaxation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. Gradient Dynamics, Phase Transitions, and Relaxation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26.%20Critical%20Slowing%20Down%2C%20Dynamic%20Response%2C%20and%20Conservation%20Laws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Critical Slowing Down, Dynamic Response, and Conservation Laws
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27.%20Hydrodynamics%20of%20Simple%20Fluids%2C%20Inviscid%20Flow%2C%20and%20the%20Euler%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. Hydrodynamics of Simple Fluids, Inviscid Flow, and the Euler Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. Viscous Fluids, the Navier–Stokes Equation, Entropy Balance, and Heat Conduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29.%20Irreversible%20Linear%20Thermodynamics%20and%20Dry%20Diffusive%20Particle%20Systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. Irreversible Linear Thermodynamics and Dry Diffusive Particle Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30.%20Brownian%20Particles%20Suspended%20in%20a%20Fluid%20%E2%80%94%20Model%20H/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. Brownian Particles Suspended in a Fluid — Model H
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31.%20Dynamical%20Functionals%2C%20Additive%E2%80%91Noise%20Field%20Theory%2C%20and%20the%20Onsager%E2%80%93Machlup%20Functional/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. Dynamical Functionals, Additive‑Noise Field Theory, and the Onsager–Machlup Functional
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32.%20Janssen%E2%80%93De%20Dominicis%20Response%20Functional%20and%20the%20Fluctuation%E2%80%93Dissipation%20Relation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen–De Dominicis Response Functional and the Fluctuation–Dissipation Relation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33.%20Nonequilibrium%20Work%20and%20Fluctuation%20Theorems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. Nonequilibrium Work and Fluctuation Theorems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../34.%20Directed%20Percolation%2C%20Absorbing%20States%2C%20and%20Spectral%20Methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. Directed Percolation, Absorbing States, and Spectral Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../35.%20Path-Integral%20Representation%20of%20the%20Master%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. Path-Integral Representation of the Master Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../36.%20Coherent-State%20Path%20Integrals%2C%20Operator%20Algebra%2C%20and%20Imaginary%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. Coherent-State Path Integrals, Operator Algebra, and Imaginary Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../37.%20Kramers-Moyal%20Expansion%20and%20the%20Low-Noise%20Limit%20of%20Path%20Integrals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal Expansion and the Low-Noise Limit of Path Integrals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../38.%20Multi-Species%20Path%20Integrals%20and%20Cyclic%20Competition%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. Multi-Species Path Integrals and Cyclic Competition Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../39.%20From%20Particle%20Jumps%20to%20Continuous%20Field%20Theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. From Particle Jumps to Continuous Field Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../40.%20Unified%20Field%20Theory%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. Unified Field Theory Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    中文笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/1.%20%E8%AF%BE%E7%A8%8B%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 课程导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/2.%20%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 简单随机游走
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/3.%20%E9%AB%98%E6%96%AF%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0%E4%B8%8E%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 高斯随机游走与泊松过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/4.%20Gillespie%20%E7%AE%97%E6%B3%95%E3%80%81%E4%B8%BB%E6%96%B9%E7%A8%8B%E3%80%81%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%8D%E7%BE%A4%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie 算法、主方程、生成函数与种群动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/5.%20%E7%A7%8D%E7%BE%A4%E5%8A%A8%E6%80%81%E5%AD%A6%EF%BC%9A%E7%BA%BF%E6%80%A7%E6%AD%BB%E4%BA%A1%E8%BF%87%E7%A8%8B%E4%B8%8ELotka-Volterra%20%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 种群动态学：线性死亡过程与Lotka-Volterra 系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/6.%20%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E7%A8%8B%EF%BC%9A%E6%9F%A5%E6%99%AE%E6%9B%BC-%E7%A7%91%E5%B0%94%E8%8E%AB%E6%88%88%E7%BD%97%E5%A4%AB%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 马尔可夫过程的基本方程：查普曼-科尔莫戈罗夫方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/7.%20%E5%89%8D%E5%90%91%E4%B8%BB%E6%96%B9%E7%A8%8B%E4%B8%8EQ%E7%9F%A9%E9%98%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 前向主方程与Q矩阵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/8.%20%E4%BD%A9%E9%BE%99-%E5%BC%97%E7%BD%97%E8%B4%9D%E5%B0%BC%E4%B9%8C%E6%96%AF%E5%AE%9A%E7%90%86%E3%80%81%E7%A8%B3%E6%80%81%E4%B8%8E%E7%BB%86%E8%87%B4%E5%B9%B3%E8%A1%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 佩龙-弗罗贝尼乌斯定理、稳态与细致平衡
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/9.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81%EF%BC%9A%E4%B8%8D%E5%8F%AF%E9%80%86%E6%80%A7%E4%B8%8E%E7%86%B5%E4%BA%A7%E7%94%9F%E7%9A%84%E6%8E%A8%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 非平衡态：不可逆性与熵产生的推论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/10.%20%E5%9F%83%E4%BC%A6%E8%B4%B9%E6%96%AF%E7%89%B9%E6%A8%A1%E5%9E%8B%E3%80%81%E7%86%B5%E4%B8%8EKL%E6%95%A3%E5%BA%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 埃伦费斯特模型、熵与KL散度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/11.%20%E8%BF%9E%E7%BB%AD%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E4%B8%8E%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. 连续马尔可夫过程与福克-普朗克方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/12.%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8%E4%B8%8E%E5%A5%A5%E6%81%A9%E6%96%AF%E5%9D%A6-%E4%B9%8C%E4%BC%A6%E8%B4%9D%E5%85%8B%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. 布朗运动与奥恩斯坦-乌伦贝克过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/13.%20%E4%BD%9C%E4%B8%BA%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. 作为随机过程的蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/14.%20%E5%93%88%E5%AF%86%E5%B0%94%E9%A1%BF%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. 哈密尔顿蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/15.%20%E8%B6%8B%E5%8C%96%E6%80%A7%E3%80%81%E8%B7%91%E5%8A%A8-%E7%BF%BB%E6%BB%9A%E8%BF%90%E5%8A%A8%E4%B8%8EKeller-Segel%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. 趋化性、跑动-翻滚运动与Keller-Segel模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/16.%20Schnitzer%E6%A8%A1%E5%9E%8B%E3%80%81%E5%8F%8D%E5%B8%B8%E6%89%A9%E6%95%A3%E4%B8%8E%E8%BF%90%E5%8A%A8%E8%AF%B1%E5%AF%BC%E7%9B%B8%E5%88%86%E7%A6%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Schnitzer模型、反常扩散与运动诱导相分离
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/17.%20%E6%9C%97%E4%B9%8B%E4%B8%87%E6%96%B9%E7%A8%8B%E3%80%81%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. 朗之万方程、布朗粒子与涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/18.%20%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B%E4%B8%8E%E6%96%AF%E6%91%A9%E6%A3%B1%E9%9C%8D%E5%A4%AB%E6%96%AF%E5%9F%BA%E6%96%B9%E7%A8%8B%EF%BC%9A%E4%BB%8E%E9%9A%8F%E6%9C%BA%E8%BD%A8%E8%BF%B9%E5%88%B0%E6%A6%82%E7%8E%87%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. 福克-普朗克方程与斯摩棱霍夫斯基方程：从随机轨迹到概率动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/19.%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. 随机过程的路径积分表述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/20.%20%E9%9A%8F%E6%9C%BA%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. 随机微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/21.%20%E4%BC%8A%E8%97%A4%E7%A7%AF%E5%88%86%E4%B8%8E%E7%BB%9F%E4%B8%80%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. 伊藤积分与统一的随机过程框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/22.%20%E5%90%AB%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. 含乘性噪声系统的路径积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/23.%20%E4%BB%8E%E7%B2%97%E7%B2%92%E5%8C%96%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA%E6%B6%A8%E8%90%BD%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. 从粗粒化到连续场论涨落动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/24.%20%E6%98%82%E8%90%A8%E6%A0%BC%E7%B3%BB%E6%95%B0%E3%80%81%E5%80%92%E6%98%93%E5%85%B3%E7%B3%BB%E4%B8%8E%E5%8A%A8%E6%80%81%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. 昂萨格系数、倒易关系与动态涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/25.%20%E6%A2%AF%E5%BA%A6%E5%8A%A8%E5%8A%9B%E5%AD%A6%E3%80%81%E7%9B%B8%E5%8F%98%E4%B8%8E%E5%BC%9B%E8%B1%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. 梯度动力学、相变与弛豫
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/26.%20%E4%B8%B4%E7%95%8C%E6%85%A2%E5%8C%96%E3%80%81%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%B8%8E%E5%AE%88%E6%81%92%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. 临界慢化、动态响应与守恒律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/27.%20%E7%AE%80%E5%8D%95%E6%B5%81%E4%BD%93%E3%80%81%E6%97%A0%E6%91%A9%E6%93%A6%E6%B5%81%E4%BD%93%E4%B8%8E%E6%AC%A7%E6%8B%89%E6%96%B9%E7%A8%8B%E7%9A%84%E6%B5%81%E4%BD%93%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. 简单流体、无摩擦流体与欧拉方程的流体动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/28.%20%E7%B2%98%E6%80%A7%E6%B5%81%E4%BD%93%E3%80%81%E7%BA%B3%E7%BB%B4-%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%96%B9%E7%A8%8B%E3%80%81%E7%86%B5%E5%B9%B3%E8%A1%A1%E4%B8%8E%E7%83%AD%E4%BC%A0%E5%AF%BC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. 粘性流体、纳维-斯托克斯方程、熵平衡与热传导
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/29.%20%E4%B8%8D%E5%8F%AF%E9%80%86%E7%BA%BF%E6%80%A7%E7%83%AD%E5%8A%9B%E5%AD%A6%E4%B8%8E%E5%B9%B2%E6%80%A7%E6%89%A9%E6%95%A3%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. 不可逆线性热力学与干性扩散粒子系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/30.%20%E6%82%AC%E6%B5%AE%E5%9C%A8%E6%B5%81%E4%BD%93%E4%B8%AD%E7%9A%84%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%20%E2%80%94%20H%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. 悬浮在流体中的布朗粒子 — H模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/31.%20%E5%8A%A8%E6%80%81%E6%B3%9B%E5%87%BD%E3%80%81%E5%8A%A0%E6%80%A7%E5%99%AA%E5%A3%B0%E5%9C%BA%E8%AE%BA%E4%B8%8EOnsager-Machlup%E6%B3%9B%E5%87%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. 动态泛函、加性噪声场论与Onsager-Machlup泛函
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/32.%20Janssen-De%20Dominicis%20%E5%93%8D%E5%BA%94%E6%B3%9B%E5%87%BD%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen-De Dominicis 响应泛函与涨落-耗散关系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/33.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E5%8A%9F%E4%B8%8E%E6%B6%A8%E8%90%BD%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. 非平衡功与涨落定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/34.%20%E6%9C%89%E5%90%91%E6%B8%97%E6%B5%81%E3%80%81%E5%90%B8%E6%94%B6%E6%80%81%E4%B8%8E%E8%B0%B1%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. 有向渗流、吸收态与谱方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/35.%20%E4%B8%BB%E6%96%B9%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E7%A4%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. 主方程的路径积分表示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/36.%20%E7%9B%B8%E5%B9%B2%E6%80%81%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E3%80%81%E7%AE%97%E7%AC%A6%E4%BB%A3%E6%95%B0%E4%B8%8E%E8%99%9A%E5%99%AA%E5%A3%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. 相干态路径积分、算符代数与虚噪声
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/37.%20Kramers-Moyal%20%E5%B1%95%E5%BC%80%E4%B8%8E%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E7%9A%84%E4%BD%8E%E5%99%AA%E5%A3%B0%E6%9E%81%E9%99%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal 展开与路径积分的低噪声极限
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/38.%20%E5%A4%9A%E7%89%A9%E7%A7%8D%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E4%B8%8E%E5%BE%AA%E7%8E%AF%E7%AB%9E%E4%BA%89%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. 多物种路径积分与循环竞争动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/39.%20%E4%BB%8E%E7%B2%92%E5%AD%90%E8%B7%B3%E8%B7%83%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. 从粒子跳跃到连续场论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/40.%20%E7%BB%9F%E4%B8%80%E7%9A%84%E5%9C%BA%E8%AE%BA%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. 统一的场论框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="introduction-from-ideal-to-real-fluids-dissipation-and-irreversibility">Introduction: From Ideal to Real Fluids — Dissipation and Irreversibility<a class="headerlink" href="#introduction-from-ideal-to-real-fluids-dissipation-and-irreversibility" title="Permanent link">&para;</a></h1>
+<p>The previous lecture successfully constructed the dynamical framework of an <strong>ideal fluid</strong> by applying the three fundamental <strong>conservation laws</strong> of mass, momentum, and energy, with the core achievement being the <strong>Euler equation</strong>. The ideal fluid model is built on two key assumptions: no internal friction (i.e., inviscid) and no heat transfer, which means all processes are <strong>reversible</strong>, and each fluid element maintains constant entropy during motion (i.e., <strong>isentropic flow</strong>).</p>
+<p>However, this elegant theoretical picture contrasts sharply with our daily experience. For example, when cream is stirred into coffee, it spreads uniformly, but we never see the spread cream spontaneously re-aggregate. This <strong>irreversibility</strong> is a fundamental characteristic of the real world. The Euler equation, due to its <strong>time-reversal symmetry</strong>, cannot describe such dissipative processes—a film of ideal fluid motion played backwards would still show trajectories that are completely consistent with physical laws.</p>
+<p>This lecture transitions from the idealized reversible physical world to a more realistic irreversible world. Real fluids have two core dissipative mechanisms:</p>
+<ol>
+<li><strong>Internal friction</strong>, which manifests macroscopically as <strong>viscosity</strong>.</li>
+<li><strong>Internal heat transfer</strong>, which manifests macroscopically as <strong>heat conduction</strong>.</li>
+</ol>
+<p>These two phenomena are concrete manifestations of the <strong>irreversible processes</strong> discussed in Lecture 24's Onsager theory. They are the microscopic sources of entropy production in the macroscopic world, irreversibly converting ordered macroscopic kinetic energy into disordered internal energy (heat).</p>
+<p>To integrate these physical realities into the theory, we must amend the momentum flux tensor and energy flux derived in the previous lecture. Professor Erwin Frey introduces new terms to describe the <strong>viscous stress tensor</strong> driven by velocity gradients and the <strong>heat flux density</strong> driven by temperature gradients. Through this process, we break the time symmetry of the Euler equation, derive the more universal <strong>Navier-Stokes equation</strong>, and ultimately connect fluid dynamics with the second law of thermodynamics through constructing the <strong>entropy balance equation</strong>.</p>
+<p><img alt="Blackboard Screenshot" src="../../assets/images/remote/77485aad-dc2f-40c5-9ba2-244005c55880-f87fa674d1.jpg" /></p>
+<h1 id="1-dissipative-stress-tensor-quantifying-irreversible-internal-friction">1. Dissipative Stress Tensor: Quantifying Irreversible Internal Friction<a class="headerlink" href="#1-dissipative-stress-tensor-quantifying-irreversible-internal-friction" title="Permanent link">&para;</a></h1>
+<p>In the previous lecture, Professor Erwin Frey derived the momentum conservation equation for ideal fluids, with the core being the <strong>momentum flux tensor</strong> <span class="arithmatex">\(\Pi_{ik} = P \delta_{ik} + \rho v_i v_k\)</span>. This expression describes two reversible momentum transfer mechanisms: isotropic pressure and macroscopic convection. However, this idealized model lacks a crucial component in the real world: <strong>dissipation</strong>. To describe the irreversible momentum exchange caused by internal friction, we need to correct this ideal momentum flux tensor.</p>
+<p>The core task of this lecture is to establish a mathematical description for this dissipative process from basic physical principles, i.e., to construct the constitutive relation for the <strong>viscous stress tensor</strong>.</p>
+<h2 id="11-correcting-the-momentum-flux-tensor">1.1 Correcting the Momentum Flux Tensor<a class="headerlink" href="#11-correcting-the-momentum-flux-tensor" title="Permanent link">&para;</a></h2>
+<p>Starting from the local form of the universal momentum conservation law, for the case without external body force sources, this law is expressed as:</p>
+<div class="arithmatex">\[\partial_t (\rho v_i) = -\partial_k \Pi_{ik}\]</div>
+<p>where <span class="arithmatex">\(\rho\)</span> is the mass density, <span class="arithmatex">\(v_i\)</span> is the velocity field component, and <span class="arithmatex">\(\Pi_{ik}\)</span> is the momentum flux density tensor. Decompose the total stress on a fluid element’s surface as</p>
+<div class="arithmatex">\[\Sigma_{ik} = -P\,\delta_{ik} + \Sigma'_{ik},\]</div>
+<ul>
+<li>
+<p><strong>Hydrostatic Pressure</strong> <span class="arithmatex">\(-P \delta_{ik}\)</span>: This is the only surface force that exists in ideal fluids, arising from the random thermal motion of molecules, with the effect of isotropic compression. The negative sign here is a convention, indicating that positive pressure <span class="arithmatex">\(P\)</span> produces compressive stress.</p>
+</li>
+<li>
+<p><strong>Viscous Stress Tensor</strong> <span class="arithmatex">\(\Sigma_{ik}'\)</span>: This is the new term introduced to describe real fluids, also called the <strong>dissipative stress tensor</strong>. It represents the additional, directional momentum exchange caused by velocity differences within the fluid (i.e., internal friction).</p>
+</li>
+</ul>
+<p>Substituting the total stress tensor gives the total momentum flux tensor for real fluids:</p>
+<div class="arithmatex">\[\Pi_{ik} = \underbrace{P\delta_{ik}+\rho v_i v_k}_{\text{ideal}} \;\underbrace{-\,\Sigma'_{ik}}_{\text{viscous}}.\]</div>
+<p>The task is now to specify the constitutive relation for <span class="arithmatex">\(\Sigma'_{ik}\)</span> in terms of local kinematics.</p>
+<h2 id="12-constitutive-relation-for-the-viscous-stress">1.2 Constitutive Relation for the Viscous Stress<a class="headerlink" href="#12-constitutive-relation-for-the-viscous-stress" title="Permanent link">&para;</a></h2>
+<p>A constitutive relation is not a universal fundamental law like momentum conservation, but rather a <strong>phenomenological equation</strong> describing the macroscopic behavior of specific materials or media. Its role is to establish mathematical connections between internal "responses" (such as stress, heat flow, electric current) and the "stimuli" that drive them (such as deformation, temperature gradients, electric fields). This relationship contains parameters characterizing material properties, such as Young's modulus for solids, electrical conductivity for conductors, and the viscosity coefficients to be determined for fluids.</p>
+<p>Therefore, finding a constitutive relation for <span class="arithmatex">\(\Sigma_{ik}'\)</span> means answering: <strong>For the fluid under study, how is the internal friction precisely determined by its flow pattern (i.e., velocity field gradients)?</strong></p>
+<p>For <strong>Newtonian fluids</strong>, a core assumption is that viscous stress has a linear relationship with velocity gradients <span class="arithmatex">\(\partial_k v_i\)</span>. This is completely consistent with the spirit of <strong>Onsager's linear response theory</strong> learned in Lecture 24: near thermodynamic equilibrium, fluxes driven by thermodynamic forces (here velocity gradients) are linearly related to those forces.</p>
+<p>To construct this relationship, we first need to understand the physical meaning of the velocity gradient tensor <span class="arithmatex">\(\partial_k v_i\)</span>. From a purely mathematical perspective, any second-order tensor (or square matrix) can be decomposed into a symmetric part and an antisymmetric part:</p>
+<ul>
+<li>
+<p><strong>Antisymmetric part</strong>: <span class="arithmatex">\(\frac{1}{2}(\partial_k v_i - \partial_i v_k)\)</span>, which describes the <strong>rigid-body rotation</strong> of fluid elements, i.e., vortices. Imagine a tiny fluid square rotating as a whole, with the relative positions of internal points remaining unchanged, so no "friction" or energy dissipation occurs. Therefore, viscous stress is unrelated to this part of the motion.</p>
+</li>
+<li>
+<p><strong>Symmetric part</strong>: <span class="arithmatex">\(e_{ik} = \frac{1}{2}(\partial_k v_i + \partial_i v_k)\)</span>, called the <strong>rate-of-strain tensor</strong>, describes the <strong>shape and volume changes (deformation)</strong> of fluid elements. It is precisely this deformation that causes relative displacement between adjacent fluid layers and is the true source of internal friction.</p>
+</li>
+</ul>
+<p>Therefore, <span class="arithmatex">\(\Sigma_{ik}'\)</span> must depend only on the symmetric rate-of-strain tensor <span class="arithmatex">\(e_{ik}\)</span>. To further distinguish different types of deformation, we decompose <span class="arithmatex">\(e_{ik}\)</span> into a trace part and a traceless part:</p>
+<ul>
+<li>
+<p><strong>Trace part (expansion/compression)</strong>: The trace of the tensor <span class="arithmatex">\(\partial_\ell v^\ell = \nabla \cdot \mathbf{v}\)</span> is a scalar describing the rate of volume change (expansion rate) of fluid elements.</p>
+</li>
+<li>
+<p><strong>Symmetric traceless part (shear)</strong>: <span class="arithmatex">\(\frac{1}{2}(\partial_i v_k + \partial_k v_i - \frac{2}{3}\delta_{ik}\partial_\ell v^\ell)\)</span>, this tensor describes the rate of shape change (shear deformation rate) of fluid elements while keeping volume constant.</p>
+</li>
+</ul>
+<p><strong>Shear</strong> can be imagined as a stack of playing cards. If you place your palm flat on the top card and push horizontally forward, the entire stack transforms from a rectangle into a parallelogram. <strong>In this process, each card slides relative to the one below it, but the total volume (or area) of the entire stack remains unchanged</strong>. This "shape change caused by mutual sliding between layers" is <strong>shear</strong>. In fluids, shear occurs when one layer of fluid flows at a different speed than adjacent layers. It describes the <strong>shape change</strong> of fluid elements.</p>
+<p>The "trace" mathematically refers to the sum of diagonal elements of a matrix. In fluid dynamics, the "trace" of the velocity gradient tensor (<span class="arithmatex">\(\nabla \cdot \mathbf{v}\)</span>) has a very intuitive physical meaning. Imagine our previous square fluid element—its trace part describes the <strong>expansion or compression of the square itself</strong>. If the trace is positive, it means the fluid element is <strong>expanding</strong> like a balloon, increasing in volume. If the trace is negative, it means the fluid element is being <strong>compressed</strong>, decreasing in volume. In fluids, the trace part represents the purely <strong>volume-changing</strong> part of fluid motion, unrelated to shape changes.</p>
+<p>The "traceless" concept combines the previous two. Since we know the "trace part" represents pure volume changes, "traceless" means "no volume change." In fluids, to mathematically precisely separate pure shape changes (i.e., shear), we need to "subtract" or "remove" the volume-changing part from the total deformation. The remaining part after this operation is <strong>traceless</strong>, representing motion that <strong>only changes shape without changing volume</strong>. This is the precise mathematical description of "shear." Therefore, the term multiplied by <strong>shear viscosity</strong> <span class="arithmatex">\(\eta\)</span> is a <strong>symmetric traceless tensor</strong>.</p>
+<p>For an <strong>isotropic</strong> fluid (whose physical properties do not depend on direction), the most general linear relationship between the viscous stress tensor <span class="arithmatex">\(\Sigma_{ik}'\)</span> and these two deformation parts must be characterized by two independent scalar coefficients. These two coefficients are precisely the <strong>Onsager coefficients</strong>.</p>
+<p>First, "isotropic" means the fluid has no "special direction." Like a cup of still water. No matter which direction you measure its properties (like viscosity), you get the same result. It's not like wood, where properties differ along the grain versus across the grain. This means the mathematical form of physical laws describing fluid behavior <strong>cannot depend on how we choose our coordinate system</strong>. If we rotate the coordinate system, the form of the equations themselves must remain unchanged. This is an extremely powerful <strong>symmetry constraint</strong>.</p>
+<p>Now the task is to "construct" internal friction (described by the viscous stress tensor <span class="arithmatex">\(\Sigma'_{ik}\)</span>) from fluid motion (described by the velocity gradient tensor <span class="arithmatex">\(\partial_k v_i\)</span>). This construction process is like building a house with "blocks," and must follow the two rules of "isotropy" and "linearity."</p>
+<p>Since we already know that the velocity gradient tensor can be decomposed into two physically completely independent parts: the trace part and the traceless part. The symmetry principle tells us that an isotropic relationship can only connect a tensor with another tensor of the <strong>same type and direction</strong>, and the "glue" between them can only be a simple <strong>scalar (a number)</strong>. You cannot turn a tensor describing shear into a tensor describing pure volume changes.</p>
+<p><strong>Construction process</strong>:</p>
+<ul>
+<li>
+<p>The stress that resists <strong>shape changes</strong> within the fluid must be proportional to the tensor <span class="arithmatex">\(S_{ik}\)</span> that describes shape changes. We introduce a proportionality coefficient (scalar), called <strong>shear viscosity <span class="arithmatex">\(\eta\)</span></strong>.</p>
+</li>
+<li>
+<p>The stress that resists <strong>volume changes</strong> within the fluid must be proportional to the tensor <span class="arithmatex">\(T_{ik}\)</span> that describes volume changes. We introduce another independent proportionality coefficient, called <strong>bulk viscosity <span class="arithmatex">\(\xi\)</span></strong>.</p>
+<p>Adding these two contributions linearly gives the <strong>only possible</strong>, most general linear relationship:</p>
+<div class="arithmatex">\[\Sigma'_{ik} = (2\eta) \cdot S_{ik} + \xi \cdot T_{ik}\]</div>
+<p>(The factor of 2 appears here due to historical definition and does not affect the physical essence).</p>
+</li>
+</ul>
+<p>The reason it is "necessarily characterized by two independent scalar coefficients" is that we have <strong>completely</strong> decomposed fluid deformation into two <strong>distinct and mutually independent</strong> modes: <strong>shape change</strong> and <strong>volume change</strong>.</p>
+<ul>
+<li>A fluid element can change shape without changing volume (pure shear).</li>
+<li>A fluid element can change volume without changing shape (uniform expansion).</li>
+</ul>
+<p>Because these two deformations are physically independent, the fluid's "resistance ability" to these two deformations must also be mutually independent, requiring two independent physical parameters to describe. <span class="arithmatex">\(\eta\)</span> is the resistance to shape changes, and <span class="arithmatex">\(\xi\)</span> is the resistance to volume changes.</p>
+<p>Finally, we obtain the constitutive equation for the viscous stress tensor:</p>
+<div class="arithmatex">\[\Sigma'_{ik} = \eta \left( \partial_i v_k + \partial_k v_i - \frac{2}{3} \delta_{ik} \partial_\ell v^\ell \right) + \xi \delta_{ik} \partial_\ell v^\ell\]</div>
+<p>where <span class="arithmatex">\(\eta\)</span> and <span class="arithmatex">\(\xi\)</span> are the Onsager coefficients for shear viscosity and bulk viscosity, respectively. This directly connects to the core ideas of Lecture 24. Onsager theory tells us that near equilibrium, any irreversible flux <span class="arithmatex">\(J_a\)</span> driven by thermodynamic forces <span class="arithmatex">\(X_b\)</span> is linearly related to the forces <span class="arithmatex">\(J_a = \sum_b L_{ab} X_b\)</span>, where the proportionality coefficients <span class="arithmatex">\(L_{ab}\)</span> are the <strong>Onsager coefficients</strong>.</p>
+<p>In the case of fluids:</p>
+<ul>
+<li><strong>Thermodynamic forces (<span class="arithmatex">\(X_b\)</span>)</strong> are the <strong>velocity gradients</strong> that cause the system to deviate from equilibrium.</li>
+<li><strong>Irreversible fluxes (<span class="arithmatex">\(J_a\)</span>)</strong> are the resulting dissipative momentum flows, i.e., <strong>viscous stress <span class="arithmatex">\(\Sigma'_{ik}\)</span></strong>.</li>
+</ul>
+<p>The constitutive equation we derived is precisely a concrete, real manifestation of this abstract Onsager relationship in fluid mechanics. Therefore, the proportionality coefficients <span class="arithmatex">\(\eta\)</span> and <span class="arithmatex">\(\xi\)</span> that connect "forces" and "fluxes" are, by definition, <strong>Onsager coefficients</strong>.</p>
+<h2 id="13-physical-meaning-of-the-viscosity-coefficients">1.3 Physical Meaning of the Viscosity Coefficients<a class="headerlink" href="#13-physical-meaning-of-the-viscosity-coefficients" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><strong>Shear viscosity (Shear Viscosity) <span class="arithmatex">\(\eta\)</span></strong>: It is the proportionality coefficient between shear stress (produced by the symmetric traceless part) and the rate of shear deformation. It measures the fluid's ability to resist <strong>shape</strong> changes. Imagine applying a tangential force between two fluid layers to make them slide past each other—shear viscosity is a measure of their "sticky" degree, like honey being more "viscous" than water. From a dynamical perspective, it is the root of <strong>momentum diffusion</strong>: momentum "diffuses" from high-speed fluid layers to low-speed fluid layers.</p>
+</li>
+<li>
+<p><strong>Bulk viscosity (Bulk Viscosity) <span class="arithmatex">\(\xi\)</span></strong>: It is the proportionality coefficient between isotropic viscous stress (produced by the trace part) and the rate of volume change. It measures the fluid's additional ability to resist <strong>volume</strong> changes beyond the reversible resistance provided by thermodynamic pressure during rapid compression or expansion. For monatomic ideal gases, due to the absence of internal degrees of freedom, <span class="arithmatex">\(\xi=0\)</span>. But for polyatomic molecular fluids (like carbon dioxide), bulk viscosity is related to the <strong>relaxation time</strong> of molecular internal degrees of freedom (such as rotation and vibration), quantifying dissipative processes like sound absorption.</p>
+</li>
+</ul>
+<h2 id="14-python-simulation-ii-viscous-decay-of-a-2d-vortex-and-vorticity-diffusion">1.4 Python Simulation II: Viscous Decay of a 2D Vortex and Vorticity Diffusion<a class="headerlink" href="#14-python-simulation-ii-viscous-decay-of-a-2d-vortex-and-vorticity-diffusion" title="Permanent link">&para;</a></h2>
+<p>To dynamically and intuitively understand the role of viscosity, we will simulate a more vivid example: how a 2D vortex decays over time in a viscous fluid. This process directly demonstrates the physical essence of viscosity as a <strong>momentum diffusion</strong> mechanism.</p>
+<p>The following simulation will solve the numerical solution of the 2D incompressible <strong>Navier-Stokes equation</strong>:</p>
+<div class="arithmatex">\[\frac{\partial \vec{v}}{\partial t} + (\vec{v} \cdot \nabla)\vec{v} = \nu \nabla^2 \vec{v}\]</div>
+<p>where <span class="arithmatex">\(\nu = \eta/\rho\)</span> is the <strong>kinematic viscosity</strong>. This equation contains two core dynamical processes:</p>
+<ul>
+<li><strong>Nonlinear convection term <span class="arithmatex">\((\vec{v} \cdot \nabla)\vec{v}\)</span></strong>: Originating from the Euler equation, it describes how the fluid "carries" its own momentum in motion.</li>
+<li><strong>Viscous diffusion term <span class="arithmatex">\(\nu \nabla^2 \vec{v}\)</span></strong>: The new term we introduced in this section, describing how momentum diffuses from high-speed regions to low-speed regions due to internal friction.</li>
+</ul>
+<p>We will simultaneously visualize the <strong>velocity field</strong> and <strong>vorticity field</strong>. Vorticity <span class="arithmatex">\(\omega = \nabla \times \vec{v}\)</span> is a physical quantity measuring the local "rotation" degree of fluid elements, and its evolution can more clearly reveal the diffusion effects of viscosity.</p>
+<p><strong>Specific physical process</strong>:</p>
+<ol>
+<li>
+<p><strong>Driving force</strong>: In the initial vortex, there exists a huge <strong>velocity gradient</strong> between the high-speed core region and the low-speed outer region, corresponding to the sharp peak in the vorticity field.</p>
+</li>
+<li>
+<p><strong>Viscous action</strong>: This velocity gradient produces strong <strong>viscous shear stress</strong>. This stress continuously transfers (or "diffuses") momentum from the high-speed rotating inner fluid layers to the slower outer fluid layers. This process manifests in the vorticity field as vorticity diffusing from high-concentration regions to low-concentration regions. The core role of the viscous term <span class="arithmatex">\(\eta \nabla^2 \vec{v}\)</span> in the dynamical equation: <strong>It is a dissipative term whose effect is to make any non-uniform velocity distribution (and vorticity distribution) decay and homogenize over time.</strong></p>
+</li>
+<li>
+<p><strong>Energy dissipation</strong>: This momentum transfer process is accompanied by the conversion of mechanical energy to internal energy (heat), which is a typical <strong>irreversible dissipative process</strong>. In the simulation, the total kinetic energy of the system will monotonically decrease over time.</p>
+</li>
+<li>
+<p><strong>Final result</strong>: Viscous action continuously "smooths out" velocity gradients, eventually making the entire system's velocity field uniform (here uniformly stationary), with zero vorticity everywhere, and the system reaches the energy-minimum equilibrium state.</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">animation</span>
+
+<span class="c1"># --- Simulation Parameters ---</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mf">2.0</span>                 <span class="c1"># Domain size</span>
+<span class="n">nx</span><span class="p">,</span> <span class="n">ny</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span>       <span class="c1"># Grid resolution</span>
+<span class="n">nu</span> <span class="o">=</span> <span class="mf">0.005</span>              <span class="c1"># Kinematic viscosity (higher for visible effect)</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.005</span>              <span class="c1"># Time step</span>
+<span class="n">n_steps</span> <span class="o">=</span> <span class="mi">100</span>           <span class="c1"># Number of time steps</span>
+<span class="n">n_steps_per_frame</span> <span class="o">=</span> <span class="mi">5</span>   <span class="c1"># Steps between frames</span>
+
+<span class="c1"># --- Grid Setup ---</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">ny</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">L</span> <span class="o">/</span> <span class="p">(</span><span class="n">nx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># --- Initial Velocity Field (Rankine Vortex) ---</span>
+<span class="c1"># Create a more realistic vortex with both rotational core and potential flow outer region</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">R_core</span> <span class="o">=</span> <span class="mf">0.3</span>            <span class="c1"># Core radius</span>
+
+<span class="c1"># Velocity components for a Rankine vortex</span>
+<span class="c1"># Inside core (solid body rotation)</span>
+<span class="n">inside</span> <span class="o">=</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">R_core</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+
+<span class="c1"># Inside the core: solid body rotation (v = omega * r)</span>
+<span class="n">u</span><span class="p">[</span><span class="n">inside</span><span class="p">]</span> <span class="o">=</span>  <span class="n">Y</span><span class="p">[</span><span class="n">inside</span><span class="p">]</span> <span class="o">*</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">R_core</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">v</span><span class="p">[</span><span class="n">inside</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">X</span><span class="p">[</span><span class="n">inside</span><span class="p">]</span> <span class="o">*</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">R_core</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="c1"># Outside the core: potential vortex (v = Gamma / (2*pi*r))</span>
+<span class="n">outside</span> <span class="o">=</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="n">R_core</span>
+<span class="n">u</span><span class="p">[</span><span class="n">outside</span><span class="p">]</span> <span class="o">=</span>  <span class="n">Y</span><span class="p">[</span><span class="n">outside</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r</span><span class="p">[</span><span class="n">outside</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">v</span><span class="p">[</span><span class="n">outside</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">X</span><span class="p">[</span><span class="n">outside</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r</span><span class="p">[</span><span class="n">outside</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Scale the vortex</span>
+<span class="n">u</span> <span class="o">*=</span> <span class="mf">0.5</span>
+<span class="n">v</span> <span class="o">*=</span> <span class="mf">0.5</span>
+
+<span class="c1"># --- Vorticity Calculation ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_vorticity</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">dx</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate vorticity field from velocity field&quot;&quot;&quot;</span>
+    <span class="n">dudy</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span>
+    <span class="n">dvdx</span> <span class="o">=</span> <span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:]</span> <span class="o">-</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span>
+    <span class="n">vorticity</span> <span class="o">=</span> <span class="n">dvdx</span> <span class="o">-</span> <span class="n">dudy</span>
+    <span class="k">return</span> <span class="n">vorticity</span>
+
+<span class="c1"># --- Numerical Solver (Navier-Stokes with viscous terms) ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">viscous_step</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">dx</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Solve Navier-Stokes equations with viscous terms&quot;&quot;&quot;</span>
+    <span class="n">u_new</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">v_new</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ny</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">d2u_dx2</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">dx</span><span class="o">**</span><span class="mi">2</span>
+            <span class="n">d2u_dy2</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span> <span class="o">/</span> <span class="n">dx</span><span class="o">**</span><span class="mi">2</span>
+            <span class="n">d2v_dx2</span> <span class="o">=</span> <span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">dx</span><span class="o">**</span><span class="mi">2</span>
+            <span class="n">d2v_dy2</span> <span class="o">=</span> <span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span> <span class="o">/</span> <span class="n">dx</span><span class="o">**</span><span class="mi">2</span>
+            <span class="n">du_dx</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span>
+            <span class="n">du_dy</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span>
+            <span class="n">dv_dx</span> <span class="o">=</span> <span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span>
+            <span class="n">dv_dy</span> <span class="o">=</span> <span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span>
+            <span class="n">DuDt_conv</span> <span class="o">=</span> <span class="o">-</span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">du_dx</span> <span class="o">-</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">du_dy</span>
+            <span class="n">DvDt_conv</span> <span class="o">=</span> <span class="o">-</span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">dv_dx</span> <span class="o">-</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">dv_dy</span>
+            <span class="n">DuDt_diff</span> <span class="o">=</span> <span class="n">nu</span> <span class="o">*</span> <span class="p">(</span><span class="n">d2u_dx2</span> <span class="o">+</span> <span class="n">d2u_dy2</span><span class="p">)</span>
+            <span class="n">DvDt_diff</span> <span class="o">=</span> <span class="n">nu</span> <span class="o">*</span> <span class="p">(</span><span class="n">d2v_dx2</span> <span class="o">+</span> <span class="n">d2v_dy2</span><span class="p">)</span>
+            <span class="n">u_new</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">*</span> <span class="p">(</span><span class="n">DuDt_conv</span> <span class="o">+</span> <span class="n">DuDt_diff</span><span class="p">)</span>
+            <span class="n">v_new</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">*</span> <span class="p">(</span><span class="n">DvDt_conv</span> <span class="o">+</span> <span class="n">DvDt_diff</span><span class="p">)</span>
+    <span class="n">u_new</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">u_new</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">u_new</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">u_new</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">v_new</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">v_new</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">v_new</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">v_new</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">return</span> <span class="n">u_new</span><span class="p">,</span> <span class="n">v_new</span>
+
+<span class="c1"># --- Visualization Setup ---</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">],</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;seismic&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Vorticity&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Velocity Field and Streamlines&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Vorticity Field&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">strm</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">streamplot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">time_text</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax1</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">animate</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_steps_per_frame</span><span class="p">):</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">viscous_step</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">coll</span> <span class="ow">in</span> <span class="n">strm</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">collections</span><span class="p">:</span>
+        <span class="n">coll</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+    <span class="n">speed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="n">strm</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">streamplot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">speed</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="n">vorticity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">vorticity_interior</span> <span class="o">=</span> <span class="n">calculate_vorticity</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
+    <span class="n">vorticity</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">vorticity_interior</span>
+    <span class="n">im</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">vorticity</span><span class="p">)</span>
+    <span class="n">current_time</span> <span class="o">=</span> <span class="n">frame</span> <span class="o">*</span> <span class="n">n_steps_per_frame</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="n">time_text</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time = </span><span class="si">{</span><span class="n">current_time</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">strm</span><span class="o">.</span><span class="n">lines</span><span class="p">,</span> <span class="n">im</span>
+
+<span class="n">ani</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="n">n_steps</span><span class="o">//</span><span class="n">n_steps_per_frame</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">ani</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;vortex_decay_detailed.gif&#39;</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="s1">&#39;pillow&#39;</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="Run Output" src="../../assets/images/remote/vortex_decay_detailed.gif" /></p>
+<ul>
+<li>Velocity field: streamlines thin out; rotation slows and broadens in extent.</li>
+<li>Vorticity field: the sharp central peak diffuses outward; amplitude decays and the footprint widens. Viscosity acts like diffusion, homogenizing gradients while dissipating kinetic energy into heat.</li>
+</ul>
+<h1 id="2-the-navierstokes-equation-governing-real-fluids">2. The Navier–Stokes Equation: Governing Real Fluids<a class="headerlink" href="#2-the-navierstokes-equation-governing-real-fluids" title="Permanent link">&para;</a></h1>
+<p>The previous subsection successfully applied symmetry principles and linear response theory to construct the constitutive relation for the internal friction of fluids—the <strong>viscous stress tensor</strong> <span class="arithmatex">\(\Sigma'_{ik}\)</span>. This completes a crucial piece of the puzzle in the physical picture of real fluids. Now, everything is ready to substitute this dissipative tensor back into the universal momentum conservation law.</p>
+<p>This process will achieve the core goal of this lecture: starting from the <strong>Euler equation</strong> describing ideal fluids from the previous lecture, derive the more universal governing equation that can describe real, viscous fluid motion—the <strong>Navier-Stokes equation</strong>.</p>
+<p>The Navier-Stokes equation is a motion equation describing momentum conservation for viscous incompressible fluids, independently established by French scientist C.L.M.H. Navier in 1821 and British physicist G.G. Stokes in 1845. It is hailed as the "soul" of fluid mechanics, the fundamental equation describing fluid motion, widely applied in aerospace, meteorology, oceanography, engineering design, and other fields.</p>
+<p>This equation is a nonlinear partial differential equation, very difficult to solve, and currently only has exact solutions under certain specific conditions. It is also one of the "Seven Millennium Prize Problems" listed by the Clay Mathematics Institute, with the existence and smoothness of its solutions still unresolved.</p>
+<p><img alt="Blackboard Screenshot" src="../../assets/images/remote/1f02f614-f34a-433c-9c52-30b12f8702d2-798b54732d.jpg" /></p>
+<p>The professor mentioned in class a book "Landau &amp; Lifshitz Vol. 6," which is an excellent textbook on fluid mechanics, the sixth volume of a series of physics textbooks co-authored by Lev Landau and Evgeny Lifshitz, commonly known as the "Landau-Lifshitz Theoretical Physics Course."
+<img alt="Recommended Book" src="../../assets/images/remote/632306df-974b-4ae8-95b6-4bd802573f03-4dd2850790.png" /></p>
+<h2 id="21-derivation">2.1 Derivation<a class="headerlink" href="#21-derivation" title="Permanent link">&para;</a></h2>
+<p>The starting point for deriving the Navier-Stokes equation is Newton's second law applied to a "fluid element," i.e., the <strong>Lagrangian form</strong> of momentum conservation:</p>
+<div class="arithmatex">\[\rho \frac{D v_i}{D t} = \partial_k \Sigma_{ik}\]</div>
+<p>The left side of this equation is the "mass (<span class="arithmatex">\(\rho\)</span>) times acceleration (<span class="arithmatex">\(Dv_i/Dt\)</span>)" of the fluid element, and the right side is the net effect of surface forces acting on this fluid element (the divergence of the total stress tensor).</p>
+<ol>
+<li>
+<p><strong>Substitute the total stress tensor</strong>: Substitute the total stress tensor <span class="arithmatex">\(\Sigma_{ik} = -P \delta_{ik} + \Sigma_{ik}'\)</span> defined in Section 1 into the above equation:</p>
+<div class="arithmatex">\[\rho \frac{D v_i}{D t} = \partial_k (-P \delta_{ik} + \Sigma_{ik}') = -\partial_i P + \partial_k \Sigma_{ik}'\]</div>
+</li>
+</ol>
+<p>Compared to the Euler equation for ideal fluids, the right side of the equation has an additional term <strong>viscous force density</strong> <span class="arithmatex">\(\partial_k \Sigma_{ik}'\)</span>.</p>
+<ol>
+<li>
+<p><strong>Substitute the constitutive relation</strong>: Next, substitute the constitutive relation for the viscous stress tensor and calculate its divergence <span class="arithmatex">\(\partial_k \Sigma_{ik}'\)</span>.</p>
+<div class="arithmatex">\[\partial_k \Sigma_{ik}' = \partial_k \left[ \eta \left( \partial_i v_k + \partial_k v_i - \frac{2}{3} \delta_{ik} \partial_\ell v^\ell \right) + \xi \delta_{ik} \partial_\ell v^\ell \right]\]</div>
+<p>Assuming the viscosity coefficients <span class="arithmatex">\(\eta\)</span> and <span class="arithmatex">\(\xi\)</span> are spatially uniform constants, after some tensor operations, this can be organized into a more intuitive vector form.</p>
+</li>
+<li>
+<p><strong>Obtain the final equation</strong>: Combining the above result with the Eulerian form of the material derivative <span class="arithmatex">\(\frac{D \mathbf{v}}{D t} = \frac{\partial \mathbf{v}}{\partial t} + (\mathbf{v} \cdot \nabla) \mathbf{v}\)</span>, we obtain the complete form of the <strong>Navier-Stokes equation</strong>:</p>
+<div class="arithmatex">\[\rho \left( \frac{\partial \mathbf{v}}{\partial t} + (\mathbf{v} \cdot \nabla) \mathbf{v} \right) = -\nabla P + \eta \nabla^2 \mathbf{v} + \left(\xi + \frac{\eta}{3} \right) \nabla (\nabla \cdot \mathbf{v})\]</div>
+<p>This equation is the cornerstone of fluid dynamics, profoundly depicting the dynamic balance between inertia, pressure, and internal friction in fluid motion.</p>
+</li>
+</ol>
+<h2 id="22-anatomy-of-the-terms">2.2 Anatomy of the Terms<a class="headerlink" href="#22-anatomy-of-the-terms" title="Permanent link">&para;</a></h2>
+<p>The Navier-Stokes equation is a magnificent embodiment of Newton's second law in fluid continuous media. Each term in the equation corresponds to a clear physical force (per unit volume <span class="arithmatex">\(\rho\)</span>):</p>
+<ul>
+<li>
+<p><strong>Inertia term</strong>: <span class="arithmatex">\(\rho \left( \frac{\partial \mathbf{v}}{\partial t} + (\mathbf{v} \cdot \nabla) \mathbf{v} \right)\)</span>. This is the "mass times acceleration" of the fluid element, i.e., the <strong>material derivative</strong>. It includes the <strong>local acceleration</strong> <span class="arithmatex">\(\frac{\partial \mathbf{v}}{\partial t}\)</span> seen from a fixed observer's perspective, and the <strong>convective acceleration</strong> <span class="arithmatex">\((\mathbf{v} \cdot \nabla) \mathbf{v}\)</span> due to the fluid element moving to a new position with different velocity. This term is identical in both the Euler equation and the Navier-Stokes equation.</p>
+</li>
+<li>
+<p><strong>Pressure gradient force</strong>: <span class="arithmatex">\(-\nabla P\)</span>. This is the conservative force per unit volume of fluid driven by pressure differences, directed from high-pressure regions to low-pressure regions. It is also part of reversible processes and exists in the Euler equation as well.</p>
+</li>
+<li>
+<p><strong>Viscous force</strong>: <span class="arithmatex">\(\eta \nabla^2 \mathbf{v} + \left(\xi + \frac{\eta}{3} \right) \nabla (\nabla \cdot \mathbf{v})\)</span>. This is precisely what distinguishes real fluids from ideal fluids. It is the irreversible dissipative force per unit volume of fluid caused by internal friction.</p>
+<ul>
+<li><strong>Momentum diffusion</strong>: The Laplacian term <span class="arithmatex">\(\eta \nabla^2 \mathbf{v}\)</span> has extremely profound physical implications. Mathematically, it has exactly the same form as the diffusion equations we encountered in Lecture 26 (such as the heat conduction equation <span class="arithmatex">\(\partial_t T = D \nabla^2 T\)</span>). The heat conduction equation describes how heat diffuses from high-temperature regions to low-temperature regions, eventually smoothing out temperature gradients. Completely analogously, the viscous term in the Navier-Stokes equation describes <strong>momentum diffusion</strong>. When velocity gradients exist in the fluid (i.e., <span class="arithmatex">\(\nabla^2 \mathbf{v} \neq 0\)</span>), viscous forces act like "friction," driving momentum to "diffuse" from high-speed regions to low-speed regions, thus tending to smooth out velocity differences. Therefore, <strong>viscosity is not just "resistance," but more fundamentally a mechanism for momentum transport and dissipation.</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="23-incompressible-simplification">2.3 Incompressible Simplification<a class="headerlink" href="#23-incompressible-simplification" title="Permanent link">&para;</a></h2>
+<p>The term <span class="arithmatex">\(\left(\xi + \frac{\eta}{3} \right) \nabla (\nabla \cdot \mathbf{v})\)</span> also carries important physics. Let's unpack its physical meaning:</p>
+<ol>
+<li>
+<p><strong>Core physical quantity <span class="arithmatex">\(\nabla \cdot \mathbf{v}\)</span></strong>: As we discussed in Section 1.2, the divergence of velocity <span class="arithmatex">\(\nabla \cdot \mathbf{v}\)</span> (i.e., the trace of the velocity gradient tensor) describes the <strong>rate of volume change</strong> of fluid elements. If it's positive, the fluid is expanding; if it's negative, the fluid is compressing.</p>
+</li>
+<li>
+<p><strong>Driving force <span class="arithmatex">\(\nabla (\nabla \cdot \mathbf{v})\)</span></strong>: This expression is the <strong>gradient</strong> of the volume change rate. When it's not zero, it means that <strong>different regions of the fluid experience different expansion or compression rates</strong>.</p>
+</li>
+</ol>
+<p>Imagine squeezing a sponge. If you squeeze it uniformly and synchronously with both hands, the compression rate is the same everywhere, so <span class="arithmatex">\(\nabla (\nabla \cdot \mathbf{v}) \approx 0\)</span>. But if you poke it at one point with a fingertip, the sponge under the fingertip is severely compressed (<span class="arithmatex">\(\nabla \cdot \mathbf{v}\)</span> is a large negative value), while nearby regions are barely compressed (<span class="arithmatex">\(\nabla \cdot \mathbf{v} \approx 0\)</span>). At the interface between these two regions, there exists a huge compression rate gradient, i.e., <span class="arithmatex">\(\nabla (\nabla \cdot \mathbf{v}) \neq 0\)</span>.</p>
+<ol>
+<li>
+<p><strong>Force response <span class="arithmatex">\(\left(\xi + \frac{\eta}{3} \right) \nabla (\nabla \cdot \mathbf{v})\)</span></strong>:
+    This entire term is the force generated by the fluid internally to resist this <strong>non-uniform compression/expansion</strong>. It attempts to make the compression/expansion effects smoother. This force has two contributions:</p>
+<ul>
+<li>
+<p><strong>Bulk viscosity contribution <span class="arithmatex">\(\xi \nabla (\nabla \cdot \mathbf{v})\)</span></strong>: This is the main part. <strong>Bulk viscosity <span class="arithmatex">\(\xi\)</span></strong> is itself the intrinsic property of the fluid to resist volume changes. Therefore, when there exists a <strong>gradient</strong> in volume changes, bulk viscosity produces a force to "smooth out" this gradient, just like heat conduction smooths temperature gradients.</p>
+</li>
+<li>
+<p><strong>Shear viscosity contribution <span class="arithmatex">\(\frac{\eta}{3} \nabla (\nabla \cdot \mathbf{v})\)</span></strong>: This is a more subtle cross-effect. When a fluid is non-uniformly compressed, fluid elements not only change volume but also inevitably distort in shape. Therefore, the <strong>shear viscosity <span class="arithmatex">\(\eta\)</span></strong> that resists shape changes is also "mobilized" and contributes part of the resistance. The <span class="arithmatex">\(\frac{1}{3}\)</span> coefficient is a mathematical result of tensor decomposition in three-dimensional space.</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>If <span class="arithmatex">\(\eta \nabla^2 \mathbf{v}\)</span> is the friction caused by <strong>differences in velocity direction and magnitude</strong> (shear), then <span class="arithmatex">\(\left(\xi + \frac{\eta}{3} \right) \nabla (\nabla \cdot \mathbf{v})\)</span> is the friction caused by <strong>differences in the rates of volume expansion/compression</strong> (non-uniform compression/expansion).</p>
+<p>In many important physical situations, such as most liquids and low-speed gas flows (typically Mach number less than 0.3), we can assume that the fluid density remains constant when following fluid elements, i.e., <span class="arithmatex">\(\frac{D\rho}{Dt}=0\)</span>. This is called <strong>incompressible flow</strong>.</p>
+<p>According to the <strong>continuity equation</strong> of mass conservation <span class="arithmatex">\(\frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \mathbf{v}) = 0\)</span>, the incompressible condition <span class="arithmatex">\(\frac{D\rho}{Dt} = \frac{\partial \rho}{\partial t} + \mathbf{v}\cdot\nabla\rho = 0\)</span> can ultimately be simplified to a purely kinematic constraint on the velocity field:</p>
+<div class="arithmatex">\[\nabla \cdot \mathbf{v} = 0\]</div>
+<p>This condition means that the velocity field of incompressible fluids is <strong>divergence-free</strong>. Under this condition, the Navier-Stokes equation is greatly simplified. All terms containing <span class="arithmatex">\(\nabla \cdot \mathbf{v}\)</span> disappear, especially terms related to bulk viscosity <span class="arithmatex">\(\xi\)</span> (since there's no volume change, the force resisting volume changes naturally does no work). In the most important <strong>incompressible flow</strong> approximation (<span class="arithmatex">\(\nabla \cdot \mathbf{v} = 0\)</span>), this entire term naturally becomes zero, which is why it's often ignored in many applications. The equation becomes:</p>
+<div class="arithmatex">\[\rho \left( \frac{\partial \mathbf{v}}{\partial t} + (\mathbf{v} \cdot \nabla) \mathbf{v} \right) = -\nabla P + \eta \nabla^2 \mathbf{v}\]</div>
+<p>This equation, together with the continuity equation <span class="arithmatex">\(\nabla \cdot \mathbf{v} = 0\)</span>, constitutes the basic equation system describing incompressible viscous fluids and is the foundation for solving the vast majority of problems in modern computational fluid dynamics (CFD).</p>
+<p><strong>Table 1: Comparing Ideal and Viscous Fluids</strong></p>
+<p>To highlight the key conceptual upgrades introduced in this lecture, the table below contrasts the essential properties of ideal fluids with those of viscous (Newtonian) fluids.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">Ideal Fluid</th>
+<th style="text-align: left;">Viscous (Newtonian) Fluid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Internal friction</strong></td>
+<td style="text-align: left;">None (inviscid)</td>
+<td style="text-align: left;">Present, quantified by shear viscosity <span class="arithmatex">\(\eta\)</span> and bulk viscosity <span class="arithmatex">\(\xi\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Energy dissipation</strong></td>
+<td style="text-align: left;">None; total mechanical energy is conserved</td>
+<td style="text-align: left;">Present; mechanical energy is irreversibly converted into internal energy (heat)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Thermodynamic reversibility</strong></td>
+<td style="text-align: left;"><strong>Reversible</strong> (isentropic flow)</td>
+<td style="text-align: left;"><strong>Irreversible</strong>; entropy is produced by viscous stresses and heat conduction</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Boundary condition</strong></td>
+<td style="text-align: left;"><strong>Slip condition</strong> (fluid may slide along the wall)</td>
+<td style="text-align: left;"><strong>No-slip condition</strong> (fluid velocity matches the wall velocity)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Stress tensor <span class="arithmatex">\(\Sigma_{ik}\)</span></strong></td>
+<td style="text-align: left;">Isotropic: <span class="arithmatex">\(\Sigma_{ik} = -P\delta_{ik}\)</span></td>
+<td style="text-align: left;">Anisotropic: <span class="arithmatex">\(\Sigma_{ik} = -P\delta_{ik} + \Sigma'_{ik}(\nabla \mathbf{v})\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Momentum equation</strong></td>
+<td style="text-align: left;"><strong>Euler equation</strong></td>
+<td style="text-align: left;"><strong>Navier–Stokes equation</strong></td>
+</tr>
+</tbody>
+</table>
+<h1 id="3-energy-conservation-adding-heat-conduction-and-closing-the-system">3. Energy Conservation: Adding Heat Conduction and Closing the System<a class="headerlink" href="#3-energy-conservation-adding-heat-conduction-and-closing-the-system" title="Permanent link">&para;</a></h1>
+<p>So far, we have derived the <strong>continuity equation</strong> describing mass conservation and the <strong>Navier-Stokes equation</strong> describing momentum conservation for real fluids. However, this system of equations is not yet complete. The Navier-Stokes equation contains thermodynamic quantities such as density <span class="arithmatex">\(\rho\)</span>, pressure <span class="arithmatex">\(P\)</span>, and viscosity coefficients <span class="arithmatex">\(\eta\)</span> and <span class="arithmatex">\(\xi\)</span>, which are typically <strong>functions of temperature <span class="arithmatex">\(T\)</span></strong>.</p>
+<p>This means that if we want to solve a flow field with significant temperature variations, we must know the evolution law of the temperature field itself. To "close" the entire fluid dynamics equation system, we must introduce the final fundamental pillar—the <strong>energy conservation law</strong>. The core task of this lecture is to establish a local energy conservation equation for real viscous, heat-conducting fluids, and in this process, introduce the final key dissipative mechanism: <strong>heat conduction</strong>.</p>
+<h2 id="31-energy-conservation-equation">3.1 Energy Conservation Equation<a class="headerlink" href="#31-energy-conservation-equation" title="Permanent link">&para;</a></h2>
+<p>Like mass and momentum, energy is also a conserved quantity. The total energy of a fluid element consists of two parts: <strong>kinetic energy</strong> contributed by macroscopic overall motion and <strong>internal energy</strong> contributed by random microscopic molecular motion. Therefore, the total energy density per unit volume is:</p>
+<div class="arithmatex">\[e_{\text{total}} = \underbrace{\frac{1}{2} \rho v^2}_{\text{kinetic energy density}} + \underbrace{\rho \epsilon}_{\text{internal energy density}}\]</div>
+<p>where <span class="arithmatex">\(\epsilon\)</span> is the <strong>internal energy per unit mass</strong>.</p>
+<p>The local law of energy conservation follows the same conservation law paradigm we are familiar with, i.e., the local rate of change of energy density equals the negative divergence of energy flow:</p>
+<div class="arithmatex">\[\partial_t \left( \frac{1}{2} \rho v^2 + \rho \epsilon \right) = -\nabla \cdot \mathbf{j}^{(\epsilon)}\]</div>
+<p>The entire challenge here lies in correctly identifying all the physical mechanisms that constitute the <strong>total energy flux density vector</strong> <span class="arithmatex">\(\mathbf{j}^{(\epsilon)}\)</span>.</p>
+<h2 id="32-deriving-the-energyflux-vector">3.2 Deriving the Energy‑Flux Vector<a class="headerlink" href="#32-deriving-the-energyflux-vector" title="Permanent link">&para;</a></h2>
+<p>Energy can cross an imaginary surface through multiple mechanisms, which together constitute the total energy flow <span class="arithmatex">\(\mathbf{j}^{(\epsilon)}\)</span>:</p>
+<ol>
+<li>
+<p><strong>Convective Transport</strong>: Energy is carried by the macroscopic motion of the fluid. This is the most intuitive way of energy transfer, where mass flow <span class="arithmatex">\(\rho\mathbf{v}\)</span> carries the energy per unit mass (kinetic energy <span class="arithmatex">\(\frac{1}{2}v^2\)</span> and internal energy <span class="arithmatex">\(\epsilon\)</span>). Its flux is:
+    <span class="arithmatex">\(<span class="arithmatex">\(\mathbf{j}^{(\text{conv})} = \rho \mathbf{v} \left( \frac{1}{2} v^2 + \epsilon \right)\)</span>\)</span></p>
+</li>
+<li>
+<p><strong>Mechanical Work</strong>: Forces acting on the fluid surface (pressure and viscous forces) do work on the fluid, which is also a way of energy transfer. The power per unit area equals the dot product of the stress vector <span class="arithmatex">\((\Sigma \cdot \mathbf{n})_i = \Sigma_{ik}n_k\)</span> and the velocity vector <span class="arithmatex">\(v_i\)</span>. Therefore, the energy flux density vector caused by the total stress tensor <span class="arithmatex">\(\Sigma\)</span> is:
+    <span class="arithmatex">\(<span class="arithmatex">\(\mathbf{j}^{(\text{work})} = \mathbf{v} \cdot (-\Sigma) = \mathbf{v} \cdot (P\mathbf{I} - \Sigma')\)</span>\)</span>
+    The negative sign here is because we consider the energy <strong>inflow</strong> caused by external work on the fluid element. It includes both <strong>work done by pressure</strong> and <strong>work done by viscous forces</strong>.</p>
+</li>
+<li>
+<p><strong>Heat Conduction</strong>: This is a way of energy transfer independent of macroscopic motion, purely through microscopic molecular collisions. We introduce here the final important <strong>constitutive relation</strong>—<strong>Fourier's Law of Heat Conduction</strong>. This law states that the heat flux density vector <span class="arithmatex">\(\mathbf{j}^{(q)}\)</span> is opposite in direction to the temperature gradient and proportional in magnitude:
+    <span class="arithmatex">\(<span class="arithmatex">\(\mathbf{j}^{(q)} = -\kappa \nabla T\)</span>\)</span>
+    where the proportionality coefficient <span class="arithmatex">\(\kappa\)</span> is called the <strong>thermal conductivity</strong>, a transport coefficient that depends on material properties. Like <span class="arithmatex">\(\eta\)</span> and <span class="arithmatex">\(\xi\)</span>, it is also an <strong>Onsager coefficient</strong> that quantifies the material's ability to conduct heat.</p>
+</li>
+</ol>
+<p>Combining the above three terms, we obtain the complete expression for the total energy flux density vector. To get a more physical and concise form, we notice that the convective term and pressure work term can be combined: <span class="arithmatex">\(\rho\mathbf{v}\epsilon + P\mathbf{v} = \rho\mathbf{v}(\epsilon + P/\rho)\)</span>. The quantity in parentheses is an important state function in thermodynamics—the <strong>enthalpy per unit mass</strong> <span class="arithmatex">\(h = \epsilon + P/\rho\)</span>.</p>
+<p><strong>Physical meaning of enthalpy</strong>: Enthalpy not only includes the internal energy <span class="arithmatex">\(\epsilon\)</span> of the fluid element but also the <strong>flow work</strong> <span class="arithmatex">\(P/\rho\)</span> necessary to "push" it into the surrounding pressurized environment. Therefore, when fluid flows, the energy it carries should be enthalpy, not just internal energy.</p>
+<p>Finally, we obtain the final expression for the total energy flux density vector:</p>
+<div class="arithmatex">\[\mathbf{j}^{(\epsilon)} = \underbrace{\rho \mathbf{v} \left( \frac{1}{2} v^2 + h \right)}_{\text{convection (including flow work)}} + \underbrace{- \mathbf{v} \cdot \Sigma'}_{\text{work by viscous forces}} + \underbrace{- \kappa \nabla T}_{\text{heat conduction}}\]</div>
+<p>This expression clearly shows the three physical channels of energy transport: energy convection accompanying mass flow, work done by viscous forces, and heat conduction driven by temperature gradients.</p>
+<h2 id="33-python-simulation-iii-2d-heat-conduction">3.3 Python Simulation III: 2D Heat Conduction<a class="headerlink" href="#33-python-simulation-iii-2d-heat-conduction" title="Permanent link">&para;</a></h2>
+<p>The heat diffusion process described by Fourier's law is mathematically very similar to the momentum diffusion process caused by viscosity in the previous section. To intuitively understand heat conduction, we can simulate a heat diffusion process on a 2D plate. We set an initial "hot spot" and then observe how it evolves over time, eventually making the entire plate's temperature uniform.</p>
+<p><strong>Physical process</strong>:</p>
+<ol>
+<li>
+<p><strong>Driving force</strong>: In the initial state, the huge <strong>temperature gradient</strong> between the hot spot and cold regions is the "thermodynamic force" driving the entire process.</p>
+</li>
+<li>
+<p><strong>Heat flux</strong>: According to Fourier's law <span class="arithmatex">\(\mathbf{j}^{(q)} = -\kappa \nabla T\)</span>, this gradient produces a <strong>heat flux</strong> from the high-temperature region to the low-temperature region, transporting energy from the center outward.</p>
+</li>
+<li>
+<p><strong>Diffusion process</strong>: The physical parameter responsible for this process is the <strong>thermal conductivity <span class="arithmatex">\(\kappa\)</span></strong> (manifested as thermal diffusivity D in the code). The larger <span class="arithmatex">\(\kappa\)</span>, the faster this diffusion process. This process is mathematically described by the heat conduction equation <span class="arithmatex">\(\partial_t T \propto \nabla^2 T\)</span>, where the Laplacian operator <span class="arithmatex">\(\nabla^2\)</span> is the mathematical signature of "diffusion."</p>
+</li>
+<li>
+<p><strong>Irreversibility</strong>: This is a typical <strong>irreversible process</strong>. We never see in reality a uniformly temperature plate spontaneously concentrating heat to the center to form a hot spot. This process always proceeds unidirectionally toward eliminating temperature gradients and increasing system entropy, providing an intuitive foundation for our next section's discussion of entropy balance.</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">animation</span>
+
+<span class="c1"># --- Simulation Parameters ---</span>
+<span class="n">plate_size</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">D</span> <span class="o">=</span> <span class="mf">1.0</span>             <span class="c1"># Thermal diffusivity (kappa / (rho c_p))</span>
+<span class="n">T_cool</span> <span class="o">=</span> <span class="mf">300.0</span>      <span class="c1"># Initial low temperature</span>
+<span class="n">T_hot</span> <span class="o">=</span> <span class="mf">700.0</span>       <span class="c1"># Initial hot spot temperature</span>
+
+<span class="c1"># Time step must satisfy stability condition</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">dx</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">D</span><span class="p">)</span>
+
+<span class="c1"># --- Initialize Temperature Field ---</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">plate_size</span><span class="p">,</span> <span class="n">plate_size</span><span class="p">),</span> <span class="n">T_cool</span><span class="p">)</span>
+
+<span class="c1"># Set initial hot spot (e.g., a circular region)</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">plate_size</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">plate_size</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">plate_size</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="n">plate_size</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="n">radius</span><span class="o">**</span><span class="mi">2</span><span class="p">:</span>
+            <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">T_hot</span>
+
+<span class="c1"># Record temperature field history for animation</span>
+<span class="n">u_history</span> <span class="o">=</span> <span class="p">[</span><span class="n">u</span><span class="o">.</span><span class="n">copy</span><span class="p">()]</span>
+<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="c1"># --- Time Evolution (Finite Difference Method) ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">u_prev</span><span class="p">):</span>
+    <span class="n">u_new</span> <span class="o">=</span> <span class="n">u_prev</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">u_new</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">u_prev</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">D</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">/</span> <span class="n">dx</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span>
+        <span class="n">u_prev</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">u_prev</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">u_prev</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span>
+        <span class="n">u_prev</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:]</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">u_prev</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">u_prev</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">u_new</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">T_cool</span><span class="p">;</span> <span class="n">u_new</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">T_cool</span>
+    <span class="n">u_new</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">T_cool</span><span class="p">;</span> <span class="n">u_new</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">T_cool</span>
+    <span class="k">return</span> <span class="n">u_new</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_steps</span><span class="p">):</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">update</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+    <span class="n">u_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+
+<span class="c1"># --- Animation Creation ---</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">animate</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">u_history</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;hot&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">T_cool</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">T_hot</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time t = </span><span class="si">{</span><span class="n">k</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dt</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> s&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([]);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">im</span><span class="p">]</span>
+
+<span class="n">ani</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">u_history</span><span class="p">),</span> <span class="n">interval</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Add colorbar</span>
+<span class="n">cax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="n">ax</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">x1</span><span class="o">+</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">y0</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">height</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;hot&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">T_cool</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">T_hot</span><span class="p">),</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Temperature (K)&#39;</span><span class="p">)</span>
+
+<span class="n">ani</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;heat_diffusion.gif&#39;</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="s1">&#39;pillow&#39;</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Run Output" src="../../assets/images/remote/heat_diffusion.gif" /></p>
+<p>The central hot spot cools as heat flows outward; the surrounding cold region warms. Temperature gradients flatten and the system approaches a uniform equilibrium.</p>
+<h1 id="4-entropy-balance-and-the-second-law">4. Entropy Balance and the Second Law<a class="headerlink" href="#4-entropy-balance-and-the-second-law" title="Permanent link">&para;</a></h1>
+<p>So far, we have established dynamical equations for the three fundamental conserved quantities: mass, momentum, and energy. However, while these equations describe how physical quantities are conserved, they do not yet clearly reflect the <strong>direction of evolution</strong> of physical processes. What determines that heat always flows from high temperature to low temperature, and not the reverse? What prevents a cup of still coffee from spontaneously rotating? The key to answering these questions lies in one of the most profound principles in physics: the <strong>second law of thermodynamics</strong>.</p>
+<p>The climax of this lecture lies in connecting fluid dynamics conservation laws with fundamental thermodynamic laws, deriving a local balance equation for <strong>entropy</strong>, and proving that it is precisely the two dissipative mechanisms we introduced—viscosity and heat conduction—that act as "sources" of entropy, thereby endowing the dynamical equations with an irreversible <strong>"arrow of time"</strong>.</p>
+<h2 id="41-entropy-balance-a-conservation-law-with-a-source">4.1 Entropy Balance: A Conservation Law with a Source<a class="headerlink" href="#41-entropy-balance-a-conservation-law-with-a-source" title="Permanent link">&para;</a></h2>
+<p>Entropy, unlike mass or energy, is not an absolute conserved quantity. Therefore, we cannot simply write down a standard conservation equation for it. Instead, we must start from the known energy conservation and mass conservation equations, combine them with fundamental thermodynamic relations (such as the Gibbs relation <span class="arithmatex">\(Tds = d\epsilon + Pdv_s\)</span>), and derive the entropy evolution equation through rigorous mathematical derivation.</p>
+<p>This derivation process (though algebraically tedious, is logically straightforward) ultimately yields a local balance equation describing the evolution of entropy density per unit volume <span class="arithmatex">\(\rho s\)</span>. Its final form is:</p>
+<div class="arithmatex">\[\partial_t (\rho s) + \nabla \cdot \mathbf{j}^{(s)} = \sigma^{(s)}\]</div>
+<p>The structure of this equation is very profound. Its left side has exactly the same form as the conservation laws we encountered before, describing how the local change in entropy density comes from the net inflow of entropy. However, its right side is <strong>not zero</strong>. This <strong>entropy production rate</strong> <span class="arithmatex">\(\sigma^{(s)}\)</span> is not from external sources to the system, but is "created out of nothing" due to <strong>internal irreversible processes</strong> within the system. For ideal fluids, <span class="arithmatex">\(\sigma^{(s)}=0\)</span>, and entropy is conserved when following fluid motion; for real fluids, it is precisely this source term that represents irreversibility.</p>
+<h3 id="physical-composition-of-entropy-flux-density-mathbfjs">Physical Composition of Entropy Flux Density (<span class="arithmatex">\(\mathbf{j}^{(s)}\)</span>)<a class="headerlink" href="#physical-composition-of-entropy-flux-density-mathbfjs" title="Permanent link">&para;</a></h3>
+<p>The derivation shows that entropy flow consists of two parts:</p>
+<div class="arithmatex">\[\mathbf{j}^{(s)} = \rho s \mathbf{v} + \frac{\mathbf{j}^{(q)}}{T}\]</div>
+<ul>
+<li>
+<p><strong>Convective term <span class="arithmatex">\(\rho s \mathbf{v}\)</span></strong>: This is the most intuitive part, representing entropy being carried by the macroscopic motion of the fluid (mass flow <span class="arithmatex">\(\rho\mathbf{v}\)</span>).</p>
+</li>
+<li>
+<p><strong>Heat flow term <span class="arithmatex">\(\mathbf{j}^{(q)}/T\)</span></strong>: This term is more profound, originating from the thermodynamic definition <span class="arithmatex">\(dS = \delta Q_{rev}/T\)</span>. It tells us that <strong>heat flow (<span class="arithmatex">\(\mathbf{j}^{(q)}\)</span>) is essentially a way of transporting entropy</strong>. In an environment at temperature T, an energy flow <span class="arithmatex">\(\mathbf{j}^{(q)}\)</span> corresponds to an entropy flow <span class="arithmatex">\(\mathbf{j}^{(q)}/T\)</span>.</p>
+</li>
+</ul>
+<h2 id="42-structure-of-entropy-production-onsagers-theory-realized">4.2 Structure of Entropy Production: Onsager's Theory Realized<a class="headerlink" href="#42-structure-of-entropy-production-onsagers-theory-realized" title="Permanent link">&para;</a></h2>
+<p>Now let's look at the entropy production rate <span class="arithmatex">\(\sigma^{(s)}\)</span>, which is the core of irreversibility. Its expression is:</p>
+<div class="arithmatex">\[\sigma^{(s)} = \mathbf{j}^{(q)} \cdot \nabla\left(\frac{1}{T}\right) + \frac{1}{T} \sum_{i,k} \Sigma_{ik}' (\partial_k v_i)\]</div>
+<p>This expression is not a random collection of terms; it confirms the <strong>Onsager theory</strong> established from abstract symmetry principles in Lecture 24. This theory predicts that the entropy production rate must necessarily be a sum of "<strong>thermodynamic fluxes</strong>" times their conjugate "<strong>thermodynamic forces</strong>."</p>
+<p>In fluid systems, these two pairs of flux-force relationships are clearly visible:</p>
+<table>
+<thead>
+<tr>
+<th>Irreversible process</th>
+<th>Thermodynamic flux (response)</th>
+<th>Thermodynamic force (drive)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Heat conduction</strong></td>
+<td>Heat flux density <span class="arithmatex">\(\mathbf{j}^{(q)}\)</span></td>
+<td>Temperature inverse gradient <span class="arithmatex">\(\nabla(1/T) = -\frac{1}{T^2}\nabla T\)</span></td>
+</tr>
+<tr>
+<td><strong>Viscous dissipation</strong></td>
+<td>Viscous stress tensor <span class="arithmatex">\(\Sigma_{ik}'\)</span></td>
+<td>Velocity gradient tensor (temperature weighted) <span class="arithmatex">\(\frac{1}{T}\partial_k v_i\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Starting from concrete, Newtonian mechanics-based fluid dynamics equations, we ultimately derived an entropy production form that completely matches the form predicted by the very universal, statistics and symmetry-based Onsager theory. This not only proves the self-consistency of the theory but also provides a unified framework for understanding all irreversible processes.</p>
+<h2 id="43-constraints-from-the-second-law">4.3 Constraints from the Second Law<a class="headerlink" href="#43-constraints-from-the-second-law" title="Permanent link">&para;</a></h2>
+<p>The local statement of the second law of thermodynamics is: for any spontaneous physical process, entropy <strong>can only increase, not decrease</strong>. This means the entropy production rate must be <strong>non-negative</strong>.</p>
+<div class="arithmatex">\[\sigma^{(s)} \geq 0\]</div>
+<p>This seemingly simple physical principle provides extremely powerful mathematical constraints for the transport coefficients we previously introduced phenomenologically. Substituting the constitutive relations (Fourier's law <span class="arithmatex">\(\mathbf{j}^{(q)}=-\kappa\nabla T\)</span> and Newton's viscous law) into the entropy production rate expression, after organizing we get:</p>
+<div class="arithmatex">\[\sigma^{(s)} = \frac{\kappa (\nabla T)^2}{T^2} + \frac{\eta}{2T} \left( \partial_i v_k + \partial_k v_i - \frac{2}{3} \delta_{ik} \partial_\ell v_\ell \right)^2 + \frac{\xi}{T} (\nabla \cdot \mathbf{v})^2\]</div>
+<p>Observing the above equation, each term on the right side is a square of gradient terms (or squared dot product of tensors), so they are mathematically non-negative themselves. To ensure that for <strong>any possible</strong> fluid flow (i.e., for any arbitrary velocity field and temperature field), the inequality <span class="arithmatex">\(\sigma^{(s)} \geq 0\)</span> always holds, the only possibility is that the coefficients of each term must themselves be non-negative.</p>
+<p>Thus, starting from the first principle of the second law of thermodynamics, we have strictly proven that all transport coefficients must satisfy:</p>
+<div class="arithmatex">\[\eta \geq 0, \quad \xi \geq 0, \quad \kappa \geq 0\]</div>
+<p>If any coefficient were negative, it would mean there exists some flow pattern that can spontaneously reduce the system's entropy, which is equivalent to allowing heat to flow from low-temperature objects to high-temperature objects, or allowing a cup of still coffee to spontaneously rotate—all of these are "perpetual motion machines of the second kind" prohibited by physical laws.</p>
+<h1 id="5-conclusion">5. Conclusion<a class="headerlink" href="#5-conclusion" title="Permanent link">&para;</a></h1>
+<p>This lecture completed the key theoretical construction from non-dissipative ideal fluids to real fluids containing irreversible processes. We are no longer limited to the idealized reversible world, but have successfully integrated the most fundamental dissipative mechanisms in physics—<strong>viscosity</strong> and <strong>heat conduction</strong>—into the fluid dynamics framework.</p>
+<ol>
+<li>
+<p><strong>Through introducing constitutive relations</strong>, we established mathematical descriptions for internal friction and heat flow, clarifying the physical meaning of <strong>shear viscosity</strong> <span class="arithmatex">\(\eta\)</span>, <strong>bulk viscosity</strong> <span class="arithmatex">\(\xi\)</span>, and <strong>thermal conductivity</strong> <span class="arithmatex">\(\kappa\)</span> as core transport coefficients.</p>
+</li>
+<li>
+<p><strong>Combining these dissipative terms with basic conservation laws</strong>, we upgraded from the ideal fluid Euler equation to the more universal <strong>Navier-Stokes equation</strong> and complete <strong>energy conservation equation</strong>, and deeply understood the physical mechanism of viscosity as <strong>momentum diffusion</strong>.</p>
+</li>
+<li>
+<p><strong>Most importantly</strong>, through deriving the <strong>entropy balance equation</strong>, we connected fluid dynamics with the <strong>second law of thermodynamics</strong>. The non-negativity of entropy production not only embedded an irreversible "arrow of time" into our model, but also provided fundamental thermodynamic constraints for all transport coefficients (<span class="arithmatex">\(\eta, \xi, \kappa \geq 0\)</span>) from first principles, ensuring the physical self-consistency of our entire theoretical framework.</p>
+</li>
+</ol>
+<p>So far, we have established a complete set of continuous medium theoretical equations describing real fluid behavior. The (flux × force) structure presented by entropy production rate in this lecture, as well as the linear constitutive relations we used, are all special cases of a more grand theoretical framework.</p>
+<p>The next lecture will introduce that near thermodynamic equilibrium, any irreversible flux <span class="arithmatex">\(\mathbf{J}\)</span> can be written as a linear combination of all thermodynamic forces <span class="arithmatex">\(\mathbf{X}\)</span>, i.e., <span class="arithmatex">\(\mathbf{J} = \mathbf{L} \mathbf{X}\)</span>, where <span class="arithmatex">\(\mathbf{L}\)</span> is the Onsager coefficient matrix. The <span class="arithmatex">\(\eta, \xi, \kappa\)</span> encountered in this lecture are examples of these Onsager coefficients. This theoretical framework will also lead to the profound symmetry principle—<strong>Onsager reciprocal relations</strong>. Additionally, the "dry diffusive particle systems" introduced in the next lecture will serve as a new example of applying these nonequilibrium thermodynamic principles, extending from single continuous fluids to multi-particle interacting systems.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.highlight"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../assets/javascripts/mathjax.js"></script>
+      
+        <script src="../../assets/javascripts/language-nav.js"></script>
+      
+        <script src="../../assets/javascripts/video-init.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

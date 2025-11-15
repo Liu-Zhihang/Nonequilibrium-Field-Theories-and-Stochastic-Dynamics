@@ -1,0 +1,3228 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Course Notes and Code (Erwin Frey, LMU Munich, 2025)">
+      
+      
+        <meta name="author" content="Zhihang Liu">
+      
+      
+        <link rel="canonical" href="https://liu-zhihang.github.io/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/notes/15.%20Chemotaxis%2C%20Run-and-Tumble%20Motion%2C%20and%20the%20Keller%E2%80%93Segel%20Model/">
+      
+      
+        <link rel="prev" href="../14.%20Hamiltonian%20Monte%20Carlo%20Sampling/">
+      
+      
+        <link rel="next" href="../16.%20The%20Schnitzer%20Model%2C%20Anomalous%20Diffusion%2C%20and%20Motility%E2%80%91Induced%20Phase%20Separation/">
+      
+      
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en">
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>15. Chemotaxis, Run-and-Tumble Motion, and the Keller–Segel Model - Nonequilibrium Field Theories and Stochastic Dynamics</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/video.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#prologue-from-unbiased-to-biased-random-walks" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-header__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nonequilibrium Field Theories and Stochastic Dynamics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              15. Chemotaxis, Run-and-Tumble Motion, and the Keller–Segel Model
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-nav__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nonequilibrium Field Theories and Stochastic Dynamics
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.%20Course%20Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.%20Simple%20Random%20Walk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Simple Random Walk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20Gaussian%20Random%20Walk%20and%20Poisson%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Gaussian Random Walk and Poisson Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20Gillespie%20Algorithm%2C%20Master%20Equation%2C%20Generating%20Functions%20and%20Population%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie Algorithm, Master Equation, Generating Functions and Population Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.%20Population%20Dynamics%20-%20Linear%20Death%20Process%20and%20Lotka-Volterra%20System/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Population Dynamics - Linear Death Process and Lotka-Volterra System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.%20Fundamental%20Equations%20of%20Markov%20Processes%20%E2%80%94%20Chapman%E2%80%93Kolmogorov%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Fundamental Equations of Markov Processes — Chapman–Kolmogorov Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.%20Forward%20Master%20Equation%20and%20the%20Q%20Matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Forward Master Equation and the Q Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.%20Perron%E2%80%93Frobenius%20Theorem%2C%20Steady%20States%2C%20and%20Detailed%20Balance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Perron–Frobenius Theorem, Steady States, and Detailed Balance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.%20Nonequilibrium%20States%20%E2%80%94%20Irreversibility%20and%20Entropy%20Production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Nonequilibrium States — Irreversibility and Entropy Production
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.%20Ehrenfest%20Model%2C%20Entropy%2C%20and%20KL%20Divergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Ehrenfest Model, Entropy, and KL Divergence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.%20Continuous%20Markov%20Processes%20and%20the%20Fokker%E2%80%93Planck%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Continuous Markov Processes and the Fokker–Planck Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12.%20Brownian%20Motion%20and%20the%20Ornstein%E2%80%93Uhlenbeck%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Brownian Motion and the Ornstein–Uhlenbeck Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13.%20Monte%20Carlo%20Sampling%20as%20a%20Stochastic%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Monte Carlo Sampling as a Stochastic Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14.%20Hamiltonian%20Monte%20Carlo%20Sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Hamiltonian Monte Carlo Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Chemotaxis, Run-and-Tumble Motion, and the Keller–Segel Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16.%20The%20Schnitzer%20Model%2C%20Anomalous%20Diffusion%2C%20and%20Motility%E2%80%91Induced%20Phase%20Separation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. The Schnitzer Model, Anomalous Diffusion, and Motility‑Induced Phase Separation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17.%20Langevin%20Equation%2C%20Brownian%20Particle%2C%20and%20the%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Langevin Equation, Brownian Particle, and the Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18.%20Fokker%E2%80%93Planck%20Equation%20and%20the%20Smoluchowski%20Equation%20%E2%80%94%20From%20Random%20Trajectories%20to%20Probability%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Fokker–Planck Equation and the Smoluchowski Equation — From Random Trajectories to Probability Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19.%20Path%20Integral%20Formulation%20of%20Stochastic%20Processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Path Integral Formulation of Stochastic Processes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20.%20Stochastic%20Differential%20Equations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Stochastic Differential Equations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21.%20Ito%20Integral%20and%20Unified%20Stochastic%20Process%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Ito Integral and Unified Stochastic Process Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22.%20Path%20Integrals%20for%20Systems%20with%20Multiplicative%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Path Integrals for Systems with Multiplicative Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23.%20From%20Coarse-Graining%20to%20Fluctuation%20Dynamics%20of%20Continuous%20Field%20Theories/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. From Coarse-Graining to Fluctuation Dynamics of Continuous Field Theories
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24.%20Onsager%20Coefficients%2C%20Reciprocity%2C%20and%20the%20Dynamic%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Onsager Coefficients, Reciprocity, and the Dynamic Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25.%20Gradient%20Dynamics%2C%20Phase%20Transitions%2C%20and%20Relaxation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. Gradient Dynamics, Phase Transitions, and Relaxation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26.%20Critical%20Slowing%20Down%2C%20Dynamic%20Response%2C%20and%20Conservation%20Laws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Critical Slowing Down, Dynamic Response, and Conservation Laws
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27.%20Hydrodynamics%20of%20Simple%20Fluids%2C%20Inviscid%20Flow%2C%20and%20the%20Euler%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. Hydrodynamics of Simple Fluids, Inviscid Flow, and the Euler Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28.%20Viscous%20Fluids%2C%20the%20Navier%E2%80%93Stokes%20Equation%2C%20Entropy%20Balance%2C%20and%20Heat%20Conduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. Viscous Fluids, the Navier–Stokes Equation, Entropy Balance, and Heat Conduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29.%20Irreversible%20Linear%20Thermodynamics%20and%20Dry%20Diffusive%20Particle%20Systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. Irreversible Linear Thermodynamics and Dry Diffusive Particle Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30.%20Brownian%20Particles%20Suspended%20in%20a%20Fluid%20%E2%80%94%20Model%20H/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. Brownian Particles Suspended in a Fluid — Model H
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31.%20Dynamical%20Functionals%2C%20Additive%E2%80%91Noise%20Field%20Theory%2C%20and%20the%20Onsager%E2%80%93Machlup%20Functional/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. Dynamical Functionals, Additive‑Noise Field Theory, and the Onsager–Machlup Functional
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32.%20Janssen%E2%80%93De%20Dominicis%20Response%20Functional%20and%20the%20Fluctuation%E2%80%93Dissipation%20Relation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen–De Dominicis Response Functional and the Fluctuation–Dissipation Relation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33.%20Nonequilibrium%20Work%20and%20Fluctuation%20Theorems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. Nonequilibrium Work and Fluctuation Theorems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../34.%20Directed%20Percolation%2C%20Absorbing%20States%2C%20and%20Spectral%20Methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. Directed Percolation, Absorbing States, and Spectral Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../35.%20Path-Integral%20Representation%20of%20the%20Master%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. Path-Integral Representation of the Master Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../36.%20Coherent-State%20Path%20Integrals%2C%20Operator%20Algebra%2C%20and%20Imaginary%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. Coherent-State Path Integrals, Operator Algebra, and Imaginary Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../37.%20Kramers-Moyal%20Expansion%20and%20the%20Low-Noise%20Limit%20of%20Path%20Integrals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal Expansion and the Low-Noise Limit of Path Integrals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../38.%20Multi-Species%20Path%20Integrals%20and%20Cyclic%20Competition%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. Multi-Species Path Integrals and Cyclic Competition Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../39.%20From%20Particle%20Jumps%20to%20Continuous%20Field%20Theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. From Particle Jumps to Continuous Field Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../40.%20Unified%20Field%20Theory%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. Unified Field Theory Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    中文笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/1.%20%E8%AF%BE%E7%A8%8B%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 课程导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/2.%20%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 简单随机游走
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/3.%20%E9%AB%98%E6%96%AF%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0%E4%B8%8E%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 高斯随机游走与泊松过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/4.%20Gillespie%20%E7%AE%97%E6%B3%95%E3%80%81%E4%B8%BB%E6%96%B9%E7%A8%8B%E3%80%81%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%8D%E7%BE%A4%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie 算法、主方程、生成函数与种群动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/5.%20%E7%A7%8D%E7%BE%A4%E5%8A%A8%E6%80%81%E5%AD%A6%EF%BC%9A%E7%BA%BF%E6%80%A7%E6%AD%BB%E4%BA%A1%E8%BF%87%E7%A8%8B%E4%B8%8ELotka-Volterra%20%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 种群动态学：线性死亡过程与Lotka-Volterra 系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/6.%20%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E7%A8%8B%EF%BC%9A%E6%9F%A5%E6%99%AE%E6%9B%BC-%E7%A7%91%E5%B0%94%E8%8E%AB%E6%88%88%E7%BD%97%E5%A4%AB%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 马尔可夫过程的基本方程：查普曼-科尔莫戈罗夫方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/7.%20%E5%89%8D%E5%90%91%E4%B8%BB%E6%96%B9%E7%A8%8B%E4%B8%8EQ%E7%9F%A9%E9%98%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 前向主方程与Q矩阵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/8.%20%E4%BD%A9%E9%BE%99-%E5%BC%97%E7%BD%97%E8%B4%9D%E5%B0%BC%E4%B9%8C%E6%96%AF%E5%AE%9A%E7%90%86%E3%80%81%E7%A8%B3%E6%80%81%E4%B8%8E%E7%BB%86%E8%87%B4%E5%B9%B3%E8%A1%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 佩龙-弗罗贝尼乌斯定理、稳态与细致平衡
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/9.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81%EF%BC%9A%E4%B8%8D%E5%8F%AF%E9%80%86%E6%80%A7%E4%B8%8E%E7%86%B5%E4%BA%A7%E7%94%9F%E7%9A%84%E6%8E%A8%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 非平衡态：不可逆性与熵产生的推论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/10.%20%E5%9F%83%E4%BC%A6%E8%B4%B9%E6%96%AF%E7%89%B9%E6%A8%A1%E5%9E%8B%E3%80%81%E7%86%B5%E4%B8%8EKL%E6%95%A3%E5%BA%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 埃伦费斯特模型、熵与KL散度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/11.%20%E8%BF%9E%E7%BB%AD%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E4%B8%8E%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. 连续马尔可夫过程与福克-普朗克方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/12.%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8%E4%B8%8E%E5%A5%A5%E6%81%A9%E6%96%AF%E5%9D%A6-%E4%B9%8C%E4%BC%A6%E8%B4%9D%E5%85%8B%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. 布朗运动与奥恩斯坦-乌伦贝克过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/13.%20%E4%BD%9C%E4%B8%BA%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. 作为随机过程的蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/14.%20%E5%93%88%E5%AF%86%E5%B0%94%E9%A1%BF%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. 哈密尔顿蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/15.%20%E8%B6%8B%E5%8C%96%E6%80%A7%E3%80%81%E8%B7%91%E5%8A%A8-%E7%BF%BB%E6%BB%9A%E8%BF%90%E5%8A%A8%E4%B8%8EKeller-Segel%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. 趋化性、跑动-翻滚运动与Keller-Segel模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/16.%20Schnitzer%E6%A8%A1%E5%9E%8B%E3%80%81%E5%8F%8D%E5%B8%B8%E6%89%A9%E6%95%A3%E4%B8%8E%E8%BF%90%E5%8A%A8%E8%AF%B1%E5%AF%BC%E7%9B%B8%E5%88%86%E7%A6%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Schnitzer模型、反常扩散与运动诱导相分离
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/17.%20%E6%9C%97%E4%B9%8B%E4%B8%87%E6%96%B9%E7%A8%8B%E3%80%81%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. 朗之万方程、布朗粒子与涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/18.%20%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B%E4%B8%8E%E6%96%AF%E6%91%A9%E6%A3%B1%E9%9C%8D%E5%A4%AB%E6%96%AF%E5%9F%BA%E6%96%B9%E7%A8%8B%EF%BC%9A%E4%BB%8E%E9%9A%8F%E6%9C%BA%E8%BD%A8%E8%BF%B9%E5%88%B0%E6%A6%82%E7%8E%87%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. 福克-普朗克方程与斯摩棱霍夫斯基方程：从随机轨迹到概率动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/19.%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. 随机过程的路径积分表述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/20.%20%E9%9A%8F%E6%9C%BA%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. 随机微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/21.%20%E4%BC%8A%E8%97%A4%E7%A7%AF%E5%88%86%E4%B8%8E%E7%BB%9F%E4%B8%80%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. 伊藤积分与统一的随机过程框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/22.%20%E5%90%AB%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. 含乘性噪声系统的路径积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/23.%20%E4%BB%8E%E7%B2%97%E7%B2%92%E5%8C%96%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA%E6%B6%A8%E8%90%BD%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. 从粗粒化到连续场论涨落动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/24.%20%E6%98%82%E8%90%A8%E6%A0%BC%E7%B3%BB%E6%95%B0%E3%80%81%E5%80%92%E6%98%93%E5%85%B3%E7%B3%BB%E4%B8%8E%E5%8A%A8%E6%80%81%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. 昂萨格系数、倒易关系与动态涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/25.%20%E6%A2%AF%E5%BA%A6%E5%8A%A8%E5%8A%9B%E5%AD%A6%E3%80%81%E7%9B%B8%E5%8F%98%E4%B8%8E%E5%BC%9B%E8%B1%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. 梯度动力学、相变与弛豫
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/26.%20%E4%B8%B4%E7%95%8C%E6%85%A2%E5%8C%96%E3%80%81%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%B8%8E%E5%AE%88%E6%81%92%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. 临界慢化、动态响应与守恒律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/27.%20%E7%AE%80%E5%8D%95%E6%B5%81%E4%BD%93%E3%80%81%E6%97%A0%E6%91%A9%E6%93%A6%E6%B5%81%E4%BD%93%E4%B8%8E%E6%AC%A7%E6%8B%89%E6%96%B9%E7%A8%8B%E7%9A%84%E6%B5%81%E4%BD%93%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. 简单流体、无摩擦流体与欧拉方程的流体动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/28.%20%E7%B2%98%E6%80%A7%E6%B5%81%E4%BD%93%E3%80%81%E7%BA%B3%E7%BB%B4-%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%96%B9%E7%A8%8B%E3%80%81%E7%86%B5%E5%B9%B3%E8%A1%A1%E4%B8%8E%E7%83%AD%E4%BC%A0%E5%AF%BC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. 粘性流体、纳维-斯托克斯方程、熵平衡与热传导
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/29.%20%E4%B8%8D%E5%8F%AF%E9%80%86%E7%BA%BF%E6%80%A7%E7%83%AD%E5%8A%9B%E5%AD%A6%E4%B8%8E%E5%B9%B2%E6%80%A7%E6%89%A9%E6%95%A3%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. 不可逆线性热力学与干性扩散粒子系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/30.%20%E6%82%AC%E6%B5%AE%E5%9C%A8%E6%B5%81%E4%BD%93%E4%B8%AD%E7%9A%84%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%20%E2%80%94%20H%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. 悬浮在流体中的布朗粒子 — H模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/31.%20%E5%8A%A8%E6%80%81%E6%B3%9B%E5%87%BD%E3%80%81%E5%8A%A0%E6%80%A7%E5%99%AA%E5%A3%B0%E5%9C%BA%E8%AE%BA%E4%B8%8EOnsager-Machlup%E6%B3%9B%E5%87%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. 动态泛函、加性噪声场论与Onsager-Machlup泛函
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/32.%20Janssen-De%20Dominicis%20%E5%93%8D%E5%BA%94%E6%B3%9B%E5%87%BD%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen-De Dominicis 响应泛函与涨落-耗散关系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/33.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E5%8A%9F%E4%B8%8E%E6%B6%A8%E8%90%BD%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. 非平衡功与涨落定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/34.%20%E6%9C%89%E5%90%91%E6%B8%97%E6%B5%81%E3%80%81%E5%90%B8%E6%94%B6%E6%80%81%E4%B8%8E%E8%B0%B1%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. 有向渗流、吸收态与谱方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/35.%20%E4%B8%BB%E6%96%B9%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E7%A4%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. 主方程的路径积分表示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/36.%20%E7%9B%B8%E5%B9%B2%E6%80%81%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E3%80%81%E7%AE%97%E7%AC%A6%E4%BB%A3%E6%95%B0%E4%B8%8E%E8%99%9A%E5%99%AA%E5%A3%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. 相干态路径积分、算符代数与虚噪声
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/37.%20Kramers-Moyal%20%E5%B1%95%E5%BC%80%E4%B8%8E%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E7%9A%84%E4%BD%8E%E5%99%AA%E5%A3%B0%E6%9E%81%E9%99%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal 展开与路径积分的低噪声极限
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/38.%20%E5%A4%9A%E7%89%A9%E7%A7%8D%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E4%B8%8E%E5%BE%AA%E7%8E%AF%E7%AB%9E%E4%BA%89%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. 多物种路径积分与循环竞争动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/39.%20%E4%BB%8E%E7%B2%92%E5%AD%90%E8%B7%B3%E8%B7%83%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. 从粒子跳跃到连续场论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/40.%20%E7%BB%9F%E4%B8%80%E7%9A%84%E5%9C%BA%E8%AE%BA%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. 统一的场论框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="prologue-from-unbiased-to-biased-random-walks">Prologue: From Unbiased to Biased Random Walks<a class="headerlink" href="#prologue-from-unbiased-to-biased-random-walks" title="Permanent link">&para;</a></h1>
+<p>In earlier lectures, Professor Erwin Frey has explored the concept of simple random walks and revealed their profound connection to diffusion equations at macroscopic scales. These walks are completely unbiased: each step's direction choice is purely random, ultimately leading to the dispersion of particle clouds. However, in the biological world, we observe many microorganisms that, despite being in a viscosity-dominated physical environment where inertia is negligible, can exhibit remarkable navigation capabilities, moving toward food sources or away from harmful substances.</p>
+<p><img alt="Slides" src="../../assets/images/remote/ac165370-1bfb-41cb-9faf-a70be726ff5e-a881643b91.png" /></p>
+<p>Our central question: How can an organism achieve directional motion under random forces in a low-Reynolds-number regime? We study chemotaxis as the paradigm. Chemotaxis is a biased random walk: microscopic, stochastic choices are orchestrated into an effective macroscopic navigation strategy. This is a biological marvel and a compelling problem in statistical physics.</p>
+<h1 id="1-biological-background-of-bacterial-chemotaxis">1. Biological Background of Bacterial Chemotaxis<a class="headerlink" href="#1-biological-background-of-bacterial-chemotaxis" title="Permanent link">&para;</a></h1>
+<p><img alt="E. coli chemotaxis visualized with fluorescence; source: https://www.youtube.com/watch?v=ZV5CfOkV6ek" src="../../assets/images/remote/a39e6f9a-9737-4306-94e4-475c97ca9df4-f86c1c5cb0.gif" /></p>
+<h2 id="11-e-colis-motion-run-and-tumble">1.1. E. coli's Motion: Run-and-Tumble<a class="headerlink" href="#11-e-colis-motion-run-and-tumble" title="Permanent link">&para;</a></h2>
+<p>The motion pattern of <em>E. coli</em> is not continuous smooth swimming, but rather alternates between two distinct behaviors:</p>
+<ul>
+<li>
+<p><strong>Run:</strong> During this phase, the bacterium's several flagella rotate counterclockwise (Counter-clockwise, CCW), they bundle together, and like a propeller, propel the cell body forward approximately along a straight line.</p>
+</li>
+<li>
+<p><strong>Tumble:</strong> During this phase, the flagellar rotation direction switches to clockwise (Clockwise, CW). This causes the flagellar bundle to fall apart, with each flagellum moving independently, thus causing the cell body to randomly change direction in place, setting a new, random departure angle for the next "run."</p>
+</li>
+</ul>
+<p>The core mechanism of chemotaxis does not lie in the bacterium's ability to "manipulate" a steering wheel for precise turns, but rather in their ability to <strong>regulate the frequency of tumbling</strong> based on changes in the concentration of favorable or harmful chemical substances in the environment. When bacteria sense they are moving toward higher concentrations of chemoattractants, they suppress tumbling, thereby prolonging the current "run." Conversely, if they find themselves swimming toward an unfavorable direction (such as decreasing chemoattractant concentration or increasing repellent concentration), they increase the frequency of tumbling to try a new random direction more quickly. Through this simple "continue if better, change if worse" strategy, the bacterial random walk becomes statistically biased, ultimately achieving macroscopic migration toward regions of high chemoattractant concentration.</p>
+<h2 id="12-physics-of-the-microscopic-world-life-at-low-reynolds-number">1.2. Physics of the Microscopic World: Life at Low Reynolds Number<a class="headerlink" href="#12-physics-of-the-microscopic-world-life-at-low-reynolds-number" title="Permanent link">&para;</a></h2>
+<p><img alt="Slides" src="../../assets/images/remote/fa88bbe2-0c80-4d21-beba-606a118caaa4-ec56fc96dc.png" /></p>
+<p>To understand why bacteria adopt this seemingly clumsy run-and-tumble strategy, we must examine the physical environment they inhabit. The dimensionless number describing the relative importance of inertial and viscous forces in fluid dynamics is the <strong>Reynolds number</strong>, defined as:</p>
+<div class="arithmatex">\[Re = \frac{\rho Lv}{\eta}\]</div>
+<p>where <span class="arithmatex">\(L\)</span> is the characteristic length (for bacteria, about several micrometers), <span class="arithmatex">\(v\)</span> is the velocity (about 20-30 μm/s), <span class="arithmatex">\(\rho\)</span> is the fluid density (density of water), and <span class="arithmatex">\(\eta\)</span> is the fluid viscosity. For a typical <em>E. coli</em>, the calculated Reynolds number is extremely low, approximately <span class="arithmatex">\(10^{-6}\)</span>.</p>
+<p>Such a low Reynolds number means that viscous forces absolutely dominate bacterial motion, while inertial forces are completely negligible. This brings several crucial physical consequences. <strong>First, there is no "gliding" or "inertia."</strong> Once the bacterium's flagella stop providing thrust, viscous resistance causes it to stop almost instantly. This explains why the transition between "run" (with thrust) and "tumble" (direction reset) is so distinct. Second, strategies like continuous turning through body undulation (like fish in the macroscopic world) are ineffective in a viscosity-dominated world. Therefore, bacteria must evolve a unique motion strategy adapted to this "highly damped" environment: stochastic run-and-tumble motion. This is not a suboptimal choice, but an efficient and necessary navigation method at their physical scale.</p>
+<h2 id="13-molecular-machines-the-chemosensory-system">1.3. Molecular Machines: The Chemosensory System<a class="headerlink" href="#13-molecular-machines-the-chemosensory-system" title="Permanent link">&para;</a></h2>
+<p><img alt="Slides" src="../../assets/images/remote/9ed61aec-92e1-4ac9-9770-418f1f150b5c-c35e794f00.jpg" /></p>
+<p>How do bacteria sense environmental changes and convert them into flagellar motor control signals? Behind this lies a precise and complex biochemical signal transduction network—the chemosensory system. The core steps are as follows:</p>
+<ol>
+<li>
+<p><strong>Ligand Binding:</strong> Chemoattractant or chemorepellent molecules bind to methyl-accepting chemotaxis proteins (MCPs) on the cell membrane.</p>
+</li>
+<li>
+<p><strong>Signal Transduction:</strong> Ligand binding alters the conformation of MCPs, which further modulates the autophosphorylation activity of the coupled histidine kinase CheA. Chemoattractant binding suppresses CheA activity.</p>
+</li>
+<li>
+<p><strong>Phosphorylation Cascade:</strong> Activated CheA (CheA-P) transfers its phosphate group to the response regulator protein CheY.</p>
+</li>
+<li>
+<p><strong>Motor Control:</strong> Phosphorylated CheY (CheY-P) is the key signaling molecule. It diffuses in the cytoplasm and binds to the flagellar motor switch complex, significantly increasing the probability of motor switching from CCW (run) to CW (tumble) rotation. Therefore, high CheY-P concentration means high tumble frequency.</p>
+</li>
+<li>
+<p><strong>Adaptation:</strong> The system also includes an adaptation module. Phosphatase CheZ continuously removes phosphate groups from CheY-P, inactivating it. More importantly, the intracellular domains of MCPs can be reversibly methylated (catalyzed by CheR) and demethylated (catalyzed by CheB). This methylation modification level can regulate MCPs' influence on CheA activity, enabling bacteria to respond to <strong>relative changes</strong> in chemical concentration (i.e., gradients) rather than to <strong>absolute concentrations</strong>. This is precisely the biological foundation of the "temporal sensing" mechanism discussed in the next section.</p>
+</li>
+</ol>
+<h2 id="14-challenges-in-chemotaxis-research">1.4. Challenges in Chemotaxis Research<a class="headerlink" href="#14-challenges-in-chemotaxis-research" title="Permanent link">&para;</a></h2>
+<p><img alt="Slides" src="../../assets/images/remote/3293a418-9582-406b-99db-f3206139956d-582f815073.png" /></p>
+<p>Understanding chemotaxis, particularly bacterial chemotaxis, is not merely about describing motion patterns and molecular mechanisms. Deeper research faces a series of challenges spanning physics, biology, and information theory:</p>
+<ol>
+<li><strong>Limits of Sensing and Navigation under Noise:</strong></li>
+<li><strong>Core question:</strong> How can organisms (such as bacteria) navigate accurately using only local, stochastic (random fluctuation) measurements?</li>
+<li>
+<p><strong>Deeper meaning:</strong> At the microscopic scale, the diffusion and binding of chemical molecules are random events, causing the signals perceived by cells to inherently carry noise. Additionally, intracellular signal transduction networks also have inherent biochemical noise. In such a high-noise environment, cells need to extract useful gradient information from noisy signals and make effective decisions. This involves the intersection of statistical inference, information theory, and control theory: for a finite-size, finite-energy biological system, where are the theoretical limits of sensing and navigation? How does it optimize information acquisition and processing through its molecular networks under physical constraints?</p>
+</li>
+<li>
+<p><strong>Thermodynamics of Sensing and Adaptation:</strong></p>
+</li>
+<li><strong>Core question:</strong> What are the energy and information costs of chemotactic behavior?</li>
+<li>
+<p><strong>Deeper meaning:</strong> Cell sensing of chemical gradients, signal processing, flagellar motor regulation, and adaptation (insensitivity to background concentration changes, responding only to relative changes) all require energy consumption. For example, phosphorylation processes, and the activity of methylase and demethylase enzymes all require ATP. The adaptation mechanism itself requires precise balance to maintain its sensitivity. From a thermodynamic perspective, how much energy cost do biological systems need to pay to acquire and process environmental information? Is there a fundamental thermodynamic lower bound that specifies the minimum energy required to achieve specific sensing precision? These questions link information theory with nonequilibrium thermodynamics.</p>
+</li>
+<li>
+<p><strong>From Single-Cell Behavior to Collective Transport:</strong></p>
+</li>
+<li><strong>Core question:</strong> How do individual cell fluctuations shape population-level dynamics?</li>
+<li><strong>Deeper meaning:</strong> Although we understand the run-and-tumble mechanism of individual bacteria, when millions or even billions of bacteria gather together, they exhibit complex collective behaviors, such as collective migration, biofilm formation, and chemotactic collapse as mentioned above. These collective phenomena often cannot be simply obtained by superposition of individual cell behaviors. We need to understand how interactions between individual cells (directly or indirectly through chemical fields) lead to macroscopic self-organized patterns. This requires combining microscopic stochastic processes with macroscopic continuum models (such as the Keller-Segel model) and exploring the impact of individual variability on population dynamics.</li>
+</ol>
+<h1 id="2-a-minimal-motion-model-two-state-process">2. A Minimal Motion Model: Two-State Process<a class="headerlink" href="#2-a-minimal-motion-model-two-state-process" title="Permanent link">&para;</a></h1>
+<p>We abstract 3D run-and-tumble to a 1D, two-state process.</p>
+<h2 id="21-reduction-to-one-dimension">2.1. Reduction to One Dimension<a class="headerlink" href="#21-reduction-to-one-dimension" title="Permanent link">&para;</a></h2>
+<p>We assume bacteria can only move on a one-dimensional straight line. Their state is determined not only by their position <span class="arithmatex">\(x\)</span>, but also by their internal motion direction state <span class="arithmatex">\(\sigma\)</span>.</p>
+<ul>
+<li><span class="arithmatex">\(\sigma=+1\)</span>: represents bacteria moving to the right (Right-movers).</li>
+<li><span class="arithmatex">\(\sigma=-1\)</span>: represents bacteria moving to the left (Left-movers).</li>
+</ul>
+<p><img alt="Blackboard" src="../../assets/images/remote/3bb7f1be-df49-45bd-a0f1-8b3623c3ea94-326e320d95.png" /></p>
+<h2 id="22-direction-switching-rates">2.2. Direction-Switching Rates<a class="headerlink" href="#22-direction-switching-rates" title="Permanent link">&para;</a></h2>
+<p>“Tumbling” changes σ. Model it as stochastic switching with rates:
+- α+(x): rate to switch +1 → −1 at position x.
+- α−(x): rate to switch −1 → +1 at position x.</p>
+<p>Allowing α+/-(x) to depend on x encodes environmental information (chemical gradients). If α+(x) ≠ α−(x), the walk becomes biased.</p>
+<h2 id="23-master-equations-for-directional-probabilities">2.3. Master Equations for Directional Probabilities<a class="headerlink" href="#23-master-equations-for-directional-probabilities" title="Permanent link">&para;</a></h2>
+<p>Let p+(x,t) (resp. p−) be the probability density of a right- (resp. left-) mover at (x,t). Consider a small interval [x, x+dx] and track the change over a short time dt. The evolution consists of three contributions: advection, loss, and gain:</p>
+<div class="arithmatex">\[\partial_t p_+(x,t) = -v_0 \, \partial_x p_+(x,t) - \alpha_+(x) \, p_+(x,t) + \alpha_-(x) \, p_-(x,t)\]</div>
+<div class="arithmatex">\[\partial_t p_-(x,t) = +v_0 \, \partial_x p_-(x,t) - \alpha_-(x) \, p_-(x,t) + \alpha_+(x) \, p_+(x,t)\]</div>
+<p>Key variables and parameters</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Name</th>
+<th>Meaning</th>
+<th>Units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x, t</td>
+<td>position, time</td>
+<td>spacetime coordinates</td>
+<td>m, s</td>
+</tr>
+<tr>
+<td>σ</td>
+<td>direction state</td>
+<td>internal state (+1 right, −1 left)</td>
+<td>dimensionless</td>
+</tr>
+<tr>
+<td>v0</td>
+<td>swim speed</td>
+<td>constant speed during run</td>
+<td>m/s</td>
+</tr>
+<tr>
+<td>α+(x)</td>
+<td>right→left rate</td>
+<td>tumble rate +1→−1 at x</td>
+<td>1/s</td>
+</tr>
+<tr>
+<td>α−(x)</td>
+<td>left→right rate</td>
+<td>tumble rate −1→+1 at x</td>
+<td>1/s</td>
+</tr>
+<tr>
+<td>p+(x,t)</td>
+<td>right-mover density</td>
+<td>prob. density of σ=+1 at (x,t)</td>
+<td>1/m</td>
+</tr>
+<tr>
+<td>p−(x,t)</td>
+<td>left-mover density</td>
+<td>prob. density of σ=−1 at (x,t)</td>
+<td>1/m</td>
+</tr>
+</tbody>
+</table>
+<h1 id="3-from-microstates-to-macroscopic-transport">3. From Microstates to Macroscopic Transport<a class="headerlink" href="#3-from-microstates-to-macroscopic-transport" title="Permanent link">&para;</a></h1>
+<h2 id="31-macroscopic-observables">3.1. Macroscopic Observables<a class="headerlink" href="#31-macroscopic-observables" title="Permanent link">&para;</a></h2>
+<p>Define total density p and probability current J:</p>
+<div class="arithmatex">\[p(x,t) := p_+(x,t) + p_-(x,t)\]</div>
+<div class="arithmatex">\[J(x,t) := v_0 \, [p_+(x,t) - p_-(x,t)]\]</div>
+<h2 id="32-continuity-equation">3.2. Continuity Equation<a class="headerlink" href="#32-continuity-equation" title="Permanent link">&para;</a></h2>
+<p>With these two definitions, we can combine the two master equations through simple algebraic operations. Adding the master equations describing <span class="arithmatex">\(p_+\)</span> and <span class="arithmatex">\(p_-\)</span>:</p>
+<div class="arithmatex">\[\partial_t (p_+ + p_-) = -v_0 \partial_x (p_+ - p_-) - (\alpha_+ p_+ - \alpha_- p_-) + (-\alpha_- p_- + \alpha_+ p_+)\]</div>
+<p>It can be found that the terms related to the tumbling rates <span class="arithmatex">\(\alpha_\pm\)</span> cancel out exactly. Substituting the definitions of <span class="arithmatex">\(p\)</span> and <span class="arithmatex">\(J\)</span>, we immediately obtain:</p>
+<div class="arithmatex">\[\partial_t p(x,t) = -\partial_x J(x,t)\]</div>
+<p>This is an extremely important equation, the continuity equation, which is a universal conservation law. This derivation process reveals a profound physical connotation: tumbling (state switching) is an internal process. It only redistributes particles between the right-moving and left-moving populations, but does not create or annihilate particles in space. Changes in the total particle number (or total probability) at a location can only arise from particles swimming in or out from neighboring regions. The perfect cancellation of tumbling terms in mathematics precisely reflects the fundamental physical principle of local conservation of particle number (probability).</p>
+<h2 id="33-dynamics-of-the-probability-current">3.3. Dynamics of the Probability Current<a class="headerlink" href="#33-dynamics-of-the-probability-current" title="Permanent link">&para;</a></h2>
+<p>Subtracting the master equations and substituting</p>
+<div class="arithmatex">\[p_\pm = \tfrac{1}{2}\big(p \pm J/v_0\big)\]</div>
+<p>yields</p>
+<div class="arithmatex">\[\partial_t J(x,t) = -v_0^2 \, \partial_x p(x,t) - (\alpha_+ + \alpha_-) \, J(x,t) + v_0 \, (\alpha_- - \alpha_+) \, p(x,t)\]</div>
+<p><img alt="Blackboard" src="../../assets/images/remote/5c8aae12-28af-4342-9438-229618f1a8b4-cffab9e08c.png" /></p>
+<p>Interpretation of terms:
+- −v0^2 ∂x p: diffusive term; density gradients drive flux like pressure.
+- −(α+ + α−) J: persistence damping by randomization of directions via tumbles.
+- v0 (α− − α+ ) p: drift term; asymmetry of switching creates net drift even without ∂x p.</p>
+<h1 id="4-coarse-grained-view-fokker-planck-equation">4. Coarse-Grained View: Fokker-Planck Equation<a class="headerlink" href="#4-coarse-grained-view-fokker-planck-equation" title="Permanent link">&para;</a></h1>
+<h2 id="41-adiabatic-elimination-time-scale-separation">4.1. Adiabatic Elimination: Time-Scale Separation<a class="headerlink" href="#41-adiabatic-elimination-time-scale-separation" title="Permanent link">&para;</a></h2>
+<p>Let us examine the time scales involved in the system:</p>
+<ul>
+<li>
+<p><strong>Run time (Run time):</strong> <span class="arithmatex">\(\tau_{run} \sim 1/\alpha \sim 1\)</span> s. This is the characteristic time for direction changes at the microscopic level, determined by the tumbling rate.</p>
+</li>
+<li>
+<p><strong>Diffusion time (Diffusion time):</strong> <span class="arithmatex">\(\tau_D \sim L^2/D_{eff}\)</span>. This is the characteristic time for significant changes in the macroscopic density distribution <span class="arithmatex">\(p(x,t)\)</span>. For a scale of <span class="arithmatex">\(L\sim 100\mu m\)</span>, this time is approximately 25 s.</p>
+</li>
+</ul>
+<p>We find that <span class="arithmatex">\(\tau_D \gg \tau_{run}\)</span>. This significant separation in time scales is the key to making approximations. It tells us that the dynamics of the probability current <span class="arithmatex">\(J\)</span> (dominated by fast tumbling processes) are much faster than the dynamics of the total density <span class="arithmatex">\(p\)</span>. This means that for the slowly evolving <span class="arithmatex">\(p\)</span>, we can consider that <span class="arithmatex">\(J\)</span> can always instantly adjust to a quasi-steady state adapted to the current <span class="arithmatex">\(p\)</span> and its gradient. This is called "adiabatic elimination" or the "slave principle" in physics: fast-changing variables (<span class="arithmatex">\(J\)</span>) are "enslaved" by slow-changing variables (<span class="arithmatex">\(p\)</span>). Therefore, we can make a powerful approximation: <span class="arithmatex">\(\partial_t J \approx 0\)</span>.</p>
+<h2 id="42-effective-fokker-planck-equation">4.2. Effective Fokker-Planck Equation<a class="headerlink" href="#42-effective-fokker-planck-equation" title="Permanent link">&para;</a></h2>
+<p>From ∂t J ≈ 0 we get</p>
+<div class="arithmatex">\[J_{\text{eff}}(x,t) = -\frac{v_0^2}{\alpha_+ + \alpha_-} \, \partial_x p \, + \, v_0 \, \frac{\alpha_- - \alpha_+}{\alpha_+ + \alpha_-} \, p\]</div>
+<p>Substitute into the continuity equation to obtain a closed Fokker-Planck equation (FPE):</p>
+<div class="arithmatex">\[\partial_t p(x,t) = \partial_x \Big[ D_{\text{eff}}(x) \, \partial_x p - v_{\text{eff}}(x) \, p \Big]\]</div>
+<p>with</p>
+<div class="arithmatex">\[D_{\text{eff}}(x) = \frac{v_0^2}{\alpha_+(x) + \alpha_-(x)}, \qquad v_{\text{eff}}(x) = v_0 \, \frac{\alpha_+(x) - \alpha_-(x)}{\alpha_+(x) + \alpha_-(x)}\]</div>
+<h2 id="43-python-simulation-i-biased-run-and-tumble">4.3. Python Simulation I: Biased Run-and-Tumble<a class="headerlink" href="#43-python-simulation-i-biased-run-and-tumble" title="Permanent link">&para;</a></h2>
+<p>The code below simulates an ensemble of 1D particles with position-dependent tumble rates, demonstrating macroscopic drift and diffusion.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">run_tumble_1d_simulation</span><span class="p">(</span><span class="n">num_particles</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">num_steps</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mf">200.0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simulate biased run-and-tumble motion in one-dimensional space.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    num_particles (int): Number of particles to simulate.</span>
+<span class="sd">    num_steps (int): Total number of simulation steps.</span>
+<span class="sd">    v0 (float): Run speed (micrometers/s).</span>
+<span class="sd">    dt (float): Time step (s).</span>
+<span class="sd">    L (float): Length of spatial domain (-L/2 to L/2).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_particles</span><span class="p">)</span>
+    <span class="n">directions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">num_particles</span><span class="p">)</span>
+    <span class="n">position_history</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_steps</span><span class="p">,</span> <span class="n">num_particles</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">alpha_plus</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="p">(</span><span class="n">L</span><span class="o">/</span><span class="mi">4</span><span class="p">)))</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">alpha_minus</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="p">(</span><span class="n">L</span><span class="o">/</span><span class="mi">4</span><span class="p">)))</span>
+
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_steps</span><span class="p">):</span>
+        <span class="n">position_history</span><span class="p">[</span><span class="n">step</span><span class="p">]</span> <span class="o">=</span> <span class="n">positions</span>
+        <span class="n">prob_tumble_plus</span> <span class="o">=</span> <span class="n">alpha_plus</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="n">prob_tumble_minus</span> <span class="o">=</span> <span class="n">alpha_minus</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="n">rand_nums</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num_particles</span><span class="p">)</span>
+        <span class="n">tumble_indices_plus</span> <span class="o">=</span> <span class="p">(</span><span class="n">directions</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">rand_nums</span> <span class="o">&lt;</span> <span class="n">prob_tumble_plus</span><span class="p">)</span>
+        <span class="n">directions</span><span class="p">[</span><span class="n">tumble_indices_plus</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">tumble_indices_minus</span> <span class="o">=</span> <span class="p">(</span><span class="n">directions</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">rand_nums</span> <span class="o">&lt;</span> <span class="n">prob_tumble_minus</span><span class="p">)</span>
+        <span class="n">directions</span><span class="p">[</span><span class="n">tumble_indices_minus</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">positions</span> <span class="o">+=</span> <span class="n">directions</span> <span class="o">*</span> <span class="n">v0</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="n">positions</span><span class="p">[</span><span class="n">positions</span> <span class="o">&gt;</span> <span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">L</span> <span class="o">-</span> <span class="n">positions</span><span class="p">[</span><span class="n">positions</span> <span class="o">&gt;</span> <span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">];</span> <span class="n">directions</span><span class="p">[</span><span class="n">positions</span> <span class="o">&gt;</span> <span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">positions</span><span class="p">[</span><span class="n">positions</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">L</span> <span class="o">-</span> <span class="n">positions</span><span class="p">[</span><span class="n">positions</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">];</span> <span class="n">directions</span><span class="p">[</span><span class="n">positions</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">position_history</span>
+
+<span class="c1"># Run and visualize</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">run_tumble_1d_simulation</span><span class="p">()</span>
+<span class="n">num_steps</span><span class="p">,</span> <span class="n">num_particles</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">time_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_steps</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.01</span>
+<span class="n">mean_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">var_pos</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">history</span><span class="p">,</span>  <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 1) Trajectories</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-v0_8-whitegrid&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_points</span><span class="p">,</span> <span class="n">history</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Single Particle Trajectories&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Position (micrometers)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;particle_trajectories.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># 2) Distributions over time</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">time_indices_to_plot</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">num_steps</span><span class="o">/</span><span class="mi">10</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_steps</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">num_steps</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="n">num_steps</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">t_idx</span> <span class="ow">in</span> <span class="n">time_indices_to_plot</span><span class="p">:</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">t_idx</span> <span class="o">*</span> <span class="mf">0.01</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="n">t_idx</span><span class="p">,</span> <span class="p">:],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;t = </span><span class="si">{</span><span class="n">time</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> s&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribution of Particles&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Position (micrometers)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;particle_distributions.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># 3) Mean and variance evolution</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">));</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">p1</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_points</span><span class="p">,</span> <span class="n">mean_pos</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean Position&#39;</span><span class="p">)</span>
+<span class="n">p2</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_points</span><span class="p">,</span> <span class="n">var_pos</span><span class="p">,</span>  <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Variance&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Evolution of Mean and Variance&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mean Position (micrometers)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Variance (micrometers^2)&#39;</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelcolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelcolor</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Mean Position&#39;</span><span class="p">,</span> <span class="s1">&#39;Variance&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;mean_variance_evolution.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Output" src="../../assets/images/remote/52583d9d-c980-4ee6-9c04-bbb3971be1d0-79c5bdd4c9.jpg" /></p>
+<p>1) Trajectories show random motion with an overall pull toward the center (x = 0), i.e., bias.</p>
+<p><img alt="Output" src="../../assets/images/remote/4a48305e-9bf9-4221-99a2-2d8130af790e-1ae971d36e.png" /></p>
+<p>2) Histograms show aggregation toward x = 0 over time, confirming a macroscopic drift.</p>
+<p><img alt="Output" src="../../assets/images/remote/dda64e80-34f1-49e0-a858-7835ea7a5742-9905161cce.png" /></p>
+<p>3) Mean and variance quantitatively reflect the ensemble behavior. With a center-directed drift, the mean approaches zero; the variance grows then saturates, reflecting drift-diffusion balance. With constant asymmetric α+/-, we would observe linear growth as predicted by the FPE.</p>
+<h1 id="5-closing-the-loop-biological-basis-of-sensing">5. Closing the Loop: Biological Basis of Sensing<a class="headerlink" href="#5-closing-the-loop-biological-basis-of-sensing" title="Permanent link">&para;</a></h1>
+<p>We have linked α+/-(x) to v_eff(x). How do cells map an external chemical field c(x) into spatially varying α+/-(x)?</p>
+<h2 id="51-temporal-sensing-mechanism">5.1. Temporal Sensing Mechanism<a class="headerlink" href="#51-temporal-sensing-mechanism" title="Permanent link">&para;</a></h2>
+<p>A bacterium with a size of only a few micrometers cannot directly measure the tiny concentration differences across its body to determine the spatial gradient <span class="arithmatex">\(\partial_x c\)</span>. It adopts a more ingenious strategy: temporal sensing. When bacteria swim through space, they continuously monitor the chemical concentration around them. What they actually measure is the rate of concentration change over time <span class="arithmatex">\(\frac{dc}{dt}\)</span>. Using the chain rule, we can relate this time derivative to the spatial gradient:</p>
+<div class="arithmatex">\[
+\frac{dc}{dt} = \frac{\partial c}{\partial t} + \frac{\partial c}{\partial x} \frac{dx}{dt}
+\]</div>
+<p>Assuming the chemical field <span class="arithmatex">\(c(x)\)</span> is static (<span class="arithmatex">\(\frac{\partial c}{\partial t} = 0\)</span>) and the bacterium moves at speed <span class="arithmatex">\(v_0\sigma(t)\)</span>, then the concentration change rate it experiences is:</p>
+<div class="arithmatex">\[
+\frac{dc}{dt} = v_0 \sigma(t) \partial_x c
+\]</div>
+<p>It is this time derivative <span class="arithmatex">\(\frac{dc}{dt}\)</span> as an input signal that is processed by the chemosensory system described in the first section. If the bacterium is swimming toward increasing chemoattractant concentration (for example, <span class="arithmatex">\(\sigma=+1\)</span> and <span class="arithmatex">\(\partial_x c &gt; 0\)</span>), then <span class="arithmatex">\(\frac{dc}{dt} &gt; 0\)</span>. This positive signal will suppress CheA activity through the signaling pathway, reduce CheY-P levels, thereby reducing tumble probability and prolonging the current "run." Conversely, if <span class="arithmatex">\(\frac{dc}{dt} &lt; 0\)</span>, the tumble probability will increase.</p>
+<h2 id="52-modeling-switching-rates">5.2. Modeling Switching Rates<a class="headerlink" href="#52-modeling-switching-rates" title="Permanent link">&para;</a></h2>
+<p>We can describe the above biological mechanism using a simple linear response model. Assume that the tumbling rate is a linear response to the perceived concentration change rate <span class="arithmatex">\(\frac{dc}{dt}\)</span>, fluctuating around a baseline rate <span class="arithmatex">\(\alpha_0\)</span>:</p>
+<div class="arithmatex">\[
+\alpha(\text{perceived change}) = \alpha_0(1 - \chi' \frac{dc}{dt})
+\]</div>
+<p>where <span class="arithmatex">\(\chi'\)</span> is a coefficient measuring chemotactic sensitivity. For right-moving particles (<span class="arithmatex">\(\sigma=+1\)</span>), the perceived change rate is <span class="arithmatex">\(v_0\partial_x c\)</span>; for left-moving particles (<span class="arithmatex">\(\sigma=-1\)</span>), the perceived change rate is <span class="arithmatex">\(-v_0\partial_x c\)</span>. Therefore, we can obtain specific expressions for <span class="arithmatex">\(\alpha_+\)</span> and <span class="arithmatex">\(\alpha_-\)</span>:</p>
+<div class="arithmatex">\[
+\alpha_+(x) = \alpha_0(1 - \chi v_0 \partial_x c)
+\]</div>
+<div class="arithmatex">\[
+\alpha_-(x) = \alpha_0(1 + \chi v_0 \partial_x c)
+\]</div>
+<p>Here we combine <span class="arithmatex">\(\chi'\alpha_0\)</span> into a new chemotactic coefficient <span class="arithmatex">\(\chi\)</span>.</p>
+<p>Now, we can substitute these two expressions into the formulas for effective drift velocity <span class="arithmatex">\(v_{eff}\)</span> and effective diffusion coefficient <span class="arithmatex">\(D_{eff}\)</span> that we derived earlier, thereby directly linking the transport coefficients to the chemical field gradient.</p>
+<p>Derivation of effective drift velocity:</p>
+<div class="arithmatex">\[
+v_{eff} = v_0 \frac{\alpha_+(x) - \alpha_-(x)}{\alpha_+(x) + \alpha_-(x)} = v_0 \frac{\alpha_0(1 - \chi v_0 \partial_x c) - \alpha_0(1 + \chi v_0 \partial_x c)}{\alpha_0(1 - \chi v_0 \partial_x c) + \alpha_0(1 + \chi v_0 \partial_x c)}
+\]</div>
+<div class="arithmatex">\[
+v_{eff} = v_0 \frac{-2 \chi v_0 \partial_x c}{2 \alpha_0 (1 - (\chi v_0 \partial_x c)^2)} \approx -\frac{\chi v_0^2}{\alpha_0} \partial_x c
+\]</div>
+<p>In the common case of gentle gradients (<span class="arithmatex">\(\chi v_0 \partial_x c \ll 1\)</span>), we obtain a core conclusion: the effective drift velocity is proportional to the negative gradient of chemoattractant concentration. This means that bacterial populations will drift toward the direction of increasing chemoattractant concentration (if <span class="arithmatex">\(\chi &gt; 0\)</span>).</p>
+<p>Derivation of effective diffusion coefficient:</p>
+<div class="arithmatex">\[
+D_{eff} = \frac{v_0^2}{\alpha_+(x) + \alpha_-(x)} = \frac{v_0^2}{2 \alpha_0 (1 - (\chi v_0 \partial_x c)^2)} \approx \frac{v_0^2}{2\alpha_0}
+\]</div>
+<p>Under the same gentle gradient approximation, the effective diffusion coefficient approximates a constant.</p>
+<p>At this point, we have completely constructed the theoretical chain from external chemical fields to macroscopic bacterial population motion.</p>
+<h1 id="6-collective-dynamics-the-keller-segel-model">6. Collective Dynamics: The Keller-Segel Model<a class="headerlink" href="#6-collective-dynamics-the-keller-segel-model" title="Permanent link">&para;</a></h1>
+<p>The previous discussions all assumed that the chemical field <span class="arithmatex">\(c(x)\)</span> is a fixed background field determined by the external environment. However, in many biological scenarios, organisms themselves modify their chemical environment through metabolic activities (such as consuming nutrients or secreting signaling molecules). This introduces a crucial <strong>feedback loop</strong>: bacterial motion responds to chemical gradients, while their aggregation and metabolic activities in turn alter the chemical gradients. <strong>This dynamic coupling between cells and their environment is the root cause of complex collective behaviors and pattern formation.</strong></p>
+<p>The Keller-Segel model was jointly proposed by Evelyn F. Keller and Lee A. Segel in the early 1970s, initially aiming to describe the aggregation process of slime molds (<em>Dictyostelium discoideum</em>) under starvation conditions guided by cyclic adenosine monophosphate (cAMP) concentration gradients through a coupled system of partial differential equations. This pioneering work laid the foundation for mathematical biology research on cellular chemotaxis. The core of the model lies in characterizing the key biophysical phenomenon that cell populations not only diffuse randomly but also migrate directionally along chemical signal concentration gradients. Its specific applications have greatly expanded from the initial slime mold research to numerous fields, including explaining bacterial community pattern formation, guided migration of endothelial cells in angiogenesis, tumor cell invasion and metastasis processes, recruitment of white blood cells to inflammatory sites in the immune system, and even morphogenesis in multicellular organism embryonic development, becoming a paradigmatic mathematical model connecting cellular self-organization behaviors with macroscopic pattern emergence.</p>
+<h2 id="61-coupled-equations">6.1. Coupled Equations<a class="headerlink" href="#61-coupled-equations" title="Permanent link">&para;</a></h2>
+<p>A standard Keller-Segel system couples cell density ρ(x,t) and chemical concentration c(x,t) (we use nabla to accommodate higher spatial dimensions):</p>
+<div class="arithmatex">\[\partial_t \rho = \nabla \cdot \big[ D \, \nabla \rho - \chi(\rho,c) \, \rho \, \nabla c \big] + f_{\text{growth}}(\rho)\]</div>
+<div class="arithmatex">\[\partial_t c = D_c \, \nabla^2 c + f_{\text{prod}}(\rho) - f_{\text{degrad}}(c)\]</div>
+<p><img alt="Blackboard" src="../../assets/images/remote/2d28fab5-d2c6-47a0-be2f-bc71ac27cace-fdfd4cf3da.png" /></p>
+<p>Physical meaning: changes in ρ result from diffusion, chemotactic flux, and local net growth; changes in c come from diffusion, production by cells, and degradation.</p>
+<h2 id="62-a-keller-segel-visualization">6.2. A Keller-Segel Visualization<a class="headerlink" href="#62-a-keller-segel-visualization" title="Permanent link">&para;</a></h2>
+<p><img alt="Slides" src="../../assets/images/remote/bf75951a-7e09-4e30-adb6-7b2e7ba5d811-337cfb3c22.png" /></p>
+<p><img alt="2D chemotaxis visualization" src="../../assets/images/remote/KellerSegel.mp4" />
+<em>2D chemotaxis visualization; source: https://visualpde.com/sim/?preset=KellerSegel</em></p>
+<p>Strongly related 2D model (as in the visualization):</p>
+<div class="arithmatex">\[\frac{\partial u}{\partial t} = \nabla^2 u - \nabla \cdot (\chi(u) \, \nabla v) + u(1-u)\]</div>
+<div class="arithmatex">\[\frac{\partial v}{\partial t} = D \, \nabla^2 v + u - a v\]</div>
+<p>Interpretation: u is cell density, v is chemical concentration.</p>
+<ul>
+<li><span class="arithmatex">\(\nabla^2 u\)</span>: random motion (effective diffusion).</li>
+<li><span class="arithmatex">\(-\nabla \cdot (\chi(u) \nabla v)\)</span>: chemotactic flux; <span class="arithmatex">\(\chi(u) = c u/(1+u^2)\)</span> models saturation at high density.</li>
+<li><span class="arithmatex">\(u(1-u)\)</span>: logistic growth.</li>
+<li><span class="arithmatex">\(D \nabla^2 v\)</span>: chemical diffusion.</li>
+<li><span class="arithmatex">\(u - a v\)</span>: production proportional to u and linear decay.</li>
+</ul>
+<h2 id="63-emergent-patterns-chemotactic-collapse">6.3. Emergent Patterns: Chemotactic Collapse<a class="headerlink" href="#63-emergent-patterns-chemotactic-collapse" title="Permanent link">&para;</a></h2>
+<p><strong>What is the core dynamics of this coupled system?</strong> Consider a small fluctuation in a uniform cell distribution, i.e., a slight local increase in cell density. According to the second equation, these cells will produce more chemical substances, thus forming a weak concentration peak at this location. This concentration peak will generate a gradient <span class="arithmatex">\(\nabla v\)</span> pointing toward this location. According to the chemotactic term in the first equation, this gradient will attract more surrounding cells to aggregate toward this peak. The newly aggregated cells will produce more chemical substances, further strengthening this concentration peak, thereby attracting even more cells.</p>
+<p>This is a strong <strong>positive feedback loop</strong>. If the chemotactic attraction effect (controlled by coefficient <span class="arithmatex">\(\chi\)</span>) is strong enough to overcome the cell's own random diffusion effect (controlled by coefficient <span class="arithmatex">\(D\)</span>), then this positive feedback will become unstable. The initially small density fluctuations will be exponentially amplified, causing cells to heavily aggregate at certain points, forming sharp peaks. This phenomenon is called <strong>chemotactic collapse</strong>. It perfectly demonstrates how simple local interaction rules can emerge complex spatial structures and patterns at the macroscopic level, which is a hallmark feature of complex systems. Mathematical linear stability analysis can provide precise conditions for pattern formation.</p>
+<h2 id="64-python-simulation-ii-1d-keller-segel-via-finite-differences">6.4. Python Simulation II: 1D Keller-Segel via Finite Differences<a class="headerlink" href="#64-python-simulation-ii-1d-keller-segel-via-finite-differences" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="kn">import</span> <span class="n">FuncAnimation</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">imageio</span><span class="o">,</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">solve_keller_segel_1d</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span> <span class="n">Nx</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">Nt</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">D_u</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">D_v</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">chi_0</span><span class="o">=</span><span class="mf">25.0</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    1D Keller-Segel with explicit finite differences.</span>
+<span class="sd">    u_t = D_u * u_xx - chi_0 * (u * v_x)_x</span>
+<span class="sd">    v_t = D_v * v_xx + u - a*v</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="n">L</span> <span class="o">/</span> <span class="n">Nx</span><span class="p">;</span> <span class="n">dt</span> <span class="o">=</span> <span class="n">T</span> <span class="o">/</span> <span class="n">Nt</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">Nx</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dt</span> <span class="o">&gt;</span> <span class="n">dx</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="n">D_u</span><span class="p">,</span> <span class="n">D_v</span><span class="p">)):</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">dx</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="n">D_u</span><span class="p">,</span> <span class="n">D_v</span><span class="p">));</span> <span class="n">Nt</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">T</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">+</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">Nx</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">u</span> <span class="o">/</span> <span class="n">a</span>
+    <span class="n">u_history</span><span class="p">,</span> <span class="n">v_history</span> <span class="o">=</span> <span class="p">[</span><span class="n">u</span><span class="o">.</span><span class="n">copy</span><span class="p">()],</span> <span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">copy</span><span class="p">()]</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Nt</span><span class="p">):</span>
+        <span class="n">u_prev</span><span class="p">,</span> <span class="n">u_next</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">v_prev</span><span class="p">,</span> <span class="n">v_next</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">u_xx</span> <span class="o">=</span> <span class="p">(</span><span class="n">u_next</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">u</span> <span class="o">+</span> <span class="n">u_prev</span><span class="p">)</span> <span class="o">/</span> <span class="n">dx</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">v_xx</span> <span class="o">=</span> <span class="p">(</span><span class="n">v_next</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">v</span> <span class="o">+</span> <span class="n">v_prev</span><span class="p">)</span> <span class="o">/</span> <span class="n">dx</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">v_x</span>  <span class="o">=</span> <span class="p">(</span><span class="n">v_next</span> <span class="o">-</span> <span class="n">v_prev</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span>
+        <span class="n">J</span>    <span class="o">=</span> <span class="n">chi_0</span> <span class="o">*</span> <span class="n">u</span> <span class="o">*</span> <span class="n">v_x</span><span class="p">;</span> <span class="n">J_prev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">J</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">divJ</span> <span class="o">=</span> <span class="p">(</span><span class="n">J</span> <span class="o">-</span> <span class="n">J_prev</span><span class="p">)</span> <span class="o">/</span> <span class="n">dx</span>
+        <span class="n">u_new</span> <span class="o">=</span> <span class="n">u</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">*</span> <span class="p">(</span><span class="n">D_u</span> <span class="o">*</span> <span class="n">u_xx</span> <span class="o">-</span> <span class="n">divJ</span><span class="p">)</span>
+        <span class="n">v_new</span> <span class="o">=</span> <span class="n">v</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">*</span> <span class="p">(</span><span class="n">D_v</span> <span class="o">*</span> <span class="n">v_xx</span> <span class="o">+</span> <span class="n">u</span> <span class="o">-</span> <span class="n">a</span><span class="o">*</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">u_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">u_new</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">v_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">v_new</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">u_new</span><span class="p">))</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">v_new</span><span class="p">)):</span>
+            <span class="k">break</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">u_new</span><span class="p">,</span> <span class="n">v_new</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">50</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">u_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">copy</span><span class="p">());</span> <span class="n">v_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">u_history</span><span class="p">,</span> <span class="n">v_history</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">u_hist</span><span class="p">,</span> <span class="n">v_hist</span> <span class="o">=</span> <span class="n">solve_keller_segel_1d</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span> <span class="n">Nt</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span> <span class="n">chi_0</span><span class="o">=</span><span class="mf">40.0</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u_hist</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Position x&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Cell Density u(x,t)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;1D Keller-Segel Simulation: Chemotactic Collapse&#39;</span><span class="p">)</span>
+<span class="n">time_text</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+
+<span class="n">temp_dir</span> <span class="o">=</span> <span class="s1">&#39;temp_frames&#39;</span><span class="p">;</span> <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">temp_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">gif_filename</span> <span class="o">=</span> <span class="s1">&#39;keller_segel_simulation.gif&#39;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
+    <span class="n">line</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">u_hist</span><span class="p">[</span><span class="n">frame</span><span class="p">])</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">frame</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">*</span> <span class="p">(</span><span class="mf">100.0</span><span class="o">/</span><span class="mi">20000</span><span class="p">)</span>
+    <span class="n">time_text</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time = </span><span class="si">{</span><span class="n">time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">line</span><span class="p">,</span> <span class="n">time_text</span>
+
+<span class="n">filenames</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">u_hist</span><span class="p">)):</span>
+    <span class="n">update</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">temp_dir</span><span class="si">}</span><span class="s1">/frame_</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">03d</span><span class="si">}</span><span class="s1">.png&#39;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span> <span class="n">filenames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">imageio</span><span class="o">.</span><span class="n">get_writer</span><span class="p">(</span><span class="n">gif_filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">loop</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">imageio</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span> <span class="n">writer</span><span class="o">.</span><span class="n">append_data</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">temp_dir</span><span class="p">)</span>
+
+<span class="c1"># Snapshots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">u_hist</span><span class="p">)</span><span class="o">//</span><span class="mi">4</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">u_hist</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">u_hist</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">frame</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">*</span> <span class="p">(</span><span class="mf">100.0</span><span class="o">/</span><span class="mi">20000</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u_hist</span><span class="p">[</span><span class="n">frame</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Time = </span><span class="si">{</span><span class="n">time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Position x&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cell Density u(x,t)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Snapshots of Cell Density Evolution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;keller_segel_snapshots.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Output" src="../../assets/images/remote/d3c96c06-b180-42cb-8fe7-c7e92f8063da-5a52bd2a29.gif" /></p>
+<p><img alt="Output" src="../../assets/images/remote/b33f67df-9791-4780-b698-849255511e37-1444afbcf9.png" /></p>
+<p>The simulation reproduces chemotactic collapse: from nearly uniform initial conditions with small noise, local peaks grow, sharpen, and stabilize. Chemical-mediated interactions spontaneously break symmetry and form ordered structures.</p>
+<h1 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h1>
+<p>We began at the molecular scale, examining the precise chemosensory network inside a single bacterium — the biochemical foundation of environmental sensing. We then abstracted this rich biology to a single-particle statistical model in one dimension: a two-state (run/tumble) process, captured by a few key switching rates alpha+/-.</p>
+<p>Through coarse-graining and an adiabatic (time-scale separation) approximation, we elevated this microscopic stochastic model to a continuum description. The result is a Fokker-Planck equation for the population density, with clear physical origins for the effective diffusion coefficient and drift velocity.</p>
+<p>Finally, coupling the cell population to its chemical environment leads to a nonlinear dynamical system — the Keller-Segel model — which exhibits emergent collective behavior not present at the single-cell level: spontaneous pattern formation and chemotactic collapse.</p>
+<p>This modeling chain, from molecules to populations and from microscopic stochasticity to macroscopic determinism, illustrates how theoretical physics clarifies complex bio-physical phenomena and reveals the universal organizing principles behind them.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.highlight"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../assets/javascripts/mathjax.js"></script>
+      
+        <script src="../../assets/javascripts/language-nav.js"></script>
+      
+        <script src="../../assets/javascripts/video-init.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

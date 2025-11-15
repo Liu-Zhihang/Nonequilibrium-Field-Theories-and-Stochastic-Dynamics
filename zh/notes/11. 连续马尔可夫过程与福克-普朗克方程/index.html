@@ -1,0 +1,3326 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Course Notes and Code (Erwin Frey, LMU Munich, 2025)">
+      
+      
+        <meta name="author" content="Zhihang Liu">
+      
+      
+        <link rel="canonical" href="https://liu-zhihang.github.io/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/notes/11.%20%E8%BF%9E%E7%BB%AD%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E4%B8%8E%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B/">
+      
+      
+        <link rel="prev" href="../10.%20%E5%9F%83%E4%BC%A6%E8%B4%B9%E6%96%AF%E7%89%B9%E6%A8%A1%E5%9E%8B%E3%80%81%E7%86%B5%E4%B8%8EKL%E6%95%A3%E5%BA%A6/">
+      
+      
+        <link rel="next" href="../12.%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8%E4%B8%8E%E5%A5%A5%E6%81%A9%E6%96%AF%E5%9D%A6-%E4%B9%8C%E4%BC%A6%E8%B4%9D%E5%85%8B%E8%BF%87%E7%A8%8B/">
+      
+      
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en">
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>11. 连续马尔可夫过程与福克-普朗克方程 - Nonequilibrium Field Theories and Stochastic Dynamics</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/video.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-header__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nonequilibrium Field Theories and Stochastic Dynamics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              11. 连续马尔可夫过程与福克-普朗克方程
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-nav__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nonequilibrium Field Theories and Stochastic Dynamics
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/1.%20Course%20Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/2.%20Simple%20Random%20Walk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Simple Random Walk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/3.%20Gaussian%20Random%20Walk%20and%20Poisson%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Gaussian Random Walk and Poisson Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/4.%20Gillespie%20Algorithm%2C%20Master%20Equation%2C%20Generating%20Functions%20and%20Population%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie Algorithm, Master Equation, Generating Functions and Population Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/5.%20Population%20Dynamics%20-%20Linear%20Death%20Process%20and%20Lotka-Volterra%20System/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Population Dynamics - Linear Death Process and Lotka-Volterra System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/6.%20Fundamental%20Equations%20of%20Markov%20Processes%20%E2%80%94%20Chapman%E2%80%93Kolmogorov%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Fundamental Equations of Markov Processes — Chapman–Kolmogorov Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/7.%20Forward%20Master%20Equation%20and%20the%20Q%20Matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Forward Master Equation and the Q Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/8.%20Perron%E2%80%93Frobenius%20Theorem%2C%20Steady%20States%2C%20and%20Detailed%20Balance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Perron–Frobenius Theorem, Steady States, and Detailed Balance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/9.%20Nonequilibrium%20States%20%E2%80%94%20Irreversibility%20and%20Entropy%20Production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Nonequilibrium States — Irreversibility and Entropy Production
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/10.%20Ehrenfest%20Model%2C%20Entropy%2C%20and%20KL%20Divergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Ehrenfest Model, Entropy, and KL Divergence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/11.%20Continuous%20Markov%20Processes%20and%20the%20Fokker%E2%80%93Planck%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Continuous Markov Processes and the Fokker–Planck Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/12.%20Brownian%20Motion%20and%20the%20Ornstein%E2%80%93Uhlenbeck%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Brownian Motion and the Ornstein–Uhlenbeck Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/13.%20Monte%20Carlo%20Sampling%20as%20a%20Stochastic%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Monte Carlo Sampling as a Stochastic Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/14.%20Hamiltonian%20Monte%20Carlo%20Sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Hamiltonian Monte Carlo Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/15.%20Chemotaxis%2C%20Run-and-Tumble%20Motion%2C%20and%20the%20Keller%E2%80%93Segel%20Model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Chemotaxis, Run-and-Tumble Motion, and the Keller–Segel Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/16.%20The%20Schnitzer%20Model%2C%20Anomalous%20Diffusion%2C%20and%20Motility%E2%80%91Induced%20Phase%20Separation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. The Schnitzer Model, Anomalous Diffusion, and Motility‑Induced Phase Separation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/17.%20Langevin%20Equation%2C%20Brownian%20Particle%2C%20and%20the%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Langevin Equation, Brownian Particle, and the Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/18.%20Fokker%E2%80%93Planck%20Equation%20and%20the%20Smoluchowski%20Equation%20%E2%80%94%20From%20Random%20Trajectories%20to%20Probability%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Fokker–Planck Equation and the Smoluchowski Equation — From Random Trajectories to Probability Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/19.%20Path%20Integral%20Formulation%20of%20Stochastic%20Processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Path Integral Formulation of Stochastic Processes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/20.%20Stochastic%20Differential%20Equations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Stochastic Differential Equations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/21.%20Ito%20Integral%20and%20Unified%20Stochastic%20Process%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Ito Integral and Unified Stochastic Process Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/22.%20Path%20Integrals%20for%20Systems%20with%20Multiplicative%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Path Integrals for Systems with Multiplicative Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/23.%20From%20Coarse-Graining%20to%20Fluctuation%20Dynamics%20of%20Continuous%20Field%20Theories/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. From Coarse-Graining to Fluctuation Dynamics of Continuous Field Theories
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/24.%20Onsager%20Coefficients%2C%20Reciprocity%2C%20and%20the%20Dynamic%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Onsager Coefficients, Reciprocity, and the Dynamic Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/25.%20Gradient%20Dynamics%2C%20Phase%20Transitions%2C%20and%20Relaxation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. Gradient Dynamics, Phase Transitions, and Relaxation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/26.%20Critical%20Slowing%20Down%2C%20Dynamic%20Response%2C%20and%20Conservation%20Laws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Critical Slowing Down, Dynamic Response, and Conservation Laws
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/27.%20Hydrodynamics%20of%20Simple%20Fluids%2C%20Inviscid%20Flow%2C%20and%20the%20Euler%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. Hydrodynamics of Simple Fluids, Inviscid Flow, and the Euler Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/28.%20Viscous%20Fluids%2C%20the%20Navier%E2%80%93Stokes%20Equation%2C%20Entropy%20Balance%2C%20and%20Heat%20Conduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. Viscous Fluids, the Navier–Stokes Equation, Entropy Balance, and Heat Conduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/29.%20Irreversible%20Linear%20Thermodynamics%20and%20Dry%20Diffusive%20Particle%20Systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. Irreversible Linear Thermodynamics and Dry Diffusive Particle Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/30.%20Brownian%20Particles%20Suspended%20in%20a%20Fluid%20%E2%80%94%20Model%20H/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. Brownian Particles Suspended in a Fluid — Model H
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/31.%20Dynamical%20Functionals%2C%20Additive%E2%80%91Noise%20Field%20Theory%2C%20and%20the%20Onsager%E2%80%93Machlup%20Functional/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. Dynamical Functionals, Additive‑Noise Field Theory, and the Onsager–Machlup Functional
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/32.%20Janssen%E2%80%93De%20Dominicis%20Response%20Functional%20and%20the%20Fluctuation%E2%80%93Dissipation%20Relation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen–De Dominicis Response Functional and the Fluctuation–Dissipation Relation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/33.%20Nonequilibrium%20Work%20and%20Fluctuation%20Theorems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. Nonequilibrium Work and Fluctuation Theorems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/34.%20Directed%20Percolation%2C%20Absorbing%20States%2C%20and%20Spectral%20Methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. Directed Percolation, Absorbing States, and Spectral Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/35.%20Path-Integral%20Representation%20of%20the%20Master%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. Path-Integral Representation of the Master Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/36.%20Coherent-State%20Path%20Integrals%2C%20Operator%20Algebra%2C%20and%20Imaginary%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. Coherent-State Path Integrals, Operator Algebra, and Imaginary Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/37.%20Kramers-Moyal%20Expansion%20and%20the%20Low-Noise%20Limit%20of%20Path%20Integrals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal Expansion and the Low-Noise Limit of Path Integrals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/38.%20Multi-Species%20Path%20Integrals%20and%20Cyclic%20Competition%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. Multi-Species Path Integrals and Cyclic Competition Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/39.%20From%20Particle%20Jumps%20to%20Continuous%20Field%20Theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. From Particle Jumps to Continuous Field Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/40.%20Unified%20Field%20Theory%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. Unified Field Theory Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    中文笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.%20%E8%AF%BE%E7%A8%8B%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 课程导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.%20%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 简单随机游走
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20%E9%AB%98%E6%96%AF%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0%E4%B8%8E%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 高斯随机游走与泊松过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20Gillespie%20%E7%AE%97%E6%B3%95%E3%80%81%E4%B8%BB%E6%96%B9%E7%A8%8B%E3%80%81%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%8D%E7%BE%A4%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie 算法、主方程、生成函数与种群动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.%20%E7%A7%8D%E7%BE%A4%E5%8A%A8%E6%80%81%E5%AD%A6%EF%BC%9A%E7%BA%BF%E6%80%A7%E6%AD%BB%E4%BA%A1%E8%BF%87%E7%A8%8B%E4%B8%8ELotka-Volterra%20%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 种群动态学：线性死亡过程与Lotka-Volterra 系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.%20%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E7%A8%8B%EF%BC%9A%E6%9F%A5%E6%99%AE%E6%9B%BC-%E7%A7%91%E5%B0%94%E8%8E%AB%E6%88%88%E7%BD%97%E5%A4%AB%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 马尔可夫过程的基本方程：查普曼-科尔莫戈罗夫方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.%20%E5%89%8D%E5%90%91%E4%B8%BB%E6%96%B9%E7%A8%8B%E4%B8%8EQ%E7%9F%A9%E9%98%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 前向主方程与Q矩阵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.%20%E4%BD%A9%E9%BE%99-%E5%BC%97%E7%BD%97%E8%B4%9D%E5%B0%BC%E4%B9%8C%E6%96%AF%E5%AE%9A%E7%90%86%E3%80%81%E7%A8%B3%E6%80%81%E4%B8%8E%E7%BB%86%E8%87%B4%E5%B9%B3%E8%A1%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 佩龙-弗罗贝尼乌斯定理、稳态与细致平衡
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81%EF%BC%9A%E4%B8%8D%E5%8F%AF%E9%80%86%E6%80%A7%E4%B8%8E%E7%86%B5%E4%BA%A7%E7%94%9F%E7%9A%84%E6%8E%A8%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 非平衡态：不可逆性与熵产生的推论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.%20%E5%9F%83%E4%BC%A6%E8%B4%B9%E6%96%AF%E7%89%B9%E6%A8%A1%E5%9E%8B%E3%80%81%E7%86%B5%E4%B8%8EKL%E6%95%A3%E5%BA%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 埃伦费斯特模型、熵与KL散度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. 连续马尔可夫过程与福克-普朗克方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12.%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8%E4%B8%8E%E5%A5%A5%E6%81%A9%E6%96%AF%E5%9D%A6-%E4%B9%8C%E4%BC%A6%E8%B4%9D%E5%85%8B%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. 布朗运动与奥恩斯坦-乌伦贝克过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13.%20%E4%BD%9C%E4%B8%BA%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. 作为随机过程的蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14.%20%E5%93%88%E5%AF%86%E5%B0%94%E9%A1%BF%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. 哈密尔顿蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15.%20%E8%B6%8B%E5%8C%96%E6%80%A7%E3%80%81%E8%B7%91%E5%8A%A8-%E7%BF%BB%E6%BB%9A%E8%BF%90%E5%8A%A8%E4%B8%8EKeller-Segel%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. 趋化性、跑动-翻滚运动与Keller-Segel模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16.%20Schnitzer%E6%A8%A1%E5%9E%8B%E3%80%81%E5%8F%8D%E5%B8%B8%E6%89%A9%E6%95%A3%E4%B8%8E%E8%BF%90%E5%8A%A8%E8%AF%B1%E5%AF%BC%E7%9B%B8%E5%88%86%E7%A6%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Schnitzer模型、反常扩散与运动诱导相分离
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17.%20%E6%9C%97%E4%B9%8B%E4%B8%87%E6%96%B9%E7%A8%8B%E3%80%81%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. 朗之万方程、布朗粒子与涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18.%20%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B%E4%B8%8E%E6%96%AF%E6%91%A9%E6%A3%B1%E9%9C%8D%E5%A4%AB%E6%96%AF%E5%9F%BA%E6%96%B9%E7%A8%8B%EF%BC%9A%E4%BB%8E%E9%9A%8F%E6%9C%BA%E8%BD%A8%E8%BF%B9%E5%88%B0%E6%A6%82%E7%8E%87%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. 福克-普朗克方程与斯摩棱霍夫斯基方程：从随机轨迹到概率动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19.%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. 随机过程的路径积分表述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20.%20%E9%9A%8F%E6%9C%BA%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. 随机微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21.%20%E4%BC%8A%E8%97%A4%E7%A7%AF%E5%88%86%E4%B8%8E%E7%BB%9F%E4%B8%80%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. 伊藤积分与统一的随机过程框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22.%20%E5%90%AB%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. 含乘性噪声系统的路径积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23.%20%E4%BB%8E%E7%B2%97%E7%B2%92%E5%8C%96%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA%E6%B6%A8%E8%90%BD%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. 从粗粒化到连续场论涨落动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24.%20%E6%98%82%E8%90%A8%E6%A0%BC%E7%B3%BB%E6%95%B0%E3%80%81%E5%80%92%E6%98%93%E5%85%B3%E7%B3%BB%E4%B8%8E%E5%8A%A8%E6%80%81%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. 昂萨格系数、倒易关系与动态涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25.%20%E6%A2%AF%E5%BA%A6%E5%8A%A8%E5%8A%9B%E5%AD%A6%E3%80%81%E7%9B%B8%E5%8F%98%E4%B8%8E%E5%BC%9B%E8%B1%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. 梯度动力学、相变与弛豫
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26.%20%E4%B8%B4%E7%95%8C%E6%85%A2%E5%8C%96%E3%80%81%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%B8%8E%E5%AE%88%E6%81%92%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. 临界慢化、动态响应与守恒律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27.%20%E7%AE%80%E5%8D%95%E6%B5%81%E4%BD%93%E3%80%81%E6%97%A0%E6%91%A9%E6%93%A6%E6%B5%81%E4%BD%93%E4%B8%8E%E6%AC%A7%E6%8B%89%E6%96%B9%E7%A8%8B%E7%9A%84%E6%B5%81%E4%BD%93%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. 简单流体、无摩擦流体与欧拉方程的流体动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28.%20%E7%B2%98%E6%80%A7%E6%B5%81%E4%BD%93%E3%80%81%E7%BA%B3%E7%BB%B4-%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%96%B9%E7%A8%8B%E3%80%81%E7%86%B5%E5%B9%B3%E8%A1%A1%E4%B8%8E%E7%83%AD%E4%BC%A0%E5%AF%BC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. 粘性流体、纳维-斯托克斯方程、熵平衡与热传导
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29.%20%E4%B8%8D%E5%8F%AF%E9%80%86%E7%BA%BF%E6%80%A7%E7%83%AD%E5%8A%9B%E5%AD%A6%E4%B8%8E%E5%B9%B2%E6%80%A7%E6%89%A9%E6%95%A3%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. 不可逆线性热力学与干性扩散粒子系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30.%20%E6%82%AC%E6%B5%AE%E5%9C%A8%E6%B5%81%E4%BD%93%E4%B8%AD%E7%9A%84%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%20%E2%80%94%20H%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. 悬浮在流体中的布朗粒子 — H模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31.%20%E5%8A%A8%E6%80%81%E6%B3%9B%E5%87%BD%E3%80%81%E5%8A%A0%E6%80%A7%E5%99%AA%E5%A3%B0%E5%9C%BA%E8%AE%BA%E4%B8%8EOnsager-Machlup%E6%B3%9B%E5%87%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. 动态泛函、加性噪声场论与Onsager-Machlup泛函
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32.%20Janssen-De%20Dominicis%20%E5%93%8D%E5%BA%94%E6%B3%9B%E5%87%BD%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen-De Dominicis 响应泛函与涨落-耗散关系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E5%8A%9F%E4%B8%8E%E6%B6%A8%E8%90%BD%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. 非平衡功与涨落定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../34.%20%E6%9C%89%E5%90%91%E6%B8%97%E6%B5%81%E3%80%81%E5%90%B8%E6%94%B6%E6%80%81%E4%B8%8E%E8%B0%B1%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. 有向渗流、吸收态与谱方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../35.%20%E4%B8%BB%E6%96%B9%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E7%A4%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. 主方程的路径积分表示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../36.%20%E7%9B%B8%E5%B9%B2%E6%80%81%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E3%80%81%E7%AE%97%E7%AC%A6%E4%BB%A3%E6%95%B0%E4%B8%8E%E8%99%9A%E5%99%AA%E5%A3%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. 相干态路径积分、算符代数与虚噪声
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../37.%20Kramers-Moyal%20%E5%B1%95%E5%BC%80%E4%B8%8E%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E7%9A%84%E4%BD%8E%E5%99%AA%E5%A3%B0%E6%9E%81%E9%99%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal 展开与路径积分的低噪声极限
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../38.%20%E5%A4%9A%E7%89%A9%E7%A7%8D%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E4%B8%8E%E5%BE%AA%E7%8E%AF%E7%AB%9E%E4%BA%89%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. 多物种路径积分与循环竞争动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../39.%20%E4%BB%8E%E7%B2%92%E5%AD%90%E8%B7%B3%E8%B7%83%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. 从粒子跳跃到连续场论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../40.%20%E7%BB%9F%E4%B8%80%E7%9A%84%E5%9C%BA%E8%AE%BA%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. 统一的场论框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="_1">引言<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>在之前的课程中，Erwin Frey 教授已经深入探讨了描述状态离散的系统的马尔可夫过程，例如系统中分子的数量或基因开关的状态。然而，自然界的许多现象本质上是连续的，比如一个粒子在液体中的位置、一个化学反应的浓度场，或者一个细胞在组织中的迁移。这节课的核心任务，便是将我们已经建立的马尔可夫过程理论框架，从离散状态空间推广到连续状态空间。</p>
+<p>这次推广并非简单的数学延伸，它揭示了两种截然不同的随机动力学行为，并最终引导我们得到两种描述系统演化的核心方程。对于那些状态会发生瞬时、有限幅度变化的系统（如分子马达的步进），我们将推导出一种积分-微分形式的主方程。而对于那些状态连续、平滑变化的系统（如布朗运动），我们将推导出著名的福克-普朗克方程（Fokker-Planck Equation），一种偏微分方程。</p>
+<h1 id="1">1. 主方程回顾<a class="headerlink" href="#1" title="Permanent link">&para;</a></h1>
+<p>在进入连续状态空间的世界之前，教授首先回顾了描述离散马尔可夫过程的核心概念和方程，这些都是我们接下来进行推广的基石。</p>
+<h2 id="11-chapman-kolmogorov-equation">1.1 查普曼-科尔莫戈罗夫方程 (Chapman-Kolmogorov Equation)<a class="headerlink" href="#11-chapman-kolmogorov-equation" title="Permanent link">&para;</a></h2>
+<p>一切马尔可夫过程的理论基础都源于马尔可夫性质，即系统的未来状态只依赖于其当前状态，而与过去的历史无关。这一性质的数学体现就是<strong>查普曼-科尔莫戈罗夫方程</strong>：</p>
+<div class="arithmatex">\[p(n,t\mid n_0,t_0)=\sum_{n'} p(n,t\mid n',t')p(n',t'\mid n_0,t_0) \text{ for } t_0\leq t' \leq t\]</div>
+<p>这个方程的物理意义是：从初始状态 <span class="arithmatex">\(n_0\)</span> 在 <span class="arithmatex">\(t_0\)</span> 时刻出发，到 <span class="arithmatex">\(t\)</span> 时刻处于状态 <span class="arithmatex">\(n\)</span> 的总概率，等于所有可能经过的中间状态 <span class="arithmatex">\(n'\)</span> 的概率之和。它描述了概率如何通过中间时刻 <span class="arithmatex">\(t'\)</span> 进行传播。</p>
+<h2 id="12-master-equation">1.2 主方程 (Master Equation)<a class="headerlink" href="#12-master-equation" title="Permanent link">&para;</a></h2>
+<p><img alt="课堂PPT截图" src="../../../assets/images/remote/e440a88b-3fbb-4f9f-b03b-5d3f53bf0513-ffa09e2148.png" /></p>
+<p>当我们将查普曼-科尔莫戈罗夫方程写成微分形式时，就得到了描述概率随时间连续演化的主方程。其通用形式为：</p>
+<div class="arithmatex">\[\frac{d}{dt}p(t)=Qp(t)\]</div>
+<p>其中 <span class="arithmatex">\(p(t)\)</span> 是一个列向量，其元素 <span class="arithmatex">\(p(n,t)\)</span> 是系统在时刻 <span class="arithmatex">\(t\)</span> 处于状态 <span class="arithmatex">\(n\)</span> 的概率，而 <span class="arithmatex">\(Q\)</span> 是转移速率矩阵。</p>
+<p>更具体地，主方程可以写成如下的"得失"形式：</p>
+<div class="arithmatex">\[\partial_t p(n,t\mid\cdot)=\sum_m w(n,m)p(m,t\mid\cdot)-w(n)p(n,t\mid\cdot)\]</div>
+<p>这里的 <span class="arithmatex">\(w(n,m)\)</span> 是从状态 <span class="arithmatex">\(m\)</span> 转移到状态 <span class="arithmatex">\(n\)</span> 的速率。方程的物理意义非常直观：处于状态 <span class="arithmatex">\(n\)</span> 的概率 <span class="arithmatex">\(p(n,t)\)</span> 的变化率，等于从所有其他状态 <span class="arithmatex">\(m\)</span> 流入到状态 <span class="arithmatex">\(n\)</span> 的总速率（增益项），减去从状态 <span class="arithmatex">\(n\)</span> 流出到所有其他状态的总速率（损失项）。其中，总流出速率 <span class="arithmatex">\(w(n)=\sum_m w(m,n)\)</span>。</p>
+<p>通过重新组合项，我们还可以得到"净流"形式：</p>
+<div class="arithmatex">\[\partial_t p(n,t\mid\cdot)=\sum_m [w(n,m)p(m,t\mid\cdot)-w(m,n)p(n,t\mid\cdot)]\]</div>
+<p>这个形式强调了每一对状态 <span class="arithmatex">\((n,m)\)</span> 之间的概率净流。</p>
+<h2 id="13">1.3 不可约马尔可夫过程的核心结论<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
+<p><img alt="课堂PPT截图" src="../../../assets/images/remote/7d540b5b-d6ad-430d-9309-35bd3a2ce7ee-0ced316de3.png" /></p>
+<p>对于状态有限且不可约（即任何状态都可以通过有限步到达任何其他状态）的马尔可夫过程，我们有以下重要结论：</p>
+<ol>
+<li>
+<p>存在一个<strong>唯一的稳态分布</strong> <span class="arithmatex">\(p^{ss}\)</span>，其所有元素均为正。</p>
+</li>
+<li>
+<p>如果过程是<strong>可逆的</strong>，它将满足<strong>细致平衡 (detailed balance)</strong> 条件：<span class="arithmatex">\(w(n,m)p_m^{ss}=w(m,n)p_n^{ss}\)</span>。在稳态下，任意两个状态之间的净概率流为零。</p>
+</li>
+<li>
+<p>如果过程是<strong>不可逆的</strong>，稳态下会存在持续的<strong>概率流</strong>，形成环路。</p>
+</li>
+<li>
+<p>不可逆性可以通过<strong>熵产生</strong>来量化，它反映了正向和反向轨迹的概率不对称性。</p>
+</li>
+</ol>
+<p>这些概念，特别是细致平衡，不仅是理解平衡态物理的关键，也为我们接下来要介绍的一种强大的计算方法——马尔可夫链蒙特卡洛——奠定了理论基础。</p>
+<h1 id="2-mcmc">2. 马尔可夫链蒙特卡洛 (MCMC)<a class="headerlink" href="#2-mcmc" title="Permanent link">&para;</a></h1>
+<p>马尔可夫链蒙特卡洛（Markov Chain Monte Carlo, MCMC）方法由 Nicholas Metropolis 等人于1953年在研究核物理问题时首创（Metropolis算法），后经 W.K. Hastings 等统计学家发展为通用算法。</p>
+<p>马尔可夫链蒙特卡洛（MCMC）方法的提出源于物理和统计学中一个棘手的基础性问题：如何在一个极其巨大甚至无限的状态空间中计算一个物理量的平均值或对一个复杂的概率分布进行抽样。直接对所有状态求和或积分在计算上是不可行的。MCMC的提出正是为了解决这一难题，其核心思想是“用时间换空间”：它放弃了遍历整个空间，转而设计一个巧妙的随机行走过程，即<strong>马尔可夫链</strong>。</p>
+<p>这条链被精确构建，使其最终会“忘记”初始状态，并收敛到一个唯一的稳态分布，而这个稳态分布恰好就是我们想要研究的目标概率分布（例如，物理学中的玻尔兹曼分布）。因此，我们只需让这个随机过程运行足够长的时间，然后收集它所访问的状态样本，这些样本就自然地代表了目标分布，我们便可以用这些样本的简单平均来近似真实的系综平均值。</p>
+<p>其具体应用极其广泛，早已超越其物理学起源：
+1.  <strong>统计物理学</strong>：这是其经典应用，用于模拟伊辛模型、晶格规范理论等，计算磁化率、比热等宏观热力学性质。
+2.  <strong>贝叶斯统计与机器学习</strong>：MCMC是现代贝叶斯推断的基石。当模型的后验概率分布极其复杂、无法解析求解时，MCMC方法（如Gibbs抽样、Metropolis-Hastings算法）被用来从中抽取样本，从而估计模型参数、进行模型选择和预测。
+3.  <strong>计算生物学</strong>：用于推断物种间的进化关系（系统发育树）、进行基因序列比对和模拟蛋白质折叠。
+4.  <strong>金融工程</strong>：用于金融衍生品定价和风险价值（VaR）的计算，对复杂的随机过程进行建模。</p>
+<h2 id="21">2.1 核心思想：用马尔可夫链进行抽样<a class="headerlink" href="#21" title="Permanent link">&para;</a></h2>
+<p><img alt="课堂PPT截图" src="../../../assets/images/remote/cb74ae75-a1b0-406c-a0d8-6db83567685b-0962ac0861.png" /></p>
+<p>在统计物理中，我们经常需要计算某个物理量 <span class="arithmatex">\(A\)</span> 的系综平均值，例如磁化强度或能量。其定义为：</p>
+<div class="arithmatex">\[\langle A(X) \rangle = \sum_i A(X_i)p_i\]</div>
+<p>其中 <span class="arithmatex">\(X_i\)</span> 是系统的一个微观状态（例如，一个具体的自旋构型），<span class="arithmatex">\(p_i\)</span> 是该状态出现的概率。对于处于热平衡的系统，这个概率由正则系综 (canonical ensemble) 的玻尔兹曼分布给出：</p>
+<div class="arithmatex">\[p_i = \frac{1}{Z} e^{-E_i/k_B T}\]</div>
+<p>这里 <span class="arithmatex">\(E_i\)</span> 是状态 <span class="arithmatex">\(i\)</span> 的能量，<span class="arithmatex">\(T\)</span> 是温度，<span class="arithmatex">\(k_B\)</span> 是玻尔兹曼常数，<span class="arithmatex">\(Z\)</span> 是配分函数 1。</p>
+<p>问题在于，对于一个包含大量粒子（比如一个 <span class="arithmatex">\(50\times 50\)</span> 的伊辛模型，有 <span class="arithmatex">\(2^{2500}\)</span> 个状态）的系统，直接计算这个求和是绝对不可能的。</p>
+<p><strong>马尔可夫链蒙特卡洛 (MCMC)</strong> 方法提供了一个绝妙的解决方案。它的核心思想是：我们不再尝试遍历所有状态，而是设计一个辅助的马尔可夫过程，使其稳态分布恰好是我们想要抽样的目标分布 <span class="arithmatex">\(p_i\)</span>。然后，我们让这个马尔可夫过程演化足够长的时间，它所访问的状态序列 <span class="arithmatex">\(X_1,X_2,\ldots,X_N\)</span> 就会像是从 <span class="arithmatex">\(p_i\)</span> 中抽取的一系列样本。于是，复杂的系综平均计算就转化为了一个简单的算术平均：</p>
+<div class="arithmatex">\[\langle A(X) \rangle \approx \frac{1}{N}\sum_{k=1}^N A(X_k)\]</div>
+<h2 id="22-metropolis">2.2 Metropolis 算法<a class="headerlink" href="#22-metropolis" title="Permanent link">&para;</a></h2>
+<p>如何巧妙地设计一个马尔可夫过程，使其稳态恰好是玻尔兹曼分布呢？Metropolis 算法给出了一个非常优雅和通用的答案。</p>
+<ol>
+<li>
+<p><strong>目标</strong>：构建一个转移速率为 <span class="arithmatex">\(w_{i\to j}\)</span> 的马尔可夫过程，使得其稳态分布 <span class="arithmatex">\(p_i^{ss}\)</span> 正比于 <span class="arithmatex">\(p_i^{\text{therm}}=e^{-E_i/k_B T}\)</span>。</p>
+</li>
+<li>
+<p><strong>充分条件</strong>：根据我们刚才的回顾，<strong>细致平衡</strong>是一个足以保证系统达到所需稳态的条件。我们只需要让转移速率满足：</p>
+</li>
+</ol>
+<div class="arithmatex">\[w_{i\to j}p_i^{\text{therm}}=w_{j\to i}p_j^{\text{therm}}\]</div>
+<ol>
+<li><strong>推导</strong>：将 <span class="arithmatex">\(p_i^{\text{therm}}\)</span> 的表达式代入，我们可以得到对转移速率比值的要求：</li>
+</ol>
+<div class="arithmatex">\[\frac{w_{j\to i}}{w_{i\to j}}=\frac{p_i^{\text{therm}}}{p_j^{\text{therm}}}=\frac{e^{-E_i/k_B T}}{e^{-E_j/k_B T}}=e^{-(E_j-E_i)/k_B T}\]</div>
+<ol>
+<li>
+<p>这个关系式是Metropolis算法的核心。它将微观动力学（转移速率）与系统的能量景观（能量差）联系了起来。</p>
+</li>
+<li>
+<p><strong>Metropolis 的选择</strong>：满足上述比值的 <span class="arithmatex">\(w_{i\to j}\)</span> 有很多种选择。Metropolis 提出了一种非常简单且有效的构造方法。该算法分为两步：<strong>提议 (propose)</strong> 和 <strong>接受/拒绝 (accept/reject)。</strong></p>
+</li>
+<li>
+<p><strong>提议</strong>：从当前状态 <span class="arithmatex">\(i\)</span>，随机地提议一个新状态 <span class="arithmatex">\(j\)</span>。最简单的方式是对状态 <span class="arithmatex">\(i\)</span> 做一个微小的随机扰动（例如，在伊辛模型中随机翻转一个自旋）。假设从 <span class="arithmatex">\(i\)</span> 提议 <span class="arithmatex">\(j\)</span> 和从 <span class="arithmatex">\(j\)</span> 提议 <span class="arithmatex">\(i\)</span> 的概率是相等的（即提议分布是对称的）。</p>
+</li>
+<li>
+<p><strong>接受/拒绝</strong>：计算能量变化 <span class="arithmatex">\(\Delta E=E_j-E_i\)</span>。</p>
+<ul>
+<li>
+<p>如果 <span class="arithmatex">\(\Delta E\leq 0\)</span>（新状态能量更低或相等），则<strong>总是接受</strong>这个提议，系统转移到状态 <span class="arithmatex">\(j\)</span>。</p>
+</li>
+<li>
+<p>如果 <span class="arithmatex">\(\Delta E&gt;0\)</span>（新状态能量更高），则以一定的概率 <span class="arithmatex">\(P_{\text{accept}}=e^{-\Delta E/k_B T}\)</span> <strong>接受</strong>这个提议。具体操作是：生成一个 <span class="arithmatex">\([0,1)\)</span> 之间的随机数 <span class="arithmatex">\(r\)</span>，如果 <span class="arithmatex">\(r&lt;P_{\text{accept}}\)</span>，则接受转移；否则，<strong>拒绝</strong>提议，系统<strong>保持在原状态</strong> <span class="arithmatex">\(i\)</span> 不变。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>这个接受准则，即接受概率为 <span class="arithmatex">\(\min(1,e^{-\Delta E/k_B T})\)</span>，恰好满足了细致平衡的要求。它直观地体现了物理过程：系统倾向于向低能量状态演化，但由于热涨落的存在，它也有一定概率跳到能量更高的状态，从而能够探索整个状态空间，而不是仅仅陷入某个局部能量最低点。</p>
+<h2 id="23-python">2.3 Python 模拟：二维伊辛模型<a class="headerlink" href="#23-python" title="Permanent link">&para;</a></h2>
+<p>为了具体感受 Metropolis 算法的威力，我们用它来模拟一个经典的物理系统：<strong>二维伊辛模型 (2D Ising Model)。</strong>这是一个描述铁磁性的简化模型，由一个二维晶格构成，每个格点上有一个自旋，其状态为"上"(+1)或"下"(-1)。</p>
+<p>系统的总能量（哈密顿量）由下式给出：</p>
+<div class="arithmatex">\[H = -J \sum_{\langle i,j \rangle} S_i S_j\]</div>
+<p>其中 <span class="arithmatex">\(\sum_{\langle i,j \rangle}\)</span> 表示对所有最近邻的自旋对求和，<span class="arithmatex">\(S_i\)</span> 和 <span class="arithmatex">\(S_j\)</span> 是相邻格点上的自旋值。我们设耦合常数 <span class="arithmatex">\(J=1\)</span>。当相邻自旋方向相同时 <span class="arithmatex">\((S_i S_j = 1)\)</span>，能量贡献为 <span class="arithmatex">\(-J\)</span>，系统能量降低；方向相反时 <span class="arithmatex">\((S_i S_j = -1)\)</span>，能量贡献为 <span class="arithmatex">\(+J\)</span>，系统能量升高。因此，系统在低温下倾向于所有自旋朝向一致，形成宏观磁化，即铁磁态。</p>
+<p>下面的 Python 代码实现了 Metropolis 算法来模拟二维伊辛模型。</p>
+<p><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="kn">import</span> <span class="n">FuncAnimation</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">initialize_lattice</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initialize an N x N lattice with random spin states of +1 or -1.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_energy_change</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the energy change caused by flipping the spin at position (i, j).</span>
+<span class="sd">    Periodic boundary conditions are used.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">lattice</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">s_current</span> <span class="o">=</span> <span class="n">lattice</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+
+    <span class="c1"># Find spin values of the four neighboring sites (top, bottom, left, right)</span>
+    <span class="n">s_top</span> <span class="o">=</span> <span class="n">lattice</span><span class="p">[(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">N</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+    <span class="n">s_bottom</span> <span class="o">=</span> <span class="n">lattice</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">N</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+    <span class="n">s_left</span> <span class="o">=</span> <span class="n">lattice</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">N</span><span class="p">]</span>
+    <span class="n">s_right</span> <span class="o">=</span> <span class="n">lattice</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">N</span><span class="p">]</span>
+
+    <span class="c1"># Energy change dE = E_final - E_initial</span>
+    <span class="c1"># E_initial = -J * s_current * (s_top + s_bottom + s_left + s_right)</span>
+    <span class="c1"># E_final = -J * (-s_current) * (s_top + s_bottom + s_left + s_right)</span>
+    <span class="c1"># dE = E_final - E_initial = 2 * J * s_current * (sum of neighbors)</span>
+    <span class="c1"># Set J=1</span>
+    <span class="n">dE</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">s_current</span> <span class="o">*</span> <span class="p">(</span><span class="n">s_top</span> <span class="o">+</span> <span class="n">s_bottom</span> <span class="o">+</span> <span class="n">s_left</span> <span class="o">+</span> <span class="n">s_right</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dE</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">metropolis_sweep</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Perform one complete Metropolis scan (N*N attempts).</span>
+<span class="sd">    beta = 1 / (k_B * T)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">lattice</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span> <span class="o">*</span> <span class="n">N</span><span class="p">):</span>
+        <span class="c1"># Randomly select a lattice site</span>
+        <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1"># Calculate energy change</span>
+        <span class="n">dE</span> <span class="o">=</span> <span class="n">calculate_energy_change</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+
+        <span class="c1"># Metropolis acceptance/rejection criterion</span>
+        <span class="k">if</span> <span class="n">dE</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">beta</span> <span class="o">*</span> <span class="n">dE</span><span class="p">):</span>
+            <span class="n">lattice</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span> <span class="c1"># Accept flip</span>
+
+    <span class="k">return</span> <span class="n">lattice</span>
+
+<span class="c1"># --- Simulation parameters ---</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># Lattice size</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="c1"># Temperature (critical temperature Tc is approximately 2.269)</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">T</span>
+<span class="n">n_sweeps</span> <span class="o">=</span> <span class="mi">3000</span> <span class="c1"># Total number of sweeps for simulation</span>
+<span class="n">frame_interval</span> <span class="o">=</span> <span class="mi">50</span> <span class="c1"># Record a frame every this many sweeps</span>
+
+<span class="c1"># --- Initialization ---</span>
+<span class="n">lattice</span> <span class="o">=</span> <span class="n">initialize_lattice</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+
+<span class="c1"># Set up visualization</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdYlBu&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;2D Ising Model (T = </span><span class="si">{</span><span class="n">T</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Sweep = 0)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+
+<span class="c1"># Add color bar</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Spin&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="c1"># --- Simulation and animation ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">lattice</span>
+    <span class="c1"># Perform frame_interval sweeps</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">frame_interval</span><span class="p">):</span>
+        <span class="n">lattice</span> <span class="o">=</span> <span class="n">metropolis_sweep</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+    <span class="n">im</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">lattice</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;2D Ising Model (T = </span><span class="si">{</span><span class="n">T</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Sweep = </span><span class="si">{</span><span class="n">frame</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">frame_interval</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">im</span><span class="p">]</span>
+
+<span class="c1"># Create animation</span>
+<span class="n">ani</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="n">n_sweeps</span> <span class="o">//</span> <span class="n">frame_interval</span><span class="p">,</span>
+                    <span class="n">interval</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Save as GIF file</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">imageio</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saving animation as GIF file...&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Re-run simulation to capture all frames</span>
+<span class="n">lattice_gif</span> <span class="o">=</span> <span class="n">initialize_lattice</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+
+    <span class="c1"># Create images for GIF</span>
+<span class="n">fig_gif</span><span class="p">,</span> <span class="n">ax_gif</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">im_gif</span> <span class="o">=</span> <span class="n">ax_gif</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">lattice_gif</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdYlBu&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+<span class="n">ax_gif</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;2D Ising Model (T = </span><span class="si">{</span><span class="n">T</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Sweep = 0)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax_gif</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+<span class="n">cbar_gif</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im_gif</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax_gif</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">cbar_gif</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Spin&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">imageio</span><span class="o">.</span><span class="n">get_writer</span><span class="p">(</span><span class="s1">&#39;ising_model.gif&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">loop</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+        <span class="c1"># Save initial state</span>
+    <span class="n">fig_gif</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+    <span class="n">image_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fig_gif</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">renderer</span><span class="o">.</span><span class="n">_renderer</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">append_data</span><span class="p">(</span><span class="n">image_array</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved 0/</span><span class="si">{</span><span class="n">n_sweeps</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">frame_interval</span><span class="si">}</span><span class="s2"> frames&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Step through simulation and save each frame</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_sweeps</span> <span class="o">//</span> <span class="n">frame_interval</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">frame_interval</span><span class="p">):</span>
+            <span class="n">lattice_gif</span> <span class="o">=</span> <span class="n">metropolis_sweep</span><span class="p">(</span><span class="n">lattice_gif</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+        <span class="n">im_gif</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">lattice_gif</span><span class="p">)</span>
+        <span class="n">ax_gif</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;2D Ising Model (T = </span><span class="si">{</span><span class="n">T</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Sweep = </span><span class="si">{</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">frame_interval</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+        <span class="n">fig_gif</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+        <span class="n">image_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fig_gif</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">renderer</span><span class="o">.</span><span class="n">_renderer</span><span class="p">)</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">append_data</span><span class="p">(</span><span class="n">image_array</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">n_sweeps</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">frame_interval</span><span class="si">}</span><span class="s2"> frames&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig_gif</span><span class="p">)</span>
+</code></pre></div>
+<img alt="运行代码输出" src="../../../assets/images/remote/c68ca2ca-e94d-4d48-8ef6-c0915ebb684a-c1f8f1050f.gif" /></p>
+<p>当温度 <em>T</em> 设置在临界温度 <em>Tc</em>≈2.269 以下时（例如 <em>T</em>=1.5），你会观察到系统从初始的随机“椒盐”状态，逐渐演化出大片的同向自旋“畴”。最终，整个系统会趋向于一个几乎完全有序的铁磁态（全蓝或全红）。这个过程生动地展示了Metropolis算法如何通过遵循简单的<strong>局部规则</strong>（满足细致平衡的接受/拒绝准则），成功地引导系统找到其<strong>全局的</strong>低能平衡态，从而涌现出宏观的有序结构。这正是统计力学中从微观规则到宏观行为的精髓所在。</p>
+<h1 id="3">3. 连续状态空间中的马尔可夫过程<a class="headerlink" href="#3" title="Permanent link">&para;</a></h1>
+<p>现在，我们准备进行这节课的核心跨越：将马尔可夫过程的描述从离散状态（如自旋状态 <span class="arithmatex">\(\pm 1\)</span>）推广到连续状态空间。这意味着系统的状态变量 <span class="arithmatex">\(\vec{X}(t)\)</span> 可以在一个连续的域中取值，例如 <span class="arithmatex">\(\vec{X}(t)\in\mathbb{R}^d\)</span>。为了建立直观的理解，教授在讲座中列举了几个典型的物理和生物学例子。</p>
+<p><strong>1. 布朗运动 (Brownian Motion)</strong></p>
+<p>一个悬浮在液体中的花粉颗粒，由于受到大量微小的、随机的水分子碰撞，会进行永不停歇的无规则运动。这个颗粒的位置 <span class="arithmatex">\(X(t)\in\mathbb{R}^3\)</span> 就是一个连续的状态变量。它的轨迹看起来是连续但处处不可微的，充满了锯齿状的随机行走。</p>
+<p><strong>2. 分子马达 (Molecular Motors)</strong></p>
+<p><img alt="课堂PPT截图" src="../../../assets/images/remote/feed6390-9613-4e00-a1c0-d36bef0ca5b8-c71b608498.png" /></p>
+<p><img alt="课堂PPT截图" src="../../../assets/images/remote/096f05c3-a523-435b-81a4-b9dc934b744c-a3c297cf9b.png" /></p>
+<p>以驱动蛋白（Kinesin）为例，它像一个微型搬运工，沿着细胞内的微管轨道"行走"来运输物质。它的每一步大小是固定的（约 8 nm），因此从宏观上看，其运动可以被粗粒化地描述为一个在微管上的位置变量 <span class="arithmatex">\(x(t)\)</span>。虽然底层的化学反应（ATP水解）是离散事件，但其位置轨迹混合了离散的跳跃和在每个结合位点附近的热振动。</p>
+<p><strong>3. 细菌趋化性 (Bacterial Chemotaxis)</strong></p>
+<p><img alt="课堂PPT截图" src="../../../assets/images/remote/43d90324-c7d3-4c6d-bd68-554d1a60c15d-4151e034e7.png" /></p>
+<p><img alt="课堂PPT截图" src="../../../assets/images/remote/c8043cd8-cc64-4c0a-afc3-f3807c032f59-2dde02ca60.png" /></p>
+<p>大肠杆菌在环境中寻找食物时，会采用一种"奔跑-翻滚 (Run &amp; Tumble)"的运动策略。在"奔跑"阶段，它沿着一个方向直线前进；在"翻滚"阶段，它会原地随机改变方向。描述这个过程的状态变量至少需要位置 <span class="arithmatex">\(x(t)\)</span> 和方向 <span class="arithmatex">\(\theta(t)\)</span>，两者都是连续的。其轨迹由平滑的直线段和瞬时的方向改变构成。</p>
+<p>这三个例子并非随意挑选，它们巧妙地预示了我们即将要建立的不同数学模型。布朗运动是<strong>纯扩散过程</strong>的典范，其样本路径是连续的。驱动蛋白的运动是<strong>跳跃过程</strong>的代表，其样本路径是分段常数、不连续的。而细菌的运动则是一个<strong>混合过程</strong>，既包含连续的运动，也包含离散的事件。这些物理图像为我们接下来推导的抽象数学方程提供了具体的物理情景。</p>
+<h1 id="4">4. 样本路径与演化方程<a class="headerlink" href="#4" title="Permanent link">&para;</a></h1>
+<p>从离散到连续，最核心的变化在于我们如何描述状态之间的“转移”。对于连续空间，我们不再使用概率 <span class="arithmatex">\(P_n(t)\)</span>，而是使用概率密度函数 (Probability Density Function, PDF) <span class="arithmatex">\(P(x, t)\)</span>。<span class="arithmatex">\(P(x, t) dx\)</span> 表示在时刻 <span class="arithmatex">\(t\)</span> 发现系统处于以 <span class="arithmatex">\(x\)</span> 为中心的微小体积元 <span class="arithmatex">\(dx\)</span> 内的概率。</p>
+<h2 id="41">4.1 路径的两种性质<a class="headerlink" href="#41" title="Permanent link">&para;</a></h2>
+<p><img alt="课堂PPT截图" src="../../../assets/images/remote/2adaca57-bf50-4d78-a49f-fcde58992636-11bd7cf864.png" /></p>
+<p>根据系统状态随时间演化的轨迹（样本路径）的性质，我们可以将连续空间中的马尔可夫过程分为两大类。这个分类的数学判据（Kramers-Moyal条件）是看在一个无穷小的时间间隔 <span class="arithmatex">\(\Delta t\)</span> 内，系统发生一个大于任意小量 <span class="arithmatex">\(\epsilon\)</span> 的位移的概率如何随 <span class="arithmatex">\(\Delta t\)</span> 变化。</p>
+<p><strong>1. 连续样本路径 (Continuous Sample Path)</strong></p>
+<p>对于这类过程，系统状态的改变是平滑的，不会发生瞬时的、有限大小的跳跃。数学上，这意味着在一个小时间隔 <span class="arithmatex">\(\Delta t\)</span> 内发生大跳跃的概率趋近于零的速度比 <span class="arithmatex">\(\Delta t\)</span> 本身还要快：</p>
+<div class="arithmatex">\[
+\lim_{\Delta t \to 0} \frac{1}{\Delta t} \int_{|\Delta x|&gt;\epsilon} dx\ p(x,t+\Delta t\mid x',t) = 0
+\]</div>
+<p>布朗运动就是最典型的例子。其转移概率密度是一个高斯分布（正态分布），方差正比于 <span class="arithmatex">\(\Delta t\)</span>：</p>
+<div class="arithmatex">\[
+p(x,t+\Delta t\mid x',t) = \frac{1}{\sqrt{4\pi D\Delta t}} \exp\left(-\frac{(x-x')^2}{4D\Delta t}\right)
+\]</div>
+<p>当 <span class="arithmatex">\(\Delta t\to 0\)</span> 时，这个分布会无限集中在起点 <span class="arithmatex">\(x'\)</span> 附近，表明发生大跳跃的概率极低。</p>
+<p><strong>2. 不连续样本路径 (Discontinuous Sample Path)</strong></p>
+<p>对于这类过程，系统可以发生瞬时的、有限大小的跳跃。此时，在 <span class="arithmatex">\(\Delta t\to 0\)</span> 的极限下，转移概率密度除以 <span class="arithmatex">\(\Delta t\)</span> 会收敛到一个有限的转移速率密度 (transition rate density) <span class="arithmatex">\(w(x|x')\)</span>：</p>
+<div class="arithmatex">\[
+w(x\mid x';t) = \lim_{\Delta t \to 0} \frac{1}{\Delta t} p(x,t+\Delta t\mid x',t)
+\]</div>
+<p><span class="arithmatex">\(w(x\mid x')dx\)</span> 可以理解为系统当前在 <span class="arithmatex">\(x'\)</span> 处，单位时间内跳跃到以 <span class="arithmatex">\(x\)</span> 为中心的微小区间 <span class="arithmatex">\(dx\)</span> 内的速率。驱动蛋白的步进运动就属于此类。</p>
+<h2 id="42">4.2 演化方程的推导<a class="headerlink" href="#42" title="Permanent link">&para;</a></h2>
+<p><img alt="课堂板书截图" src="../../../assets/images/remote/0a88157c-3419-4e8d-8297-ddd022e023c6-e539d2fa41.jpg" /></p>
+<p>我们的目标是找到一个描述概率密度 <span class="arithmatex">\(P(\vec{x},t)\)</span> 随时间演化的方程，它将是连续空间版本的"主方程"。推导的起点是考察任意一个光滑可观测量 <span class="arithmatex">\(f(\vec{x})\)</span> 的期望值随时间的变化率 <span class="arithmatex">\(\partial_t \langle f \rangle(t)\)</span> (1)。</p>
+<div class="arithmatex">\[\partial_t \langle f \rangle(t) = \partial_t \int d\vec{x}\ f(\vec{x}) P(\vec{x},t\mid\cdot)\]</div>
+<p>根据导数的定义，我们有：</p>
+<div class="arithmatex">\[\partial_t \langle f \rangle(t) = \lim_{\Delta t \to 0} \frac{1}{\Delta t} \left[ \int d\vec{x}\ f(\vec{x}) P(\vec{x},t+\Delta t\mid\cdot) - \int d\vec{x}\ f(\vec{x}) P(\vec{x},t\mid\cdot) \right]\]</div>
+<p>这里的关键一步是使用查普曼-科尔莫戈罗夫方程来表达 <span class="arithmatex">\(P(\vec{x},t+\Delta t|\cdot)\)</span>：</p>
+<div class="arithmatex">\[P(\vec{x},t+\Delta t\mid\cdot) = \int d\vec{x}'\ P(\vec{x},t+\Delta t\mid\vec{x}',t) P(\vec{x}',t\mid\cdot)\]</div>
+<p>将此式代入，并利用概率守恒 <span class="arithmatex">\(\int d\vec{x}'\ P(\vec{x}',t+\Delta t\mid\vec{x},t)=1\)</span>，经过巧妙的变换，我们可以得到一个统一的出发点。接下来，我们将根据路径是"跳跃"还是"扩散"这两种情况，对这个表达式进行不同的处理。</p>
+<h2 id="43">4.3 情况一：纯跳跃过程<a class="headerlink" href="#43" title="Permanent link">&para;</a></h2>
+<p>对于不连续的样本路径，我们使用之前定义的转移速率密度 <span class="arithmatex">\(w(\vec{x}|\vec{x}')\)</span>。将它代入到 <span class="arithmatex">\(\partial_t \langle f \rangle(t)\)</span> 的表达式中，并交换积分变量的次序，最终可以得到：</p>
+<div class="arithmatex">\[\partial_t \langle f \rangle(t) = \int d\vec{x}\ f(\vec{x}) \int d\vec{x}'\ [w(\vec{x}\mid\vec{x}',t) P(\vec{x}',t\mid\cdot) - w(\vec{x}'\mid\vec{x},t) P(\vec{x},t\mid\cdot)]\]</div>
+<p>由于这个方程必须对任意选择的函数 <span class="arithmatex">\(f(\vec{x})\)</span> 都成立，我们可以直接去掉外层的 <span class="arithmatex">\(\int d\vec{x}\ f(\vec{x})\)</span>，从而得到概率密度 <span class="arithmatex">\(P(\vec{x},t)\)</span> 自身的演化方程：</p>
+<div class="arithmatex">\[\partial_t P(\vec{x},t\mid\cdot) = \int d\vec{x}'\ [w(\vec{x}\mid\vec{x}',t) P(\vec{x}',t\mid\cdot) - w(\vec{x}'\mid\vec{x},t) P(\vec{x},t\mid\cdot)]\]</div>
+<p>这就是<strong>连续状态空间的主方程</strong> (1)。它的结构与离散主方程完全一致：第一项是是所有其他位置 <span class="arithmatex">\(\vec{x}'\)</span> 跳入 <span class="arithmatex">\(\vec{x}\)</span> 的增益项，第二项是从 <span class="arithmatex">\(\vec{x}\)</span> 跳出到所有其他位置的损失项。唯一的区别是，离散求和 <span class="arithmatex">\(\sum_m\)</span> 被连续积分 <span class="arithmatex">\(\int d\vec{x}'\)</span> 所取代。</p>
+<h2 id="44-">4.4 情况二：纯扩散过程与福克-普朗克方程<a class="headerlink" href="#44-" title="Permanent link">&para;</a></h2>
+<p>对于连续的样本路径，情况则完全不同。我们不能定义一个跳转速率，因为系统总是在当前位置的邻域内移动。此时，我们回到 <span class="arithmatex">\(\partial_t \langle f \rangle(t)\)</span> 的推导过程，对函数 <span class="arithmatex">\(f(\vec{x}')\)</span> 在点 <span class="arithmatex">\(\vec{x}\)</span> 附近进行泰勒展开：</p>
+<div class="arithmatex">\[f(\vec{x}') = f(\vec{x}) + (x_i'-x_i)\partial_i f(\vec{x}) + \frac{1}{2}(x_i'-x_i)(x_j'-x_j)\partial_i \partial_j f(\vec{x}) + \ldots\]</div>
+<p>将这个展开式代入，我们会发现表达式中出现了位移 <span class="arithmatex">\(\Delta \vec{x}=\vec{x}'-\vec{x}\)</span> 的各阶矩。对于扩散过程，我们假设只有前两阶矩在 <span class="arithmatex">\(\Delta t\to 0\)</span> 的极限下是非零的。</p>
+<p>我们定义这两个重要的物理量：</p>
+<p><strong>1. 漂移矢量 (Drift Vector)</strong> <span class="arithmatex">\(A_i(\vec{x},t)\)</span>:</p>
+<div class="arithmatex">\[
+A_i(x, t) := \lim_{\Delta t \to 0} \frac{1}{\Delta t} \int dx' (x'_i - x_i) P(x', t + \Delta t \mid x, t) \equiv \left. \frac{\langle \Delta x_i \rangle}{\Delta t} \right|_{\Delta t \to 0}
+\]</div>
+<p>它描述了在 <span class="arithmatex">\(\vec{x}\)</span> 点的粒子所感受到的平均速度或系统性的"漂移"。</p>
+<p><strong>2. 扩散矩阵 (Diffusion Matrix)</strong> <span class="arithmatex">\(B_{ij}(\vec{x},t)\)</span>:</p>
+<div class="arithmatex">\[
+B_{ij}(x, t) := \lim_{\Delta t \to 0} \frac{1}{\Delta t} \int dx' (x'_i - x_i)(x'_j - x_j) P(x', t + \Delta t \mid x, t) \equiv \left. \frac{\langle \Delta x_i \Delta x_j \rangle}{\Delta t} \right|_{\Delta t \to 0}
+\]</div>
+<p>它描述了随机力的强度和关联性，即位移的协方差。对角元素 <span class="arithmatex">\(B_{ii}\)</span> 描述了沿 <span class="arithmatex">\(i\)</span> 方向的扩散强度，非对角元素 <span class="arithmatex">\(B_{ij}\)</span> 描述了不同方向上随机运动的关联。</p>
+<p>将泰勒展开和这两个定义代入 <span class="arithmatex">\(\partial_t \langle f \rangle(t)\)</span> 的表达式，并使用分部积分法将导数从测试函数 <span class="arithmatex">\(f\)</span> 转移到概率密度 <span class="arithmatex">\(P\)</span> 上，经过一番推导，我们最终得到一个关于 <span class="arithmatex">\(P(\vec{x},t)\)</span> 的偏微分方程——<strong>福克-普朗克方程 (Fokker-Planck Equation)：</strong></p>
+<div class="arithmatex">\[\partial_t P(\vec{x}, t \mid \cdot) = -\partial_i \left[ A_i(\vec{x}, t) P(\vec{x}, t \mid \cdot) \right] + \frac{1}{2} \partial_i \partial_j \left[ B_{ij}(\vec{x}, t) P(\vec{x}, t \mid \cdot) \right]\]</div>
+<p>这个方程是统计物理中最重要的方程之一。它的物理意义可以被理解为一个概率守恒的<strong>连续性方程</strong> <span class="arithmatex">\(\partial_t P = -\nabla \cdot \vec{J}_P\)</span>，其中概率流密度 <span class="arithmatex">\(\vec{J}_P\)</span> 由两部分组成：</p>
+<ul>
+<li>
+<p><strong>漂移流 (Drift Current)</strong>: <span class="arithmatex">\(\vec{J}_{\text{drift}} = \vec{A} P\)</span>。由系统性的力驱动。</p>
+</li>
+<li>
+<p><strong>扩散流 (Diffusion Current)</strong>: <span class="arithmatex">\(\vec{J}_{\text{diff}} = -\frac{1}{2} \nabla \cdot (\mathbf{B} P)\)</span>。由随机涨落引起，总是从高概率密度区域流向低概率密度区域。</p>
+</li>
+</ul>
+<p>福克-普朗克方程的推导过程完美地展示了统计力学如何连接微观与宏观。方程本身是<strong>确定性的</strong>：给定一个初始的概率分布 <span class="arithmatex">\(P(\vec{x},0)\)</span>，它的未来演化 <span class="arithmatex">\(P(\vec{x},t)\)</span> 就被唯一确定了。然而，方程的系数——漂移项 <span class="arithmatex">\(\vec{A}\)</span> 和扩散项 <span class="arithmatex">\(\mathbf{B}\)</span>——却是由底层的<strong>微观随机</strong>行走的统计性质（均值和方差）所决定的。这揭示了一个深刻的原理：虽然单个粒子的轨迹是不可预测的，但大量粒子组成的系综的概率分布演化却是可以被一个确定性的宏观定律所描述的。</p>
+<p>Fokker-Planck方程，也称为 Kolmogorov 前向方程，是描述随机系统演化的核心方程，它从朗之万方程对布朗运动的微观描述出发，通过统计平均刻画出系统概率分布随时间的确定性演化脉络。该方程精妙地刻画了确定性力（由漂移项 <span class="arithmatex">\(A_i\)</span> 描述）与随机涨落（由扩散项 <span class="arithmatex">\(B_{ij}\)</span> 描述）之间的竞争与平衡。</p>
+<p>其具体应用极为广泛，贯穿于现代科学与工程领域：在统计物理中，它用于研究系统如何弛豫到由玻尔兹曼分布给出的热力学平衡态；在金融数学中，它是Black-Scholes模型等期权定价理论的基础，用于描述资产价格的随机波动；在系统生物学中，它模拟细胞内化学物质浓度的涨落和基因表达噪声；在神经科学中，它刻画神经元膜电位的随机触发过程；在气象学和流体力学中，它用于研究污染物在湍流中的扩散和输运。简而言之，Fokker-Planck方程为我们提供了一套强大的数学框架，用以理解和预测无处不在的随机现象，是从微观粒子到宏观市场的“随机动力学之魂”。</p>
+<h2 id="45-python">4.5 Python 模拟：二维布朗运动<a class="headerlink" href="#45-python" title="Permanent link">&para;</a></h2>
+<p>为了直观地理解扩散过程和福克-普朗克方程的解，我们可以模拟最简单的情况：一个在二维平面上自由扩散的粒子。此时，没有漂移（<span class="arithmatex">\(A=0\)</span>），扩散是各向同性的（<span class="arithmatex">\(B_{ij}=2D\delta_{ij}\)</span>，其中 <span class="arithmatex">\(D\)</span> 是扩散系数）。对应的福克-普朗克方程就是著名的扩散方程：</p>
+<div class="arithmatex">\[\partial_t P = D \nabla^2 P\]</div>
+<p>这个方程的解是一个均值为零、方差随时间线性增大的高斯分布。</p>
+<p>我们可以通过模拟一个二维随机行走 (2D Random Walk) 来近似这个过程。在每个离散的时间步 <span class="arithmatex">\(\Delta t\)</span> 内，粒子的位置发生一个随机位移：</p>
+<div class="arithmatex">\[\vec{X}(t+\Delta t) = \vec{X}(t) + \sqrt{2D\Delta t} \cdot \vec{\eta}\]</div>
+<p>其中 <span class="arithmatex">\(\vec{\eta}\)</span> 是一个二维标准正态分布的随机向量（即其分量是均值为0，方差为1的独立高斯随机数）。</p>
+<p>下面的 Python 代码模拟了多个从原点出发的二维随机行走轨迹。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="kn">import</span> <span class="n">FuncAnimation</span>
+
+<span class="c1"># --- Simulation parameters ---</span>
+<span class="n">n_walkers</span> <span class="o">=</span> <span class="mi">10</span>      <span class="c1"># Number of particles to simulate</span>
+<span class="n">n_steps</span> <span class="o">=</span> <span class="mi">1000</span>      <span class="c1"># Number of steps for each particle</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span>           <span class="c1"># Time step size</span>
+<span class="n">D</span> <span class="o">=</span> <span class="mf">1.0</span>             <span class="c1"># Diffusion coefficient</span>
+
+<span class="c1"># --- Simulation process ---</span>
+<span class="c1"># Generate random displacements for all steps</span>
+<span class="c1"># Shape is (n_walkers, n_steps, 2), representing (particle, step, x/y coordinates)</span>
+<span class="c1"># np.random.randn generates standard normal distribution random numbers</span>
+<span class="n">random_displacements</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_walkers</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">D</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>
+
+<span class="c1"># Calculate trajectories for each particle</span>
+<span class="c1"># np.cumsum(..., axis=1) performs cumulative sum along the time step dimension</span>
+<span class="c1"># Initial position is (0,0)</span>
+<span class="n">trajectories</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">random_displacements</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># --- Visualization ---</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Plot trajectory of each particle</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_walkers</span><span class="p">):</span>
+    <span class="c1"># trajectories[i, :, 0] is all x coordinates of particle i</span>
+    <span class="c1"># trajectories[i, :, 1] is all y coordinates of particle i</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trajectories</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">trajectories</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="c1"># Mark start and end points</span>
+<span class="n">start_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_walkers</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">end_points</span> <span class="o">=</span> <span class="n">trajectories</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>  <span class="c1"># Take the last point of each trajectory</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">start_points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">start_points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Start&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">end_points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">end_points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;End&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;2D Brownian Motion (</span><span class="si">{</span><span class="n">n_walkers</span><span class="si">}</span><span class="s1"> walkers, </span><span class="si">{</span><span class="n">n_steps</span><span class="si">}</span><span class="s1"> steps)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X Position&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y Position&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="n">adjustable</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># --- Plot distribution of end points ---</span>
+<span class="n">fig_hist</span><span class="p">,</span> <span class="n">ax_hist</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Increase number of particles to better show Gaussian distribution</span>
+<span class="n">n_walkers_hist</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># Increased number of particles</span>
+<span class="n">random_displacements_hist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_walkers_hist</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">D</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">trajectories_hist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">random_displacements_hist</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">end_points_hist</span> <span class="o">=</span> <span class="n">trajectories_hist</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+
+<span class="c1"># Use more bins and better color mapping to show distribution</span>
+<span class="n">hist_plot</span> <span class="o">=</span> <span class="n">ax_hist</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">end_points_hist</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">end_points_hist</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;hot&#39;</span><span class="p">)</span>
+<span class="n">ax_hist</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribution of End Points</span><span class="se">\n</span><span class="s1">(2D Gaussian Distribution)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax_hist</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Final X Position&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax_hist</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Final Y Position&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax_hist</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="n">adjustable</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add theoretical contour lines</span>
+<span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">end_points_hist</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">end_points_hist</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">end_points_hist</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">end_points_hist</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="c1"># Theoretical variance</span>
+<span class="n">sigma_squared</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">D</span> <span class="o">*</span> <span class="n">n_steps</span> <span class="o">*</span> <span class="n">dt</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_squared</span><span class="p">))</span>
+<span class="n">ax_hist</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Add color bar</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">hist_plot</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax_hist</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Number of walkers&#39;</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Number of walkers&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># --- Plot 1D projection distributions ---</span>
+<span class="n">fig_proj</span><span class="p">,</span> <span class="p">(</span><span class="n">ax_x</span><span class="p">,</span> <span class="n">ax_y</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># X-direction projection</span>
+<span class="n">ax_x</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">end_points_hist</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="c1"># Theoretical X-direction distribution</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">D</span> <span class="o">*</span> <span class="n">n_steps</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">x_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">end_points_hist</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">end_points_hist</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]),</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">gaussian_x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x_range</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">ax_x</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_range</span><span class="p">,</span> <span class="n">gaussian_x</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Theoretical Gaussian</span><span class="se">\n</span><span class="s1">$</span><span class="se">\\</span><span class="s1">sigma^2 = </span><span class="si">{</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">ax_x</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X Position&#39;</span><span class="p">)</span>
+<span class="n">ax_x</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
+<span class="n">ax_x</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;X Distribution&#39;</span><span class="p">)</span>
+<span class="n">ax_x</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax_x</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1"># Y-direction projection</span>
+<span class="n">ax_y</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">end_points_hist</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightcoral&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax_y</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_range</span><span class="p">,</span> <span class="n">gaussian_x</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Theoretical Gaussian</span><span class="se">\n</span><span class="s1">$</span><span class="se">\\</span><span class="s1">sigma^2 = </span><span class="si">{</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">ax_y</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Y Position&#39;</span><span class="p">)</span>
+<span class="n">ax_y</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
+<span class="n">ax_y</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Y Distribution&#39;</span><span class="p">)</span>
+<span class="n">ax_y</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax_y</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># --- Create Brownian motion animation ---</span>
+<span class="n">fig_anim</span><span class="p">,</span> <span class="n">ax_anim</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Set animation parameters</span>
+<span class="n">n_frames</span> <span class="o">=</span> <span class="mi">200</span>  <span class="c1"># Number of animation frames</span>
+<span class="n">step_interval</span> <span class="o">=</span> <span class="n">n_steps</span> <span class="o">//</span> <span class="n">n_frames</span>  <span class="c1"># Steps between each frame</span>
+
+<span class="c1"># Initialize animation elements</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">ax_anim</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_walkers</span><span class="p">)]</span>
+<span class="n">points</span> <span class="o">=</span> <span class="n">ax_anim</span><span class="o">.</span><span class="n">scatter</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Set axes</span>
+<span class="n">ax_anim</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">trajectories</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">trajectories</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]))</span>
+<span class="n">ax_anim</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">trajectories</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">trajectories</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]))</span>
+<span class="n">ax_anim</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;2D Brownian Motion Animation&#39;</span><span class="p">)</span>
+<span class="n">ax_anim</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X Position&#39;</span><span class="p">)</span>
+<span class="n">ax_anim</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y Position&#39;</span><span class="p">)</span>
+<span class="n">ax_anim</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax_anim</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="n">adjustable</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">animate</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
+    <span class="c1"># Calculate which step to display for current frame</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">frame</span> <span class="o">*</span> <span class="n">step_interval</span><span class="p">,</span> <span class="n">n_steps</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Update each trajectory</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_walkers</span><span class="p">):</span>
+        <span class="n">lines</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">trajectories</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:</span><span class="n">step</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">trajectories</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:</span><span class="n">step</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1"># Update current point positions</span>
+    <span class="n">current_points</span> <span class="o">=</span> <span class="n">trajectories</span><span class="p">[:,</span> <span class="n">step</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">points</span><span class="o">.</span><span class="n">set_offsets</span><span class="p">(</span><span class="n">current_points</span><span class="p">)</span>
+
+    <span class="n">ax_anim</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;2D Brownian Motion (Step </span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">n_steps</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">lines</span> <span class="o">+</span> <span class="p">[</span><span class="n">points</span><span class="p">]</span>
+
+<span class="c1"># Create animation</span>
+<span class="n">anim</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig_anim</span><span class="p">,</span> <span class="n">animate</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="n">n_frames</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Save animation as GIF</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">imageio</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saving Brownian motion animation as GIF file...&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Create temporary image list</span>
+    <span class="n">images</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Generate animation frames</span>
+    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_frames</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>  <span class="c1"># Take every other frame to reduce file size</span>
+        <span class="n">animate</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+        <span class="n">fig_anim</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+        <span class="c1"># Convert figure to image</span>
+        <span class="n">buf</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+        <span class="n">fig_anim</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+        <span class="n">buf</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>
+        <span class="n">images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">frame</span> <span class="o">%</span> <span class="mi">20</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processed </span><span class="si">{</span><span class="n">frame</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">n_frames</span><span class="si">}</span><span class="s2"> frames&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Save as GIF</span>
+    <span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;brownian_motion.gif&#39;</span><span class="p">,</span> <span class="n">save_all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">append_images</span><span class="o">=</span><span class="n">images</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> 
+                   <span class="n">duration</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">loop</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Animation saved as brownian_motion.gif&quot;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Missing libraries required to save GIF (imageio or PIL), please install: pip install imageio pillow&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="运行代码输出" src="../../../assets/images/remote/0da4e0cc-8f22-4ff2-bf31-c31572583ac7-a340b912ef.gif" /></p>
+<p>10个独立的“随机漫步者”（walkers）从同一个中心点（红色圆点）出发，经过1000个时间步后的运动轨迹。每一条彩色曲线都代表了一个粒子可能经历的一种独特历史路径。这张图正是福克-普朗克方程所描述的微观基础。方程本身并不关心某一条具体的、曲折的路径，而是致力于描述大量此类路径在统计上共同形成的“概率云”是如何随时间演化的。</p>
+<p>为了从杂乱的个体轨迹中洞察集体的统计规律，我们把模拟的粒子数量增加到10000个，并只关注它们的最终位置。这张图以“热图”（heatmap）的形式展示了这些终点在二维平面上的分布密度。整个分布呈现出一种圆形的、中心密集、向外逐渐稀疏的形态。这正是福克-普朗克方程在没有外部力（漂移项为零）的情况下，从一个点源（delta函数初始条件）演化出的解——一个二维高斯分布。图中叠加的蓝色同心圆是理论预测的二维高斯分布的等高线。我们可以看到，模拟数据（热图）与理论预测（等高线）吻合，福克-普朗克方程精确地捕捉了扩散过程的宏观统计行为。</p>
+<p>这张图是连接微观随机性与宏观确定性的桥梁。虽然单个粒子的终点无法预测，但大量粒子的终点分布却遵循一个非常确定的数学规律。</p>
+<p>为了更定量地分析这个二维高斯分布，我们可以将其分别投影到X轴和Y轴上，得到两个一维的概率密度分布图。左图（蓝色）显示了所有粒子最终X坐标的分布，右图（粉色）显示了最终Y坐标的分布。两个投影图都清晰地呈现出经典的一维高斯分布（“钟形曲线”）形态。这表明，<strong>虽然粒子在二维平面上运动，但它在任何一个正交方向上的位移分量都遵循独立的一维布朗运动规律。</strong></p>
+<h1 id="_2">总结<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<p><img alt="课堂PPT截图" src="../../../assets/images/remote/bc7c8e59-f9cf-4b94-bf1c-89b47303b422-44f3b12ee8.png" /></p>
+<p>我们已经分别讨论了纯跳跃过程和纯扩散过程。然而，正如细菌的"奔跑-翻滚"运动所展示的，许多真实世界的系统同时包含了这两种动力学特征。为了描述这类<strong>混合过程</strong>，我们可以将前面推导出的两种方程结合起来。</p>
+<p>一个系统在状态 <span class="arithmatex">\(\vec{x}\)</span> 的概率密度 <span class="arithmatex">\(P(\vec{x},t)\)</span> 的变化，既可以来自于局部的漂移和扩散，也可以来自于与其他位置的非局部跳跃。因此，总的演化方程是福克-普朗克项和连续主方程项的简单加和：</p>
+<div class="arithmatex">\[\partial_t P(\vec{x},t\mid\cdot) = \underbrace{-\partial_i[A_i(\vec{x},t)P] + \frac{1}{2}\partial_i \partial_j [B_{ij}(\vec{x},t)P]}_{\text{漂移与扩散 (Fokker-Planck)}} + \underbrace{\int dx'[w(\vec{x}\mid\vec{x}';t)P(\vec{x}',t\mid\cdot) - w(\vec{x}'\mid\vec{x};t)P(\vec{x},t\mid\cdot)]}_{\text{跳跃 (Master Equation)}}\]</div>
+<p>这个通用方程为描述具有连续状态空间，但样本路径同时包含连续和不连续部分的复杂随机过程，提供了一个统一而强大的框架。</p>
+<p>这节课我们完成了从离散到连续马尔可夫过程的推广，这是一个至关重要的概念飞跃。我们发现，根据样本路径的性质，连续空间中的随机过程可以被区分为两大类：</p>
+<ol>
+<li>
+<p><strong>跳跃过程</strong>：由<strong>连续空间主方程</strong>描述，其核心是定义了状态间的转移速率密度。</p>
+</li>
+<li>
+<p><strong>扩散过程</strong>：由<strong>福克-普朗克方程</strong>描述，其核心是定义了微观随机运动的漂移和扩散系数。</p>
+</li>
+</ol>
+<p>因此，连续状态随机过程根据路径的规律性分为两大类：由连续空间主方程描述的跳跃过程，和由福克-普朗克方程描述的扩散过程。混合动力学则结合了这两种贡献。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.highlight"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../../assets/javascripts/mathjax.js"></script>
+      
+        <script src="../../../assets/javascripts/language-nav.js"></script>
+      
+        <script src="../../../assets/javascripts/video-init.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

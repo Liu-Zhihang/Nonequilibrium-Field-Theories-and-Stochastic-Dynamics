@@ -1,0 +1,3290 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Course Notes and Code (Erwin Frey, LMU Munich, 2025)">
+      
+      
+        <meta name="author" content="Zhihang Liu">
+      
+      
+        <link rel="canonical" href="https://liu-zhihang.github.io/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/notes/34.%20%E6%9C%89%E5%90%91%E6%B8%97%E6%B5%81%E3%80%81%E5%90%B8%E6%94%B6%E6%80%81%E4%B8%8E%E8%B0%B1%E6%96%B9%E6%B3%95/">
+      
+      
+        <link rel="prev" href="../33.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E5%8A%9F%E4%B8%8E%E6%B6%A8%E8%90%BD%E5%AE%9A%E7%90%86/">
+      
+      
+        <link rel="next" href="../35.%20%E4%B8%BB%E6%96%B9%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E7%A4%BA/">
+      
+      
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en">
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>34. 有向渗流、吸收态与谱方法 - Nonequilibrium Field Theories and Stochastic Dynamics</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/video.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-header__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nonequilibrium Field Theories and Stochastic Dynamics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              34. 有向渗流、吸收态与谱方法
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-nav__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nonequilibrium Field Theories and Stochastic Dynamics
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/1.%20Course%20Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/2.%20Simple%20Random%20Walk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Simple Random Walk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/3.%20Gaussian%20Random%20Walk%20and%20Poisson%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Gaussian Random Walk and Poisson Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/4.%20Gillespie%20Algorithm%2C%20Master%20Equation%2C%20Generating%20Functions%20and%20Population%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie Algorithm, Master Equation, Generating Functions and Population Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/5.%20Population%20Dynamics%20-%20Linear%20Death%20Process%20and%20Lotka-Volterra%20System/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Population Dynamics - Linear Death Process and Lotka-Volterra System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/6.%20Fundamental%20Equations%20of%20Markov%20Processes%20%E2%80%94%20Chapman%E2%80%93Kolmogorov%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Fundamental Equations of Markov Processes — Chapman–Kolmogorov Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/7.%20Forward%20Master%20Equation%20and%20the%20Q%20Matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Forward Master Equation and the Q Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/8.%20Perron%E2%80%93Frobenius%20Theorem%2C%20Steady%20States%2C%20and%20Detailed%20Balance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Perron–Frobenius Theorem, Steady States, and Detailed Balance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/9.%20Nonequilibrium%20States%20%E2%80%94%20Irreversibility%20and%20Entropy%20Production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Nonequilibrium States — Irreversibility and Entropy Production
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/10.%20Ehrenfest%20Model%2C%20Entropy%2C%20and%20KL%20Divergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Ehrenfest Model, Entropy, and KL Divergence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/11.%20Continuous%20Markov%20Processes%20and%20the%20Fokker%E2%80%93Planck%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Continuous Markov Processes and the Fokker–Planck Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/12.%20Brownian%20Motion%20and%20the%20Ornstein%E2%80%93Uhlenbeck%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Brownian Motion and the Ornstein–Uhlenbeck Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/13.%20Monte%20Carlo%20Sampling%20as%20a%20Stochastic%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Monte Carlo Sampling as a Stochastic Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/14.%20Hamiltonian%20Monte%20Carlo%20Sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Hamiltonian Monte Carlo Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/15.%20Chemotaxis%2C%20Run-and-Tumble%20Motion%2C%20and%20the%20Keller%E2%80%93Segel%20Model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Chemotaxis, Run-and-Tumble Motion, and the Keller–Segel Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/16.%20The%20Schnitzer%20Model%2C%20Anomalous%20Diffusion%2C%20and%20Motility%E2%80%91Induced%20Phase%20Separation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. The Schnitzer Model, Anomalous Diffusion, and Motility‑Induced Phase Separation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/17.%20Langevin%20Equation%2C%20Brownian%20Particle%2C%20and%20the%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Langevin Equation, Brownian Particle, and the Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/18.%20Fokker%E2%80%93Planck%20Equation%20and%20the%20Smoluchowski%20Equation%20%E2%80%94%20From%20Random%20Trajectories%20to%20Probability%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Fokker–Planck Equation and the Smoluchowski Equation — From Random Trajectories to Probability Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/19.%20Path%20Integral%20Formulation%20of%20Stochastic%20Processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Path Integral Formulation of Stochastic Processes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/20.%20Stochastic%20Differential%20Equations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Stochastic Differential Equations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/21.%20Ito%20Integral%20and%20Unified%20Stochastic%20Process%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Ito Integral and Unified Stochastic Process Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/22.%20Path%20Integrals%20for%20Systems%20with%20Multiplicative%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Path Integrals for Systems with Multiplicative Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/23.%20From%20Coarse-Graining%20to%20Fluctuation%20Dynamics%20of%20Continuous%20Field%20Theories/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. From Coarse-Graining to Fluctuation Dynamics of Continuous Field Theories
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/24.%20Onsager%20Coefficients%2C%20Reciprocity%2C%20and%20the%20Dynamic%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Onsager Coefficients, Reciprocity, and the Dynamic Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/25.%20Gradient%20Dynamics%2C%20Phase%20Transitions%2C%20and%20Relaxation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. Gradient Dynamics, Phase Transitions, and Relaxation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/26.%20Critical%20Slowing%20Down%2C%20Dynamic%20Response%2C%20and%20Conservation%20Laws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Critical Slowing Down, Dynamic Response, and Conservation Laws
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/27.%20Hydrodynamics%20of%20Simple%20Fluids%2C%20Inviscid%20Flow%2C%20and%20the%20Euler%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. Hydrodynamics of Simple Fluids, Inviscid Flow, and the Euler Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/28.%20Viscous%20Fluids%2C%20the%20Navier%E2%80%93Stokes%20Equation%2C%20Entropy%20Balance%2C%20and%20Heat%20Conduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. Viscous Fluids, the Navier–Stokes Equation, Entropy Balance, and Heat Conduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/29.%20Irreversible%20Linear%20Thermodynamics%20and%20Dry%20Diffusive%20Particle%20Systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. Irreversible Linear Thermodynamics and Dry Diffusive Particle Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/30.%20Brownian%20Particles%20Suspended%20in%20a%20Fluid%20%E2%80%94%20Model%20H/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. Brownian Particles Suspended in a Fluid — Model H
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/31.%20Dynamical%20Functionals%2C%20Additive%E2%80%91Noise%20Field%20Theory%2C%20and%20the%20Onsager%E2%80%93Machlup%20Functional/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. Dynamical Functionals, Additive‑Noise Field Theory, and the Onsager–Machlup Functional
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/32.%20Janssen%E2%80%93De%20Dominicis%20Response%20Functional%20and%20the%20Fluctuation%E2%80%93Dissipation%20Relation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen–De Dominicis Response Functional and the Fluctuation–Dissipation Relation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/33.%20Nonequilibrium%20Work%20and%20Fluctuation%20Theorems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. Nonequilibrium Work and Fluctuation Theorems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/34.%20Directed%20Percolation%2C%20Absorbing%20States%2C%20and%20Spectral%20Methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. Directed Percolation, Absorbing States, and Spectral Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/35.%20Path-Integral%20Representation%20of%20the%20Master%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. Path-Integral Representation of the Master Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/36.%20Coherent-State%20Path%20Integrals%2C%20Operator%20Algebra%2C%20and%20Imaginary%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. Coherent-State Path Integrals, Operator Algebra, and Imaginary Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/37.%20Kramers-Moyal%20Expansion%20and%20the%20Low-Noise%20Limit%20of%20Path%20Integrals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal Expansion and the Low-Noise Limit of Path Integrals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/38.%20Multi-Species%20Path%20Integrals%20and%20Cyclic%20Competition%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. Multi-Species Path Integrals and Cyclic Competition Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/39.%20From%20Particle%20Jumps%20to%20Continuous%20Field%20Theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. From Particle Jumps to Continuous Field Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/40.%20Unified%20Field%20Theory%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. Unified Field Theory Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    中文笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.%20%E8%AF%BE%E7%A8%8B%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 课程导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.%20%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 简单随机游走
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20%E9%AB%98%E6%96%AF%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0%E4%B8%8E%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 高斯随机游走与泊松过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20Gillespie%20%E7%AE%97%E6%B3%95%E3%80%81%E4%B8%BB%E6%96%B9%E7%A8%8B%E3%80%81%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%8D%E7%BE%A4%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie 算法、主方程、生成函数与种群动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.%20%E7%A7%8D%E7%BE%A4%E5%8A%A8%E6%80%81%E5%AD%A6%EF%BC%9A%E7%BA%BF%E6%80%A7%E6%AD%BB%E4%BA%A1%E8%BF%87%E7%A8%8B%E4%B8%8ELotka-Volterra%20%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 种群动态学：线性死亡过程与Lotka-Volterra 系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.%20%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E7%A8%8B%EF%BC%9A%E6%9F%A5%E6%99%AE%E6%9B%BC-%E7%A7%91%E5%B0%94%E8%8E%AB%E6%88%88%E7%BD%97%E5%A4%AB%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 马尔可夫过程的基本方程：查普曼-科尔莫戈罗夫方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.%20%E5%89%8D%E5%90%91%E4%B8%BB%E6%96%B9%E7%A8%8B%E4%B8%8EQ%E7%9F%A9%E9%98%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 前向主方程与Q矩阵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.%20%E4%BD%A9%E9%BE%99-%E5%BC%97%E7%BD%97%E8%B4%9D%E5%B0%BC%E4%B9%8C%E6%96%AF%E5%AE%9A%E7%90%86%E3%80%81%E7%A8%B3%E6%80%81%E4%B8%8E%E7%BB%86%E8%87%B4%E5%B9%B3%E8%A1%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 佩龙-弗罗贝尼乌斯定理、稳态与细致平衡
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81%EF%BC%9A%E4%B8%8D%E5%8F%AF%E9%80%86%E6%80%A7%E4%B8%8E%E7%86%B5%E4%BA%A7%E7%94%9F%E7%9A%84%E6%8E%A8%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 非平衡态：不可逆性与熵产生的推论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.%20%E5%9F%83%E4%BC%A6%E8%B4%B9%E6%96%AF%E7%89%B9%E6%A8%A1%E5%9E%8B%E3%80%81%E7%86%B5%E4%B8%8EKL%E6%95%A3%E5%BA%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 埃伦费斯特模型、熵与KL散度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.%20%E8%BF%9E%E7%BB%AD%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E4%B8%8E%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. 连续马尔可夫过程与福克-普朗克方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12.%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8%E4%B8%8E%E5%A5%A5%E6%81%A9%E6%96%AF%E5%9D%A6-%E4%B9%8C%E4%BC%A6%E8%B4%9D%E5%85%8B%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. 布朗运动与奥恩斯坦-乌伦贝克过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13.%20%E4%BD%9C%E4%B8%BA%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. 作为随机过程的蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14.%20%E5%93%88%E5%AF%86%E5%B0%94%E9%A1%BF%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. 哈密尔顿蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15.%20%E8%B6%8B%E5%8C%96%E6%80%A7%E3%80%81%E8%B7%91%E5%8A%A8-%E7%BF%BB%E6%BB%9A%E8%BF%90%E5%8A%A8%E4%B8%8EKeller-Segel%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. 趋化性、跑动-翻滚运动与Keller-Segel模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16.%20Schnitzer%E6%A8%A1%E5%9E%8B%E3%80%81%E5%8F%8D%E5%B8%B8%E6%89%A9%E6%95%A3%E4%B8%8E%E8%BF%90%E5%8A%A8%E8%AF%B1%E5%AF%BC%E7%9B%B8%E5%88%86%E7%A6%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Schnitzer模型、反常扩散与运动诱导相分离
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17.%20%E6%9C%97%E4%B9%8B%E4%B8%87%E6%96%B9%E7%A8%8B%E3%80%81%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. 朗之万方程、布朗粒子与涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18.%20%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B%E4%B8%8E%E6%96%AF%E6%91%A9%E6%A3%B1%E9%9C%8D%E5%A4%AB%E6%96%AF%E5%9F%BA%E6%96%B9%E7%A8%8B%EF%BC%9A%E4%BB%8E%E9%9A%8F%E6%9C%BA%E8%BD%A8%E8%BF%B9%E5%88%B0%E6%A6%82%E7%8E%87%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. 福克-普朗克方程与斯摩棱霍夫斯基方程：从随机轨迹到概率动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19.%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. 随机过程的路径积分表述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20.%20%E9%9A%8F%E6%9C%BA%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. 随机微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21.%20%E4%BC%8A%E8%97%A4%E7%A7%AF%E5%88%86%E4%B8%8E%E7%BB%9F%E4%B8%80%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. 伊藤积分与统一的随机过程框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22.%20%E5%90%AB%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. 含乘性噪声系统的路径积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23.%20%E4%BB%8E%E7%B2%97%E7%B2%92%E5%8C%96%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA%E6%B6%A8%E8%90%BD%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. 从粗粒化到连续场论涨落动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24.%20%E6%98%82%E8%90%A8%E6%A0%BC%E7%B3%BB%E6%95%B0%E3%80%81%E5%80%92%E6%98%93%E5%85%B3%E7%B3%BB%E4%B8%8E%E5%8A%A8%E6%80%81%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. 昂萨格系数、倒易关系与动态涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25.%20%E6%A2%AF%E5%BA%A6%E5%8A%A8%E5%8A%9B%E5%AD%A6%E3%80%81%E7%9B%B8%E5%8F%98%E4%B8%8E%E5%BC%9B%E8%B1%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. 梯度动力学、相变与弛豫
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26.%20%E4%B8%B4%E7%95%8C%E6%85%A2%E5%8C%96%E3%80%81%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%B8%8E%E5%AE%88%E6%81%92%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. 临界慢化、动态响应与守恒律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27.%20%E7%AE%80%E5%8D%95%E6%B5%81%E4%BD%93%E3%80%81%E6%97%A0%E6%91%A9%E6%93%A6%E6%B5%81%E4%BD%93%E4%B8%8E%E6%AC%A7%E6%8B%89%E6%96%B9%E7%A8%8B%E7%9A%84%E6%B5%81%E4%BD%93%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. 简单流体、无摩擦流体与欧拉方程的流体动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28.%20%E7%B2%98%E6%80%A7%E6%B5%81%E4%BD%93%E3%80%81%E7%BA%B3%E7%BB%B4-%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%96%B9%E7%A8%8B%E3%80%81%E7%86%B5%E5%B9%B3%E8%A1%A1%E4%B8%8E%E7%83%AD%E4%BC%A0%E5%AF%BC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. 粘性流体、纳维-斯托克斯方程、熵平衡与热传导
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29.%20%E4%B8%8D%E5%8F%AF%E9%80%86%E7%BA%BF%E6%80%A7%E7%83%AD%E5%8A%9B%E5%AD%A6%E4%B8%8E%E5%B9%B2%E6%80%A7%E6%89%A9%E6%95%A3%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. 不可逆线性热力学与干性扩散粒子系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30.%20%E6%82%AC%E6%B5%AE%E5%9C%A8%E6%B5%81%E4%BD%93%E4%B8%AD%E7%9A%84%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%20%E2%80%94%20H%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. 悬浮在流体中的布朗粒子 — H模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31.%20%E5%8A%A8%E6%80%81%E6%B3%9B%E5%87%BD%E3%80%81%E5%8A%A0%E6%80%A7%E5%99%AA%E5%A3%B0%E5%9C%BA%E8%AE%BA%E4%B8%8EOnsager-Machlup%E6%B3%9B%E5%87%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. 动态泛函、加性噪声场论与Onsager-Machlup泛函
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32.%20Janssen-De%20Dominicis%20%E5%93%8D%E5%BA%94%E6%B3%9B%E5%87%BD%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen-De Dominicis 响应泛函与涨落-耗散关系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E5%8A%9F%E4%B8%8E%E6%B6%A8%E8%90%BD%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. 非平衡功与涨落定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. 有向渗流、吸收态与谱方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../35.%20%E4%B8%BB%E6%96%B9%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E7%A4%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. 主方程的路径积分表示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../36.%20%E7%9B%B8%E5%B9%B2%E6%80%81%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E3%80%81%E7%AE%97%E7%AC%A6%E4%BB%A3%E6%95%B0%E4%B8%8E%E8%99%9A%E5%99%AA%E5%A3%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. 相干态路径积分、算符代数与虚噪声
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../37.%20Kramers-Moyal%20%E5%B1%95%E5%BC%80%E4%B8%8E%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E7%9A%84%E4%BD%8E%E5%99%AA%E5%A3%B0%E6%9E%81%E9%99%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal 展开与路径积分的低噪声极限
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../38.%20%E5%A4%9A%E7%89%A9%E7%A7%8D%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E4%B8%8E%E5%BE%AA%E7%8E%AF%E7%AB%9E%E4%BA%89%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. 多物种路径积分与循环竞争动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../39.%20%E4%BB%8E%E7%B2%92%E5%AD%90%E8%B7%B3%E8%B7%83%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. 从粒子跳跃到连续场论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../40.%20%E7%BB%9F%E4%B8%80%E7%9A%84%E5%9C%BA%E8%AE%BA%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. 统一的场论框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="_1">引言:迈向非平衡世界<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>在先前的课程中,已经建立了一套复杂的场论框架来描述近平衡态系统的动力学。从<strong>昂萨格-马赫卢普泛函</strong>出发,引入了功能更强大的<strong>Janssen-De Dominicis (J-D) 作用量</strong>,并以此为基础,系统性地推导了作为近平衡统计物理基石的<strong>涨落-耗散关系 (FDT)</strong>。随后的第32节则将视野拓展至远离平衡的领域,通过<strong>Jarzynski等式</strong>与<strong>Crooks涨落定理</strong>,揭示了在任意外部协议驱动下的非平衡瞬态过程中,非平衡功与平衡态自由能之间存在的深刻等式关系。这些理论虽然强大,但其关注点主要在于系统如何响应外部扰动,或是在两个平衡态之间被瞬时驱动。</p>
+<p>这节课标志着课程视角的又一次关键转变:从瞬态的非平衡过程,转向那些被持续驱动、并能达到<strong>非平衡稳态 (Non-Equilibrium Steady States, NESS)</strong> 的系统。这里的核心问题不再是弛豫过程本身,而是系统在持续的能量或物质流下,是否会展现出类似于平衡态系统中的<strong>相变</strong>行为。这些非平衡相变不由自由能最小化所支配,而是源于驱动与耗散之间复杂的动态平衡,往往会涌现出全新的临界现象。</p>
+<p>现实世界中充满了这样的系统。一个活着的细胞便是维持在<strong>非平衡稳态 (NESS)</strong> 最直观的例子,它通过持续的能量与物质交换,维持着一个远离热力学平衡的高度有序状态。而许多非平衡相变,其核心特征正是系统从一个动态涨落的"活跃相"到一个不可逆的"死寂"<strong>吸收态</strong>的转变。</p>
+<p>一个典型的例子是<strong>流行病的传播</strong>:当传染病在人群中蔓延时,系统处于感染人数不断变化的"活跃相";而当最后一个感染者康复或被隔离后,系统便进入了病毒无法再自行产生的"零感染"吸收态。这场从流行到消亡的相变,由基本再生数 <span class="arithmatex">\(R_0\)</span> 是否超过临界点1所决定。类似的模型可以用来描述<strong>森林火灾</strong>的蔓延,其"活跃相"是燃烧的火焰,而"吸收态"是火焰的完全熄灭,这场相变则由树木的密度是否超过"渗流阈值"所控制。这种从活跃到永久"沉寂"的转变甚至可以在微观化学世界中找到对应,例如在<strong>催化剂表面</strong>,持续进行的化学反应是"活跃相",而当所有活性位点都被不可逆吸附的"毒物"覆盖后,反应便永久停止,系统进入了"中毒"的吸收态。这些例子清晰地表明,从宏观生态到微观反应,向吸收态的相变是自然界中一类极为普遍且重要的非平衡现象。</p>
+<p>在此类非平衡相变的研究中,一个核心概念是<strong>吸收态 (absorbing state)</strong> 。吸收态是指系统一旦进入,就再也无法从中逃逸的一个或一组特殊状态。这个概念在之前的线性出生-死亡过程中已有涉及,其中种群数量为零的状态便是一个典型的吸收态,一旦种群灭绝,若无外部干预,其数量将永远为零。吸收态的存在从根本上打破了细致平衡,为系统注入了强烈的不可逆性。从一个动态涨落的活跃相到一个静止死寂的吸收相的转变,定义了一类独特而重要的非平衡相变。</p>
+<p>为了具体地研究这类现象,需要一个原型模型。在非平衡相变领域,<strong>有向渗流 (Directed Percolation, DP)</strong> 所扮演的角色,堪比伊辛模型 (Ising model) 在平衡态相变理论中的基石地位。它以最简洁的形式,捕捉了从一个活跃的、持续波动的相到一个死寂的、静止的吸收相的连续相变。这节课的目标,便是深入剖析DP模型,首先通过一种简化的平均场方法来理解其基本的物理图像。然而,正如先前课程所强调的,平均场理论忽略了临界点附近至关重要的涨落。因此,为了构建更完善的理论,有必要重新审视并发展处理离散随机过程的数学工具——<strong>主方程 (Master Equation)</strong> 及其求解方法,为后续建立能够精确描述涨落的场论模型奠定坚实的基础。</p>
+<h1 id="1">1. 有向渗流的平均场理论<a class="headerlink" href="#1" title="Permanent link">&para;</a></h1>
+<p><strong>有向渗流(Directed Percolation, DP)</strong> 是一个描述具有内在方向性的涨落过程如何在媒介中传播的范式模型。与普通渗流(如水渗透多孔介质)不同,"有向"这一约束强调了过程的不可逆性,通常对应于时间的单向流逝。该模型精确地捕捉了一类非平衡相变的本质,即系统从一个能够自我维持、持续进行的<strong>活跃相(Active Phase)</strong>到一个动态最终会完全停止的<strong>吸收相(Absorbing Phase)</strong>的临界行为。现实世界中,此类现象屡见不鲜:例如<strong>流行病的传播</strong>,其活跃相是疾病在人群中的蔓延,而吸收相则是感染人数为零的"无病"状态;<strong>森林火灾</strong>的蔓延同样遵循此模式,燃烧的火势为活跃相,而火焰的完全熄灭则对应吸收相。因此,理解有向渗流模型是研究这类非平衡临界现象的理论起点。</p>
+<p>为了从数学上捕捉吸收态相变的本质,需要构建一个能够体现粒子生、灭和相互作用的动力学模型。这小节的目标,是首先建立有向渗流模型(DP)的微观规则,然后通过<strong>平均场近似</strong>这一简化手段,忽略随机涨落和空间细节,推导出一个确定性的宏观动力学方程。通过分析这个方程的稳态解,揭示DP模型中从"活跃"到"死寂"的相变是如何发生的。</p>
+<h2 id="11">1.1 微观反应机制<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
+<p><img alt="课堂PPT截图" src="../../../assets/images/remote/f82892fc-66cf-42a4-886b-e064105a99cd-068d1c2fb8.png" /></p>
+<p>考虑一个定义在格点上的粒子系统,粒子(标记为A)在其中经历一系列随机的生灭过程。这些过程构成了模型的微观动力学规则,可以被概括为以下三种基本的化学反应式:</p>
+<p>1.<strong>自发衰变 (Spontaneous Decay)</strong>: <span class="arithmatex">\(A \xrightarrow{\alpha_0} \varnothing\)</span></p>
+<p>一个粒子A以速率 <span class="arithmatex">\(\alpha_0\)</span> 自发地消失或死亡。这里的 <span class="arithmatex">\(\varnothing\)</span> 代表一个空格点或零粒子状态。这是驱动系统走向"死寂"的衰减机制。</p>
+<ol>
+<li><strong>后代繁殖 (Offspring Creation)</strong>: <span class="arithmatex">\(A \xrightarrow{\alpha_2} 2A\)</span></li>
+</ol>
+<p>一个粒子A以速率 <span class="arithmatex">\(\alpha_2\)</span> 产生一个新的粒子,使得粒子总数增加一。这代表了系统的增长机制,是维持系统"活性"的源泉。</p>
+<p>3.<strong>凝聚 (Coagulation)</strong>: <span class="arithmatex">\(2A \xrightarrow{\beta_1} A\)</span></p>
+<p>两个相邻的粒子A以速率 <span class="arithmatex">\(\beta_1\)</span> 合并成一个粒子。这个过程在高密度时变得重要,它模拟了由于资源竞争等因素导致的增长抑制效应,起到了稳定粒子数量、防止其无限增长的作用。</p>
+<p>这套简单的规则包含了生命(繁殖)、死亡(衰变)和相互作用(凝聚)这三个核心要素。它们之间的竞争与平衡,将共同决定整个系统的宏观命运。</p>
+<h2 id="12">1.2 确定性速率方程<a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
+<p>为了从这些微观的、随机的规则过渡到对系统宏观行为的描述,首先采用<strong>平均场近似 (mean-field approximation)</strong> 。该近似的核心思想是:</p>
+<p><strong>忽略空间关联</strong>:假设系统是"充分混合"的,粒子在任何位置出现的概率都相同。</p>
+<p><strong>忽略随机涨落</strong>:用一个连续的宏观平均量——<strong>粒子密度 <span class="arithmatex">\(n(t)\)</span></strong> ——来代替离散、随机的粒子数,从而描述整个系统的状态。</p>
+<p>在这种近似下,粒子密度的随时间演化遵循一个确定性的常微分方程,即<strong>速率方程</strong>:</p>
+<div class="arithmatex">\[
+\frac{\partial n(t)}{\partial t} = (\alpha_2 - \alpha_0)n(t) - \beta_1 n^2(t)
+\]</div>
+<p>这个方程实际上是化学反应动力学中<strong>质量作用定律 (law of mass action)</strong> 的一个直接应用。它的每一项都有清晰的物理来源:</p>
+<p><strong>线性项 <span class="arithmatex">\((\alpha_2 - \alpha_0)n(t)\)</span></strong> :代表了单粒子过程的净效应。</p>
+<p><span class="arithmatex">\(+\alpha_2 n(t)\)</span>: 粒子总数的增加率。它正比于现存的、可以进行繁殖的粒子密度 <span class="arithmatex">\(n(t)\)</span>。</p>
+<p><span class="arithmatex">\(-\alpha_0 n(t)\)</span>: 粒子总数的减少率。它正比于现存的、可能发生衰变的粒子密度 <span class="arithmatex">\(n(t)\)</span>。</p>
+<p><strong>非线性项 <span class="arithmatex">\(-\beta_1 n^2(t)\)</span></strong> :代表了双粒子过程的效应。</p>
+<p>在平均场近似下,两个粒子相遇的概率正比于粒子密度的平方 <span class="arithmatex">\(n^2(t)\)</span>。这一项是非线性的,它对于防止粒子数爆炸性增长至关重要,体现了高密度下的抑制作用。</p>
+<p>通过平均化处理,这个方程将离散的粒子生灭事件转化为了一个连续变量 <span class="arithmatex">\(n(t)\)</span> 的确定性演化。这种简化虽然忽略了涨落(fluctuations)的关键作用,但它能够以最小的代价揭示出系统可能存在的不同宏观相。</p>
+<h2 id="13">1.3 稳态分析与吸收态相变<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
+<p>系统的长期行为由其<strong>稳态 (steady state)</strong> 决定,即粒子密度不再随时间变化的状态,此时 <span class="arithmatex">\(\frac{\partial n(t)}{\partial t} = 0\)</span>。通过求解代数方程 <span class="arithmatex">\((\alpha_2 - \alpha_0)n - \beta_1 n^2 = 0\)</span>,可以找到系统的所有不动点(稳态解)。</p>
+<p>分析的关键在于引入一个<strong>控制参数</strong> <span class="arithmatex">\(\Delta = \alpha_2 - \alpha_0\)</span>。这个参数具有明确的物理意义:它代表了在没有相互作用时(即密度极低,<span class="arithmatex">\(n \to 0\)</span>),单个粒子的<strong>净增长率</strong> 。根据 <span class="arithmatex">\(\Delta\)</span> 的符号,系统展现出两种截然不同的宏观行为:</p>
+<p>1.<strong>吸收相 (Absorbing Phase, <span class="arithmatex">\(\Delta &lt; 0\)</span>)</strong></p>
+<p>当衰变速率 <span class="arithmatex">\(\alpha_0\)</span> 大于繁殖速率 <span class="arithmatex">\(\alpha_2\)</span> 时,净增长率为负。此时,速率方程的唯一物理稳态解是 <span class="arithmatex">\(n_{ss} = 0\)</span>。</p>
+<p><strong>物理意义</strong>:这意味着任何初始的粒子布居最终都会消亡,系统不可避免地进入一个没有任何粒子的"死寂"状态。这个 <span class="arithmatex">\(n = 0\)</span> 的状态正是一个<strong>吸收态 (Absorbing State)</strong>,因为一旦进入,繁殖过程便无法启动,系统再也无法从中逃逸。</p>
+<p>2.<strong>活跃相 (Active Phase, <span class="arithmatex">\(\Delta &gt; 0\)</span>)</strong></p>
+<p>当繁殖速率 <span class="arithmatex">\(\alpha_2\)</span> 超过衰变速率 <span class="arithmatex">\(\alpha_0\)</span> 时,净增长率为正。此时,除了 <span class="arithmatex">\(n = 0\)</span> 这个(现在不稳定的)解之外,出现了一个新的、稳定的非零稳态解:
+$$
+n_{act} = \frac{\Delta}{\beta_1} = \frac{\alpha_2 - \alpha_0}{\beta_1}
+$$</p>
+<p><strong>物理意义</strong>:在这个相中,系统能够维持一个有限的、动态平衡的粒子密度。粒子的净增长被高密度下的凝聚过程所平衡,形成一个持续存在、不断涨落的"活"的状态。</p>
+<p>在 <span class="arithmatex">\(\Delta = 0\)</span> 这个点,系统恰好处于从活跃相到吸收相的临界点。这是一个<strong>连续相变</strong>,活跃相的稳态密度 <span class="arithmatex">\(n_{act}\)</span> 在此相变中扮演了<strong>序参数 (order parameter)</strong> 的角色,它从零开始连续增长。这种从一个动态活跃状态到一个静止吸收状态的转变,被称为<strong>吸收态相变</strong>。</p>
+<h1 id="2">2. 平均场理论下的临界现象<a class="headerlink" href="#2" title="Permanent link">&para;</a></h1>
+<p>在确定了系统存在两种宏观相之后,下一步是深入研究相变临界点附近的行为。物理学中,临界点附近的动力学和标度行为往往揭示了系统的普适规律,这些规律不依赖于模型的微观细节。这小节将分析平均场速率方程的动力学解,从中揭示<strong>临界慢化</strong>这一普适现象,并引入<strong>临界指数</strong>来定量刻画临界行为,最终提出<strong>有向渗流普适类</strong>这一重要猜想。</p>
+<h2 id="21">2.1 动力学弛豫与临界慢化<a class="headerlink" href="#21" title="Permanent link">&para;</a></h2>
+<p>除了稳态性质,系统如何趋近于稳态的动力学过程也包含了相变的重要信息。上述的非线性速率方程是一个伯努利方程 (Bernoulli equation),可以被精确求解。给定初始密度 <span class="arithmatex">\(n(t=0) = n_0\)</span>,其解为:</p>
+<div class="arithmatex">\[
+n(t) = \frac{n_0 n_{act}}{n_0 + (n_{act} - n_0)e^{-\Delta t}}
+\]</div>
+<p>当 <span class="arithmatex">\(t \to \infty\)</span> 时,指数项消失,分式化简为 <span class="arithmatex">\(\frac{n_0 n_{act}}{n_0} = n_{act}\)</span>,正确地趋向于活跃相的稳态密度。</p>
+<p>从这个解中可以分析系统的<strong>弛豫 (relaxation)</strong> 行为:</p>
+<p><strong>指数弛豫 (<span class="arithmatex">\(\Delta &gt; 0\)</span>)</strong></p>
+<p>在活跃相内部,系统会以指数形式趋近于稳态密度 <span class="arithmatex">\(n_{act}\)</span>。从解的分母可以看出,其特征弛豫时间为:</p>
+<div class="arithmatex">\[
+\tau_{RELAX} = \frac{1}{\Delta} = \frac{1}{\alpha_2 - \alpha_0}
+\]</div>
+<p>这个弛豫时间尺度衡量了系统从一个微扰状态恢复到稳态的速度。</p>
+<p><strong>临界慢化 (Critical Slowing Down)</strong></p>
+<p>当系统从活跃相趋近于临界点时,即 <span class="arithmatex">\(\Delta \to 0^+\)</span>,弛豫时间 <span class="arithmatex">\(\tau_{RELAX} \to \infty\)</span>。这意味着在临界点附近,系统的演化变得极其缓慢,对初始状态的"记忆"会持续非常长的时间。</p>
+<p><strong>物理根源</strong>:这是所有连续相变的普适特征之一。在物理上,这源于驱动系统恢复到稳态的"力"(在此处由 <span class="arithmatex">\(\Delta\)</span> 体现)在临界点消失了,导致系统对扰动的响应变得无限缓慢。</p>
+<p><strong>临界点的幂律弛豫 (<span class="arithmatex">\(\Delta = 0\)</span>)</strong></p>
+<p>恰好在临界点上,动力学行为发生质变。指数弛豫被一种更慢的<strong>代数弛豫</strong>(或称<strong>幂律弛豫</strong>)所取代。此时速率方程简化为 <span class="arithmatex">\(\frac{\partial n(t)}{\partial t} = -\beta_1 n^2(t)\)</span>,其解为:</p>
+<div class="arithmatex">\[
+n(t) = \frac{n_0}{1 + \beta_1 n_0 t} \sim t^{-1} \quad (\text{for large } t)
+\]</div>
+<p>系统密度随时间以 <span class="arithmatex">\(t^{-1}\)</span> 的幂律形式衰减,这远比任何指数衰减都要慢。</p>
+<h2 id="22">2.2 临界指数与普适类<a class="headerlink" href="#22" title="Permanent link">&para;</a></h2>
+<p>为了更普适地、定量地刻画临界点附近的行为,物理学家引入了一套不依赖于具体参数的<strong>临界指数 (critical exponents)</strong> 。</p>
+<p><strong>序参数指数 <span class="arithmatex">\(\beta\)</span></strong> : 描述了当控制参数 <span class="arithmatex">\(\Delta\)</span> 趋于零时,序参数(这里是 <span class="arithmatex">\(n_{act}\)</span>)如何消失。其定义为 <span class="arithmatex">\(n_{act} \sim |\Delta|^\beta\)</span>。根据平均场理论的结果 <span class="arithmatex">\(n_{act} = \Delta/\beta_1\)</span>,可以得到 <span class="arithmatex">\(\beta = 1\)</span>。</p>
+<p><strong>弛豫时间指数 <span class="arithmatex">\(\nu z\)</span></strong> : 描述了弛豫时间的发散行为,定义为 <span class="arithmatex">\(\tau_{RELAX} \sim |\Delta|^{-\nu z}\)</span>。根据 <span class="arithmatex">\(\tau_{RELAX} = 1/\Delta\)</span>,得到 <span class="arithmatex">\(\nu z = 1\)</span>。</p>
+<p>为了使模型更贴近真实物理系统,需要考虑空间维度和粒子的扩散。这可以通过在速率方程中加入一个<strong>扩散项</strong>来实现,从而得到一个<strong>反应-扩散方程 (reaction-diffusion equation)</strong> :</p>
+<div class="arithmatex">\[
+\frac{\partial n(\mathbf{x}, t)}{\partial t} = (\alpha_2 - \alpha_0)n(\mathbf{x}, t) - \beta_1 n^2(\mathbf{x}, t) + D \nabla^2 n(\mathbf{x}, t)
+\]</div>
+<p>其中 <span class="arithmatex">\(D\)</span> 是扩散系数,<span class="arithmatex">\(n(\mathbf{x}, t)\)</span> 是依赖于空间和时间的密度场。扩散引入了一个新的特征尺度——<strong>关联长度 <span class="arithmatex">\(\xi\)</span></strong>,它描述了系统中涨落的空间关联范围。在临界点附近,关联长度也发散,<span class="arithmatex">\(\xi \sim |\Delta|^{-\nu}\)</span>。而时间尺度和长度尺度通过<strong>动力学指数 <span class="arithmatex">\(z\)</span></strong> 关联起来,<span class="arithmatex">\(\tau \sim \xi^z\)</span>。对上述反应-扩散方程的分析可以得到完整的有向渗流平均场临界指数:</p>
+<div class="arithmatex">\[
+\beta = 1, \quad \nu = \frac{1}{2}, \quad z = 2
+\]</div>
+<p>至此,提出了一个深刻的物理学猜想:<strong>所有具有单个吸收态、标量序参数和短程相互作用的非平衡相变,都属于有向渗流(DP)普适类</strong>  。这意味着,无论系统的微观细节如何(例如具体的反应速率、格点结构等),只要它满足上述基本条件,其在临界点附近的行为就应该由与DP相同的临界指数所描述。</p>
+<p>然而,精确的数值模拟和实验表明,DP的真实临界指数(例如在1+1维中,<span class="arithmatex">\(\beta \approx 0.276\)</span>)与平均场理论的预测值有显著差异。这揭示了平均场近似的局限性:<strong>它完全忽略了在临界点附近至关重要的涨落</strong>。为了超越平均场理论,必须建立一个能够恰当处理随机涨落的场论描述,而这一切的起点,正是<strong>主方程</strong>。</p>
+<h1 id="3">3. 离散随机过程的数学工具<a class="headerlink" href="#3" title="Permanent link">&para;</a></h1>
+<p>平均场理论为有向渗流(DP)提供了一幅宏观的、确定性的图像,但它最大的缺陷在于完全忽略了随机涨落——而这恰恰是临界现象的核心。为了建立一个更基本、更准确的理论,必须回到对离散粒子随机生灭过程的直接描述,其数学语言正是<strong>主方程 (Master Equation)</strong>。</p>
+<p>然而,直接处理包含非线性相互作用(如DP中的凝聚过程)的主方程极其困难。因此,在挑战DP模型之前,本部分将采取"迂回"策略:首先,通过分析一个最简单的、精确可解的随机模型——<strong>线性死亡过程</strong>,来系统性地发展和掌握求解主方程所必需的数学工具箱。</p>
+<h2 id="31">3.1 理论框架回顾与挑战<a class="headerlink" href="#31" title="Permanent link">&para;</a></h2>
+<p>在深入研究离散粒子系统的主方程之前,有必要回顾一下之前讲座(如第31讲)中为<strong>连续随机变量</strong>建立的理论框架。这个框架构成了一个层次分明的体系:</p>
+<p><strong>微观层面</strong> : <strong>朗之万方程 (Langevin Equation)</strong> ,如 <span class="arithmatex">\(dx = A(x)dt + C(x)dW\)</span>,它描述了单个随机轨迹的演化。</p>
+<p><strong>介观层面</strong> : <strong>福克-普朗克方程 (Fokker-Planck Equation)</strong> ,它描述了概率分布函数 <span class="arithmatex">\(P(\mathbf{x}, t)\)</span> 的确定性演化。</p>
+<p><strong>全局层面</strong> : <strong>路径积分表述</strong> ,将概率演化表示为对所有可能路径的泛函积分,其中作用量 <span class="arithmatex">\(S\)</span> 包含了系统的动力学信息。</p>
+<p>当前面临的挑战是为<strong>离散变量</strong>(如粒子数 <span class="arithmatex">\(n \in \{0, 1, 2, \ldots\}\)</span>)系统构建一个类似的强大框架。对于这类系统,其动力学的出发点不再是朗之万方程,而是主方程。</p>
+<h2 id="32">3.2 线性死亡过程与主方程<a class="headerlink" href="#32" title="Permanent link">&para;</a></h2>
+<p>为了发展求解主方程的数学工具,从最简单的非平凡随机过程开始:<strong>线性死亡过程 (linear death process)</strong> 。这个过程对应于自发衰变反应:<span class="arithmatex">\(A \xrightarrow{\lambda} \varnothing\)</span>,其中每个粒子都以恒定的人均速率 <span class="arithmatex">\(\lambda\)</span> 独立地消失。</p>
+<p>主方程描述的是系统在时刻 <span class="arithmatex">\(t\)</span> 恰好有 <span class="arithmatex">\(n\)</span> 个粒子的概率 <span class="arithmatex">\(P_n(t)\)</span> 的时间演化。它是一个关于概率流的平衡方程,其形式如下:</p>
+<div class="arithmatex">\[
+\frac{d P_n(t)}{dt} = \lambda(n+1)P_{n+1}(t) - \lambda n P_n(t)
+\]</div>
+<p>这个方程的物理意义,正是第7讲中建立的"增益-损失"平衡思想的体现:</p>
+<p><strong>增益项 (Gain Term)</strong> : <span class="arithmatex">\(+\lambda(n+1)P_{n+1}(t)\)</span></p>
+<p>系统进入状态 <span class="arithmatex">\(n\)</span> 的唯一途径是从状态 <span class="arithmatex">\(n+1\)</span> 跃迁而来。当系统中有 <span class="arithmatex">\(n+1\)</span> 个粒子时,总死亡速率为 <span class="arithmatex">\(\lambda(n+1)\)</span>。因此,从状态 <span class="arithmatex">\(n+1\)</span> 流入状态 <span class="arithmatex">\(n\)</span> 的总概率流,正比于源状态的概率 <span class="arithmatex">\(P_{n+1}(t)\)</span> 和转移速率之积。</p>
+<p><strong>损失项 (Loss Term)</strong> : <span class="arithmatex">\(-\lambda n P_n(t)\)</span></p>
+<p>如果系统处于状态 <span class="arithmatex">\(n\)</span>,它会因其中任何一个粒子衰变而离开此状态。总的离开速率是 <span class="arithmatex">\(\lambda n\)</span>。因此,从状态 <span class="arithmatex">\(n\)</span> 流出的总概率流,正比于当前状态的概率 <span class="arithmatex">\(P_n(t)\)</span> 和这个速率之积。</p>
+<p>这个方程实际上是一个无限维的、耦合的线性常微分方程组,直接求解相当繁琐。</p>
+<h2 id="33">3.3 生成函数方法:从无限到单一<a class="headerlink" href="#33" title="Permanent link">&para;</a></h2>
+<p>为了解决上述问题,引入一个在第4讲中已经使用过的强大数学工具——<strong>生成函数 (generating function)</strong> <span class="arithmatex">\(G(x, t)\)</span>。它将无穷序列的概率 <span class="arithmatex">\(P_n(t)\)</span> 编码为一个关于辅助变量 <span class="arithmatex">\(x\)</span> 的单一函数:</p>
+<div class="arithmatex">\[
+G(x, t) = \sum_{n=0}^{\infty} P_n(t) x^n
+\]</div>
+<p>这个函数的优点在于,它可以将主方程中涉及不同 <span class="arithmatex">\(n\)</span> 值的<strong>差分运算</strong> ,转化为对生成函数的<strong>连续微分运算</strong> 。对主方程两边同乘 <span class="arithmatex">\(x^n\)</span> 并对所有 <span class="arithmatex">\(n\)</span> 求和,可以得到一个关于生成函数的、单一的一阶偏微分方程:</p>
+<div class="arithmatex">\[
+\frac{\partial G(x, t)}{\partial t} = \lambda(1 - x)\frac{\partial G(x, t)}{\partial x}
+\]</div>
+<p><strong>左侧</strong> : <span class="arithmatex">\(\sum_n \frac{dP_n}{dt} x^n = \frac{\partial}{\partial t} \sum_n P_n x^n = \frac{\partial G}{\partial t}\)</span>。</p>
+<p><strong>损失项</strong> : <span class="arithmatex">\(\sum_n (-\lambda n P_n) x^n = -\lambda x \frac{\partial}{\partial x} \sum_n P_n x^n = -\lambda x \frac{\partial G}{\partial x}\)</span>。</p>
+<p><strong>增益项</strong> : <span class="arithmatex">\(\sum_n \lambda(n+1)P_{n+1}x^n = \lambda \frac{\partial}{\partial x} \sum_{n+1} P_{n+1}x^{n+1} = \lambda \frac{\partial G}{\partial x}\)</span>。</p>
+<p>通过引入生成函数,成功地将一个无限维的常微分方程组转化为了一个简洁的偏微分方程,为问题的解析求解铺平了道路。</p>
+<h1 id="4">4. 谱方法求解与物理诠释<a class="headerlink" href="#4" title="Permanent link">&para;</a></h1>
+<p>上一部分成功地将线性死亡过程的主方程转化为了一个关于生成函数的偏微分方程。现在,将引入一种更为深刻和强大的求解方法——<strong>谱方法 (spectral method)</strong> 。其核心思想是借鉴量子力学中的算符理论,将求解偏微分方程的问题转化为一个寻找算符本征值和本征函数的问题。这种方法不仅能给出最终解,更能揭示系统动力学背后深刻的代数结构。</p>
+<h2 id="41">4.1 算符形式与量子力学类比<a class="headerlink" href="#41" title="Permanent link">&para;</a></h2>
+<p>可以将关于生成函数的偏微分方程改写成算符形式。定义一个线性算符 <span class="arithmatex">\(\mathcal{H}\)</span>:</p>
+<div class="arithmatex">\[
+\mathcal{H} = \lambda(x - 1)\frac{\partial}{\partial x}
+\]</div>
+<p>于是,方程可以写成一个与(虚时间下的)薛定谔方程形式上非常相似的方程:</p>
+<div class="arithmatex">\[
+\frac{\partial G(x, t)}{\partial t} = -\mathcal{H} G(x, t)
+\]</div>
+<p>这个方程的形式解是 <span class="arithmatex">\(G(t) = e^{-\mathcal{H}t}G(0)\)</span>。为了得到具体解,需要求解算符 <span class="arithmatex">\(\mathcal{H}\)</span> 的本征值问题:</p>
+<div class="arithmatex">\[
+\mathcal{H} \varphi_j(x) = \lambda_j \varphi_j(x)
+\]</div>
+<p>其中 <span class="arithmatex">\(\lambda_j\)</span> 是本征值,<span class="arithmatex">\(\varphi_j(x)\)</span> 是对应的本征函数。</p>
+<p><strong>物理意义</strong> :这里的 <span class="arithmatex">\(\mathcal{H}\)</span> 虽然形式上类似哈密顿算符,但它描述的是经典概率的演化,而非量子波函数。这种类比的价值在于,可以借用量子力学中成熟的代数工具来解决经典随机过程问题。</p>
+<h2 id="42">4.2 升降算符与本征谱<a class="headerlink" href="#42" title="Permanent link">&para;</a></h2>
+<p>为了代数化地解决这个本征问题,引入一对<strong>升降算符 (ladder operators)</strong> ,这与量子谐振子的处理方式如出一辙:</p>
+<p><strong>湮灭算符 (Annihilation operator)</strong> : <span class="arithmatex">\(a := \frac{\partial}{\partial x}\)</span></p>
+<p><strong>产生算符 (Creation operator)</strong> : <span class="arithmatex">\(a^\dagger := (x - 1)\)</span></p>
+<p>这两个算符满足一个类似于玻色子算符的<strong>对易关系 (commutation relation)</strong> :</p>
+<div class="arithmatex">\[
+[a, a^\dagger] = a a^\dagger - a^\dagger a = \partial_x(x-1) - (x-1)\partial_x = 1
+\]</div>
+<p>利用这两个算符,哈密顿算符 <span class="arithmatex">\(\mathcal{H}\)</span> 可以被简洁地表示为:</p>
+<div class="arithmatex">\[
+\mathcal{H} = \lambda a^\dagger a
+\]</div>
+<p>通过分析算符 <span class="arithmatex">\(\mathcal{H}\)</span> 与升降算符的对易关系,可以证明 <span class="arithmatex">\(a^\dagger\)</span> 会将本征值升高 <span class="arithmatex">\(\lambda\)</span>,而 <span class="arithmatex">\(a\)</span> 会将本征值降低 <span class="arithmatex">\(\lambda\)</span>。由于概率必须有界,本征值谱必须有下界,因此必然存在一个被湮灭算符"杀死"的<strong>基态</strong> <span class="arithmatex">\(\varphi_0\)</span>:</p>
+<p><span class="arithmatex">\(a \varphi_0(x) = \frac{\partial \varphi_0(x)}{\partial x} = 0 \implies \varphi_0(x) = \text{const}\)</span>。不妨取 <span class="arithmatex">\(\varphi_0(x) = 1\)</span>。</p>
+<p>对应的基态本征值为 <span class="arithmatex">\(\lambda_0 = 0\)</span>。</p>
+<p>从基态出发,通过不断作用产生算符 <span class="arithmatex">\(a^\dagger\)</span>,就可以构建出整个本征谱:</p>
+<p><strong>本征值</strong> : <span class="arithmatex">\(\lambda_j = j \lambda\)</span>, for <span class="arithmatex">\(j \in \mathbb{N}_0 = \{0, 1, 2, \ldots\}\)</span></p>
+<p><strong>本征函数</strong> : <span class="arithmatex">\(\varphi_j(x) \propto (a^\dagger)^j \varphi_0 \propto (x - 1)^j\)</span></p>
+<h2 id="43">4.3 完整的时变解与物理诠释<a class="headerlink" href="#43" title="Permanent link">&para;</a></h2>
+<p>有了完整的本征谱,就可以将生成函数 <span class="arithmatex">\(G(x, t)\)</span> 在这个本征函数基上展开:</p>
+<div class="arithmatex">\[
+G(x, t) = \sum_{j=0}^{\infty} G_{j0} e^{-\lambda_j t} \varphi_j(x) = \sum_{j=0}^{\infty} G_{j0} e^{-j \lambda t} (x - 1)^j
+\]</div>
+<p>其中系数 <span class="arithmatex">\(G_{j0}\)</span> 由初始条件决定。假设系统在 <span class="arithmatex">\(t = 0\)</span> 时刻有确定的 <span class="arithmatex">\(N\)</span> 个粒子,即 <span class="arithmatex">\(P_n(0) = \delta_{n,N}\)</span>,对应的初始生成函数为 <span class="arithmatex">\(G(x, 0) = x^N\)</span>。</p>
+<p>为了求出系数 <span class="arithmatex">\(G_{j0}\)</span>,巧妙地利用二项式定理,将 <span class="arithmatex">\(x^N\)</span> 在 <span class="arithmatex">\((x-1)\)</span> 处展开:</p>
+<div class="arithmatex">\[
+x^N = (1 + (x - 1))^N = \sum_{j=0}^{N} \binom{N}{j} (x - 1)^j
+\]</div>
+<p>通过比较系数,立刻得到 <span class="arithmatex">\(G_{j0} = \binom{N}{j}\)</span> for <span class="arithmatex">\(j \leq N\)</span>,且当 <span class="arithmatex">\(j &gt; N\)</span> 时 <span class="arithmatex">\(G_{j0} = 0\)</span>。</p>
+<p>将系数代回时变解,并再次利用二项式定理求和,得到生成函数的最终紧凑形式:</p>
+<div class="arithmatex">\[
+G(x, t) = \sum_{j=0}^{N} \binom{N}{j} e^{-j \lambda t} (x - 1)^j = \left(1 + (x-1)e^{-\lambda t}\right)^N
+\]</div>
+<p>最后一步,是从生成函数中提取出我们真正关心的概率 <span class="arithmatex">\(P_n(t)\)</span>。根据生成函数的定义,<span class="arithmatex">\(P_n(t)\)</span> 就是 <span class="arithmatex">\(G(x,t)\)</span> 展开式中 <span class="arithmatex">\(x^n\)</span> 项的系数。对上式再次使用二项式定理展开:</p>
+<div class="arithmatex">\[
+G(x, t) = \left((1 - e^{-\lambda t}) + x e^{-\lambda t}\right)^N = \sum_{n=0}^{N} \binom{N}{n} (x e^{-\lambda t})^n (1 - e^{-\lambda t})^{N-n}
+\]</div>
+<p>由此,直接读出概率分布:</p>
+<div class="arithmatex">\[
+P(n, t | N, 0) = \binom{N}{n} (e^{-\lambda t})^n (1 - e^{-\lambda t})^{N-n}
+\]</div>
+<p>这是一个<strong>二项分布 (Binomial Distribution)</strong> 。</p>
+<p>这个精确解具有极其优美和直观的物理内涵。在时刻 <span class="arithmatex">\(t\)</span>,初始 <span class="arithmatex">\(N\)</span> 个粒子中的每一个,都有 <span class="arithmatex">\(p = e^{-\lambda t}\)</span> 的概率存活下来(这是单个粒子存活概率的解),有 <span class="arithmatex">\(1 - p = 1 - e^{-\lambda t}\)</span> 的概率已经衰变。由于每个粒子的衰变是相互独立的事件(这是"线性"过程的根本假设),那么在时刻 <span class="arithmatex">\(t\)</span> 恰好有 <span class="arithmatex">\(n\)</span> 个粒子存活的概率,就等同于在 <span class="arithmatex">\(N\)</span> 次独立的伯努利试验中,取得 <span class="arithmatex">\(n\)</span> 次"成功"(存活)的概率——这正是二项分布的定义。这个精确解完美地验证了谱方法这一抽象数学工具的威力,并深刻地揭示了<strong>微观过程的独立性</strong>是如何在宏观概率分布上体现为<strong>二项统计</strong>的。</p>
+<h1 id="5">5. 代码实践<a class="headerlink" href="#5" title="Permanent link">&para;</a></h1>
+<h2 id="51-i-vs">5.1 代码实践 I:可视化有向渗流过程 (格子模型 vs. 平均场)<a class="headerlink" href="#51-i-vs" title="Permanent link">&para;</a></h2>
+<p>为了建立对有向渗流(DP)的直观理解,首先通过一个2D的<strong>格子模型 (Lattice Model)</strong> 来直接观察"渗流"的动态过程。这个随机模拟展示了"活跃"的粒子如何在空间上传播和消亡。随后,将展示平均场理论是如何在忽略空间细节的更高抽象层次上,来描述这个复杂过程的宏观平均行为的。</p>
+<p>下面的代码模拟了一个简化版的有向渗流过程(也称为接触过程)。在一个二维网格上,每个"活跃"(红色)的格子会尝试激活其邻居,同时自身也有一定概率变为"不活跃"(黑色)。我们将对比两种不同传播概率下的系统演化:一种最终会消亡(吸收相),另一种则能够持续传播(活跃相)。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="kn">import</span> <span class="n">FuncAnimation</span><span class="p">,</span> <span class="n">PillowWriter</span>
+
+<span class="c1"># --- Use dark background for plots ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">run_dp_simulation</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">p_spread</span><span class="p">,</span> <span class="n">p_death</span><span class="p">,</span> <span class="n">steps</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Runs a single 2D Directed Percolation (Contact Process) simulation.&quot;&quot;&quot;</span>
+    <span class="c1"># Initialize grid with a small active cluster in the center</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">center</span> <span class="o">=</span> <span class="n">grid_size</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">grid</span><span class="p">[</span><span class="n">center</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">center</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">center</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">center</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="n">history</span> <span class="o">=</span> <span class="p">[</span><span class="n">grid</span><span class="o">.</span><span class="n">copy</span><span class="p">()]</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
+        <span class="n">new_grid</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">active_sites</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">grid</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">active_sites</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># Extinction</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_grid</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+            <span class="k">break</span>
+
+        <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">active_sites</span><span class="p">:</span>
+            <span class="c1"># Spread to neighbors</span>
+            <span class="k">for</span> <span class="n">dr</span> <span class="ow">in</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
+                <span class="k">for</span> <span class="n">dc</span> <span class="ow">in</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="n">dr</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">dc</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="k">continue</span>
+
+                    <span class="n">nr</span><span class="p">,</span> <span class="n">nc</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="n">dr</span><span class="p">,</span> <span class="n">c</span> <span class="o">+</span> <span class="n">dc</span>
+                    <span class="c1"># Check boundaries and if neighbor is inactive</span>
+                    <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nr</span> <span class="o">&lt;</span> <span class="n">grid_size</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nc</span> <span class="o">&lt;</span> <span class="n">grid_size</span> <span class="ow">and</span> <span class="n">new_grid</span><span class="p">[</span><span class="n">nr</span><span class="p">,</span> <span class="n">nc</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">p_spread</span><span class="p">:</span>
+                            <span class="n">new_grid</span><span class="p">[</span><span class="n">nr</span><span class="p">,</span> <span class="n">nc</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+            <span class="c1"># Spontaneous death</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">p_death</span><span class="p">:</span>
+                <span class="n">new_grid</span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">grid</span> <span class="o">=</span> <span class="n">new_grid</span>
+        <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">history</span>
+
+<span class="c1"># --- Simulation Parameters ---</span>
+<span class="n">GRID_SIZE</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">ANIMATION_STEPS</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="c1"># --- Case 1: Absorbing Phase (low spread probability) ---</span>
+<span class="n">p_spread_abs</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">p_death_abs</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">history_abs</span> <span class="o">=</span> <span class="n">run_dp_simulation</span><span class="p">(</span><span class="n">GRID_SIZE</span><span class="p">,</span> <span class="n">p_spread_abs</span><span class="p">,</span> <span class="n">p_death_abs</span><span class="p">,</span> <span class="n">ANIMATION_STEPS</span><span class="p">)</span>
+
+<span class="c1"># --- Case 2: Active Phase (high spread probability) ---</span>
+<span class="n">p_spread_act</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">p_death_act</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">history_act</span> <span class="o">=</span> <span class="n">run_dp_simulation</span><span class="p">(</span><span class="n">GRID_SIZE</span><span class="p">,</span> <span class="n">p_spread_act</span><span class="p">,</span> <span class="n">p_death_act</span><span class="p">,</span> <span class="n">ANIMATION_STEPS</span><span class="p">)</span>
+
+<span class="c1"># --- Create Animation ---</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">history_abs</span><span class="p">[</span><span class="n">frame</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;hot&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Absorbing Phase (p_spread=</span><span class="si">{</span><span class="n">p_spread_abs</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+
+    <span class="n">ax2</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">history_act</span><span class="p">[</span><span class="n">frame</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;hot&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Active Phase (p_spread=</span><span class="si">{</span><span class="n">p_spread_act</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;2D Directed Percolation Simulation (Step </span><span class="si">{</span><span class="n">frame</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="c1"># --- Generate and save the animation ---</span>
+<span class="n">ani</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="n">ANIMATION_STEPS</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ani</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;dp_lattice_simulation.gif&quot;</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="n">PillowWriter</span><span class="p">(</span><span class="n">fps</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="运行代码输出" src="../../../assets/images/remote/dp_lattice_simulation.gif" /></p>
+<p><strong>左图 (吸收相)</strong> :传播概率较低。初始的活跃团簇(亮黄色)虽然在早期有所扩张,但死亡的速率超过了传播的速率。最终,所有活跃点都消失了,系统进入了全黑的、静止的<strong>吸收态</strong>。</p>
+<p><strong>右图 (活跃相)</strong> :传播概率较高。初始的活跃团簇成功地向外蔓延,形成了一个持续存在、不断变化的动态斑图。尽管局部有生有灭,但整体上系统保持"活着",这便是<strong>活跃相</strong>。</p>
+<p>这个模拟显示了系统存在一个临界传播概率,跨越这个临界点,系统的长期行为会发生质变。</p>
+<h2 id="52-ii-gif">5.2 代码实践 II: 平均场动力学与相流 (GIF动画)<a class="headerlink" href="#52-ii-gif" title="Permanent link">&para;</a></h2>
+<p>现在,回到平均场理论。它忽略了上述模拟中的所有空间结构和随机细节,只关注系统整体的<strong>平均密度</strong> <span class="arithmatex">\(n(t)\)</span>。下面的动画.在相空间中可视化了平均密度的演化,展示宏观层面上的动态规律。</p>
+<p><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">solve_ivp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="kn">import</span> <span class="n">FuncAnimation</span><span class="p">,</span> <span class="n">PillowWriter</span>
+
+<span class="c1"># --- Use dark background for plots ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">)</span>
+
+<span class="c1"># --- Parameter setup ---</span>
+<span class="n">beta1</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">n0</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">t_span</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t_span</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t_span</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">200</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">rate_equation</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">beta1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The mean-field rate equation for DP.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">delta</span> <span class="o">*</span> <span class="n">n</span> <span class="o">-</span> <span class="n">beta1</span> <span class="o">*</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="c1"># --- Solve for the three cases ---</span>
+<span class="n">delta_active</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">sol_active</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">rate_equation</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="p">[</span><span class="n">n0</span><span class="p">],</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">delta_active</span><span class="p">,</span> <span class="n">beta1</span><span class="p">),</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">)</span>
+<span class="n">n_act_theory</span> <span class="o">=</span> <span class="n">delta_active</span> <span class="o">/</span> <span class="n">beta1</span>
+
+<span class="n">delta_absorbing</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span>
+<span class="n">sol_absorbing</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">rate_equation</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="p">[</span><span class="n">n0</span><span class="p">],</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">delta_absorbing</span><span class="p">,</span> <span class="n">beta1</span><span class="p">),</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">)</span>
+
+<span class="n">delta_critical</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">sol_critical</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">rate_equation</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="p">[</span><span class="n">n0</span><span class="p">],</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">delta_critical</span><span class="p">,</span> <span class="n">beta1</span><span class="p">),</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">)</span>
+
+<span class="c1"># --- Create Animation ---</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update_mean_field</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
+    <span class="c1"># --- Clear canvases for new frame ---</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+    <span class="c1"># --- Panel 1: Density vs. Time ---</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol_active</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol_active</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Active Phase ($</span><span class="se">\\</span><span class="s1">Delta=</span><span class="si">{</span><span class="n">delta_active</span><span class="si">}</span><span class="s1">$)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lime&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">n_act_theory</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lime&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol_absorbing</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol_absorbing</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Absorbing Phase ($</span><span class="se">\\</span><span class="s1">Delta=</span><span class="si">{</span><span class="n">delta_absorbing</span><span class="si">}</span><span class="s1">$)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tomato&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol_critical</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol_critical</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Critical Point ($</span><span class="se">\\</span><span class="s1">Delta=0$)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Dynamic timeline</span>
+    <span class="n">current_time</span> <span class="o">=</span> <span class="n">t_eval</span><span class="p">[</span><span class="n">frame</span><span class="p">]</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">current_time</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time $t$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density $n(t)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Density Evolution over Time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">t_span</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+
+    <span class="c1"># --- Panel 2: Phase Space Flow ---</span>
+    <span class="n">n_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="c1"># Plot phase flow curves</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_range</span><span class="p">,</span> <span class="n">rate_equation</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_range</span><span class="p">,</span> <span class="n">delta_active</span><span class="p">,</span> <span class="n">beta1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lime&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_range</span><span class="p">,</span> <span class="n">rate_equation</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_range</span><span class="p">,</span> <span class="n">delta_absorbing</span><span class="p">,</span> <span class="n">beta1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tomato&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_range</span><span class="p">,</span> <span class="n">rate_equation</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_range</span><span class="p">,</span> <span class="n">delta_critical</span><span class="p">,</span> <span class="n">beta1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Plot fixed points</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;wo&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fixed Point&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_act_theory</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;wo&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+    <span class="c1"># Plot dynamic evolution points</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol_active</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">frame</span><span class="p">],</span> <span class="n">rate_equation</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sol_active</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">frame</span><span class="p">],</span> <span class="n">delta_active</span><span class="p">,</span> <span class="n">beta1</span><span class="p">),</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lime&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol_absorbing</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">frame</span><span class="p">],</span> <span class="n">rate_equation</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sol_absorbing</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">frame</span><span class="p">],</span> <span class="n">delta_absorbing</span><span class="p">,</span> <span class="n">beta1</span><span class="p">),</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tomato&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol_critical</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">frame</span><span class="p">],</span> <span class="n">rate_equation</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sol_critical</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">frame</span><span class="p">],</span> <span class="n">delta_critical</span><span class="p">,</span> <span class="n">beta1</span><span class="p">),</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Density $n$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Rate of Change $</span><span class="se">\\</span><span class="s1">partial_t n$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Dynamical Flow in Phase Space&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mean-Field Dynamics of Directed Percolation (Time t=</span><span class="si">{</span><span class="n">current_time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">rect</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">])</span>
+
+<span class="c1"># --- Generate and save the animation ---</span>
+<span class="n">ani_mf</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update_mean_field</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">t_eval</span><span class="p">),</span> <span class="n">interval</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ani_mf</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;dp_mean_field_dynamics.gif&quot;</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="n">PillowWriter</span><span class="p">(</span><span class="n">fps</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<img alt="运行代码输出" src="../../../assets/images/remote/dp_mean_field_dynamics.gif" /></p>
+<p>这个相空间流动画是对2D格子模拟中宏观行为的抽象总结。展示了平均场理论所预测的系统命运:</p>
+<p><strong>活跃相 (绿色)</strong> :系统存在一个稳定的非零密度不动点,动力学流将系统"推"向这个状态。</p>
+<p><strong>吸收相 (红色)</strong> :系统唯一的稳定不动点是密度为零,所有初始状态都会"流"向灭绝。</p>
+<p><strong>临界点 (蓝色)</strong> :系统演化到零附近时,恢复力(即<span class="arithmatex">\(\partial_t n\)</span>)变得极小,导致了<strong>临界慢化</strong> 。</p>
+<h2 id="53-iii">5.3 代码实践 III:线性死亡过程的动态概率分布<a class="headerlink" href="#53-iii" title="Permanent link">&para;</a></h2>
+<p>对于随机过程,我们更关心的是整个概率分布的演化。以下代码将模拟线性死亡过程,并动态展示其概率分布 <span class="arithmatex">\(P(n, t)\)</span> 如何从一个初始的确定状态(<span class="arithmatex">\(\delta\)</span>分布)演变为最终的吸收态(所有粒子死亡)。</p>
+<p>这个动画将直观地展示主方程的解,并将其与我们推导出的二项分布理论解进行实时对比。</p>
+<p><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">comb</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="kn">import</span> <span class="n">FuncAnimation</span><span class="p">,</span> <span class="n">PillowWriter</span>
+
+<span class="c1"># --- Use dark background for plots ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">)</span>
+
+<span class="c1"># --- Simulation Parameters ---</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>                 <span class="c1"># Initial number of particles</span>
+<span class="n">lambda_rate</span> <span class="o">=</span> <span class="mf">0.1</span>      <span class="c1"># Per-capita death rate</span>
+<span class="n">t_final</span> <span class="o">=</span> <span class="mf">30.0</span>         <span class="c1"># Total simulation time</span>
+<span class="n">num_trials</span> <span class="o">=</span> <span class="mi">20000</span>     <span class="c1"># Number of independent simulations</span>
+
+<span class="c1"># --- Run full Gillespie simulations to get all trajectories ---</span>
+<span class="n">all_trajectories_n</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">all_trajectories_t</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># This loop pre-calculates all data needed for the animation</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_trials</span><span class="p">):</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">N</span><span class="p">,</span> <span class="mf">0.0</span>
+    <span class="n">ns</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="p">[</span><span class="n">t</span><span class="p">]</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">total_rate</span> <span class="o">=</span> <span class="n">lambda_rate</span> <span class="o">*</span> <span class="n">n</span>
+        <span class="c1"># Draw time step from exponential distribution</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">total_rate</span><span class="p">)</span>
+        <span class="n">t</span> <span class="o">+=</span> <span class="n">dt</span>
+        <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span> <span class="c1"># Only death events</span>
+        <span class="n">ns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">ts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">all_trajectories_n</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ns</span><span class="p">))</span>
+    <span class="n">all_trajectories_t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ts</span><span class="p">))</span>
+
+<span class="c1"># --- Create Animation ---</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">n_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Initialize plot elements</span>
+<span class="n">bar_container</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">n_values</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Stochastic Simulation (Gillespie)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_values</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;ro-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Exact Theory (Binomial Distribution)&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">time_text</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_pop_at_time</span><span class="p">(</span><span class="n">t_point</span><span class="p">,</span> <span class="n">traj_t</span><span class="p">,</span> <span class="n">traj_n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Helper function to find the population at a specific time from a trajectory.&quot;&quot;&quot;</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">traj_t</span><span class="p">,</span> <span class="n">t_point</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">traj_n</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update_death_process</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Update function for the animation.&quot;&quot;&quot;</span>
+    <span class="n">current_time</span> <span class="o">=</span> <span class="n">frame</span> <span class="o">*</span> <span class="n">t_final</span> <span class="o">/</span> <span class="mi">100</span>
+
+    <span class="c1"># Get particle counts at the current time from all trajectories</span>
+    <span class="n">pops_at_time_t</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_pop_at_time</span><span class="p">(</span><span class="n">current_time</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">T</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">all_trajectories_t</span><span class="p">,</span> <span class="n">all_trajectories_n</span><span class="p">)]</span>
+
+    <span class="c1"># Calculate simulated probability distribution</span>
+    <span class="n">counts_sim</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">pops_at_time_t</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">freq_sim</span> <span class="o">=</span> <span class="n">counts_sim</span> <span class="o">/</span> <span class="n">num_trials</span>
+
+    <span class="c1"># Update the bar chart heights</span>
+    <span class="k">for</span> <span class="n">count</span><span class="p">,</span> <span class="n">rect</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">freq_sim</span><span class="p">,</span> <span class="n">bar_container</span><span class="o">.</span><span class="n">patches</span><span class="p">):</span>
+        <span class="n">rect</span><span class="o">.</span><span class="n">set_height</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+
+    <span class="c1"># Calculate theoretical probability distribution (Binomial)</span>
+    <span class="n">p_survival</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">lambda_rate</span> <span class="o">*</span> <span class="n">current_time</span><span class="p">)</span>
+    <span class="n">prob_theory</span> <span class="o">=</span> <span class="n">comb</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">n_values</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">p_survival</span><span class="o">**</span><span class="n">n_values</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_survival</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="n">n_values</span><span class="p">))</span>
+
+    <span class="c1"># Update the theoretical curve</span>
+    <span class="n">line</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">prob_theory</span><span class="p">)</span>
+
+    <span class="c1"># Update time text</span>
+    <span class="n">time_text</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time t = </span><span class="si">{</span><span class="n">current_time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Dynamically adjust y-axis limit for better visibility</span>
+    <span class="n">max_prob</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">freq_sim</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">prob_theory</span><span class="p">))</span> <span class="k">if</span> <span class="n">freq_sim</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mf">0.1</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_prob</span> <span class="o">*</span> <span class="mf">1.15</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">bar_container</span><span class="o">.</span><span class="n">patches</span> <span class="o">+</span> <span class="p">[</span><span class="n">line</span><span class="p">,</span> <span class="n">time_text</span><span class="p">]</span>
+
+<span class="c1"># --- Setup plot aesthetics ---</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Remaining Particles $n$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability $P(n, t)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Probability Distribution Evolution for Linear Death Process ($N_0=</span><span class="si">{</span><span class="n">N</span><span class="si">}</span><span class="s1">$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># --- Generate and save the animation ---</span>
+<span class="n">ani_death</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update_death_process</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ani_death</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;linear_death_distribution.gif&quot;</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="n">PillowWriter</span><span class="p">(</span><span class="n">fps</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<img alt="运行代码输出" src="../../../assets/images/remote/linear_death_distribution.gif" /></p>
+<p>这个动画展示了主方程所描述的核心过程——<strong>概率分布的演化</strong>。
+<strong>初始状态</strong>:在 <span class="arithmatex">\(t=0\)</span> 时,概率分布是一个尖锐的峰(<span class="arithmatex">\(\delta\)</span>函数),所有概率都集中在初始粒子数 <span class="arithmatex">\(N=50\)</span> 处。</p>
+<p><strong>演化过程</strong>:随着时间推移,这个概率峰开始向左移动(平均粒子数减少)并逐渐展宽(随机性导致结果的不确定性增加)。可以看到概率是如何从高粒子数状态"流动"到低粒子数状态的。</p>
+<p><strong>理论与模拟的吻合</strong>:在动画的每一步,由上万次随机模拟统计出的柱状图(青色)都与我们用谱方法推导出的二项分布理论解(红色曲线)完美吻合。这强有力地证明了理论的正确性。</p>
+<p><strong>趋向吸收态</strong>:当时间足够长时,整个概率分布最终会完全汇集到 <span class="arithmatex">\(n=0\)</span> 这个吸收态上,对应于种群的完全灭绝。</p>
+<p>通过这个动态可视化,我们不再是观察单条随机轨迹,而是鸟瞰了整个随机过程的系综行为,这正是主方程和谱方法所要描述的物理现实。</p>
+<h1 id="_2">总结:迈向非线性随机场论<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<p>这节课深入探讨了非平衡统计物理中的两个核心主题:一是物理模型,二是数学方法。通过将理论与代码实践相结合,加深了对这些概念的理解。</p>
+<ol>
+<li>
+<p><strong>吸收态相变的物理学</strong>: 通过对有向渗流(DP)模型的平均场分析,揭示了一类重要的非平衡相变——吸收态相变的基本特征。其关键物理现象包括存在一个从活跃相到吸收相的连续相变点,以及在临界点附近表现出的<strong>临界慢化 (Critical Slowing Down)</strong> 和<strong>幂律动力学行为 (Power-Law Dynamics)</strong> 。更重要的是,DP普适类猜想的提出,暗示了这类相变背后存在深刻的普适规律,这促使物理学家寻求超越平均场理论的、能够描述涨落的更精确理论。</p>
+</li>
+<li>
+<p><strong>主方程的数学方法</strong> : 为了处理离散随机过程,引入了主方程这一基本工具。对于像线性死亡过程这样的简单线性主方程,本讲展示了如何通过<strong>生成函数 (Generating Function)</strong> 和<strong>谱方法 (Spectral Method)</strong> (特别是借鉴量子力学的算符代数)获得其精确解。这种方法不仅优雅,而且其结果具有清晰的物理诠释,完美地连接了抽象的数学推导与底层的随机事件。</p>
+</li>
+</ol>
+<p>然而,这节课也揭示了未来的挑战。谱方法之所以能成功应用于线性死亡过程,关键在于其哈密顿算符 <span class="arithmatex">\(\mathcal{H}\)</span> 是线性的(在 <span class="arithmatex">\(\frac{\partial}{\partial x}\)</span> 上是一阶的)。对于像有向渗流这样包含非线性项(如 <span class="arithmatex">\(2A \to A\)</span> 对应于 <span class="arithmatex">\(n^2\)</span> 的项)的系统,其主方程将导致一个在生成函数空间中包含高阶导数(如 <span class="arithmatex">\(\frac{\partial^2}{\partial x^2}\)</span>)的、更复杂的算符,使得谱方法通常难以直接应用。</p>
+<p>对于连续变量系统,从朗之万方程到福克-普朗克方程,再到路径积分,已经建立了一条成熟的路径。对于离散变量系统,从主方程出发,虽然可以通过 Kramers-Moyal 展开将其近似为福克-普朗克方程,再构建路径积分,但这条近似路径会丢失变量的离散性信息,且不总是适用于强噪声或远离平衡的系统。</p>
+<p>一个更根本、更强大的方法是:<strong>直接从主方程出发,为离散随机过程构建路径积分表示</strong>。这正是下一讲的主题。届时将介绍一种名为<strong>Doi-Peliti 路径积分</strong>的技术,它能够将离散主方程直接转化为一个连续场论的有效作用量。这个框架不仅能够自然地处理非线性相互作用,还能系统地计入涨落效应,是使用<strong>重整化群 (Renormalization Group)</strong> 等现代场论工具研究有向渗流及其他非平衡临界现象的理论基石。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.highlight"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../../assets/javascripts/mathjax.js"></script>
+      
+        <script src="../../../assets/javascripts/language-nav.js"></script>
+      
+        <script src="../../../assets/javascripts/video-init.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

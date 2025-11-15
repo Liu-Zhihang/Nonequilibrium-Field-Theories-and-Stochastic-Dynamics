@@ -1,0 +1,3302 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Course Notes and Code (Erwin Frey, LMU Munich, 2025)">
+      
+      
+        <meta name="author" content="Zhihang Liu">
+      
+      
+        <link rel="canonical" href="https://liu-zhihang.github.io/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/notes/20.%20%E9%9A%8F%E6%9C%BA%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/">
+      
+      
+        <link rel="prev" href="../19.%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E8%BF%B0/">
+      
+      
+        <link rel="next" href="../21.%20%E4%BC%8A%E8%97%A4%E7%A7%AF%E5%88%86%E4%B8%8E%E7%BB%9F%E4%B8%80%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E6%A1%86%E6%9E%B6/">
+      
+      
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en">
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>20. 随机微分方程 - Nonequilibrium Field Theories and Stochastic Dynamics</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/video.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-header__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nonequilibrium Field Theories and Stochastic Dynamics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              20. 随机微分方程
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-nav__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nonequilibrium Field Theories and Stochastic Dynamics
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/1.%20Course%20Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/2.%20Simple%20Random%20Walk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Simple Random Walk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/3.%20Gaussian%20Random%20Walk%20and%20Poisson%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Gaussian Random Walk and Poisson Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/4.%20Gillespie%20Algorithm%2C%20Master%20Equation%2C%20Generating%20Functions%20and%20Population%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie Algorithm, Master Equation, Generating Functions and Population Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/5.%20Population%20Dynamics%20-%20Linear%20Death%20Process%20and%20Lotka-Volterra%20System/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Population Dynamics - Linear Death Process and Lotka-Volterra System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/6.%20Fundamental%20Equations%20of%20Markov%20Processes%20%E2%80%94%20Chapman%E2%80%93Kolmogorov%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Fundamental Equations of Markov Processes — Chapman–Kolmogorov Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/7.%20Forward%20Master%20Equation%20and%20the%20Q%20Matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Forward Master Equation and the Q Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/8.%20Perron%E2%80%93Frobenius%20Theorem%2C%20Steady%20States%2C%20and%20Detailed%20Balance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Perron–Frobenius Theorem, Steady States, and Detailed Balance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/9.%20Nonequilibrium%20States%20%E2%80%94%20Irreversibility%20and%20Entropy%20Production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Nonequilibrium States — Irreversibility and Entropy Production
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/10.%20Ehrenfest%20Model%2C%20Entropy%2C%20and%20KL%20Divergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Ehrenfest Model, Entropy, and KL Divergence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/11.%20Continuous%20Markov%20Processes%20and%20the%20Fokker%E2%80%93Planck%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Continuous Markov Processes and the Fokker–Planck Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/12.%20Brownian%20Motion%20and%20the%20Ornstein%E2%80%93Uhlenbeck%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Brownian Motion and the Ornstein–Uhlenbeck Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/13.%20Monte%20Carlo%20Sampling%20as%20a%20Stochastic%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Monte Carlo Sampling as a Stochastic Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/14.%20Hamiltonian%20Monte%20Carlo%20Sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Hamiltonian Monte Carlo Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/15.%20Chemotaxis%2C%20Run-and-Tumble%20Motion%2C%20and%20the%20Keller%E2%80%93Segel%20Model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Chemotaxis, Run-and-Tumble Motion, and the Keller–Segel Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/16.%20The%20Schnitzer%20Model%2C%20Anomalous%20Diffusion%2C%20and%20Motility%E2%80%91Induced%20Phase%20Separation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. The Schnitzer Model, Anomalous Diffusion, and Motility‑Induced Phase Separation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/17.%20Langevin%20Equation%2C%20Brownian%20Particle%2C%20and%20the%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Langevin Equation, Brownian Particle, and the Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/18.%20Fokker%E2%80%93Planck%20Equation%20and%20the%20Smoluchowski%20Equation%20%E2%80%94%20From%20Random%20Trajectories%20to%20Probability%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Fokker–Planck Equation and the Smoluchowski Equation — From Random Trajectories to Probability Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/19.%20Path%20Integral%20Formulation%20of%20Stochastic%20Processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Path Integral Formulation of Stochastic Processes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/20.%20Stochastic%20Differential%20Equations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Stochastic Differential Equations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/21.%20Ito%20Integral%20and%20Unified%20Stochastic%20Process%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Ito Integral and Unified Stochastic Process Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/22.%20Path%20Integrals%20for%20Systems%20with%20Multiplicative%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Path Integrals for Systems with Multiplicative Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/23.%20From%20Coarse-Graining%20to%20Fluctuation%20Dynamics%20of%20Continuous%20Field%20Theories/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. From Coarse-Graining to Fluctuation Dynamics of Continuous Field Theories
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/24.%20Onsager%20Coefficients%2C%20Reciprocity%2C%20and%20the%20Dynamic%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Onsager Coefficients, Reciprocity, and the Dynamic Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/25.%20Gradient%20Dynamics%2C%20Phase%20Transitions%2C%20and%20Relaxation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. Gradient Dynamics, Phase Transitions, and Relaxation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/26.%20Critical%20Slowing%20Down%2C%20Dynamic%20Response%2C%20and%20Conservation%20Laws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Critical Slowing Down, Dynamic Response, and Conservation Laws
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/27.%20Hydrodynamics%20of%20Simple%20Fluids%2C%20Inviscid%20Flow%2C%20and%20the%20Euler%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. Hydrodynamics of Simple Fluids, Inviscid Flow, and the Euler Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/28.%20Viscous%20Fluids%2C%20the%20Navier%E2%80%93Stokes%20Equation%2C%20Entropy%20Balance%2C%20and%20Heat%20Conduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. Viscous Fluids, the Navier–Stokes Equation, Entropy Balance, and Heat Conduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/29.%20Irreversible%20Linear%20Thermodynamics%20and%20Dry%20Diffusive%20Particle%20Systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. Irreversible Linear Thermodynamics and Dry Diffusive Particle Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/30.%20Brownian%20Particles%20Suspended%20in%20a%20Fluid%20%E2%80%94%20Model%20H/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. Brownian Particles Suspended in a Fluid — Model H
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/31.%20Dynamical%20Functionals%2C%20Additive%E2%80%91Noise%20Field%20Theory%2C%20and%20the%20Onsager%E2%80%93Machlup%20Functional/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. Dynamical Functionals, Additive‑Noise Field Theory, and the Onsager–Machlup Functional
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/32.%20Janssen%E2%80%93De%20Dominicis%20Response%20Functional%20and%20the%20Fluctuation%E2%80%93Dissipation%20Relation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen–De Dominicis Response Functional and the Fluctuation–Dissipation Relation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/33.%20Nonequilibrium%20Work%20and%20Fluctuation%20Theorems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. Nonequilibrium Work and Fluctuation Theorems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/34.%20Directed%20Percolation%2C%20Absorbing%20States%2C%20and%20Spectral%20Methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. Directed Percolation, Absorbing States, and Spectral Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/35.%20Path-Integral%20Representation%20of%20the%20Master%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. Path-Integral Representation of the Master Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/36.%20Coherent-State%20Path%20Integrals%2C%20Operator%20Algebra%2C%20and%20Imaginary%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. Coherent-State Path Integrals, Operator Algebra, and Imaginary Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/37.%20Kramers-Moyal%20Expansion%20and%20the%20Low-Noise%20Limit%20of%20Path%20Integrals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal Expansion and the Low-Noise Limit of Path Integrals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/38.%20Multi-Species%20Path%20Integrals%20and%20Cyclic%20Competition%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. Multi-Species Path Integrals and Cyclic Competition Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/39.%20From%20Particle%20Jumps%20to%20Continuous%20Field%20Theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. From Particle Jumps to Continuous Field Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/40.%20Unified%20Field%20Theory%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. Unified Field Theory Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    中文笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.%20%E8%AF%BE%E7%A8%8B%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 课程导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.%20%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 简单随机游走
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20%E9%AB%98%E6%96%AF%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0%E4%B8%8E%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 高斯随机游走与泊松过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20Gillespie%20%E7%AE%97%E6%B3%95%E3%80%81%E4%B8%BB%E6%96%B9%E7%A8%8B%E3%80%81%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%8D%E7%BE%A4%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie 算法、主方程、生成函数与种群动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.%20%E7%A7%8D%E7%BE%A4%E5%8A%A8%E6%80%81%E5%AD%A6%EF%BC%9A%E7%BA%BF%E6%80%A7%E6%AD%BB%E4%BA%A1%E8%BF%87%E7%A8%8B%E4%B8%8ELotka-Volterra%20%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 种群动态学：线性死亡过程与Lotka-Volterra 系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.%20%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E7%A8%8B%EF%BC%9A%E6%9F%A5%E6%99%AE%E6%9B%BC-%E7%A7%91%E5%B0%94%E8%8E%AB%E6%88%88%E7%BD%97%E5%A4%AB%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 马尔可夫过程的基本方程：查普曼-科尔莫戈罗夫方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.%20%E5%89%8D%E5%90%91%E4%B8%BB%E6%96%B9%E7%A8%8B%E4%B8%8EQ%E7%9F%A9%E9%98%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 前向主方程与Q矩阵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.%20%E4%BD%A9%E9%BE%99-%E5%BC%97%E7%BD%97%E8%B4%9D%E5%B0%BC%E4%B9%8C%E6%96%AF%E5%AE%9A%E7%90%86%E3%80%81%E7%A8%B3%E6%80%81%E4%B8%8E%E7%BB%86%E8%87%B4%E5%B9%B3%E8%A1%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 佩龙-弗罗贝尼乌斯定理、稳态与细致平衡
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81%EF%BC%9A%E4%B8%8D%E5%8F%AF%E9%80%86%E6%80%A7%E4%B8%8E%E7%86%B5%E4%BA%A7%E7%94%9F%E7%9A%84%E6%8E%A8%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 非平衡态：不可逆性与熵产生的推论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.%20%E5%9F%83%E4%BC%A6%E8%B4%B9%E6%96%AF%E7%89%B9%E6%A8%A1%E5%9E%8B%E3%80%81%E7%86%B5%E4%B8%8EKL%E6%95%A3%E5%BA%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 埃伦费斯特模型、熵与KL散度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.%20%E8%BF%9E%E7%BB%AD%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E4%B8%8E%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. 连续马尔可夫过程与福克-普朗克方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12.%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8%E4%B8%8E%E5%A5%A5%E6%81%A9%E6%96%AF%E5%9D%A6-%E4%B9%8C%E4%BC%A6%E8%B4%9D%E5%85%8B%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. 布朗运动与奥恩斯坦-乌伦贝克过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13.%20%E4%BD%9C%E4%B8%BA%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. 作为随机过程的蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14.%20%E5%93%88%E5%AF%86%E5%B0%94%E9%A1%BF%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. 哈密尔顿蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15.%20%E8%B6%8B%E5%8C%96%E6%80%A7%E3%80%81%E8%B7%91%E5%8A%A8-%E7%BF%BB%E6%BB%9A%E8%BF%90%E5%8A%A8%E4%B8%8EKeller-Segel%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. 趋化性、跑动-翻滚运动与Keller-Segel模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16.%20Schnitzer%E6%A8%A1%E5%9E%8B%E3%80%81%E5%8F%8D%E5%B8%B8%E6%89%A9%E6%95%A3%E4%B8%8E%E8%BF%90%E5%8A%A8%E8%AF%B1%E5%AF%BC%E7%9B%B8%E5%88%86%E7%A6%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Schnitzer模型、反常扩散与运动诱导相分离
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17.%20%E6%9C%97%E4%B9%8B%E4%B8%87%E6%96%B9%E7%A8%8B%E3%80%81%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. 朗之万方程、布朗粒子与涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18.%20%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B%E4%B8%8E%E6%96%AF%E6%91%A9%E6%A3%B1%E9%9C%8D%E5%A4%AB%E6%96%AF%E5%9F%BA%E6%96%B9%E7%A8%8B%EF%BC%9A%E4%BB%8E%E9%9A%8F%E6%9C%BA%E8%BD%A8%E8%BF%B9%E5%88%B0%E6%A6%82%E7%8E%87%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. 福克-普朗克方程与斯摩棱霍夫斯基方程：从随机轨迹到概率动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19.%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. 随机过程的路径积分表述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. 随机微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21.%20%E4%BC%8A%E8%97%A4%E7%A7%AF%E5%88%86%E4%B8%8E%E7%BB%9F%E4%B8%80%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. 伊藤积分与统一的随机过程框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22.%20%E5%90%AB%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. 含乘性噪声系统的路径积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23.%20%E4%BB%8E%E7%B2%97%E7%B2%92%E5%8C%96%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA%E6%B6%A8%E8%90%BD%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. 从粗粒化到连续场论涨落动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24.%20%E6%98%82%E8%90%A8%E6%A0%BC%E7%B3%BB%E6%95%B0%E3%80%81%E5%80%92%E6%98%93%E5%85%B3%E7%B3%BB%E4%B8%8E%E5%8A%A8%E6%80%81%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. 昂萨格系数、倒易关系与动态涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25.%20%E6%A2%AF%E5%BA%A6%E5%8A%A8%E5%8A%9B%E5%AD%A6%E3%80%81%E7%9B%B8%E5%8F%98%E4%B8%8E%E5%BC%9B%E8%B1%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. 梯度动力学、相变与弛豫
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26.%20%E4%B8%B4%E7%95%8C%E6%85%A2%E5%8C%96%E3%80%81%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%B8%8E%E5%AE%88%E6%81%92%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. 临界慢化、动态响应与守恒律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27.%20%E7%AE%80%E5%8D%95%E6%B5%81%E4%BD%93%E3%80%81%E6%97%A0%E6%91%A9%E6%93%A6%E6%B5%81%E4%BD%93%E4%B8%8E%E6%AC%A7%E6%8B%89%E6%96%B9%E7%A8%8B%E7%9A%84%E6%B5%81%E4%BD%93%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. 简单流体、无摩擦流体与欧拉方程的流体动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28.%20%E7%B2%98%E6%80%A7%E6%B5%81%E4%BD%93%E3%80%81%E7%BA%B3%E7%BB%B4-%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%96%B9%E7%A8%8B%E3%80%81%E7%86%B5%E5%B9%B3%E8%A1%A1%E4%B8%8E%E7%83%AD%E4%BC%A0%E5%AF%BC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. 粘性流体、纳维-斯托克斯方程、熵平衡与热传导
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29.%20%E4%B8%8D%E5%8F%AF%E9%80%86%E7%BA%BF%E6%80%A7%E7%83%AD%E5%8A%9B%E5%AD%A6%E4%B8%8E%E5%B9%B2%E6%80%A7%E6%89%A9%E6%95%A3%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. 不可逆线性热力学与干性扩散粒子系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30.%20%E6%82%AC%E6%B5%AE%E5%9C%A8%E6%B5%81%E4%BD%93%E4%B8%AD%E7%9A%84%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%20%E2%80%94%20H%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. 悬浮在流体中的布朗粒子 — H模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31.%20%E5%8A%A8%E6%80%81%E6%B3%9B%E5%87%BD%E3%80%81%E5%8A%A0%E6%80%A7%E5%99%AA%E5%A3%B0%E5%9C%BA%E8%AE%BA%E4%B8%8EOnsager-Machlup%E6%B3%9B%E5%87%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. 动态泛函、加性噪声场论与Onsager-Machlup泛函
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32.%20Janssen-De%20Dominicis%20%E5%93%8D%E5%BA%94%E6%B3%9B%E5%87%BD%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen-De Dominicis 响应泛函与涨落-耗散关系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E5%8A%9F%E4%B8%8E%E6%B6%A8%E8%90%BD%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. 非平衡功与涨落定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../34.%20%E6%9C%89%E5%90%91%E6%B8%97%E6%B5%81%E3%80%81%E5%90%B8%E6%94%B6%E6%80%81%E4%B8%8E%E8%B0%B1%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. 有向渗流、吸收态与谱方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../35.%20%E4%B8%BB%E6%96%B9%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E7%A4%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. 主方程的路径积分表示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../36.%20%E7%9B%B8%E5%B9%B2%E6%80%81%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E3%80%81%E7%AE%97%E7%AC%A6%E4%BB%A3%E6%95%B0%E4%B8%8E%E8%99%9A%E5%99%AA%E5%A3%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. 相干态路径积分、算符代数与虚噪声
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../37.%20Kramers-Moyal%20%E5%B1%95%E5%BC%80%E4%B8%8E%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E7%9A%84%E4%BD%8E%E5%99%AA%E5%A3%B0%E6%9E%81%E9%99%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal 展开与路径积分的低噪声极限
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../38.%20%E5%A4%9A%E7%89%A9%E7%A7%8D%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E4%B8%8E%E5%BE%AA%E7%8E%AF%E7%AB%9E%E4%BA%89%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. 多物种路径积分与循环竞争动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../39.%20%E4%BB%8E%E7%B2%92%E5%AD%90%E8%B7%B3%E8%B7%83%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. 从粒子跳跃到连续场论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../40.%20%E7%BB%9F%E4%B8%80%E7%9A%84%E5%9C%BA%E8%AE%BA%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. 统一的场论框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="_1">引言：从物理直觉到数学严谨<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>在前面的课程中（特别是第16讲），我们已经接触了描述布朗运动等随机现象的<strong>朗之万方程</strong>（Langevin Equation）。朗之万方程提供了一个非常直观的物理图像：一个粒子的运动由两部分决定，一部分是确定的、可预测的力（如摩擦力），另一部分则是由大量微观粒子碰撞产生的、快速涨落的随机力 <span class="arithmatex">\(\xi(t)\)</span> 。</p>
+<p>这个随机力，即<strong>白噪声</strong>（white noise），通常被理想化地假设为在任意两个不同时刻都完全不相关。这种"无记忆"的特性在数学上通过狄拉克 <span class="arithmatex">\(\delta\)</span> 函数（Dirac delta function）来表达：</p>
+<div class="arithmatex">\[\langle\xi(t)\xi(t')\rangle=2D\delta(t-t')\]</div>
+<p>然而，这种理想化处理虽然在物理上很有用，但在数学上却带来了麻烦。一个在任意时刻都与其他时刻不相关的"函数"必然充满了无穷大的尖峰，其方差无穷大，因此它并不是一个严格意义上的函数。直接对这样的对象进行微积分运算，会遇到严峻的数学挑战。</p>
+<p>为了克服这一困难，数学家们发展出了一套全新的语言——<strong>随机微分方程（Stochastic Differential Equations, SDEs）。</strong>这不仅仅是符号上的改变，更是思想上的根本性飞跃。其核心思想是，<strong>避开直接处理行为奇异的白噪声 <span class="arithmatex">\(\xi(t)\)</span>，转而研究其积分。</strong>白噪声的积分，即<strong>维纳过程（Wiener Process）<span class="arithmatex">\(W(t)\)</span>，</strong>是一个行为良好、路径连续的随机过程。这节课的目的，就是建立这套严谨的数学工具，从而让我们能够精确地描述和分析由随机性驱动的物理、生物乃至金融系统。</p>
+<h1 id="1">1. 随机微分方程的语言<a class="headerlink" href="#1" title="Permanent link">&para;</a></h1>
+<p>随机微分方程（SDEs）的发展历史源于对布朗运动的理论描述，法国物理学家保罗·朗之万在1908年首次提出朗之万方程，通过结合确定性的粘滞阻力与随机噪声力，为统计力学和随机过程研究奠定了基础。这一物理模型后来在数学上被进一步严谨化，特别是通过伊藤（Itô）和斯特拉托诺维奇（Stratonovich）等人发展出完善的随机积分理论，解决了如何正确处理随机变量微积分的难题。如今，SDEs的应用极为广泛：在金融领域，它是风险评估、股价波动模拟以及著名的布莱克-斯科尔斯方程的基础；在物理学中，它被用于布朗运动和分子动力学模拟；在生物学中，则应用于种群动力学和蛋白质折叠分析；此外，它还为化学中的反应速率建模以及机器学习中的随机梯度下降算法提供了理论框架。</p>
+<h2 id="11">1.1 维纳增量：捕捉随机性的基本单元<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
+<p>Erwin Frey 教授从最简单的随机微分方程入手，它描述了一个只受随机力驱动的粒子的运动：</p>
+<div class="arithmatex">\[\dot{x}=\xi(t)\]</div>
+<p>这里的 <span class="arithmatex">\(\xi(t)\)</span> 就是我们之前讨论过的白噪声，其关联函数为 <span class="arithmatex">\(\langle\xi(t)\xi(t')\rangle=2D\delta(t-t')\)</span>，其中 <span class="arithmatex">\(D\)</span> 是扩散系数。</p>
+<p>为了在数学上处理这个方程，我们不直接求解 <span class="arithmatex">\(\dot{x}\)</span>，而是考察在一个微小时间间隔 <span class="arithmatex">\(\Delta t\)</span> 内，粒子位置 <span class="arithmatex">\(x\)</span> 的变化量。通过对上式进行积分，我们得到：</p>
+<div class="arithmatex">\[x(t+\Delta t)-x(t)=\int_t^{t+\Delta t}d\tau\xi(\tau)\equiv\Delta W(t)\]</div>
+<p>这个积分结果 <span class="arithmatex">\(\Delta W(t)\)</span> 被定义为维纳增量（Wiener's increment）。它的物理意义非常清晰：<strong>在 <span class="arithmatex">\(\Delta t\)</span> 这段时间内，粒子受到周围介质分子的无数次、微小且独立的随机碰撞，<span class="arithmatex">\(\Delta W(t)\)</span> 就是这些碰撞效应累积产生的净位移。</strong></p>
+<p>维纳增量具有两个至关重要的统计性质：</p>
+<p><strong>1. 均方值（Mean Square）：</strong></p>
+<p>我们可以直接计算 <span class="arithmatex">\(\Delta W(t)\)</span> 的平方的平均值：</p>
+<p>$$
+\langle\Delta W^2(t)\rangle=\langle\int_t^{t+\Delta t}d\tau\xi(\tau)\int_t^{t+\Delta t}d\tau'\xi(\tau')\rangle
+$$
+利用期望和积分可以互换顺序的性质，我们得到：</p>
+<p>$$
+\langle\Delta W^2(t)\rangle=\int_t^{t+\Delta t}d\tau\int_t^{t+\Delta t}d\tau'\langle\xi(\tau)\xi(\tau')\rangle
+$$
+代入白噪声的关联函数：</p>
+<div class="arithmatex">\[
+\langle\Delta W^2(t)\rangle=\int_t^{t+\Delta t}d\tau\int_t^{t+\Delta t}d\tau'2D\delta(\tau-\tau')
+\]</div>
+<p>由于 <span class="arithmatex">\(\delta\)</span> 函数的性质，只有当 <span class="arithmatex">\(\tau=\tau'\)</span> 时积分才有值，因此对 <span class="arithmatex">\(\tau'\)</span> 的积分结果为1（只要积分区间包含 <span class="arithmatex">\(\tau\)</span>）。最终得到：</p>
+<div class="arithmatex">\[
+\langle\Delta W^2(t)\rangle=\int_t^{t+\Delta t}d\tau 2D=2D\Delta t
+\]</div>
+<p>这个结果 <span class="arithmatex">\(\langle\Delta W^2(t)\rangle=2D\Delta t\)</span> 是扩散过程的标志性特征：<strong>均方位移与时间间隔成正比</strong>，而不是与时间间隔的平方成正比（后者是匀速直线运动的特征）。这反映了随机运动的本质。</p>
+<p><strong>2. 高斯分布（Gaussian Distribution）：</strong></p>
+<p>由于维纳增量是大量独立随机碰撞效应的叠加，根据中心极限定理（Central Limit Theorem），无论单次碰撞的细节如何，它们的总和总是趋向于一个高斯（正态）分布。因此，<span class="arithmatex">\(\Delta W(t)\)</span> 的概率分布为：</p>
+<p>$$
+P(\Delta W(t)) = \frac{1}{\sqrt{4\pi D \Delta t}} \exp\left(-\frac{\Delta W(t)^2}{4D\Delta t}\right)
+$$
+这是一个均值为0，方差为 <span class="arithmatex">\(2D\Delta t\)</span> 的高斯分布。</p>
+<h2 id="12">1.2 随机积分与维纳过程<a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
+<p>有了基本单元——<strong>维纳增量</strong>，我们就可以构建粒子在任意时刻 <span class="arithmatex">\(t\)</span> 的位置 <span class="arithmatex">\(x(t)\)</span>。我们将时间 <span class="arithmatex">\([0,t]\)</span> 分割成 <span class="arithmatex">\(n\)</span> 个微小的间隔 <span class="arithmatex">\(\Delta t=t/n\)</span>，每个间隔对应一个独立的维纳增量 <span class="arithmatex">\(\Delta W_k\)</span>。粒子的总位移就是这些增量的总和。当时间间隔趋于无穷小时（<span class="arithmatex">\(n\to\infty\)</span>），这个求和就变成了积分：</p>
+<div class="arithmatex">\[x(t)=\lim_{n\to\infty}\sum_{k=0}^{n-1}\Delta W_k\equiv\int_0^t dW(s)\]</div>
+<p>这个极限过程定义的积分被称为<strong>随机积分（Stochastic Integral）。</strong>而这个积分本身，作为一个关于时间 <span class="arithmatex">\(t\)</span> 的函数，就定义了<strong>维纳过程</strong>（Wiener Process）<span class="arithmatex">\(W(t)\)</span>，它也被称为<strong>布朗运动</strong>（Brownian Motion）。</p>
+<p>这种从离散的、独立的随机步（<span class="arithmatex">\(\Delta W_k\)</span>）出发，通过极限构造出连续时间随机过程（<span class="arithmatex">\(W(t)\)</span>）的方法，是连接离散随机游走和连续随机过程的桥梁。</p>
+<p>维纳过程 <span class="arithmatex">\(W(t)\equiv x(t)\)</span> 的统计性质可以从其构成单元 <span class="arithmatex">\(\Delta W_k\)</span> 的性质中推导出来：</p>
+<ul>
+<li>
+<p><strong>均方位移</strong>：由于各个 <span class="arithmatex">\(\Delta W_k\)</span> 是独立同分布的（iid Gaussian），总位移平方的期望等于各个位移平方期望之和：
+  $$
+  \langle x^2(t)\rangle=\langle(\sum_{k=0}^{n-1}\Delta W_k)^2\rangle=\sum_{k=0}^{n-1}\langle\Delta W_k^2\rangle=\sum_{k=0}^{n-1}2D\Delta t=n\cdot(2D\frac{t}{n})=2Dt
+  $$</p>
+</li>
+<li>
+<p><strong>概率分布</strong>：同样根据中心极限定理，多个高斯随机变量的和仍然是高斯随机变量，其方差是各个方差之和。因此，<span class="arithmatex">\(x(t)\)</span> 的概率分布为：
+  $$
+  P(x,t)=\frac{1}{\sqrt{4\pi Dt}}\exp\left(-\frac{x^2}{4Dt}\right)
+  $$</p>
+</li>
+</ul>
+<p>值得注意的是，这个概率分布 <span class="arithmatex">\(P(x,t)\)</span> 正是我们在前期课程中推导出的<strong>扩散方程</strong>（或热传导方程）的解。这揭示了随机微分方程（微观轨迹描述）和福克-普朗克方程（概率演化描述）之间的深刻联系。</p>
+<p>从 <span class="arithmatex">\(\xi(t)\)</span> 到 <span class="arithmatex">\(dW_t\)</span> 的转变，是整个随机微积分理论的核心。它将我们的焦点从一个数学上难以处理的对象（白噪声）转移到了一个定义良好、路径连续（尽管处处不可微）的随机过程（维纳过程）上。朗之万方程 <span class="arithmatex">\(\dot{x}=\cdots+\xi(t)\)</span> 在物理上直观，但数学上不严谨。而随机微分方程 <span class="arithmatex">\(dx=\cdots+dW_t\)</span> 并非简单的符号替换，它本质上是一个<strong>积分方程</strong>的简写，即 <span class="arithmatex">\(x(t)-x(0)=\int_0^t\cdots ds+\int_0^t dW_s\)</span>。<strong>只有在积分形式下，整个理论才是数学上自洽和严谨的。</strong></p>
+<h2 id="13">1.3 计算模拟：维纳过程<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
+<p>我们可以利用维纳增量的性质，通过简单的迭代来生成维纳过程的轨迹。其核心的离散化更新规则是：</p>
+<div class="arithmatex">\[W(t_{i+1})=W(t_i)+\Delta W_i\]</div>
+<p>其中 <span class="arithmatex">\(\Delta W_i\)</span> 是一个从均值为0、方差为 <span class="arithmatex">\(2D\Delta t\)</span> 的高斯分布中抽取的随机数，这等价于 <span class="arithmatex">\(\sqrt{2D\Delta t}\cdot N(0,1)\)</span>，其中 <span class="arithmatex">\(N(0,1)\)</span> 是标准正态分布。</p>
+<p>下面的Python代码模拟并绘制了多条维纳过程的轨迹，并验证了其均方位移随时间线性增长的特性。</p>
+<p><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># --- Parameter settings ---</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mf">10.0</span>          <span class="c1"># Total time</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>          <span class="c1"># Number of time steps</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">T</span> <span class="o">/</span> <span class="n">N</span>        <span class="c1"># Time step size</span>
+<span class="n">D</span> <span class="o">=</span> <span class="mf">0.5</span>           <span class="c1"># Diffusion coefficient (2D = 1)</span>
+<span class="n">num_paths</span> <span class="o">=</span> <span class="mi">500</span>   <span class="c1"># Number of simulated trajectories</span>
+
+<span class="c1"># --- Simulate Wiener process ---</span>
+<span class="c1"># Create an array of shape (num_paths, N+1) to store all trajectories</span>
+<span class="c1"># N+1 because it includes the initial point at t=0</span>
+<span class="n">paths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_paths</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># Generate random increments for all time steps</span>
+<span class="c1"># np.random.normal(loc=mean, scale=std_dev, size=...)</span>
+<span class="c1"># std_dev = sqrt(variance) = sqrt(2*D*dt)</span>
+<span class="n">increments</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">D</span> <span class="o">*</span> <span class="n">dt</span><span class="p">),</span> <span class="p">(</span><span class="n">num_paths</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+
+<span class="c1"># Build trajectories by accumulating increments</span>
+<span class="c1"># paths[:, 1:] means filling from the second time point onwards</span>
+<span class="c1"># np.cumsum(..., axis=1) performs cumulative sum along the time axis (columns)</span>
+<span class="n">paths</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">increments</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># --- Plotting ---</span>
+<span class="c1"># 1. Plot several sample trajectories</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">time_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">num_paths</span><span class="p">,</span> <span class="mi">10</span><span class="p">)):</span> <span class="c1"># Only plot first 10 to maintain clarity</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">paths</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">min</span><span class="p">(</span><span class="n">num_paths</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="si">}</span><span class="s1"> Sample Wiener Process Paths&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time $t$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$W(t)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 2. Verify mean squared displacement</span>
+<span class="c1"># Calculate mean squared displacement at each time point</span>
+<span class="c1"># np.mean(paths**2, axis=0) computes mean along the trajectory axis (rows)</span>
+<span class="n">mean_squared_displacement</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">paths</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">theoretical_msd</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">D</span> <span class="o">*</span> <span class="n">time_axis</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">mean_squared_displacement</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Simulated $</span><span class="se">\\</span><span class="s1">langle W^2(t) </span><span class="se">\\</span><span class="s1">rangle$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">theoretical_msd</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical $2Dt$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mean Squared Displacement&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time $t$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">langle W^2(t) </span><span class="se">\\</span><span class="s1">rangle$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<img alt="运行代码输出" src="../../../assets/images/remote/860e0db6-06a4-4983-a780-d9ea448c13bc-c428ebbf56.png" /></p>
+<p>左图展示了10条模拟的维纳过程样本轨迹，它们都从0点出发，进行随机游走。右图将500条轨迹在每个时间点的位移平方进行平均，得到的均方位移（蓝线）与理论值 <span class="arithmatex">\(2Dt\)</span>（红色虚线）吻合，验证了扩散过程的核心特性。</p>
+<h1 id="2">2. 随机微积分的惊奇之处<a class="headerlink" href="#2" title="Permanent link">&para;</a></h1>
+<p>进入随机微积分的核心领域后，我们会发现它遵循着一套与普通微积分截然不同的运算法则。这些差异的根源在于维纳过程路径的内在"<strong>粗糙性</strong>"。</p>
+<h2 id="21-dw_s2">2.1 伊藤引理初探：<span class="arithmatex">\((dW_s)^2\)</span> 的积分<a class="headerlink" href="#21-dw_s2" title="Permanent link">&para;</a></h2>
+<p>教授引入了一个看似奇怪的量：</p>
+<div class="arithmatex">\[Y(t)=\sum_{k=0}^{n-1}(\Delta W_k)^2\]</div>
+<p>在普通的黎曼积分中，类似的求和 <span class="arithmatex">\(\sum(\Delta t_k)^2\)</span> 会随着 <span class="arithmatex">\(\Delta t\to 0\)</span> 而迅速消失，因为 <span class="arithmatex">\((\Delta t)^2\)</span> 是比 <span class="arithmatex">\(\Delta t\)</span> 更高阶的无穷小。<strong>但在随机世界里，情况截然不同。</strong></p>
+<p>首先，我们计算这个量的期望值。为了简化，我们遵循讲座的设定，令 <span class="arithmatex">\(2D=1\)</span>，此时 <span class="arithmatex">\(\langle(\Delta W_k)^2\rangle=\Delta t_k\)</span>。</p>
+<div class="arithmatex">\[\langle Y(t)\rangle=\langle\sum_{k=0}^{n-1}(\Delta W_k)^2\rangle=\sum_{k=0}^{n-1}\langle(\Delta W_k)^2\rangle=\sum_{k=0}^{n-1}\Delta t_k=t\]</div>
+<p>这是一个惊人的结果：<strong>随机增量平方和的期望值，恰好等于总的时间长度 <span class="arithmatex">\(t\)</span></strong>。这个求和在随机分析中被称为过程的<strong>二次变分</strong>（Quadratic Variation）。</p>
+<p>更令人惊讶的是，当 <span class="arithmatex">\(n\to\infty\)</span> 时，这个和不仅仅是期望值为 <span class="arithmatex">\(t\)</span>，它会收敛到确定的值 <span class="arithmatex">\(t\)</span>。这一结论是<strong>伊藤微积分（Itô Calculus）</strong>的基石，通常用一个简洁但极其强大的符号规则来表示：</p>
+<div class="arithmatex">\[(dW_t)^2=dt\]</div>
+<p>这与普通微积分中 <span class="arithmatex">\((dt)^2=0\)</span> 的规则形成了鲜明对比，也是所有随机微积分与普通微积分差异的最终来源。</p>
+<p><img alt="课堂板书截图" src="../../../assets/images/remote/2e33f55d-1284-44e2-9084-c03f9c278884-30603e881e.jpg" /></p>
+<p>这种差异的根本原因在于涨落的<strong>标度行为。</strong>一个光滑、可微的函数，在微小区间 <span class="arithmatex">\(\Delta t\)</span> 内的变化 <span class="arithmatex">\(\Delta f\)</span> 正比于 <span class="arithmatex">\(\Delta t\)</span>。因此，它的平方 <span class="arithmatex">\((\Delta f)^2\)</span> 正比于 <span class="arithmatex">\((\Delta t)^2\)</span>，是更高阶的无穷小，在积分中可以忽略。而维纳过程的路径是连续但处处不可微的，具有<strong>分形特征。</strong>它在 <span class="arithmatex">\(\Delta t\)</span> 时间内的典型涨落大小不是 <span class="arithmatex">\(\Delta t\)</span>，而是 <span class="arithmatex">\(\sqrt{\Delta t}\)</span>。因此，它的平方涨落 <span class="arithmatex">\((\Delta W)^2\)</span> 的量级是 <span class="arithmatex">\((\sqrt{\Delta t})^2=\Delta t\)</span>。这意味着，随机涨落的平方与确定性漂移项（如 <span class="arithmatex">\(A(x)\Delta t\)</span>）是<strong>同阶的无穷小</strong>，绝不能被忽略。这正是<strong>伊藤引理（Ito's Lemma）</strong>——随机过程的链式法则——为何会有一个额外修正项的根本原因。</p>
+<h2 id="22">2.2 方差与均方收敛<a class="headerlink" href="#22" title="Permanent link">&para;</a></h2>
+<p>为了证明 <span class="arithmatex">\(\sum(\Delta W_k)^2\)</span> 确实收敛于一个确定值 <span class="arithmatex">\(t\)</span>，我们需要证明它的方差在 <span class="arithmatex">\(n\to\infty\)</span> 时趋于零。</p>
+<p><img alt="课堂板书截图" src="../../../assets/images/remote/656010b1-ce0f-460d-9005-144826c23d4e-4b6d0ed923.png" /></p>
+<p><strong>1. 计算方差：</strong></p>
+<p>由于各 <span class="arithmatex">\(\Delta W_k\)</span> 相互独立，和的方差等于方差的和：</p>
+<p>$$
+\text{Var} = \text{Var}\left[\sum_{k=0}^{n-1}(\Delta W_k)^2\right] = \sum_{k=0}^{n-1} \text{Var}[(\Delta W_k)^2]
+$$
+<strong>2. 单个增量平方的方差：</strong></p>
+<p>根据方差定义 <span class="arithmatex">\(\text{Var}[Z]=\langle Z^2\rangle-(\langle Z\rangle)^2\)</span>，我们有：</p>
+<p>$$
+\text{Var}[(\Delta W_k)^2]=\langle(\Delta W_k^2)^2\rangle-(\langle\Delta W_k^2\rangle)^2=\langle\Delta W_k^4\rangle-(\langle\Delta W_k^2\rangle)^2
+$$
+<strong>3. 高斯变量的四阶矩：</strong></p>
+<p>对于一个均值为0，方差为 <span class="arithmatex">\(\sigma^2\)</span> 的高斯随机变量 <span class="arithmatex">\(Z\)</span>，其四阶矩为 <span class="arithmatex">\(\langle Z^4\rangle=3(\sigma^2)^2\)</span>。在我们的例子中（<span class="arithmatex">\(2D=1\)</span>），<span class="arithmatex">\(\sigma^2=\langle\Delta W_k^2\rangle=\Delta t\)</span>。因此：</p>
+<div class="arithmatex">\[
+\langle\Delta W_k^4\rangle=3(\Delta t)^2
+\]</div>
+<ol>
+<li>代入计算：</li>
+</ol>
+<p>$$
+   \text{Var}[(\Delta W_k)^2]=3(\Delta t)^2-(\Delta t)^2=2(\Delta t)^2
+   $$</p>
+<ol>
+<li>总方差：</li>
+</ol>
+<p>将单个方差加起来，并代入 <span class="arithmatex">\(\Delta t=t/n\)</span>：</p>
+<div class="arithmatex">\[
+\text{Var}=\sum_{k=0}^{n-1}2(\Delta t)^2=n\cdot 2(\frac{t}{n})^2=\frac{2t^2}{n}
+\]</div>
+<ol>
+<li>取极限：</li>
+</ol>
+<p>当时间分割无限加密时，<span class="arithmatex">\(n\to\infty\)</span>，总方差趋于零：</p>
+<p>$$
+\lim_{n\to\infty}\text{Var}=\lim_{n\to\infty}\frac{2t^2}{n}=0
+$$
+一个随机变量，其期望为 <span class="arithmatex">\(t\)</span>，方差为0，意味着这个随机变量的分布是一个在 <span class="arithmatex">\(t\)</span> 点的 <span class="arithmatex">\(\delta\)</span> 函数——它不再随机，而是确定地等于 <span class="arithmatex">\(t\)</span>。这种收敛方式被称为<strong>均方收敛</strong>（convergence in mean square）。这为我们写下如下积分恒等式提供了严格的数学依据：</p>
+<div class="arithmatex">\[\int_0^t(dW_s)^2=t=\int_0^t ds\]</div>
+<h2 id="23">2.3 计算模拟：验证二次变分<a class="headerlink" href="#23" title="Permanent link">&para;</a></h2>
+<p>我们可以通过数值模拟来直观地验证二次变分理论。下面的Python代码模拟了一条维纳过程路径，并计算其二次变分 <span class="arithmatex">\(\sum(\Delta W_k)^2\)</span>。通过改变时间步数 <span class="arithmatex">\(N\)</span>，我们可以观察到其结果如何收敛到总时长 <span class="arithmatex">\(T\)</span>。</p>
+<p><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_quadratic_variation</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">N_steps_list</span><span class="o">=</span><span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">100000</span><span class="p">],</span> <span class="n">num_trials</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simulate and demonstrate convergence of quadratic variation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">results_mean</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">results_std</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;N_steps</span><span class="se">\t\t</span><span class="s2">Mean(QV)</span><span class="se">\t</span><span class="s2">Std(QV)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">N_steps_list</span><span class="p">:</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">T</span> <span class="o">/</span> <span class="n">N</span>
+        <span class="n">qvs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_trials</span><span class="p">):</span>
+            <span class="c1"># Generate increments of a Brownian motion path</span>
+            <span class="c1"># 2D=1, so variance = dt</span>
+            <span class="n">dW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dt</span><span class="p">),</span> <span class="n">N</span><span class="p">)</span>
+
+            <span class="c1"># Calculate quadratic variation</span>
+            <span class="n">qv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dW</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">qvs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">qv</span><span class="p">)</span>
+
+        <span class="n">mean_qv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">qvs</span><span class="p">)</span>
+        <span class="n">std_qv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">qvs</span><span class="p">)</span>
+        <span class="n">results_mean</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_qv</span><span class="p">)</span>
+        <span class="n">results_std</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">std_qv</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">N</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="se">\t</span><span class="si">{</span><span class="n">mean_qv</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="se">\t</span><span class="si">{</span><span class="n">std_qv</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Plotting</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+    <span class="c1"># Mean convergence plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">N_steps_list</span><span class="p">,</span> <span class="n">results_mean</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean of Simulated QV&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Theoretical Value T=</span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Steps (N)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mean of Quadratic Variation&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Convergence of Mean QV&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Standard deviation convergence plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">N_steps_list</span><span class="p">,</span> <span class="n">results_std</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Std Dev of Simulated QV&#39;</span><span class="p">)</span>
+    <span class="c1"># Theoretically standard deviation is proportional to 1/sqrt(N)</span>
+    <span class="c1"># Var = 2T^2/N =&gt; Std = T*sqrt(2/N)</span>
+    <span class="n">theoretical_std</span> <span class="o">=</span> <span class="n">T</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">N_steps_list</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">N_steps_list</span><span class="p">,</span> <span class="n">theoretical_std</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Theoretical scaling $\propto 1/\sqrt</span><span class="si">{N}</span><span class="s1">$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Steps (N)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Standard Deviation of QV&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Convergence of Std Dev of QV&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Run simulation</span>
+<span class="n">simulate_quadratic_variation</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+</code></pre></div>
+运行代码输出
+<div class="highlight"><pre><span></span><code><span class="n">N_steps</span>          <span class="n">Mean</span><span class="p">(</span><span class="n">QV</span><span class="p">)</span>        <span class="n">Std</span><span class="p">(</span><span class="n">QV</span><span class="p">)</span>
+<span class="o">----------------------------------------</span>
+<span class="mi">100</span>             <span class="mf">0.989475</span>        <span class="mf">0.138506</span>
+<span class="mi">1000</span>            <span class="mf">1.000001</span>        <span class="mf">0.045184</span>
+<span class="mi">10000</span>           <span class="mf">1.000812</span>        <span class="mf">0.014119</span>
+<span class="mi">100000</span>          <span class="mf">0.999990</span>        <span class="mf">0.004668</span>
+</code></pre></div></p>
+<p><img alt="运行代码输出" src="../../../assets/images/remote/042230a1-5d1f-495f-8466-b2f2165c470e-6dea46e8d0.png" /></p>
+<p>数值模拟验证二次变分理论。左图显示，随着时间步数N的增加，模拟得到的二次变分（QV）的均值迅速收敛于理论值 T=1。右图以对数坐标展示，模拟得到的标准差（蓝线）与理论预测的 <span class="arithmatex">\(1/\sqrt{N}\)</span> 标度（红线）一致，表明其方差确实随着 <span class="arithmatex">\(N\to\infty\)</span> 而趋于零。</p>
+<h1 id="3">3. 乘性噪声及其后果<a class="headerlink" href="#3" title="Permanent link">&para;</a></h1>
+<h2 id="31">3.1 当噪声依赖于系统状态<a class="headerlink" href="#31" title="Permanent link">&para;</a></h2>
+<p>到目前为止，我们讨论的噪声 <span class="arithmatex">\(\xi(t)\)</span> 或 <span class="arithmatex">\(dW_t\)</span> 的强度是恒定的，不随系统状态 <span class="arithmatex">\(x\)</span> 的变化而变化。这种噪声被称为<strong>加性噪声</strong>（Additive Noise）。然而，在许多现实系统中，随机扰动的强度本身就依赖于系统当前的状态。这类噪声被称为<strong>乘性噪声</strong>（Multiplicative Noise）。</p>
+<p>一个具有乘性噪声的通用朗之万方程可以写成：</p>
+<div class="arithmatex">\[\frac{dx(t)}{dt}=A(x,t)+C(x,t)\Lambda(t)\]</div>
+<p>其中，噪声项被乘以一个依赖于状态 <span class="arithmatex">\(x\)</span> 和时间 <span class="arithmatex">\(t\)</span> 的函数 <span class="arithmatex">\(C(x,t)\)</span>。</p>
+<p>乘性噪声在各个领域都有着广泛的应用：</p>
+<ul>
+<li>
+<p><strong>种群动力学</strong>：一个规模为 <span class="arithmatex">\(N\)</span> 的种群，其出生和死亡事件的随机波动数量，自然与种群规模 <span class="arithmatex">\(N\)</span> 成正比。一个大种群的随机事件数远多于小种群。</p>
+</li>
+<li>
+<p><strong>金融学</strong>：一支股票的价格波动率（volatility），通常被认为与其自身价格成正比。价格越高的股票，其价格的绝对波动值也越大。这正是著名的几何布朗运动模型的基础。</p>
+</li>
+<li>
+<p><strong>物理学</strong>：当一个系统中的某个参数（如温度、压力）发生随机涨落，而这个参数又影响系统的演化速率时，就会产生乘性噪声。</p>
+</li>
+</ul>
+<h2 id="32">3.2 从乘性到加性：一个变换和一个意外<a class="headerlink" href="#32" title="Permanent link">&para;</a></h2>
+<p>处理乘性噪声的SDE通常比加性噪声更复杂。课程中介绍了一种巧妙的变量代换方法，试图将乘性噪声问题转化为我们已经熟悉的加性噪声问题。</p>
+<p>考虑SDE <span class="arithmatex">\(\dot{x}=A(x)+C(x)\Lambda(t)\)</span>。我们定义一个新变量 <span class="arithmatex">\(y\)</span>，使得它的变化率与 <span class="arithmatex">\(x\)</span> 的变化率通过 <span class="arithmatex">\(C(x)\)</span> 联系起来：</p>
+<div class="arithmatex">\[
+dy = \frac{dx}{C(x)}
+\]</div>
+<p>将原SDE代入，我们得到 <span class="arithmatex">\(y\)</span> 的方程：</p>
+<div class="arithmatex">\[\frac{dy}{dt}=\frac{1}{C(x)}\frac{dx}{dt}=\frac{A(x)}{C(x)}+\Lambda(t)\]</div>
+<p>如果我们把 <span class="arithmatex">\(A(x)/C(x)\)</span> 写成 <span class="arithmatex">\(y\)</span> 的函数 <span class="arithmatex">\(\tilde{A}(y)\)</span>，那么 <span class="arithmatex">\(y\)</span> 的方程就变成了一个标准的加性噪声SDE：</p>
+<div class="arithmatex">\[\frac{dy}{dt}=\tilde{A}(y)+\Lambda(t)\]</div>
+<p>对于这个关于 <span class="arithmatex">\(y\)</span> 的加性噪声过程，我们可以直接写出其概率密度 <span class="arithmatex">\(\tilde{p}(y,t)\)</span> 所满足的福克-普朗克方程（回顾第17讲，并设噪声强度为1）：</p>
+<div class="arithmatex">\[\partial_t\tilde{p}(y,t)=-\partial_y[\tilde{A}(y)\tilde{p}(y,t)]+\frac{1}{2}\partial_y^2\tilde{p}(y,t)\]</div>
+<p>现在，最关键的一步是<strong>将这个方程变换回原来的变量 <span class="arithmatex">\(x\)</span>。</strong>这需要用到两个变换关系：</p>
+<ol>
+<li>
+<p><strong>导数变换</strong>：根据链式法则，<span class="arithmatex">\(dy=dx/C(x)\implies\partial_x=\frac{dy}{dx}\partial_y=\frac{1}{C(x)}\partial_y\implies\partial_y=C(x)\partial_x\)</span>。</p>
+</li>
+<li>
+<p><strong>概率密度变换</strong>：概率守恒要求 <span class="arithmatex">\(p(x,t)dx=\tilde{p}(y,t)dy\)</span>，因此 <span class="arithmatex">\(\tilde{p}(y,t)=p(x,t)\frac{dx}{dy}=C(x)p(x,t)\)</span>。</p>
+</li>
+</ol>
+<p>将这两个关系代入上面关于 <span class="arithmatex">\(\tilde{p}\)</span> 的福克-普朗克方程，经过一系列繁琐但直接的代数运算，最终得到 <span class="arithmatex">\(p(x,t)\)</span> 的方程 (4)：</p>
+<div class="arithmatex">\[\partial_tp(x,t)=-\partial_x[(A(x)+\frac{1}{2}C(x)C'(x))p(x,t)]+\frac{1}{2}\partial_x^2[C^2(x)p(x,t)]\]</div>
+<p>对比这个结果和我们"天真"预期的福克-普朗克方程，我们会发现漂移项（drift term）中多出了一项：<span class="arithmatex">\(\frac{1}{2}C(x)C'(x)\)</span>。这个项被称为"<strong>伪漂移</strong>"（spurious drift）或"<strong>伊藤漂移</strong>"（Ito drift）。它看起来像是凭空出现的一个额外的确定性力，这并非计算错误，而是随机微积分深刻内涵的体现。</p>
+<p>这个额外漂移项的出现，可以理解为一种<strong>几何效应。</strong>想象一个粒子在一条线上随机游走。如果它的步长是固定的（加性噪声），那么它没有净漂移。但如果步长依赖于位置 <span class="arithmatex">\(C(x)\)</span>（乘性噪声），情况就不同了。假设当 <span class="arithmatex">\(x&gt;0\)</span> 时步长更大。那么，当粒子从原点随机向右迈出一步后，它的下一步（无论向左还是向右）的平均步长会变大；反之，如果它向左迈出一步，下一步的平均步长会变小。长此以往，粒子在步长更大的区域进行的"探索"范围更广，导致它有一种净的趋势，从步长小的区域漂移到步长大的区域。这个伊藤漂移项 <span class="arithmatex">\(\frac{1}{2}C(x)C'(x)\)</span> 正是对此效应的数学量化，它正比于噪声强度 <span class="arithmatex">\(C(x)\)</span> 和噪声强度的梯度 <span class="arithmatex">\(C'(x)\)</span>。它不是传统意义上的力，而是由噪声的几何结构产生的统计性偏好。</p>
+<h1 id="4">4. 与斯特拉托诺维奇之争<a class="headerlink" href="#4" title="Permanent link">&para;</a></h1>
+<p>第三部分中出现的神秘"伊藤漂移"，其根源在于随机积分定义的模糊性。这引出了随机微积分中一个核心且微妙的议题：伊藤（Itô）积分与斯特拉托诺维奇（Stratonovich）积分的区别。</p>
+<h2 id="41">4.1 随机积分的模糊性<a class="headerlink" href="#41" title="Permanent link">&para;</a></h2>
+<p>我们现在使用更严谨的SDE微分形式来书写方程：</p>
+<div class="arithmatex">\[dx_t=A(x_t,t)dt+C(x_t,t)dW_t\]</div>
+<p>这个表达式是其积分形式的简写。其中的随机部分 <span class="arithmatex">\(\int C(x_\tau,\tau)dW_\tau\)</span> 在定义时遇到了困难。我们自然地会想到用黎曼和（Riemann sum）来定义它：</p>
+<div class="arithmatex">\[\int_{t_0}^t C(x_\tau,\tau)dW_\tau=\lim_{n\to\infty}\sum_{i=1}^n C(x_{\bar{t}_i},\bar{t}_i)\Delta W_i\]</div>
+<p>其中 <span class="arithmatex">\(\Delta W_i=W(t_i)-W(t_{i-1})\)</span>，而 <span class="arithmatex">\(\bar{t}_i\)</span> 是在小区间 <span class="arithmatex">\([t_{i-1},t_i]\)</span> 内的某个取样点。</p>
+<p>对于普通的黎曼-斯蒂尔杰斯积分（Riemann-Stieltjes integral），如果积分函数和被积函数都是"行为良好"的（例如，被积函数有界变差），那么无论 <span class="arithmatex">\(\bar{t}_i\)</span> 在区间内如何取值，极限都是唯一的。然而，维纳过程 <span class="arithmatex">\(W_t\)</span> 的路径虽然连续，但其总变差是无穷大的（路径极其曲折）。这导致了一个惊人的后果：</p>
+<p><strong><span class="arithmatex">\(\bar{t}_i\)</span> 的不同选择，会导致积分收敛到完全不同的结果。</strong></p>
+<h2 id="42">4.2 两种约定，两种微积分<a class="headerlink" href="#42" title="Permanent link">&para;</a></h2>
+<p>为了解决这种模糊性，数学家和物理学家发展出了两种主流的积分约定，它们分别定义了一套自洽的微积分体系。</p>
+<h3 id="ito-integral">伊藤积分 (Itô Integral)<a class="headerlink" href="#ito-integral" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>定义</strong>：选择区间的<strong>左端点</strong>作为取样点，即 <span class="arithmatex">\(\bar{t}_i=t_{i-1}\)</span>。</li>
+</ul>
+<p>$$
+  \int_{t_0}^t C(x_\tau)dW_\tau:=\lim_{n\to\infty}\sum_{i=1}^n C(x_{t_{i-1}})\Delta W_i
+  $$</p>
+<ul>
+<li>
+<p><strong>核心性质</strong>：这种定义方式具有一个非常重要的特性，即<strong>非预见性</strong>（non-anticipating）。在求和的每一项中，被积函数 <span class="arithmatex">\(C(x_{t_{i-1}})\)</span> 的值是在随机"踢动" <span class="arithmatex">\(\Delta W_i\)</span> 发生<strong>之前</strong>确定的。因此，<span class="arithmatex">\(C(x_{t_{i-1}})\)</span> 与 <span class="arithmatex">\(\Delta W_i\)</span> 是统计不相关的，即 <span class="arithmatex">\(\langle C(x_{t_{i-1}})\Delta W_i\rangle=\langle C(x_{t_{i-1}})\rangle\langle\Delta W_i\rangle=0\)</span>。这使得伊藤积分具有<strong>鞅</strong>（martingale）的性质，即其期望值不随时间变化（在没有漂移项的情况下）。这个性质在金融数学中至关重要，因为它符合"不能利用未来的价格信息来决定当前的交易策略"这一基本原则。</p>
+</li>
+<li>
+<p><strong>链式法则</strong>：伊藤积分不满足经典的链式法则，需要使用修正后的<strong>伊藤引理</strong>。</p>
+</li>
+</ul>
+<h3 id="stratonovich-integral">斯特拉托诺维奇积分 (Stratonovich Integral)<a class="headerlink" href="#stratonovich-integral" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>定义</strong>：选择区间的<strong>中点</strong>作为取样点，即 <span class="arithmatex">\(\bar{t}_i=(t_i+t_{i-1})/2\)</span>。</li>
+</ul>
+<p>$$
+  \int_{t_0}^t C(x_\tau)\circ dW_\tau:=\lim_{n\to\infty}\sum_{i=1}^n C(x_{\frac{t_i+t_{i-1}}{2}})\Delta W_i
+  $$
+  （通常用 <span class="arithmatex">\(\circ\)</span> 符号表示斯特拉托诺维奇积分）。</p>
+<ul>
+<li>
+<p><strong>核心性质</strong>：这种对称的取点方式，使得其微积分体系<strong>满足经典的链式法则</strong>。例如，对于函数 <span class="arithmatex">\(f(W_t)\)</span>，其微分就是 <span class="arithmatex">\(df=f'(W_t)\circ dW_t\)</span>。这使得它对于习惯经典微积分的物理学家来说更为直观，并且在处理流形上的随机运动等几何问题时必不可少。</p>
+</li>
+<li>
+<p><strong>物理渊源</strong>：斯特拉托诺维奇积分可以被看作是更真实的物理过程的数学极限。现实世界中的噪声（称为"<strong>有色噪声</strong>"）总是有着一个极短但非零的关联时间 <span class="arithmatex">\(\tau_c\)</span>。著名的<strong>王-扎才定理</strong>（Wong-Zakai theorem）证明，当这个关联时间 <span class="arithmatex">\(\tau_c\to 0\)</span> 时，由有色噪声驱动的系统的解会收敛到由白噪声驱动的斯特拉托诺维奇SDE的解。因此，它通常被认为是更"物理"的选择。</p>
+</li>
+</ul>
+<h2 id="43">4.3 连接两种微积分，解开"伪漂移"之谜<a class="headerlink" href="#43" title="Permanent link">&para;</a></h2>
+<p>这两种积分并非相互独立，它们之间可以通过一个精确的公式相互转换：</p>
+<div class="arithmatex">\[\int_0^t C(x_s)\circ dW_s\text{(Stratonovich)}=\int_0^t C(x_s)dW_s\text{(Ito)}+\frac{1}{2}\int_0^t C(x_s)\frac{\partial C(x_s)}{\partial x}ds\]</div>
+<p>谜底就此揭晓！<strong>两种积分的差，恰好就是我们在第三部分遇到的那个"伪漂移"项</strong>。这意味着：</p>
+<ul>
+<li>
+<p>我们在第三部分通过变量代换推导出的福克-普朗克方程，实际上是与<strong>伊藤SDE</strong>相对应的。</p>
+</li>
+<li>
+<p>如果我们从一个<strong>斯特拉托诺维奇SDE</strong>出发，即 <span class="arithmatex">\(dx_t=A(x_t)dt+C(x_t)\circ dW_t\)</span>，那么它对应的福克-普朗克方程的漂移项就是 <span class="arithmatex">\(A(x)\)</span>，<strong>不包含</strong>额外的 <span class="arithmatex">\(\frac{1}{2}C(x)C'(x)\)</span> 项。</p>
+</li>
+</ul>
+<p>所以，"伊藤-斯特拉托诺维奇之争"并非一个数学上的对错问题，而是一个<strong>物理建模的选择问题</strong>。你选择哪种微积分，就等于选择了如何解释噪声的物理来源，并决定了系统概率演化中的有效漂移项。</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>伊藤积分 (Itô Integral)</th>
+<th>斯特拉托诺维奇积分 (Stratonovich Integral)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>求和取样点</td>
+<td>区间左端点: <span class="arithmatex">\(t_{i-1}\)</span></td>
+<td>区间中点: <span class="arithmatex">\((t_{i}+t_{i-1})/2\)</span></td>
+</tr>
+<tr>
+<td>链式法则</td>
+<td>修正的链式法则 (伊藤引理)</td>
+<td>遵守经典链式法则</td>
+</tr>
+<tr>
+<td>鞅性质</td>
+<td><span class="arithmatex">\(\int C(x_{t})dW_{t}\)</span> 是鞅</td>
+<td>不一定是鞅</td>
+</tr>
+<tr>
+<td>物理模型</td>
+<td>理想化的白噪声；非预见性系统 (如金融)</td>
+<td>有限关联时间的有色噪声的极限 (如物理)</td>
+</tr>
+<tr>
+<td>F-P方程漂移项</td>
+<td><span class="arithmatex">\(A(x)+\frac{1}{2} C(x)C^{\prime}(x)\)</span></td>
+<td><span class="arithmatex">\(A(x)\)</span></td>
+</tr>
+<tr>
+<td>数值格式</td>
+<td>欧拉-丸山法 (Euler-Maruyama)</td>
+<td>欧拉-休恩法 (Euler-Heun) / Milstein法</td>
+</tr>
+</tbody>
+</table>
+<h2 id="44-sde">4.4 计算模拟：伊藤与斯特拉托诺维奇SDE的轨迹差异<a class="headerlink" href="#44-sde" title="Permanent link">&para;</a></h2>
+<p>我们可以通过模拟一个简单的乘性噪声SDE来直观感受两种积分的区别。金融学中的<strong>几何布朗运动</strong>（Geometric Brownian Motion, GBM）是一个绝佳的例子：</p>
+<div class="arithmatex">\[dx_t=\mu x_t dt+\sigma x_t dW_t\]</div>
+<p>其中 <span class="arithmatex">\(\mu\)</span> 是漂移率，<span class="arithmatex">\(\sigma\)</span> 是波动率。</p>
+<ul>
+<li>伊藤形式模拟 (欧拉-丸山法)：</li>
+</ul>
+<p>这是最直接的离散化，对应伊藤积分的左端点取样。</p>
+<p>$$
+  x_{i+1}=x_i+\mu x_i\Delta t+\sigma x_i\Delta W_i
+  $$</p>
+<ul>
+<li>斯特拉托诺维奇形式模拟 (欧拉-休恩法)：</li>
+</ul>
+<p>这是一种预测-校正格式，近似了中点取样的效果。</p>
+<ol>
+<li>
+<p><strong>预测步</strong> (Euler-Maruyama)：
+     $$
+     \tilde{x}_{i+1}=x_i+\mu x_i\Delta t+\sigma x_i\Delta W_i
+     $$</p>
+</li>
+<li>
+<p><strong>校正步</strong>：
+     $$
+     x_{i+1}=x_i+\mu x_i\Delta t+\frac{\sigma}{2}(x_i+\tilde{x}_{i+1})\Delta W_i
+     $$</p>
+</li>
+</ol>
+<p>下面的Python代码使用相同的随机数序列，分别模拟了伊藤和斯特拉托诺维奇两种解释下的GBM过程。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="c1"># Can use sdeint library for more complex SDE solving</span>
+<span class="c1"># import sdeint</span>
+
+<span class="c1"># --- Parameter settings ---</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">1.0</span>          <span class="c1"># Initial value</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mf">1.0</span>           <span class="c1"># Total time</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>          <span class="c1"># Number of time steps</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">T</span> <span class="o">/</span> <span class="n">N</span>        <span class="c1"># Time step size</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">0.1</span>          <span class="c1"># Drift rate</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.4</span>       <span class="c1"># Volatility</span>
+<span class="n">num_paths</span> <span class="o">=</span> <span class="mi">500</span>   <span class="c1"># Number of simulated trajectories</span>
+
+<span class="c1"># --- Simulation ---</span>
+<span class="c1"># Generate Wiener increments shared by all paths</span>
+<span class="n">dW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dt</span><span class="p">),</span> <span class="p">(</span><span class="n">num_paths</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+
+<span class="c1"># Initialize path arrays</span>
+<span class="n">x_ito</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_paths</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">x_stratonovich</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_paths</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">x_ito</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span>
+<span class="n">x_stratonovich</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span>
+
+<span class="c1"># Iterative solving</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="c1"># Ito (Euler-Maruyama)</span>
+    <span class="n">x_ito</span><span class="p">[:,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_ito</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">x_ito</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">+</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">x_ito</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">dW</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span>
+
+    <span class="c1"># Stratonovich (Euler-Heun)</span>
+    <span class="c1"># Prediction step</span>
+    <span class="n">x_pred</span> <span class="o">=</span> <span class="n">x_stratonovich</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">x_stratonovich</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">+</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">x_stratonovich</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">dW</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span>
+    <span class="c1"># Correction step</span>
+    <span class="n">g_avg</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">x_stratonovich</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">x_pred</span><span class="p">)</span>
+    <span class="n">x_stratonovich</span><span class="p">[:,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_stratonovich</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">x_stratonovich</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">+</span> <span class="n">g_avg</span> <span class="o">*</span> <span class="n">dW</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span>
+
+<span class="c1"># --- Plotting ---</span>
+<span class="n">time_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">mean_ito</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_ito</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">mean_stratonovich</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_stratonovich</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Theoretical mean</span>
+<span class="c1"># Ito interpretation: E[x(t)] = x0 * exp(mu * t)</span>
+<span class="c1"># Stratonovich interpretation: E[x(t)] = x0 * exp((mu + 0.5*sigma^2) * t)</span>
+<span class="n">theoretical_mean_ito</span> <span class="o">=</span> <span class="n">x0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">time_axis</span><span class="p">)</span>
+<span class="n">theoretical_mean_stratonovich</span> <span class="o">=</span> <span class="n">x0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">mu</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">time_axis</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">mean_ito</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ito (Euler-Maruyama) Mean&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">mean_stratonovich</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Stratonovich (Euler-Heun) Mean&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">theoretical_mean_ito</span><span class="p">,</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical Ito Mean $x_0 e^{\mu t}$&#39;</span><span class="p">)</span>
+<span class="c1"># plt.plot(time_axis, theoretical_mean_stratonovich, &#39;g:&#39;, label=&#39;Theoretical Stratonovich Mean&#39;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Comparison of Ito and Stratonovich Simulations (Mean of 500 paths)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time $t$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mean value $\langle x(t) </span><span class="se">\\</span><span class="s1">rangle$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="运行代码输出" src="../../../assets/images/remote/c150cb2d-35f5-451e-9dc0-49e3bbab7f20-e1acfbc73f.png" /></p>
+<p>对同一个几何布朗运动SDE进行数值模拟，分别采用伊藤（蓝线）和斯特拉托诺维奇（橙线）的数值格式。图中显示的是500条轨迹的平均路径。可以看到，斯特拉托诺维奇解释下的轨迹平均值系统性地高于伊藤解释下的轨迹，后者与理论上的伊藤解的期望值 <span class="arithmatex">\(x_0e^{\mu t}\)</span>（黑色虚线）吻合。这直观地展示了两种不同积分约定导致的有效漂移差异。</p>
+<h1 id="_2">结论<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<p>这节课教授带领我们完成了一次从物理直觉到数学严谨的旅程。我们从直观但定义模糊的朗之万方程出发，通过引入维纳过程，建立了随机微分方程（SDE）这套严谨的数学语言。</p>
+<p>我们发现，这个由随机性主导的新世界遵循着一套奇特的法则，其核心是 <span class="arithmatex">\((dW_t)^2=dt\)</span>。这一规则颠覆了经典微积分的认知，并直接催生了随机分析的基石——伊藤引理。</p>
+<p>进一步，在探讨更贴近现实的乘性噪声问题时，我们揭示了随机积分定义本身的模糊性。这导致了伊藤和斯特拉托诺维奇两种不同的微积分体系。我们最终阐明，这两种体系并无对错之分，而是对应着对噪声来源不同的物理建模假设。<strong>伊藤积分强调严格的因果律，是金融等领域的首选；而斯特拉托诺维奇积分保留了经典微积分的形式，并与真实物理系统中的有色噪声极限相对应。两者之间的差异，恰好解释了乘性噪声中出现的神秘"伪漂移"项。</strong></p>
+<p>掌握了本讲介绍的数学工具，就如同获得了一张进入随机动力学世界的地图。在后续的课程中，我们将运用这套强大的语言，去定量地分析和预测物理、化学、生物等领域中更为复杂的随机系统。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.highlight"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../../assets/javascripts/mathjax.js"></script>
+      
+        <script src="../../../assets/javascripts/language-nav.js"></script>
+      
+        <script src="../../../assets/javascripts/video-init.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

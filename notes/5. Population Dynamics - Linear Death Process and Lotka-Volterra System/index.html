@@ -1,0 +1,3472 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Course Notes and Code (Erwin Frey, LMU Munich, 2025)">
+      
+      
+        <meta name="author" content="Zhihang Liu">
+      
+      
+        <link rel="canonical" href="https://liu-zhihang.github.io/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/notes/5.%20Population%20Dynamics%20-%20Linear%20Death%20Process%20and%20Lotka-Volterra%20System/">
+      
+      
+        <link rel="prev" href="../4.%20Gillespie%20Algorithm%2C%20Master%20Equation%2C%20Generating%20Functions%20and%20Population%20Dynamics/">
+      
+      
+        <link rel="next" href="../6.%20Fundamental%20Equations%20of%20Markov%20Processes%20%E2%80%94%20Chapman%E2%80%93Kolmogorov%20Equation/">
+      
+      
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en">
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>5. Population Dynamics - Linear Death Process and Lotka-Volterra System - Nonequilibrium Field Theories and Stochastic Dynamics</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/video.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-applying-stochastic-toolkit-to-life-dynamics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-header__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nonequilibrium Field Theories and Stochastic Dynamics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5. Population Dynamics - Linear Death Process and Lotka-Volterra System
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-nav__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nonequilibrium Field Theories and Stochastic Dynamics
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.%20Course%20Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.%20Simple%20Random%20Walk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Simple Random Walk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20Gaussian%20Random%20Walk%20and%20Poisson%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Gaussian Random Walk and Poisson Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20Gillespie%20Algorithm%2C%20Master%20Equation%2C%20Generating%20Functions%20and%20Population%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie Algorithm, Master Equation, Generating Functions and Population Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Population Dynamics - Linear Death Process and Lotka-Volterra System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.%20Fundamental%20Equations%20of%20Markov%20Processes%20%E2%80%94%20Chapman%E2%80%93Kolmogorov%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Fundamental Equations of Markov Processes — Chapman–Kolmogorov Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.%20Forward%20Master%20Equation%20and%20the%20Q%20Matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Forward Master Equation and the Q Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.%20Perron%E2%80%93Frobenius%20Theorem%2C%20Steady%20States%2C%20and%20Detailed%20Balance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Perron–Frobenius Theorem, Steady States, and Detailed Balance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.%20Nonequilibrium%20States%20%E2%80%94%20Irreversibility%20and%20Entropy%20Production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Nonequilibrium States — Irreversibility and Entropy Production
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.%20Ehrenfest%20Model%2C%20Entropy%2C%20and%20KL%20Divergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Ehrenfest Model, Entropy, and KL Divergence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.%20Continuous%20Markov%20Processes%20and%20the%20Fokker%E2%80%93Planck%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Continuous Markov Processes and the Fokker–Planck Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12.%20Brownian%20Motion%20and%20the%20Ornstein%E2%80%93Uhlenbeck%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Brownian Motion and the Ornstein–Uhlenbeck Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13.%20Monte%20Carlo%20Sampling%20as%20a%20Stochastic%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Monte Carlo Sampling as a Stochastic Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14.%20Hamiltonian%20Monte%20Carlo%20Sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Hamiltonian Monte Carlo Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15.%20Chemotaxis%2C%20Run-and-Tumble%20Motion%2C%20and%20the%20Keller%E2%80%93Segel%20Model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Chemotaxis, Run-and-Tumble Motion, and the Keller–Segel Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16.%20The%20Schnitzer%20Model%2C%20Anomalous%20Diffusion%2C%20and%20Motility%E2%80%91Induced%20Phase%20Separation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. The Schnitzer Model, Anomalous Diffusion, and Motility‑Induced Phase Separation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17.%20Langevin%20Equation%2C%20Brownian%20Particle%2C%20and%20the%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Langevin Equation, Brownian Particle, and the Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18.%20Fokker%E2%80%93Planck%20Equation%20and%20the%20Smoluchowski%20Equation%20%E2%80%94%20From%20Random%20Trajectories%20to%20Probability%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Fokker–Planck Equation and the Smoluchowski Equation — From Random Trajectories to Probability Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19.%20Path%20Integral%20Formulation%20of%20Stochastic%20Processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Path Integral Formulation of Stochastic Processes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20.%20Stochastic%20Differential%20Equations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Stochastic Differential Equations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21.%20Ito%20Integral%20and%20Unified%20Stochastic%20Process%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Ito Integral and Unified Stochastic Process Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22.%20Path%20Integrals%20for%20Systems%20with%20Multiplicative%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Path Integrals for Systems with Multiplicative Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23.%20From%20Coarse-Graining%20to%20Fluctuation%20Dynamics%20of%20Continuous%20Field%20Theories/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. From Coarse-Graining to Fluctuation Dynamics of Continuous Field Theories
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24.%20Onsager%20Coefficients%2C%20Reciprocity%2C%20and%20the%20Dynamic%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Onsager Coefficients, Reciprocity, and the Dynamic Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25.%20Gradient%20Dynamics%2C%20Phase%20Transitions%2C%20and%20Relaxation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. Gradient Dynamics, Phase Transitions, and Relaxation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26.%20Critical%20Slowing%20Down%2C%20Dynamic%20Response%2C%20and%20Conservation%20Laws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Critical Slowing Down, Dynamic Response, and Conservation Laws
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27.%20Hydrodynamics%20of%20Simple%20Fluids%2C%20Inviscid%20Flow%2C%20and%20the%20Euler%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. Hydrodynamics of Simple Fluids, Inviscid Flow, and the Euler Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28.%20Viscous%20Fluids%2C%20the%20Navier%E2%80%93Stokes%20Equation%2C%20Entropy%20Balance%2C%20and%20Heat%20Conduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. Viscous Fluids, the Navier–Stokes Equation, Entropy Balance, and Heat Conduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29.%20Irreversible%20Linear%20Thermodynamics%20and%20Dry%20Diffusive%20Particle%20Systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. Irreversible Linear Thermodynamics and Dry Diffusive Particle Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30.%20Brownian%20Particles%20Suspended%20in%20a%20Fluid%20%E2%80%94%20Model%20H/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. Brownian Particles Suspended in a Fluid — Model H
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31.%20Dynamical%20Functionals%2C%20Additive%E2%80%91Noise%20Field%20Theory%2C%20and%20the%20Onsager%E2%80%93Machlup%20Functional/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. Dynamical Functionals, Additive‑Noise Field Theory, and the Onsager–Machlup Functional
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32.%20Janssen%E2%80%93De%20Dominicis%20Response%20Functional%20and%20the%20Fluctuation%E2%80%93Dissipation%20Relation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen–De Dominicis Response Functional and the Fluctuation–Dissipation Relation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33.%20Nonequilibrium%20Work%20and%20Fluctuation%20Theorems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. Nonequilibrium Work and Fluctuation Theorems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../34.%20Directed%20Percolation%2C%20Absorbing%20States%2C%20and%20Spectral%20Methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. Directed Percolation, Absorbing States, and Spectral Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../35.%20Path-Integral%20Representation%20of%20the%20Master%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. Path-Integral Representation of the Master Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../36.%20Coherent-State%20Path%20Integrals%2C%20Operator%20Algebra%2C%20and%20Imaginary%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. Coherent-State Path Integrals, Operator Algebra, and Imaginary Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../37.%20Kramers-Moyal%20Expansion%20and%20the%20Low-Noise%20Limit%20of%20Path%20Integrals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal Expansion and the Low-Noise Limit of Path Integrals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../38.%20Multi-Species%20Path%20Integrals%20and%20Cyclic%20Competition%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. Multi-Species Path Integrals and Cyclic Competition Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../39.%20From%20Particle%20Jumps%20to%20Continuous%20Field%20Theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. From Particle Jumps to Continuous Field Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../40.%20Unified%20Field%20Theory%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. Unified Field Theory Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    中文笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/1.%20%E8%AF%BE%E7%A8%8B%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 课程导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/2.%20%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 简单随机游走
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/3.%20%E9%AB%98%E6%96%AF%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0%E4%B8%8E%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 高斯随机游走与泊松过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/4.%20Gillespie%20%E7%AE%97%E6%B3%95%E3%80%81%E4%B8%BB%E6%96%B9%E7%A8%8B%E3%80%81%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%8D%E7%BE%A4%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie 算法、主方程、生成函数与种群动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/5.%20%E7%A7%8D%E7%BE%A4%E5%8A%A8%E6%80%81%E5%AD%A6%EF%BC%9A%E7%BA%BF%E6%80%A7%E6%AD%BB%E4%BA%A1%E8%BF%87%E7%A8%8B%E4%B8%8ELotka-Volterra%20%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 种群动态学：线性死亡过程与Lotka-Volterra 系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/6.%20%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E7%A8%8B%EF%BC%9A%E6%9F%A5%E6%99%AE%E6%9B%BC-%E7%A7%91%E5%B0%94%E8%8E%AB%E6%88%88%E7%BD%97%E5%A4%AB%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 马尔可夫过程的基本方程：查普曼-科尔莫戈罗夫方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/7.%20%E5%89%8D%E5%90%91%E4%B8%BB%E6%96%B9%E7%A8%8B%E4%B8%8EQ%E7%9F%A9%E9%98%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 前向主方程与Q矩阵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/8.%20%E4%BD%A9%E9%BE%99-%E5%BC%97%E7%BD%97%E8%B4%9D%E5%B0%BC%E4%B9%8C%E6%96%AF%E5%AE%9A%E7%90%86%E3%80%81%E7%A8%B3%E6%80%81%E4%B8%8E%E7%BB%86%E8%87%B4%E5%B9%B3%E8%A1%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 佩龙-弗罗贝尼乌斯定理、稳态与细致平衡
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/9.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81%EF%BC%9A%E4%B8%8D%E5%8F%AF%E9%80%86%E6%80%A7%E4%B8%8E%E7%86%B5%E4%BA%A7%E7%94%9F%E7%9A%84%E6%8E%A8%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 非平衡态：不可逆性与熵产生的推论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/10.%20%E5%9F%83%E4%BC%A6%E8%B4%B9%E6%96%AF%E7%89%B9%E6%A8%A1%E5%9E%8B%E3%80%81%E7%86%B5%E4%B8%8EKL%E6%95%A3%E5%BA%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 埃伦费斯特模型、熵与KL散度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/11.%20%E8%BF%9E%E7%BB%AD%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E4%B8%8E%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. 连续马尔可夫过程与福克-普朗克方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/12.%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8%E4%B8%8E%E5%A5%A5%E6%81%A9%E6%96%AF%E5%9D%A6-%E4%B9%8C%E4%BC%A6%E8%B4%9D%E5%85%8B%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. 布朗运动与奥恩斯坦-乌伦贝克过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/13.%20%E4%BD%9C%E4%B8%BA%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. 作为随机过程的蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/14.%20%E5%93%88%E5%AF%86%E5%B0%94%E9%A1%BF%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. 哈密尔顿蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/15.%20%E8%B6%8B%E5%8C%96%E6%80%A7%E3%80%81%E8%B7%91%E5%8A%A8-%E7%BF%BB%E6%BB%9A%E8%BF%90%E5%8A%A8%E4%B8%8EKeller-Segel%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. 趋化性、跑动-翻滚运动与Keller-Segel模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/16.%20Schnitzer%E6%A8%A1%E5%9E%8B%E3%80%81%E5%8F%8D%E5%B8%B8%E6%89%A9%E6%95%A3%E4%B8%8E%E8%BF%90%E5%8A%A8%E8%AF%B1%E5%AF%BC%E7%9B%B8%E5%88%86%E7%A6%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Schnitzer模型、反常扩散与运动诱导相分离
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/17.%20%E6%9C%97%E4%B9%8B%E4%B8%87%E6%96%B9%E7%A8%8B%E3%80%81%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. 朗之万方程、布朗粒子与涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/18.%20%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B%E4%B8%8E%E6%96%AF%E6%91%A9%E6%A3%B1%E9%9C%8D%E5%A4%AB%E6%96%AF%E5%9F%BA%E6%96%B9%E7%A8%8B%EF%BC%9A%E4%BB%8E%E9%9A%8F%E6%9C%BA%E8%BD%A8%E8%BF%B9%E5%88%B0%E6%A6%82%E7%8E%87%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. 福克-普朗克方程与斯摩棱霍夫斯基方程：从随机轨迹到概率动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/19.%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. 随机过程的路径积分表述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/20.%20%E9%9A%8F%E6%9C%BA%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. 随机微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/21.%20%E4%BC%8A%E8%97%A4%E7%A7%AF%E5%88%86%E4%B8%8E%E7%BB%9F%E4%B8%80%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. 伊藤积分与统一的随机过程框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/22.%20%E5%90%AB%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. 含乘性噪声系统的路径积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/23.%20%E4%BB%8E%E7%B2%97%E7%B2%92%E5%8C%96%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA%E6%B6%A8%E8%90%BD%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. 从粗粒化到连续场论涨落动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/24.%20%E6%98%82%E8%90%A8%E6%A0%BC%E7%B3%BB%E6%95%B0%E3%80%81%E5%80%92%E6%98%93%E5%85%B3%E7%B3%BB%E4%B8%8E%E5%8A%A8%E6%80%81%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. 昂萨格系数、倒易关系与动态涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/25.%20%E6%A2%AF%E5%BA%A6%E5%8A%A8%E5%8A%9B%E5%AD%A6%E3%80%81%E7%9B%B8%E5%8F%98%E4%B8%8E%E5%BC%9B%E8%B1%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. 梯度动力学、相变与弛豫
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/26.%20%E4%B8%B4%E7%95%8C%E6%85%A2%E5%8C%96%E3%80%81%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%B8%8E%E5%AE%88%E6%81%92%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. 临界慢化、动态响应与守恒律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/27.%20%E7%AE%80%E5%8D%95%E6%B5%81%E4%BD%93%E3%80%81%E6%97%A0%E6%91%A9%E6%93%A6%E6%B5%81%E4%BD%93%E4%B8%8E%E6%AC%A7%E6%8B%89%E6%96%B9%E7%A8%8B%E7%9A%84%E6%B5%81%E4%BD%93%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. 简单流体、无摩擦流体与欧拉方程的流体动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/28.%20%E7%B2%98%E6%80%A7%E6%B5%81%E4%BD%93%E3%80%81%E7%BA%B3%E7%BB%B4-%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%96%B9%E7%A8%8B%E3%80%81%E7%86%B5%E5%B9%B3%E8%A1%A1%E4%B8%8E%E7%83%AD%E4%BC%A0%E5%AF%BC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. 粘性流体、纳维-斯托克斯方程、熵平衡与热传导
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/29.%20%E4%B8%8D%E5%8F%AF%E9%80%86%E7%BA%BF%E6%80%A7%E7%83%AD%E5%8A%9B%E5%AD%A6%E4%B8%8E%E5%B9%B2%E6%80%A7%E6%89%A9%E6%95%A3%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. 不可逆线性热力学与干性扩散粒子系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/30.%20%E6%82%AC%E6%B5%AE%E5%9C%A8%E6%B5%81%E4%BD%93%E4%B8%AD%E7%9A%84%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%20%E2%80%94%20H%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. 悬浮在流体中的布朗粒子 — H模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/31.%20%E5%8A%A8%E6%80%81%E6%B3%9B%E5%87%BD%E3%80%81%E5%8A%A0%E6%80%A7%E5%99%AA%E5%A3%B0%E5%9C%BA%E8%AE%BA%E4%B8%8EOnsager-Machlup%E6%B3%9B%E5%87%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. 动态泛函、加性噪声场论与Onsager-Machlup泛函
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/32.%20Janssen-De%20Dominicis%20%E5%93%8D%E5%BA%94%E6%B3%9B%E5%87%BD%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen-De Dominicis 响应泛函与涨落-耗散关系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/33.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E5%8A%9F%E4%B8%8E%E6%B6%A8%E8%90%BD%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. 非平衡功与涨落定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/34.%20%E6%9C%89%E5%90%91%E6%B8%97%E6%B5%81%E3%80%81%E5%90%B8%E6%94%B6%E6%80%81%E4%B8%8E%E8%B0%B1%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. 有向渗流、吸收态与谱方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/35.%20%E4%B8%BB%E6%96%B9%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E7%A4%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. 主方程的路径积分表示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/36.%20%E7%9B%B8%E5%B9%B2%E6%80%81%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E3%80%81%E7%AE%97%E7%AC%A6%E4%BB%A3%E6%95%B0%E4%B8%8E%E8%99%9A%E5%99%AA%E5%A3%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. 相干态路径积分、算符代数与虚噪声
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/37.%20Kramers-Moyal%20%E5%B1%95%E5%BC%80%E4%B8%8E%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E7%9A%84%E4%BD%8E%E5%99%AA%E5%A3%B0%E6%9E%81%E9%99%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal 展开与路径积分的低噪声极限
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/38.%20%E5%A4%9A%E7%89%A9%E7%A7%8D%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E4%B8%8E%E5%BE%AA%E7%8E%AF%E7%AB%9E%E4%BA%89%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. 多物种路径积分与循环竞争动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/39.%20%E4%BB%8E%E7%B2%92%E5%AD%90%E8%B7%B3%E8%B7%83%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. 从粒子跳跃到连续场论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/40.%20%E7%BB%9F%E4%B8%80%E7%9A%84%E5%9C%BA%E8%AE%BA%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. 统一的场论框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="introduction-applying-stochastic-toolkit-to-life-dynamics">Introduction: Applying Stochastic Toolkit to Life Dynamics<a class="headerlink" href="#introduction-applying-stochastic-toolkit-to-life-dynamics" title="Permanent link">&para;</a></h1>
+<p>In the previous lectures, the professor has helped us establish a powerful theoretical framework for describing stochastic processes. This lecture applies these abstract tools to a specific and important field: population dynamics. The goal of this lecture is to use the knowledge we have learned to simulate the birth, death, and interactions of populations composed of discrete individuals.</p>
+<h1 id="1-core-concepts-review">1. Core Concepts Review<a class="headerlink" href="#1-core-concepts-review" title="Permanent link">&para;</a></h1>
+<p>Before delving into new models, the professor briefly reviewed several key concepts from our toolkit:</p>
+<p><strong>Master Equation:</strong> This is the core equation describing the time evolution of probability distributions in stochastic systems. Its essential idea is very intuitive: the rate of change of the probability <span class="arithmatex">\(p(n,t)\)</span> that the system is in a specific state <span class="arithmatex">\(n\)</span> equals the rate of transitions from other states to state <span class="arithmatex">\(n\)</span> (the "gain" term) minus the rate of transitions from state <span class="arithmatex">\(n\)</span> to other states (the "loss" term). Its general form is:</p>
+<div class="arithmatex">\[\frac{d}{dt}p(n,t) = \text{"gain"} - \text{"loss"}\]</div>
+<p>This equation provides us with a complete, probabilistic description of the system.</p>
+<p><strong>Gillespie Algorithm:</strong> Although the master equation is precise, it is usually a set of coupled differential equations that are difficult to solve analytically. The Gillespie algorithm is an ingenious numerical method that is not an approximation to the master equation, but rather its <strong>exact stochastic realization</strong>. This algorithm can generate a series of stochastic trajectories whose statistical properties are completely consistent with those described by the master equation.</p>
+<p><strong>Connection between Theory and Simulation:</strong> There exists a profound connection between theory (master equation) and simulation (Gillespie algorithm). If we run a large number of Gillespie simulations and collect the system states (e.g., population size <span class="arithmatex">\(n\)</span>) of all trajectories at a specific time point <span class="arithmatex">\(t\)</span>, then plot a histogram of these states, this histogram will converge to the true probability distribution <span class="arithmatex">\(p(n,t)\)</span> predicted by the master equation when the number of simulations is sufficiently large.</p>
+<h2 id="why-do-we-need-stochastic-models">Why Do We Need Stochastic Models?<a class="headerlink" href="#why-do-we-need-stochastic-models" title="Permanent link">&para;</a></h2>
+<p>You might ask, we already have deterministic models describing population growth (such as the logistic equation), so why do we need to introduce such a complex stochastic framework?</p>
+<p>The answer lies in the fundamental nature of physical reality. Populations are composed of <strong>discrete</strong> individuals, and individual behaviors—birth, death, predation, mating—are essentially <strong>probabilistic</strong> events. Deterministic models treat population size as a continuous variable, ignoring individuality and randomness, which is a reasonable approximation when population size is very large. However, when population size is small, random fluctuations (i.e., "demographic noise") may dominate system behavior. A random sequence of death events may cause a small population to unexpectedly go extinct, which deterministic models cannot predict.</p>
+<p>Therefore, stochastic models are not merely a more complex alternative to deterministic models; they are a more <strong>fundamental and realistic</strong> description of living systems. They enable us to understand and quantify phenomena driven by randomness itself, such as extinction risk, probability of disease outbreaks, and maintenance of biodiversity. In this lecture, the professor will start with the simplest "linear death process" and gradually build a complex ecosystem containing predators and prey, revealing how randomness fundamentally changes our understanding of system behavior.</p>
+<h1 id="2-linear-death-process-foundation-of-stochastic-population-models">2. Linear Death Process: Foundation of Stochastic Population Models<a class="headerlink" href="#2-linear-death-process-foundation-of-stochastic-population-models" title="Permanent link">&para;</a></h1>
+<p>To establish an intuitive understanding of stochastic population dynamics, we start with the simplest non-trivial model: individuals in a population can only die, not be born. We will analyze this process from three different perspectives: the deterministic mean-field perspective, the stochastic master equation perspective, and the exact analytical solution.</p>
+<h2 id="21-deterministic-perspective-mean-field-theory">2.1 Deterministic Perspective (Mean-Field Theory)<a class="headerlink" href="#21-deterministic-perspective-mean-field-theory" title="Permanent link">&para;</a></h2>
+<p>First, we consider the simplest description. Suppose we have a species <span class="arithmatex">\(A\)</span> whose individuals die at a constant rate <span class="arithmatex">\(\lambda\)</span>. We can represent this process with a chemical reaction-like equation:</p>
+<div class="arithmatex">\[A \xrightarrow{\lambda} \varnothing\]</div>
+<p>Here, <span class="arithmatex">\(\lambda\)</span> represents the probability of death per individual per unit time, i.e., the per capita death rate.</p>
+<p>Under the <strong>mean-field</strong> approximation, we assume that the population size is very large and mixed very uniformly, so we can ignore the discreteness of individuals and random fluctuations, treating the population size <span class="arithmatex">\(n(t)\)</span> as a continuous, deterministic variable.</p>
+<p>In this case, the rate of decrease of the entire population size equals the per capita death rate <span class="arithmatex">\(\lambda\)</span> multiplied by the current population size <span class="arithmatex">\(n(t)\)</span>. This gives us a simple first-order ordinary differential equation (ODE):</p>
+<div class="arithmatex">\[\frac{d}{dt}n(t) = -\lambda n(t)\]</div>
+<p>This is a first-order linear differential equation we are very familiar with. Given the initial condition <span class="arithmatex">\(n(t=0)=n_0\)</span>, its solution is the classic exponential decay:</p>
+<div class="arithmatex">\[n(t) = n_0 e^{-\lambda t}\]</div>
+<p>This deterministic solution tells us the average behavioral trend of the population. It will serve as a benchmark for evaluating more complete stochastic models.</p>
+<h2 id="22-deeper-exploration-stochastic-description-through-master-equation">2.2 Deeper Exploration: Stochastic Description through Master Equation<a class="headerlink" href="#22-deeper-exploration-stochastic-description-through-master-equation" title="Permanent link">&para;</a></h2>
+<p>Now, we abandon the mean-field approximation and treat the population size <span class="arithmatex">\(N(t)\)</span> as a discrete random variable. Our goal is no longer to solve for a deterministic trajectory <span class="arithmatex">\(n(t)\)</span>, but to find the probability distribution that the population size is exactly <span class="arithmatex">\(n\)</span> at any time <span class="arithmatex">\(t\)</span>, i.e., <span class="arithmatex">\(p(n,t) = \text{Prob}(N(t)=n)\)</span>. For this, we need to construct the master equation for this process.</p>
+<p>We again apply the "gain-loss" principle to construct the equation:</p>
+<div class="arithmatex">\[\frac{d}{dt}p(n,t) = \text{gain} - \text{loss}\]</div>
+<ul>
+<li>
+<p><strong>Loss Term (Loss Term):</strong> How does the system leave state <span class="arithmatex">\(n\)</span>? The only way is for a death event to occur. When the population size is <span class="arithmatex">\(n\)</span>, each individual may die at rate <span class="arithmatex">\(\lambda\)</span>. Since all individual death events are mutually independent (this is the core assumption of the "linear" process), the total rate of death events in the entire population is <span class="arithmatex">\(n \times \lambda\)</span>. Therefore, the system leaves state <span class="arithmatex">\(n\)</span> at rate <span class="arithmatex">\(\lambda n\)</span>. This term contributes negatively to <span class="arithmatex">\(p(n,t)\)</span>, i.e., <span class="arithmatex">\(-\lambda n p(n,t)\)</span>.</p>
+</li>
+<li>
+<p><strong>Gain Term (Gain Term):</strong> How does the system enter state <span class="arithmatex">\(n\)</span>? The only way is for the system to originally be in state <span class="arithmatex">\(n+1\)</span>, then a death event occurs. When the population size is <span class="arithmatex">\(n+1\)</span>, the total rate of death events in the entire population is <span class="arithmatex">\((n+1) \times \lambda\)</span>. Therefore, the rate of transition from state <span class="arithmatex">\(n+1\)</span> to state <span class="arithmatex">\(n\)</span> is <span class="arithmatex">\(\lambda(n+1)p(n+1,t)\)</span>. This term contributes positively.</p>
+</li>
+</ul>
+<p>Combining the gain and loss terms, we obtain the complete master equation for the linear death process:</p>
+<div class="arithmatex">\[\frac{d}{dt}p(n,t) = \lambda(n+1)p(n+1,t) - \lambda n p(n,t)\]</div>
+<p>This is an infinite-dimensional system of coupled ordinary differential equations (for <span class="arithmatex">\(n=0,1,2,...,n_0\)</span>), and solving it directly is quite difficult. Fortunately, Professor Frey demonstrated a more elegant and physically intuitive method to obtain its exact solution.</p>
+<h2 id="23-exact-solution-revealing-the-binomial-distribution-nature-of-survival">2.3 Exact Solution: Revealing the Binomial Distribution Nature of Survival<a class="headerlink" href="#23-exact-solution-revealing-the-binomial-distribution-nature-of-survival" title="Permanent link">&para;</a></h2>
+<p>Rather than directly solving the master equation, let us start with a simpler problem and then generalize step by step.</p>
+<h3 id="231-survival-of-a-single-individual">2.3.1 Survival of a Single Individual<a class="headerlink" href="#231-survival-of-a-single-individual" title="Permanent link">&para;</a></h3>
+<p>First, consider the case where there is initially only one individual (<span class="arithmatex">\(n_0=1\)</span>). What is the probability that this individual is still alive at time <span class="arithmatex">\(t\)</span>? This is a classic exponential waiting problem. In any small time interval <span class="arithmatex">\(dt\)</span>, its probability of death is <span class="arithmatex">\(\lambda dt\)</span>. Therefore, the probability <span class="arithmatex">\(p(t)\)</span> that it is still alive at time <span class="arithmatex">\(t\)</span> follows:</p>
+<div class="arithmatex">\[\frac{d}{dt}p(t) = -\lambda p(t)\]</div>
+<p>Solving gives <span class="arithmatex">\(p(t) = e^{-\lambda t}\)</span>. Correspondingly, its probability of having died by time <span class="arithmatex">\(t\)</span> is <span class="arithmatex">\(q(t) = 1 - p(t) = 1 - e^{-\lambda t}\)</span>.</p>
+<h3 id="232-generalization-to-n_0-individuals">2.3.2 Generalization to <span class="arithmatex">\(n_0\)</span> Individuals<a class="headerlink" href="#232-generalization-to-n_0-individuals" title="Permanent link">&para;</a></h3>
+<p>Now, we return to the case where the initial population is <span class="arithmatex">\(n_0\)</span>. A core assumption of the linear death process is that <strong>each individual's death events are mutually independent</strong>. One individual's death does not affect another individual's death probability. This means that at time <span class="arithmatex">\(t\)</span>, the survival situation of the entire population can be viewed as conducting <span class="arithmatex">\(n_0\)</span> independent "Bernoulli trials".</p>
+<p>Each trial corresponds to an initial individual, and the trial result has only two outcomes:</p>
+<ol>
+<li>
+<p>"Success": The individual is still alive at time <span class="arithmatex">\(t\)</span>, with probability <span class="arithmatex">\(p(t) = e^{-\lambda t}\)</span>.</p>
+</li>
+<li>
+<p>"Failure": The individual has died by time <span class="arithmatex">\(t\)</span>, with probability <span class="arithmatex">\(q(t) = 1 - e^{-\lambda t}\)</span>.</p>
+</li>
+</ol>
+<p>We are concerned with the probability that exactly <span class="arithmatex">\(n\)</span> "successes" occur in <span class="arithmatex">\(n_0\)</span> trials (i.e., <span class="arithmatex">\(n\)</span> individuals survive). This is exactly the definition of the binomial distribution! Therefore, we can directly write its probability distribution:</p>
+<div class="arithmatex">\[p(n,t) = \binom{n_0}{n} [p(t)]^n [q(t)]^{n_0-n} = \binom{n_0}{n} (e^{-\lambda t})^n (1 - e^{-\lambda t})^{n_0-n}\]</div>
+<p>This result is very profound. It reveals the direct connection between the mathematical form of the model and its physical assumptions:</p>
+<p>Linear rate (total rate <span class="arithmatex">\(\propto n\)</span>) <span class="arithmatex">\(\implies\)</span> Individual independence (no interactions) <span class="arithmatex">\(\implies\)</span> Bernoulli trials (each individual independently survives or dies) <span class="arithmatex">\(\implies\)</span> Binomial distribution solution.</p>
+<p>This logical chain is key to understanding the physical meaning of stochastic processes.</p>
+<h2 id="24-distribution-moments-mean-and-variance">2.4 Distribution Moments: Mean and Variance<a class="headerlink" href="#24-distribution-moments-mean-and-variance" title="Permanent link">&para;</a></h2>
+<p>Once we know that the probability distribution is a binomial distribution, we can use its known properties to calculate the mean and variance. For a binomial distribution with parameters <span class="arithmatex">\((N,p)\)</span>, its mean is <span class="arithmatex">\(Np\)</span> and its variance is <span class="arithmatex">\(Np(1-p)\)</span>.</p>
+<p>In our model, <span class="arithmatex">\(N\)</span> corresponds to the initial population <span class="arithmatex">\(n_0\)</span>, and <span class="arithmatex">\(p\)</span> corresponds to the survival probability of a single individual <span class="arithmatex">\(p(t) = e^{-\lambda t}\)</span>. Therefore, we can immediately obtain:</p>
+<p><strong>Mean Population Size:</strong></p>
+<div class="arithmatex">\[\langle n(t) \rangle = n_0 p(t) = n_0 e^{-\lambda t}\]</div>
+<p><strong>Population Size Variance:</strong></p>
+<div class="arithmatex">\[\sigma^2(t) = n_0 p(t) (1 - p(t)) = n_0 e^{-\lambda t} (1 - e^{-\lambda t})\]</div>
+<p>Here we discover a crucial conclusion: the <strong>mean value</strong> <span class="arithmatex">\(\langle n(t) \rangle\)</span> of the stochastic process is exactly the same as the <strong>deterministic mean-field solution</strong> <span class="arithmatex">\(n(t)\)</span> we derived earlier! This is a universally valid elegant result for all linear processes. It tells us that the deterministic equation indeed correctly captures the average behavior of the system.</p>
+<p>However, the variance <span class="arithmatex">\(\sigma^2(t)\)</span> is a completely new quantity brought purely by randomness. It quantifies the magnitude of "demographic noise"—that is, the degree of fluctuation of actual population trajectories around the mean value due to the randomness of individual death events. This is information that the mean-field method cannot capture at all.</p>
+<h2 id="25-computational-verification-simulating-the-linear-death-process">2.5 Computational Verification: Simulating the Linear Death Process<a class="headerlink" href="#25-computational-verification-simulating-the-linear-death-process" title="Permanent link">&para;</a></h2>
+<p>We will use the Gillespie algorithm to simulate the linear death process and generate the first figure from the lecture PPT.</p>
+<p><img alt="Lecture PPT screenshot" src="../../assets/images/remote/7adc6d62-ed6a-4426-8075-ead0063928ec-8f34530876.png" /></p>
+<p>The logic of the Gillespie algorithm is as follows:</p>
+<p>1.<strong>Initialization</strong>: At time <span class="arithmatex">\(t=0\)</span>, set population size <span class="arithmatex">\(N(0)=n_0\)</span>.</p>
+<p>2.<strong>Calculate total rate</strong>: At any moment, when the population size is <span class="arithmatex">\(N\)</span>, the total rate of the next event (any death) occurring is <span class="arithmatex">\(\alpha = \lambda N\)</span>.</p>
+<p>3.<strong>Determine waiting time</strong>: The waiting time <span class="arithmatex">\(\tau\)</span> until the next event occurs follows an exponential distribution with rate <span class="arithmatex">\(\alpha\)</span>. We can generate this time using the inverse transform sampling method: <span class="arithmatex">\(\tau = -\frac{1}{\alpha} \ln(\xi)\)</span>, where <span class="arithmatex">\(\xi\)</span> is a uniformly distributed random number in the <span class="arithmatex">\((0, 1]\)</span> interval.</p>
+<p>4.<strong>Execute event</strong>: Since there is only one type of event in the system (death), we directly update the population size: <span class="arithmatex">\(N \to N-1\)</span>.</p>
+<p>5.<strong>Update time</strong>: Advance the current time: <span class="arithmatex">\(t \to t+\tau\)</span>.</p>
+<p>6.<strong>Repeat</strong>: Return to step 2, continue simulation until population size <span class="arithmatex">\(N=0\)</span> or the preset total simulation duration is reached.</p>
+<p>Below is the Python code that implements this process and reproduces the two figures from the lecture.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">comb</span>
+
+<span class="c1"># --- Simulation parameters ---</span>
+<span class="n">n0</span> <span class="o">=</span> <span class="mi">20</span>      <span class="c1"># Initial population size</span>
+<span class="n">lambda_rate</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># Per capita death rate</span>
+<span class="n">t_max</span> <span class="o">=</span> <span class="mf">4.0</span>    <span class="c1"># Maximum simulation time</span>
+<span class="n">num_simulations</span> <span class="o">=</span> <span class="mi">10000</span> <span class="c1"># Total number of simulated trajectories</span>
+
+<span class="c1"># --- Gillespie algorithm implementation for linear death process ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">linear_death_gillespie</span><span class="p">(</span><span class="n">n_start</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span> <span class="n">t_end</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simulate linear death process using Gillespie algorithm</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">n_start</span>
+
+    <span class="n">times</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">]</span>
+    <span class="n">populations</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">t_end</span><span class="p">:</span>
+        <span class="c1"># Total reaction rate</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="n">rate</span> <span class="o">*</span> <span class="n">n</span>
+
+        <span class="c1"># Generate waiting time tau</span>
+        <span class="n">xi1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">tau</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">xi1</span><span class="p">)</span> <span class="o">/</span> <span class="n">alpha</span>
+
+        <span class="c1"># Update time and population</span>
+        <span class="n">t</span> <span class="o">+=</span> <span class="n">tau</span>
+        <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span> <span class="c1"># Only death events</span>
+
+        <span class="n">times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">populations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">times</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">populations</span><span class="p">)</span>
+
+<span class="c1"># --- Run multiple simulations ---</span>
+<span class="n">all_trajectories</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_simulations</span><span class="p">):</span>
+    <span class="n">times</span><span class="p">,</span> <span class="n">populations</span> <span class="o">=</span> <span class="n">linear_death_gillespie</span><span class="p">(</span><span class="n">n0</span><span class="p">,</span> <span class="n">lambda_rate</span><span class="p">,</span> <span class="n">t_max</span><span class="p">)</span>
+    <span class="n">all_trajectories</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">times</span><span class="p">,</span> <span class="n">populations</span><span class="p">))</span>
+
+<span class="c1"># --- Plotting ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># --- Figure 1: Stochastic trajectories and deterministic solution ---</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># Plot some example trajectories</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">times</span><span class="p">,</span> <span class="n">populations</span> <span class="o">=</span> <span class="n">all_trajectories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">populations</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot deterministic solution</span>
+<span class="n">t_deterministic</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">n_deterministic</span> <span class="o">=</span> <span class="n">n0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">lambda_rate</span> <span class="o">*</span> <span class="n">t_deterministic</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_deterministic</span><span class="p">,</span> <span class="n">n_deterministic</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$n(t) = n_0 e^{-\lambda t}$&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;population size&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;stochastic trajectories&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n0</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># --- Figure 2: Histogram and theoretical solution at different times ---</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">time_points</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;darkgreen&#39;</span><span class="p">,</span> <span class="s1">&#39;saddlebrown&#39;</span><span class="p">,</span> <span class="s1">&#39;darkred&#39;</span><span class="p">]</span>
+<span class="n">bar_width</span> <span class="o">=</span> <span class="mf">0.8</span>
+
+<span class="c1"># Helper function: get population size at a specific time from a trajectory</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_population_at_time</span><span class="p">(</span><span class="n">trajectory</span><span class="p">,</span> <span class="n">t_point</span><span class="p">):</span>
+    <span class="n">times</span><span class="p">,</span> <span class="n">populations</span> <span class="o">=</span> <span class="n">trajectory</span>
+    <span class="c1"># Find the index of the last time point &lt;= t_point</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">t_point</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">populations</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">time_points</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+    <span class="c1"># Collect population sizes at this time point from all simulations</span>
+    <span class="n">populations_at_t</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_population_at_time</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">traj</span> <span class="ow">in</span> <span class="n">all_trajectories</span><span class="p">]</span>
+
+    <span class="c1"># Calculate histogram</span>
+    <span class="n">n_values</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">populations_at_t</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">probabilities</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="n">num_simulations</span>
+
+    <span class="c1"># Plot histogram</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">n_values</span><span class="p">,</span> <span class="n">probabilities</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">bar_width</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;t = </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Plot theoretical binomial distribution</span>
+    <span class="n">p_survival</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">lambda_rate</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">n_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n0</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">p_n_t</span> <span class="o">=</span> <span class="n">comb</span><span class="p">(</span><span class="n">n0</span><span class="p">,</span> <span class="n">n_range</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">p_survival</span><span class="o">**</span><span class="n">n_range</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_survival</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">n0</span> <span class="o">-</span> <span class="n">n_range</span><span class="p">))</span>
+    <span class="c1"># For visualization, only plot points with significant probabilities</span>
+    <span class="c1"># ax.plot(n_range, p_n_t, &#39;o&#39;, color=color, markersize=4)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;p(n, t)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;histogram&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n0</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
+
+<span class="c1"># Add theoretical formula text</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$p(n,t) = \binom</span><span class="si">{n_0}{n}</span><span class="s1"> p^n q^{n_0-n}$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;saddlebrown&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">,</span> <span class="s1">&#39;t = 4&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkred&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;t = 1&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;saddlebrown&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="s1">&#39;t = 0.1&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkgreen&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Linear Death Process&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkgreen&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Code execution output" src="../../assets/images/remote/ed74d315-594f-4662-8da6-fcacae5a7fd8-7fe47412d4.png" /></p>
+<p><strong>Right figure (histogram):</strong> This figure shows the probability distribution of population size at three different time points (<span class="arithmatex">\(t=0.1, 1, 4\)</span>). The bar chart is the empirical distribution we obtained by running tens of thousands of Gillespie simulations. We can see that as time progresses, the peak of the distribution moves left (average population size decreases), and the distribution becomes wider (relative uncertainty increases). Eventually, at very long times, most simulations end with population extinction (<span class="arithmatex">\(n=0\)</span>). This is completely consistent with the dynamic behavior of the binomial distribution we derived.</p>
+<p><strong>Left figure (stochastic trajectories):</strong> This figure shows three independent simulation trajectories (colored step lines). Each trajectory represents a possible history. The black smooth curve is the deterministic solution <span class="arithmatex">\(n(t)=n_0e^{-\lambda t}\)</span> we derived, which is the mean value of the stochastic process. This figure intuitively demonstrates the core characteristics of stochastic processes: <strong>individual realizations (trajectories) are random and discrete, but the average behavior of many realizations converges to the deterministic mean-field solution</strong>.</p>
+<h1 id="3-lotka-volterra-process-simulating-predator-prey-interactions">3. Lotka-Volterra Process: Simulating Predator-Prey Interactions<a class="headerlink" href="#3-lotka-volterra-process-simulating-predator-prey-interactions" title="Permanent link">&para;</a></h1>
+<p>After mastering the simplest single-species model, we now challenge a more complex and interesting system: an ecosystem containing two interacting species—<strong>predators and prey</strong>. This is the famous <strong>Lotka-Volterra</strong> model. We will see that nonlinear interactions between species produce dynamic behaviors that are far richer and more surprising than linear processes.</p>
+<p>The Lotka-Volterra equations are a set of coupled nonlinear differential equations describing the dynamics of predator-prey ecosystems. This model originated from the needs of ecological research in the early 20th century, independently proposed by Alfred Lotka and Vito Volterra to explain the periodic fluctuations of predator and prey population sizes in nature.</p>
+<p>The establishment of this system of equations is based on the following biological assumptions:</p>
+<ol>
+<li>Predator population decreases due to natural death at rate <span class="arithmatex">\(-\lambda a\)</span></li>
+<li>Predators reproduce by preying on prey at rate <span class="arithmatex">\(+\gamma_p ab\)</span></li>
+<li>Prey population grows due to self-reproduction at rate <span class="arithmatex">\(+\mu b\)</span></li>
+<li>Prey decreases due to predation at rate <span class="arithmatex">\(-\gamma_p ab\)</span></li>
+<li>Prey die due to resource competition among themselves at rate <span class="arithmatex">\(-\gamma_c b^2\)</span></li>
+</ol>
+<p>These assumptions ultimately form the following coupled system of equations:
+$$
+\frac{d}{dt}a(t) = (-\lambda + \gamma_p b) \cdot a
+$$</p>
+<p>$$
+\frac{d}{dt}b(t) = (\mu - \gamma_p a - \gamma_c b) \cdot b
+$$
+where <span class="arithmatex">\(a(t)\)</span> and <span class="arithmatex">\(b(t)\)</span> represent the population densities of predators and prey, respectively.</p>
+<p>In practical applications, the Lotka-Volterra equations are widely used for:</p>
+<ol>
+<li><strong>Ecosystem modeling</strong>: Analyzing predator-prey relationships, such as wolf-deer, cat-mouse ecosystem behaviors</li>
+<li><strong>Fishery resource management</strong>: Guiding the formulation of sustainable fishing strategies</li>
+<li><strong>Biological pest control</strong>: Designing schemes to control agricultural pests using natural enemies</li>
+<li><strong>Epidemiological research</strong>: Simulating virus-host interactions in disease transmission</li>
+<li><strong>Economic modeling</strong>: Describing dynamic relationships between different enterprises in business competition</li>
+</ol>
+<p>Although this model simplifies the complexity of real ecosystems, the nonlinear interaction principles it reveals are of great significance for understanding complex system behavior. Especially when randomness is introduced, this model can better reflect the fluctuation characteristics of population sizes in real ecosystems, providing theoretical foundations for ecological risk assessment and biodiversity conservation.</p>
+<h2 id="31-building-the-ecosystem-basic-stochastic-processes">3.1 Building the Ecosystem: Basic Stochastic Processes<a class="headerlink" href="#31-building-the-ecosystem-basic-stochastic-processes" title="Permanent link">&para;</a></h2>
+<p>We define two species in the system:</p>
+<ul>
+<li><strong>A</strong>: Predator (Predator)</li>
+<li><strong>B</strong>: Prey (Prey)</li>
+</ul>
+<p>The dynamics of this ecosystem are determined by four basic (or elementary) stochastic processes:</p>
+<ol>
+<li>
+<p><strong>Predator Death (Predator Death):</strong> Predators die due to natural causes. This is a linear death process, similar to what we analyzed before.
+   <span class="arithmatex">\(<span class="arithmatex">\(\varnothing \xleftarrow{\lambda} A\)</span>\)</span></p>
+</li>
+<li>
+<p><strong>Prey Birth:</strong> Prey reproduce themselves. Assuming sufficient resources, this is also a linear birth process.
+   <span class="arithmatex">\(<span class="arithmatex">\(B \xrightarrow{\mu} B + B\)</span>\)</span></p>
+</li>
+<li>
+<p><strong>Predation:</strong> This is the core interaction of the model. When a predator A encounters a prey B, it eats the prey and reproduces a new predator in the process.</p>
+</li>
+</ol>
+<p>$$
+   A + B \xrightarrow{\gamma_p} A + A
+   $$</p>
+<ol>
+<li><strong>Prey Competition:</strong> When prey numbers are too high, they compete for limited resources (such as food, space), causing one individual to die.
+   $$
+   B + B \xrightarrow{\gamma_c} B
+   $$</li>
+</ol>
+<h2 id="32-quantifying-changes-reaction-propensities">3.2 Quantifying Changes: Reaction Propensities<a class="headerlink" href="#32-quantifying-changes-reaction-propensities" title="Permanent link">&para;</a></h2>
+<p>To simulate this system using the Gillespie algorithm or derive its mean-field equations, we need to convert the above symbolic reactions into mathematical rate expressions, i.e., <strong>propensity functions (propensity function)</strong> <span class="arithmatex">\(\alpha_\mu\)</span>. The propensity <span class="arithmatex">\(\alpha_\mu\)</span> represents the probability of reaction <span class="arithmatex">\(\mu\)</span> occurring per unit time.</p>
+<p>Suppose the current state of the system is <span class="arithmatex">\((N_A, N_B)\)</span>, where <span class="arithmatex">\(N_A\)</span> is the number of predators and <span class="arithmatex">\(N_B\)</span> is the number of prey.</p>
+<p><span class="arithmatex">\(\alpha_1 = \lambda N_A\)</span>: Total rate of predator death. Like the linear death process, it is proportional to the number of predators <span class="arithmatex">\(N_A\)</span>.</p>
+<p><span class="arithmatex">\(\alpha_2 = \mu N_B\)</span>: Total rate of prey birth, proportional to prey number <span class="arithmatex">\(N_B\)</span>.</p>
+<p><span class="arithmatex">\(\alpha_3 = \gamma_p N_A N_B\)</span>: Total rate of predation events. This quadratic term is the key to the model. It originates from the assumption of the "law of mass action": in a well-mixed system, the frequency of encounters between two different types of individuals is proportional to the product of their respective numbers.</p>
+<p><span class="arithmatex">\(\alpha_4 = \gamma_c N_B(N_B - 1)\)</span>: Total rate of prey competition. Competition requires two prey individuals to participate. Among <span class="arithmatex">\(N_B\)</span> prey, the number of different individual pairs that can be formed is <span class="arithmatex">\(\binom{N_B}{2} = \frac{1}{2}N_B(N_B - 1)\)</span>. Therefore, the total rate is proportional to this. In Professor Frey's lecture notes, the rate constant is defined as <span class="arithmatex">\(\gamma_c\)</span>, absorbing the factor <span class="arithmatex">\(1/2\)</span>, so the propensity is written as <span class="arithmatex">\(\gamma_c N_B(N_B - 1)\)</span>. When <span class="arithmatex">\(N_B\)</span> is large, this approximates <span class="arithmatex">\(\gamma_c N_B^2\)</span>.</p>
+<p>To clearly organize this information, we can create a table that will serve as a blueprint for our understanding and programming:</p>
+<table>
+<thead>
+<tr>
+<th>Process Name</th>
+<th>Chemical Reaction</th>
+<th>Rate Constant</th>
+<th>Propensity Function <span class="arithmatex">\(\alpha_\mu(N_A, N_B)\)</span></th>
+<th>State Change <span class="arithmatex">\((\Delta N_A, \Delta N_B)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Predator Death</td>
+<td><span class="arithmatex">\(A \xrightarrow{\lambda} \emptyset\)</span></td>
+<td><span class="arithmatex">\(\lambda\)</span></td>
+<td><span class="arithmatex">\(\lambda N_A\)</span></td>
+<td><span class="arithmatex">\((-1, 0)\)</span></td>
+</tr>
+<tr>
+<td>Prey Birth</td>
+<td><span class="arithmatex">\(B \xrightarrow{\mu} B + B\)</span></td>
+<td><span class="arithmatex">\(\mu\)</span></td>
+<td><span class="arithmatex">\(\mu N_B\)</span></td>
+<td><span class="arithmatex">\((0, +1)\)</span></td>
+</tr>
+<tr>
+<td>Predation</td>
+<td><span class="arithmatex">\(A + B \xrightarrow{\gamma_p} A + A\)</span></td>
+<td><span class="arithmatex">\(\gamma_p\)</span></td>
+<td><span class="arithmatex">\(\gamma_p N_A N_B\)</span></td>
+<td><span class="arithmatex">\((+1, -1)\)</span></td>
+</tr>
+<tr>
+<td>Prey Competition</td>
+<td><span class="arithmatex">\(B + B \xrightarrow{\gamma_c} B\)</span></td>
+<td><span class="arithmatex">\(\gamma_c\)</span></td>
+<td><span class="arithmatex">\(\gamma_c N_B (N_B - 1)\)</span></td>
+<td><span class="arithmatex">\((0, -1)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>This table completely defines our stochastic model. Each row tells us the "occurrence rate" (propensity) of an event and "what happens after occurrence" (state change).</p>
+<h2 id="33-mean-field-approximation-coupled-rate-equations">3.3 Mean-Field Approximation: Coupled Rate Equations<a class="headerlink" href="#33-mean-field-approximation-coupled-rate-equations" title="Permanent link">&para;</a></h2>
+<p><img alt="Lecture PPT screenshot" src="../../assets/images/remote/d81e28ad-d89e-4759-9624-57eca4a46274-6eed958c80.png" /></p>
+<p>Similar to the linear death process, we can derive deterministic equations describing the average behavior of the system by ignoring random fluctuations. We use continuous variables <span class="arithmatex">\(a(t)\)</span> and <span class="arithmatex">\(b(t)\)</span> to represent the population densities of predators and prey, respectively.</p>
+<p><strong>Change in predator density <span class="arithmatex">\(a(t)\)</span>:</strong></p>
+<ul>
+<li>
+<p>Decreases due to natural death at rate <span class="arithmatex">\(-\lambda a\)</span>.</p>
+</li>
+<li>
+<p>Increases due to preying on prey at rate <span class="arithmatex">\(+\gamma_p ab\)</span>.</p>
+</li>
+<li>
+<p>Combined: <span class="arithmatex">\(\frac{d}{dt}a(t) = (-\lambda + \gamma_p b) \cdot a\)</span></p>
+</li>
+</ul>
+<p><strong>Change in prey density <span class="arithmatex">\(b(t)\)</span>:</strong></p>
+<ul>
+<li>
+<p>Increases due to self-reproduction at rate <span class="arithmatex">\(+\mu b\)</span>.</p>
+</li>
+<li>
+<p>Decreases due to predation at rate <span class="arithmatex">\(-\gamma_p ab\)</span>.</p>
+</li>
+<li>
+<p>Decreases due to internal competition at rate <span class="arithmatex">\(-\gamma_c b^2\)</span> (here we use <span class="arithmatex">\(b^2\)</span> as a continuous approximation of <span class="arithmatex">\(b(b-1)\)</span>).</p>
+</li>
+<li>
+<p>Combined: <span class="arithmatex">\(\frac{d}{dt}b(t) = (\mu - \gamma_p a - \gamma_c b) \cdot b\)</span></p>
+</li>
+</ul>
+<p>These two coupled nonlinear ordinary differential equations are the deterministic Lotka-Volterra equations.</p>
+<h2 id="34-dynamics-in-phase-space-fixed-points-and-phase-portraits">3.4 Dynamics in Phase Space: Fixed Points and Phase Portraits<a class="headerlink" href="#34-dynamics-in-phase-space-fixed-points-and-phase-portraits" title="Permanent link">&para;</a></h2>
+<p>The long-term behavior of the deterministic equations can be understood by analyzing their flow field in the <span class="arithmatex">\((a,b)\)</span> phase space. We are concerned with fixed points, i.e., points where population densities no longer change (<span class="arithmatex">\(\partial_t a=0\)</span> and <span class="arithmatex">\(\partial_t b=0\)</span>).</p>
+<p><img alt="Lecture PPT screenshot" src="../../assets/images/remote/87d348ef-9175-4639-9cb7-898aeec11f99-1ca44bd51d.jpg" /></p>
+<p><strong>Special case (<span class="arithmatex">\(\gamma_c=0\)</span>):</strong> This is the most classic Lotka-Volterra model, without prey competition.</p>
+<p>There are two fixed points: one is the extinction point <span class="arithmatex">\((0,0)\)</span>, and the other is the coexistence fixed point <span class="arithmatex">\((a^*,b^*)=(\mu/\gamma_p,\lambda/\gamma_p)\)</span>.</p>
+<p>Analysis shows that this coexistence fixed point is a <strong>neutrally stable center</strong>. The system's trajectories are a series of closed orbits (periodic oscillations) around this center. The specific orbit the system is on is determined by the initial conditions.</p>
+<p>This system is conservative, with a conserved quantity <span class="arithmatex">\(E = \mu \ln a + \lambda \ln b - \gamma_p(a+b)\)</span>. Each orbit corresponds to a constant <span class="arithmatex">\(E\)</span> value.</p>
+<p><strong>General case (<span class="arithmatex">\(\gamma_c&gt;0\)</span>):</strong> After introducing prey competition, the situation changes qualitatively.</p>
+<p>The position of the coexistence fixed point becomes <span class="arithmatex">\((a^*,b^*)\)</span>, where <span class="arithmatex">\(b^* = (\mu-\gamma_p a^*)/\gamma_c\)</span>.</p>
+<p>The competition term <span class="arithmatex">\(\gamma_c b^2\)</span> acts as "damping". The fixed point is no longer a neutral center, but a <strong>stable spiral point</strong>. Regardless of the initial conditions (as long as the population doesn't go extinct), the system's trajectories will oscillate and spiral toward this unique coexistence fixed point.</p>
+<p>We can visualize these dynamic behaviors by plotting phase portraits.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># --- Import necessary libraries ---</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">odeint</span>
+
+<span class="c1"># --- Define Lotka-Volterra ODE system ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lotka_volterra_ode</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">lambda_rate</span><span class="p">,</span> <span class="n">mu_rate</span><span class="p">,</span> <span class="n">gamma_p</span><span class="p">,</span> <span class="n">gamma_c</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">da_dt</span> <span class="o">=</span> <span class="n">mu_rate</span> <span class="o">*</span> <span class="n">a</span> <span class="o">-</span> <span class="n">gamma_p</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+    <span class="n">db_dt</span> <span class="o">=</span> <span class="o">-</span><span class="n">lambda_rate</span> <span class="o">*</span> <span class="n">b</span> <span class="o">+</span> <span class="n">gamma_p</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span> <span class="o">-</span> <span class="n">gamma_c</span> <span class="o">*</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">da_dt</span><span class="p">,</span> <span class="n">db_dt</span><span class="p">]</span>
+
+<span class="c1"># --- Set parameters ---</span>
+<span class="n">lambda_rate</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">mu_rate</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">gamma_p</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">gamma_c</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<span class="c1"># --- Plot phase diagrams ---</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># --- Case 1: gamma_c = 0 (neutral center) ---</span>
+<span class="n">gamma_c</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">a_max</span><span class="p">,</span> <span class="n">b_max</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span>
+<span class="n">a_grid</span><span class="p">,</span> <span class="n">b_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">a_max</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">b_max</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+
+<span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">a_grid</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">b_grid</span><span class="p">)</span>
+<span class="n">NI</span><span class="p">,</span> <span class="n">NJ</span> <span class="o">=</span> <span class="n">a_grid</span><span class="o">.</span><span class="n">shape</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NI</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NJ</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">a_grid</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">b_grid</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]]</span>
+        <span class="n">dydt</span> <span class="o">=</span> <span class="n">lotka_volterra_ode</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">lambda_rate</span><span class="p">,</span> <span class="n">mu_rate</span><span class="p">,</span> <span class="n">gamma_p</span><span class="p">,</span> <span class="n">gamma_c</span><span class="p">)</span>
+        <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dydt</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dydt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Plot flow field</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">streamplot</span><span class="p">(</span><span class="n">a_grid</span><span class="p">,</span> <span class="n">b_grid</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkslategrey&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot fixed point</span>
+<span class="n">a_star</span> <span class="o">=</span> <span class="n">mu_rate</span> <span class="o">/</span> <span class="n">gamma_p</span>
+<span class="n">b_star</span> <span class="o">=</span> <span class="n">lambda_rate</span> <span class="o">/</span> <span class="n">gamma_p</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">a_star</span><span class="p">,</span> <span class="n">b_star</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">markeredgewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+
+<span class="c1"># Plot sample trajectories</span>
+<span class="n">initial_conditions</span> <span class="o">=</span> <span class="p">[[</span><span class="n">a_star</span><span class="o">*</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">b_star</span><span class="o">*</span><span class="mf">1.5</span><span class="p">],</span> <span class="p">[</span><span class="n">a_star</span><span class="o">*</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">b_star</span><span class="o">*</span><span class="mf">0.5</span><span class="p">]]</span>
+<span class="n">t_span</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">y0</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">initial_conditions</span><span class="p">):</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">lotka_volterra_ode</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">lambda_rate</span><span class="p">,</span> <span class="n">mu_rate</span><span class="p">,</span> <span class="n">gamma_p</span><span class="p">,</span> <span class="n">gamma_c</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">sol</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">a_max</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">b_max</span><span class="p">)</span>
+
+<span class="c1"># --- Case 2: gamma_c &gt; 0 (stable spiral point) ---</span>
+<span class="n">gamma_c</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">a_max</span><span class="p">,</span> <span class="n">b_max</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span>
+<span class="n">a_grid</span><span class="p">,</span> <span class="n">b_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">a_max</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">b_max</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+
+<span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">a_grid</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">b_grid</span><span class="p">)</span>
+<span class="n">NI</span><span class="p">,</span> <span class="n">NJ</span> <span class="o">=</span> <span class="n">a_grid</span><span class="o">.</span><span class="n">shape</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NI</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NJ</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">a_grid</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">b_grid</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]]</span>
+        <span class="n">dydt</span> <span class="o">=</span> <span class="n">lotka_volterra_ode</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">lambda_rate</span><span class="p">,</span> <span class="n">mu_rate</span><span class="p">,</span> <span class="n">gamma_p</span><span class="p">,</span> <span class="n">gamma_c</span><span class="p">)</span>
+        <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dydt</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dydt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">streamplot</span><span class="p">(</span><span class="n">a_grid</span><span class="p">,</span> <span class="n">b_grid</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkslategrey&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot fixed point</span>
+<span class="n">b_star_damped</span> <span class="o">=</span> <span class="n">lambda_rate</span> <span class="o">/</span> <span class="n">gamma_p</span>
+<span class="n">a_star_damped</span> <span class="o">=</span> <span class="p">(</span><span class="n">mu_rate</span> <span class="o">-</span> <span class="n">gamma_c</span> <span class="o">*</span> <span class="n">b_star_damped</span><span class="p">)</span> <span class="o">/</span> <span class="n">gamma_p</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">a_star_damped</span><span class="p">,</span> <span class="n">b_star_damped</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">markeredgewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+
+<span class="c1"># Plot sample trajectories</span>
+<span class="n">initial_conditions</span> <span class="o">=</span> <span class="p">[[</span><span class="n">a_star_damped</span><span class="o">*</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">b_star_damped</span><span class="o">*</span><span class="mf">1.5</span><span class="p">],</span> <span class="p">[</span><span class="n">a_star_damped</span><span class="o">*</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">b_star_damped</span><span class="o">*</span><span class="mf">0.5</span><span class="p">]]</span>
+<span class="n">t_span</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">y0</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">initial_conditions</span><span class="p">):</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">lotka_volterra_ode</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">lambda_rate</span><span class="p">,</span> <span class="n">mu_rate</span><span class="p">,</span> <span class="n">gamma_p</span><span class="p">,</span> <span class="n">gamma_c</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">sol</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">a_max</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">b_max</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Phase Portraits&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkgreen&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Code execution output" src="../../assets/images/remote/0f2238f9-154a-4031-b425-99586f550155-c48f8168f5.png" /></p>
+<p><strong>Left figure (<span class="arithmatex">\(\gamma_c=0\)</span>)</strong>: This figure clearly shows a neutrally stable center. The streamlines form closed loops around the central fixed point (white circle). The two trajectories we plotted (orange and red-orange) also run along these closed orbits, never approaching or moving away from the center. This represents the continuous periodic oscillations of predator and prey numbers.</p>
+<p><strong>Right figure (<span class="arithmatex">\(\gamma_c&gt;0\)</span>)</strong>: This figure shows a stable spiral point. The streamlines now all point toward the central fixed point inside (red circle). A trajectory we plotted (red) also shows the population numbers oscillating and decaying, eventually tending toward a stable coexistence state.</p>
+<h1 id="4-complete-stochastic-simulation-gillespie-algorithm">4. Complete Stochastic Simulation: Gillespie Algorithm<a class="headerlink" href="#4-complete-stochastic-simulation-gillespie-algorithm" title="Permanent link">&para;</a></h1>
+<p>The deterministic model provides us with a blueprint for the average behavior of the system, but the real story lies hidden in randomness. Now, we will use the Gillespie algorithm to simulate the complete stochastic Lotka-Volterra process.</p>
+<p><img alt="Lecture PPT screenshot" src="../../assets/images/remote/35228029-308c-4ceb-943f-9a2b3fe6b1d0-6cd5872ffd.png" /></p>
+<p><img alt="Lecture PPT screenshot" src="../../assets/images/remote/15ccbc5f-3f31-4f2d-ae17-c82b6230304d-d48ac47777.png" /></p>
+<p>The Gillespie algorithm steps for multiple reaction channels are as follows:</p>
+<p>1.<strong>Initialization</strong>: At <span class="arithmatex">\(t=0\)</span>, set state <span class="arithmatex">\((N_A,N_B)\)</span>.</p>
+<p>2.<strong>Calculate all propensities</strong>: Based on the current state <span class="arithmatex">\((N_A,N_B)\)</span>, calculate all four reaction propensities <span class="arithmatex">\(\alpha_1,\alpha_2,\alpha_3,\alpha_4\)</span>.</p>
+<p>3.<strong>Calculate total rate</strong>: Add all propensities to get the total rate <span class="arithmatex">\(\alpha_{\text{tot}} = \sum_{\mu=1}^{4} \alpha_\mu\)</span>.</p>
+<p>4.<strong>Determine waiting time</strong>: Generate the waiting time <span class="arithmatex">\(\tau = -\frac{1}{\alpha_{\text{tot}}} \ln(\xi_1)\)</span> until the next event, where <span class="arithmatex">\(\xi_1\)</span> is a uniform random number on <span class="arithmatex">\((0, 1]\)</span>.</p>
+<p>5.<strong>Select the event to occur</strong>: This is the key step. We need to decide which specific event occurs based on each reaction's relative probability <span class="arithmatex">\(\alpha_\mu/\alpha_{\text{tot}}\)</span>. This can be achieved using the "roulette wheel" selection method: generate a second uniform random number <span class="arithmatex">\(\xi_2 \in [0,1]\)</span>, then select the reaction <span class="arithmatex">\(\mu\)</span> that satisfies <span class="arithmatex">\(\sum_{\nu=1}^{\mu-1} \alpha_\nu &lt; \xi_2 \alpha_{\text{tot}} \leq \sum_{\nu=1}^{\mu} \alpha_\nu\)</span>.</p>
+<p>6.<strong>Execute event</strong>: According to the selected reaction type, update the system state according to the state change table.</p>
+<p>7.<strong>Update time</strong>: Advance the current time: <span class="arithmatex">\(t \to t+\tau\)</span>.</p>
+<p>8.<strong>Repeat</strong>: Return to step 2, continue simulation until the preset total simulation duration is reached.</p>
+<p>Below is the Python code that implements this algorithm:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">odeint</span>
+
+<span class="c1"># --- Parameter Setup ---</span>
+<span class="n">lambda_rate</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># Predator death rate</span>
+<span class="n">mu_rate</span> <span class="o">=</span> <span class="mf">1.0</span>      <span class="c1"># Prey birth rate</span>
+<span class="n">gamma_p</span> <span class="o">=</span> <span class="mf">0.01</span>     <span class="c1"># Predation rate</span>
+
+<span class="c1"># --- Deterministic ODE Definition ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lotka_volterra_ode</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">lambda_r</span><span class="p">,</span> <span class="n">mu_r</span><span class="p">,</span> <span class="n">gamma_p_r</span><span class="p">,</span> <span class="n">gamma_c_r</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Defines the system of ordinary differential equations for the Lotka-Volterra model.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">dadt</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">lambda_r</span> <span class="o">+</span> <span class="n">gamma_p_r</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="n">a</span>
+    <span class="n">dbdt</span> <span class="o">=</span> <span class="p">(</span><span class="n">mu_r</span> <span class="o">-</span> <span class="n">gamma_p_r</span> <span class="o">*</span> <span class="n">a</span> <span class="o">-</span> <span class="n">gamma_c_r</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">dadt</span><span class="p">,</span> <span class="n">dbdt</span><span class="p">]</span>
+
+<span class="c1"># --- Gillespie Algorithm for Lotka-Volterra Process ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lotka_volterra_gillespie</span><span class="p">(</span><span class="n">n_a</span><span class="p">,</span> <span class="n">n_b</span><span class="p">,</span> <span class="n">rates</span><span class="p">,</span> <span class="n">t_end</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simulates the Lotka-Volterra process using the Gillespie algorithm.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        n_a (int): Initial number of predators.</span>
+<span class="sd">        n_b (int): Initial number of prey.</span>
+<span class="sd">        rates (tuple): A tuple of rate constants (lambda_r, mu_r, gamma_p_r, gamma_c_r).</span>
+<span class="sd">        t_end (float): The end time for the simulation.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A tuple containing arrays for times, predator populations, and prey populations.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lambda_r</span><span class="p">,</span> <span class="n">mu_r</span><span class="p">,</span> <span class="n">gamma_p_r</span><span class="p">,</span> <span class="n">gamma_c_r</span> <span class="o">=</span> <span class="n">rates</span>
+
+    <span class="n">t</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="c1"># Ensure populations are floats to avoid potential integer division issues</span>
+    <span class="n">n_a</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_a</span><span class="p">)</span>
+    <span class="n">n_b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_b</span><span class="p">)</span>
+
+    <span class="n">times</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">]</span>
+    <span class="n">populations_a</span> <span class="o">=</span> <span class="p">[</span><span class="n">n_a</span><span class="p">]</span>
+    <span class="n">populations_b</span> <span class="o">=</span> <span class="p">[</span><span class="n">n_b</span><span class="p">]</span>
+
+    <span class="c1"># Stoichiometry matrix: rows are reactions, columns are species (A, B)</span>
+    <span class="n">nu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+        <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span>  <span class="c1"># Reaction 1: A -&gt; 0 (Predator death)</span>
+        <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">],</span>  <span class="c1"># Reaction 2: B -&gt; 2B (Prey birth)</span>
+        <span class="p">[</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>  <span class="c1"># Reaction 3: A+B -&gt; 2A (Predation)</span>
+        <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>   <span class="c1"># Reaction 4: 2B -&gt; B (Prey competition)</span>
+    <span class="p">])</span>
+
+    <span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">t_end</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">n_a</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">n_b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">break</span>  <span class="c1"># Stop if one species goes extinct</span>
+
+        <span class="c1"># Calculate propensities for each reaction</span>
+        <span class="n">propensities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+            <span class="n">lambda_r</span> <span class="o">*</span> <span class="n">n_a</span><span class="p">,</span>
+            <span class="n">mu_r</span> <span class="o">*</span> <span class="n">n_b</span><span class="p">,</span>
+            <span class="n">gamma_p_r</span> <span class="o">*</span> <span class="n">n_a</span> <span class="o">*</span> <span class="n">n_b</span><span class="p">,</span>
+            <span class="n">gamma_c_r</span> <span class="o">*</span> <span class="n">n_b</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_b</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">])</span>
+
+        <span class="n">a_total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">propensities</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">a_total</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">break</span> <span class="c1"># No more reactions can occur</span>
+
+        <span class="c1"># Generate waiting time (tau) until the next reaction</span>
+        <span class="n">xi1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">tau</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">xi1</span><span class="p">)</span> <span class="o">/</span> <span class="n">a_total</span>
+
+        <span class="c1"># Choose which reaction occurs</span>
+        <span class="n">xi2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">p_normalized</span> <span class="o">=</span> <span class="n">propensities</span> <span class="o">/</span> <span class="n">a_total</span>
+        <span class="n">reaction_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">propensities</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="n">p_normalized</span><span class="p">)</span>
+
+        <span class="c1"># Update time and populations</span>
+        <span class="n">t</span> <span class="o">+=</span> <span class="n">tau</span>
+        <span class="n">n_a</span> <span class="o">+=</span> <span class="n">nu</span><span class="p">[</span><span class="n">reaction_idx</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="n">n_b</span> <span class="o">+=</span> <span class="n">nu</span><span class="p">[</span><span class="n">reaction_idx</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="n">times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">populations_a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n_a</span><span class="p">)</span>
+        <span class="n">populations_b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n_b</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">times</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">populations_a</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">populations_b</span><span class="p">)</span>
+
+<span class="c1"># --- Initial Conditions ---</span>
+<span class="c1"># The deterministic fixed point is (100, 100) for gamma_c=0.</span>
+<span class="c1"># We start away from the fixed point to observe oscillations.</span>
+<span class="n">n_a0</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">n_b0</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># --- Plot 1: Stochastic Oscillations Time Series (Reproducing PPT_1.jpg) ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-v0_8-whitegrid&#39;</span><span class="p">)</span>
+<span class="n">fig1</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">gamma_c_1</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">rates_1</span> <span class="o">=</span> <span class="p">(</span><span class="n">lambda_rate</span><span class="p">,</span> <span class="n">mu_rate</span><span class="p">,</span> <span class="n">gamma_p</span><span class="p">,</span> <span class="n">gamma_c_1</span><span class="p">)</span>
+<span class="c1"># For a better single trajectory view, let&#39;s start this one away from the fixed point too</span>
+<span class="n">t_sim_1</span><span class="p">,</span> <span class="n">n_a_sim_1</span><span class="p">,</span> <span class="n">n_b_sim_1</span> <span class="o">=</span> <span class="n">lotka_volterra_gillespie</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">rates_1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim_1</span><span class="p">,</span> <span class="n">n_a_sim_1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Predator&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;royalblue&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim_1</span><span class="p">,</span> <span class="n">n_b_sim_1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Prey&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Population&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Stochastic Simulation of Predator-Prey Dynamics</span><span class="se">\n</span><span class="s1">&#39;</span>
+              <span class="sa">f</span><span class="s1">&#39;$\lambda=</span><span class="si">{</span><span class="n">lambda_rate</span><span class="si">}</span><span class="s1">, \mu=</span><span class="si">{</span><span class="n">mu_rate</span><span class="si">}</span><span class="s1">, \gamma_p=</span><span class="si">{</span><span class="n">gamma_p</span><span class="si">}</span><span class="s1">, \gamma_c=</span><span class="si">{</span><span class="n">gamma_c_1</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">,</span> 
+              <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">n_a_sim_1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">n_b_sim_1</span><span class="p">))</span> <span class="o">*</span> <span class="mf">1.1</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">n_a_sim_1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># --- Plot 2: Stochastic vs. Deterministic (Reproducing PPT2.jpg) ---</span>
+<span class="n">fig2</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># --- Left Subplot: gamma_c = 0 ---</span>
+<span class="n">ax2_left</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">gamma_c_left</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">rates_left</span> <span class="o">=</span> <span class="p">(</span><span class="n">lambda_rate</span><span class="p">,</span> <span class="n">mu_rate</span><span class="p">,</span> <span class="n">gamma_p</span><span class="p">,</span> <span class="n">gamma_c_left</span><span class="p">)</span>
+<span class="n">num_simulations</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># Number of stochastic trajectories to plot</span>
+
+<span class="c1"># Run and plot multiple stochastic simulations</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_simulations</span><span class="p">):</span>
+    <span class="n">t_sim</span><span class="p">,</span> <span class="n">n_a_sim</span><span class="p">,</span> <span class="n">n_b_sim</span> <span class="o">=</span> <span class="n">lotka_volterra_gillespie</span><span class="p">(</span><span class="n">n_a0</span><span class="p">,</span> <span class="n">n_b0</span><span class="p">,</span> <span class="n">rates_left</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+    <span class="c1"># Use a low alpha to create a &quot;cloud&quot; effect</span>
+    <span class="n">ax2_left</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">n_a_sim</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> 
+                  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Stochastic Simulation&#39;</span> <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">ax2_left</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">n_b_sim</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+
+<span class="c1"># Deterministic solution</span>
+<span class="n">t_ode</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="n">n_a0</span><span class="p">,</span> <span class="n">n_b0</span><span class="p">]</span>
+<span class="n">sol_left</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">lotka_volterra_ode</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t_ode</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">rates_left</span><span class="p">)</span>
+<span class="c1"># Plot deterministic solution with a thick black line for contrast</span>
+<span class="n">ax2_left</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_ode</span><span class="p">,</span> <span class="n">sol_left</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Deterministic Solution&#39;</span><span class="p">)</span>
+<span class="n">ax2_left</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_ode</span><span class="p">,</span> <span class="n">sol_left</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+
+
+<span class="n">ax2_left</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax2_left</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Population&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax2_left</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;$\gamma_p = </span><span class="si">{</span><span class="n">gamma_p</span><span class="si">}</span><span class="s1">, \gamma_c = </span><span class="si">{</span><span class="n">gamma_c_left</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax2_left</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax2_left</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+<span class="n">ax2_left</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">850</span><span class="p">)</span>
+
+
+<span class="c1"># --- Right Subplot: gamma_c &gt; 0 ---</span>
+<span class="n">ax2_right</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">gamma_c_right</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">rates_right</span> <span class="o">=</span> <span class="p">(</span><span class="n">lambda_rate</span><span class="p">,</span> <span class="n">mu_rate</span><span class="p">,</span> <span class="n">gamma_p</span><span class="p">,</span> <span class="n">gamma_c_right</span><span class="p">)</span>
+
+<span class="c1"># Run and plot multiple stochastic simulations</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_simulations</span><span class="p">):</span>
+    <span class="n">t_sim</span><span class="p">,</span> <span class="n">n_a_sim</span><span class="p">,</span> <span class="n">n_b_sim</span> <span class="o">=</span> <span class="n">lotka_volterra_gillespie</span><span class="p">(</span><span class="n">n_a0</span><span class="p">,</span> <span class="n">n_b0</span><span class="p">,</span> <span class="n">rates_right</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+    <span class="n">ax2_right</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">n_a_sim</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+                   <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Stochastic Simulation&#39;</span> <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">ax2_right</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">n_b_sim</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+
+<span class="c1"># Deterministic solution</span>
+<span class="n">sol_right</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">lotka_volterra_ode</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t_ode</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">rates_right</span><span class="p">)</span>
+<span class="n">ax2_right</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_ode</span><span class="p">,</span> <span class="n">sol_right</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Deterministic Solution&#39;</span><span class="p">)</span>
+<span class="n">ax2_right</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_ode</span><span class="p">,</span> <span class="n">sol_right</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+
+<span class="n">ax2_right</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax2_right</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Population&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax2_right</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;$\gamma_p = </span><span class="si">{</span><span class="n">gamma_p</span><span class="si">}</span><span class="s1">, \gamma_c = </span><span class="si">{</span><span class="n">gamma_c_right</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax2_right</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax2_right</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+<span class="n">ax2_right</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">650</span><span class="p">)</span>
+
+
+<span class="n">fig2</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Comparison of Stochastic Trajectories and Deterministic Solutions&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Code execution output" src="../../assets/images/remote/a7249f6d-3693-4c80-b256-49f91f882052-06432353d7.png" /></p>
+<p><strong>First figure (stochastic oscillation time series):</strong> This figure shows a typical stochastic simulation result in the case without prey competition (<span class="arithmatex">\(\gamma_c=0\)</span>). We can see clear predator-prey oscillations: prey (orange line) numbers first increase, then predator (blue line) numbers increase due to abundant food; increased predators cause prey numbers to decline, then predators decline due to food shortage, completing a cycle. However, unlike the perfect periodicity of the deterministic model, the oscillations here have <strong>randomly varying amplitudes and periods</strong>.</p>
+<p><img alt="Code execution output" src="../../assets/images/remote/7dc4f5d9-bb4b-4509-8fe9-176a41eeb8cc-94c9ea384f.png" /></p>
+<p><strong>Second figure (stochastic vs. deterministic comparison):</strong> This figure is the most core and thought-provoking result of this lecture.</p>
+<p><img alt="Lecture PPT screenshot" src="../../assets/images/remote/6d7d454d-aae9-4ef5-81f8-ff738df73995-420a240e98.png" /></p>
+<p><strong>Left subplot (<span class="arithmatex">\(\gamma_c=0\)</span>)</strong>: The deterministic solution (thick black line) is a perfect, stable periodic orbit. However, the behavior of stochastic simulations (thin gray lines) is completely different. The oscillation amplitudes of stochastic trajectories <strong>tend to continuously increase</strong>, showing increasingly higher peaks and increasingly lower valleys. Why is this? The deterministic system is conservative, "trapped" on an orbit determined by initial conditions. Random events (birth, death) are like random "kicks" to the system, allowing it to randomly walk between different orbits. Since there is no force pulling it back to a specific orbit, this random walk causes oscillation amplitudes to spread, greatly increasing the risk of a species' numbers reaching zero (i.e., extinction). Here, <strong>intrinsic noise plays a destabilizing role</strong>.</p>
+<p><strong>Right subplot (<span class="arithmatex">\(\gamma_c &gt; 0\)</span>)</strong>: After introducing prey competition, the deterministic solution (thick black line) shows damped oscillations, eventually stabilizing at a fixed point. The ecosystem reaches a static equilibrium. However, stochastic simulations (thin gray lines) tell a different story again. Trajectories are indeed attracted to the vicinity of the fixed point, but they <strong>do not stop</strong>. Instead, they continue to undergo random fluctuations around the fixed point. Here, deterministic dynamics act like a "restoring force", always trying to pull the system back to the equilibrium point; while random events act like a continuous "driving force", constantly kicking the system away from the equilibrium point. The dynamic balance achieved between these two maintains <strong>sustained, noisy oscillations</strong>. In this case, <strong>intrinsic noise plays a role in maintaining dynamics and preventing the system from "dying"</strong>.</p>
+<h1 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h1>
+<p>Through this lecture, we completed a journey from simple to complex, from exponential decay of a single species to complex interactions of a complete ecosystem. More importantly, we deeply explored two different philosophies for describing these systems: deterministic mean-field theory and complete stochastic theory.</p>
+<p>We summarize the following key lessons:</p>
+<p>1.<strong>Deterministic models capture average behavior</strong>: For linear processes, or for nonlinear processes with very large population sizes, deterministic (mean-field) equations can well describe the average dynamics of the system. For example, the mean value of the linear death process is completely consistent with the deterministic solution.</p>
+<p>2.<strong>Randomness reveals the essence of fluctuations</strong>: Stochastic models not only give average behavior but also precisely quantify fluctuations around the mean (variance or the entire probability distribution). This "demographic noise" is invisible in the deterministic world, but in real biological systems, they are inevitable, core components.</p>
+<p>3.<strong>The role of noise is subtle and system-dependent</strong>: By comparing Lotka-Volterra models with and without competition, we see one of the most profound conclusions: noise is not always an "annoying" random perturbation. Its role is closely related to the deterministic dynamic structure of the system itself.</p>
+<ul>
+<li>
+<p>In conservative systems with neutrally stable orbits (such as <span class="arithmatex">\(\gamma_c=0\)</span>), noise is <strong>destructive</strong>, amplifying oscillations and driving the system toward extinction.</p>
+</li>
+<li>
+<p>In dissipative systems with stable attractors (such as <span class="arithmatex">\(\gamma_c&gt;0\)</span>), noise is <strong>creative</strong>, counterbalancing deterministic attraction, maintaining sustained dynamic fluctuations of the system, and preventing it from falling into dead equilibrium.</p>
+</li>
+</ul>
+<p>Finally, this lecture tells us that to truly understand phenomena such as ecosystems, cellular networks, or epidemic transmission, we must embrace randomness. Random fluctuations are not details to be averaged away, but key factors driving systems to produce rich, complex, and even counterintuitive behaviors. The "master equation-Gillespie algorithm" framework we established provides powerful and precise tools for exploring this stochastic world.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.highlight"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../assets/javascripts/mathjax.js"></script>
+      
+        <script src="../../assets/javascripts/language-nav.js"></script>
+      
+        <script src="../../assets/javascripts/video-init.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

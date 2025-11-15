@@ -1,0 +1,3460 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Course Notes and Code (Erwin Frey, LMU Munich, 2025)">
+      
+      
+        <meta name="author" content="Zhihang Liu">
+      
+      
+        <link rel="canonical" href="https://liu-zhihang.github.io/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/notes/14.%20%E5%93%88%E5%AF%86%E5%B0%94%E9%A1%BF%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/">
+      
+      
+        <link rel="prev" href="../13.%20%E4%BD%9C%E4%B8%BA%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/">
+      
+      
+        <link rel="next" href="../15.%20%E8%B6%8B%E5%8C%96%E6%80%A7%E3%80%81%E8%B7%91%E5%8A%A8-%E7%BF%BB%E6%BB%9A%E8%BF%90%E5%8A%A8%E4%B8%8EKeller-Segel%E6%A8%A1%E5%9E%8B/">
+      
+      
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en">
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>14. 哈密尔顿蒙特卡洛采样 - Nonequilibrium Field Theories and Stochastic Dynamics</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/video.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-header__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nonequilibrium Field Theories and Stochastic Dynamics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              14. 哈密尔顿蒙特卡洛采样
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-nav__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nonequilibrium Field Theories and Stochastic Dynamics
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/1.%20Course%20Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/2.%20Simple%20Random%20Walk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Simple Random Walk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/3.%20Gaussian%20Random%20Walk%20and%20Poisson%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Gaussian Random Walk and Poisson Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/4.%20Gillespie%20Algorithm%2C%20Master%20Equation%2C%20Generating%20Functions%20and%20Population%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie Algorithm, Master Equation, Generating Functions and Population Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/5.%20Population%20Dynamics%20-%20Linear%20Death%20Process%20and%20Lotka-Volterra%20System/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Population Dynamics - Linear Death Process and Lotka-Volterra System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/6.%20Fundamental%20Equations%20of%20Markov%20Processes%20%E2%80%94%20Chapman%E2%80%93Kolmogorov%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Fundamental Equations of Markov Processes — Chapman–Kolmogorov Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/7.%20Forward%20Master%20Equation%20and%20the%20Q%20Matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Forward Master Equation and the Q Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/8.%20Perron%E2%80%93Frobenius%20Theorem%2C%20Steady%20States%2C%20and%20Detailed%20Balance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Perron–Frobenius Theorem, Steady States, and Detailed Balance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/9.%20Nonequilibrium%20States%20%E2%80%94%20Irreversibility%20and%20Entropy%20Production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Nonequilibrium States — Irreversibility and Entropy Production
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/10.%20Ehrenfest%20Model%2C%20Entropy%2C%20and%20KL%20Divergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Ehrenfest Model, Entropy, and KL Divergence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/11.%20Continuous%20Markov%20Processes%20and%20the%20Fokker%E2%80%93Planck%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Continuous Markov Processes and the Fokker–Planck Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/12.%20Brownian%20Motion%20and%20the%20Ornstein%E2%80%93Uhlenbeck%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Brownian Motion and the Ornstein–Uhlenbeck Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/13.%20Monte%20Carlo%20Sampling%20as%20a%20Stochastic%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Monte Carlo Sampling as a Stochastic Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/14.%20Hamiltonian%20Monte%20Carlo%20Sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Hamiltonian Monte Carlo Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/15.%20Chemotaxis%2C%20Run-and-Tumble%20Motion%2C%20and%20the%20Keller%E2%80%93Segel%20Model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Chemotaxis, Run-and-Tumble Motion, and the Keller–Segel Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/16.%20The%20Schnitzer%20Model%2C%20Anomalous%20Diffusion%2C%20and%20Motility%E2%80%91Induced%20Phase%20Separation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. The Schnitzer Model, Anomalous Diffusion, and Motility‑Induced Phase Separation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/17.%20Langevin%20Equation%2C%20Brownian%20Particle%2C%20and%20the%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Langevin Equation, Brownian Particle, and the Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/18.%20Fokker%E2%80%93Planck%20Equation%20and%20the%20Smoluchowski%20Equation%20%E2%80%94%20From%20Random%20Trajectories%20to%20Probability%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Fokker–Planck Equation and the Smoluchowski Equation — From Random Trajectories to Probability Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/19.%20Path%20Integral%20Formulation%20of%20Stochastic%20Processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Path Integral Formulation of Stochastic Processes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/20.%20Stochastic%20Differential%20Equations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Stochastic Differential Equations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/21.%20Ito%20Integral%20and%20Unified%20Stochastic%20Process%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Ito Integral and Unified Stochastic Process Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/22.%20Path%20Integrals%20for%20Systems%20with%20Multiplicative%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Path Integrals for Systems with Multiplicative Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/23.%20From%20Coarse-Graining%20to%20Fluctuation%20Dynamics%20of%20Continuous%20Field%20Theories/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. From Coarse-Graining to Fluctuation Dynamics of Continuous Field Theories
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/24.%20Onsager%20Coefficients%2C%20Reciprocity%2C%20and%20the%20Dynamic%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Onsager Coefficients, Reciprocity, and the Dynamic Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/25.%20Gradient%20Dynamics%2C%20Phase%20Transitions%2C%20and%20Relaxation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. Gradient Dynamics, Phase Transitions, and Relaxation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/26.%20Critical%20Slowing%20Down%2C%20Dynamic%20Response%2C%20and%20Conservation%20Laws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Critical Slowing Down, Dynamic Response, and Conservation Laws
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/27.%20Hydrodynamics%20of%20Simple%20Fluids%2C%20Inviscid%20Flow%2C%20and%20the%20Euler%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. Hydrodynamics of Simple Fluids, Inviscid Flow, and the Euler Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/28.%20Viscous%20Fluids%2C%20the%20Navier%E2%80%93Stokes%20Equation%2C%20Entropy%20Balance%2C%20and%20Heat%20Conduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. Viscous Fluids, the Navier–Stokes Equation, Entropy Balance, and Heat Conduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/29.%20Irreversible%20Linear%20Thermodynamics%20and%20Dry%20Diffusive%20Particle%20Systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. Irreversible Linear Thermodynamics and Dry Diffusive Particle Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/30.%20Brownian%20Particles%20Suspended%20in%20a%20Fluid%20%E2%80%94%20Model%20H/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. Brownian Particles Suspended in a Fluid — Model H
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/31.%20Dynamical%20Functionals%2C%20Additive%E2%80%91Noise%20Field%20Theory%2C%20and%20the%20Onsager%E2%80%93Machlup%20Functional/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. Dynamical Functionals, Additive‑Noise Field Theory, and the Onsager–Machlup Functional
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/32.%20Janssen%E2%80%93De%20Dominicis%20Response%20Functional%20and%20the%20Fluctuation%E2%80%93Dissipation%20Relation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen–De Dominicis Response Functional and the Fluctuation–Dissipation Relation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/33.%20Nonequilibrium%20Work%20and%20Fluctuation%20Theorems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. Nonequilibrium Work and Fluctuation Theorems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/34.%20Directed%20Percolation%2C%20Absorbing%20States%2C%20and%20Spectral%20Methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. Directed Percolation, Absorbing States, and Spectral Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/35.%20Path-Integral%20Representation%20of%20the%20Master%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. Path-Integral Representation of the Master Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/36.%20Coherent-State%20Path%20Integrals%2C%20Operator%20Algebra%2C%20and%20Imaginary%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. Coherent-State Path Integrals, Operator Algebra, and Imaginary Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/37.%20Kramers-Moyal%20Expansion%20and%20the%20Low-Noise%20Limit%20of%20Path%20Integrals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal Expansion and the Low-Noise Limit of Path Integrals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/38.%20Multi-Species%20Path%20Integrals%20and%20Cyclic%20Competition%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. Multi-Species Path Integrals and Cyclic Competition Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/39.%20From%20Particle%20Jumps%20to%20Continuous%20Field%20Theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. From Particle Jumps to Continuous Field Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/40.%20Unified%20Field%20Theory%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. Unified Field Theory Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    中文笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.%20%E8%AF%BE%E7%A8%8B%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 课程导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.%20%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 简单随机游走
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20%E9%AB%98%E6%96%AF%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0%E4%B8%8E%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 高斯随机游走与泊松过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20Gillespie%20%E7%AE%97%E6%B3%95%E3%80%81%E4%B8%BB%E6%96%B9%E7%A8%8B%E3%80%81%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%8D%E7%BE%A4%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie 算法、主方程、生成函数与种群动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.%20%E7%A7%8D%E7%BE%A4%E5%8A%A8%E6%80%81%E5%AD%A6%EF%BC%9A%E7%BA%BF%E6%80%A7%E6%AD%BB%E4%BA%A1%E8%BF%87%E7%A8%8B%E4%B8%8ELotka-Volterra%20%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 种群动态学：线性死亡过程与Lotka-Volterra 系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.%20%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E7%A8%8B%EF%BC%9A%E6%9F%A5%E6%99%AE%E6%9B%BC-%E7%A7%91%E5%B0%94%E8%8E%AB%E6%88%88%E7%BD%97%E5%A4%AB%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 马尔可夫过程的基本方程：查普曼-科尔莫戈罗夫方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.%20%E5%89%8D%E5%90%91%E4%B8%BB%E6%96%B9%E7%A8%8B%E4%B8%8EQ%E7%9F%A9%E9%98%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 前向主方程与Q矩阵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.%20%E4%BD%A9%E9%BE%99-%E5%BC%97%E7%BD%97%E8%B4%9D%E5%B0%BC%E4%B9%8C%E6%96%AF%E5%AE%9A%E7%90%86%E3%80%81%E7%A8%B3%E6%80%81%E4%B8%8E%E7%BB%86%E8%87%B4%E5%B9%B3%E8%A1%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 佩龙-弗罗贝尼乌斯定理、稳态与细致平衡
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81%EF%BC%9A%E4%B8%8D%E5%8F%AF%E9%80%86%E6%80%A7%E4%B8%8E%E7%86%B5%E4%BA%A7%E7%94%9F%E7%9A%84%E6%8E%A8%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 非平衡态：不可逆性与熵产生的推论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.%20%E5%9F%83%E4%BC%A6%E8%B4%B9%E6%96%AF%E7%89%B9%E6%A8%A1%E5%9E%8B%E3%80%81%E7%86%B5%E4%B8%8EKL%E6%95%A3%E5%BA%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 埃伦费斯特模型、熵与KL散度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.%20%E8%BF%9E%E7%BB%AD%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E4%B8%8E%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. 连续马尔可夫过程与福克-普朗克方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12.%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8%E4%B8%8E%E5%A5%A5%E6%81%A9%E6%96%AF%E5%9D%A6-%E4%B9%8C%E4%BC%A6%E8%B4%9D%E5%85%8B%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. 布朗运动与奥恩斯坦-乌伦贝克过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13.%20%E4%BD%9C%E4%B8%BA%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. 作为随机过程的蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. 哈密尔顿蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15.%20%E8%B6%8B%E5%8C%96%E6%80%A7%E3%80%81%E8%B7%91%E5%8A%A8-%E7%BF%BB%E6%BB%9A%E8%BF%90%E5%8A%A8%E4%B8%8EKeller-Segel%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. 趋化性、跑动-翻滚运动与Keller-Segel模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16.%20Schnitzer%E6%A8%A1%E5%9E%8B%E3%80%81%E5%8F%8D%E5%B8%B8%E6%89%A9%E6%95%A3%E4%B8%8E%E8%BF%90%E5%8A%A8%E8%AF%B1%E5%AF%BC%E7%9B%B8%E5%88%86%E7%A6%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Schnitzer模型、反常扩散与运动诱导相分离
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17.%20%E6%9C%97%E4%B9%8B%E4%B8%87%E6%96%B9%E7%A8%8B%E3%80%81%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. 朗之万方程、布朗粒子与涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18.%20%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B%E4%B8%8E%E6%96%AF%E6%91%A9%E6%A3%B1%E9%9C%8D%E5%A4%AB%E6%96%AF%E5%9F%BA%E6%96%B9%E7%A8%8B%EF%BC%9A%E4%BB%8E%E9%9A%8F%E6%9C%BA%E8%BD%A8%E8%BF%B9%E5%88%B0%E6%A6%82%E7%8E%87%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. 福克-普朗克方程与斯摩棱霍夫斯基方程：从随机轨迹到概率动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19.%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. 随机过程的路径积分表述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20.%20%E9%9A%8F%E6%9C%BA%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. 随机微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21.%20%E4%BC%8A%E8%97%A4%E7%A7%AF%E5%88%86%E4%B8%8E%E7%BB%9F%E4%B8%80%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. 伊藤积分与统一的随机过程框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22.%20%E5%90%AB%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. 含乘性噪声系统的路径积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23.%20%E4%BB%8E%E7%B2%97%E7%B2%92%E5%8C%96%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA%E6%B6%A8%E8%90%BD%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. 从粗粒化到连续场论涨落动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24.%20%E6%98%82%E8%90%A8%E6%A0%BC%E7%B3%BB%E6%95%B0%E3%80%81%E5%80%92%E6%98%93%E5%85%B3%E7%B3%BB%E4%B8%8E%E5%8A%A8%E6%80%81%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. 昂萨格系数、倒易关系与动态涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25.%20%E6%A2%AF%E5%BA%A6%E5%8A%A8%E5%8A%9B%E5%AD%A6%E3%80%81%E7%9B%B8%E5%8F%98%E4%B8%8E%E5%BC%9B%E8%B1%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. 梯度动力学、相变与弛豫
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26.%20%E4%B8%B4%E7%95%8C%E6%85%A2%E5%8C%96%E3%80%81%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%B8%8E%E5%AE%88%E6%81%92%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. 临界慢化、动态响应与守恒律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27.%20%E7%AE%80%E5%8D%95%E6%B5%81%E4%BD%93%E3%80%81%E6%97%A0%E6%91%A9%E6%93%A6%E6%B5%81%E4%BD%93%E4%B8%8E%E6%AC%A7%E6%8B%89%E6%96%B9%E7%A8%8B%E7%9A%84%E6%B5%81%E4%BD%93%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. 简单流体、无摩擦流体与欧拉方程的流体动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28.%20%E7%B2%98%E6%80%A7%E6%B5%81%E4%BD%93%E3%80%81%E7%BA%B3%E7%BB%B4-%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%96%B9%E7%A8%8B%E3%80%81%E7%86%B5%E5%B9%B3%E8%A1%A1%E4%B8%8E%E7%83%AD%E4%BC%A0%E5%AF%BC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. 粘性流体、纳维-斯托克斯方程、熵平衡与热传导
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29.%20%E4%B8%8D%E5%8F%AF%E9%80%86%E7%BA%BF%E6%80%A7%E7%83%AD%E5%8A%9B%E5%AD%A6%E4%B8%8E%E5%B9%B2%E6%80%A7%E6%89%A9%E6%95%A3%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. 不可逆线性热力学与干性扩散粒子系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30.%20%E6%82%AC%E6%B5%AE%E5%9C%A8%E6%B5%81%E4%BD%93%E4%B8%AD%E7%9A%84%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%20%E2%80%94%20H%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. 悬浮在流体中的布朗粒子 — H模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31.%20%E5%8A%A8%E6%80%81%E6%B3%9B%E5%87%BD%E3%80%81%E5%8A%A0%E6%80%A7%E5%99%AA%E5%A3%B0%E5%9C%BA%E8%AE%BA%E4%B8%8EOnsager-Machlup%E6%B3%9B%E5%87%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. 动态泛函、加性噪声场论与Onsager-Machlup泛函
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32.%20Janssen-De%20Dominicis%20%E5%93%8D%E5%BA%94%E6%B3%9B%E5%87%BD%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen-De Dominicis 响应泛函与涨落-耗散关系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E5%8A%9F%E4%B8%8E%E6%B6%A8%E8%90%BD%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. 非平衡功与涨落定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../34.%20%E6%9C%89%E5%90%91%E6%B8%97%E6%B5%81%E3%80%81%E5%90%B8%E6%94%B6%E6%80%81%E4%B8%8E%E8%B0%B1%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. 有向渗流、吸收态与谱方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../35.%20%E4%B8%BB%E6%96%B9%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E7%A4%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. 主方程的路径积分表示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../36.%20%E7%9B%B8%E5%B9%B2%E6%80%81%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E3%80%81%E7%AE%97%E7%AC%A6%E4%BB%A3%E6%95%B0%E4%B8%8E%E8%99%9A%E5%99%AA%E5%A3%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. 相干态路径积分、算符代数与虚噪声
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../37.%20Kramers-Moyal%20%E5%B1%95%E5%BC%80%E4%B8%8E%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E7%9A%84%E4%BD%8E%E5%99%AA%E5%A3%B0%E6%9E%81%E9%99%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal 展开与路径积分的低噪声极限
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../38.%20%E5%A4%9A%E7%89%A9%E7%A7%8D%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E4%B8%8E%E5%BE%AA%E7%8E%AF%E7%AB%9E%E4%BA%89%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. 多物种路径积分与循环竞争动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../39.%20%E4%BB%8E%E7%B2%92%E5%AD%90%E8%B7%B3%E8%B7%83%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. 从粒子跳跃到连续场论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../40.%20%E7%BB%9F%E4%B8%80%E7%9A%84%E5%9C%BA%E8%AE%BA%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. 统一的场论框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="_1">引言：克服随机游走的低效性<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>这节课继续由助教来教授，将介绍一种更强大的马尔可夫链蒙特卡洛（MCMC）方法，旨在克服标准Metropolis-Hastings算法的主要弱点：其在状态空间中低效的"随机游走"式探索。新的方法通过借鉴经典力学的概念，发展出一种更"智能"的提议机制。</p>
+<p><img alt="课堂板书截图" src="../../../assets/images/remote/2ccd8ca9-368f-4ebe-bd51-8ed9f89f9a01-056c7261fa.jpg" /></p>
+<p>其核心思想是，我们不再采取随机、无方向的步骤，而是将采样变量视为在势能场中运动的粒子。通过模拟其物理轨迹，我们可以提出远离当前状态但仍有很高接受概率的新状态。这使得算法能够更快地探索和收敛，尤其是在高维问题中。</p>
+<h1 id="1-metropolis-hastings">1. 回顾：Metropolis-Hastings算法及其局限性<a class="headerlink" href="#1-metropolis-hastings" title="Permanent link">&para;</a></h1>
+<p>正如我们在上一节<strong>作为随机过程的蒙特卡洛采样</strong>中所学到的，我们的目标是构建一个马尔可夫链，使其平稳分布是我们想要采样的目标概率分布 <span class="arithmatex">\(p(\theta)\)</span>。Metropolis-Hastings算法为此提供了一个通用的方案。</p>
+<p>该算法的工作方式是从一个提议分布 <span class="arithmatex">\(q(\theta'|\theta)\)</span> 中提出一个新状态 <span class="arithmatex">\(\theta'\)</span>，并以概率 <span class="arithmatex">\(\alpha\)</span> 接受它。正如助教在课程开始时所指出的，这个接受概率是满足细致平衡条件的关键。其通用形式为：</p>
+<div class="arithmatex">\[\alpha(\theta'|\theta) = \min\left(1, \frac{p(\theta)q(\theta'|\theta)}{p(\theta')q(\theta|\theta')}\right)\]</div>
+<p>这个比率的设计旨在修正提议分布 <span class="arithmatex">\(q\)</span> 中的任何不对称性，并使链偏向于具有更高概率 <span class="arithmatex">\(p\)</span> 的状态。如果我们提议移动到一个高概率区域，那么 <span class="arithmatex">\(p(\theta')\)</span> 项会很大，从而增加 <span class="arithmatex">\(\alpha\)</span>。如果我们的提议分布使得从 <span class="arithmatex">\(\theta\)</span> 到 <span class="arithmatex">\(\theta'\)</span> 比返回更容易，那么 <span class="arithmatex">\(q(\theta|\theta')/q(\theta'|\theta)\)</span> 项会对此进行修正，确保链不会被困在那些容易进入但难以离开的区域。</p>
+<p>一个常见的简化是使用对称的提议分布，即 <span class="arithmatex">\(q(\theta'|\theta) = q(\theta|\theta')\)</span>。在这种情况下，接受概率简化为：</p>
+<div class="arithmatex">\[\alpha = \min\left(1, \frac{p(\theta')}{p(\theta)}\right)\]</div>
+<p>这被称为"Metropolis"算法，是Metropolis-Hastings算法的一个特例。至关重要的是，概率分布 <span class="arithmatex">\(p(\theta)\)</span> 的归一化常数 <span class="arithmatex">\(Z\)</span> 在比率中被消掉了，这是一个巨大的实践优势。我们只需要知道 <span class="arithmatex">\(p(\theta)\)</span> 的形式，而无需计算其归一化常数。</p>
+<h2 id="metropolis-hastings">"随机游走" Metropolis-Hastings及其致命缺陷<a class="headerlink" href="#metropolis-hastings" title="Permanent link">&para;</a></h2>
+<p>一种非常常见的对称提议分布是以当前状态为中心的高斯分布：</p>
+<div class="arithmatex">\[q(\theta'|\theta) = \mathcal{N}(\theta'|\theta, \sigma^2)\]</div>
+<p>这种方法直观且易于实现，但它正是该算法效率低下的根源。这种随机游走的性能严重依赖于步长 <span class="arithmatex">\(\sigma\)</span> 的选择。</p>
+<p><strong>小步长 <span class="arithmatex">\(\sigma\)</span>：</strong>提议的新状态会非常接近当前状态。由于 <span class="arithmatex">\(p(\theta)\)</span> 的变化很小，接受率会很高。然而，链的移动非常缓慢，以扩散的方式探索分布。这导致样本之间存在高度的自相关性，意味着我们需要一条非常长的链才能获得一组具有代表性的独立样本。<strong>算法可能会被"困"在局部的概率峰值中。</strong></p>
+<p><strong>大步长 <span class="arithmatex">\(\sigma\)</span>：</strong>原则上，算法可以更快地探索空间。然而，在任何稍微复杂的分布中，一次大的随机跳跃极有可能落在一个概率低得多的区域（一个分布的"典型集"通常是一个薄壳，而不是一个实心球）。这会导致接受率 <span class="arithmatex">\(\alpha\)</span> 急剧下降，链几乎停滞不前，拒绝了几乎所有的提议。</p>
+<p>这种步长选择上的两难困境在高维空间中会变得尤其严重。在一维空间中，随机一步有50%的机会朝向"正确"的大致方向。但在 <span class="arithmatex">\(D\)</span> 维空间中，状态空间的体积呈指数级增长。一个随机的步骤几乎可以肯定会指向一个"坏"的方向，远离那些高概率所在的狭窄区域。因此，随着参数数量 <span class="arithmatex">\(D\)</span> 的增加，随机游走的效率呈指数级下降。</p>
+<p>这种权衡使得随机游走Metropolis-Hastings采样器不适用于现代贝叶斯统计、机器学习和物理学中经常遇到的复杂、高维概率分布。我们需要一种方法来提出既<strong>距离远</strong>又<strong>可能被接受</strong>的新状态。</p>
+<h1 id="2">2. 新视角：将概率重新诠释为势能<a class="headerlink" href="#2" title="Permanent link">&para;</a></h1>
+<p>为了克服随机游走在高维空间中效率低下的根本局限性，我们需要一种更“智能”的探索策略。这个策略的灵感来自于统计物理学的基石模型之一——<strong>伊辛模型（Ising model）</strong>。</p>
+<p>伊辛模型是理解物质相变（如磁铁的磁化）的范例。在其中，系统处于某个特定微观状态（例如，一串自旋向上或向下，用 <span class="arithmatex">\(\{\sigma\}\)</span> 表示）的概率，完全由其能量和环境温度决定，其形式为优美的<strong>玻尔兹曼分布</strong>：</p>
+<div class="arithmatex">\[p(\{\sigma\}) = \frac{1}{Z} e^{-\beta H(\{\sigma\})}\]</div>
+<p>在这里，<span class="arithmatex">\(H\)</span> 是该构型的哈密尔顿量（也就是能量），<span class="arithmatex">\(\beta\)</span> 是与温度相关的常数，<span class="arithmatex">\(Z\)</span> 是确保总概率为1的归一化常数（配分函数）。这个公式蕴含了一个深刻的物理直觉：<strong>能量越低的状态，其出现的概率呈指数级增高</strong>。物理系统总是倾向于停留在更稳定的低能量状态。</p>
+<p><img alt="图像截自：https://arogozhnikov.github.io/2016/12/19/markov_chain_monte_carlo.html" src="../../../assets/images/remote/df184046-13e1-45d1-9834-0472afe54332-8c74cb82c7.png" />
+这个物理图像给了我们巨大的启发。我们可以“反转”这个逻辑：对于任何我们想要采样的、抽象的目标概率分布 <span class="arithmatex">\(p(\theta)\)</span>，我们是否也能为它定义一个等效的“能量”函数 <span class="arithmatex">\(E(\theta)\)</span> 呢？答案是肯定的，我们可以强制让它们满足类似玻尔兹曼分布的关系：</p>
+<div class="arithmatex">\[p(\theta) \propto e^{-E(\theta)}\]</div>
+<p>通过对两边取对数，我们可以直接写出它们之间的换算关系：</p>
+<div class="arithmatex">\[E(\theta) = -\log p(\theta) + \text{const}\]</div>
+<p>我们将这个新定义的 <span class="arithmatex">\(E(\theta)\)</span> 称为<strong>势能（Potential Energy）</strong>。</p>
+<p>这个看似简单的数学变换，实际上是一次根本性的认知飞跃 ，它彻底改变了我们看待采样问题的方式。</p>
+<ol>
+<li>
+<p><strong>从“盲目”到“有向”</strong>：我们最初的目标是在高维空间中寻找 <span class="arithmatex">\(p(\theta)\)</span> 值高的区域。现在，我们等价的新目标是探索势能 <span class="arithmatex">\(E(\theta)\)</span> 低的区域。这成功地将一个纯粹的统计采样问题，<strong>转化为一个极富物理直觉的、探索能量景观的问题</strong>。原来在 <span class="arithmatex">\(p(\theta)\)</span> 中的高概率“山峰”，现在变成了 <span class="arithmatex">\(E(\theta)\)</span> 能量景观中的深邃“山谷”。</p>
+</li>
+<li>
+<p><strong>引入“力”的概念</strong>：随机游走之所以效率低下，是因为它是“盲目”的，它在提议下一步时完全不了解地形的走向。但在物理世界中，物体的运动不是盲目的。一个在山谷中滚动的小球会受到力的作用。这个力，正是势能的<strong>负梯度</strong>：</p>
+<div class="arithmatex">\[F = -\nabla E(\theta) = - \nabla (-\log p(\theta)) = \nabla \log p(\theta)\]</div>
+</li>
+</ol>
+<p>我们找到了摆脱随机性的钥匙。我们现在有了一个“力”，它直接由目标分布的对数梯度给出，并且这个力<strong>永远指向概率密度增长最快的方向</strong>。我们不再需要盲目试探，而是可以顺着“力”的方向，高效地向着高概率区域前进。</p>
+<p>通过这个视角转换，我们将抽象的采样问题具象化为在一个由目标分布定义的势能场中，模拟一个物理粒子的运动。这个粒子会被自然地“推”向我们最感兴趣的区域。</p>
+<p>将物理系统的动力学思想用于统计计算的想法，最早在物理学界酝酿。将这一思想具体化为我们今天所知的哈密顿蒙特卡罗（当时被称为混合蒙特卡罗，Hybrid Monte Carlo）的开创性工作，是由 <strong>Duane, Kennedy, Pendleton 和 Roweth 在1987年</strong>发表的。他们当时的目标是解决格点量子色动力学（Lattice QCD）中极具挑战性的高维积分问题。后来，这一强大方法被统计学和机器学习社区（特别是 <strong>Radford Neal</strong>）所发现和推广，并最终成为现代贝叶斯推断中最高效、最核心的算法之一。</p>
+<h1 id="3">3. 构建哈密尔顿系统：引入动量<a class="headerlink" href="#3" title="Permanent link">&para;</a></h1>
+<p>通过引入“势能”的概念，成功地将采样问题转化为一个探索物理能量景观的问题。但这还不够，因为一个只具有位置和势能的“粒子”是静止的，它无法自行探索。为了让粒子“动起来”，我们需要赋予它<strong>动量（Momentum）</strong>。这是哈密尔tonian Monte Carlo (HMC) 的核心创新，也是它与传统MCMC方法的根本区别所在。</p>
+<p>HMC的完整思想并非凭空而来。它的历史可以追溯到1980年代，最初由Simon Duane等物理学家在解决格点规范理论的复杂计算时提出。他们天才地意识到，可以借用经典力学中描述行星运动的<strong>哈密尔顿动力学</strong>框架，来指导统计采样过程，从而改变其效率。</p>
+<h2 id="31">3.1 为什么要引入动量？<a class="headerlink" href="#31" title="Permanent link">&para;</a></h2>
+<p>引入一个与我们模型参数 <span class="arithmatex">\(\theta\)</span> （位置）维度相同的、虚构的辅助“动量”变量 <span class="arithmatex">\(v\)</span>，相当于将我们的问题从一个静态的景观探索，升级为一个动态的物理系统模拟。</p>
+<ul>
+<li><strong>从一阶到二阶</strong>：传统的随机游走方法是一阶的，下一步的位置仅仅取决于当前位置。这就像一个蒙着眼睛的人，每一步都只能在原地随机摸索。引入动量后，我们构建了一个二阶动力学系统，下一步的位置不仅取决于当前位置，还取决于当前的速度（动量）。这就像给山谷中的一个溜冰者一个初始推力，他会沿着一条平滑的轨迹持续滑行很长一段距离，而不是在原地打转。</li>
+<li><strong>持久且有方向的探索</strong>：动量赋予了探索过程“惯性”。一旦被赋予了初始动量，粒子倾向于沿着一个方向持续运动，同时受到势能力（梯度的反方向）的作用而优雅地转向。这种持久性的运动使得采样器能够进行长距离的、有意义的移动，一次性跨越参数空间中的大片区域，从而高效地探索整个概率分布。</li>
+</ul>
+<h2 id="32-htheta-v">3.2 定义哈密尔顿量 <span class="arithmatex">\(H(\theta, v)\)</span><a class="headerlink" href="#32-htheta-v" title="Permanent link">&para;</a></h2>
+<p>在经典力学中，一个孤立系统的总能量是守恒的。这个总能量，即<strong>哈密尔顿量 <span class="arithmatex">\(H\)</span>，</strong>是其势能和动能之和。我们完全照搬这个物理学中最核心的概念来构建我们的系统：</p>
+<div class="arithmatex">\[H(\theta, v) = E(\theta) + K(v)\]</div>
+<ul>
+<li>
+<p><strong>势能 <span class="arithmatex">\(E(\theta)\)</span>：</strong>如上定义，<span class="arithmatex">\(E(\theta) = -\log p(\theta)\)</span>。这部分完全由我们的目标概率分布决定，它构建了粒子运动的“地形”或“能量景观”。概率越高的区域，势能越低。</p>
+</li>
+<li>
+<p><strong>动能 <span class="arithmatex">\(K(v)\)</span>：</strong>这是与运动相关的能量。其形式直接借鉴物理学，是动量的二次型函数：
+    <span class="arithmatex">\(<span class="arithmatex">\(K(v) = \frac{1}{2} v^T M^{-1} v\)</span>\)</span>
+    这里的<span class="arithmatex">\(M\)</span>是一个对称正定矩阵，被称为<strong>质量矩阵</strong>。</p>
+<ul>
+<li><strong>动量 <span class="arithmatex">\(v\)</span>：</strong>可以直观地理解为粒子在参数空间中探索的“速度和方向”。</li>
+<li><strong>质量矩阵 <span class="arithmatex">\(M\)</span>：</strong>在物理上，质量代表了惯性的大小。在这里，它扮演着一个重要的调节角色。<ul>
+<li><strong>简单情况</strong>：最简单的选择是将 <span class="arithmatex">\(M\)</span> 设为<strong>单位矩阵 (<span class="arithmatex">\(M=I\)</span>)。</strong>这意味着我们假设所有参数维度的“质量”都相同，粒子在各个方向上对“力”的响应是均等的。</li>
+<li><strong>深层含义</strong>：更高级的应用中，<span class="arithmatex">\(M\)</span>可以被设置为与目标分布的协方差相关，这使得粒子在概率密度狭窄的方向上“质量”更大（更难被推动，移动更谨慎），在概率密度宽阔的方向上“质量”更小（更容易被推动，移动更大胆），从而极大地提升了在复杂相关分布上的采样效率。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="33">3.3 联合正则分布<a class="headerlink" href="#33" title="Permanent link">&para;</a></h2>
+<p>我们现在基于这个哈密尔顿量，以和玻尔兹曼分布完全相同的形式，定义一个关于位置和动量的<strong>联合概率分布 <span class="arithmatex">\(p(\theta, v)\)</span></strong>，这在物理学中被称为<strong>正则分布（Canonical Distribution）</strong>:</p>
+<div class="arithmatex">\[p(\theta, v) = \frac{1}{Z'} e^{-H(\theta, v)} = \frac{1}{Z'} e^{-(E(\theta) + K(v))} = \frac{1}{Z'} e^{-E(\theta)} e^{-K(v)}\]</div>
+<p>这个构造看起来让问题更复杂了：我们本来只想从 <span class="arithmatex">\(p(\theta)\)</span> 采样，现在却要去从一个更高维的 <span class="arithmatex">\(p(\theta, v)\)</span> 采样。这里的奥秘在于，这个联合分布的结构是<strong>可分离的</strong>。因为哈密尔顿量被设计为两部分的和，所以联合概率可以<strong>因式分解</strong>：</p>
+<div class="arithmatex">\[p(\theta, v) = \left(\frac{1}{Z_E} e^{-E(\theta)}\right) \left(\frac{1}{Z_K} e^{-K(v)}\right) = p(\theta) p(v)\]</div>
+<p>在我们对动能 <span class="arithmatex">\(K(v)\)</span> 的常见选择下，<span class="arithmatex">\(p(v)\)</span> 就是一个简单的中心高斯分布：<span class="arithmatex">\(p(v) = \mathcal{N}(v|0, M)\)</span>。</p>
+<p>这个因式分解是HMC整个理论框架的基石。它向我们保证：</p>
+<p><strong>在这个扩展的联合分布中，位置 <span class="arithmatex">\(\theta\)</span> 和动量 <span class="arithmatex">\(v\)</span> 是相互独立的。</strong></p>
+<p>这意味着，我们引入的动量变量虽然在<strong>动力学演化</strong>中至关重要（它驱动了探索），但它并不会影响我们最终采样的<strong>静态目标分布</strong>。因此，如果我们能设计一个算法从联合分布 <span class="arithmatex">\(p(\theta, v)\)</span> 中生成样本对 <span class="arithmatex">\((\theta, v)\)</span>，我们只需在采样后简单地<strong>丢弃动量 <span class="arithmatex">\(v\)</span> 分量</strong>，剩下的 <span class="arithmatex">\(\theta\)</span> 就是我们梦寐以求的、来自原始目标分布 <span class="arithmatex">\(p(\theta)\)</span> 的有效样本。</p>
+<p>动量就像一个临时的“助推器”或“脚手架”：我们在每一步开始时随机设定一个动量（给粒子一个随机的“踢动”），让系统在物理定律的指引下演化，从而高效地提出一个高质量的候选点，任务完成后，我们就把这个助推器扔掉，准备下一次的发射。</p>
+<h1 id="4">4. 哈密尔顿蒙特卡洛分步指南<a class="headerlink" href="#4" title="Permanent link">&para;</a></h1>
+<p>HMC的每一次迭代包含两个主要阶段：首先，对动量进行一次随机"踢动"；其次，通过模拟哈密尔顿动力学生成一个确定性的提议。</p>
+<h2 id="41">4.1 第一步：动量重采样<a class="headerlink" href="#41" title="Permanent link">&para;</a></h2>
+<p>在每次迭代开始时，我们丢弃旧的动量，并从其分布 <span class="arithmatex">\(p(v)\)</span> 中抽取一个新的。这通常是一个标准多元高斯分布：</p>
+<div class="arithmatex">\[v \sim \mathcal{N}(0, M)\]</div>
+<p>从物理直觉上看，这一步相当于给我们的虚构粒子一个随机的"踢动"。这改变了系统的总能量 <span class="arithmatex">\(H\)</span>，使得采样器能够在不同的能量等值线之间跳跃，从而探索整个能量景观。没有这一步，模拟将是纯粹确定性的，并被困在单一的能量等值面上。</p>
+<h2 id="42">4.2 第二步：用哈密尔顿方程模拟物理过程<a class="headerlink" href="#42" title="Permanent link">&para;</a></h2>
+<p>给定一个起始点 <span class="arithmatex">\((\theta, \tilde{v})\)</span>，我们通过根据哈密尔顿运动方程将系统向前演化一段固定的时间 <span class="arithmatex">\(T\)</span>，来生成一个提议 <span class="arithmatex">\((\theta', v')\)</span>：</p>
+<div class="arithmatex">\[\frac{d\theta}{dt} = \frac{\partial H}{\partial v} = M^{-1}v\]</div>
+<div class="arithmatex">\[\frac{dv}{dt} = -\frac{\partial H}{\partial \theta} = -\nabla_\theta E(\theta) = \nabla_\theta \log p(\theta)\]</div>
+<p>从物理直觉上看：</p>
+<ul>
+<li>
+<p>第一个方程很简单：位置的变化率就是速度 <span class="arithmatex">\((M^{-1}v)\)</span>。</p>
+</li>
+<li>
+<p>第二个方程是牛顿第二定律 <span class="arithmatex">\((F = ma)\)</span>：动量的变化率是力，即势能的负梯度。粒子被"拉"向能量更低（概率更高）的区域。</p>
+</li>
+</ul>
+<p>这正是HMC强大之处的核心。与随机游走不同，其轨迹是由对数概率的梯度引导的。粒子会自然地朝向并探索高概率区域。这使我们能够提出一个远离当前状态 <span class="arithmatex">\(\theta\)</span> 但仍处于合理区域的新状态 <span class="arithmatex">\(\theta'\)</span>，从而获得很高的接受率。</p>
+<h2 id="43">4.3 第三步：使用蛙跳法进行数值积分<a class="headerlink" href="#43" title="Permanent link">&para;</a></h2>
+<p>哈密尔顿方程是一个连续的微分方程组。对于大多数有趣的问题，我们无法解析地求解它们，因此必须使用数值积分器来近似轨迹。像欧拉法这样的简单方法会迅速累积误差并且不能保持能量守恒，导致接受率非常低。HMC需要一种特殊的积分器，称为<strong>辛积分器</strong>（symplectic integrator）。最常见的选择是<strong>蛙跳法（Leapfrog integrator）。</strong></p>
+<p>蛙跳算法通过先更新半步动量，再更新一整步位置，最后再更新半步动量来工作。对于一个很小的时间步长 <span class="arithmatex">\(\epsilon\)</span>，一个蛙跳步骤如下 (5)：</p>
+<ol>
+<li>
+<p><span class="arithmatex">\(v(t + \epsilon/2) = v(t) - (\epsilon/2) \nabla_\theta E(\theta(t)) = v(t) + (\epsilon/2) \nabla_\theta \log p(\theta(t))\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\theta(t + \epsilon) = \theta(t) + \epsilon M^{-1} v(t + \epsilon/2)\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(v(t + \epsilon) = v(t + \epsilon/2) - (\epsilon/2) \nabla_\theta E(\theta(t + \epsilon)) = v(t + \epsilon/2) + (\epsilon/2) \nabla_\theta \log p(\theta(t + \epsilon))\)</span></p>
+</li>
+</ol>
+<p>要模拟总时间 <span class="arithmatex">\(T\)</span>，我们将这个过程重复 <span class="arithmatex">\(L = T/\epsilon\)</span> 次。</p>
+<p>为什么要费心使用这种特定的更新方案呢？像蛙跳法这样的辛积分器具有两个至关重要的特性：</p>
+<ol>
+<li>
+<p><strong>时间可逆性</strong>：如果你用蛙跳法运行 <span class="arithmatex">\(L\)</span> 步从 <span class="arithmatex">\((\theta, v)\)</span> 到达 <span class="arithmatex">\((\theta', v')\)</span>，然后将最终动量反转为 <span class="arithmatex">\(-v'\)</span> 再运行 <span class="arithmatex">\(L\)</span> 步，你将精确地回到 <span class="arithmatex">\((\theta, -v)\)</span>。这个性质对于满足细致平衡至关重要。</p>
+</li>
+<li>
+<p><strong>体积保持性</strong>：该积分器保持了 <span class="arithmatex">\((\theta, v)\)</span> 相空间的体积。这意味着它不会人为地压缩或稀释概率密度，这对于一个有效的MCMC算法来说是必需的。</p>
+</li>
+</ol>
+<p>虽然蛙跳法不能完美地保持哈密尔顿量 <span class="arithmatex">\(H\)</span>（它会有 <span class="arithmatex">\(\epsilon^2\)</span> 量级的小误差），但它具有出色的长期稳定性和保持MCMC转移有效性所需的几何特性。这使得HMC即使在许多积分步骤之后也能保持很高的接受率。</p>
+<h2 id="44-metropolis-hastings">4.4 第四步：Metropolis-Hastings修正<a class="headerlink" href="#44-metropolis-hastings" title="Permanent link">&para;</a></h2>
+<p>经过 <span class="arithmatex">\(L\)</span> 步蛙跳积分后，我们得到了一个提议状态 <span class="arithmatex">\((\theta', v')\)</span>。由于数值积分并不完美，总能量 <span class="arithmatex">\(H\)</span> 并未完全守恒。<span class="arithmatex">\(H(\theta', v')\)</span> 会与 <span class="arithmatex">\(H(\theta, \tilde{v})\)</span> 略有不同。为了修正这个数值误差并使算法精确，我们执行最后一步Metropolis接受步骤 (1)：</p>
+<div class="arithmatex">\[\alpha = \min\left(1, \exp[-(H(\theta', v') - H(\theta, \tilde{v}))]\right)\]</div>
+<p>这一点非常深刻。与随机游走Metropolis不同，HMC中的接受/拒绝步骤不是探索的主要驱动力。哈密尔顿动力学才是探索者。接受步骤是对数值积分器的质量控制检查。如果积分器在保持能量方面做得很好（<span class="arithmatex">\(H' \approx H\)</span>），那么接受概率 <span class="arithmatex">\(\alpha\)</span> 就会接近1，正如黑板上所写的（<span class="arithmatex">\(\alpha \approx 1\)</span>）。如果步长 <span class="arithmatex">\(\epsilon\)</span> 太大，积分误差会很大，能量不守恒，提议就会被（正确地）拒绝。</p>
+<h1 id="5-hmcmetropolis">5. 可视化HMC与随机游走Metropolis<a class="headerlink" href="#5-hmcmetropolis" title="Permanent link">&para;</a></h1>
+<p><img alt="MCMC动态示意图，源自：https://arogozhnikov.github.io/2016/12/19/markov_chain_monte_carlo.html" src="../../../assets/images/remote/fce73ec0-18e4-42a7-9dcd-c9681bf14310-a903c7dccc.gif" /></p>
+<p><img alt="HMC动图示意图,源自：https://arogozhnikov.github.io/2016/12/19/markov_chain_monte_carlo.html" src="../../../assets/images/remote/85404491-6daf-49e5-a4a5-819ec057382c-1fea9be497.gif" /></p>
+<p>通过上面两幅动态示意图，可以清晰的了解基于Metropolis 算法的采样和基于哈密尔顿蒙特卡洛采样的区别。</p>
+<p>为了建立直观理解，我们将通过可视化来比较一个简单的随机游走Metropolis（RWM）采样器和我们新的HMC采样器的探索行为。我们将使用一个二维相关高斯分布作为目标分布。这是一个经典的测试案例，因为变量之间的相关性使得轴对齐或简单的随机游走采样器难以高效探索。</p>
+<p>以下代码将实现并对比这两种算法。</p>
+<ol>
+<li>
+<p><strong>定义目标分布</strong>：实现二维高斯分布的对数概率（即负势能）及其梯度。</p>
+</li>
+<li>
+<p><strong>RWM采样器</strong>：实现标准的随机游走Metropolis算法。</p>
+</li>
+<li>
+<p><strong>HMC采样器</strong>：实现蛙跳积分器和完整的HMC循环。</p>
+</li>
+<li>
+<p><strong>可视化</strong>：在目标分布的等高线图上，绘制两种算法生成的样本路径。</p>
+</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">multivariate_normal</span>
+
+<span class="c1"># --- Target distribution (correlated 2D Gaussian distribution) --- </span>
+<span class="c1"># This defines our &quot;potential energy field&quot;</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+<span class="n">cov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">],</span> 
+                <span class="p">[</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]])</span>
+<span class="n">inv_cov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">cov</span><span class="p">)</span>
+<span class="n">target_dist</span> <span class="o">=</span> <span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">potential_energy</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Potential energy U(theta) = -log p(theta) &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">target_dist</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">grad_potential_energy</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Gradient of potential energy, i.e., -d/d(theta) log p(theta) &quot;&quot;&quot;</span>
+    <span class="c1"># For Gaussian distribution N(mu, Sigma), the gradient of log p is -inv(Sigma) * (theta - mu)</span>
+    <span class="c1"># So the gradient of potential energy (-log p) is inv(Sigma) * (theta - mu)</span>
+    <span class="k">return</span> <span class="n">inv_cov</span> <span class="o">@</span> <span class="p">(</span><span class="n">theta</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span>
+
+<span class="c1"># --- Leapfrog integrator ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">leapfrog</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">grad_U</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">L</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Perform L steps of leapfrog integration.</span>
+<span class="sd">    theta: current position</span>
+<span class="sd">    v: current momentum</span>
+<span class="sd">    grad_U: function to compute gradient of potential energy</span>
+<span class="sd">    epsilon: step size</span>
+<span class="sd">    L: number of steps</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Initial half-step momentum update</span>
+    <span class="n">v_half</span> <span class="o">=</span> <span class="n">v</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="n">grad_U</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+    <span class="c1"># L-1 full-step updates</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">L</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span> <span class="o">+</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="n">v_half</span>
+        <span class="n">v_half</span> <span class="o">=</span> <span class="n">v_half</span> <span class="o">-</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="n">grad_U</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+    <span class="c1"># Final full-step position update</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span> <span class="o">+</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="n">v_half</span>
+    <span class="c1"># Final half-step momentum update</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">v_half</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="n">grad_U</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">theta</span><span class="p">,</span> <span class="n">v</span>
+
+<span class="c1"># --- HMC sampler ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">hmc_sampler</span><span class="p">(</span><span class="n">start_theta</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">L</span><span class="p">):</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="p">[</span><span class="n">start_theta</span><span class="p">]</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">start_theta</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># 1. Sample momentum</span>
+        <span class="n">v_current</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1"># 2. Simulate trajectory using leapfrog</span>
+        <span class="n">theta_prop</span><span class="p">,</span> <span class="n">v_prop</span> <span class="o">=</span> <span class="n">leapfrog</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">v_current</span><span class="p">),</span> <span class="n">grad_potential_energy</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+
+        <span class="c1"># 3. Metropolis-Hastings correction</span>
+        <span class="c1"># H(theta, v) = U(theta) + K(v), where K(v) = 0.5 * v.T @ v</span>
+        <span class="n">U_current</span> <span class="o">=</span> <span class="n">potential_energy</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+        <span class="n">K_current</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">v_current</span> <span class="o">@</span> <span class="n">v_current</span><span class="p">)</span>
+        <span class="n">H_current</span> <span class="o">=</span> <span class="n">U_current</span> <span class="o">+</span> <span class="n">K_current</span>
+
+        <span class="n">U_prop</span> <span class="o">=</span> <span class="n">potential_energy</span><span class="p">(</span><span class="n">theta_prop</span><span class="p">)</span>
+        <span class="n">K_prop</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">v_prop</span> <span class="o">@</span> <span class="n">v_prop</span><span class="p">)</span>
+        <span class="n">H_prop</span> <span class="o">=</span> <span class="n">U_prop</span> <span class="o">+</span> <span class="n">K_prop</span>
+
+        <span class="c1"># Acceptance probability</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">H_current</span> <span class="o">-</span> <span class="n">H_prop</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">:</span>
+            <span class="n">theta</span> <span class="o">=</span> <span class="n">theta_prop</span>
+
+        <span class="n">samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+
+<span class="c1"># --- Random Walk Metropolis sampler ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">rwm_sampler</span><span class="p">(</span><span class="n">start_theta</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">,</span> <span class="n">step_size</span><span class="p">):</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="p">[</span><span class="n">start_theta</span><span class="p">]</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">start_theta</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># Propose a new state</span>
+        <span class="n">theta_prop</span> <span class="o">=</span> <span class="n">theta</span> <span class="o">+</span> <span class="n">step_size</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1"># Acceptance probability</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">potential_energy</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">-</span> <span class="n">potential_energy</span><span class="p">(</span><span class="n">theta_prop</span><span class="p">)))</span>
+
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">:</span>
+            <span class="n">theta</span> <span class="o">=</span> <span class="n">theta_prop</span>
+
+        <span class="n">samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+
+<span class="c1"># --- Run simulation and plot ---</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">start_theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">])</span>
+
+<span class="c1"># Adjust parameters</span>
+<span class="n">hmc_samples</span> <span class="o">=</span> <span class="n">hmc_sampler</span><span class="p">(</span><span class="n">start_theta</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">rwm_samples</span> <span class="o">=</span> <span class="n">rwm_sampler</span><span class="p">(</span><span class="n">start_theta</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">))</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">target_dist</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># RWM plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rwm_samples</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">rwm_samples</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;r-o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Random Walk Metropolis (N=</span><span class="si">{</span><span class="n">n_samples</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\theta_1$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\theta_2$&quot;</span><span class="p">)</span>
+
+<span class="c1"># HMC plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hmc_samples</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">hmc_samples</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;b-o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hamiltonian Monte Carlo (N=</span><span class="si">{</span><span class="n">n_samples</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\theta_1$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\theta_2$&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<img alt="运行代码输出" src="../../../assets/images/remote/c106da80-846b-462a-a5cc-5c345fbaeb61-010584eae8.png" /></p>
+<p>从图中可以清晰地看到，RWM采样器（左图）的路径非常密集，步子很小，探索速度缓慢，呈现出典型的扩散行为。相比之下，HMC采样器（右图）能够进行长距离的跳跃，高效地在分布的高概率区域之间移动，从而更快地获得整个分布的代表性样本。</p>
+<h1 id="6-">6. 使用现代贝叶斯方法求解洛特卡-沃尔泰拉模型参数<a class="headerlink" href="#6-" title="Permanent link">&para;</a></h1>
+<p><img alt="课堂PPT截图" src="../../../assets/images/remote/05c8213c-0050-4a2a-ba46-21b3eaeaf19c-61c8cb6f33.jpg" /></p>
+<p><img alt="课堂PPT截图" src="../../../assets/images/remote/fdac8912-48d0-4b80-922a-ed7fb4d2a59e-e9d2d7e5ad.jpg" /></p>
+<p><img alt="课堂PPT截图" src="../../../assets/images/remote/de67ae3d-9216-4c88-9ecf-c2c46592ff35-48898a5f6c.png" /></p>
+<p>现在，我们将理论付诸实践，复现上图课堂举的例子。回到讲座最初的例子：猞猁与雪兔的种群动态。我们将使用的哈密顿蒙特卡洛（Hamiltonian Monte Carlo, HMC）算法，在一个名为 <strong>PyMC</strong> 的现代概率编程框架中，根据哈德逊湾公司提供的数据，来推断描述这个生态系统的洛特卡-沃尔泰拉模型的七个未知参数（<span class="arithmatex">\(\alpha\)</span>，<span class="arithmatex">\(\beta\)</span>，<span class="arithmatex">\(\gamma\)</span>，<span class="arithmatex">\(\delta\)</span>，初始种群数量 <span class="arithmatex">\(H_{0}\)</span>，<span class="arithmatex">\(L_{0}\)</span>，以及观测噪声 <span class="arithmatex">\(\sigma\)</span>）。</p>
+<p>这个案例的挑战在于，洛特卡-沃尔泰拉模型是一组微分方程，没有简单的解析解。对于给定的参数，我们需要通过数值积分来得到种群数量的演化曲线。这使得后验概率分布 <span class="arithmatex">\(p(\theta|D)\)</span> 变得异常复杂且维度较高，参数之间可能存在强烈的相关性。这正是HMC 这类先进的 MCMC 算法大显身手的场景。</p>
+<h2 id="61">6.1 建模思路<a class="headerlink" href="#61" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>模型</strong>：洛特卡-沃尔泰拉（Lotka-Volterra）常微分方程组。</p>
+</li>
+<li>
+<p><strong>数据</strong>：1900-1920年的雪兔（Hares）和猞猁（Lynx）种群数量。</p>
+</li>
+<li>
+<p><strong>目标</strong>：求解所有未知参数的联合后验概率分布 <span class="arithmatex">\(p(\alpha,\beta,\gamma,\delta,H_{0},L_{0},\sigma|\text{数据})\)</span>。</p>
+</li>
+<li>
+<p><strong>方法</strong>：在PyMC中构建概率模型，并使用其默认的NUTS（No-U-Turn Sampler）采样器，这是一种高效的HMC变体。</p>
+</li>
+</ol>
+<p><strong>状态空间</strong>：七维参数空间 <span class="arithmatex">\((\alpha,\beta,\gamma,\delta,H_{0},L_{0},\sigma)\)</span>。</p>
+<p><strong>目标分布</strong>：后验概率 <span class="arithmatex">\(p(\theta|D) \propto p(D|\theta) p(\theta)\)</span>。</p>
+<p><strong>似然函数 <span class="arithmatex">\(p(D|\theta)\)</span>：</strong>我们假设观测数据与模型预测之间的误差服从对数正态分布。这意味着模型预测的种群数量（必须为正）在对数尺度上与观测数据的对数呈正态误差。这对于不能为负且方差可能随均值变化的种群数据是一个非常合理的假设。</p>
+<p><strong>先验分布 <span class="arithmatex">\(p(\theta)\)</span>：</strong>我们为所有参数选择了对数正态（Lognormal）或半正态（Half-Normal）分布作为先验。这是一个关键的建模选择，目的是为了施加一个物理约束：所有这些参数，无论是增长率、交互率、初始种群数还是噪声，其物理意义都决定了它们必须为正。这不仅是合理的先验知识，更是保证数值求解器稳定性的必要条件。</p>
+<p><strong>梯度信息与HMC</strong>：与依赖随机游走的Metropolis-Hastings不同，HMC算法通过模拟物理系统中的哈密顿动力学来进行采样。它利用后验分布的梯度信息来指导采样方向，从而能够以更高的效率探索复杂、高维的参数空间。在这个案例中，我们借助sunode库，它能够自动且高效地计算出ODE解对各个参数的梯度。正是这些精确的梯度信息，使得NUTS采样器能够成功地应对这个挑战。</p>
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Using modern PyMC (v5+) and sunode library to reproduce the Lotka-Volterra model.</span>
+<span class="sd">This version replaces the old PyMC3 + Theano + manual gradient implementation.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pymc</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">arviz</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">az</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sunode</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sunode.wrappers.as_pytensor</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+
+<span class="c1"># 1. Data preparation (Hudson Bay Company dataset)</span>
+<span class="c1"># Keeping consistent with the data used in the original tutorial</span>
+<span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1900</span><span class="p">,</span> <span class="mi">1921</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">hare_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="mf">30.0</span><span class="p">,</span> <span class="mf">47.2</span><span class="p">,</span> <span class="mf">70.2</span><span class="p">,</span> <span class="mf">77.4</span><span class="p">,</span> <span class="mf">36.3</span><span class="p">,</span> <span class="mf">20.6</span><span class="p">,</span> <span class="mf">18.1</span><span class="p">,</span> <span class="mf">21.4</span><span class="p">,</span> <span class="mf">22.0</span><span class="p">,</span> <span class="mf">25.4</span><span class="p">,</span>
+    <span class="mf">27.1</span><span class="p">,</span> <span class="mf">40.3</span><span class="p">,</span> <span class="mf">57.0</span><span class="p">,</span> <span class="mf">76.6</span><span class="p">,</span> <span class="mf">52.3</span><span class="p">,</span> <span class="mf">19.5</span><span class="p">,</span> <span class="mf">11.2</span><span class="p">,</span> <span class="mf">7.6</span><span class="p">,</span> <span class="mf">14.6</span><span class="p">,</span> <span class="mf">16.2</span><span class="p">,</span> <span class="mf">24.7</span>
+<span class="p">])</span>
+<span class="n">lynx_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="mf">4.0</span><span class="p">,</span> <span class="mf">6.1</span><span class="p">,</span> <span class="mf">9.8</span><span class="p">,</span> <span class="mf">35.2</span><span class="p">,</span> <span class="mf">59.4</span><span class="p">,</span> <span class="mf">41.7</span><span class="p">,</span> <span class="mf">19.0</span><span class="p">,</span> <span class="mf">13.0</span><span class="p">,</span> <span class="mf">8.3</span><span class="p">,</span> <span class="mf">9.1</span><span class="p">,</span> <span class="mf">7.4</span><span class="p">,</span>
+    <span class="mf">8.0</span><span class="p">,</span> <span class="mf">12.3</span><span class="p">,</span> <span class="mf">19.5</span><span class="p">,</span> <span class="mf">45.7</span><span class="p">,</span> <span class="mf">51.1</span><span class="p">,</span> <span class="mf">29.7</span><span class="p">,</span> <span class="mf">15.8</span><span class="p">,</span> <span class="mf">9.7</span><span class="p">,</span> <span class="mf">10.1</span><span class="p">,</span> <span class="mf">8.6</span>
+<span class="p">])</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">hare_data</span><span class="p">,</span> <span class="n">lynx_data</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">species_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hares&#39;</span><span class="p">,</span> <span class="s1">&#39;lynx&#39;</span><span class="p">]</span>
+
+<span class="c1"># 2. Define ODE equations</span>
+<span class="c1"># sunode uses sympy for symbolic definition and automatic differentiation, which is very efficient</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lotka_volterra</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Right-hand side of the Lotka-Volterra (predator-prey) equations.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        t: Time (sympy symbol)</span>
+<span class="sd">        y: Dataclass of state variables (species populations), containing y.hares and y.lynx</span>
+<span class="sd">        p: Dataclass of parameters, containing p.alpha, p.beta, p.gamma, p.delta</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A dictionary describing the rate of change of each state variable.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;hares&#39;</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">y</span><span class="o">.</span><span class="n">hares</span> <span class="o">-</span> <span class="n">p</span><span class="o">.</span><span class="n">beta</span> <span class="o">*</span> <span class="n">y</span><span class="o">.</span><span class="n">lynx</span> <span class="o">*</span> <span class="n">y</span><span class="o">.</span><span class="n">hares</span><span class="p">,</span>
+        <span class="s1">&#39;lynx&#39;</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">delta</span> <span class="o">*</span> <span class="n">y</span><span class="o">.</span><span class="n">hares</span> <span class="o">*</span> <span class="n">y</span><span class="o">.</span><span class="n">lynx</span> <span class="o">-</span> <span class="n">p</span><span class="o">.</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">y</span><span class="o">.</span><span class="n">lynx</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<span class="c1"># 3. Build PyMC probabilistic model</span>
+<span class="c1"># Define coordinates to use &#39;time&#39; and &#39;species&#39; dimensions in the model</span>
+<span class="n">coords</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="n">times</span><span class="p">,</span> <span class="s2">&quot;species&quot;</span><span class="p">:</span> <span class="n">species_names</span><span class="p">}</span>
+
+<span class="k">with</span> <span class="n">pm</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">coords</span><span class="o">=</span><span class="n">coords</span><span class="p">)</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
+    <span class="c1"># --- Prior distributions ---</span>
+    <span class="c1"># Use Lognormal priors to ensure parameters are positive, preventing ODE solutions from becoming negative</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Lognormal</span><span class="p">(</span><span class="s2">&quot;alpha&quot;</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Lognormal</span><span class="p">(</span><span class="s2">&quot;beta&quot;</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">0.05</span><span class="p">),</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">gamma</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Lognormal</span><span class="p">(</span><span class="s2">&quot;gamma&quot;</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Lognormal</span><span class="p">(</span><span class="s2">&quot;delta&quot;</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">0.05</span><span class="p">),</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="c1"># Priors for initial states</span>
+    <span class="n">initial_hares</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Lognormal</span><span class="p">(</span><span class="s2">&quot;initial_hares&quot;</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">initial_lynx</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Lognormal</span><span class="p">(</span><span class="s2">&quot;initial_lynx&quot;</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Prior for observation noise</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">HalfNormal</span><span class="p">(</span><span class="s2">&quot;sigma&quot;</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># --- Solve ODE using sunode ---</span>
+    <span class="c1"># This is the key step that replaces the manual Theano Op</span>
+    <span class="n">y_hat</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sunode</span><span class="o">.</span><span class="n">wrappers</span><span class="o">.</span><span class="n">as_pytensor</span><span class="o">.</span><span class="n">solve_ivp</span><span class="p">(</span>
+        <span class="n">y0</span><span class="o">=</span><span class="p">{</span>
+            <span class="c1"># Define initial conditions for the ODE</span>
+            <span class="c1"># Format: {&#39;variable_name&#39;: (PyTensor variable, shape)}</span>
+            <span class="s1">&#39;hares&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">initial_hares</span><span class="p">,</span> <span class="p">()),</span>
+            <span class="s1">&#39;lynx&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">initial_lynx</span><span class="p">,</span> <span class="p">()),</span>
+        <span class="p">},</span>
+        <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+            <span class="c1"># Define parameters for the ODE</span>
+            <span class="c1"># sunode will automatically compute gradients with respect to these PyTensor variables</span>
+            <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="p">()),</span>
+            <span class="s1">&#39;beta&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">beta</span><span class="p">,</span> <span class="p">()),</span>
+            <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">gamma</span><span class="p">,</span> <span class="p">()),</span>
+            <span class="s1">&#39;delta&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="p">()),</span>
+            <span class="c1"># sunode requires all parameters to be PyTensor variables or numpy arrays</span>
+            <span class="s1">&#39;_dummy&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">0.</span><span class="p">),</span> 
+        <span class="p">},</span>
+        <span class="c1"># Pass in the ODE function we defined earlier</span>
+        <span class="n">rhs</span><span class="o">=</span><span class="n">lotka_volterra</span><span class="p">,</span>
+        <span class="c1"># Define time points for solving</span>
+        <span class="n">tvals</span><span class="o">=</span><span class="n">times</span><span class="p">,</span>
+        <span class="n">t0</span><span class="o">=</span><span class="n">times</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="c1"># --- Likelihood function ---</span>
+    <span class="c1"># sunode returns a dictionary, we need to stack the solution into a matrix to match the shape of observed data</span>
+    <span class="n">ode_solution</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">y_hat</span><span class="p">[</span><span class="s1">&#39;hares&#39;</span><span class="p">],</span> <span class="n">y_hat</span><span class="p">[</span><span class="s1">&#39;lynx&#39;</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Assume observations follow a log-normal distribution</span>
+    <span class="n">Y_obs</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Lognormal</span><span class="p">(</span>
+        <span class="s2">&quot;Y_obs&quot;</span><span class="p">,</span> 
+        <span class="n">mu</span><span class="o">=</span><span class="n">pm</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">ode_solution</span><span class="p">),</span> 
+        <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> 
+        <span class="n">observed</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> 
+        <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;species&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="c1"># 4. Run sampler</span>
+<span class="c1"># The NUTS sampler will utilize the exact gradient information provided by sunode</span>
+<span class="k">with</span> <span class="n">model</span><span class="p">:</span>
+    <span class="c1"># sunode&#39;s C backend does not support multiprocessing &quot;pickling&quot;, so we must use a single core</span>
+    <span class="n">idata</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="n">tune</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">chains</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">cores</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">target_accept</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+<span class="c1"># 5. Results visualization</span>
+<span class="c1"># Plot posterior distributions of parameters</span>
+<span class="n">az</span><span class="o">.</span><span class="n">plot_posterior</span><span class="p">(</span><span class="n">idata</span><span class="p">,</span> <span class="n">var_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;alpha&quot;</span><span class="p">,</span> <span class="s2">&quot;beta&quot;</span><span class="p">,</span> <span class="s2">&quot;gamma&quot;</span><span class="p">,</span> <span class="s2">&quot;delta&quot;</span><span class="p">,</span> <span class="s2">&quot;initial_hares&quot;</span><span class="p">,</span> <span class="s2">&quot;initial_lynx&quot;</span><span class="p">,</span> <span class="s2">&quot;sigma&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Posterior Distributions of Parameters&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;lv_posterior_distributions.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Extract posterior predictive samples</span>
+<span class="k">with</span> <span class="n">model</span><span class="p">:</span>
+    <span class="n">posterior_predictive</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">sample_posterior_predictive</span><span class="p">(</span><span class="n">idata</span><span class="p">)</span>
+
+<span class="c1"># Plot posterior predictions vs. real data</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">species_names</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span> <span class="s1">&#39;C1&#39;</span><span class="p">])):</span>
+    <span class="c1"># Plot real data</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">data</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Observed </span><span class="si">{</span><span class="n">spec</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Extract posterior predictive mean and 94% credible interval</span>
+    <span class="n">pred_mean</span> <span class="o">=</span> <span class="n">posterior_predictive</span><span class="o">.</span><span class="n">posterior_predictive</span><span class="p">[</span><span class="s1">&#39;Y_obs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;chain&#39;</span><span class="p">,</span> <span class="s1">&#39;draw&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">species</span><span class="o">=</span><span class="n">spec</span><span class="p">)</span>
+    <span class="n">hdi_94</span> <span class="o">=</span> <span class="n">az</span><span class="o">.</span><span class="n">hdi</span><span class="p">(</span><span class="n">posterior_predictive</span><span class="o">.</span><span class="n">posterior_predictive</span><span class="p">[</span><span class="s1">&#39;Y_obs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">species</span><span class="o">=</span><span class="n">spec</span><span class="p">),</span> <span class="n">hdi_prob</span><span class="o">=</span><span class="mf">0.94</span><span class="p">)</span>
+
+    <span class="c1"># Plot posterior predictions</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">pred_mean</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Posterior Mean </span><span class="si">{</span><span class="n">spec</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># Use isel (integer selection) instead of sel (label selection) to get HDI upper and lower bounds</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">hdi_94</span><span class="o">.</span><span class="n">Y_obs</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">hdi</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">hdi_94</span><span class="o">.</span><span class="n">Y_obs</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">hdi</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;94% HDI&quot;</span><span class="p">)</span>
+
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Population&quot;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">spec</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2"> Population Dynamics&quot;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;lv_posterior_predictions.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 6. Phase plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">pred_mean_hares</span> <span class="o">=</span> <span class="n">posterior_predictive</span><span class="o">.</span><span class="n">posterior_predictive</span><span class="p">[</span><span class="s1">&#39;Y_obs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;chain&#39;</span><span class="p">,</span> <span class="s1">&#39;draw&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">species</span><span class="o">=</span><span class="s1">&#39;hares&#39;</span><span class="p">)</span>
+<span class="n">pred_mean_lynx</span> <span class="o">=</span> <span class="n">posterior_predictive</span><span class="o">.</span><span class="n">posterior_predictive</span><span class="p">[</span><span class="s1">&#39;Y_obs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;chain&#39;</span><span class="p">,</span> <span class="s1">&#39;draw&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">species</span><span class="o">=</span><span class="s1">&#39;lynx&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pred_mean_hares</span><span class="p">,</span> <span class="n">pred_mean_lynx</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Posterior Mean Trajectory&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hare_data</span><span class="p">,</span> <span class="n">lynx_data</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Observed Data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Hares Population&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Lynx Population&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Lotka-Volterra Phase Portrait&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;lv_phase_portrait.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="c1"># 7. Trace plot</span>
+<span class="c1"># This plot is used to diagnose the health of the MCMC sampling process</span>
+<span class="n">az</span><span class="o">.</span><span class="n">plot_trace</span><span class="p">(</span><span class="n">idata</span><span class="p">,</span> <span class="n">var_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;alpha&quot;</span><span class="p">,</span> <span class="s2">&quot;beta&quot;</span><span class="p">,</span> <span class="s2">&quot;gamma&quot;</span><span class="p">,</span> <span class="s2">&quot;delta&quot;</span><span class="p">,</span> <span class="s2">&quot;initial_hares&quot;</span><span class="p">,</span> <span class="s2">&quot;initial_lynx&quot;</span><span class="p">,</span> <span class="s2">&quot;sigma&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;lv_trace_plot.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 8. Results visualization</span>
+<span class="c1"># Plot posterior distributions of parameters</span>
+<span class="n">az</span><span class="o">.</span><span class="n">plot_posterior</span><span class="p">(</span>
+    <span class="n">idata</span><span class="p">,</span> 
+    <span class="n">var_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;alpha&quot;</span><span class="p">,</span> <span class="s2">&quot;beta&quot;</span><span class="p">,</span> <span class="s2">&quot;gamma&quot;</span><span class="p">,</span> <span class="s2">&quot;delta&quot;</span><span class="p">,</span> <span class="s2">&quot;initial_hares&quot;</span><span class="p">,</span> <span class="s2">&quot;initial_lynx&quot;</span><span class="p">,</span> <span class="s2">&quot;sigma&quot;</span><span class="p">],</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span>  <span class="c1"># Set chart type to histogram</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Posterior Distributions of Parameters (Histogram)&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;lv_posterior_histograms.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="运行代码输出" src="../../../assets/images/remote/7084c190-0ab6-44ef-a9ae-d03697bb9f5a-f94ef59de5.png" /></p>
+<p>我们可以发现，与上一节课我们实现的Metropolis-Hastings MCMC 代码相比，这份代码运行时长更久。根本原因在于其采用了计算上更昂贵的 <strong>哈密顿蒙特卡洛（HMC） 算法</strong>，在每次迭代中，Metropolis-Hastings 仅需对微分方程（ODE）进行一次数值求解来计算似然；而HMC 为了实现更高效的参数空间探索，不仅需要求解ODE，还必须通过 sunode 求解一个更复杂的伴随微分方程组来获得后验概率的梯度 ，并利用这个梯度信息模拟一整段运动轨迹来产生下一个样本点。</p>
+<p>为什么计算时间那么长我们还是要使用 HMC呢？首先 HMC 更全面的建模，更诚实的不确定性,我们没有假定初始值和误差是已知的。通过同时推断这8个参数，我们得到了一个对系统整体不确定性更完整、更诚实的评估。上一节的MH代码因为固定了这些值，可能会低估最终的不确定性。 </p>
+<p>其次，无与伦比的采样效率和可靠性，这可能是最重要的优势。虽然MH在10分钟内给出50000个样本，但这些样本可能因为高度相关，实际只相当于几百个独立的有效样本。而NUTS花更长4000个样本，可能就相当于上千个独立的有效样本。对于复杂的科学问题， 样本的“质”远比“量”重要 。 HMC 给出的结果远比MH可靠，更能保证我们探索到了后验分布的真实形状。 </p>
+<p>其实有一点数据基础的同学可能会有疑惑，我们明明会有更快速的方法(如 scipy.optimize.curve_fit)  ：可以在几秒钟内给你一组最优的参数值（一个点估计）。它能告诉你“哪条曲线能最好地穿过这些数据点”。但贝叶斯ODE方法(我们用的)  ：它不仅给出了参数的估计，还给出了 参数的完整后验分布 。它能告诉你：“根据数据和我们的物理模型，猎物出生率 α 有95%的可能性在[0.5, 0.8] 这个区间内，最可能的值是0.65”。 </p>
+<p>这在科研追求中是天壤之别。<strong>我们关心的往往不是那条最优的曲线，而是驱动这个系统的内在规律 ，也就是<span class="arithmatex">\(\alpha, \beta, \gamma, \delta\)</span>这些参数的真实值。</strong>理解这些参数，就是理解这个生态系统本身。这就像医生诊断病因，而不是仅仅退烧。 </p>
+<p>因此，我们真正的科学是严谨的不确定性量化(Rigorous Uncertainty Quantification)而非仅仅是数据炼丹，在科学、工程和政策制定中，知道我们对一个结果“有多确定”至关重要。比如，当我们说“根据模型，2030年的海平面上升有95%的概率在10到15厘米之间”，这种带有严格概率保证的陈述，是制定应对气候变化政策的基石。同样，在药物研发中，确定一个新药有效剂量的置信区间，直接关系到患者的生命安全。我们愿意花几周的计算时间，来换取这种可靠性。 </p>
+<p>更为重要的是，我们可以榨干数据中的每一滴信息，在很多科研领域，数据是极其宝贵和稀疏的。比如： </p>
+<ul>
+<li>
+<p>临床试验 ：病人数量有限。</p>
+</li>
+<li>
+<p>古生物学 ：化石样本稀少。 </p>
+</li>
+<li>
+<p>太空探索 ：探测器传回的数据有限。 </p>
+</li>
+</ul>
+<p>在这些场景下，我们无法使用需要海量数据的深度学习。但贝叶斯方法可以通过结合先验知识（我们的ODE模型就是一种极强的先验） 和少量数据，得出非常稳健的结论。它“榨干”了数据中的每一滴信息。 </p>
+<p><img alt="运行代码输出" src="../../../assets/images/remote/c528e38e-64b9-495e-b05c-3650b39479ad-2dcb534d86.png" />
+贝叶斯模型在学习了哈德逊湾公司的历史数据后，对洛特卡-沃尔泰拉方程中七个未知参数（包括两个初始值和噪声）的最终推断结果。每一幅子图都代表一个参数的概率分布。 </p>
+<p><img alt="运行代码输出" src="../../../assets/images/remote/354fbb6c-e2a3-448a-926c-974f3bb96ab8-103b6a0206.png" /></p>
+<p>图中两条实线（蓝色代表雪兔，橙色代表猞猁）是模型的“最佳预测”轨迹（即后验均值预测）。我们可以清楚地看到，这条预测线非常成功地捕捉了两种物种数量随时间变化的周期性涨落规律。雪兔种群先达到顶峰，随后作为食物来源的猞猁种群也随之繁荣；而猞-猁数量的增加又导致雪兔被大量捕食而减少，接着猞猁也因食物短缺而数量下降，如此循环往复。 </p>
+<p><img alt="运行代码输出" src="../../../assets/images/remote/01e7f859-1225-4d30-bb4c-74a8c05be5ad-358f51403e.png" /></p>
+<p>洛特卡-沃尔泰拉模型的相图(Phase Portrait)。这张图最核心的特征就是一个 闭合的环路 。这正是捕食者-被捕食者系统的标志性动力学特征。与上一张时间序列图相比，这张相图更能证明模型不仅仅是“拟合了几个数据点”，而是真正理解并复现了这个生态系统内部的动力学反馈机制它证明了模型所学到的参数（ <span class="arithmatex">\(α , β , γ , δ\)</span>）组合在一起时，能够生成一个与现实世界观察到的循环路径非常相似的理论路径。 </p>
+<p><img alt="代码运行输出" src="../../../assets/images/remote/638e624f-5057-4474-b332-5f659b3f4c78.png" /></p>
+<p>图的右侧部分，每个参数的采样轨迹都像一条稳定而“毛茸茸的毛毛虫”，没有向上或向下的漂移趋势，这表明采样过程已经完全收敛。同时，左侧的后验分布图中，来自4个独立采样链的曲线几乎完美地重叠在一起，这进一步证明它们都一致地找到了相同的目标分布</p>
+<h1 id="_2">总结<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<p>HMC利用目标分布的几何信息（通过其梯度）来提出远距离且有效的移动，极大地提高了相比于随机游走等扩散性方法的采样效率。然而，这种效率是有代价的：HMC要求计算对数概率的梯度，并且有更多的调节参数（步长 <span class="arithmatex">\(\epsilon\)</span>，步数 <span class="arithmatex">\(L\)</span>），算法运行时长更长。</p>
+<p>下表总结了本讲讨论的MCMC算法之间的关键区别。</p>
+<p><strong>表1：MCMC采样算法比较</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">特性</th>
+<th style="text-align: left;">随机游走Metropolis (RWM)</th>
+<th style="text-align: left;">哈密尔顿蒙特卡洛 (HMC)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">提议机制</td>
+<td style="text-align: left;">扩散性随机步（如高斯噪声）</td>
+<td style="text-align: left;">基于哈密尔顿动力学的确定性轨迹</td>
+</tr>
+<tr>
+<td style="text-align: left;">探索行为</td>
+<td style="text-align: left;">局部、缓慢、样本自相关性高</td>
+<td style="text-align: left;">全局、快速、样本自相关性低</td>
+</tr>
+<tr>
+<td style="text-align: left;">所需信息</td>
+<td style="text-align: left;">目标密度 p(θ) (可差一个常数)</td>
+<td style="text-align: left;">目标密度 p(θ) 及其梯度 ∇log p(θ)</td>
+</tr>
+<tr>
+<td style="text-align: left;">接受率</td>
+<td style="text-align: left;">对步长敏感；通常调至约23%以达最优效率</td>
+<td style="text-align: left;">若调节得当，通常非常高(&gt;80%)；反映了积分器的精度</td>
+</tr>
+<tr>
+<td style="text-align: left;">关键调节参数</td>
+<td style="text-align: left;">步长 σ</td>
+<td style="text-align: left;">步长 ε，步数 L</td>
+</tr>
+<tr>
+<td style="text-align: left;">高维性能</td>
+<td style="text-align: left;">差；受维度灾难影响严重</td>
+<td style="text-align: left;">优秀；性能随维度增加的扩展性更好</td>
+</tr>
+<tr>
+<td style="text-align: left;">主要应用场景</td>
+<td style="text-align: left;">简单问题或梯度不可用时</td>
+<td style="text-align: left;">复杂模型中对连续可微分布采样的黄金标准</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>速度</strong></td>
+<td style="text-align: left;"><strong>单次迭代速度快，因为计算简单</strong></td>
+<td style="text-align: left;"><strong>单次迭代速度极慢，因为要计算梯度</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>作为初学者，学完这一讲这自然会引出一个问题：在拥有强大深度学习工具的今天，这种“老派”方法是否已经过时或“不如”深度学习？</strong></p>
+<p>答案是： 它们不是简单的优劣关系，而是适用于不同问题、各有千秋的两种强大工具。而真正的科学前沿，正是在于将这两者结合起来。 </p>
+<p>让我们来深入对比一下。</p>
+<p><strong>方法对比：贝叶斯ODE推断 vs. 纯深度学习</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">特性</th>
+<th style="text-align: left;">贝叶斯ODE推断 (我们刚刚用的方法)</th>
+<th style="text-align: left;">纯深度学习方法 (例如 RNN, LSTM, Transformer)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>可解释性</strong></td>
+<td style="text-align: left;"><strong>极强 (白箱)。</strong>模型的每个参数都有明确的物理意义（<span class="arithmatex">\(\alpha\)</span>是出生率，<span class="arithmatex">\(\beta\)</span>是捕食率等）。我们可以分析参数的后验分布，理解系统内在的驱动力。</td>
+<td style="text-align: left;"><strong>极弱 (黑箱)。</strong>模型由数百万个权重和偏置组成，很难理解其内部决策逻辑。我们只知道输入和输出的关系，不知道“为什么”。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>数据需求</strong></td>
+<td style="text-align: left;"><strong>较低</strong>。由于模型结构基于物理定律，它为数据提供了一个强大的“骨架”。即使数据点不多，也能得到相对可靠的结果。</td>
+<td style="text-align: left;"><strong>极高</strong>。需要大量数据才能让网络学习到潜在的动态模式，否则很容易过拟合。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>先验知识/物理约束</strong></td>
+<td style="text-align: left;"><strong>核心优势</strong>。整个模型就是建立在领域知识（Lotka-Volterra方程）之上的。我们可以通过先验分布融入更多专家经验。</td>
+<td style="text-align: left;"><strong>默认忽略</strong>。模型从数据中学习一切，不直接利用已知的物理定律。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>不确定性量化</strong></td>
+<td style="text-align: left;"><strong>黄金标准</strong>。天生就能提供所有参数的完整后验分布，以及对预测结果的严格置信区间（Credible Intervals），这对于科学决策至关重要。</td>
+<td style="text-align: left;"><strong>默认不提供</strong>。标准神经网络只给出一个点估计预测。虽然有贝叶斯神经网络（BNN）等技术，但通常更复杂且应用较少。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>计算速度</strong></td>
+<td style="text-align: left;"><strong>推断(采样)极慢</strong>，正如我们所见。但<strong>训练/学习</strong>的概念较弱，主要是采样。</td>
+<td style="text-align: left;"><strong>训练极慢</strong>，需要大量GPU时间和数据。但一旦训练完成，<strong>预测(推断)极快</strong>。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>泛化与外推</strong></td>
+<td style="text-align: left;"><strong>较强</strong>。因为模型基于“定律”，它在数据范围之外进行预测（外推）时，表现通常比纯数据驱动方法更可靠。</td>
+<td style="text-align: left;"><strong>极弱</strong>。非常不擅长外推。如果遇到训练数据之外的新情况，预测结果可能完全错误。</td>
+</tr>
+</tbody>
+</table>
+<p>当前计算科学领域最热门的方向之一：<strong>科学机器学习 (Scientific Machine Learning)，</strong>其核心思想就是将两者最好的部分结合起来。代表性的技术有：</p>
+<p><strong>1. 通用微分方程 (Universal Differential Equations, UDEs)</strong></p>
+<p>它的做法是：
+* 我们从一个已知的、但不完美的物理模型（比如我们的Lotka-Volterra方程）开始。
+* 然后，我们<strong>用一个神经网络来学习模型的未知部分或误差项</strong>。</p>
+<p>方程就变成了这样：</p>
+<div class="arithmatex">\[\frac{dx}{dt} = \alpha x - \beta xy + \mathbf{NN_x}(x, y, \theta_{NN})\]</div>
+<div class="arithmatex">\[\frac{dy}{dt} = \delta xy - \gamma y + \mathbf{NN_y}(x, y, \theta_{NN})\]</div>
+<p><strong>这样做的好处是：</strong></p>
+<ul>
+<li>
+<p><strong>保留可解释性</strong>：我们仍然可以推断出有物理意义的参数 <span class="arithmatex">\(\alpha, \beta, \gamma, \delta\)</span>。</p>
+</li>
+<li>
+<p><strong>提升模型精度</strong>：神经网络 <span class="arithmatex">\(\mathbf{NN}\)</span> 可以从数据中学习并修正原始物理模型的不足之处（例如，环境承载力、季节变化等Lotka-Volterra没考虑的因素）。</p>
+</li>
+<li>
+<p><strong>数据效率更高</strong>：因为大部分结构由物理定律提供，神经网络只需要学习“残差”部分，所需数据远少于纯深度学习。</p>
+</li>
+<li>
+<p><strong>速度更快</strong>：通常使用基于梯度的优化算法进行训练，比纯MCMC采样快几个数量级。</p>
+</li>
+</ul>
+<p><strong>2. 物理信息神经网络 (Physics-Informed Neural Networks, PINNs)</strong></p>
+<p>这是另一种思路。它让一个神经网络直接去拟合数据，但<strong>在训练的损失函数中加入一项，惩罚那些不遵守已知物理定律（如ODE方程）的解</strong>。</p>
+<ul>
+<li><strong>损失函数 =</strong> 数据拟合误差 + 物理方程残差</li>
+</ul>
+<p>这相当于强迫神经网络在学习数据模式的同时，也必须“尊重”物理定律。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.highlight"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../../assets/javascripts/mathjax.js"></script>
+      
+        <script src="../../../assets/javascripts/language-nav.js"></script>
+      
+        <script src="../../../assets/javascripts/video-init.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

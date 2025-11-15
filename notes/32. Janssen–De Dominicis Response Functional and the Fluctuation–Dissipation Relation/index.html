@@ -1,0 +1,3162 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Course Notes and Code (Erwin Frey, LMU Munich, 2025)">
+      
+      
+        <meta name="author" content="Zhihang Liu">
+      
+      
+        <link rel="canonical" href="https://liu-zhihang.github.io/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/notes/32.%20Janssen%E2%80%93De%20Dominicis%20Response%20Functional%20and%20the%20Fluctuation%E2%80%93Dissipation%20Relation/">
+      
+      
+        <link rel="prev" href="../31.%20Dynamical%20Functionals%2C%20Additive%E2%80%91Noise%20Field%20Theory%2C%20and%20the%20Onsager%E2%80%93Machlup%20Functional/">
+      
+      
+        <link rel="next" href="../33.%20Nonequilibrium%20Work%20and%20Fluctuation%20Theorems/">
+      
+      
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en">
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>32. Janssen–De Dominicis Response Functional and the Fluctuation–Dissipation Relation - Nonequilibrium Field Theories and Stochastic Dynamics</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/video.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-from-onsager-machlup-to-the-j-d-action" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-header__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nonequilibrium Field Theories and Stochastic Dynamics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              32. Janssen–De Dominicis Response Functional and the Fluctuation–Dissipation Relation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-nav__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nonequilibrium Field Theories and Stochastic Dynamics
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.%20Course%20Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.%20Simple%20Random%20Walk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Simple Random Walk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20Gaussian%20Random%20Walk%20and%20Poisson%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Gaussian Random Walk and Poisson Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20Gillespie%20Algorithm%2C%20Master%20Equation%2C%20Generating%20Functions%20and%20Population%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie Algorithm, Master Equation, Generating Functions and Population Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.%20Population%20Dynamics%20-%20Linear%20Death%20Process%20and%20Lotka-Volterra%20System/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Population Dynamics - Linear Death Process and Lotka-Volterra System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.%20Fundamental%20Equations%20of%20Markov%20Processes%20%E2%80%94%20Chapman%E2%80%93Kolmogorov%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Fundamental Equations of Markov Processes — Chapman–Kolmogorov Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.%20Forward%20Master%20Equation%20and%20the%20Q%20Matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Forward Master Equation and the Q Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.%20Perron%E2%80%93Frobenius%20Theorem%2C%20Steady%20States%2C%20and%20Detailed%20Balance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Perron–Frobenius Theorem, Steady States, and Detailed Balance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.%20Nonequilibrium%20States%20%E2%80%94%20Irreversibility%20and%20Entropy%20Production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Nonequilibrium States — Irreversibility and Entropy Production
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.%20Ehrenfest%20Model%2C%20Entropy%2C%20and%20KL%20Divergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Ehrenfest Model, Entropy, and KL Divergence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.%20Continuous%20Markov%20Processes%20and%20the%20Fokker%E2%80%93Planck%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Continuous Markov Processes and the Fokker–Planck Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12.%20Brownian%20Motion%20and%20the%20Ornstein%E2%80%93Uhlenbeck%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Brownian Motion and the Ornstein–Uhlenbeck Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13.%20Monte%20Carlo%20Sampling%20as%20a%20Stochastic%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Monte Carlo Sampling as a Stochastic Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14.%20Hamiltonian%20Monte%20Carlo%20Sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Hamiltonian Monte Carlo Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15.%20Chemotaxis%2C%20Run-and-Tumble%20Motion%2C%20and%20the%20Keller%E2%80%93Segel%20Model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Chemotaxis, Run-and-Tumble Motion, and the Keller–Segel Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16.%20The%20Schnitzer%20Model%2C%20Anomalous%20Diffusion%2C%20and%20Motility%E2%80%91Induced%20Phase%20Separation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. The Schnitzer Model, Anomalous Diffusion, and Motility‑Induced Phase Separation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17.%20Langevin%20Equation%2C%20Brownian%20Particle%2C%20and%20the%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Langevin Equation, Brownian Particle, and the Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18.%20Fokker%E2%80%93Planck%20Equation%20and%20the%20Smoluchowski%20Equation%20%E2%80%94%20From%20Random%20Trajectories%20to%20Probability%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Fokker–Planck Equation and the Smoluchowski Equation — From Random Trajectories to Probability Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19.%20Path%20Integral%20Formulation%20of%20Stochastic%20Processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Path Integral Formulation of Stochastic Processes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20.%20Stochastic%20Differential%20Equations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Stochastic Differential Equations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21.%20Ito%20Integral%20and%20Unified%20Stochastic%20Process%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Ito Integral and Unified Stochastic Process Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22.%20Path%20Integrals%20for%20Systems%20with%20Multiplicative%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Path Integrals for Systems with Multiplicative Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23.%20From%20Coarse-Graining%20to%20Fluctuation%20Dynamics%20of%20Continuous%20Field%20Theories/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. From Coarse-Graining to Fluctuation Dynamics of Continuous Field Theories
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24.%20Onsager%20Coefficients%2C%20Reciprocity%2C%20and%20the%20Dynamic%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Onsager Coefficients, Reciprocity, and the Dynamic Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25.%20Gradient%20Dynamics%2C%20Phase%20Transitions%2C%20and%20Relaxation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. Gradient Dynamics, Phase Transitions, and Relaxation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26.%20Critical%20Slowing%20Down%2C%20Dynamic%20Response%2C%20and%20Conservation%20Laws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Critical Slowing Down, Dynamic Response, and Conservation Laws
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27.%20Hydrodynamics%20of%20Simple%20Fluids%2C%20Inviscid%20Flow%2C%20and%20the%20Euler%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. Hydrodynamics of Simple Fluids, Inviscid Flow, and the Euler Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28.%20Viscous%20Fluids%2C%20the%20Navier%E2%80%93Stokes%20Equation%2C%20Entropy%20Balance%2C%20and%20Heat%20Conduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. Viscous Fluids, the Navier–Stokes Equation, Entropy Balance, and Heat Conduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29.%20Irreversible%20Linear%20Thermodynamics%20and%20Dry%20Diffusive%20Particle%20Systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. Irreversible Linear Thermodynamics and Dry Diffusive Particle Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30.%20Brownian%20Particles%20Suspended%20in%20a%20Fluid%20%E2%80%94%20Model%20H/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. Brownian Particles Suspended in a Fluid — Model H
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31.%20Dynamical%20Functionals%2C%20Additive%E2%80%91Noise%20Field%20Theory%2C%20and%20the%20Onsager%E2%80%93Machlup%20Functional/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. Dynamical Functionals, Additive‑Noise Field Theory, and the Onsager–Machlup Functional
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen–De Dominicis Response Functional and the Fluctuation–Dissipation Relation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33.%20Nonequilibrium%20Work%20and%20Fluctuation%20Theorems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. Nonequilibrium Work and Fluctuation Theorems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../34.%20Directed%20Percolation%2C%20Absorbing%20States%2C%20and%20Spectral%20Methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. Directed Percolation, Absorbing States, and Spectral Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../35.%20Path-Integral%20Representation%20of%20the%20Master%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. Path-Integral Representation of the Master Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../36.%20Coherent-State%20Path%20Integrals%2C%20Operator%20Algebra%2C%20and%20Imaginary%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. Coherent-State Path Integrals, Operator Algebra, and Imaginary Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../37.%20Kramers-Moyal%20Expansion%20and%20the%20Low-Noise%20Limit%20of%20Path%20Integrals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal Expansion and the Low-Noise Limit of Path Integrals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../38.%20Multi-Species%20Path%20Integrals%20and%20Cyclic%20Competition%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. Multi-Species Path Integrals and Cyclic Competition Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../39.%20From%20Particle%20Jumps%20to%20Continuous%20Field%20Theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. From Particle Jumps to Continuous Field Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../40.%20Unified%20Field%20Theory%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. Unified Field Theory Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    中文笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/1.%20%E8%AF%BE%E7%A8%8B%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 课程导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/2.%20%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 简单随机游走
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/3.%20%E9%AB%98%E6%96%AF%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0%E4%B8%8E%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 高斯随机游走与泊松过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/4.%20Gillespie%20%E7%AE%97%E6%B3%95%E3%80%81%E4%B8%BB%E6%96%B9%E7%A8%8B%E3%80%81%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%8D%E7%BE%A4%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie 算法、主方程、生成函数与种群动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/5.%20%E7%A7%8D%E7%BE%A4%E5%8A%A8%E6%80%81%E5%AD%A6%EF%BC%9A%E7%BA%BF%E6%80%A7%E6%AD%BB%E4%BA%A1%E8%BF%87%E7%A8%8B%E4%B8%8ELotka-Volterra%20%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 种群动态学：线性死亡过程与Lotka-Volterra 系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/6.%20%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E7%A8%8B%EF%BC%9A%E6%9F%A5%E6%99%AE%E6%9B%BC-%E7%A7%91%E5%B0%94%E8%8E%AB%E6%88%88%E7%BD%97%E5%A4%AB%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 马尔可夫过程的基本方程：查普曼-科尔莫戈罗夫方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/7.%20%E5%89%8D%E5%90%91%E4%B8%BB%E6%96%B9%E7%A8%8B%E4%B8%8EQ%E7%9F%A9%E9%98%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 前向主方程与Q矩阵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/8.%20%E4%BD%A9%E9%BE%99-%E5%BC%97%E7%BD%97%E8%B4%9D%E5%B0%BC%E4%B9%8C%E6%96%AF%E5%AE%9A%E7%90%86%E3%80%81%E7%A8%B3%E6%80%81%E4%B8%8E%E7%BB%86%E8%87%B4%E5%B9%B3%E8%A1%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 佩龙-弗罗贝尼乌斯定理、稳态与细致平衡
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/9.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81%EF%BC%9A%E4%B8%8D%E5%8F%AF%E9%80%86%E6%80%A7%E4%B8%8E%E7%86%B5%E4%BA%A7%E7%94%9F%E7%9A%84%E6%8E%A8%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 非平衡态：不可逆性与熵产生的推论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/10.%20%E5%9F%83%E4%BC%A6%E8%B4%B9%E6%96%AF%E7%89%B9%E6%A8%A1%E5%9E%8B%E3%80%81%E7%86%B5%E4%B8%8EKL%E6%95%A3%E5%BA%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 埃伦费斯特模型、熵与KL散度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/11.%20%E8%BF%9E%E7%BB%AD%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E4%B8%8E%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. 连续马尔可夫过程与福克-普朗克方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/12.%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8%E4%B8%8E%E5%A5%A5%E6%81%A9%E6%96%AF%E5%9D%A6-%E4%B9%8C%E4%BC%A6%E8%B4%9D%E5%85%8B%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. 布朗运动与奥恩斯坦-乌伦贝克过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/13.%20%E4%BD%9C%E4%B8%BA%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. 作为随机过程的蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/14.%20%E5%93%88%E5%AF%86%E5%B0%94%E9%A1%BF%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. 哈密尔顿蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/15.%20%E8%B6%8B%E5%8C%96%E6%80%A7%E3%80%81%E8%B7%91%E5%8A%A8-%E7%BF%BB%E6%BB%9A%E8%BF%90%E5%8A%A8%E4%B8%8EKeller-Segel%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. 趋化性、跑动-翻滚运动与Keller-Segel模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/16.%20Schnitzer%E6%A8%A1%E5%9E%8B%E3%80%81%E5%8F%8D%E5%B8%B8%E6%89%A9%E6%95%A3%E4%B8%8E%E8%BF%90%E5%8A%A8%E8%AF%B1%E5%AF%BC%E7%9B%B8%E5%88%86%E7%A6%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Schnitzer模型、反常扩散与运动诱导相分离
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/17.%20%E6%9C%97%E4%B9%8B%E4%B8%87%E6%96%B9%E7%A8%8B%E3%80%81%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. 朗之万方程、布朗粒子与涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/18.%20%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B%E4%B8%8E%E6%96%AF%E6%91%A9%E6%A3%B1%E9%9C%8D%E5%A4%AB%E6%96%AF%E5%9F%BA%E6%96%B9%E7%A8%8B%EF%BC%9A%E4%BB%8E%E9%9A%8F%E6%9C%BA%E8%BD%A8%E8%BF%B9%E5%88%B0%E6%A6%82%E7%8E%87%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. 福克-普朗克方程与斯摩棱霍夫斯基方程：从随机轨迹到概率动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/19.%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. 随机过程的路径积分表述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/20.%20%E9%9A%8F%E6%9C%BA%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. 随机微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/21.%20%E4%BC%8A%E8%97%A4%E7%A7%AF%E5%88%86%E4%B8%8E%E7%BB%9F%E4%B8%80%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. 伊藤积分与统一的随机过程框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/22.%20%E5%90%AB%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. 含乘性噪声系统的路径积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/23.%20%E4%BB%8E%E7%B2%97%E7%B2%92%E5%8C%96%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA%E6%B6%A8%E8%90%BD%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. 从粗粒化到连续场论涨落动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/24.%20%E6%98%82%E8%90%A8%E6%A0%BC%E7%B3%BB%E6%95%B0%E3%80%81%E5%80%92%E6%98%93%E5%85%B3%E7%B3%BB%E4%B8%8E%E5%8A%A8%E6%80%81%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. 昂萨格系数、倒易关系与动态涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/25.%20%E6%A2%AF%E5%BA%A6%E5%8A%A8%E5%8A%9B%E5%AD%A6%E3%80%81%E7%9B%B8%E5%8F%98%E4%B8%8E%E5%BC%9B%E8%B1%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. 梯度动力学、相变与弛豫
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/26.%20%E4%B8%B4%E7%95%8C%E6%85%A2%E5%8C%96%E3%80%81%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%B8%8E%E5%AE%88%E6%81%92%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. 临界慢化、动态响应与守恒律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/27.%20%E7%AE%80%E5%8D%95%E6%B5%81%E4%BD%93%E3%80%81%E6%97%A0%E6%91%A9%E6%93%A6%E6%B5%81%E4%BD%93%E4%B8%8E%E6%AC%A7%E6%8B%89%E6%96%B9%E7%A8%8B%E7%9A%84%E6%B5%81%E4%BD%93%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. 简单流体、无摩擦流体与欧拉方程的流体动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/28.%20%E7%B2%98%E6%80%A7%E6%B5%81%E4%BD%93%E3%80%81%E7%BA%B3%E7%BB%B4-%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%96%B9%E7%A8%8B%E3%80%81%E7%86%B5%E5%B9%B3%E8%A1%A1%E4%B8%8E%E7%83%AD%E4%BC%A0%E5%AF%BC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. 粘性流体、纳维-斯托克斯方程、熵平衡与热传导
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/29.%20%E4%B8%8D%E5%8F%AF%E9%80%86%E7%BA%BF%E6%80%A7%E7%83%AD%E5%8A%9B%E5%AD%A6%E4%B8%8E%E5%B9%B2%E6%80%A7%E6%89%A9%E6%95%A3%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. 不可逆线性热力学与干性扩散粒子系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/30.%20%E6%82%AC%E6%B5%AE%E5%9C%A8%E6%B5%81%E4%BD%93%E4%B8%AD%E7%9A%84%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%20%E2%80%94%20H%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. 悬浮在流体中的布朗粒子 — H模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/31.%20%E5%8A%A8%E6%80%81%E6%B3%9B%E5%87%BD%E3%80%81%E5%8A%A0%E6%80%A7%E5%99%AA%E5%A3%B0%E5%9C%BA%E8%AE%BA%E4%B8%8EOnsager-Machlup%E6%B3%9B%E5%87%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. 动态泛函、加性噪声场论与Onsager-Machlup泛函
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/32.%20Janssen-De%20Dominicis%20%E5%93%8D%E5%BA%94%E6%B3%9B%E5%87%BD%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen-De Dominicis 响应泛函与涨落-耗散关系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/33.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E5%8A%9F%E4%B8%8E%E6%B6%A8%E8%90%BD%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. 非平衡功与涨落定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/34.%20%E6%9C%89%E5%90%91%E6%B8%97%E6%B5%81%E3%80%81%E5%90%B8%E6%94%B6%E6%80%81%E4%B8%8E%E8%B0%B1%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. 有向渗流、吸收态与谱方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/35.%20%E4%B8%BB%E6%96%B9%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E7%A4%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. 主方程的路径积分表示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/36.%20%E7%9B%B8%E5%B9%B2%E6%80%81%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E3%80%81%E7%AE%97%E7%AC%A6%E4%BB%A3%E6%95%B0%E4%B8%8E%E8%99%9A%E5%99%AA%E5%A3%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. 相干态路径积分、算符代数与虚噪声
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/37.%20Kramers-Moyal%20%E5%B1%95%E5%BC%80%E4%B8%8E%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E7%9A%84%E4%BD%8E%E5%99%AA%E5%A3%B0%E6%9E%81%E9%99%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal 展开与路径积分的低噪声极限
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/38.%20%E5%A4%9A%E7%89%A9%E7%A7%8D%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E4%B8%8E%E5%BE%AA%E7%8E%AF%E7%AB%9E%E4%BA%89%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. 多物种路径积分与循环竞争动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/39.%20%E4%BB%8E%E7%B2%92%E5%AD%90%E8%B7%B3%E8%B7%83%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. 从粒子跳跃到连续场论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/40.%20%E7%BB%9F%E4%B8%80%E7%9A%84%E5%9C%BA%E8%AE%BA%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. 统一的场论框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="introduction-from-onsager-machlup-to-the-j-d-action">Introduction: From Onsager-Machlup to the J-D Action<a class="headerlink" href="#introduction-from-onsager-machlup-to-the-j-d-action" title="Permanent link">&para;</a></h1>
+<p>In the previous lecture (31), we successfully constructed a beautiful path-integral formulation for stochastic processes centered on the <strong>Onsager-Machlup (OM) functional</strong>. This functional plays the role of an "action" for random paths and provides deep physical insight into detailed balance and the fluctuation-dissipation theorem (FDT) from a "sum over histories" viewpoint.</p>
+<p>However, as noted at the outset, the OM functional is inconvenient for practical calculations: its action is quadratic in the difference between the time derivative of the field and the drift, i.e., a square. Such a form becomes cumbersome for perturbation theory and more elaborate analyses.</p>
+<p>To overcome this limitation, we need to introduce a mathematically more tractable path-integral framework. The central goal is to construct a new, linear action that is physically equivalent to the OM functional. A linear action greatly simplifies perturbative calculations and theoretical analysis. This line of thought naturally leads to the derivation of the <strong>Janssen-De Dominicis (J-D) action</strong>, the core of this lecture.</p>
+<p>It is worth emphasizing that the key trick—imposing the dynamical constraint via a Fourier representation by introducing an auxiliary <strong>response field</strong> to linearize the problem—is not new. This idea is methodologically consistent with the <strong>MSRJD (Martin-Siggia-Rose-Janssen-De Dominicis) formalism</strong> introduced in Lecture 22 for handling more complex <strong>multiplicative noise</strong> systems. This consistency in theoretical tools not only demonstrates the internal harmony and self-consistency of stochastic field theory, but also highlights the response field as a powerful and universal mathematical tool.</p>
+<p>Ultimately, the more powerful J-D formalism is not merely a cosmetic rephrasing. It provides a precise "scalpel" to dissect <strong>response functions</strong> and <strong>correlation functions</strong> and, in a strikingly transparent way, derives one of the most profound relations in statistical physics—the <strong>fluctuation-dissipation theorem (FDT)</strong>—from first principles.</p>
+<h1 id="1-recap-onsager-machlup-functional-and-detailed-balance">1. Recap: Onsager-Machlup Functional and Detailed Balance<a class="headerlink" href="#1-recap-onsager-machlup-functional-and-detailed-balance" title="Permanent link">&para;</a></h1>
+<p>To pave the way for the J-D action, we briefly recap the previous lecture's core: the Onsager-Machlup functional as the action of random paths, and its deep equilibrium symmetry-detailed balance.</p>
+<h2 id="11-statistical-weight-of-paths">1.1 Statistical Weight of Paths<a class="headerlink" href="#11-statistical-weight-of-paths" title="Permanent link">&para;</a></h2>
+<p>From the path-integral perspective, the transition amplitude for a stochastic system to evolve from an initial configuration <span class="arithmatex">\(\phi_0\)</span> to a final one <span class="arithmatex">\(\phi_f\)</span> is a functional integral over all histories connecting these endpoints:</p>
+<div class="arithmatex">\[
+\langle \phi_f | \phi_0 \rangle = \int_{\phi(0)=\phi_0}^{\phi(t_f)=\phi_f} \mathcal{D}[\phi] \, \exp\bigl[-G(\phi; 0, t_f)\bigr].
+\]</div>
+<p>This is formally identical to the Feynman path integral in quantum mechanics. The key quantity is the OM functional <span class="arithmatex">\(G[\phi]\)</span>, which assigns a statistical weight to each path <span class="arithmatex">\(\phi(t)\)</span>. Smaller <span class="arithmatex">\(G[\phi]\)</span> means higher probability; <span class="arithmatex">\(G\)</span> thus plays the role of an action for stochastic dynamics.</p>
+<h2 id="12-om-functional-the-cost-of-a-path">1.2 OM Functional: The "Cost" of a Path<a class="headerlink" href="#12-om-functional-the-cost-of-a-path" title="Permanent link">&para;</a></h2>
+<p>For a system governed by multicomponent Langevin equations <span class="arithmatex">\(\partial_t \phi_\alpha = A_\alpha[\phi] + \xi_\alpha\)</span>, the OM functional reads</p>
+<div class="arithmatex">\[
+G[\phi] = \frac{1}{2} \int_{x,t} \bigl(\dot{\phi}_\alpha - A_\alpha[\phi]\bigr) \, N_{\alpha\beta}^{-1} \, \bigl(\dot{\phi}_\beta - A_\beta[\phi]\bigr) + (\text{functional determinant}).
+\]</div>
+<p>The physical meaning of this functional is very clear:</p>
+<ul>
+<li>
+<p><strong>The term <span class="arithmatex">\((\dot{\phi}_\alpha - A_\alpha)\)</span></strong> is precisely the noise <span class="arithmatex">\(\xi_\alpha\)</span> required (via the Langevin equation) to drive the system along this specific path <span class="arithmatex">\(\phi(t)\)</span>.</p>
+</li>
+<li>
+<p><strong>The entire functional</strong> therefore measures the "cost" or "magnitude" of this noise history. A path that requires intense, rare noise to realize will have a large <span class="arithmatex">\(G[\phi]\)</span> value, and its probability <span class="arithmatex">\(e^{-G[\phi]}\)</span> will be exponentially suppressed. The inverse covariance matrix <span class="arithmatex">\(N^{-1}\)</span> acts as a metric, weighting this "cost" according to the strength of each noise component.</p>
+</li>
+</ul>
+<h2 id="13-detailed-balance-time-symmetry">1.3 Detailed Balance: Time Symmetry<a class="headerlink" href="#13-detailed-balance-time-symmetry" title="Permanent link">&para;</a></h2>
+<p>The true power of the OM functional emerges when combined with the fundamental principles of thermodynamics. For a system in thermal equilibrium, its microscopic dynamics must satisfy <strong>time-reversal invariance</strong>. This microscopic symmetry manifests at the macroscopic level of path probabilities as the <strong>detailed balance principle</strong>.</p>
+<p>In the language of path integrals, detailed balance is expressed as a profound relationship between the path action and the system's free energy <span class="arithmatex">\(F[\phi]\)</span>:</p>
+<div class="arithmatex">\[
+\beta F[\phi_0] + G[\phi; 0, t_f] = \beta F[\phi_f] + G_R[\phi; 0, t_f] \, ,
+\]</div>
+<p>where <span class="arithmatex">\(\beta = 1/(k_B T)\)</span> is the inverse temperature and <span class="arithmatex">\(G_R\)</span> is the action on the time-reversed path. The left-hand side is proportional to the total (log) probability of evolving forward from <span class="arithmatex">\(\phi_0\)</span> to <span class="arithmatex">\(\phi_f\)</span>; the right-hand side corresponds to the reversed process. Detailed balance requires these to be precisely connected via the free-energy difference between the endpoints.</p>
+<p>This seemingly abstract symmetry relation imposes extremely stringent constraints on the dynamics. As derived at the end of Lecture 31, this relation requires that the system's deterministic drift term <span class="arithmatex">\(A_\alpha\)</span> must be related to dissipative processes (e.g., in Model A, <span class="arithmatex">\(A_\alpha = -L \frac{\delta F}{\delta \phi_\alpha}\)</span>), and that the noise strength <span class="arithmatex">\(N\)</span> must be directly related to the system's dissipation coefficient <span class="arithmatex">\(L\)</span> and temperature <span class="arithmatex">\(T\)</span>. For Model A, this constraint ultimately manifests as the famous <strong>Einstein-Onsager relation</strong>:</p>
+<div class="arithmatex">\[
+N = 2 L k_B T
+\]</div>
+<p>This is a specific form of the <strong>fluctuation-dissipation theorem</strong>, revealing that the system's random fluctuations (quantified by <span class="arithmatex">\(N\)</span> or <span class="arithmatex">\(T\)</span>) and its dissipative response to driving forces (quantified by <span class="arithmatex">\(L\)</span>) are two sides of the same microscopic process.</p>
+<h1 id="2-building-the-j-d-generating-functional-msrjd-formalism">2. Building the J-D Generating Functional: MSRJD Formalism<a class="headerlink" href="#2-building-the-j-d-generating-functional-msrjd-formalism" title="Permanent link">&para;</a></h1>
+<p>While the OM functional offers a beautiful picture near equilibrium, its scope is limited by the detailed balance condition. To treat more general, potentially far-from-equilibrium problems, we need a more universal framework that does not rely on this condition. The goal of this section is to construct such a universal path-integral formulation that applies to any system described by an additive-noise Langevin equation <span class="arithmatex">\(\partial_t \phi = A[\phi] + \xi\)</span>.</p>
+<p>This construction is a direct application of the core idea of "assigning weights to paths" (Lecture 19), and the mathematical techniques used are identical to the <strong>MSRJD (Martin-Siggia-Rose-Janssen-De Dominicis) formalism</strong> introduced in Lecture 22 for handling more complex <strong>multiplicative noise</strong> systems. This highlights the universality of this approach.</p>
+<h2 id="21-formal-averaging-and-the-philosophy-of-change-of-variables">2.1 Formal Averaging and the Philosophy of Change of Variables<a class="headerlink" href="#21-formal-averaging-and-the-philosophy-of-change-of-variables" title="Permanent link">&para;</a></h2>
+<p>We consider the ensemble average of an arbitrary observable <span class="arithmatex">\(\Theta[\phi]\)</span>. From a physical perspective, since the field trajectory <span class="arithmatex">\(\phi(t)\)</span> is uniquely determined by the random noise history <span class="arithmatex">\(\xi(t)\)</span>, <span class="arithmatex">\(\Theta[\phi]\)</span> is ultimately also a functional of the noise. The average of <span class="arithmatex">\(\Theta[\phi]\)</span> is essentially a weighted average over all possible noise histories <span class="arithmatex">\(\xi(t)\)</span>.</p>
+<p>However, the noise <span class="arithmatex">\(\xi\)</span> itself is usually not directly observable microscopically, while the field <span class="arithmatex">\(\phi\)</span> is the macroscopic physical quantity of interest. Therefore, a core strategy is <strong>to perform a change of variables</strong>: transform the integration variables from the unobservable noise field <span class="arithmatex">\(\xi\)</span> to the observable physical field <span class="arithmatex">\(\phi\)</span>. To implement this in a functional integral, we need a mathematical tool to ensure the legitimacy of this transformation, which is the functional Dirac <span class="arithmatex">\(\delta\)</span> function. It can formally write the averaging process as:</p>
+<div class="arithmatex">\[
+\langle \Theta[\phi] \rangle_{\xi} = \Bigl\langle \int \mathcal{D}[\phi] \, \Theta[\phi] \, \underbrace{\delta\bigl[\phi(t) = \text{solution of the Langevin equation}\bigr]}_{\text{hard constraint: only physical paths}} \Bigr\rangle_{\xi} \, .
+\]</div>
+<p>The path integral <span class="arithmatex">\(\int \mathcal{D}[\phi]\)</span> scans all possible field configuration histories, regardless of whether they conform to physical laws. The <span class="arithmatex">\(\delta\)</span> function acts like a "filter" or <strong>hard constraint</strong>: it selects from all possible paths only the one that uniquely satisfies the Langevin equation driven by a specific noise <span class="arithmatex">\(\xi\)</span>, ensuring that only physically meaningful paths contribute to the final average.</p>
+<h2 id="22-msrjd-making-the-constraint-explicit">2.2 MSRJD: Making the Constraint Explicit<a class="headerlink" href="#22-msrjd-making-the-constraint-explicit" title="Permanent link">&para;</a></h2>
+<p>While the above expression is formally correct, it is difficult to operate directly. The <strong>MSRJD method</strong> is a powerful and standard technique that expresses this abstract constraint condition using the specific dynamical equation itself:</p>
+<div class="arithmatex">\[
+\delta\bigl[\phi(t) = \text{solution}\bigr] \to \underbrace{J[\phi]}_{\text{Jacobian}} \, \underbrace{\delta\bigl(\partial_t \phi - A[\phi] - \xi\bigr)}_{\text{constraint in dynamical form}} \, .
+\]</div>
+<p>The two newly appearing terms have clear mathematical and physical meanings:</p>
+<ul>
+<li>
+<p><strong>Functional <span class="arithmatex">\(\delta\)</span> function</strong>: Now its argument is the Langevin equation itself. This function enforces that for any contributing path, its time evolution rate <span class="arithmatex">\(\partial_t \phi\)</span> must precisely equal the sum of the deterministic drift <span class="arithmatex">\(A[\phi]\)</span> and the random noise <span class="arithmatex">\(\xi\)</span>.</p>
+</li>
+<li>
+<p><strong>Jacobian functional determinant <span class="arithmatex">\(J[\phi]\)</span></strong>: In any integral change of variables, the Jacobian is necessary as it describes how the integration "volume element" changes. Here, <span class="arithmatex">\(J[\phi] = |\det(\delta\xi/\delta\phi)|\)</span>. However, unlike the complex, path-dependent Jacobian encountered in Lecture 22 when dealing with multiplicative noise, for the <strong>additive noise</strong> case of concern in this lecture, the transformation from <span class="arithmatex">\(\xi\)</span> to <span class="arithmatex">\(\phi\)</span> is merely a "translation," and its Jacobian is a path-independent constant. Therefore, it can be absorbed into the overall normalization factor and temporarily ignored in calculations, greatly simplifying the problem.</p>
+</li>
+</ul>
+<h2 id="23-introducing-the-response-field">2.3 Introducing the Response Field<a class="headerlink" href="#23-introducing-the-response-field" title="Permanent link">&para;</a></h2>
+<p>The next step is to use the Fourier integral representation of the <span class="arithmatex">\(\delta\)</span> function, which is the core mathematical technique of this entire formalism, also used in Lecture 22. The basic idea is that any <span class="arithmatex">\(\delta\)</span> function can be represented as an integral over all frequencies (or modes) of plane waves. Extending this to function space, we get:</p>
+<div class="arithmatex">\[
+\delta\bigl(\partial_t \phi - A[\phi] - \xi\bigr) \propto \int \mathcal{D}[\tilde{\phi}] \, \exp\Bigl[i \int_{x,t} \tilde{\phi}_\alpha\, (\partial_t \phi_\alpha - A_\alpha[\phi] - \xi_\alpha)\Bigr] \, .
+\]</div>
+<p>(Note: To maintain consistency with course blackboard and literature conventions, the imaginary unit <span class="arithmatex">\(i\)</span> will later be absorbed into the definition of <span class="arithmatex">\(\tilde{\phi}\)</span> through a "Wick rotation" to obtain a real exponential, which is more natural when dealing with statistical weights in statistical physics.)</p>
+<p>Substituting this expression back, the observable average becomes an extended path integral over both the physical field <span class="arithmatex">\(\phi\)</span> and the newly introduced auxiliary field <span class="arithmatex">\(\tilde{\phi}\)</span>:</p>
+<div class="arithmatex">\[
+\langle \Theta[\phi] \rangle_{\xi} = \Bigl\langle \int \mathcal{D}[\phi] \, \mathcal{D}[\tilde{\phi}] \, \Theta[\phi] \, \exp\Bigl[-\int_{x,t} \tilde{\phi}_\alpha\, (\partial_t \phi_\alpha - A_\alpha[\phi] - \xi_\alpha)\Bigr] \Bigr\rangle_{\xi} \, .
+\]</div>
+<p>This newly introduced field <span class="arithmatex">\(\tilde{\phi}\)</span> is called the <strong>response field</strong> (or conjugate field). At first glance, <span class="arithmatex">\(\tilde{\phi}\)</span> seems to be just a "ghost" field introduced to represent the <span class="arithmatex">\(\delta\)</span> function without physical substance. However, it has profound physical meaning.</p>
+<p>This field directly measures the <strong>causal response</strong> of the system to external perturbations. It can be imagined as a "probe" that "measures" the degree to which the dynamical equation is violated at every point in the path integral. Ultimately, the correlation function <span class="arithmatex">\(\langle \phi(x,t) \tilde{\phi}(x',t') \rangle\)</span> calculated through this formalism will be proven to be proportional to the average response produced by the system at <span class="arithmatex">\((x,t)\)</span> after receiving an infinitesimal "kick" at <span class="arithmatex">\((x',t')\)</span>.</p>
+<h1 id="3-janssen-de-dominicis-action">3. Janssen-De Dominicis Action<a class="headerlink" href="#3-janssen-de-dominicis-action" title="Permanent link">&para;</a></h1>
+<p>After introducing the response field, the path integral expression contains three functional integrations: over <span class="arithmatex">\(\phi\)</span>, over <span class="arithmatex">\(\tilde{\phi}\)</span>, and over the remaining random noise <span class="arithmatex">\(\xi\)</span>. The next and final step is to perform the average over the noise field <span class="arithmatex">\(\xi\)</span>. Since the noise is assumed to be Gaussian white noise, this average can be performed exactly.</p>
+<p>The <strong>Janssen-De Dominicis (J-D) action</strong> is often presented as part of the broader MSRJD formalism, with its historical roots in quantum field theory, developed from the early work of Martin, Siggia, Rose, and later systematically applied to classical stochastic dynamics by Janssen and De Dominicis. Its <strong>physical essence</strong> is to transform an unwieldy stochastic differential equation (such as the Langevin equation) into a more tractable statistical field theory problem through path integrals. The core technique of this transformation is introducing an auxiliary "response field" that enforces the system's dynamical constraints through Fourier transformation, thereby linearizing the inconvenient quadratic terms in the original action (such as the Onsager-Machlup functional). The resulting J-D action is a functional of both physical and response fields, elegantly encoding the system's deterministic drift and noise statistics, serving as the generating functional for all physical observables (such as correlations and response functions). <strong>Specific application scenarios</strong> are extremely broad—it is not only the theoretical foundation for deriving fundamental relations like the fluctuation-dissipation theorem, but also the standard starting point for using powerful tools such as perturbation theory, Feynman diagrams, and renormalization group to analyze complex nonequilibrium systems, playing a central role especially in studying critical dynamics of phase transitions, systems with multiplicative noise, and stochastic processes in soft matter and biophysics.</p>
+<h2 id="31-integrating-out-the-noise">3.1 Integrating Out the Noise<a class="headerlink" href="#31-integrating-out-the-noise" title="Permanent link">&para;</a></h2>
+<p>The term in the path integral that directly couples to the noise <span class="arithmatex">\(\xi\)</span> is <span class="arithmatex">\(\exp[\int \tilde{\phi}_\alpha \xi_\alpha]\)</span>. To average this quantity over Gaussian noise, we need to use an important property of Gaussian integrals: for a zero-mean Gaussian variable <span class="arithmatex">\(X\)</span>, we have <span class="arithmatex">\(\langle e^X \rangle = e^{\frac{1}{2} \langle X^2 \rangle}\)</span>. Extending this to functionals, the specific calculation is:</p>
+<div class="arithmatex">\[
+\Bigl\langle \exp\Bigl[\int_{x,t} \tilde{\phi}_\alpha \, \xi_\alpha\Bigr] \Bigr\rangle_{\xi} = \exp\Bigl[\tfrac12 \iint \tilde{\phi}_\alpha(x,t)\, \tilde{\phi}_\beta(x',t')\, \langle \xi_\alpha(x,t)\, \xi_\beta(x',t') \rangle\Bigr].
+\]</div>
+<p>For Gaussian white noise, the correlation function is <span class="arithmatex">\(\langle \xi_\alpha(x,t)\, \xi_\beta(x',t') \rangle = N_{\alpha\beta}\, \delta(x-x')\, \delta(t-t')\)</span>. Substituting this into the above equation and performing the integrals over <span class="arithmatex">\(x'\)</span> and <span class="arithmatex">\(t'\)</span>, the <span class="arithmatex">\(\delta\)</span> functions make the integration trivial, giving:</p>
+<div class="arithmatex">\[
+\langle e^{\ldots} \rangle_{\xi} = \exp\Bigl[\tfrac12 \int_{x,t} \tilde{\phi}_\alpha \, N_{\alpha\beta} \, \tilde{\phi}_\beta \Bigr].
+\]</div>
+<p>The physical meaning of this result is: <strong>The original physical noise field <span class="arithmatex">\(\xi\)</span> has been integrated out (averaged out), but its statistical properties (described by the noise correlation matrix <span class="arithmatex">\(N_{\alpha\beta}\)</span>) are permanently "imprinted" in the system's effective action through a quadratic term in the response field.</strong></p>
+<h2 id="32-final-path-integral-and-action">3.2 Final Path Integral and Action<a class="headerlink" href="#32-final-path-integral-and-action" title="Permanent link">&para;</a></h2>
+<p>Collecting terms, the observable average becomes</p>
+<div class="arithmatex">\[
+\langle \Theta[\phi] \rangle = \int \mathcal{D}[\phi] \, \mathcal{D}[\tilde{\phi}] \, \Theta[\phi] \, e^{-S[\phi,\tilde{\phi}]}
+\]</div>
+<p>with the Janssen-De Dominicis (J-D) action</p>
+<div class="arithmatex">\[
+S[\phi,\tilde{\phi}] = \int_{x,t} \Bigl[\underbrace{\tilde{\phi}_\alpha\, (\dot{\phi}_\alpha - A_\alpha[\phi])}_{\text{dynamical constraint}}\; -\; \underbrace{\tfrac12 \tilde{\phi}_\alpha \, N_{\alpha\beta} \, \tilde{\phi}_\beta}_{\text{noise contribution}}\Bigr].
+\]</div>
+<p>All dynamical information-deterministic drift and stochastic fluctuations-is now encoded in a single action functional. Computation of observables reduces to evaluating path integrals with this action, which serves as the generating functional for correlation and response functions.</p>
+<h2 id="33-anatomy-of-the-j-d-action">3.3 Anatomy of the J-D Action<a class="headerlink" href="#33-anatomy-of-the-j-d-action" title="Permanent link">&para;</a></h2>
+<p>The J-D action consists of two main pieces:</p>
+<ol>
+<li>Dynamical constraint: <span class="arithmatex">\(\int \tilde{\phi}_\alpha (\dot{\phi}_\alpha - A_\alpha[\phi])\)</span>. The response field acts as a Lagrange multiplier enforcing the dynamics "on average."</li>
+<li>Noise contribution: <span class="arithmatex">\(-\tfrac12 \int \tilde{\phi}_\alpha N_{\alpha\beta} \tilde{\phi}_\beta\)</span>, a quadratic form entirely fixed by noise statistics.</li>
+</ol>
+<p>Compared with the OM functional:</p>
+<ul>
+<li>OM: <span class="arithmatex">\((\dot{\phi}-A)^2\)</span>-physically intuitive (path-deviation cost) but quadratic and cumbersome for calculations.</li>
+<li>J-D: <span class="arithmatex">\(\tilde{\phi}(\dot{\phi}-A)\)</span>-linear in the dynamics and amenable to perturbation theory at the price of introducing the auxiliary response field.</li>
+</ul>
+<p>This is a common trade-off in field theory: introduce auxiliary fields to simplify the action's structure.</p>
+<p>To clarify the roles of the fields, we summarize:</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Name</th>
+<th>Physical Interpretation</th>
+<th>Source Equation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\phi(x,t)\)</span></td>
+<td>physical field</td>
+<td>Primary dynamical variable (e.g., order parameter, concentration field).</td>
+<td><span class="arithmatex">\(\partial_t \phi = \mathcal{L}[\phi] + \xi\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\tilde{\phi}(x,t)\)</span></td>
+<td>response field</td>
+<td>Auxiliary field measuring causal response to external perturbations.</td>
+<td><span class="arithmatex">\(\partial_t \tilde{\phi} = -\mathcal{L}^\dagger[\tilde{\phi}]\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\xi(x,t)\)</span></td>
+<td>noise field</td>
+<td>Random driving from environment (e.g., thermal fluctuations).</td>
+<td>fluctuation-dissipation relation</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(h(x,t)\)</span></td>
+<td>external field</td>
+<td>Controllable probe coupling to <span class="arithmatex">\(\phi\)</span> to measure response.</td>
+<td>driving term acting on <span class="arithmatex">\(\phi\)</span></td>
+</tr>
+</tbody>
+</table>
+<h1 id="4-probing-the-system-response-and-correlation-functions">4. Probing the System: Response and Correlation Functions<a class="headerlink" href="#4-probing-the-system-response-and-correlation-functions" title="Permanent link">&para;</a></h1>
+<p>The power of the J-D formalism lies in computing measurable quantities. The action built above is the "engine"; here we drive it to extract the system's two core dynamical characteristics: response to external probes (response functions) and spontaneous fluctuations at equilibrium (correlation functions).</p>
+<h2 id="41-apply-a-perturbation-physical-meaning-of-the-response-field">4.1 Apply a Perturbation: Physical Meaning of the Response Field<a class="headerlink" href="#41-apply-a-perturbation-physical-meaning-of-the-response-field" title="Permanent link">&para;</a></h2>
+<p>To give the "ghost" field <span class="arithmatex">\(\tilde{\phi}\)</span> introduced in the mathematical derivation a firm physical meaning, we adopt a strategy commonly used by physicists: <strong>active probing</strong>. By introducing a weak, controllable external perturbation field <span class="arithmatex">\(h(x,t)\)</span> into the system, we observe which quantity it couples to in the theoretical framework.</p>
+<p>For a near-equilibrium system (e.g., Model A), the drift derives from a free energy <span class="arithmatex">\(F\)</span>: <span class="arithmatex">\(A[\phi] = -L\, \delta F/\delta \phi\)</span>. An external field <span class="arithmatex">\(h\)</span> typically couples directly to the physical field <span class="arithmatex">\(\phi\)</span>, which is equivalent to modifying the system's free energy landscape:</p>
+<div class="arithmatex">\[
+F \to F' = F - \int d^d x\, dt\, h(x,t)\, \phi(x,t) \, .
+\]</div>
+<p>This change in free energy immediately propagates to the drift term:</p>
+<div class="arithmatex">\[
+\frac{\delta F'}{\delta \phi} = \frac{\delta F}{\delta \phi} - h \quad \Rightarrow \quad A'[\phi] = -L\, \frac{\delta F'}{\delta \phi} = A[\phi] + L h \, .
+\]</div>
+<p>Now, substituting this new drift term <span class="arithmatex">\(A'\)</span> into the dynamical constraint part of the J-D action <span class="arithmatex">\(\int \tilde{\phi} (\dot{\phi} - A')\)</span> yields an additional term related to the external field:</p>
+<div class="arithmatex">\[
+S \to S' = S - \int_{x,t} L\, h(x,t)\, \tilde{\phi}(x,t) \, .
+\]</div>
+<p>This result reveals a crucial connection: <strong>the controllable external probe <span class="arithmatex">\(h\)</span> in the physical world is actually coupled to that seemingly abstract auxiliary field <span class="arithmatex">\(\tilde{\phi}\)</span> in the J-D action</strong>. In other words, <strong>the external field <span class="arithmatex">\(h\)</span> acts as the source for the response field <span class="arithmatex">\(\tilde{\phi}\)</span></strong>. This provides the most direct evidence for the "response" nature of <span class="arithmatex">\(\tilde{\phi}\)</span>.</p>
+<h2 id="42-linear-response-function-chi">4.2 Linear Response Function <span class="arithmatex">\(\chi\)</span><a class="headerlink" href="#42-linear-response-function-chi" title="Permanent link">&para;</a></h2>
+<p>The linear response function <span class="arithmatex">\(\chi\)</span> (also called dynamic susceptibility in magnetic systems) is defined as the system's response to an infinitesimal external field, specifically as the functional derivative of the mean field with respect to <span class="arithmatex">\(h\)</span> evaluated at vanishing <span class="arithmatex">\(h\)</span>:</p>
+<div class="arithmatex">\[
+\chi(x,t; x',t') = \frac{\delta \langle \phi(x,t) \rangle}{\delta h(x',t')}\biggr|_{h\to 0} \, .
+\]</div>
+<p>Using the path integral expression <span class="arithmatex">\(\langle \phi \rangle = Z^{-1}\!\int \mathcal{D}[\phi,\tilde{\phi}]\, \phi\, e^{-S'}\)</span> and differentiating <span class="arithmatex">\(e^{-S'}\)</span> with respect to <span class="arithmatex">\(h(x',t')\)</span> pulls down the factor <span class="arithmatex">\(L\, \tilde{\phi}(x',t')\)</span>. Therefore, we obtain:</p>
+<div class="arithmatex">\[
+\chi(x,t; x',t') = L\, \langle \phi(x,t)\, \tilde{\phi}(x',t') \rangle \, .
+\]</div>
+<p>This equation is one of the central results of response theory and a direct manifestation of the powerful capabilities of the MSRJD framework. It rigorously proves the physical interpretation of the response field <span class="arithmatex">\(\tilde{\phi}\)</span>: <strong>the spatiotemporal correlation function between the physical field <span class="arithmatex">\(\phi\)</span> and the response field <span class="arithmatex">\(\tilde{\phi}\)</span> directly gives the system's linear response function</strong>. An originally abstract mathematical construct is now precisely equated with a measurable physical quantity.</p>
+<h2 id="43-two-point-correlation-c-and-causality">4.3 Two-Point Correlation <span class="arithmatex">\(C\)</span> and Causality<a class="headerlink" href="#43-two-point-correlation-c-and-causality" title="Permanent link">&para;</a></h2>
+<p>Unlike the response function, the two-point correlation function <span class="arithmatex">\(C\)</span> describes the statistical correlation of the physical field <strong>itself</strong> at different spatiotemporal points, i.e., the statistical correlation between spontaneous, internal fluctuations of the system:</p>
+<div class="arithmatex">\[
+C(x,t; x',t') = \langle \phi(x,t)\, \phi(x',t') \rangle \, .
+\]</div>
+<p>It is essential to emphasize the fundamental physical distinction between <span class="arithmatex">\(C\)</span> and <span class="arithmatex">\(\chi\)</span>:</p>
+<ul>
+<li>
+<p><strong>Correlation function <span class="arithmatex">\(C\)</span></strong>: Describes <strong>spontaneous fluctuations</strong> in <strong>equilibrium</strong>. It is a symmetric quantity (in the time difference), reflecting "correlation" rather than "causality."</p>
+</li>
+<li>
+<p><strong>Response function <span class="arithmatex">\(\chi\)</span></strong>: Describes a <strong>nonequilibrium</strong> process, i.e., how an external perturbation <strong>causes</strong> the system to respond at another spatiotemporal point. It is an asymmetric, <strong>causal</strong> quantity.</p>
+</li>
+</ul>
+<p>The fundamental physical principle—causality—requires that the response function must satisfy <span class="arithmatex">\(\chi(x,t;x',t')=0\)</span> if <span class="arithmatex">\(t &lt; t'\)</span>, i.e., effects cannot precede causes. How is this principle automatically encoded in the J-D formalism? The answer lies in the structure of the action. The <strong>dynamical term <span class="arithmatex">\(\int \tilde{\phi} \dot{\phi}\)</span></strong> in the J-D action is key. In field theory calculations, the response function <span class="arithmatex">\(\langle \phi \tilde{\phi} \rangle\)</span> is essentially the Green's function (or propagator) derived from this action. It is precisely this term containing the first-order time derivative that ensures the calculated Green's function is "retarded" in time, i.e., it naturally incorporates the Heaviside step function <span class="arithmatex">\(\Theta(t-t')\)</span> representing causality. Therefore, <strong>causality is not manually imposed but naturally emerges from the formalism describing unidirectional temporal evolution encoded by the Langevin equation</strong>.</p>
+<h1 id="5-fluctuation-dissipation-theorem-linking-response-and-fluctuations">5. Fluctuation-Dissipation Theorem: Linking Response and Fluctuations<a class="headerlink" href="#5-fluctuation-dissipation-theorem-linking-response-and-fluctuations" title="Permanent link">&para;</a></h1>
+<p>At this point, the J-D formalism has provided systematic tools for computing response functions <span class="arithmatex">\(\chi\)</span> (via <span class="arithmatex">\(\langle \phi\tilde{\phi} \rangle\)</span>) and correlation functions <span class="arithmatex">\(C\)</span> (via <span class="arithmatex">\(\langle \phi\phi \rangle\)</span>). For systems in thermal equilibrium, there exists a profound and universal relationship between these two seemingly unrelated quantities: the fluctuation-dissipation theorem.</p>
+<h2 id="51-conditions-for-fdt">5.1 Conditions for FDT<a class="headerlink" href="#51-conditions-for-fdt" title="Permanent link">&para;</a></h2>
+<p>The prerequisite for deriving the FDT is that the system is in thermal equilibrium, i.e., satisfies the <strong>detailed balance condition</strong>. In the language of the J-D formalism, this means the dynamics has a specific structure, which is completely consistent with the conclusions of Lecture 31:</p>
+<ol>
+<li>
+<p><strong>Drift term</strong> <span class="arithmatex">\(A\)</span> is conservative, i.e., can be derived from the gradient of a free-energy functional: <span class="arithmatex">\(A = -L\, \delta F/\delta \phi\)</span>.</p>
+</li>
+<li>
+<p><strong>Noise strength</strong> <span class="arithmatex">\(N\)</span> and <strong>dissipation coefficient</strong> <span class="arithmatex">\(L\)</span> and temperature <span class="arithmatex">\(T\)</span> satisfy the <strong>Einstein-Onsager relation</strong>: <span class="arithmatex">\(N = 2L k_B T\)</span>.</p>
+</li>
+</ol>
+<h2 id="52-fdt-as-an-action-symmetry">5.2 FDT as an Action Symmetry<a class="headerlink" href="#52-fdt-as-an-action-symmetry" title="Permanent link">&para;</a></h2>
+<p>The FDT relates <strong>response</strong> (via <span class="arithmatex">\(\langle \phi\tilde{\phi} \rangle\)</span>) and <strong>correlation</strong> (via <span class="arithmatex">\(\langle \phi\phi \rangle\)</span>). This strongly suggests that under the above equilibrium conditions, the J-D action may possess a hidden symmetry that connects <span class="arithmatex">\(\tilde{\phi}\)</span> and <span class="arithmatex">\(\phi\)</span>.</p>
+<p>Such a symmetry indeed exists and is closely related to the system's time-reversal invariance. Although the complete derivation is more complex, the core idea is that under equilibrium conditions, a clever nonlinear field transformation can rewrite the J-D action in a more symmetric form (sometimes discussed as BRST symmetry in supersymmetric field theory). Any continuous symmetry of the action leads to specific relationships among correlators through Noether's theorem (or its equivalent form in field theory, Ward identities). <strong>The fluctuation-dissipation theorem is precisely the Ward identity corresponding to this time-reversal-related hidden symmetry</strong>.</p>
+<h2 id="53-final-form-and-physical-meaning-of-fdt">5.3 Final Form and Physical Meaning of FDT<a class="headerlink" href="#53-final-form-and-physical-meaning-of-fdt" title="Permanent link">&para;</a></h2>
+<p>For a stationary, homogeneous equilibrium system, the final form of the fluctuation-dissipation theorem is:</p>
+<div class="arithmatex">\[
+\chi(x-x', t-t') = \frac{1}{k_B T}\, \Theta(t-t')\, \Bigl(-\frac{\partial}{\partial t'} C(x-x', t-t')\Bigr).
+\]</div>
+<p>Due to the system's stationarity, <span class="arithmatex">\(C\)</span> depends only on the time difference <span class="arithmatex">\(\tau = t-t'\)</span>, and <span class="arithmatex">\(\frac{\partial}{\partial t'} C(t-t') = -\frac{dC}{d\tau}(\tau)\)</span>. Therefore, the above equation can also be written as:</p>
+<div class="arithmatex">\[
+\chi(\tau) = -\frac{1}{k_B T}\, \Theta(\tau)\, \frac{dC}{d\tau}(\tau)\,.
+\]</div>
+<p>This equation is one of the most profound results in statistical physics, with extremely far-reaching physical meaning:</p>
+<ul>
+<li>
+<p><strong>Left side <span class="arithmatex">\(\chi(\tau)\)</span></strong>: Describes the system's <strong>dissipative</strong> behavior. It is a <strong>nonequilibrium</strong> response, telling you how the system will respond and relax at future time <span class="arithmatex">\(\tau &gt; 0\)</span> if you apply a perturbation at <span class="arithmatex">\(t=0\)</span>.</p>
+</li>
+<li>
+<p><strong>Right side <span class="arithmatex">\(C(\tau)\)</span></strong>: Describes the system's <strong>fluctuation</strong> behavior. It is an <strong>equilibrium</strong> property, telling you that even without any external intervention, the system's physical quantities will spontaneously fluctuate, and these fluctuations have temporal correlations.</p>
+</li>
+</ul>
+<p>The FDT shows that these two behaviors are not independent but determined by the same microscopic dynamics. A system's dissipative properties (how it "forgets" a perturbation) are completely determined by its spontaneous fluctuation properties at equilibrium (how it "remembers" its own past fluctuations). <strong>To know how a system will react to a "poke," just quietly observe how it "jitters" at equilibrium</strong>.</p>
+<h1 id="6-application-j-d-action-and-feynman-diagram-perturbation-theory">6. Application: J-D Action and Feynman-Diagram Perturbation Theory<a class="headerlink" href="#6-application-j-d-action-and-feynman-diagram-perturbation-theory" title="Permanent link">&para;</a></h1>
+<p>While direct numerical simulations (such as the previous double-well potential simulation) can verify the theory, the true power of the J-D formalism lies in providing a powerful platform for <strong>analytical calculations</strong>. When systems have nonlinear interactions, exact solutions become impossible, and <strong>perturbation theory</strong> becomes the core analytical tool.</p>
+<p>This section will demonstrate how to use the J-D action as a starting point and systematically calculate the first-order correction to the system's correlation function using Feynman diagram language. This process is a bridge connecting stochastic dynamics and modern statistical field theory.</p>
+<p>Feynman diagrams are intuitive graphical tools that depict the extremely complex mathematical expressions in perturbation theory as images composed of "lines" representing field or particle propagation and "vertices" representing their interactions, thus providing a clear recipe for calculating interactions in complex systems.</p>
+<p>Feynman diagrams were first proposed in quantum electrodynamics (QED). We can use the most classic and simplest example to illustrate: the mutual repulsion of two electrons.</p>
+<p>Imagine this physical process:
+Two electrons (both negatively charged) are approaching each other. Because like charges repel, they will push each other away and fly off in different directions.</p>
+<p>So how do they "tell" each other to push away? In quantum field theory, this "pushing" force is transmitted by exchanging a "messenger particle." For electromagnetic force, this messenger particle is the photon.</p>
+<p>The Feynman diagram is a "spacetime snapshot" of this process.</p>
+<p><img alt="Feynman Diagram of Electron-Electron Repulsion" src="../../../assets/images/remote/be3ee6d9-4dfc-48b4-88d5-9046e60aa14e-75121af268.png" /></p>
+<p>The horizontal axis represents time flowing from left to right, and the vertical axis represents spatial position. The blue solid lines in the diagram represent the electron paths, with two electrons flying in from the left (initial state). The red wavy line represents the photon transmitted between the two electrons. It is "virtual" because it only exists during the interaction moment, serving as the carrier of force. The green dots are "vertices," which are the most important parts of the diagram. They represent interaction events. At the left vertex, electron 1 emits a photon; at the right vertex, electron 2 absorbs this photon. After exchanging the photon, both electrons' paths are deflected, flying out from the right (final state), achieving mutual repulsion.</p>
+<p>When physicists see this diagram, they can follow a strict set of "Feynman rules" to "translate" each part of the diagram into a specific mathematical integral. Calculating this integral gives the probability of this repulsion process occurring.</p>
+<p>Therefore, Feynman diagrams turn a complex particle interaction process into a simple "line diagram," where every stroke corresponds to a part of a mathematical formula, making calculations as intuitive as reading a picture.</p>
+<h2 id="61-model-interacting-phi4-theory-model-a">6.1 Model: Interacting <span class="arithmatex">\(\phi^4\)</span> Theory (Model A)<a class="headerlink" href="#61-model-interacting-phi4-theory-model-a" title="Permanent link">&para;</a></h2>
+<p>Return to the Ginzburg-Landau (<span class="arithmatex">\(\phi^4\)</span>) model of Lecture 25. The Langevin equation (Model A) is</p>
+<div class="arithmatex">\[
+\frac{\partial \phi}{\partial t} = -L\, (r\phi - c\nabla^2\phi + u\phi^3) + \xi(\mathbf{x}, t) \, ,
+\]</div>
+<p>with the J-D action</p>
+<div class="arithmatex">\[
+S[\phi,\tilde{\phi}] = \int d^d x\, dt\, \Bigl[ \tilde{\phi} ( \partial_t \phi + L(r\phi - c\nabla^2\phi) ) + L u \, \tilde{\phi}\, \phi^3 - \tfrac12 \tilde{\phi} (2LT) \tilde{\phi} \Bigr] \, ,
+\]</div>
+<p>using <span class="arithmatex">\(N=2LT\)</span>.</p>
+<p>Split <span class="arithmatex">\(S = S_0 + S_{\mathrm{int}}\)</span> into a Gaussian (free) part and a small nonlinear interaction:</p>
+<ul>
+<li>
+<p>Free action (quadratic terms):
+  $$
+  S_0 = \int d^d x\, dt\, \Bigl[ \tilde{\phi} ( \partial_t \phi + L r\, \phi - L c\nabla^2 \phi ) - L T\, \tilde{\phi}^2 \Bigr].
+  $$</p>
+</li>
+<li>
+<p>Interaction action (higher-order term):
+  $$
+  S_{\mathrm{int}} = \int d^d x\, dt\, (L u\, \tilde{\phi}\, \phi^3 ).
+  $$</p>
+</li>
+</ul>
+<p>We aim to compute the true <span class="arithmatex">\(\langle \phi\phi \rangle\)</span> under <span class="arithmatex">\(S_{\mathrm{int}}\)</span>. Expand <span class="arithmatex">\(e^{-S_{\mathrm{int}}}\)</span> in a Taylor series:</p>
+<div class="arithmatex">\[
+\langle \phi\phi \rangle = \frac{\int \mathcal{D}[\phi,\tilde{\phi}]\, \phi\phi\, e^{-S_0} (1 - S_{\mathrm{int}} + \tfrac12 S_{\mathrm{int}}^2 - \dots)}{\int \mathcal{D}[\phi,\tilde{\phi}]\, e^{-S_0} (1 - S_{\mathrm{int}} + \dots)} \, ,
+\]</div>
+<p>with each term represented by a Feynman diagram.</p>
+<h2 id="62-feynman-rules-from-action-to-diagrams">6.2 Feynman Rules: From Action to Diagrams<a class="headerlink" href="#62-feynman-rules-from-action-to-diagrams" title="Permanent link">&para;</a></h2>
+<p>Feynman rules are the "dictionary" that translates the action <span class="arithmatex">\(S_0\)</span> and <span class="arithmatex">\(S_{\mathrm{int}}\)</span> into drawing elements and mathematical expressions.</p>
+<p>1) <strong>Propagators</strong>: They are the <strong>free theory</strong> (i.e., with only <span class="arithmatex">\(S_0\)</span>) two-point correlation functions, representing the basic "propagation" behavior of fields.</p>
+<p><strong>Response propagator <span class="arithmatex">\(G_0 = \langle \phi\tilde{\phi} \rangle_0\)</span></strong>: Describes the bare response of the system to perturbations. Due to causality (<span class="arithmatex">\(\tilde{\phi}\)</span> always "responds" to <span class="arithmatex">\(\phi\)</span>), it is usually represented as a <strong>directed line with arrow</strong> in diagrams. In frequency-momentum space, its mathematical form is:</p>
+<div class="arithmatex">\[
+G_0(\omega, \mathbf{q}) = \frac{1}{-i\omega + L(r + c q^2)}.
+\]</div>
+<p><strong>Correlation propagator <span class="arithmatex">\(C_0 = \langle \phi\phi \rangle_0\)</span></strong>: Describes the bare fluctuation correlations of the free field itself. It is usually represented as an <strong>undirected wavy line</strong>. Its mathematical form is:</p>
+<div class="arithmatex">\[
+C_0(\omega, \mathbf{q}) = \frac{2LT}{\omega^2 + [L(r + c q^2)]^2}.
+\]</div>
+<p>1) <strong>Vertex</strong>: It represents the <strong>interaction</strong> between particles, with its form determined by <span class="arithmatex">\(S_{\mathrm{int}}\)</span>.</p>
+<p>In our model, <span class="arithmatex">\(S_{\mathrm{int}} \propto u \tilde{\phi}\phi^3\)</span>. This means a vertex is an interaction point between <strong>one <span class="arithmatex">\(\tilde{\phi}\)</span> field</strong> and <strong>three <span class="arithmatex">\(\phi\)</span> fields</strong>. Therefore, it is drawn as a convergence point with <strong>one arrow pointing to it (<span class="arithmatex">\(\tilde{\phi}\)</span> line) and three wavy lines departing from it (<span class="arithmatex">\(\phi\)</span> lines)</strong>. The "strength" of this vertex is determined by the interaction parameter <span class="arithmatex">\(u\)</span>.</p>
+<p>For clarity, the following Python code draws schematic rule illustrations (propagators and vertex):</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_feynman_rules</span><span class="p">():</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Feynman Rules for Model A with J-D Action&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+    <span class="c1"># 1. Response propagator G0</span>
+    <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Response Propagator $G_0 = </span><span class="se">\\</span><span class="s1">langle </span><span class="se">\\</span><span class="s1">phi </span><span class="se">\\</span><span class="s1">tilde{</span><span class="se">\\</span><span class="s1">phi} </span><span class="se">\\</span><span class="s1">rangle_0$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">head_width</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">head_length</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="s1">&#39;Directed line (retarded)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+    <span class="c1"># 2. Correlation propagator C0</span>
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Correlation Propagator $C_0 = </span><span class="se">\\</span><span class="s1">langle </span><span class="se">\\</span><span class="s1">phi </span><span class="se">\\</span><span class="s1">phi </span><span class="se">\\</span><span class="s1">rangle_0$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.8</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;k-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="s1">&#39;Wavy line&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+    <span class="c1"># 3. Interaction vertex</span>
+    <span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Vertex $-Lu</span><span class="se">\\</span><span class="s1">, </span><span class="se">\\</span><span class="s1">tilde{</span><span class="se">\\</span><span class="s1">phi} </span><span class="se">\\</span><span class="s1">phi^3$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">center</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;ko&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.38</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">head_width</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">head_length</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">angles</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">5</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">7</span><span class="o">/</span><span class="mi">6</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="n">angles</span><span class="p">:</span>
+        <span class="n">x_end</span> <span class="o">=</span> <span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="n">y_end</span> <span class="o">=</span> <span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="n">x_wave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_end</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+        <span class="n">y_wave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">y_end</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="mf">0.03</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+        <span class="n">perp_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="p">(</span><span class="n">y_end</span><span class="o">-</span><span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">x_end</span><span class="o">-</span><span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+        <span class="n">perp_vec</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">perp_vec</span><span class="p">)</span>
+        <span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_wave</span> <span class="o">+</span> <span class="n">offset</span><span class="o">*</span><span class="n">perp_vec</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_wave</span> <span class="o">+</span> <span class="n">offset</span><span class="o">*</span><span class="n">perp_vec</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;k-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;Coupling Strength $-Lu$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">rect</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Run the plotting function</span>
+<span class="n">plot_feynman_rules</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Run Output" src="../../../assets/images/remote/917be6ae-a9c5-415b-947c-4a6e792b918a-15ad99bb41.png" /></p>
+<h2 id="63-first-order-correction-hartree-diagram">6.3 First-Order Correction: Hartree Diagram<a class="headerlink" href="#63-first-order-correction-hartree-diagram" title="Permanent link">&para;</a></h2>
+<p>Now, using these rules to calculate the <strong>first-order perturbation correction</strong> to the correlation function <span class="arithmatex">\(C=\langle\phi\phi\rangle\)</span>. At zeroth order, the correlation function is just the bare correlation propagator <span class="arithmatex">\(C_0\)</span>. The first-order correction is given by a diagram containing one interaction vertex. For the two-point function, the simplest diagram (called <strong>Hartree correction</strong> or "sunset diagram") is shown below:</p>
+<p><img alt="Run Output" src="../../../assets/images/remote/917be6ae-a9c5-415b-947c-4a6e792b918a-15ad99bb41.png" /></p>
+<p>The physical meaning of this diagram is: a fluctuation (the <span class="arithmatex">\(\phi\)</span> on the left) "splits" into three intermediate fluctuations through <strong>nonlinear interactions</strong> (the two vertices in the middle) during propagation. These intermediate fluctuations interact and then "merge" into the final fluctuation (the <span class="arithmatex">\(\phi\)</span> on the right). This process corrects the original, simple propagation behavior.</p>
+<p><strong>From Diagram to Mathematical Integral:</strong></p>
+<p>According to the Feynman rules, the mathematical expression corresponding to this diagram is (in frequency-momentum space):</p>
+<div class="arithmatex">\[
+\delta C(\omega, \mathbf{q}) \propto (-L u)^2 \int \frac{d\omega'\, d^d\mathbf{k}}{(2\pi)^{d+1}} \, G_0(\omega, \mathbf{q})\, C_0(\omega', \mathbf{k})\, C_0(\omega-\omega', \mathbf{q}-\mathbf{k})\, C_0(-\omega', -\mathbf{k})\, G_0(-\omega, -\mathbf{q}).
+\]</div>
+<p>This is a complex expression that needs to be calculated through integration. But the key point is that <strong>Feynman diagrams provide us with a clear, intuitive "recipe" that decomposes a complex physical process into a combination of basic components (propagators and vertices)</strong>.</p>
+<p>This application demonstrates how the J-D formalism transforms from an abstract theoretical tool into a powerful, systematic computational framework. By decomposing the action into "free" and "interaction" parts, a set of Feynman rules can be derived that converts complex perturbative expansion calculations into intuitive diagrammatic problems. This makes it possible to study physical phenomena in nonlinear stochastic systems (such as scaling behavior in critical dynamics) and is one of the core technologies of modern nonequilibrium statistical physics.</p>
+<h1 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h1>
+<p>This lecture introduced the powerful field-theoretic tool for studying stochastic dynamics—the <strong>Janssen-De Dominicis formalism</strong>. By encoding the Langevin equation constraint into the "action" of a path integral, this method provides a unified theoretical framework for any system with additive noise.</p>
+<p>The core constructive step is introducing the <strong>response field</strong> <span class="arithmatex">\(\tilde{\phi}\)</span>. This field, which initially appeared as a mathematical auxiliary tool, has been proven to have profound physical meaning: it directly measures the causal response of the system to external perturbations, and its correlation function with the physical field <span class="arithmatex">\(\phi\)</span>, <span class="arithmatex">\(\langle \phi \tilde{\phi} \rangle\)</span>, precisely gives the system's linear response function <span class="arithmatex">\(\chi\)</span>.</p>
+<p>The culmination of this formalism is its provision of a clear and systematic derivation path for the fluctuation-dissipation theorem. The FDT reveals that in systems at thermal equilibrium, two seemingly completely different phenomena—spontaneous <strong>fluctuations</strong> caused by internal thermal motion (described by correlation function <span class="arithmatex">\(C\)</span>) and the <strong>dissipative</strong> response of the system to external perturbations (described by response function <span class="arithmatex">\(\chi\)</span>)—are actually two sides of the same coin. The J-D formalism shows that this profound connection is rooted in the time-reversal symmetry (detailed balance) that the system satisfies at equilibrium.</p>
+<p><strong>The fluctuation-dissipation theorem is one of the cornerstones of equilibrium statistical physics, but its brilliance also limits its domain.</strong> When a system is strongly driven away from equilibrium, the detailed balance condition is broken, and the simple FDT no longer holds. For example, when a colloidal particle is rapidly dragged by a laser trap in a fluid, what would be the relationship between the system's response and fluctuations?</p>
+<p>This is one of the core questions of modern nonequilibrium statistical physics. The next lecture will explore the cutting-edge progress on this question, entering the field of <strong>nonequilibrium work and fluctuation theorems</strong>. The Jarzynski equality and Crooks fluctuation theorem to be introduced are among the most significant breakthroughs in nonequilibrium statistical physics in recent years. They are remarkable generalizations of the second law in nonequilibrium processes—even in highly irreversible processes that generate substantial dissipation, these theorems can still establish precise equality relationships between nonequilibrium physical quantities (such as work done in nonequilibrium processes) and equilibrium thermodynamic quantities (such as free energy differences). These fluctuation theorems can be seen as successors and generalizations of FDT in the nonequilibrium world, providing entirely new theoretical tools for understanding and manipulating microscopic systems far from equilibrium.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.highlight"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../assets/javascripts/mathjax.js"></script>
+      
+        <script src="../../assets/javascripts/language-nav.js"></script>
+      
+        <script src="../../assets/javascripts/video-init.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

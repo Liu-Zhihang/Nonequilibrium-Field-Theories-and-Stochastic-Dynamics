@@ -1,0 +1,3228 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Course Notes and Code (Erwin Frey, LMU Munich, 2025)">
+      
+      
+        <meta name="author" content="Zhihang Liu">
+      
+      
+        <link rel="canonical" href="https://liu-zhihang.github.io/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/notes/24.%20Onsager%20Coefficients%2C%20Reciprocity%2C%20and%20the%20Dynamic%20Fluctuation%E2%80%93Dissipation%20Theorem/">
+      
+      
+        <link rel="prev" href="../23.%20From%20Coarse-Graining%20to%20Fluctuation%20Dynamics%20of%20Continuous%20Field%20Theories/">
+      
+      
+        <link rel="next" href="../25.%20Gradient%20Dynamics%2C%20Phase%20Transitions%2C%20and%20Relaxation/">
+      
+      
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en">
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>24. Onsager Coefficients, Reciprocity, and the Dynamic Fluctuation–Dissipation Theorem - Nonequilibrium Field Theories and Stochastic Dynamics</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/video.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-header__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nonequilibrium Field Theories and Stochastic Dynamics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              24. Onsager Coefficients, Reciprocity, and the Dynamic Fluctuation–Dissipation Theorem
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-nav__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nonequilibrium Field Theories and Stochastic Dynamics
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.%20Course%20Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.%20Simple%20Random%20Walk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Simple Random Walk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20Gaussian%20Random%20Walk%20and%20Poisson%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Gaussian Random Walk and Poisson Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20Gillespie%20Algorithm%2C%20Master%20Equation%2C%20Generating%20Functions%20and%20Population%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie Algorithm, Master Equation, Generating Functions and Population Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.%20Population%20Dynamics%20-%20Linear%20Death%20Process%20and%20Lotka-Volterra%20System/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Population Dynamics - Linear Death Process and Lotka-Volterra System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.%20Fundamental%20Equations%20of%20Markov%20Processes%20%E2%80%94%20Chapman%E2%80%93Kolmogorov%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Fundamental Equations of Markov Processes — Chapman–Kolmogorov Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.%20Forward%20Master%20Equation%20and%20the%20Q%20Matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Forward Master Equation and the Q Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.%20Perron%E2%80%93Frobenius%20Theorem%2C%20Steady%20States%2C%20and%20Detailed%20Balance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Perron–Frobenius Theorem, Steady States, and Detailed Balance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.%20Nonequilibrium%20States%20%E2%80%94%20Irreversibility%20and%20Entropy%20Production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Nonequilibrium States — Irreversibility and Entropy Production
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.%20Ehrenfest%20Model%2C%20Entropy%2C%20and%20KL%20Divergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Ehrenfest Model, Entropy, and KL Divergence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.%20Continuous%20Markov%20Processes%20and%20the%20Fokker%E2%80%93Planck%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Continuous Markov Processes and the Fokker–Planck Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12.%20Brownian%20Motion%20and%20the%20Ornstein%E2%80%93Uhlenbeck%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Brownian Motion and the Ornstein–Uhlenbeck Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13.%20Monte%20Carlo%20Sampling%20as%20a%20Stochastic%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Monte Carlo Sampling as a Stochastic Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14.%20Hamiltonian%20Monte%20Carlo%20Sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Hamiltonian Monte Carlo Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15.%20Chemotaxis%2C%20Run-and-Tumble%20Motion%2C%20and%20the%20Keller%E2%80%93Segel%20Model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Chemotaxis, Run-and-Tumble Motion, and the Keller–Segel Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16.%20The%20Schnitzer%20Model%2C%20Anomalous%20Diffusion%2C%20and%20Motility%E2%80%91Induced%20Phase%20Separation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. The Schnitzer Model, Anomalous Diffusion, and Motility‑Induced Phase Separation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17.%20Langevin%20Equation%2C%20Brownian%20Particle%2C%20and%20the%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Langevin Equation, Brownian Particle, and the Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18.%20Fokker%E2%80%93Planck%20Equation%20and%20the%20Smoluchowski%20Equation%20%E2%80%94%20From%20Random%20Trajectories%20to%20Probability%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Fokker–Planck Equation and the Smoluchowski Equation — From Random Trajectories to Probability Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19.%20Path%20Integral%20Formulation%20of%20Stochastic%20Processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Path Integral Formulation of Stochastic Processes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20.%20Stochastic%20Differential%20Equations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Stochastic Differential Equations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21.%20Ito%20Integral%20and%20Unified%20Stochastic%20Process%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Ito Integral and Unified Stochastic Process Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22.%20Path%20Integrals%20for%20Systems%20with%20Multiplicative%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Path Integrals for Systems with Multiplicative Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23.%20From%20Coarse-Graining%20to%20Fluctuation%20Dynamics%20of%20Continuous%20Field%20Theories/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. From Coarse-Graining to Fluctuation Dynamics of Continuous Field Theories
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Onsager Coefficients, Reciprocity, and the Dynamic Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25.%20Gradient%20Dynamics%2C%20Phase%20Transitions%2C%20and%20Relaxation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. Gradient Dynamics, Phase Transitions, and Relaxation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26.%20Critical%20Slowing%20Down%2C%20Dynamic%20Response%2C%20and%20Conservation%20Laws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Critical Slowing Down, Dynamic Response, and Conservation Laws
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27.%20Hydrodynamics%20of%20Simple%20Fluids%2C%20Inviscid%20Flow%2C%20and%20the%20Euler%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. Hydrodynamics of Simple Fluids, Inviscid Flow, and the Euler Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28.%20Viscous%20Fluids%2C%20the%20Navier%E2%80%93Stokes%20Equation%2C%20Entropy%20Balance%2C%20and%20Heat%20Conduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. Viscous Fluids, the Navier–Stokes Equation, Entropy Balance, and Heat Conduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29.%20Irreversible%20Linear%20Thermodynamics%20and%20Dry%20Diffusive%20Particle%20Systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. Irreversible Linear Thermodynamics and Dry Diffusive Particle Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30.%20Brownian%20Particles%20Suspended%20in%20a%20Fluid%20%E2%80%94%20Model%20H/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. Brownian Particles Suspended in a Fluid — Model H
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31.%20Dynamical%20Functionals%2C%20Additive%E2%80%91Noise%20Field%20Theory%2C%20and%20the%20Onsager%E2%80%93Machlup%20Functional/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. Dynamical Functionals, Additive‑Noise Field Theory, and the Onsager–Machlup Functional
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32.%20Janssen%E2%80%93De%20Dominicis%20Response%20Functional%20and%20the%20Fluctuation%E2%80%93Dissipation%20Relation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen–De Dominicis Response Functional and the Fluctuation–Dissipation Relation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33.%20Nonequilibrium%20Work%20and%20Fluctuation%20Theorems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. Nonequilibrium Work and Fluctuation Theorems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../34.%20Directed%20Percolation%2C%20Absorbing%20States%2C%20and%20Spectral%20Methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. Directed Percolation, Absorbing States, and Spectral Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../35.%20Path-Integral%20Representation%20of%20the%20Master%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. Path-Integral Representation of the Master Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../36.%20Coherent-State%20Path%20Integrals%2C%20Operator%20Algebra%2C%20and%20Imaginary%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. Coherent-State Path Integrals, Operator Algebra, and Imaginary Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../37.%20Kramers-Moyal%20Expansion%20and%20the%20Low-Noise%20Limit%20of%20Path%20Integrals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal Expansion and the Low-Noise Limit of Path Integrals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../38.%20Multi-Species%20Path%20Integrals%20and%20Cyclic%20Competition%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. Multi-Species Path Integrals and Cyclic Competition Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../39.%20From%20Particle%20Jumps%20to%20Continuous%20Field%20Theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. From Particle Jumps to Continuous Field Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../40.%20Unified%20Field%20Theory%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. Unified Field Theory Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    中文笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/1.%20%E8%AF%BE%E7%A8%8B%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 课程导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/2.%20%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 简单随机游走
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/3.%20%E9%AB%98%E6%96%AF%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0%E4%B8%8E%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 高斯随机游走与泊松过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/4.%20Gillespie%20%E7%AE%97%E6%B3%95%E3%80%81%E4%B8%BB%E6%96%B9%E7%A8%8B%E3%80%81%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%8D%E7%BE%A4%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie 算法、主方程、生成函数与种群动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/5.%20%E7%A7%8D%E7%BE%A4%E5%8A%A8%E6%80%81%E5%AD%A6%EF%BC%9A%E7%BA%BF%E6%80%A7%E6%AD%BB%E4%BA%A1%E8%BF%87%E7%A8%8B%E4%B8%8ELotka-Volterra%20%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 种群动态学：线性死亡过程与Lotka-Volterra 系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/6.%20%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E7%A8%8B%EF%BC%9A%E6%9F%A5%E6%99%AE%E6%9B%BC-%E7%A7%91%E5%B0%94%E8%8E%AB%E6%88%88%E7%BD%97%E5%A4%AB%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 马尔可夫过程的基本方程：查普曼-科尔莫戈罗夫方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/7.%20%E5%89%8D%E5%90%91%E4%B8%BB%E6%96%B9%E7%A8%8B%E4%B8%8EQ%E7%9F%A9%E9%98%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 前向主方程与Q矩阵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/8.%20%E4%BD%A9%E9%BE%99-%E5%BC%97%E7%BD%97%E8%B4%9D%E5%B0%BC%E4%B9%8C%E6%96%AF%E5%AE%9A%E7%90%86%E3%80%81%E7%A8%B3%E6%80%81%E4%B8%8E%E7%BB%86%E8%87%B4%E5%B9%B3%E8%A1%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 佩龙-弗罗贝尼乌斯定理、稳态与细致平衡
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/9.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81%EF%BC%9A%E4%B8%8D%E5%8F%AF%E9%80%86%E6%80%A7%E4%B8%8E%E7%86%B5%E4%BA%A7%E7%94%9F%E7%9A%84%E6%8E%A8%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 非平衡态：不可逆性与熵产生的推论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/10.%20%E5%9F%83%E4%BC%A6%E8%B4%B9%E6%96%AF%E7%89%B9%E6%A8%A1%E5%9E%8B%E3%80%81%E7%86%B5%E4%B8%8EKL%E6%95%A3%E5%BA%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 埃伦费斯特模型、熵与KL散度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/11.%20%E8%BF%9E%E7%BB%AD%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E4%B8%8E%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. 连续马尔可夫过程与福克-普朗克方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/12.%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8%E4%B8%8E%E5%A5%A5%E6%81%A9%E6%96%AF%E5%9D%A6-%E4%B9%8C%E4%BC%A6%E8%B4%9D%E5%85%8B%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. 布朗运动与奥恩斯坦-乌伦贝克过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/13.%20%E4%BD%9C%E4%B8%BA%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. 作为随机过程的蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/14.%20%E5%93%88%E5%AF%86%E5%B0%94%E9%A1%BF%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. 哈密尔顿蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/15.%20%E8%B6%8B%E5%8C%96%E6%80%A7%E3%80%81%E8%B7%91%E5%8A%A8-%E7%BF%BB%E6%BB%9A%E8%BF%90%E5%8A%A8%E4%B8%8EKeller-Segel%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. 趋化性、跑动-翻滚运动与Keller-Segel模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/16.%20Schnitzer%E6%A8%A1%E5%9E%8B%E3%80%81%E5%8F%8D%E5%B8%B8%E6%89%A9%E6%95%A3%E4%B8%8E%E8%BF%90%E5%8A%A8%E8%AF%B1%E5%AF%BC%E7%9B%B8%E5%88%86%E7%A6%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Schnitzer模型、反常扩散与运动诱导相分离
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/17.%20%E6%9C%97%E4%B9%8B%E4%B8%87%E6%96%B9%E7%A8%8B%E3%80%81%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. 朗之万方程、布朗粒子与涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/18.%20%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B%E4%B8%8E%E6%96%AF%E6%91%A9%E6%A3%B1%E9%9C%8D%E5%A4%AB%E6%96%AF%E5%9F%BA%E6%96%B9%E7%A8%8B%EF%BC%9A%E4%BB%8E%E9%9A%8F%E6%9C%BA%E8%BD%A8%E8%BF%B9%E5%88%B0%E6%A6%82%E7%8E%87%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. 福克-普朗克方程与斯摩棱霍夫斯基方程：从随机轨迹到概率动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/19.%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. 随机过程的路径积分表述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/20.%20%E9%9A%8F%E6%9C%BA%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. 随机微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/21.%20%E4%BC%8A%E8%97%A4%E7%A7%AF%E5%88%86%E4%B8%8E%E7%BB%9F%E4%B8%80%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. 伊藤积分与统一的随机过程框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/22.%20%E5%90%AB%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. 含乘性噪声系统的路径积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/23.%20%E4%BB%8E%E7%B2%97%E7%B2%92%E5%8C%96%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA%E6%B6%A8%E8%90%BD%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. 从粗粒化到连续场论涨落动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/24.%20%E6%98%82%E8%90%A8%E6%A0%BC%E7%B3%BB%E6%95%B0%E3%80%81%E5%80%92%E6%98%93%E5%85%B3%E7%B3%BB%E4%B8%8E%E5%8A%A8%E6%80%81%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. 昂萨格系数、倒易关系与动态涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/25.%20%E6%A2%AF%E5%BA%A6%E5%8A%A8%E5%8A%9B%E5%AD%A6%E3%80%81%E7%9B%B8%E5%8F%98%E4%B8%8E%E5%BC%9B%E8%B1%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. 梯度动力学、相变与弛豫
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/26.%20%E4%B8%B4%E7%95%8C%E6%85%A2%E5%8C%96%E3%80%81%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%B8%8E%E5%AE%88%E6%81%92%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. 临界慢化、动态响应与守恒律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/27.%20%E7%AE%80%E5%8D%95%E6%B5%81%E4%BD%93%E3%80%81%E6%97%A0%E6%91%A9%E6%93%A6%E6%B5%81%E4%BD%93%E4%B8%8E%E6%AC%A7%E6%8B%89%E6%96%B9%E7%A8%8B%E7%9A%84%E6%B5%81%E4%BD%93%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. 简单流体、无摩擦流体与欧拉方程的流体动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/28.%20%E7%B2%98%E6%80%A7%E6%B5%81%E4%BD%93%E3%80%81%E7%BA%B3%E7%BB%B4-%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%96%B9%E7%A8%8B%E3%80%81%E7%86%B5%E5%B9%B3%E8%A1%A1%E4%B8%8E%E7%83%AD%E4%BC%A0%E5%AF%BC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. 粘性流体、纳维-斯托克斯方程、熵平衡与热传导
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/29.%20%E4%B8%8D%E5%8F%AF%E9%80%86%E7%BA%BF%E6%80%A7%E7%83%AD%E5%8A%9B%E5%AD%A6%E4%B8%8E%E5%B9%B2%E6%80%A7%E6%89%A9%E6%95%A3%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. 不可逆线性热力学与干性扩散粒子系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/30.%20%E6%82%AC%E6%B5%AE%E5%9C%A8%E6%B5%81%E4%BD%93%E4%B8%AD%E7%9A%84%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%20%E2%80%94%20H%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. 悬浮在流体中的布朗粒子 — H模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/31.%20%E5%8A%A8%E6%80%81%E6%B3%9B%E5%87%BD%E3%80%81%E5%8A%A0%E6%80%A7%E5%99%AA%E5%A3%B0%E5%9C%BA%E8%AE%BA%E4%B8%8EOnsager-Machlup%E6%B3%9B%E5%87%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. 动态泛函、加性噪声场论与Onsager-Machlup泛函
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/32.%20Janssen-De%20Dominicis%20%E5%93%8D%E5%BA%94%E6%B3%9B%E5%87%BD%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen-De Dominicis 响应泛函与涨落-耗散关系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/33.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E5%8A%9F%E4%B8%8E%E6%B6%A8%E8%90%BD%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. 非平衡功与涨落定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/34.%20%E6%9C%89%E5%90%91%E6%B8%97%E6%B5%81%E3%80%81%E5%90%B8%E6%94%B6%E6%80%81%E4%B8%8E%E8%B0%B1%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. 有向渗流、吸收态与谱方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/35.%20%E4%B8%BB%E6%96%B9%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E7%A4%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. 主方程的路径积分表示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/36.%20%E7%9B%B8%E5%B9%B2%E6%80%81%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E3%80%81%E7%AE%97%E7%AC%A6%E4%BB%A3%E6%95%B0%E4%B8%8E%E8%99%9A%E5%99%AA%E5%A3%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. 相干态路径积分、算符代数与虚噪声
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/37.%20Kramers-Moyal%20%E5%B1%95%E5%BC%80%E4%B8%8E%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E7%9A%84%E4%BD%8E%E5%99%AA%E5%A3%B0%E6%9E%81%E9%99%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal 展开与路径积分的低噪声极限
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/38.%20%E5%A4%9A%E7%89%A9%E7%A7%8D%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E4%B8%8E%E5%BE%AA%E7%8E%AF%E7%AB%9E%E4%BA%89%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. 多物种路径积分与循环竞争动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/39.%20%E4%BB%8E%E7%B2%92%E5%AD%90%E8%B7%B3%E8%B7%83%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. 从粒子跳跃到连续场论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/40.%20%E7%BB%9F%E4%B8%80%E7%9A%84%E5%9C%BA%E8%AE%BA%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. 统一的场论框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h1>
+<p>In previous lectures, we have built a powerful toolkit to understand stochastic processes. Starting from <strong>Lecture 17's Langevin equation</strong>, which describes the specific, noisy trajectories of individual particles from a microscopic perspective, we then turned to the <strong>Fokker-Planck equation and path integrals</strong>, which depict the evolution of probability from a macroscopic statistical viewpoint.</p>
+<p>In Lecture 23 the course reached a key turning point and examined two complementary routes to macroscopic theory:</p>
+<ul>
+<li>
+<p>Bottom‑Up: by coarse‑graining, start from known microscopic rules (e.g., interparticle potentials) and derive a continuous field theory for collective behavior. This approach has a clear physical picture but depends on microscopic details.</p>
+</li>
+<li>
+<p>Top‑Down: assume we know nothing about microscopic details and instead use the most basic principles of thermodynamics and symmetry to build a universal theory of fluctuations.</p>
+</li>
+</ul>
+<p>So far, our discussions have mostly focused on systems described by a single variable (e.g., the position of a single Brownian particle). However, real-world physical systems, from chemical reaction networks to biological cells to condensed matter, typically require multiple coupled macroscopic variables (we denote them as <span class="arithmatex">\(\{\phi_a\}\)</span>) to collectively describe their state. This leads to the core questions this lecture aims to solve:</p>
+<ul>
+<li><strong>How do we describe the fluctuation dynamics of these coupled macroscopic variables <span class="arithmatex">\(\phi_a\)</span> when a system is near but not exactly at thermal equilibrium?</strong></li>
+<li><strong>Do there exist universal physical laws that can govern such near-equilibrium behavior without depending on the specific, complex microscopic details of the system?</strong></li>
+</ul>
+<p>To answer these questions, Prof. Erwin Frey will introduce two powerful theoretical frameworks, both of which have been mentioned in previous lectures and together form the foundation of near-equilibrium nonequilibrium statistical physics:</p>
+<ol>
+<li>
+<p><strong>Onsager's Theory:</strong> This is a grand framework based on fundamental symmetry principles (especially microscopic reversibility), introduced in the previous lecture. It can derive the famous <strong>Onsager reciprocity relations</strong>, revealing the intrinsic connections between different transport processes.</p>
+</li>
+<li>
+<p><strong>Dynamic Fluctuation-Dissipation Theorem (DFDT):</strong> This is a generalization of the fluctuation-dissipation theorem we learned in Lecture 17. It is no longer limited to static or zero-frequency cases, but precisely connects the spectrum of spontaneous thermal fluctuations with the system's dissipative response to external perturbations across the entire frequency domain.</p>
+</li>
+</ol>
+<p><img alt="Blackboard Screenshot" src="../../assets/images/remote/80e9d951-febf-45f1-9bba-8d3b80c04233-bc1753737e.jpg" /></p>
+<h1 id="1-review-thermodynamic-framework-for-nearequilibrium-fluctuations">1. Review: Thermodynamic Framework for Near‑Equilibrium Fluctuations<a class="headerlink" href="#1-review-thermodynamic-framework-for-nearequilibrium-fluctuations" title="Permanent link">&para;</a></h1>
+<p>In the previous lecture, the professor established the "top-down" research approach: building a macroscopic fluctuation theory based solely on universal thermodynamic principles without relying on microscopic details. In this section, we will systematically construct the static framework of this theory. The core idea is to <strong>regard entropy <span class="arithmatex">\(S\)</span> as a "potential landscape" describing system stability</strong>—all near-equilibrium static properties can be derived from the geometric shape of this landscape.</p>
+<h2 id="11-local-equilibrium-hypothesis">1.1 Local Equilibrium Hypothesis<a class="headerlink" href="#11-local-equilibrium-hypothesis" title="Permanent link">&para;</a></h2>
+<p>The cornerstone of Onsager's theory is the <strong>local thermodynamic equilibrium hypothesis</strong>. This hypothesis states that even when a system is globally out of equilibrium, we can still consider that within sufficiently small spatiotemporal scales, each small part (or subsystem) of the system is in its own local equilibrium state. This seemingly simple assumption has powerful implications because it allows us to use all the theoretical tools of equilibrium statistical mechanics, particularly <strong>entropy</strong>, to describe the system's state.</p>
+<p>Based on this assumption, the probability of a macroscopic state (described by a set of variables <span class="arithmatex">\(\{\phi_a\}\)</span>) is directly related to the entropy <span class="arithmatex">\(S(\{\phi_a\})\)</span> of that state, in a form similar to the Boltzmann distribution:</p>
+<div class="arithmatex">\[P_{\text{eq}}(\{\phi_a\}) \propto \exp \left(\frac{S(\{\phi_a\})}{k_B}\right)\]</div>
+<p>This formula is the bridge connecting macroscopic thermodynamics with statistical fluctuations. <strong>It tells us that the system's fluctuation behavior is essentially an exploration on the "landscape" constituted by entropy.</strong> A system always fluctuates around its most probable state (i.e., the state of maximum entropy). Therefore, the probability of observing a fluctuation that departs from equilibrium must be related to how much this fluctuation reduces entropy. The above formula is the mathematical embodiment of this physical principle.</p>
+<h2 id="12-gaussian-approximation-of-entropy">1.2 Gaussian Approximation of Entropy<a class="headerlink" href="#12-gaussian-approximation-of-entropy" title="Permanent link">&para;</a></h2>
+<p>As mentioned in the previous section, we are concerned with small fluctuations around a stable equilibrium state (the maximum point of entropy, which we define as <span class="arithmatex">\(\phi_{\text{eq}}=0\)</span>). Near any maximum point of a function, we can approximate it with a quadratic function (parabola). Therefore, we can perform a Taylor expansion of entropy <span class="arithmatex">\(S\)</span> around the equilibrium point and retain terms up to second order, obtaining a Gaussian approximation:</p>
+<div class="arithmatex">\[S \approx S_0-\frac{1}{2}\tau_{ab}\phi_a\phi_b\]</div>
+<p>Here we use Einstein summation convention, and the matrix <span class="arithmatex">\(\tau_{ab}\)</span> is precisely the stability matrix <span class="arithmatex">\(\Gamma_{ab} = -\left.\frac{\partial^2 S}{\partial \phi_a \partial \phi_b}\right|_{\phi=0}\)</span> we defined in the previous lecture. We use <span class="arithmatex">\(\tau_{ab}\)</span> in this lecture to distinguish it from the kinetic matrix in the next section.</p>
+<ul>
+<li><span class="arithmatex">\(S_0\)</span> is the maximum entropy at equilibrium.</li>
+<li>The symmetric and positive definite matrix <span class="arithmatex">\(\tau_{ab}\)</span> plays a central role here. It describes the curvature of the entropy "peak," representing the system's thermodynamic stiffness. The larger the value of <span class="arithmatex">\(\tau_{ab}\)</span>, the steeper the entropy "peak," and the more "reluctant" the system is to deviate from equilibrium, resulting in smaller fluctuations.</li>
+</ul>
+<p>Through this approximation, we transform the abstract "entropy landscape" into a concrete, mathematically tractable inverted paraboloid.</p>
+<h2 id="13-static-properties-reading-the-landscape">1.3 Static Properties: Reading the “Landscape”<a class="headerlink" href="#13-static-properties-reading-the-landscape" title="Permanent link">&para;</a></h2>
+<p>The quadratic entropy landscape implies a Gaussian equilibrium distribution</p>
+<div class="arithmatex">\[
+P_{\rm eq}(\{\phi_a\}) \propto \exp\!\big(-\tfrac{1}{2}\, \tau_{ab}\, \phi_a\phi_b\big),
+\]</div>
+<p>from which static correlations follow immediately:</p>
+<div class="arithmatex">\[
+\langle \phi_a \phi_b \rangle_{\rm eq} = (\tau^{-1})_{ab} \equiv \chi_{ab}. 
+\]</div>
+<p>Thus, the susceptibility matrix <span class="arithmatex">\(\chi\)</span> equals the covariance matrix of equilibrium fluctuations—one static form of the fluctuation–dissipation relation.</p>
+<h2 id="14-introducing-dynamics-the-mark-of-microscopic-reversibility">1.4 Introducing Dynamics: The Mark of Microscopic Reversibility<a class="headerlink" href="#14-introducing-dynamics-the-mark-of-microscopic-reversibility" title="Permanent link">&para;</a></h2>
+<p>To move beyond statics, we introduce dynamics while respecting fundamental symmetry: microscopic time‑reversal invariance (in the absence of TRS‑breaking fields). This symmetry will imprint nontrivial constraints on dynamical coefficients and correlation functions, ultimately yielding Onsager’s reciprocal relations.</p>
+<h1 id="2-linear-dynamics-and-the-onsager-regression-hypothesis">2. Linear Dynamics and the Onsager Regression Hypothesis<a class="headerlink" href="#2-linear-dynamics-and-the-onsager-regression-hypothesis" title="Permanent link">&para;</a></h1>
+<p>In the first section, we used entropy <span class="arithmatex">\(S\)</span> to construct a static "thermodynamic landscape" and derived the amplitude of fluctuations and restoring forces from its shape (described by the thermodynamic matrix <span class="arithmatex">\(\tau_{ab}\)</span>). Now, we need to answer the next key question: <strong>How does the system "move" on this landscape?</strong> This requires us to introduce a dynamical evolution equation for the fluctuation variables <span class="arithmatex">\(\phi_a\)</span>.</p>
+<h2 id="21-multivariate-langevin-equation-a-reasonable-dynamical-model">2.1 Multivariate Langevin Equation: A Reasonable Dynamical Model<a class="headerlink" href="#21-multivariate-langevin-equation-a-reasonable-dynamical-model" title="Permanent link">&para;</a></h2>
+<p>The most natural and simplest way to describe the dynamics of near-equilibrium systems is to generalize the single-variable Langevin equation we learned in Lecture 17. We assume that the evolution of fluctuations is driven by two parts: a deterministic restoring force that pulls the system back to equilibrium, and a random force representing microscopic thermal motion. Thus, we write the linear multivariate Langevin equation:</p>
+<div class="arithmatex">\[
+\partial_t \phi_a(t) = -\Gamma_{ab} \phi_b(t) + \xi_a(t)
+\]</div>
+<p><strong>Deterministic Restoring Term (<span class="arithmatex">\(-\Gamma_{ab} \phi_b(t)\)</span>)</strong>: This term describes how the system deterministically returns to the equilibrium point (<span class="arithmatex">\(\phi = 0\)</span>).</p>
+<ul>
+<li>
+<p>The newly introduced matrix <span class="arithmatex">\(\Gamma_{ab}\)</span> is a <strong>kinetic matrix</strong>. It describes how fast the presence of fluctuation <span class="arithmatex">\(\phi_b\)</span> causes changes in variable <span class="arithmatex">\(\phi_a\)</span>.</p>
+</li>
+<li>
+<p>Key distinction: This kinetic matrix <span class="arithmatex">\(\Gamma\)</span> is a completely different concept from the thermodynamic matrix <span class="arithmatex">\(\tau\)</span> in the previous section. <span class="arithmatex">\(\tau\)</span> describes the magnitude of static restoring forces (landscape steepness), while <span class="arithmatex">\(\Gamma\)</span> describes the rate of dynamic response (sliding speed). Moreover, unlike <span class="arithmatex">\(\tau\)</span> which must be symmetric, <span class="arithmatex">\(\Gamma\)</span> is not necessarily symmetric.</p>
+</li>
+</ul>
+<p><strong>Random Noise Term (<span class="arithmatex">\(\xi_a(t)\)</span>)</strong>: This term represents the continuous random "kicks" from the microscopic degrees of freedom within the system. We assume it is a Gaussian white noise, whose statistical properties are defined by its mean and covariance:</p>
+<div class="arithmatex">\[ \langle \xi_a(t) \rangle = 0 $$
+$$ \langle \xi_a(t) \xi_b(t') \rangle = N_{ab} \delta(t - t') \]</div>
+<p>where <span class="arithmatex">\(N_{ab}\)</span> is the noise correlation matrix, which describes the intensity of the noise. We temporarily treat it as an unknown quantity, but we will later find that it is not an independent parameter.</p>
+<h2 id="22-onsager-regression-hypothesis-a-bridge-from-random-to-deterministic">2.2 Onsager Regression Hypothesis: A Bridge from Random to Deterministic<a class="headerlink" href="#22-onsager-regression-hypothesis-a-bridge-from-random-to-deterministic" title="Permanent link">&para;</a></h2>
+<p>The Langevin equation above is stochastic, and its solutions are noisy trajectories. But the correlation function <span class="arithmatex">\(C_{ab}(t) = \langle \phi_a(t) \phi_b(0) \rangle\)</span> we care about is a smooth, deterministic function. How do we get a deterministic result from a stochastic equation?</p>
+<p>Here, Onsager proposed a brilliant physical insight, known as <strong>Onsager's regression hypothesis</strong>.</p>
+<p>The Onsager Reciprocity Relations were proposed by the American physical chemist Lars Onsager in 1931 as one of the core theories of nonequilibrium thermodynamics. Their physical essence lies in revealing that within the linear response range near thermodynamic equilibrium, the coupling coefficients between different irreversible processes (such as heat conduction, diffusion, electrochemistry, etc.) have symmetry. Lars Onsager (1903-1976) was born in Norway and later immigrated to the United States, teaching at Cornell University. He is famous for solving the two-dimensional Ising Model and nonequilibrium thermodynamics problems, and won the Nobel Prize in Chemistry in 1968 for "the discovery of reciprocal relations for irreversible processes."</p>
+<p><strong>The core idea of Onsager's regression hypothesis is:</strong> The average decay behavior of a small fluctuation spontaneously generated by thermal motion follows exactly the same dynamical laws as the macroscopic relaxation behavior caused by a small external perturbation (such as gently nudging the system with tweezers).</p>
+<p>The physical intuition behind this is that the system itself "doesn't know" how the fluctuation was generated. Once a fluctuation appears, the underlying dynamical mechanisms of the system (described by <span class="arithmatex">\(\Gamma\)</span>) will "smooth it out" in the same way.</p>
+<p>The mathematical power of this hypothesis lies in the fact that when we calculate a conditional average—i.e., fixing the initial fluctuation as <span class="arithmatex">\(\phi(0)\)</span> and then observing the subsequent average evolution path <span class="arithmatex">\(\bar{\phi}_a(t) = \langle \phi_a(t) \rangle_{\phi(0)}\)</span>—the average effect of the random noise term is zero (<span class="arithmatex">\(\langle \xi_a(t) \rangle_{\phi(0)} = 0\)</span>). Therefore, the evolution of this average path is no longer stochastic but follows a purely deterministic equation:</p>
+<div class="arithmatex">\[
+\partial_t \bar{\phi}_a(t) = -\Gamma_{ab} \bar{\phi}_b(t) \quad (\text{for } t &gt; 0)
+\]</div>
+<h2 id="23-dynamics-of-correlations-merging-the-ingredients">2.3 Dynamics of Correlations: Merging the Ingredients<a class="headerlink" href="#23-dynamics-of-correlations-merging-the-ingredients" title="Permanent link">&para;</a></h2>
+<p>Onsager's hypothesis provides us with a bridge. Now, we combine it with the definition of correlation functions. By taking the time derivative of the correlation function <span class="arithmatex">\(C_{ab}(t)\)</span> and applying the regression hypothesis, we immediately obtain a purely deterministic differential equation for the correlation function itself:</p>
+<div class="arithmatex">\[
+\partial_t C_{ab}(t) = -\Gamma_{ad} C_{db}(t)
+\]</div>
+<p>This equation needs an initial condition, and <strong>this initial condition is precisely the result we derived using static thermodynamics in the first section</strong>!</p>
+<div class="arithmatex">\[
+C_{ab}(0) = \langle \phi_a(0) \phi_b(0) \rangle = (\tau^{-1})_{ab}
+\]</div>
+<p>This is a milestone achievement! <strong>We have successfully transformed a stochastic dynamical problem into a familiar, deterministic system of linear ordinary differential equations.</strong> Its solution perfectly embodies the fusion of statics and dynamics:</p>
+<div class="arithmatex">\[
+C(t) = e^{-\Gamma t} \cdot C(0) = e^{-\Gamma t} \cdot \tau^{-1}
+\]</div>
+<p>This solution tells us a clear physical picture:
+- The <strong>initial amplitude <span class="arithmatex">\(C(0)\)</span></strong> of fluctuations is determined by the shape of the thermodynamic landscape (<span class="arithmatex">\(\tau\)</span>).
+- The way fluctuations decay over time <span class="arithmatex">\(e^{-\Gamma t}\)</span> is determined by the system's intrinsic dynamics (<span class="arithmatex">\(\Gamma\)</span>).</p>
+<p>In this way, we have seamlessly connected the static thermodynamic framework with the dynamic evolution model.</p>
+<p>Microscopic reversibility and time‑reversal parity will impose additional symmetry constraints (Sec. 3).</p>
+<h1 id="3-onsager-reciprocal-relations-hidden-symmetry-in-dynamics">3. Onsager Reciprocal Relations: Hidden Symmetry in Dynamics<a class="headerlink" href="#3-onsager-reciprocal-relations-hidden-symmetry-in-dynamics" title="Permanent link">&para;</a></h1>
+<p>We have obtained the complete dynamical equation describing how fluctuations decay over time: <span class="arithmatex">\(C(t) = e^{-\Gamma t} \tau^{-1}\)</span>. Although this result is complete, its form is still somewhat abstract. Now, we will "translate" it into the more commonly used and physically intuitive language of nonequilibrium thermodynamics—the language of <strong>"flux" and "force"</strong>. Through this perspective shift, we will reveal a profound symmetry hidden in the kinetic matrix <span class="arithmatex">\(\Gamma\)</span>.</p>
+<h2 id="31-onsager-kinetic-coefficients-l-the-language-of-transport">3.1 Onsager Kinetic Coefficients <span class="arithmatex">\(L\)</span>: The Language of Transport<a class="headerlink" href="#31-onsager-kinetic-coefficients-l-the-language-of-transport" title="Permanent link">&para;</a></h2>
+<p>In nonequilibrium thermodynamics, we usually don't directly discuss fluctuation variables <span class="arithmatex">\(\phi_a\)</span>, but rather their <strong>rates of change</strong>, which are called <strong>thermodynamic fluxes</strong>, denoted as <span class="arithmatex">\(J_a \equiv \partial_t \bar{\phi}_a\)</span>. For example, it could be the amount of heat passing through a certain interface per unit time (heat flux), the number of particles (particle flux), or charge (current).</p>
+<p>Meanwhile, what drives these "fluxes" are precisely the <strong>generalized thermodynamic forces</strong> we defined in the first section: <span class="arithmatex">\(\mu_d = -\tau_{db}\phi_b\)</span>. This force represents the degree to which the system deviates from equilibrium, such as temperature gradients, chemical potential gradients, or electric potential differences.</p>
+<p>Near equilibrium, a natural assumption is that the magnitude of "flux" is linearly related to the "force" driving it. This is like Ohm's law in circuits (current proportional to voltage). Therefore, we can write the central equation of macroscopic transport processes:</p>
+<div class="arithmatex">\[J_a = -L_{ad}\mu_d\]</div>
+<p>The matrix <span class="arithmatex">\(L_{ad}\)</span> here is the famous <strong>Onsager kinetic coefficients</strong>. It is a <strong>transport coefficient matrix</strong>, where the diagonal elements <span class="arithmatex">\(L_{aa}\)</span> describe how force <span class="arithmatex">\(\mu_a\)</span> drives its conjugate flux <span class="arithmatex">\(J_a\)</span> (e.g., electrical conductivity), while the off-diagonal elements <span class="arithmatex">\(L_{ad}\)</span> describe cross-effects between different processes (e.g., how temperature gradients cause current, i.e., thermoelectric effects).</p>
+<p>What is the relationship between this physically intuitive <span class="arithmatex">\(L\)</span> matrix and the abstract matrices <span class="arithmatex">\(\Gamma\)</span> and <span class="arithmatex">\(\tau\)</span> we defined earlier? Through simple algebraic substitution, we can easily establish the bridge between them:</p>
+<div class="arithmatex">\[J_a = \partial_t \bar{\phi}_a = -\Gamma_{ab}\bar{\phi}_b = \Gamma_{ab}(\tau^{-1})_{bd}(-\tau_{dk}\bar{\phi}_k) = \underbrace{\Gamma_{ab}(\tau^{-1})_{bd}}_{L_{ad}} \mu_d\]</div>
+<p>Therefore, we have found the exact relationship between them:</p>
+<div class="arithmatex">\[L = \Gamma \tau^{-1}\]</div>
+<p>Through this "translation," we have transformed the problem into: <strong>Does this physically measurable transport matrix <span class="arithmatex">\(L\)</span> have any universal properties?</strong></p>
+<h2 id="32-deriving-reciprocity-gathering-all-clues">3.2 Deriving Reciprocity: Gathering All Clues<a class="headerlink" href="#32-deriving-reciprocity-gathering-all-clues" title="Permanent link">&para;</a></h2>
+<p>Now, we have reached the climax of this lecture's derivation. We will gather all the key results from earlier to prove that the <span class="arithmatex">\(L\)</span> matrix must obey an astonishing symmetry.</p>
+<p>Our derivation process is like a logically perfect proof, requiring three key inputs:</p>
+<ol>
+<li>
+<p><strong>Input One (from Section 1.4)</strong>: The correlation function symmetry <span class="arithmatex">\(C_{ab}(t) = \epsilon_a\epsilon_b C_{ba}(-t)\)</span> derived from <strong>microscopic reversibility</strong>.</p>
+</li>
+<li>
+<p><strong>Input Two (from Section 2.3)</strong>: The correlation function dynamical equation <span class="arithmatex">\(\partial_t C(t) = -\Gamma C(t)\)</span> derived from <strong>Onsager's regression hypothesis</strong>.</p>
+</li>
+<li>
+<p><strong>Input Three (from Section 1.3)</strong>: The initial condition <span class="arithmatex">\(C(0) = \tau^{-1}\)</span> derived from <strong>thermodynamics</strong>.</p>
+</li>
+</ol>
+<h3 id="start-of-the-derivation">Start of the Derivation:<a class="headerlink" href="#start-of-the-derivation" title="Permanent link">&para;</a></h3>
+<ol>
+<li>We start from the microscopic reversibility relation, take the derivative of both sides with respect to time <span class="arithmatex">\(t\)</span>, and then examine the instant <span class="arithmatex">\(t \to 0^+\)</span>:</li>
+</ol>
+<div class="arithmatex">\[\left.\frac{dC_{ab}(t)}{dt}\right|_{t=0^+} = \epsilon_a\epsilon_b \left.\frac{dC_{ba}(-t)}{dt}\right|_{t=0^+} = -\epsilon_a\epsilon_b \left.\frac{dC_{ba}(s)}{ds}\right|_{s=0^-}\]</div>
+<p>Since the correlation function is continuous and differentiable at <span class="arithmatex">\(t=0\)</span> (for both <span class="arithmatex">\(t&gt;0\)</span> and <span class="arithmatex">\(t&lt;0\)</span>), the left and right derivatives are equal, therefore:</p>
+<div class="arithmatex">\[\left.\frac{dC_{ab}(t)}{dt}\right|_{t=0^+} = \epsilon_a\epsilon_b \left.\frac{dC_{ba}(t)}{dt}\right|_{t=0^+}\]</div>
+<ol>
+<li>Now, we use the dynamical equation to calculate this derivative:</li>
+</ol>
+<div class="arithmatex">\[\left.\frac{dC(t)}{dt}\right|_{t=0^+} = -\Gamma C(0) = -\Gamma\tau^{-1} = -L\]</div>
+<ol>
+<li>Substituting the result from step 2 into the equation from step 1, we get:</li>
+</ol>
+<div class="arithmatex">\[(-L)_{ab} = \epsilon_a\epsilon_b (-L)_{ba}\]</div>
+<ol>
+<li>After rearrangement, we obtain the final <strong>Onsager Reciprocity Relation</strong>:</li>
+</ol>
+<div class="arithmatex">\[L_{ab} = \epsilon_a\epsilon_b L_{ba}\]</div>
+<p>This is an extremely profound and powerful conclusion! It tells us that a transport coefficient <span class="arithmatex">\(L_{ab}\)</span> describing "how force b drives flux a" and a coefficient <span class="arithmatex">\(L_{ba}\)</span> describing "how force a drives flux b" must have a simple symmetric relationship determined by time-reversal parity.</p>
+<p><strong>This is like a poem in physics: a time symmetry hidden in the microscopic world, invisible to mortals, has left its elegant symmetric "fingerprint" on the measurable transport coefficient matrix in the macroscopic world.</strong> For example, it predicts that heating one end of a metal rod will produce a voltage at the other end, and conversely, applying voltage to this rod will also cause heat transport, with the strengths of these two cross-effects being strictly related. This law is completely independent of the type of metal or microscopic structure and is a universal law for all near-equilibrium systems.</p>
+<p>To clearly distinguish the multiple matrices appearing in this lecture (<span class="arithmatex">\(\tau\)</span>, <span class="arithmatex">\(\Gamma\)</span>, <span class="arithmatex">\(L\)</span>, <span class="arithmatex">\(N\)</span>), which are similar in form but have very different physical roles, we summarize them in the following table:</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Name</th>
+<th>Definition</th>
+<th>Physical Meaning and Properties</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\phi_a\)</span></td>
+<td>Thermodynamic variables</td>
+<td>Macroscopic state variables</td>
+<td>Describe the system's deviation from equilibrium.</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mu_a\)</span></td>
+<td>Thermodynamic forces</td>
+<td><span class="arithmatex">\(\mu_a = -\tau_{ab} \phi_b\)</span></td>
+<td>Generalized forces driving the system back to equilibrium.</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\tau_{ab}\)</span></td>
+<td>Thermodynamic matrix</td>
+<td><span class="arithmatex">\(S = S_0 - \frac{1}{2} \tau_{ab} \phi_a \phi_b\)</span></td>
+<td>Defines the stiffness of the entropy "barrier." Symmetric matrix: <span class="arithmatex">\(\tau_{ab} = \tau_{ba}\)</span>, and positive definite.</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\Gamma_{ab}\)</span></td>
+<td>Kinetic matrix</td>
+<td><span class="arithmatex">\(\partial_t \bar{\phi}_a = -\Gamma_{ab} \bar{\phi}_b\)</span></td>
+<td>Relates the rate of change of variables to their current values. Not necessarily symmetric.</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(L_{ab}\)</span></td>
+<td>Onsager coefficient matrix</td>
+<td><span class="arithmatex">\(J_a = -L_{ad} \mu_d\)</span> (<span class="arithmatex">\(L = \Gamma \tau^{-1}\)</span>)</td>
+<td>Connects thermodynamic fluxes (<span class="arithmatex">\(J_a\)</span>) with forces (<span class="arithmatex">\(\mu_d\)</span>). Encodes the system's linear response. Obeys reciprocity relations <span class="arithmatex">\(L_{ab} = \epsilon_a \epsilon_b L_{ba}\)</span>.</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(N_{ab}\)</span></td>
+<td>Noise correlation matrix</td>
+<td><span class="arithmatex">\(\langle \xi_a(t) \xi_b(t') \rangle = N_{ab} \delta(t - t')\)</span></td>
+<td>Specifies the intensity and correlation of microscopic random forces. Symmetric matrix.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="4-entropy-production-and-the-second-law">4. Entropy Production and the Second Law<a class="headerlink" href="#4-entropy-production-and-the-second-law" title="Permanent link">&para;</a></h1>
+<p>Starting from microscopic time symmetry, we have derived the <strong>symmetry</strong> of the transport matrix <span class="arithmatex">\(L\)</span>. Now, we will examine the <span class="arithmatex">\(L\)</span> matrix from a completely different, yet equally fundamental physical principle—<strong>the second law of thermodynamics</strong>—to see what other constraints it must satisfy. This examination will give our theory a solid macroscopic thermodynamic foundation.</p>
+<h2 id="41-entropy-production-rate-the-engine-of-irreversibility">4.1 Entropy Production Rate: The Engine of Irreversibility<a class="headerlink" href="#41-entropy-production-rate-the-engine-of-irreversibility" title="Permanent link">&para;</a></h2>
+<p>The core of the second law of thermodynamics is that for a process where an isolated system spontaneously evolves toward equilibrium, its total entropy must increase (or remain constant), i.e., <span class="arithmatex">\(\partial_t S \geq 0\)</span>. Let us calculate the rate of entropy change within our theoretical framework.</p>
+<p>Using the chain rule, the rate of entropy evolution over time can be written as:</p>
+<div class="arithmatex">\[\partial_t S(\{\bar{\phi}_a(t)\}) = \frac{\partial S}{\partial \bar{\phi}_b} \partial_t \bar{\phi}_b\]</div>
+<p>We immediately recognize that these two terms are precisely the <strong>thermodynamic forces</strong> (<span class="arithmatex">\(\mu_b = \frac{\partial S}{\partial \phi_b}\)</span>) and <strong>thermodynamic fluxes</strong> (<span class="arithmatex">\(J_b = \frac{\partial \phi_b}{\partial t}\)</span>) we defined in the third section! Therefore, we obtain an extremely important expression in nonequilibrium thermodynamics:</p>
+<div class="arithmatex">\[\partial_t S = \sum_b \mu_b J_b\]</div>
+<p>The physical meaning of this formula: <strong>The total entropy production rate of the system equals the sum of the products of all (generalized) "forces" and their conjugate "fluxes"</strong>. This is like the total power consumed in a circuit equals the sum of (voltage × current) for all components. It quantifies the rate at which irreversible processes within the system "burn" energy and produce entropy.</p>
+<p>Now, we substitute the linear relationship <span class="arithmatex">\(J_b = L_{bd}\mu_d\)</span> from the previous section to get:</p>
+<div class="arithmatex">\[\partial_t S = \mu_b L_{bd} \mu_d\]</div>
+<h2 id="42-positive-definiteness-of-l-guarantee-of-stability">4.2 Positive Definiteness of <span class="arithmatex">\(L\)</span>: Guarantee of Stability<a class="headerlink" href="#42-positive-definiteness-of-l-guarantee-of-stability" title="Permanent link">&para;</a></h2>
+<p>The second law of thermodynamics requires that for any nonequilibrium state (i.e., any non-zero thermodynamic forces <span class="arithmatex">\(\mu_a\)</span>), the entropy production rate must be positive: <span class="arithmatex">\(\partial_t S &gt; 0\)</span>. Applying this physical requirement to our mathematical expression:</p>
+<div class="arithmatex">\[\mu_b L_{bd} \mu_d &gt; 0 \quad (\text{for any } \mu \neq 0)\]</div>
+<p>This is a standard quadratic form expression. In linear algebra, a matrix <span class="arithmatex">\(L\)</span> that makes the quadratic form <span class="arithmatex">\(x^TLx\)</span> positive for any non-zero vector <span class="arithmatex">\(x\)</span> is defined as a <strong>positive-definite matrix</strong>.</p>
+<p>Therefore, we obtain a powerful conclusion: <strong>The second law of thermodynamics requires the Onsager coefficient matrix <span class="arithmatex">\(L\)</span> to be positive definite.</strong></p>
+<p>The physical meaning of this conclusion is:
+* <strong>Guarantee of equilibrium stability</strong>: The positive definiteness of <span class="arithmatex">\(L\)</span> ensures that once the system deviates from equilibrium, entropy will definitely increase, thus driving the system <strong>inevitably</strong> back toward equilibrium, rather than spontaneously moving toward states further from equilibrium.
+* <strong>Exclusion of "perpetual motion machines"</strong>: It prohibits the occurrence of any macroscopic processes with net entropy reduction.</p>
+<p>So far, we have imposed two powerful mathematical constraints on the transport coefficient matrix <span class="arithmatex">\(L\)</span> from two completely independent, first-principles physical principles:</p>
+<p>1.<strong>From microscopic reversibility (Section 3) → <span class="arithmatex">\(L\)</span> has symmetry (<span class="arithmatex">\(L_{ab} = \epsilon_a \epsilon_b L_{ba}\)</span>)</strong></p>
+<p>2.<strong>From the second law of thermodynamics (Section 4) → <span class="arithmatex">\(L\)</span> must be positive definite</strong></p>
+<p>These two constraint conditions together constitute the core of Onsager's theory, and they greatly limit the possible forms that the macroscopic dynamical behavior of any near-equilibrium system can have.</p>
+<h1 id="5-the-dynamic-fluctuation-dissipation-theorem-pricing-the-noise">5. The Dynamic Fluctuation-Dissipation Theorem: Pricing the Noise<a class="headerlink" href="#5-the-dynamic-fluctuation-dissipation-theorem-pricing-the-noise" title="Permanent link">&para;</a></h1>
+<p>So far, we have constructed a fairly complete near-equilibrium dynamics theory. We have a <strong>thermodynamic matrix <span class="arithmatex">\(\tau\)</span></strong> describing the system's static stability, a <strong>kinetic matrix <span class="arithmatex">\(\Gamma\)</span></strong> describing the system's dynamic relaxation rate, and an <strong>Onsager matrix <span class="arithmatex">\(L\)</span></strong> describing macroscopic transport.</p>
+<p>However, in the core of our theory—the Langevin equation <span class="arithmatex">\(\partial_t\phi = -\Gamma\phi + \xi\)</span>—there is still one key parameter whose identity is unknown: the <strong>noise correlation matrix <span class="arithmatex">\(N\)</span></strong>. It describes the intensity of microscopic random forces, but so far, it is just a parameter we introduced out of thin air. This is clearly unsatisfactory. A complete theory must be able to explain the source and magnitude of noise.</p>
+<p>The core task of this section is to <strong>"price" the noise <span class="arithmatex">\(N\)</span></strong>. We will prove that <span class="arithmatex">\(N\)</span> is not an independent parameter that needs additional measurement, but is completely determined by the matrices we already know that describe the system's macroscopic <strong>dissipation</strong> properties (<span class="arithmatex">\(L\)</span> or <span class="arithmatex">\(\Gamma\)</span> and <span class="arithmatex">\(\tau\)</span>). This profound connection is the <strong>Dynamic Fluctuation-Dissipation Theorem</strong>.</p>
+<p>Our strategy is: <strong>Use two completely different perspectives to calculate the same physical quantity—the fluctuation spectral density <span class="arithmatex">\(C_{ab}(\omega)\)</span></strong>. One path starts from macroscopic response, the other from microscopic noise. By making the two converge, we can unlock the secret of <span class="arithmatex">\(N\)</span>.</p>
+<h2 id="51-viewpoint-i-fluctuation-spectra-from-macroscopic-response">5.1 Viewpoint I: Fluctuation Spectra from Macroscopic Response<a class="headerlink" href="#51-viewpoint-i-fluctuation-spectra-from-macroscopic-response" title="Permanent link">&para;</a></h2>
+<p>The first method starts from the system's <strong>macroscopic response</strong> behavior. We already know that the average decay behavior of a fluctuation is described by the deterministic equation <span class="arithmatex">\(\partial_t C(t) = -\Gamma C(t)\)</span>. This equation describes how the system <strong>dissipates</strong> a fluctuation.</p>
+<p>By performing a Fourier transform on this time-domain equation, we can obtain the <strong>power spectral density</strong> <span class="arithmatex">\(C(\omega)\)</span> of fluctuations in the frequency domain. This spectral density tells us how the system's "fluctuation energy" is distributed across different frequencies (or time scales). After calculation, we get:</p>
+<div class="arithmatex">\[C(\omega) = G(\omega)\tau^{-1} + (G(-\omega)\tau^{-1})^T\]</div>
+<p>where <span class="arithmatex">\(G(\omega) = (-i\omega I + \Gamma)^{-1}\)</span> is the system's <strong>propagator</strong> or <strong>response function</strong>. It describes the system's response strength to an external perturbation of frequency <span class="arithmatex">\(\omega\)</span>.</p>
+<p>The physical picture of this expression is: <strong>The system's fluctuation spectrum is completely determined by its macroscopic response (<code>G</code>) and static thermodynamic stiffness (<code>τ</code>)</strong>.</p>
+<h2 id="52-viewpoint-ii-fluctuation-spectra-from-microscopic-noise">5.2 Viewpoint II: Fluctuation Spectra from Microscopic Noise<a class="headerlink" href="#52-viewpoint-ii-fluctuation-spectra-from-microscopic-noise" title="Permanent link">&para;</a></h2>
+<p>The second method goes straight to the source, starting from <strong>microscopic noise</strong>. We directly perform a Fourier transform on the Langevin equation itself:</p>
+<div class="arithmatex">\[-i\omega \phi_a(\omega) = -\Gamma_{ab}\phi_b(\omega) + \xi_a(\omega)\]</div>
+<p>Solving for <span class="arithmatex">\(\phi(\omega)\)</span>, we get an extremely clear physical picture:</p>
+<div class="arithmatex">\[\phi(\omega) = G(\omega) \xi(\omega)\]</div>
+<p>The meaning of this expression is: <strong>The system's observable fluctuations <span class="arithmatex">\(\phi(\omega)\)</span> with complex frequency structure are simply the result of the purest white noise <span class="arithmatex">\(\xi(\omega)\)</span> from the microscopic world being "filtered" by the system's own dynamical characteristics (described by the response function <code>G(ω)</code>)</strong>. The system acts like a filter, amplifying noise at certain frequencies while suppressing noise at other frequencies.</p>
+<p>Now, we use this relationship to calculate the fluctuation spectrum <span class="arithmatex">\(C(\omega)\)</span>, which is directly related to the (unknown) intensity <span class="arithmatex">\(N\)</span> of the noise:</p>
+<div class="arithmatex">\[C(\omega) = \langle \phi(\omega) \phi(-\omega)^T \rangle = G(\omega) \langle \xi(\omega) \xi(-\omega)^T \rangle G(-\omega)^T = G(\omega) N G^\dagger(\omega)\]</div>
+<h2 id="53-matchup-deriving-the-dynamic-fdt">5.3 Matchup: Deriving the Dynamic FDT<a class="headerlink" href="#53-matchup-deriving-the-dynamic-fdt" title="Permanent link">&para;</a></h2>
+<p>Now, we have reached the decisive moment of the theory. We have two equivalent expressions for the same physical quantity <span class="arithmatex">\(C(\omega)\)</span>. One is derived from the perspective of macroscopic dissipation, the other from the perspective of microscopic fluctuations. <strong>The self-consistency of physics requires that these two must be equal</strong>:</p>
+<div class="arithmatex">\[G(\omega)\tau^{-1} + (G(-\omega)\tau^{-1})^T = G(\omega) N G^\dagger(\omega)\]</div>
+<p>This equation is like a "detective game," with the only unknown being <span class="arithmatex">\(N\)</span>. After a series of matrix algebraic operations (using <span class="arithmatex">\(G^{-1} = -i\omega I + \Gamma\)</span>), we can uniquely solve for <span class="arithmatex">\(N\)</span> from this, obtaining the final core result of this lecture—the <strong>Dynamic Fluctuation-Dissipation Theorem</strong>:</p>
+<div class="arithmatex">\[N = \Gamma\tau^{-1} + (\Gamma\tau^{-1})^T = L + L^T\]</div>
+<p>This theorem is one of the pinnacle achievements of statistical physics. It establishes a universal, quantitative connection between microscopic fluctuations and macroscopic dissipation that holds at all time scales:</p>
+<ul>
+<li>
+<p><strong>Fluctuation</strong>: The noise correlation matrix <span class="arithmatex">\(N\)</span> on the left side of the equation, which characterizes the intensity and correlation of microscopic random forces within the system. It is a measure of the system's "restlessness."</p>
+</li>
+<li>
+<p><strong>Dissipation</strong>: The symmetric part of the Onsager matrix <span class="arithmatex">\(L + L^T\)</span> on the right side. The Onsager matrix <span class="arithmatex">\(L\)</span> describes how the system responds to and dissipates energy when driven externally, and is a measure of the system's "damping and friction."</p>
+</li>
+</ul>
+<p><strong>This theorem declares: The intensity of microscopic noise driving system fluctuations is not an independent mysterious parameter, but is completely determined by the system's macroscopic, measurable dissipation properties (such as electrical conductivity, viscosity coefficients, etc.). A system's "intrinsic noisiness" and its "resistance to external disturbances" are two sides of the same coin.</strong></p>
+<p>For the simple case where all variables are even parity, <span class="arithmatex">\(L\)</span> is symmetric, and the theorem simplifies to <span class="arithmatex">\(N = 2L\)</span>. This can be seen as the most magnificent generalization of the familiar <strong>Einstein relation</strong> (<span class="arithmatex">\(D = \mu k_B T\)</span>) to multivariable, time-dependent systems. At this point, our theoretical framework is completely closed and self-consistent.</p>
+<h1 id="6-practice-python-simulation-of-coupled-fluctuations">6. Practice: Python Simulation of Coupled Fluctuations<a class="headerlink" href="#6-practice-python-simulation-of-coupled-fluctuations" title="Permanent link">&para;</a></h1>
+<p>We will simulate a two-dimensional coupled Ornstein-Uhlenbeck process, which is a typical example of the linear Langevin dynamics discussed in this lecture. Through simulation, we will be able to numerically verify our theoretical predictions for correlation functions.</p>
+<h2 id="61-model-system">6.1 Model System<a class="headerlink" href="#61-model-system" title="Permanent link">&para;</a></h2>
+<p>We consider a system described by two variables <span class="arithmatex">\(\phi_1\)</span> and <span class="arithmatex">\(\phi_2\)</span>, whose dynamics is given by the following equation:</p>
+<div class="arithmatex">\[\partial_t \begin{pmatrix} \phi_1 \\ \phi_2 \end{pmatrix} = -\begin{pmatrix} \Gamma_{11} &amp; \Gamma_{12} \\ \Gamma_{21} &amp; \Gamma_{22} \end{pmatrix} \begin{pmatrix} \phi_1 \\ \phi_2 \end{pmatrix} + \begin{pmatrix} \xi_1 \\ \xi_2 \end{pmatrix}\]</div>
+<p>The system's entropy is given by:</p>
+<div class="arithmatex">\[S = -\frac{1}{2} (\tau_{11}\phi_1^2 + \tau_{22}\phi_2^2 + 2\tau_{12}\phi_1\phi_2)\]</div>
+<h2 id="62-code-implementation">6.2 Code Implementation<a class="headerlink" href="#62-code-implementation" title="Permanent link">&para;</a></h2>
+<h3 id="set-physical-parameters">Set Physical Parameters<a class="headerlink" href="#set-physical-parameters" title="Permanent link">&para;</a></h3>
+<p>First, we import the necessary libraries and define the physical parameters of the system: the thermodynamic matrix <span class="arithmatex">\(\tau\)</span> and the kinetic matrix <span class="arithmatex">\(\Gamma\)</span>. To make the example more interesting, we will choose an asymmetric <span class="arithmatex">\(\Gamma\)</span> matrix, which means <span class="arithmatex">\(L\)</span> will also be asymmetric, which is common in systems with magnetic fields or rotation.</p>
+<h3 id="derive-dependent-parameters">Derive Dependent Parameters<a class="headerlink" href="#derive-dependent-parameters" title="Permanent link">&para;</a></h3>
+<p>According to the dynamic fluctuation-dissipation theorem, the properties of noise are not arbitrary—they must be determined by the system's dissipation properties. Therefore, we first calculate the Onsager matrix <span class="arithmatex">\(L = \Gamma\tau^{-1}\)</span>, then use the FDT to calculate the noise correlation matrix <span class="arithmatex">\(N = L + L^T\)</span>. This is a crucial step: we are not guessing the noise, but <em>deriving</em> it from dissipation.</p>
+<h3 id="numerical-integration-and-correlated-noise-generation">Numerical Integration and Correlated Noise Generation<a class="headerlink" href="#numerical-integration-and-correlated-noise-generation" title="Permanent link">&para;</a></h3>
+<p>We will use the Euler-Maruyama method to numerically integrate this system of stochastic differential equations. For a time step <span class="arithmatex">\(dt\)</span>, the update rule is:</p>
+<div class="arithmatex">\[\phi(t + dt) = \phi(t) - \Gamma \phi(t) dt + \sqrt{dt} \cdot \eta(t)\]</div>
+<p>Here, <span class="arithmatex">\(\eta(t)\)</span> is a two-dimensional Gaussian random vector with zero mean and covariance matrix <span class="arithmatex">\(N\)</span>. To generate random numbers with this specific covariance, we first perform a Cholesky decomposition of <span class="arithmatex">\(N\)</span> to get a lower triangular matrix <span class="arithmatex">\(C\)</span> such that <span class="arithmatex">\(N = C C^T\)</span>. Then, we generate a vector <span class="arithmatex">\(z\)</span> composed of two independent standard normal random numbers, and <span class="arithmatex">\(C z\)</span> is the random vector with covariance <span class="arithmatex">\(N\)</span> that we need.</p>
+<h3 id="ensemble-simulation-and-correlation-functions">Ensemble Simulation and Correlation Functions<a class="headerlink" href="#ensemble-simulation-and-correlation-functions" title="Permanent link">&para;</a></h3>
+<p>To obtain statistically meaningful results, we simulate a large number of independent trajectories (an ensemble). Then, we write a function to calculate the time correlation functions <span class="arithmatex">\(C_{ab}(t) = \langle \phi_a(t_0+t)\phi_b(t_0) \rangle\)</span>, calculated by averaging over all trajectories and all possible starting times <span class="arithmatex">\(t_0\)</span>.</p>
+<h3 id="verification-and-visualization">Verification and Visualization<a class="headerlink" href="#verification-and-visualization" title="Permanent link">&para;</a></h3>
+<p>Finally, we compare the simulation results with theoretical predictions. The exact analytical solution for the correlation matrix is <span class="arithmatex">\(C(t) = e^{-\Gamma t}\tau^{-1}\)</span>, where <span class="arithmatex">\(e^{-\Gamma t}\)</span> is the matrix exponential. We will plot the four correlation functions obtained from simulation (<span class="arithmatex">\(C_{11}, C_{12}, C_{21}, C_{22}\)</span>) and compare them with their theoretical curves on the same plot.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.linalg</span><span class="w"> </span><span class="kn">import</span> <span class="n">cholesky</span><span class="p">,</span> <span class="n">expm</span>
+
+<span class="c1"># --- 1. Set physical parameters ---</span>
+
+<span class="c1"># Define thermodynamic matrix tau (must be symmetric and positive definite)</span>
+<span class="c1"># tau_11 and tau_22 determine the &quot;cost&quot; of fluctuations of each variable</span>
+<span class="c1"># tau_12 describes the thermodynamic coupling between the two variables</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span>
+                <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]])</span>
+
+<span class="c1"># Define kinetic matrix Gamma (can be asymmetric)</span>
+<span class="c1"># Gamma_11, Gamma_22 are the relaxation rates of each variable</span>
+<span class="c1"># Gamma_12, Gamma_21 are the kinetic coupling coefficients</span>
+<span class="n">Gamma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">],</span>
+                  <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]])</span>
+
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.001</span>     <span class="c1"># time step</span>
+<span class="n">n_steps</span> <span class="o">=</span> <span class="mi">20000</span> <span class="c1"># steps per trajectory</span>
+<span class="n">n_traj</span> <span class="o">=</span> <span class="mi">100</span>    <span class="c1"># number of trajectories for ensemble averaging</span>
+
+<span class="c1"># --- 2. Derive dependent parameters (apply theory) ---</span>
+
+<span class="c1"># Calculate the inverse of tau, which is the equal-time correlation function C(0)</span>
+<span class="n">tau_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span>
+<span class="n">C0</span> <span class="o">=</span> <span class="n">tau_inv</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Calculate Onsager matrix L = Gamma * tau_inv</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">Gamma</span> <span class="o">@</span> <span class="n">tau_inv</span>
+
+<span class="c1"># Apply dynamic fluctuation-dissipation theorem to compute noise matrix N = L + L^T</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">L</span> <span class="o">+</span> <span class="n">L</span><span class="o">.</span><span class="n">T</span>
+
+<span class="c1"># Check if L satisfies reciprocity relations (here epsilon_a=epsilon_b=1, so L should be symmetric)</span>
+<span class="c1"># Note: With asymmetric Gamma, L may be asymmetric, corresponding to TRS breaking (e.g., magnetic field).</span>
+
+<span class="c1"># --- 3. Numerical simulation setup ---</span>
+
+<span class="n">max_lag</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">time_lags</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">max_lag</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+<span class="n">trajectories</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_traj</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># Perform Cholesky decomposition of noise matrix N for generating correlated noise</span>
+<span class="c1"># N = C * C^T, where C is a lower triangular matrix</span>
+<span class="n">C_noise</span> <span class="o">=</span> <span class="n">cholesky</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running simulation...&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_traj</span><span class="p">):</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_steps</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="c1"># Initialize from equilibrium Gaussian with covariance C0</span>
+    <span class="n">phi</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">cov</span><span class="o">=</span><span class="n">C0</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">):</span>
+        <span class="c1"># Generate two independent standard normals</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="c1"># Generate correlated noise via Cholesky factor</span>
+        <span class="n">correlated_noise</span> <span class="o">=</span> <span class="n">C_noise</span> <span class="o">@</span> <span class="n">z</span>
+
+        <span class="c1"># Euler-Maruyama step</span>
+        <span class="n">drift</span> <span class="o">=</span> <span class="o">-</span><span class="n">Gamma</span> <span class="o">@</span> <span class="n">phi</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="n">stochastic</span> <span class="o">=</span> <span class="n">correlated_noise</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span>  <span class="c1"># dt scaling of noise</span>
+
+        <span class="n">phi</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">phi</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">drift</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">+</span> <span class="n">stochastic</span> <span class="o">*</span> <span class="n">dt</span>
+
+    <span class="n">trajectories</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">phi</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Simulation finished.&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- 5. Calculate correlation functions ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_correlation_function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">max_lag</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate autocorrelation and cross-correlation functions for multiple trajectories&quot;&quot;&quot;</span>
+    <span class="n">n_traj</span><span class="p">,</span> <span class="n">n_t</span><span class="p">,</span> <span class="n">n_var</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">corr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">max_lag</span><span class="p">,</span> <span class="n">n_var</span><span class="p">,</span> <span class="n">n_var</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_var</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_var</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_traj</span><span class="p">):</span>
+                <span class="n">traj_i</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">])</span>
+                <span class="n">traj_j</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:,</span> <span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:,</span> <span class="n">j</span><span class="p">])</span>
+                <span class="n">conv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">correlate</span><span class="p">(</span><span class="n">traj_i</span><span class="p">,</span> <span class="n">traj_j</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">)</span>
+                <span class="n">corr</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">conv</span><span class="p">[</span><span class="n">n_t</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">n_t</span><span class="o">-</span><span class="mi">1</span><span class="o">+</span><span class="n">max_lag</span><span class="p">]</span>
+
+    <span class="c1"># Normalize for each time delay</span>
+    <span class="n">normalization</span> <span class="o">=</span> <span class="n">n_traj</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_t</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">max_lag</span><span class="p">))[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+    <span class="n">corr</span> <span class="o">/=</span> <span class="n">normalization</span>
+    <span class="k">return</span> <span class="n">corr</span>
+
+<span class="n">C_sim</span> <span class="o">=</span> <span class="n">calculate_correlation_function</span><span class="p">(</span><span class="n">trajectories</span><span class="p">,</span> <span class="n">max_lag</span><span class="p">)</span>
+
+<span class="c1"># --- 6. Theoretical predictions and plots ---</span>
+<span class="n">C_theory</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">max_lag</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">time_lags</span><span class="p">):</span>
+    <span class="c1"># C(t) = exp(-Gamma * t) * C(0)</span>
+    <span class="n">C_theory</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">expm</span><span class="p">(</span><span class="o">-</span><span class="n">Gamma</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">@</span> <span class="n">C0</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Coupled Fluctuations: Simulation vs. Theory&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$C_</span><span class="si">{11}</span><span class="s1">(t)$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$C_</span><span class="si">{12}</span><span class="s1">(t)$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$C_</span><span class="si">{21}</span><span class="s1">(t)$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$C_</span><span class="si">{22}</span><span class="s1">(t)$&#39;</span><span class="p">]</span>
+<span class="n">positions</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">positions</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span>
+    <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">pos</span>
+    <span class="c1"># Simulation results</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_lags</span><span class="p">,</span> <span class="n">C_sim</span><span class="p">[:,</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Simulation&#39;</span><span class="p">)</span>
+    <span class="c1"># Theory</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_lags</span><span class="p">,</span> <span class="n">C_theory</span><span class="p">[:,</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">],</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theory&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Correlation&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time lag t&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time lag t&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">rect</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.96</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Coupled_Fluctuations.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Check relationship between C12(t) and C21(t)</span>
+<span class="c1"># With asymmetric L (TRS broken), C(t) need not be symmetric.</span>
+<span class="c1"># C(t)^T = (expm(-Gamma*t) * C0)^T = C0^T * expm(-Gamma^T*t) = C0 * expm(-Gamma^T*t)</span>
+<span class="c1"># Generally not equal to C(t): indeed C12(t) != C21(t).</span>
+</code></pre></div>
+<p><img alt="Run Output" src="../../assets/images/remote/4bcf6d85-da34-47bb-89e6-2ba220807c9d-d6c55a0149.png" /></p>
+<p>The ensemble‑averaged data points agree with the theoretical curves. The autocorrelations <span class="arithmatex">\(C_{11}(t)\)</span> and <span class="arithmatex">\(C_{22}(t)\)</span> decay exponentially as expected. The cross‑correlations <span class="arithmatex">\(C_{12}(t)\)</span> and <span class="arithmatex">\(C_{21}(t)\)</span> reveal coupled dynamics between variables: a fluctuation in one produces a non‑instantaneous response in the other. The asymmetry between <span class="arithmatex">\(C_{12}(t)\)</span> and <span class="arithmatex">\(C_{21}(t)\)</span> is not an error; with asymmetric <span class="arithmatex">\(\Gamma\)</span> (or, equivalently, TRS breaking), it is a real physical effect, illustrating the Onsager–Casimir relations: the causal influence of 1 on 2 need not equal that of 2 on 1.</p>
+<h1 id="conclusion-a-unified-picture-of-nearequilibrium-dynamics">Conclusion: A Unified Picture of Near‑Equilibrium Dynamics<a class="headerlink" href="#conclusion-a-unified-picture-of-nearequilibrium-dynamics" title="Permanent link">&para;</a></h1>
+<p>This lecture constructs a universal framework for describing the dynamical behavior of any system near thermodynamic equilibrium.</p>
+<ul>
+<li>
+<p><strong>Onsager Reciprocity Relations:</strong> Rooted in the fundamental symmetry principle of microscopic time reversibility, they impose strict symmetry constraints on macroscopic transport coefficients. This deeply connects seemingly unrelated physical processes (such as heat conduction and electrical conduction).</p>
+</li>
+<li>
+<p><strong>The Dynamical Manifestation of the Second Law of Thermodynamics:</strong> The stability of thermodynamic equilibrium requires the Onsager coefficient matrix to be positive definite, providing a dynamical foundation for the directionality of macroscopic dissipation processes.</p>
+</li>
+<li>
+<p><strong>Dynamic Fluctuation-Dissipation Theorem:</strong> The quantitative relationship between fluctuations and dissipation across the entire frequency domain <span class="arithmatex">\(N = L + L^T\)</span>. This theorem is one of the core achievements of statistical physics, perfectly unifying the random fluctuations of the microscopic world with the deterministic dissipation of the macroscopic world.</p>
+</li>
+</ul>
+<p>In summary, Onsager's theory and the dynamic fluctuation-dissipation theorem together paint a physical picture. They reveal that between random microscopic fluctuations and deterministic macroscopic dissipation, there exists a profound and harmonious intrinsic connection governed by symmetry and thermodynamic principles, fusing statistics, dynamics, and thermodynamics into a single, self-consistent theoretical system.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.highlight"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../assets/javascripts/mathjax.js"></script>
+      
+        <script src="../../assets/javascripts/language-nav.js"></script>
+      
+        <script src="../../assets/javascripts/video-init.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

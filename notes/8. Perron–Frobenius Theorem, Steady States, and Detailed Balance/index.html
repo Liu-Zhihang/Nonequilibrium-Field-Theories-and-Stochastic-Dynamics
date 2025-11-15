@@ -1,0 +1,3153 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Course Notes and Code (Erwin Frey, LMU Munich, 2025)">
+      
+      
+        <meta name="author" content="Zhihang Liu">
+      
+      
+        <link rel="canonical" href="https://liu-zhihang.github.io/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/notes/8.%20Perron%E2%80%93Frobenius%20Theorem%2C%20Steady%20States%2C%20and%20Detailed%20Balance/">
+      
+      
+        <link rel="prev" href="../7.%20Forward%20Master%20Equation%20and%20the%20Q%20Matrix/">
+      
+      
+        <link rel="next" href="../9.%20Nonequilibrium%20States%20%E2%80%94%20Irreversibility%20and%20Entropy%20Production/">
+      
+      
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en">
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>8. Perron–Frobenius Theorem, Steady States, and Detailed Balance - Nonequilibrium Field Theories and Stochastic Dynamics</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/video.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-seeking-a-unique-and-physical-steady-state" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-header__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nonequilibrium Field Theories and Stochastic Dynamics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              8. Perron–Frobenius Theorem, Steady States, and Detailed Balance
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-nav__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nonequilibrium Field Theories and Stochastic Dynamics
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.%20Course%20Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.%20Simple%20Random%20Walk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Simple Random Walk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20Gaussian%20Random%20Walk%20and%20Poisson%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Gaussian Random Walk and Poisson Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20Gillespie%20Algorithm%2C%20Master%20Equation%2C%20Generating%20Functions%20and%20Population%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie Algorithm, Master Equation, Generating Functions and Population Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.%20Population%20Dynamics%20-%20Linear%20Death%20Process%20and%20Lotka-Volterra%20System/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Population Dynamics - Linear Death Process and Lotka-Volterra System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.%20Fundamental%20Equations%20of%20Markov%20Processes%20%E2%80%94%20Chapman%E2%80%93Kolmogorov%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Fundamental Equations of Markov Processes — Chapman–Kolmogorov Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.%20Forward%20Master%20Equation%20and%20the%20Q%20Matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Forward Master Equation and the Q Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Perron–Frobenius Theorem, Steady States, and Detailed Balance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.%20Nonequilibrium%20States%20%E2%80%94%20Irreversibility%20and%20Entropy%20Production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Nonequilibrium States — Irreversibility and Entropy Production
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.%20Ehrenfest%20Model%2C%20Entropy%2C%20and%20KL%20Divergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Ehrenfest Model, Entropy, and KL Divergence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.%20Continuous%20Markov%20Processes%20and%20the%20Fokker%E2%80%93Planck%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Continuous Markov Processes and the Fokker–Planck Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12.%20Brownian%20Motion%20and%20the%20Ornstein%E2%80%93Uhlenbeck%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Brownian Motion and the Ornstein–Uhlenbeck Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13.%20Monte%20Carlo%20Sampling%20as%20a%20Stochastic%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Monte Carlo Sampling as a Stochastic Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14.%20Hamiltonian%20Monte%20Carlo%20Sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Hamiltonian Monte Carlo Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15.%20Chemotaxis%2C%20Run-and-Tumble%20Motion%2C%20and%20the%20Keller%E2%80%93Segel%20Model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Chemotaxis, Run-and-Tumble Motion, and the Keller–Segel Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16.%20The%20Schnitzer%20Model%2C%20Anomalous%20Diffusion%2C%20and%20Motility%E2%80%91Induced%20Phase%20Separation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. The Schnitzer Model, Anomalous Diffusion, and Motility‑Induced Phase Separation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17.%20Langevin%20Equation%2C%20Brownian%20Particle%2C%20and%20the%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Langevin Equation, Brownian Particle, and the Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18.%20Fokker%E2%80%93Planck%20Equation%20and%20the%20Smoluchowski%20Equation%20%E2%80%94%20From%20Random%20Trajectories%20to%20Probability%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Fokker–Planck Equation and the Smoluchowski Equation — From Random Trajectories to Probability Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19.%20Path%20Integral%20Formulation%20of%20Stochastic%20Processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Path Integral Formulation of Stochastic Processes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20.%20Stochastic%20Differential%20Equations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Stochastic Differential Equations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21.%20Ito%20Integral%20and%20Unified%20Stochastic%20Process%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Ito Integral and Unified Stochastic Process Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22.%20Path%20Integrals%20for%20Systems%20with%20Multiplicative%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Path Integrals for Systems with Multiplicative Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23.%20From%20Coarse-Graining%20to%20Fluctuation%20Dynamics%20of%20Continuous%20Field%20Theories/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. From Coarse-Graining to Fluctuation Dynamics of Continuous Field Theories
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24.%20Onsager%20Coefficients%2C%20Reciprocity%2C%20and%20the%20Dynamic%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Onsager Coefficients, Reciprocity, and the Dynamic Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25.%20Gradient%20Dynamics%2C%20Phase%20Transitions%2C%20and%20Relaxation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. Gradient Dynamics, Phase Transitions, and Relaxation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26.%20Critical%20Slowing%20Down%2C%20Dynamic%20Response%2C%20and%20Conservation%20Laws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Critical Slowing Down, Dynamic Response, and Conservation Laws
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27.%20Hydrodynamics%20of%20Simple%20Fluids%2C%20Inviscid%20Flow%2C%20and%20the%20Euler%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. Hydrodynamics of Simple Fluids, Inviscid Flow, and the Euler Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28.%20Viscous%20Fluids%2C%20the%20Navier%E2%80%93Stokes%20Equation%2C%20Entropy%20Balance%2C%20and%20Heat%20Conduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. Viscous Fluids, the Navier–Stokes Equation, Entropy Balance, and Heat Conduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29.%20Irreversible%20Linear%20Thermodynamics%20and%20Dry%20Diffusive%20Particle%20Systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. Irreversible Linear Thermodynamics and Dry Diffusive Particle Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30.%20Brownian%20Particles%20Suspended%20in%20a%20Fluid%20%E2%80%94%20Model%20H/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. Brownian Particles Suspended in a Fluid — Model H
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31.%20Dynamical%20Functionals%2C%20Additive%E2%80%91Noise%20Field%20Theory%2C%20and%20the%20Onsager%E2%80%93Machlup%20Functional/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. Dynamical Functionals, Additive‑Noise Field Theory, and the Onsager–Machlup Functional
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32.%20Janssen%E2%80%93De%20Dominicis%20Response%20Functional%20and%20the%20Fluctuation%E2%80%93Dissipation%20Relation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen–De Dominicis Response Functional and the Fluctuation–Dissipation Relation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33.%20Nonequilibrium%20Work%20and%20Fluctuation%20Theorems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. Nonequilibrium Work and Fluctuation Theorems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../34.%20Directed%20Percolation%2C%20Absorbing%20States%2C%20and%20Spectral%20Methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. Directed Percolation, Absorbing States, and Spectral Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../35.%20Path-Integral%20Representation%20of%20the%20Master%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. Path-Integral Representation of the Master Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../36.%20Coherent-State%20Path%20Integrals%2C%20Operator%20Algebra%2C%20and%20Imaginary%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. Coherent-State Path Integrals, Operator Algebra, and Imaginary Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../37.%20Kramers-Moyal%20Expansion%20and%20the%20Low-Noise%20Limit%20of%20Path%20Integrals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal Expansion and the Low-Noise Limit of Path Integrals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../38.%20Multi-Species%20Path%20Integrals%20and%20Cyclic%20Competition%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. Multi-Species Path Integrals and Cyclic Competition Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../39.%20From%20Particle%20Jumps%20to%20Continuous%20Field%20Theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. From Particle Jumps to Continuous Field Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../40.%20Unified%20Field%20Theory%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. Unified Field Theory Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    中文笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/1.%20%E8%AF%BE%E7%A8%8B%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 课程导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/2.%20%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 简单随机游走
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/3.%20%E9%AB%98%E6%96%AF%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0%E4%B8%8E%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 高斯随机游走与泊松过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/4.%20Gillespie%20%E7%AE%97%E6%B3%95%E3%80%81%E4%B8%BB%E6%96%B9%E7%A8%8B%E3%80%81%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%8D%E7%BE%A4%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie 算法、主方程、生成函数与种群动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/5.%20%E7%A7%8D%E7%BE%A4%E5%8A%A8%E6%80%81%E5%AD%A6%EF%BC%9A%E7%BA%BF%E6%80%A7%E6%AD%BB%E4%BA%A1%E8%BF%87%E7%A8%8B%E4%B8%8ELotka-Volterra%20%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 种群动态学：线性死亡过程与Lotka-Volterra 系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/6.%20%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E7%A8%8B%EF%BC%9A%E6%9F%A5%E6%99%AE%E6%9B%BC-%E7%A7%91%E5%B0%94%E8%8E%AB%E6%88%88%E7%BD%97%E5%A4%AB%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 马尔可夫过程的基本方程：查普曼-科尔莫戈罗夫方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/7.%20%E5%89%8D%E5%90%91%E4%B8%BB%E6%96%B9%E7%A8%8B%E4%B8%8EQ%E7%9F%A9%E9%98%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 前向主方程与Q矩阵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/8.%20%E4%BD%A9%E9%BE%99-%E5%BC%97%E7%BD%97%E8%B4%9D%E5%B0%BC%E4%B9%8C%E6%96%AF%E5%AE%9A%E7%90%86%E3%80%81%E7%A8%B3%E6%80%81%E4%B8%8E%E7%BB%86%E8%87%B4%E5%B9%B3%E8%A1%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 佩龙-弗罗贝尼乌斯定理、稳态与细致平衡
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/9.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81%EF%BC%9A%E4%B8%8D%E5%8F%AF%E9%80%86%E6%80%A7%E4%B8%8E%E7%86%B5%E4%BA%A7%E7%94%9F%E7%9A%84%E6%8E%A8%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 非平衡态：不可逆性与熵产生的推论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/10.%20%E5%9F%83%E4%BC%A6%E8%B4%B9%E6%96%AF%E7%89%B9%E6%A8%A1%E5%9E%8B%E3%80%81%E7%86%B5%E4%B8%8EKL%E6%95%A3%E5%BA%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 埃伦费斯特模型、熵与KL散度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/11.%20%E8%BF%9E%E7%BB%AD%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E4%B8%8E%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. 连续马尔可夫过程与福克-普朗克方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/12.%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8%E4%B8%8E%E5%A5%A5%E6%81%A9%E6%96%AF%E5%9D%A6-%E4%B9%8C%E4%BC%A6%E8%B4%9D%E5%85%8B%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. 布朗运动与奥恩斯坦-乌伦贝克过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/13.%20%E4%BD%9C%E4%B8%BA%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. 作为随机过程的蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/14.%20%E5%93%88%E5%AF%86%E5%B0%94%E9%A1%BF%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. 哈密尔顿蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/15.%20%E8%B6%8B%E5%8C%96%E6%80%A7%E3%80%81%E8%B7%91%E5%8A%A8-%E7%BF%BB%E6%BB%9A%E8%BF%90%E5%8A%A8%E4%B8%8EKeller-Segel%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. 趋化性、跑动-翻滚运动与Keller-Segel模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/16.%20Schnitzer%E6%A8%A1%E5%9E%8B%E3%80%81%E5%8F%8D%E5%B8%B8%E6%89%A9%E6%95%A3%E4%B8%8E%E8%BF%90%E5%8A%A8%E8%AF%B1%E5%AF%BC%E7%9B%B8%E5%88%86%E7%A6%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Schnitzer模型、反常扩散与运动诱导相分离
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/17.%20%E6%9C%97%E4%B9%8B%E4%B8%87%E6%96%B9%E7%A8%8B%E3%80%81%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. 朗之万方程、布朗粒子与涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/18.%20%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B%E4%B8%8E%E6%96%AF%E6%91%A9%E6%A3%B1%E9%9C%8D%E5%A4%AB%E6%96%AF%E5%9F%BA%E6%96%B9%E7%A8%8B%EF%BC%9A%E4%BB%8E%E9%9A%8F%E6%9C%BA%E8%BD%A8%E8%BF%B9%E5%88%B0%E6%A6%82%E7%8E%87%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. 福克-普朗克方程与斯摩棱霍夫斯基方程：从随机轨迹到概率动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/19.%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. 随机过程的路径积分表述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/20.%20%E9%9A%8F%E6%9C%BA%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. 随机微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/21.%20%E4%BC%8A%E8%97%A4%E7%A7%AF%E5%88%86%E4%B8%8E%E7%BB%9F%E4%B8%80%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. 伊藤积分与统一的随机过程框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/22.%20%E5%90%AB%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. 含乘性噪声系统的路径积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/23.%20%E4%BB%8E%E7%B2%97%E7%B2%92%E5%8C%96%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA%E6%B6%A8%E8%90%BD%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. 从粗粒化到连续场论涨落动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/24.%20%E6%98%82%E8%90%A8%E6%A0%BC%E7%B3%BB%E6%95%B0%E3%80%81%E5%80%92%E6%98%93%E5%85%B3%E7%B3%BB%E4%B8%8E%E5%8A%A8%E6%80%81%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. 昂萨格系数、倒易关系与动态涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/25.%20%E6%A2%AF%E5%BA%A6%E5%8A%A8%E5%8A%9B%E5%AD%A6%E3%80%81%E7%9B%B8%E5%8F%98%E4%B8%8E%E5%BC%9B%E8%B1%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. 梯度动力学、相变与弛豫
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/26.%20%E4%B8%B4%E7%95%8C%E6%85%A2%E5%8C%96%E3%80%81%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%B8%8E%E5%AE%88%E6%81%92%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. 临界慢化、动态响应与守恒律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/27.%20%E7%AE%80%E5%8D%95%E6%B5%81%E4%BD%93%E3%80%81%E6%97%A0%E6%91%A9%E6%93%A6%E6%B5%81%E4%BD%93%E4%B8%8E%E6%AC%A7%E6%8B%89%E6%96%B9%E7%A8%8B%E7%9A%84%E6%B5%81%E4%BD%93%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. 简单流体、无摩擦流体与欧拉方程的流体动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/28.%20%E7%B2%98%E6%80%A7%E6%B5%81%E4%BD%93%E3%80%81%E7%BA%B3%E7%BB%B4-%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%96%B9%E7%A8%8B%E3%80%81%E7%86%B5%E5%B9%B3%E8%A1%A1%E4%B8%8E%E7%83%AD%E4%BC%A0%E5%AF%BC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. 粘性流体、纳维-斯托克斯方程、熵平衡与热传导
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/29.%20%E4%B8%8D%E5%8F%AF%E9%80%86%E7%BA%BF%E6%80%A7%E7%83%AD%E5%8A%9B%E5%AD%A6%E4%B8%8E%E5%B9%B2%E6%80%A7%E6%89%A9%E6%95%A3%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. 不可逆线性热力学与干性扩散粒子系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/30.%20%E6%82%AC%E6%B5%AE%E5%9C%A8%E6%B5%81%E4%BD%93%E4%B8%AD%E7%9A%84%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%20%E2%80%94%20H%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. 悬浮在流体中的布朗粒子 — H模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/31.%20%E5%8A%A8%E6%80%81%E6%B3%9B%E5%87%BD%E3%80%81%E5%8A%A0%E6%80%A7%E5%99%AA%E5%A3%B0%E5%9C%BA%E8%AE%BA%E4%B8%8EOnsager-Machlup%E6%B3%9B%E5%87%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. 动态泛函、加性噪声场论与Onsager-Machlup泛函
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/32.%20Janssen-De%20Dominicis%20%E5%93%8D%E5%BA%94%E6%B3%9B%E5%87%BD%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen-De Dominicis 响应泛函与涨落-耗散关系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/33.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E5%8A%9F%E4%B8%8E%E6%B6%A8%E8%90%BD%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. 非平衡功与涨落定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/34.%20%E6%9C%89%E5%90%91%E6%B8%97%E6%B5%81%E3%80%81%E5%90%B8%E6%94%B6%E6%80%81%E4%B8%8E%E8%B0%B1%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. 有向渗流、吸收态与谱方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/35.%20%E4%B8%BB%E6%96%B9%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E7%A4%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. 主方程的路径积分表示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/36.%20%E7%9B%B8%E5%B9%B2%E6%80%81%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E3%80%81%E7%AE%97%E7%AC%A6%E4%BB%A3%E6%95%B0%E4%B8%8E%E8%99%9A%E5%99%AA%E5%A3%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. 相干态路径积分、算符代数与虚噪声
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/37.%20Kramers-Moyal%20%E5%B1%95%E5%BC%80%E4%B8%8E%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E7%9A%84%E4%BD%8E%E5%99%AA%E5%A3%B0%E6%9E%81%E9%99%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal 展开与路径积分的低噪声极限
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/38.%20%E5%A4%9A%E7%89%A9%E7%A7%8D%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E4%B8%8E%E5%BE%AA%E7%8E%AF%E7%AB%9E%E4%BA%89%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. 多物种路径积分与循环竞争动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/39.%20%E4%BB%8E%E7%B2%92%E5%AD%90%E8%B7%B3%E8%B7%83%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. 从粒子跳跃到连续场论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/40.%20%E7%BB%9F%E4%B8%80%E7%9A%84%E5%9C%BA%E8%AE%BA%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. 统一的场论框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="introduction-seeking-a-unique-and-physical-steady-state">Introduction: Seeking a Unique and Physical Steady State<a class="headerlink" href="#introduction-seeking-a-unique-and-physical-steady-state" title="Permanent link">&para;</a></h1>
+<p>In the previous lecture, Prof. Erwin Frey developed the core tools for Markov processes—the <strong>forward master equation</strong> and the <strong>Q matrix</strong>. We know that the time evolution of a system's probability distribution is governed by the following concise matrix equation:</p>
+<div class="arithmatex">\[\frac{dP}{dt}(t) = QP(t)\]</div>
+<p>where <span class="arithmatex">\(P(t)\)</span> is a column vector whose <span class="arithmatex">\(n\)</span>-th element <span class="arithmatex">\(P_n(t)\)</span> represents the probability that the system is in state <span class="arithmatex">\(n\)</span> at time <span class="arithmatex">\(t\)</span>. The Q matrix, also known as the transition-rate matrix, has elements defined as:</p>
+<ul>
+<li><strong>Off-diagonal elements</strong> <span class="arithmatex">\(Q_{nm} = w_{m \to n} \geq 0\)</span> (for <span class="arithmatex">\(n \neq m\)</span>), representing the transition rate from state <span class="arithmatex">\(m\)</span> to state <span class="arithmatex">\(n\)</span>.</li>
+<li><strong>Diagonal elements</strong> <span class="arithmatex">\(Q_{nn} = -\sum_{m \neq n} w_{n \to m}\)</span>, representing the total exit rate from state <span class="arithmatex">\(n\)</span>.</li>
+</ul>
+<p>We also derived a crucial property of the Q matrix: its <strong>column sums are zero</strong>.</p>
+<div class="arithmatex">\[\sum_n Q_{nm} = 0\]</div>
+<p><img alt="Lecture blackboard screenshot" src="../../assets/images/remote/d634b230-e3c6-4e07-b03d-bc4640ba9604-b05599760c.jpg" /></p>
+<p>In physics, chemistry, biology, and many other fields, we are often most concerned not with transient behavior, but with what state the system will ultimately reach after long-term evolution. This final, time-independent state is what we call a <strong>steady state (steady state) or equilibrium (equilibrium)</strong>. As the professor pointed out on the blackboard, this mathematical property directly guarantees the existence of <strong>steady states</strong> in the system. A steady distribution <span class="arithmatex">\(\pi\)</span> is a probability distribution that does not change over time, i.e., <span class="arithmatex">\(\frac{d\pi}{dt} = 0\)</span>. Substituting into the master equation, we obtain the condition that steady states must satisfy:</p>
+<div class="arithmatex">\[Q\pi = 0\]</div>
+<p>This is precisely an eigenvalue equation in linear algebra, telling us that the steady state <span class="arithmatex">\(\pi\)</span> is the eigenvector of the Q matrix corresponding to eigenvalue 0. The property that column sums are zero ensures that 0 must be an eigenvalue of the Q matrix.</p>
+<p>However, the knowledge from the previous lecture leaves us with some key, unresolved physical questions:</p>
+<ol>
+<li>
+<p><strong>Uniqueness</strong>: Is this steady-state solution <span class="arithmatex">\(\pi\)</span> the unique long-term fate of the system? Or can the system have multiple different steady states, with the final state depending on initial conditions?</p>
+</li>
+<li>
+<p><strong>Physicality</strong>: As a probability distribution, every component <span class="arithmatex">\(\pi_n\)</span> of the steady-state vector must be non-negative, i.e., <span class="arithmatex">\(\pi_n \geq 0\)</span>. Can we guarantee that this mathematical solution is physically meaningful? Furthermore, can we guarantee <span class="arithmatex">\(\pi_n &gt; 0\)</span>, i.e., that in the steady state, no state is completely impossible to appear?</p>
+</li>
+<li>
+<p><strong>Reachability</strong>: Under what physical conditions can uniqueness and positivity hold?</p>
+</li>
+</ol>
+<p>To answer these core questions about the long-term behavior of systems, we need a powerful mathematical tool that specifically deals with matrices having certain properties. This tool is the <strong>Perron-Frobenius theorem</strong>. The core task of this lecture is to use this theorem to establish a solid theoretical foundation for the stochastic processes we care about, proving that under specific conditions, they must necessarily evolve to a unique, physically meaningful steady state.</p>
+<h1 id="1-perronfrobenius-a-powerful-guarantee-for-positive-matrices">1. Perron–Frobenius: A Powerful Guarantee for Positive Matrices<a class="headerlink" href="#1-perronfrobenius-a-powerful-guarantee-for-positive-matrices" title="Permanent link">&para;</a></h1>
+<p>The Perron–Frobenius theorem (abbreviated as PF theorem) is a profound result in linear algebra that reveals the special properties of eigenvalues and eigenvectors of matrices with nonnegative elements.</p>
+<p>The Perron-Frobenius theorem (Perron-Frobenius theorem) originated in the early 20th century, proposed and refined by German mathematicians Oskar Perron (1907) and Ferdinand Frobenius (1912), respectively. This theorem specifically studies <strong>nonnegative matrices</strong> (all elements ≥ 0) and <strong>positive matrices</strong> (all elements &gt; 0), with the core conclusion that for irreducible nonnegative matrices, there exists a unique maximum real eigenvalue (the Perron root), and the corresponding eigenvector has all positive components.</p>
+<p>This theorem has extremely wide applications in modern science: in <strong>Markov chain theory</strong> to guarantee the uniqueness and physicality of steady-state distributions; in <strong>population dynamics</strong> to analyze the long-term behavior of population growth; in <strong>economics</strong> to study input-output models and economic growth theory; in <strong>network science</strong> to compute web page rankings (such as Google's PageRank algorithm) and social network influence; in <strong>ecology</strong> to model ecosystem stability; in <strong>quantum physics</strong> to analyze the evolution of open quantum systems.</p>
+<p>The PF theorem provides us with a powerful mathematical tool that can guarantee from a purely mathematical perspective that many physical and biological systems must necessarily evolve to a unique, physically meaningful steady state, making it an important bridge connecting abstract mathematical theory with the behavior of complex systems in the real world.</p>
+<p><img alt="Lecture slide" src="../../assets/images/remote/1aeebcf2-8f18-4749-b134-8387761e8ca3-fd66aee560.png" /></p>
+<h2 id="11-statement-of-the-theorem">1.1 Statement of the Theorem<a class="headerlink" href="#11-statement-of-the-theorem" title="Permanent link">&para;</a></h2>
+<p>The theorem can be stated in simple terms as follows:</p>
+<p>For a real square matrix <span class="arithmatex">\(M\)</span> with all elements being <strong>nonnegative</strong> (<span class="arithmatex">\(M_{nm} \geq 0\)</span>) and <strong>indecomposable</strong> (also called irreducible), the following conclusions hold:</p>
+<p>1) There exists a <strong>unique, real positive eigenvalue</strong> <span class="arithmatex">\(\lambda\)</span> that has the largest absolute value among all eigenvalues. That is, for any other eigenvalue <span class="arithmatex">\(\mu\)</span> of <span class="arithmatex">\(M\)</span> (which may be complex), we have <span class="arithmatex">\(|\mu| &lt; \lambda\)</span>. This special eigenvalue <span class="arithmatex">\(\lambda\)</span> is called the <strong>Perron root</strong> or dominant eigenvalue.</p>
+<p>2) The eigenvector <span class="arithmatex">\(p^{(\lambda)}\)</span> corresponding to the Perron root <span class="arithmatex">\(\lambda\)</span> is unique (up to multiplication by a positive constant factor) and can be chosen such that all its components are <strong>strictly positive</strong> (<span class="arithmatex">\(p_n^{(\lambda)} &gt; 0\)</span> for all <span class="arithmatex">\(n\)</span>).</p>
+<p><img alt="Lecture blackboard screenshot" src="../../assets/images/remote/cebcd3ee.png" /></p>
+<p>We can intuitively understand this theorem through a spectral diagram. For a matrix <span class="arithmatex">\(M\)</span> satisfying the conditions, all its eigenvalues lie within a disk centered at the origin with radius <span class="arithmatex">\(\lambda\)</span> in the complex plane. The Perron root <span class="arithmatex">\(\lambda\)</span> itself is an isolated point on the positive real axis, while all other eigenvalues <span class="arithmatex">\(\mu\)</span> are strictly inside it.</p>
+<h2 id="12-physical-meaning-of-the-assumptions">1.2 Physical Meaning of the Assumptions<a class="headerlink" href="#12-physical-meaning-of-the-assumptions" title="Permanent link">&para;</a></h2>
+<p>To understand the power of the PF theorem, we must deeply analyze its two core prerequisite conditions.</p>
+<p><strong>Terminology note:</strong> In this chapter, "indecomposable" and "irreducible" are synonymous. To match standard Markov process and PF theorem usage, we will use "irreducible" henceforth.</p>
+<h3 id="nonnegativity-m_nm-geq-0">Nonnegativity (<span class="arithmatex">\(M_{nm} \geq 0\)</span>)<a class="headerlink" href="#nonnegativity-m_nm-geq-0" title="Permanent link">&para;</a></h3>
+<p>This condition is very natural in physical and biological models. Matrix elements often represent quantities that are inherently non-negative, such as species counts, chemical concentrations, or in Markov chains, transition probabilities. This condition is the foundation of the entire theorem.</p>
+<h3 id="indecomposability-irreducibility">Indecomposability (Irreducibility)<a class="headerlink" href="#indecomposability-irreducibility" title="Permanent link">&para;</a></h3>
+<p>This is the most crucial physical condition when applying the PF theorem. A matrix is indecomposable, meaning the system it describes is a <strong>whole</strong>, rather than composed of several isolated, non-communicating subsystems. This concept can be understood through several approaches to build the strongest physical intuition:</p>
+<ul>
+<li>
+<p><strong>Graph theory perspective:</strong> We can imagine each state <span class="arithmatex">\(n\)</span> of the system as a node in a graph. If matrix element <span class="arithmatex">\(M_{nm} &gt; 0\)</span>, we draw a directed edge from node <span class="arithmatex">\(m\)</span> to node <span class="arithmatex">\(n\)</span>, indicating the system can transition from state <span class="arithmatex">\(m\)</span> to state <span class="arithmatex">\(n\)</span>. Then, the <strong>indecomposability</strong> of the matrix is equivalent to this directed graph being <strong>strongly connected</strong>. Strong connectivity means that from any node, there exists a path of directed edges that can reach any other node in the graph.</p>
+</li>
+<li>
+<p><strong>Physical perspective:</strong> An indecomposable (or irreducible) system, physically means the system can explore all possible state spaces over time. There are no so-called "traps" or "islands" in the system—that is, certain sets of states that, once entered, the system can never leave, or certain states that can never be reached from other parts of the system. As the professor mentioned in class, this is equivalent to "all states are reachable."</p>
+</li>
+<li>
+<p><strong>Formal definition:</strong> Mathematically, indecomposability is defined as the matrix having no non-trivial <strong>invariant subspaces</strong>. A subspace <span class="arithmatex">\(V\)</span> is invariant if for any vector <span class="arithmatex">\(v \in V\)</span> belonging to that subspace, after transformation by matrix <span class="arithmatex">\(M\)</span>, the result <span class="arithmatex">\(Mv\)</span> still lies within that subspace.</p>
+</li>
+</ul>
+<p>Indecomposability is the mathematical language that guarantees the consistency of the system's global behavior. If a system is decomposable, it's as if it's divided into several parts by an invisible wall. Physically, this means the system's long-term behavior will depend entirely on its initial state. If it starts from "region A," it will be forever trapped in the steady state of "region A"; if it starts from "region B," it will reach the steady state of "region B." This leads to multiple possible steady states, destroying uniqueness.</p>
+<p>Therefore, the <strong>indecomposability</strong> condition, by excluding this possibility of "imprisonment," forces the system, regardless of where it starts, to eventually explore all states and tend toward a <strong>globally unified steady state</strong>. This deeply connects an abstract mathematical condition with a key physical property—the uniqueness of steady states.</p>
+<h1 id="2-applying-pf-to-q-proof-of-a-unique-steady-state">2. Applying PF to Q: Proof of a Unique Steady State<a class="headerlink" href="#2-applying-pf-to-q-proof-of-a-unique-steady-state" title="Permanent link">&para;</a></h1>
+<p>We face a direct challenge: the Q matrix we want to analyze does not satisfy the "nonnegativity" condition of the PF theorem, because its diagonal elements <span class="arithmatex">\(Q_{nn}\)</span> are negative. So how can we utilize this powerful theorem?</p>
+<p>The key insight here is very clever: instead of analyzing the Q matrix directly, we construct an auxiliary matrix <span class="arithmatex">\(M\)</span> that is related to it and satisfies the conditions of the PF theorem.</p>
+<h2 id="21-constructing-a-nonnegative-matrix-m">2.1 Constructing a Nonnegative Matrix <span class="arithmatex">\(M\)</span><a class="headerlink" href="#21-constructing-a-nonnegative-matrix-m" title="Permanent link">&para;</a></h2>
+<p>Following the professor's derivation on the blackboard, we define a new matrix <span class="arithmatex">\(M\)</span> as follows:</p>
+<div class="arithmatex">\[
+M_{nm} := Q_{nm} + \alpha \delta_{nm}
+\]</div>
+<p>Note: := means "is defined as or equals"</p>
+<p>where <span class="arithmatex">\(\delta_{nm}\)</span> is the Kronecker function (1 when <span class="arithmatex">\(n = m\)</span>, 0 otherwise), and <span class="arithmatex">\(\alpha\)</span> is a carefully chosen positive constant whose value is the maximum exit rate among all states in the system:</p>
+<div class="arithmatex">\[\alpha = \max_n |Q_{nn}| = \max_n \sum_{m \neq n} w_{n \to m}\]</div>
+<p>The essence of this construction is to add a sufficiently large positive number <span class="arithmatex">\(\alpha\)</span> to the diagonal of the Q matrix, thereby "lifting" all diagonal elements to make them nonnegative.</p>
+<h2 id="22-stepbystep-derivation">2.2 Step‑by‑Step Derivation<a class="headerlink" href="#22-stepbystep-derivation" title="Permanent link">&para;</a></h2>
+<p>Now, we complete this proof step by step, which will answer our initial questions about the uniqueness and physicality of steady states.</p>
+<ol>
+<li><strong>Prove that <span class="arithmatex">\(M\)</span> is a nonnegative matrix:</strong></li>
+</ol>
+<p>For off-diagonal elements (<span class="arithmatex">\(n \neq m\)</span>), <span class="arithmatex">\(M_{nm} = Q_{nm} = w_{m \to n} \geq 0\)</span>.</p>
+<p>For diagonal elements (<span class="arithmatex">\(n = m\)</span>), <span class="arithmatex">\(M_{nn} = Q_{nn} + \alpha = -\sum_{m \neq n} w_{n \to m} + \alpha\)</span>. According to the definition of <span class="arithmatex">\(\alpha\)</span>, it is the maximum among all exit rate sums, so for any state <span class="arithmatex">\(n\)</span>, we have <span class="arithmatex">\(\alpha \geq \sum_{m \neq n} w_{n \to m}\)</span>. This guarantees <span class="arithmatex">\(M_{nn} \geq 0\)</span>.</p>
+<p>Therefore, all elements of our constructed matrix <span class="arithmatex">\(M\)</span> are nonnegative.</p>
+<ol>
+<li><strong>Link the eigenvalue problems of <span class="arithmatex">\(Q\)</span> and <span class="arithmatex">\(M\)</span>:</strong></li>
+</ol>
+<p>The eigenvalue equation for <span class="arithmatex">\(M\)</span> is <span class="arithmatex">\(Mp = \lambda p\)</span>. Substituting the definition of <span class="arithmatex">\(M\)</span>, we get <span class="arithmatex">\((Q + \alpha I)p = \lambda p\)</span>, where <span class="arithmatex">\(I\)</span> is the identity matrix. Rearranging, we obtain:</p>
+<div class="arithmatex">\[Qp = (\lambda - \alpha)p\]</div>
+<p>This relationship is very important. It shows that <span class="arithmatex">\(Q\)</span> and <span class="arithmatex">\(M\)</span> have <strong>exactly the same eigenvectors</strong>, while their eigenvalues differ only by a constant <span class="arithmatex">\(\alpha\)</span>. The eigenvalues of <span class="arithmatex">\(Q\)</span> are the eigenvalues of <span class="arithmatex">\(M\)</span> minus <span class="arithmatex">\(\alpha\)</span>.</p>
+<ol>
+<li><strong>Apply Perron-Frobenius to <span class="arithmatex">\(M\)</span>:</strong></li>
+</ol>
+<p>We assume that the Markov process under study is irreducible, which means its state space is strongly connected. This property directly guarantees that our constructed matrix <span class="arithmatex">\(M\)</span> is indecomposable. Therefore, <span class="arithmatex">\(M\)</span> satisfies all conditions of the PF theorem.</p>
+<p>According to the PF theorem, <span class="arithmatex">\(M\)</span> has a unique, real positive dominant eigenvalue, which we call <span class="arithmatex">\(\lambda_{PF}\)</span>, and a corresponding eigenvector <span class="arithmatex">\(p^{(\lambda_{PF})}\)</span> with all strictly positive components.</p>
+<ol>
+<li><strong>Determine the value of the dominant eigenvalue <span class="arithmatex">\(\lambda_{PF}\)</span>:</strong></li>
+</ol>
+<p>This is the core step of the proof, completely reproducing the professor's blackboard derivation.</p>
+<p><img alt="Lecture blackboard screenshot" src="../../assets/images/remote/728da4c4-2d37-4950-b51a-c5a2a9addf0b-b8ce1d237c.png" /></p>
+<p>We sum the eigenvalue equation of <span class="arithmatex">\(M\)</span> over all components <span class="arithmatex">\(n\)</span>:</p>
+<div class="arithmatex">\[
+\sum_n (Mp^{(\lambda_{\mathrm{PF}})})_n = \sum_n \sum_m M_{nm} p_m^{(\lambda_{\mathrm{PF}})} = \sum_n \lambda_{\mathrm{PF}} p_n^{(\lambda_{\mathrm{PF}})}
+\]</div>
+<p>On the left side, we swap the order of summation and substitute the definition of <span class="arithmatex">\(M\)</span>:</p>
+<div class="arithmatex">\[
+\sum_m \left(\sum_n M_{nm}\right) p_m^{(\lambda_{\mathrm{PF}})} = \sum_m \left(\sum_n (Q_{nm} + \alpha \delta_{nm})\right) p_m^{(\lambda_{\mathrm{PF}})} = \lambda_{\mathrm{PF}} \sum_n p_n^{(\lambda_{\mathrm{PF}})}
+\]</div>
+<p>The summation inside the brackets can be calculated. We know that the column sums of the <span class="arithmatex">\(Q\)</span> matrix are zero, i.e., <span class="arithmatex">\(\sum_n Q_{nm} = 0\)</span>. And <span class="arithmatex">\(\sum_n \alpha \delta_{nm}\)</span> is non-zero only when <span class="arithmatex">\(n = m\)</span>, with value <span class="arithmatex">\(\alpha\)</span>. Therefore, the value inside the brackets is <span class="arithmatex">\(\alpha\)</span>. The equation becomes:</p>
+<div class="arithmatex">\[
+\sum_m \alpha p_m^{(\lambda_{\mathrm{PF}})} = \lambda_{\mathrm{PF}} \sum_n p_n^{(\lambda_{\mathrm{PF}})}
+\]</div>
+<p>Since <span class="arithmatex">\(\sum_m p_m^{(\lambda_{\mathrm{PF}})}\)</span> and <span class="arithmatex">\(\sum_n p_n^{(\lambda_{\mathrm{PF}})}\)</span> are the same sum, and according to the PF theorem, all components of <span class="arithmatex">\(p^{(\lambda_{\mathrm{PF}})}\)</span> are positive, this sum is also positive and can be canceled from both sides. We finally obtain an amazingly simple result:</p>
+<div class="arithmatex">\[
+\lambda_{\mathrm{PF}} = \alpha
+\]</div>
+<ol>
+<li><strong>Return to Q matrix, obtain the final conclusion:</strong></li>
+</ol>
+<p>We have found that the dominant eigenvalue of <span class="arithmatex">\(M\)</span> is <span class="arithmatex">\(\alpha\)</span>. Now, using the relationship from step 2, <span class="arithmatex">\(Qp = (\lambda - \alpha)p\)</span>, we can find the eigenvalue <span class="arithmatex">\(\lambda_Q\)</span> of the Q matrix corresponding to this dominant eigenvector:</p>
+<div class="arithmatex">\[
+\lambda_Q = \lambda_{\mathrm{PF}} - \alpha = \alpha - \alpha = 0
+\]</div>
+<h2 id="23-summary-and-physical-meaning">2.3 Summary and Physical Meaning<a class="headerlink" href="#23-summary-and-physical-meaning" title="Permanent link">&para;</a></h2>
+<p>This proof answers our initial questions. It tells us:</p>
+<p><strong>For any continuous-time Markov process with an irreducible state space (i.e., all states are mutually accessible), its transition rate matrix <span class="arithmatex">\(Q\)</span> has a unique eigenvector with eigenvalue 0. According to the Perron-Frobenius theorem, this eigenvector can be chosen to have all components strictly positive.</strong></p>
+<p>This vector is precisely the <strong>unique, physically meaningful steady-state distribution</strong> <span class="arithmatex">\(\pi\)</span> that we have been seeking. Its uniqueness guarantees that the system's long-term behavior is deterministic, independent of the initial state. Its positivity (<span class="arithmatex">\(\pi_n &gt; 0\)</span>) ensures that in the steady state, every state in the system has a non-zero probability of being visited, which aligns with our physical intuition about an "active," irreducible system.</p>
+<p>Furthermore, since <span class="arithmatex">\(\lambda_{\mathrm{PF}} = \alpha\)</span> is the <strong>dominant</strong> eigenvalue of <span class="arithmatex">\(M\)</span>, all other eigenvalues <span class="arithmatex">\(\mu\)</span> satisfy <span class="arithmatex">\(|\mu| &lt; \alpha\)</span>. Consequently, all other eigenvalues of <span class="arithmatex">\(Q\)</span>, given by <span class="arithmatex">\(\lambda_Q' = \mu - \alpha\)</span>, will satisfy <span class="arithmatex">\(\mathrm{Re}(\lambda_Q') &lt; 0\)</span>. These eigenvalues with negative real parts represent all the "transient modes" in the system that decay exponentially with time. As time approaches infinity, these modes will all disappear, leaving only the steady-state mode corresponding to the eigenvalue 0.</p>
+<h1 id="3-characterizing-balance-stationary-and-reversible-processes">3. Characterizing Balance: Stationary and Reversible Processes<a class="headerlink" href="#3-characterizing-balance-stationary-and-reversible-processes" title="Permanent link">&para;</a></h1>
+<p>Now that we have proven that there always exists a unique steady state <span class="arithmatex">\(\pi\)</span> in an irreducible system, we can explore more deeply the properties of the system after it reaches this steady state.</p>
+<h2 id="31-stationary-process">3.1 Stationary Process<a class="headerlink" href="#31-stationary-process" title="Permanent link">&para;</a></h2>
+<p>When a stochastic process <span class="arithmatex">\(X(t)\)</span> has reached its steady-state distribution, we call it a <strong>stationary process</strong>. Its statistical properties remain invariant under time translation. This means:</p>
+<ul>
+<li>At any time <span class="arithmatex">\(t\)</span>, the probability that the system is in state <span class="arithmatex">\(n\)</span> is constant, i.e., <span class="arithmatex">\(\text{Prob}\{X(t) = n\} = \pi_n\)</span>.</li>
+<li>The system's joint probabilities depend only on time intervals, independent of absolute time. For example, <span class="arithmatex">\(\text{Prob}\{X(t_1) = n_1, X(t_2) = n_2\}\)</span> depends only on the time difference <span class="arithmatex">\(t_2 - t_1\)</span>.</li>
+</ul>
+<h2 id="32-reversible-process">3.2 Reversible Process<a class="headerlink" href="#32-reversible-process" title="Permanent link">&para;</a></h2>
+<p><img alt="Lecture blackboard screenshot" src="../../assets/images/remote/9712541b-927d-451f-b54a-ea7b21415075-1dc6e6a012.png" /></p>
+<p>Reversibility is a stronger and more subtle condition. A stationary process is called <strong>reversible</strong> if its statistical properties are also invariant under time reversal. This has a very intuitive physical interpretation: imagine recording the evolution trajectory of this process with a camera, then playing the tape <strong>backward</strong>. If from a statistical perspective, the reversed movie is indistinguishable from the forward one, then this process is reversible.</p>
+<p>Formally, this means that the joint probability of a state sequence equals the joint probability of its time-reversed sequence:</p>
+<div class="arithmatex">\[
+\mathrm{Prob}\{X(t_1)=n_1,\ldots,X(t_k)=n_k\}=\mathrm{Prob}\{X(t_1)=n_k,\ldots,X(t_k)=n_1\}
+\]</div>
+<p>If a process is reversible, then it must be stationary. Because if statistical properties have a temporal "arrow" (e.g., the probability distribution is evolving), then forward and backward movies would be statistically distinguishable. Therefore, time-reversal symmetry implies time-translation symmetry.</p>
+<h1 id="4-detailed-balance-microscopic-signature-of-thermodynamic-equilibrium">4. Detailed Balance: Microscopic Signature of Thermodynamic Equilibrium<a class="headerlink" href="#4-detailed-balance-microscopic-signature-of-thermodynamic-equilibrium" title="Permanent link">&para;</a></h1>
+<p>The seemingly abstract concept of reversibility can be expressed through a concrete and powerful mathematical condition: <strong>detailed balance</strong>.</p>
+<p>In stochastic process theory, any system that reaches a steady state must satisfy a basic condition called overall balance (Overall Balance). This condition means that for any state in the system, the total probability flux flowing into that state must exactly equal the total probability flux flowing out of that state; otherwise, the probability of that state would change over time, and the system would not be in steady state. However, overall balance allows for persistent net probability circulation (net currents) within the system, like a ring pipe system where the water level (probability) at each point remains constant, but water flow (probability flow) can continuously flow unidirectionally.</p>
+<p><strong>"Detailed balance"</strong> is a more stringent and profound physical condition. It not only requires that the total inflow and outflow of each state be equal, but also requires that for every pair of directly connected states, the bidirectional probability flows be exactly equal. Its core idea can be summarized as:</p>
+<p>In a steady-state system satisfying detailed balance, for any two states <span class="arithmatex">\(j\)</span> and <span class="arithmatex">\(k\)</span>, the transition rate from state <span class="arithmatex">\(j\)</span> to state <span class="arithmatex">\(k\)</span> exactly equals the reverse transition rate from state <span class="arithmatex">\(k\)</span> back to state <span class="arithmatex">\(j\)</span>.</p>
+<p>Detailed balance is stricter: for every pair of directly connected states, the bidirectional probability fluxes are exactly equal.</p>
+<p><img alt="Lecture slide" src="../../assets/images/remote/effb2f28-70b2-48a5-a4dd-0390070ef467-9e69ba483d.png" /></p>
+<p>The core of this diagram lies in comparing two different balance conditions that describe how probability flows and distributes between different states in steady state.</p>
+<p><strong>Left: Overall balance.</strong> This diagram shows a complex "network" state network with many closed loops. The blue curve "Cut" arbitrarily divides the entire state space into two subsets, <span class="arithmatex">\(S_+\)</span> and <span class="arithmatex">\(S_-\)</span>. This represents the most basic condition that any steady state must satisfy—overall balance. It means that in steady state, for any way of partitioning the system, the total probability flux flowing from subset <span class="arithmatex">\(S_-\)</span> to subset <span class="arithmatex">\(S_+\)</span> (the sum of all arrow flows crossing the boundary) must exactly equal the total probability flux flowing back from <span class="arithmatex">\(S_+\)</span> to <span class="arithmatex">\(S_-\)</span>.</p>
+<p>If these two total fluxes are not equal, then probability would continuously accumulate in one of the subsets, causing the probability distribution to change over time, which contradicts the definition of "steady state." Overall balance is a universal condition, but it allows for net circulation (net currents). For example, there may exist a net probability circulation <span class="arithmatex">\(A\to B\to C\to A\)</span>, as long as the total inflow and outflow fluxes for each state (or each subset) are balanced.</p>
+<p><strong>Right: Detailed balance.</strong> This diagram shows a "tree-like" state network without closed loops. Here the "Cut" only divides two directly connected adjacent states. It means that in steady state, for any pair of directly connected states <span class="arithmatex">\(j\)</span> and <span class="arithmatex">\(k\)</span>, the probability flux from <span class="arithmatex">\(j\)</span> to <span class="arithmatex">\(k\)</span> must exactly equal the probability flux from <span class="arithmatex">\(k\)</span> back to <span class="arithmatex">\(j\)</span>. "Balance" occurs on each specific "connection edge," rather than on a macroscopic boundary like overall balance. Detailed balance is a very strong constraint. If the flow between every pair of states is exactly balanced, then no net circulation can exist within the system. Since there are no closed loops, probability flow cannot "circle back," so to maintain steady state, the system must satisfy detailed balance.</p>
+<p>Summary:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Overall balance</th>
+<th>Detailed balance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scope</td>
+<td>Macroscopic cut between subsets</td>
+<td>Each microscopic edge between neighbors</td>
+</tr>
+<tr>
+<td>Applicability</td>
+<td>Required by all steady states</td>
+<td>Only specific (reversible) steady states</td>
+</tr>
+<tr>
+<td>Cycles</td>
+<td>Net cycles allowed</td>
+<td>No net cycles</td>
+</tr>
+<tr>
+<td>Strength</td>
+<td>Weaker condition</td>
+<td>Strong constraint</td>
+</tr>
+</tbody>
+</table>
+<h2 id="41-detailed-balance-condition">4.1 Detailed Balance Condition<a class="headerlink" href="#41-detailed-balance-condition" title="Permanent link">&para;</a></h2>
+<div class="arithmatex">\[\pi_j\,w_{j\to k}=\pi_k\,w_{k\to j}.\]</div>
+<p>This relation holds in steady state <span class="arithmatex">\(\pi\)</span> for any two directly connected states <span class="arithmatex">\(j\)</span> and <span class="arithmatex">\(k\)</span>.</p>
+<h2 id="42-physical-interpretation-no-net-probability-flux">4.2 Physical Interpretation: No Net Probability Flux<a class="headerlink" href="#42-physical-interpretation-no-net-probability-flux" title="Permanent link">&para;</a></h2>
+<p><span class="arithmatex">\(\pi_j\,w_{j\to k}\)</span> is the probability flux (current density) from <span class="arithmatex">\(j\)</span> to <span class="arithmatex">\(k\)</span> per unit time in steady state. Detailed balance enforces pairwise equality of opposing fluxes on every edge—no net local current anywhere.</p>
+<h2 id="43-derivation-reversibility-leftrightarrow-determines-the-detailed-balance">4.3 Derivation: Reversibility $\Leftrightarrow determines the Detailed Balance<a class="headerlink" href="#43-derivation-reversibility-leftrightarrow-determines-the-detailed-balance" title="Permanent link">&para;</a></h2>
+<p><img alt="Lecture blackboard screenshot" src="../../assets/images/remote/914e2804-8a93-46ee-8e19-0edd96c61016-702245c786.jpg" /></p>
+<p>From reversibility, for any <span class="arithmatex">\(j,k\)</span> and <span class="arithmatex">\(t,t+\tau\)</span>,</p>
+<div class="arithmatex">\[\mathrm{Prob}\{X(t)=j, X(t+\tau)=k\}=\mathrm{Prob}\{X(t)=k, X(t+\tau)=j\}.\]</div>
+<p>Using conditional probabilities in steady state,</p>
+<div class="arithmatex">\[P(k,t+\tau\mid j,t)\,\pi_j=P(j,t+\tau\mid k,t)\,\pi_k.\]</div>
+<p>For infinitesimal <span class="arithmatex">\(\tau=\Delta t\)</span> and <span class="arithmatex">\(j\ne k\)</span>, <span class="arithmatex">\(P(k,t+\Delta t\mid j,t)\approx w_{j\to k}\,\Delta t\)</span>. Dividing by <span class="arithmatex">\(\Delta t\)</span> gives detailed balance:</p>
+<div class="arithmatex">\[w_{j\to k}\,\pi_j=w_{k\to j}\,\pi_k.\]</div>
+<p>Thus a stationary Markov process is reversible iff it satisfies detailed balance.</p>
+<h3 id="key-distinction-global-vs-detailed-balance">Key Distinction: Global vs. Detailed Balance<a class="headerlink" href="#key-distinction-global-vs-detailed-balance" title="Permanent link">&para;</a></h3>
+<p><img alt="Lecture slide" src="../../assets/images/remote/c89521ad-1ac1-438d-8e0d-54a8a4c1cb2b-59e910adfb.png" /></p>
+<p>This is a crucial conceptual distinction that relates to how we understand different types of steady states.</p>
+<p>The steady-state condition we derived from <span class="arithmatex">\(Q\pi = 0\)</span> is actually a <strong>global balance</strong> condition. It requires that the total inflow probability to each state equals the total outflow probability:</p>
+<div class="arithmatex">\[\text{Total inflow to } j \text{ probability flux} = \sum_{k \neq j} \pi_k w_{k \to j} = \text{Total outflow from } j \text{ probability flux} = \sum_{k \neq j} \pi_j w_{j \to k}\]</div>
+<p>Detailed balance is a <strong>much stronger</strong> condition than global balance. If detailed balance holds, i.e., <span class="arithmatex">\(\pi_k w_{k \to j} = \pi_j w_{j \to k}\)</span> for all <span class="arithmatex">\(k\)</span>, then summing this equality over all <span class="arithmatex">\(k \neq j\)</span> naturally gives global balance. The converse is not true.</p>
+<p>We can understand the distinction between the two through a physical analogy. Imagine a lake and a river.</p>
+<ul>
+<li>
+<p><strong>Lake (thermodynamic equilibrium):</strong> The lake water is in equilibrium, with a constant macroscopic water level. At the microscopic level, water molecules are constantly moving, but the flux of water molecules from any point A to point B is exactly canceled by the flux from point B to point A. This is <strong>detailed balance</strong>, with no macroscopic net water flow.</p>
+</li>
+<li>
+<p><strong>River (nonequilibrium steady state):</strong> A river can also have a stable water level (steady state), but the river water has a clear downstream direction overall. At any cross-section, the water inflow from upstream equals the outflow downstream, maintaining water level stability. This is <strong>global balance</strong>. However, if you examine two points A and B in the river (A upstream), the net water flux from A to B far exceeds the reverse flux from B to A. Here there exists a <strong>net probability flux (water flow)</strong>.</p>
+</li>
+</ul>
+<p>This analogy reveals a profound physical principle: the distinction between detailed balance and global balance is precisely the distinction between <strong>thermodynamic equilibrium</strong> and <strong>nonequilibrium steady states (NESS)</strong> in stochastic processes.</p>
+<p>A system satisfying detailed balance is in true thermodynamic equilibrium, with no net flow of energy or matter. A system satisfying only global balance is in a nonequilibrium steady state maintained by continuous external driving (such as energy input), like a living cell. This distinction connects the abstract mathematical concepts of this lecture with the profound principles of physics and biology.</p>
+<h1 id="5-examples-simulation-and-physical-intuition">5. Examples: Simulation and Physical Intuition<a class="headerlink" href="#5-examples-simulation-and-physical-intuition" title="Permanent link">&para;</a></h1>
+<h2 id="51-linear-birthdeath-a-system-with-detailed-balance">5.1 Linear Birth–Death: A System with Detailed Balance<a class="headerlink" href="#51-linear-birthdeath-a-system-with-detailed-balance" title="Permanent link">&para;</a></h2>
+<h3 id="model">Model<a class="headerlink" href="#model" title="Permanent link">&para;</a></h3>
+<p>Population size <span class="arithmatex">\(n\)</span>; two events:</p>
+<ul>
+<li>Birth: each particle creates a new one at rate <span class="arithmatex">\(\lambda\)</span>, so <span class="arithmatex">\(n\to n+1\)</span> has total rate <span class="arithmatex">\(\lambda_n=\lambda n\)</span>.</li>
+<li>Death: each particle disappears at rate <span class="arithmatex">\(\mu\)</span>, so <span class="arithmatex">\(n\to n-1\)</span> has total rate <span class="arithmatex">\(\mu_n=\mu n\)</span>.</li>
+</ul>
+<p>This is a 1D chain with nearest‑neighbor transitions. Whenever a steady state exists, it must satisfy detailed balance since no loops exist to support cycles.</p>
+<h3 id="steady-state-via-detailed-balance">Steady State via Detailed Balance<a class="headerlink" href="#steady-state-via-detailed-balance" title="Permanent link">&para;</a></h3>
+<p>For adjacent <span class="arithmatex">\(n\)</span> and <span class="arithmatex">\(n-1\)</span>:</p>
+<div class="arithmatex">\[\pi_{n-1}\,w_{n-1\to n}=\pi_n\,w_{n\to n-1}.\]</div>
+<p>With rates,</p>
+<div class="arithmatex">\[\pi_{n-1}\,\lambda(n-1)=\pi_n\,\mu n,\]</div>
+<p>giving</p>
+<div class="arithmatex">\[\pi_n=\pi_{n-1}\,\frac{\lambda(n-1)}{\mu n}.\]</div>
+<p>Starting from <span class="arithmatex">\(\pi_1=\pi_0\,\frac{\lambda\cdot 0}{\mu\cdot 1}=0\)</span>, all <span class="arithmatex">\(\pi_{n&gt;0}=0\)</span>. Thus the unique steady state is extinction: <span class="arithmatex">\(\pi_0=1\)</span>.</p>
+<h3 id="python-gillespie">Python (Gillespie)<a class="headerlink" href="#python-gillespie" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">linear_birth_death_gillespie</span><span class="p">(</span><span class="n">n0</span><span class="p">,</span> <span class="n">lamb</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">t_max</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simulate linear birth-death process using Gillespie algorithm.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">n</span> <span class="o">=</span> <span class="n">n0</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">];</span> <span class="n">populations</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="p">]</span>
+    <span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">t_max</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">break</span>
+        <span class="n">birth_rate</span> <span class="o">=</span> <span class="n">lamb</span> <span class="o">*</span> <span class="n">n</span><span class="p">;</span> <span class="n">death_rate</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">n</span>
+        <span class="n">total_rate</span> <span class="o">=</span> <span class="n">birth_rate</span> <span class="o">+</span> <span class="n">death_rate</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">total_rate</span><span class="p">)</span>
+        <span class="n">t</span> <span class="o">+=</span> <span class="n">dt</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">birth_rate</span> <span class="o">/</span> <span class="n">total_rate</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="n">populations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">times</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">populations</span><span class="p">)</span>
+
+<span class="c1"># --- Simulation parameters ---</span>
+<span class="n">initial_population</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">lambda_rate</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">mu_rate</span> <span class="o">=</span> <span class="mf">1.1</span>
+<span class="n">simulation_time</span> <span class="o">=</span> <span class="mf">50.0</span>
+<span class="n">num_simulations</span> <span class="o">=</span> <span class="mi">500</span>
+
+<span class="c1"># --- Run multiple simulations ---</span>
+<span class="n">final_populations</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Example trajectories</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">times</span><span class="p">,</span> <span class="n">populations</span> <span class="o">=</span> <span class="n">linear_birth_death_gillespie</span><span class="p">(</span><span class="n">initial_population</span><span class="p">,</span> <span class="n">lambda_rate</span><span class="p">,</span> <span class="n">mu_rate</span><span class="p">,</span> <span class="n">simulation_time</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">populations</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Example Trajectories of Linear Birth-Death Process ($n_0=</span><span class="si">{</span><span class="n">initial_population</span><span class="si">}</span><span class="s1">, </span><span class="se">\\</span><span class="s1">lambda=</span><span class="si">{</span><span class="n">lambda_rate</span><span class="si">}</span><span class="s1">, </span><span class="se">\\</span><span class="s1">mu=</span><span class="si">{</span><span class="n">mu_rate</span><span class="si">}</span><span class="s1">$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Population Size&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Final population histogram</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_simulations</span><span class="p">):</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">populations</span> <span class="o">=</span> <span class="n">linear_birth_death_gillespie</span><span class="p">(</span><span class="n">initial_population</span><span class="p">,</span> <span class="n">lambda_rate</span><span class="p">,</span> <span class="n">mu_rate</span><span class="p">,</span> <span class="n">simulation_time</span><span class="p">)</span>
+    <span class="n">final_populations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">populations</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">final_populations</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">final_populations</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Distribution of Final Population Size after </span><span class="si">{</span><span class="n">num_simulations</span><span class="si">}</span><span class="s1"> Simulations (Steady State)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Final Population Size&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">final_populations</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Code execution output" src="../../assets/images/remote/LinearBirthDeathProcess.png" /></p>
+<p>Trajectories fluctuate but ultimately reach <span class="arithmatex">\(0\)</span>; the histogram concentrates at <span class="arithmatex">\(0\)</span> for long times, matching <span class="arithmatex">\(\pi_0=1, \pi_{n&gt;0}=0\)</span>.</p>
+<h2 id="52-1d-random-walk-with-absorbing-boundaries-no-nontrivial-steady-state">5.2 1D Random Walk with Absorbing Boundaries: No Nontrivial Steady State<a class="headerlink" href="#52-1d-random-walk-with-absorbing-boundaries-no-nontrivial-steady-state" title="Permanent link">&para;</a></h2>
+<h3 id="1d-random-walk-model">1D Random Walk Model<a class="headerlink" href="#1d-random-walk-model" title="Permanent link">&para;</a></h3>
+<p>1D random walk with two absorbing boundaries.</p>
+<h3 id="why-pf-fails-here">Why PF Fails Here<a class="headerlink" href="#why-pf-fails-here" title="Permanent link">&para;</a></h3>
+<p>The presence of absorbing classes makes the chain reducible; irreducibility fails, so PF's uniqueness/positivity conclusion does not apply.</p>
+<h3 id="trivial-steady-state">Trivial "Steady State"<a class="headerlink" href="#trivial-steady-state" title="Permanent link">&para;</a></h3>
+<p>Probability leaks from <span class="arithmatex">\(n&gt;0\)</span> and accumulates at absorbing states; only trivial absorbing distributions remain.</p>
+<h3 id="python">Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">random_walk_1d_two_boundaries</span><span class="p">(</span><span class="n">start_pos</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="n">boundary_left</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">boundary_right</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simulate a one-dimensional random walk with two absorbing boundaries.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">position</span> <span class="o">=</span> <span class="n">start_pos</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="n">position</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_steps</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">position</span> <span class="o">==</span> <span class="n">boundary_left</span> <span class="ow">or</span> <span class="n">position</span> <span class="o">==</span> <span class="n">boundary_right</span><span class="p">:</span>
+            <span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+            <span class="k">continue</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="n">position</span> <span class="o">+=</span> <span class="n">step</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">path</span>
+
+<span class="c1"># --- Simulation parameters ---</span>
+<span class="n">initial_position</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">max_steps</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">num_trajectories</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">boundary_left_pos</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">boundary_right_pos</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="c1"># --- Run and plot multiple trajectories ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_trajectories</span><span class="p">):</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">random_walk_1d_two_boundaries</span><span class="p">(</span><span class="n">initial_position</span><span class="p">,</span> <span class="n">max_steps</span><span class="p">,</span> <span class="n">boundary_left_pos</span><span class="p">,</span> <span class="n">boundary_right_pos</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">cool</span><span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="n">num_trajectories</span><span class="p">))</span>
+
+<span class="c1"># Absorbing boundaries</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">boundary_left_pos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Left Absorbing Boundary (Position </span><span class="si">{</span><span class="n">boundary_left_pos</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">boundary_right_pos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Right Absorbing Boundary (Position </span><span class="si">{</span><span class="n">boundary_right_pos</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">num_trajectories</span><span class="si">}</span><span class="s1"> Random Walk Trajectories in [</span><span class="si">{</span><span class="n">boundary_left_pos</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">boundary_right_pos</span><span class="si">}</span><span class="s1">] Interval&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Steps&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Position&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="n">boundary_left_pos</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="n">boundary_right_pos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Code execution output" src="../../assets/images/remote/1D_random_walk_two_boundaries.jpg" /></p>
+<p>As expected with two absorbing boundaries, trajectories eventually hit one of the absorbing states (left or right boundary). Probability leaks out of interior states and accumulates at the absorbing boundaries; a nontrivial steady state does not exist.</p>
+<h1 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h1>
+<p>We have successfully addressed the fundamental questions about whether the long-term behavior governed by Q is predictable and unique:</p>
+<p>1.<strong>Perron-Frobenius provides the key mathematical tool.</strong> For irreducible systems where all states communicate, the process converges to a unique steady state with strictly positive components. This mathematical guarantee underpins the stability observed in many physical, chemical, and biological systems.</p>
+<p>2.<strong>We distinguished between different types of steady states:</strong> detailed balance (reversible, thermodynamic equilibrium, no currents) versus global balance (nonequilibrium steady states maintained by external driving, allowing net cycles). This distinction is crucial for understanding the difference between true thermodynamic equilibrium and nonequilibrium steady states.</p>
+<p>3.<strong>Through concrete examples, we demonstrated these principles in action.</strong> The linear birth-death process illustrates how a system reaches a (trivial) equilibrium under detailed balance conditions. The random walk with absorbing boundaries clearly warns us that when the crucial condition of <strong>irreducibility</strong> is violated, the system cannot maintain dynamic balance and instead decays to one or more absorbing states.</p>
+<p>In summary, this lecture has provided us with a complete set of analytical tools that enable us to understand and predict the ultimate fate of a large class of stochastic systems after long-term evolution. The Perron-Frobenius theorem serves as the mathematical foundation that connects abstract linear algebra with the physical reality of complex systems, ensuring that under appropriate conditions, nature itself guarantees the emergence of unique, physically meaningful steady states.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.highlight"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../assets/javascripts/mathjax.js"></script>
+      
+        <script src="../../assets/javascripts/language-nav.js"></script>
+      
+        <script src="../../assets/javascripts/video-init.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,3255 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Course Notes and Code (Erwin Frey, LMU Munich, 2025)">
+      
+      
+        <meta name="author" content="Zhihang Liu">
+      
+      
+        <link rel="canonical" href="https://liu-zhihang.github.io/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/notes/38.%20Multi-Species%20Path%20Integrals%20and%20Cyclic%20Competition%20Dynamics/">
+      
+      
+        <link rel="prev" href="../37.%20Kramers-Moyal%20Expansion%20and%20the%20Low-Noise%20Limit%20of%20Path%20Integrals/">
+      
+      
+        <link rel="next" href="../39.%20From%20Particle%20Jumps%20to%20Continuous%20Field%20Theory/">
+      
+      
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en">
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>38. Multi-Species Path Integrals and Cyclic Competition Dynamics - Nonequilibrium Field Theories and Stochastic Dynamics</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/video.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-from-single-species-to-complex-ecosystems" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-header__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nonequilibrium Field Theories and Stochastic Dynamics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              38. Multi-Species Path Integrals and Cyclic Competition Dynamics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-nav__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nonequilibrium Field Theories and Stochastic Dynamics
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.%20Course%20Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.%20Simple%20Random%20Walk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Simple Random Walk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20Gaussian%20Random%20Walk%20and%20Poisson%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Gaussian Random Walk and Poisson Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20Gillespie%20Algorithm%2C%20Master%20Equation%2C%20Generating%20Functions%20and%20Population%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie Algorithm, Master Equation, Generating Functions and Population Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.%20Population%20Dynamics%20-%20Linear%20Death%20Process%20and%20Lotka-Volterra%20System/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Population Dynamics - Linear Death Process and Lotka-Volterra System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.%20Fundamental%20Equations%20of%20Markov%20Processes%20%E2%80%94%20Chapman%E2%80%93Kolmogorov%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Fundamental Equations of Markov Processes — Chapman–Kolmogorov Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.%20Forward%20Master%20Equation%20and%20the%20Q%20Matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Forward Master Equation and the Q Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.%20Perron%E2%80%93Frobenius%20Theorem%2C%20Steady%20States%2C%20and%20Detailed%20Balance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Perron–Frobenius Theorem, Steady States, and Detailed Balance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.%20Nonequilibrium%20States%20%E2%80%94%20Irreversibility%20and%20Entropy%20Production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Nonequilibrium States — Irreversibility and Entropy Production
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.%20Ehrenfest%20Model%2C%20Entropy%2C%20and%20KL%20Divergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Ehrenfest Model, Entropy, and KL Divergence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.%20Continuous%20Markov%20Processes%20and%20the%20Fokker%E2%80%93Planck%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Continuous Markov Processes and the Fokker–Planck Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12.%20Brownian%20Motion%20and%20the%20Ornstein%E2%80%93Uhlenbeck%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Brownian Motion and the Ornstein–Uhlenbeck Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13.%20Monte%20Carlo%20Sampling%20as%20a%20Stochastic%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Monte Carlo Sampling as a Stochastic Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14.%20Hamiltonian%20Monte%20Carlo%20Sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Hamiltonian Monte Carlo Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15.%20Chemotaxis%2C%20Run-and-Tumble%20Motion%2C%20and%20the%20Keller%E2%80%93Segel%20Model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Chemotaxis, Run-and-Tumble Motion, and the Keller–Segel Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16.%20The%20Schnitzer%20Model%2C%20Anomalous%20Diffusion%2C%20and%20Motility%E2%80%91Induced%20Phase%20Separation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. The Schnitzer Model, Anomalous Diffusion, and Motility‑Induced Phase Separation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17.%20Langevin%20Equation%2C%20Brownian%20Particle%2C%20and%20the%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Langevin Equation, Brownian Particle, and the Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18.%20Fokker%E2%80%93Planck%20Equation%20and%20the%20Smoluchowski%20Equation%20%E2%80%94%20From%20Random%20Trajectories%20to%20Probability%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Fokker–Planck Equation and the Smoluchowski Equation — From Random Trajectories to Probability Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19.%20Path%20Integral%20Formulation%20of%20Stochastic%20Processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Path Integral Formulation of Stochastic Processes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20.%20Stochastic%20Differential%20Equations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Stochastic Differential Equations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21.%20Ito%20Integral%20and%20Unified%20Stochastic%20Process%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Ito Integral and Unified Stochastic Process Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22.%20Path%20Integrals%20for%20Systems%20with%20Multiplicative%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Path Integrals for Systems with Multiplicative Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23.%20From%20Coarse-Graining%20to%20Fluctuation%20Dynamics%20of%20Continuous%20Field%20Theories/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. From Coarse-Graining to Fluctuation Dynamics of Continuous Field Theories
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24.%20Onsager%20Coefficients%2C%20Reciprocity%2C%20and%20the%20Dynamic%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Onsager Coefficients, Reciprocity, and the Dynamic Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25.%20Gradient%20Dynamics%2C%20Phase%20Transitions%2C%20and%20Relaxation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. Gradient Dynamics, Phase Transitions, and Relaxation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26.%20Critical%20Slowing%20Down%2C%20Dynamic%20Response%2C%20and%20Conservation%20Laws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Critical Slowing Down, Dynamic Response, and Conservation Laws
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27.%20Hydrodynamics%20of%20Simple%20Fluids%2C%20Inviscid%20Flow%2C%20and%20the%20Euler%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. Hydrodynamics of Simple Fluids, Inviscid Flow, and the Euler Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28.%20Viscous%20Fluids%2C%20the%20Navier%E2%80%93Stokes%20Equation%2C%20Entropy%20Balance%2C%20and%20Heat%20Conduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. Viscous Fluids, the Navier–Stokes Equation, Entropy Balance, and Heat Conduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29.%20Irreversible%20Linear%20Thermodynamics%20and%20Dry%20Diffusive%20Particle%20Systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. Irreversible Linear Thermodynamics and Dry Diffusive Particle Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30.%20Brownian%20Particles%20Suspended%20in%20a%20Fluid%20%E2%80%94%20Model%20H/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. Brownian Particles Suspended in a Fluid — Model H
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31.%20Dynamical%20Functionals%2C%20Additive%E2%80%91Noise%20Field%20Theory%2C%20and%20the%20Onsager%E2%80%93Machlup%20Functional/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. Dynamical Functionals, Additive‑Noise Field Theory, and the Onsager–Machlup Functional
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32.%20Janssen%E2%80%93De%20Dominicis%20Response%20Functional%20and%20the%20Fluctuation%E2%80%93Dissipation%20Relation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen–De Dominicis Response Functional and the Fluctuation–Dissipation Relation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33.%20Nonequilibrium%20Work%20and%20Fluctuation%20Theorems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. Nonequilibrium Work and Fluctuation Theorems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../34.%20Directed%20Percolation%2C%20Absorbing%20States%2C%20and%20Spectral%20Methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. Directed Percolation, Absorbing States, and Spectral Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../35.%20Path-Integral%20Representation%20of%20the%20Master%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. Path-Integral Representation of the Master Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../36.%20Coherent-State%20Path%20Integrals%2C%20Operator%20Algebra%2C%20and%20Imaginary%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. Coherent-State Path Integrals, Operator Algebra, and Imaginary Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../37.%20Kramers-Moyal%20Expansion%20and%20the%20Low-Noise%20Limit%20of%20Path%20Integrals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal Expansion and the Low-Noise Limit of Path Integrals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. Multi-Species Path Integrals and Cyclic Competition Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../39.%20From%20Particle%20Jumps%20to%20Continuous%20Field%20Theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. From Particle Jumps to Continuous Field Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../40.%20Unified%20Field%20Theory%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. Unified Field Theory Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    中文笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/1.%20%E8%AF%BE%E7%A8%8B%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 课程导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/2.%20%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 简单随机游走
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/3.%20%E9%AB%98%E6%96%AF%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0%E4%B8%8E%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 高斯随机游走与泊松过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/4.%20Gillespie%20%E7%AE%97%E6%B3%95%E3%80%81%E4%B8%BB%E6%96%B9%E7%A8%8B%E3%80%81%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%8D%E7%BE%A4%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie 算法、主方程、生成函数与种群动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/5.%20%E7%A7%8D%E7%BE%A4%E5%8A%A8%E6%80%81%E5%AD%A6%EF%BC%9A%E7%BA%BF%E6%80%A7%E6%AD%BB%E4%BA%A1%E8%BF%87%E7%A8%8B%E4%B8%8ELotka-Volterra%20%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 种群动态学：线性死亡过程与Lotka-Volterra 系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/6.%20%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E7%A8%8B%EF%BC%9A%E6%9F%A5%E6%99%AE%E6%9B%BC-%E7%A7%91%E5%B0%94%E8%8E%AB%E6%88%88%E7%BD%97%E5%A4%AB%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 马尔可夫过程的基本方程：查普曼-科尔莫戈罗夫方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/7.%20%E5%89%8D%E5%90%91%E4%B8%BB%E6%96%B9%E7%A8%8B%E4%B8%8EQ%E7%9F%A9%E9%98%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 前向主方程与Q矩阵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/8.%20%E4%BD%A9%E9%BE%99-%E5%BC%97%E7%BD%97%E8%B4%9D%E5%B0%BC%E4%B9%8C%E6%96%AF%E5%AE%9A%E7%90%86%E3%80%81%E7%A8%B3%E6%80%81%E4%B8%8E%E7%BB%86%E8%87%B4%E5%B9%B3%E8%A1%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 佩龙-弗罗贝尼乌斯定理、稳态与细致平衡
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/9.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81%EF%BC%9A%E4%B8%8D%E5%8F%AF%E9%80%86%E6%80%A7%E4%B8%8E%E7%86%B5%E4%BA%A7%E7%94%9F%E7%9A%84%E6%8E%A8%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 非平衡态：不可逆性与熵产生的推论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/10.%20%E5%9F%83%E4%BC%A6%E8%B4%B9%E6%96%AF%E7%89%B9%E6%A8%A1%E5%9E%8B%E3%80%81%E7%86%B5%E4%B8%8EKL%E6%95%A3%E5%BA%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 埃伦费斯特模型、熵与KL散度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/11.%20%E8%BF%9E%E7%BB%AD%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E4%B8%8E%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. 连续马尔可夫过程与福克-普朗克方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/12.%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8%E4%B8%8E%E5%A5%A5%E6%81%A9%E6%96%AF%E5%9D%A6-%E4%B9%8C%E4%BC%A6%E8%B4%9D%E5%85%8B%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. 布朗运动与奥恩斯坦-乌伦贝克过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/13.%20%E4%BD%9C%E4%B8%BA%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. 作为随机过程的蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/14.%20%E5%93%88%E5%AF%86%E5%B0%94%E9%A1%BF%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. 哈密尔顿蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/15.%20%E8%B6%8B%E5%8C%96%E6%80%A7%E3%80%81%E8%B7%91%E5%8A%A8-%E7%BF%BB%E6%BB%9A%E8%BF%90%E5%8A%A8%E4%B8%8EKeller-Segel%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. 趋化性、跑动-翻滚运动与Keller-Segel模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/16.%20Schnitzer%E6%A8%A1%E5%9E%8B%E3%80%81%E5%8F%8D%E5%B8%B8%E6%89%A9%E6%95%A3%E4%B8%8E%E8%BF%90%E5%8A%A8%E8%AF%B1%E5%AF%BC%E7%9B%B8%E5%88%86%E7%A6%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Schnitzer模型、反常扩散与运动诱导相分离
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/17.%20%E6%9C%97%E4%B9%8B%E4%B8%87%E6%96%B9%E7%A8%8B%E3%80%81%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. 朗之万方程、布朗粒子与涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/18.%20%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B%E4%B8%8E%E6%96%AF%E6%91%A9%E6%A3%B1%E9%9C%8D%E5%A4%AB%E6%96%AF%E5%9F%BA%E6%96%B9%E7%A8%8B%EF%BC%9A%E4%BB%8E%E9%9A%8F%E6%9C%BA%E8%BD%A8%E8%BF%B9%E5%88%B0%E6%A6%82%E7%8E%87%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. 福克-普朗克方程与斯摩棱霍夫斯基方程：从随机轨迹到概率动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/19.%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. 随机过程的路径积分表述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/20.%20%E9%9A%8F%E6%9C%BA%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. 随机微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/21.%20%E4%BC%8A%E8%97%A4%E7%A7%AF%E5%88%86%E4%B8%8E%E7%BB%9F%E4%B8%80%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. 伊藤积分与统一的随机过程框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/22.%20%E5%90%AB%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. 含乘性噪声系统的路径积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/23.%20%E4%BB%8E%E7%B2%97%E7%B2%92%E5%8C%96%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA%E6%B6%A8%E8%90%BD%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. 从粗粒化到连续场论涨落动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/24.%20%E6%98%82%E8%90%A8%E6%A0%BC%E7%B3%BB%E6%95%B0%E3%80%81%E5%80%92%E6%98%93%E5%85%B3%E7%B3%BB%E4%B8%8E%E5%8A%A8%E6%80%81%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. 昂萨格系数、倒易关系与动态涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/25.%20%E6%A2%AF%E5%BA%A6%E5%8A%A8%E5%8A%9B%E5%AD%A6%E3%80%81%E7%9B%B8%E5%8F%98%E4%B8%8E%E5%BC%9B%E8%B1%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. 梯度动力学、相变与弛豫
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/26.%20%E4%B8%B4%E7%95%8C%E6%85%A2%E5%8C%96%E3%80%81%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%B8%8E%E5%AE%88%E6%81%92%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. 临界慢化、动态响应与守恒律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/27.%20%E7%AE%80%E5%8D%95%E6%B5%81%E4%BD%93%E3%80%81%E6%97%A0%E6%91%A9%E6%93%A6%E6%B5%81%E4%BD%93%E4%B8%8E%E6%AC%A7%E6%8B%89%E6%96%B9%E7%A8%8B%E7%9A%84%E6%B5%81%E4%BD%93%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. 简单流体、无摩擦流体与欧拉方程的流体动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/28.%20%E7%B2%98%E6%80%A7%E6%B5%81%E4%BD%93%E3%80%81%E7%BA%B3%E7%BB%B4-%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%96%B9%E7%A8%8B%E3%80%81%E7%86%B5%E5%B9%B3%E8%A1%A1%E4%B8%8E%E7%83%AD%E4%BC%A0%E5%AF%BC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. 粘性流体、纳维-斯托克斯方程、熵平衡与热传导
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/29.%20%E4%B8%8D%E5%8F%AF%E9%80%86%E7%BA%BF%E6%80%A7%E7%83%AD%E5%8A%9B%E5%AD%A6%E4%B8%8E%E5%B9%B2%E6%80%A7%E6%89%A9%E6%95%A3%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. 不可逆线性热力学与干性扩散粒子系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/30.%20%E6%82%AC%E6%B5%AE%E5%9C%A8%E6%B5%81%E4%BD%93%E4%B8%AD%E7%9A%84%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%20%E2%80%94%20H%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. 悬浮在流体中的布朗粒子 — H模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/31.%20%E5%8A%A8%E6%80%81%E6%B3%9B%E5%87%BD%E3%80%81%E5%8A%A0%E6%80%A7%E5%99%AA%E5%A3%B0%E5%9C%BA%E8%AE%BA%E4%B8%8EOnsager-Machlup%E6%B3%9B%E5%87%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. 动态泛函、加性噪声场论与Onsager-Machlup泛函
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/32.%20Janssen-De%20Dominicis%20%E5%93%8D%E5%BA%94%E6%B3%9B%E5%87%BD%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen-De Dominicis 响应泛函与涨落-耗散关系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/33.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E5%8A%9F%E4%B8%8E%E6%B6%A8%E8%90%BD%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. 非平衡功与涨落定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/34.%20%E6%9C%89%E5%90%91%E6%B8%97%E6%B5%81%E3%80%81%E5%90%B8%E6%94%B6%E6%80%81%E4%B8%8E%E8%B0%B1%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. 有向渗流、吸收态与谱方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/35.%20%E4%B8%BB%E6%96%B9%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E7%A4%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. 主方程的路径积分表示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/36.%20%E7%9B%B8%E5%B9%B2%E6%80%81%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E3%80%81%E7%AE%97%E7%AC%A6%E4%BB%A3%E6%95%B0%E4%B8%8E%E8%99%9A%E5%99%AA%E5%A3%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. 相干态路径积分、算符代数与虚噪声
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/37.%20Kramers-Moyal%20%E5%B1%95%E5%BC%80%E4%B8%8E%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E7%9A%84%E4%BD%8E%E5%99%AA%E5%A3%B0%E6%9E%81%E9%99%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal 展开与路径积分的低噪声极限
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/38.%20%E5%A4%9A%E7%89%A9%E7%A7%8D%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E4%B8%8E%E5%BE%AA%E7%8E%AF%E7%AB%9E%E4%BA%89%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. 多物种路径积分与循环竞争动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/39.%20%E4%BB%8E%E7%B2%92%E5%AD%90%E8%B7%B3%E8%B7%83%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. 从粒子跳跃到连续场论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/notes/40.%20%E7%BB%9F%E4%B8%80%E7%9A%84%E5%9C%BA%E8%AE%BA%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. 统一的场论框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="introduction-from-single-species-to-complex-ecosystems">Introduction: From Single Species to Complex Ecosystems<a class="headerlink" href="#introduction-from-single-species-to-complex-ecosystems" title="Permanent link">&para;</a></h1>
+<p>In the previous lectures (particularly Lectures 35–37), a powerful theoretical framework for describing stochastic processes of <strong>single species</strong> has been systematically established. Whether through the probability-based Kramers-Moyal expansion or through the operator-algebra-based coherent-state path integral, the master equation describing discrete particle birth-death processes has been precisely transformed into a path integral paradigm that can utilize field-theoretic tools.</p>
+<p>However, the vast majority of interesting phenomena in nature—whether species competition in ecosystems, disease transmission in epidemiology, or reaction networks in biochemistry—involve <strong>multiple interacting species</strong>. Therefore, while single-species theory provides a solid foundation, it must be generalized to describe the complexity of the real world.</p>
+<p>The core objective of this lecture is to generalize the previously developed path integral formalism from single-species systems to more complex and realistic <strong>multi-species systems</strong>. Through this generalization, a unified stochastic dynamics theory will be constructed for systems containing arbitrary numbers of species and arbitrarily complex reaction networks.</p>
+<p>To concretely demonstrate the power of this generalization, a classic and non-trivial model will be used as a case study: the <strong>Rock-Paper-Scissors model</strong>, also known in ecology as the <strong>May-Leonard model</strong>. This model is a paradigm for studying <strong>cyclic dominance</strong> and nonequilibrium dynamics. Despite its simple rules, it can exhibit complex spatiotemporal dynamical behaviors such as sustained population oscillations and spiral wave formation—rich phenomena that simple equilibrium statistical mechanics cannot describe.</p>
+<p>This lecture also marks the transition of the course from constructing abstract mathematical tools to their direct application in complex nonequilibrium systems. The theoretical machinery carefully constructed in previous lectures (Lectures 31–37)—including the Janssen-De Dominicis response functional, Onsager-Machlup functional, and coherent-state path integral—will demonstrate their necessity and power when dealing with nonequilibrium problems with <strong>complex nonlinear interactions</strong> like the Rock-Paper-Scissors model.</p>
+<h1 id="1-review-coherent-state-path-integral-framework-for-single-species-systems">1. Review: Coherent-State Path Integral Framework for Single-Species Systems<a class="headerlink" href="#1-review-coherent-state-path-integral-framework-for-single-species-systems" title="Permanent link">&para;</a></h1>
+<p>To generalize the theory from single-species to multi-species systems, we must first review the core concepts and mathematical structures established for single-species stochastic processes in previous lectures (particularly Lectures 36 and 37). This coherent-state path integral framework serves as a solid bridge from the master equation to field-theoretic analysis.</p>
+<h2 id="11-from-master-equation-to-generating-function">1.1 From Master Equation to Generating Function<a class="headerlink" href="#11-from-master-equation-to-generating-function" title="Permanent link">&para;</a></h2>
+<p><img alt="Classroom PPT Screenshot" src="../../../assets/images/remote/7b651f78-939e-4d26-82a8-f6ad10a048ad-2dbce64e35.png" /></p>
+<p>The theoretical starting point for stochastic birth-death processes is the <strong>forward master equation</strong>. It describes the time evolution of the probability <span class="arithmatex">\(p(n, t \mid n_0, t_0)\)</span> that the system is in a state with <span class="arithmatex">\(n\)</span> particles at time <span class="arithmatex">\(t\)</span>:</p>
+<div class="arithmatex">\[
+\partial_t p(n, t \mid n_0, t_0) = \sum_m Q(n, m) p(m, t \mid n_0, t_0)
+\]</div>
+<ul>
+<li>
+<p><span class="arithmatex">\(p(n, t \mid n_0, t_0)\)</span> is the conditional probability, i.e., the probability of finding <span class="arithmatex">\(n\)</span> particles at time <span class="arithmatex">\(t\)</span> given that there were <span class="arithmatex">\(n_0\)</span> particles at the initial time <span class="arithmatex">\(t_0\)</span>.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(Q(n, m)\)</span> is an element of the transition rate matrix, representing the probability per unit time for the system to transition from a state with <span class="arithmatex">\(m\)</span> particles to a state with <span class="arithmatex">\(n\)</span> particles. This equation is essentially a detailed accounting of probability flow between different particle number states.</p>
+</li>
+</ul>
+<p>Directly solving this infinite-dimensional system of coupled ordinary differential equations is usually very difficult. To simplify the problem, Lecture 36 introduced the <strong>coherent-state representation</strong>, whose core is defining a <strong>marginalized distribution function</strong>. It is essentially a generating function with respect to the initial particle number <span class="arithmatex">\(n_0\)</span>:</p>
+<div class="arithmatex">\[
+p(n, t \mid x, \tau) := \sum_{n_0=0}^{\infty} p(n, t \mid n_0, \tau) \frac{x^{n_0}}{n_0!} e^{-x}
+\]</div>
+<ul>
+<li>
+<p>This transformation converts a family of functions depending on discrete initial values <span class="arithmatex">\(n_0\)</span> into a single function depending on a <strong>continuous variable <span class="arithmatex">\(x\)</span></strong> through the Poisson kernel function <span class="arithmatex">\(\frac{x^{n_0}}{n_0!} e^{-x}\)</span>.</p>
+</li>
+<li>
+<p>The initial time is denoted as <span class="arithmatex">\(\tau\)</span> here. It is important to emphasize that the variable <span class="arithmatex">\(x\)</span> is not a physical quantity (such as particle density or position) but a mathematical auxiliary variable used for generating moments.</p>
+</li>
+</ul>
+<p>The power of this transformation lies in converting the master equation from an infinite-dimensional system of ordinary differential equations into a single, more manageable partial differential equation (PDE):</p>
+<div class="arithmatex">\[
+\partial_{-\tau} p(\cdot \mid x, \tau) = \mathcal{Q} p(\cdot \mid x, \tau)
+\]</div>
+<p>where <span class="arithmatex">\(\mathcal{Q}\)</span> is the evolution operator in the coherent-state representation, commonly known as the <strong>Liouville operator</strong>.</p>
+<p>The Liouville operator is named after the French mathematician Joseph Liouville, whose conceptual origins can be traced back to his research on conservation laws in classical mechanics phase space in the 1830s. However, the systematic formalization of this operator in modern theoretical physics was completed by John von Neumann and others in the quantum statistical mechanics established in the 1930s. Its physical essence is to describe the generator of time evolution of probability distributions or density matrices in phase space (classical) or Hilbert space (quantum): in classical mechanics, the Liouville operator L is defined through the Hamiltonian via Poisson brackets as <span class="arithmatex">\(L \cdot = i \{H, \cdot\}\)</span>, generating the time evolution of phase space flow; in quantum mechanics, it is defined through the Hamiltonian via commutation relations as <span class="arithmatex">\(L \hat{\rho} = [H, \hat{\rho}] / i\hbar\)</span>, governing the dynamics of the density matrix <span class="arithmatex">\(\hat{\rho}\)</span> (i.e., the von Neumann equation). Its core applications span various frontiers of statistical physics, including serving as the foundation of linear response theory (such as the Kubo formula), constructing the master equation framework for nonequilibrium statistical physics, analyzing eigenvalues of chaotic system dynamics (Pollicott-Ruelle resonances), and describing decoherence processes in quantum information and open system dynamics.</p>
+<h2 id="12-single-species-path-integral-action">1.2 Single-Species Path Integral Action<a class="headerlink" href="#12-single-species-path-integral-action" title="Permanent link">&para;</a></h2>
+<p>Starting from this partial differential equation that is formally isomorphic to the (imaginary-time) Schrödinger equation, through standard path integral construction methods (such as time slicing), one can obtain the path integral representation of the system's evolution propagator. Its core is the <strong>action</strong> <span class="arithmatex">\(\mathcal{S}\)</span>, which assigns a complex weight to every possible path of the system in the state space composed of auxiliary variables <span class="arithmatex">\(x(\tau)\)</span>:</p>
+<div class="arithmatex">\[
+\mathcal{S}[x(\tau), iq(\tau)] = \int_{t_{0}}^{t} d\tau \left[ iq(\tau) \partial_{\tau} x(\tau) - \mathcal{Q}(x, iq + 1) \right]
+\]</div>
+<p>The structure of this action consists of two parts, which has a similar logical structure to the J-D action derived for continuous Langevin systems in Lecture 32:</p>
+<ol>
+<li>
+<p><strong>Kinetic Term</strong> <span class="arithmatex">\(iq \partial_\tau x\)</span>: This term is often called the "Berry phase" term in field theory. It does not depend on the specific reactions of the system but arises from the mathematical overlap between coherent-state basis vectors at different times. It ensures that the path integral correctly describes continuous time evolution and dynamically connects the field <span class="arithmatex">\(x(\tau)\)</span> with its conjugate <strong>response field</strong> <span class="arithmatex">\(q(\tau)\)</span>.</p>
+</li>
+<li>
+<p><strong>Hamiltonian/Liouvillian</strong> <span class="arithmatex">\(\mathcal{Q}(x, iq + 1)\)</span>: This term is the "classical" counterpart of the master equation evolution operator <span class="arithmatex">\(\hat{\mathcal{Q}}\)</span> in the path integral (mathematically called the "symbol" of the operator). It contains all the dynamical information of the system, i.e., all birth-death reactions and their rates. Its specific form is determined by the system's reaction network. For example, for a generic reaction <span class="arithmatex">\(\sum kA \to \sum lA\)</span>, the corresponding Liouville operator part is:</p>
+<p>$$
+\mathcal{Q} = \tilde{\gamma} \left( (a^\dagger)^k (a^l - a^k) \right)
+$$
+where <span class="arithmatex">\(a^\dagger\)</span> and <span class="arithmatex">\(a\)</span> are the creation and annihilation operators in the coherent-state representation, which are replaced by <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\((iq+1)\)</span> respectively in the path integral.</p>
+</li>
+</ol>
+<p>This derivation flow from "<strong>master equation → generating function → partial differential equation → path integral action</strong>" establishes a complete theoretical framework for single-species systems. The core task ahead is to show how this method can be systematically generalized to systems containing arbitrary numbers of species.</p>
+<h1 id="2-generalization-to-multi-species-systems">2. Generalization to Multi-Species Systems<a class="headerlink" href="#2-generalization-to-multi-species-systems" title="Permanent link">&para;</a></h1>
+<p>After reviewing single-species path integrals, we can now begin the core generalization work. The key insight is that the mathematical framework of coherent-state path integrals has powerful universality. The transition from single-species to multi-species is essentially elevating scalars (such as particle numbers <span class="arithmatex">\(n\)</span>, auxiliary fields <span class="arithmatex">\(x\)</span>) in the theory to vectors, while keeping the basic structure of the action unchanged.</p>
+<h2 id="21-multi-species-state-space-and-operators">2.1 Multi-Species State Space and Operators<a class="headerlink" href="#21-multi-species-state-space-and-operators" title="Permanent link">&para;</a></h2>
+<p>First, we need to extend the mathematical space describing the system state.</p>
+<p>In multi-species systems, the microscopic state of the system is no longer described by a single integer <span class="arithmatex">\(n\)</span>, but by a <strong>particle number vector</strong> <span class="arithmatex">\(\boldsymbol{n} = (n_1, n_2, \ldots, n_S)\)</span>, where <span class="arithmatex">\(n_\sigma\)</span> is the number of particles of species <span class="arithmatex">\(\sigma\)</span>.</p>
+<p><strong>Physical meaning</strong>:
+The system's state space thus expands from a one-dimensional integer axis to an <span class="arithmatex">\(S\)</span>-dimensional discrete lattice space <span class="arithmatex">\(\mathbb{N}_0^S\)</span>. Each point in this high-dimensional space represents a complete "census" of an ecosystem or chemical reaction network—a specific population composition.</p>
+<p>Correspondingly, the coherent-state representation also needs to be generalized. Multi-species coherent states can be constructed as <strong>tensor products</strong> of single-species coherent states. This means each species has its own independent coherent-state basis, and the entire system's basis is their combination:</p>
+<div class="arithmatex">\[
+|\boldsymbol{n}\rangle_\boldsymbol{x} = |n_1, n_2, \ldots, n_S\rangle_{\{x_1, x_2, \ldots, x_S\}} = |n_1\rangle_{x_1} \otimes \cdots \otimes |n_S\rangle_{x_s}
+\]</div>
+<ul>
+<li>
+<p><span class="arithmatex">\(\boldsymbol{x} = (x_1, x_2, \ldots, x_S)\)</span> is a vector containing <span class="arithmatex">\(S\)</span> formal variables.</p>
+</li>
+<li>
+<p>The tensor product <span class="arithmatex">\(\otimes\)</span> is the natural mathematical language for combining independent spaces, meaning that when interactions are not considered, each species' state is independent.</p>
+</li>
+</ul>
+<p>Creation and annihilation operators now also need to carry species labels <span class="arithmatex">\(\sigma\)</span>. Their action on multi-species Poisson bases is defined as:</p>
+<div class="arithmatex">\[
+a^\dagger_\sigma = x_\sigma, \quad a_\sigma = \partial_{x_\sigma} + 1
+\]</div>
+<p><strong>Physical meaning</strong>: <span class="arithmatex">\(a^\dagger_\sigma\)</span> acts to add a particle of species <span class="arithmatex">\(\sigma\)</span> to the system (equivalent to multiplying by <span class="arithmatex">\(x_\sigma\)</span> in the Poisson representation), while <span class="arithmatex">\(a_\sigma\)</span> acts to remove a particle of species <span class="arithmatex">\(\sigma\)</span> (equivalent to acting with a differential operator in the Poisson representation).</p>
+<p>These operators only act on their corresponding species' subspace. Operators belonging to different species commute, e.g., <span class="arithmatex">\([a_\sigma, a_\tau^\dagger] = \delta_{\sigma\tau}\)</span>, which again reflects the independence of each species' degrees of freedom.</p>
+<h2 id="22-multi-species-action">2.2 Multi-Species Action<a class="headerlink" href="#22-multi-species-action" title="Permanent link">&para;</a></h2>
+<p>With vectorized state spaces and operators, following the blueprint of the single-species case, we can directly write down the path integral action for multi-species systems. Its form is remarkably similar to the single-species case, with all scalars replaced by vectors:</p>
+<div class="arithmatex">\[
+S[\boldsymbol{x}(\tau), i\boldsymbol{q}(\tau)] = \int_{t_0}^{t} d\tau \left[ i\boldsymbol{q}(\tau)^\top \partial_\tau \boldsymbol{x}(\tau) - \mathcal{Q}(\boldsymbol{x}, i\boldsymbol{q} + 1) \right]
+\]</div>
+<p><span class="arithmatex">\(\boldsymbol{x}(\tau) = (x_1(\tau), \ldots, x_S(\tau))\)</span> and <span class="arithmatex">\(\boldsymbol{q}(\tau) = (q_1(\tau), \ldots, q_S(\tau))\)</span> are now <span class="arithmatex">\(S\)</span>-dimensional vector fields evolving in time.</p>
+<p><span class="arithmatex">\(i\boldsymbol{q}^\top \partial_\tau \boldsymbol{x}\)</span> is the inner product of vectors, i.e., <span class="arithmatex">\(\sum_{\sigma=1}^S i q_\sigma(\tau) \partial_\tau x_\sigma(\tau)\)</span>, representing the sum of kinetic terms for all species.</p>
+<p><span class="arithmatex">\(\mathcal{Q}(\boldsymbol{x}, i\boldsymbol{q} + 1)\)</span> is the multi-species Liouville quantity, which is now a function of <span class="arithmatex">\(S\)</span> pairs of variables <span class="arithmatex">\((\boldsymbol{x}, \boldsymbol{q})\)</span> and contains all information about inter-species interactions.</p>
+<p>The transition from scalars to vectors is not merely a notational change; it embodies profound physical and geometric imagery. The state space of a single-species system is one-dimensional. For a three-species system (like Rock-Paper-Scissors), the state space is a three-dimensional population lattice space <span class="arithmatex">\(\mathbb{N}_0^3\)</span>. The essence of the path integral is to perform weighted summation over all possible random trajectories <span class="arithmatex">\(\boldsymbol{n}(t)\)</span> traversing this high-dimensional "population space." The fields <span class="arithmatex">\(\boldsymbol{x}(\tau)\)</span> and <span class="arithmatex">\(\boldsymbol{q}(\tau)\)</span> in the coherent-state path integral are precisely the continuous field-theoretic counterparts of these discrete trajectories. Therefore, the action <span class="arithmatex">\(S[\boldsymbol{x}, i\boldsymbol{q}]\)</span> describes the "cost" or probability weight of a specific evolutionary path in this high-dimensional population space. This geometric intuition provides powerful support for understanding the abstract field-theoretic formalism.</p>
+<p>This generalization reveals a core principle: <strong>All the complexity of multi-species interactions is elegantly encapsulated in the specific form of the multi-species Liouville operator <span class="arithmatex">\(\mathcal{Q}\)</span>, while the basic framework of the path integral itself remains unchanged. This means that we don't need to reinvent a theory for each new multi-species system; we only need to learn how to correctly "construct" the corresponding Liouville operator for a given reaction network.</strong> This is precisely the core task of the next section.</p>
+<h1 id="3-constructing-liouville-operators-for-chemical-reaction-networks">3. Constructing Liouville Operators for Chemical Reaction Networks<a class="headerlink" href="#3-constructing-liouville-operators-for-chemical-reaction-networks" title="Permanent link">&para;</a></h1>
+<p>In the previous section, the theoretical framework has been successfully generalized from single-species scalar form to multi-species vector form. This generalization reveals a core principle: all the complexity of multi-species interactions is elegantly encapsulated in the specific form of the multi-species Liouville operator <span class="arithmatex">\(\mathcal{Q}\)</span>.</p>
+<p>The question now is: how to systematically construct this crucial Liouville operator <span class="arithmatex">\(\mathcal{Q}\)</span> based on a given reaction network? This lecture will provide a universal "recipe" or "algorithm" that can precisely translate any physical, chemical, or biological process (manifested as a series of reaction rules) into a mathematical object (i.e., the Liouville operator) that generates its complete stochastic dynamics.</p>
+<p>Consider a general chemical reaction where <span class="arithmatex">\(k_\sigma\)</span> molecules of species <span class="arithmatex">\(A_\sigma\)</span> as reactants are converted to <span class="arithmatex">\(l_\sigma\)</span> molecules of species <span class="arithmatex">\(A_\sigma\)</span> as products at rate <span class="arithmatex">\(\gamma\)</span>:</p>
+<div class="arithmatex">\[
+\sum_{\sigma=1}^{S} k_\sigma A_\sigma \xrightarrow{\gamma} \sum_{\sigma=1}^{S} l_\sigma A_\sigma
+\]</div>
+<h2 id="31-from-reaction-rules-to-transition-matrices">3.1 From Reaction Rules to Transition Matrices<a class="headerlink" href="#31-from-reaction-rules-to-transition-matrices" title="Permanent link">&para;</a></h2>
+<p>Before constructing the operator, we first review how the transition rate matrix <span class="arithmatex">\(Q(\boldsymbol{n}, \boldsymbol{m})\)</span> in the master equation is generated from basic reaction rules.</p>
+<p>Suppose the system's current state is <span class="arithmatex">\(\boldsymbol{m} = (m_1, \ldots, m_S)\)</span>. For a reaction to occur, we need to select <span class="arithmatex">\(k_1\)</span> from <span class="arithmatex">\(m_1\)</span> <span class="arithmatex">\(A_1\)</span> particles, <span class="arithmatex">\(k_2\)</span> from <span class="arithmatex">\(m_2\)</span> <span class="arithmatex">\(A_2\)</span> particles, and so on. The total reaction rate is proportional to the product of these combinatorial ways. After the reaction occurs, the system state jumps from <span class="arithmatex">\(\boldsymbol{m}\)</span> to <span class="arithmatex">\(\boldsymbol{n} = \boldsymbol{m} - \boldsymbol{k} + \boldsymbol{l}\)</span>. Combined, the transition matrix element has the form:</p>
+<div class="arithmatex">\[
+Q(\boldsymbol{n}, \boldsymbol{m}) = \tilde{\gamma} (m_1)_{k_1} \cdots (m_S)_{k_S} \left[ \delta_{\boldsymbol{n}, \boldsymbol{m}-\boldsymbol{k}+\boldsymbol{l}} - \delta_{\boldsymbol{n},\boldsymbol{m}} \right]
+\]</div>
+<p><span class="arithmatex">\((m_\sigma)_{k_\sigma} = m_\sigma(m_\sigma - 1)\cdots(m_\sigma - k_\sigma + 1)\)</span> is the falling factorial, representing combinatorial selection numbers.</p>
+<p><span class="arithmatex">\(\tilde{\gamma} = \gamma / (\prod_\sigma k_\sigma!)\)</span> is the rate constant including combinatorial symmetry factors.</p>
+<p>The first term <span class="arithmatex">\(\delta_{\boldsymbol{n}, \boldsymbol{m}-\boldsymbol{k}+\boldsymbol{l}}\)</span> in <span class="arithmatex">\([...]\)</span> describes the "gain" process where the state jumps <strong>into</strong> the new state <span class="arithmatex">\(\boldsymbol{n}\)</span> from <span class="arithmatex">\(\boldsymbol{m}\)</span>.</p>
+<p>The second term <span class="arithmatex">\(-\delta_{\boldsymbol{n},\boldsymbol{m}}\)</span> describes the "loss" process where probability <strong>flows out</strong> from the original state <span class="arithmatex">\(\boldsymbol{m}\)</span>.</p>
+<h2 id="32-general-form-of-the-liouville-operator">3.2 General Form of the Liouville Operator<a class="headerlink" href="#32-general-form-of-the-liouville-operator" title="Permanent link">&para;</a></h2>
+<p>The crucial step is to translate the above discrete transition matrix into an operator form that acts on continuous functions in the coherent-state representation. By utilizing the algebraic properties of creation operators <span class="arithmatex">\(a^\dagger_\sigma\)</span> and annihilation operators <span class="arithmatex">\(a_\sigma\)</span>, we can obtain an extremely elegant general formula:</p>
+<div class="arithmatex">\[
+\hat{\mathcal{Q}} = \tilde{\gamma} \left( (a^\dagger_1)^{k_1} \cdots (a^\dagger_S)^{k_S} \right) \left( a_1^{l_1} \cdots a_S^{l_S} - a_1^{k_1} \cdots a_S^{k_S} \right)
+\]</div>
+<p>The structure of this formula can be intuitively interpreted as: <strong>Rate Factor × (Jump Operation)</strong>.</p>
+<p><strong>Rate Factor</strong>: <span class="arithmatex">\(\tilde{\gamma} (a^\dagger_1)^{k_1} \cdots (a^\dagger_S)^{k_S}\)</span></p>
+<p>This part corresponds to the macroscopic rate of the reaction. In the coherent-state representation, creation operators <span class="arithmatex">\(a^\dagger_\sigma\)</span> ultimately correspond to auxiliary fields <span class="arithmatex">\(x_\sigma\)</span> in the path integral. Therefore, this part becomes <span class="arithmatex">\(\tilde{\gamma} x_1^{k_1} \cdots x_S^{k_S}\)</span> in the action, which precisely reproduces the <strong>law of mass action</strong> in deterministic chemical kinetics. It shows that the total propensity for a reaction to occur is proportional to the power product of reactant concentrations.</p>
+<p><strong>Jump Operation</strong>: <span class="arithmatex">\((a_1^{l_1} \cdots a_S^{l_S} - a_1^{k_1} \cdots a_S^{k_S})\)</span></p>
+<p>This part is the core of executing the reaction, precisely encoding the change in the particle number vector. It first <strong>annihilates</strong> the state composed of reactants through the term <span class="arithmatex">\(-a_1^{k_1} \cdots a_S^{k_S}\)</span>, then <strong>creates</strong> the state composed of products through the term <span class="arithmatex">\(a_1^{l_1} \cdots a_S^{l_S}\)</span>. This "subtract-add" structure corresponds to the "loss-gain" form in the master equation.</p>
+<p>This formula turns the construction of Liouville operators into a "universal compiler." Any reaction list based on empirical observations (the "source code" of physics) can be mechanically and unambiguously translated into a unique mathematical operator (the "executable file" of dynamics) through this formula, and this operator generates all the stochastic dynamics of the system.</p>
+<h2 id="33-case-analysis-translating-rules-into-operators">3.3 Case Analysis: Translating Rules into Operators<a class="headerlink" href="#33-case-analysis-translating-rules-into-operators" title="Permanent link">&para;</a></h2>
+<p>Through several simple examples given by the professor in class, we can better understand this construction process.</p>
+<ol>
+<li><strong>Death</strong>: <span class="arithmatex">\(A \xrightarrow{\mu} \emptyset\)</span></li>
+</ol>
+<p><strong>Identification</strong>: Species A: <span class="arithmatex">\(k_A = 1\)</span>, <span class="arithmatex">\(l_A = 0\)</span>. Rate <span class="arithmatex">\(\tilde{\gamma} = \mu\)</span>.</p>
+<p><strong>Apply formula</strong>: <span class="arithmatex">\(\hat{\mathcal{Q}}_{\text{death}} = \mu (a^\dagger)^1 (a^0 - a^1) = \mu a^\dagger (1 - a)\)</span>.</p>
+<ol>
+<li><strong>Birth</strong>: <span class="arithmatex">\(B \xrightarrow{\sigma} B + B\)</span></li>
+</ol>
+<p><strong>Identification</strong>: Species B: <span class="arithmatex">\(k_B = 1\)</span>, <span class="arithmatex">\(l_B = 2\)</span>. Rate <span class="arithmatex">\(\tilde{\gamma} = \sigma\)</span>.</p>
+<p><strong>Apply formula</strong>: <span class="arithmatex">\(\hat{\mathcal{Q}}_{\text{birth}} = \sigma (b^\dagger)^1 (b^2 - b^1) = \sigma b^\dagger (b^2 - b)\)</span>.</p>
+<ol>
+<li><strong>Predation</strong>: <span class="arithmatex">\(A + B \xrightarrow{\lambda} A + A\)</span></li>
+</ol>
+<p><strong>Identification</strong>: Species A: <span class="arithmatex">\(k_A = 1, l_A = 2\)</span>. Species B: <span class="arithmatex">\(k_B = 1, l_B = 0\)</span>. Rate <span class="arithmatex">\(\tilde{\gamma} = \lambda\)</span>.</p>
+<p><strong>Apply formula</strong>: <span class="arithmatex">\(\hat{\mathcal{Q}}_{\text{pred}} = \lambda (a^\dagger)^1 (b^\dagger)^1 (a^2 b^0 - a^1 b^1) = \lambda a^\dagger b^\dagger (a^2 - ab)\)</span>.</p>
+<p>For a complex system containing multiple reactions, the total Liouville operator is simply the sum of all individual reaction operators:
+<span class="arithmatex">\(<span class="arithmatex">\(\hat{\mathcal{Q}}_{\text{total}} = \sum_{\text{all reactions}} \hat{\mathcal{Q}}_{\text{reaction}}\)</span>\)</span>
+This <strong>modular</strong> property makes the framework extremely powerful, capable of systematically handling arbitrarily complex reaction networks, laying the foundation for analyzing the "Rock-Paper-Scissors" model in the next section.</p>
+<h1 id="4-rock-paper-scissors-dynamics-of-the-may-leonard-model">4. Rock-Paper-Scissors Dynamics of the May-Leonard Model<a class="headerlink" href="#4-rock-paper-scissors-dynamics-of-the-may-leonard-model" title="Permanent link">&para;</a></h1>
+<p>In the previous section, a powerful "compiler" was established that can translate any reaction network into its corresponding Liouville operator. Now it is time to apply this formalism to a concrete, non-trivial ecological model: the <strong>May-Leonard model</strong>.</p>
+<p>The May-Leonard model was jointly proposed by ecologists Robert May and Joseph Leonard in 1975, with its historical background stemming from reflection on the "competitive exclusion principle"—that species with identical ecological niches cannot stably coexist. <strong>The physical essence of this model is to construct a three-dimensional (or higher-dimensional) nonlinear dynamical system (system of ordinary differential equations) describing the cyclic competitive relationships between three species (i.e., A beats B, B beats C, C beats A, forming "Rock-Paper-Scissors"-style intransitive competition)</strong>, whose core feature is that under the deterministic differential equation framework, due to the absence of stable fixed points, the system exhibits nonequilibrium behaviors such as sustained oscillations and spontaneous random alternation of species abundances. The specific applications of this model have far exceeded theoretical ecology, becoming a paradigmatic tool for explaining biodiversity and spatial self-organization patterns, widely applied in microbial experimental systems (such as cyclic competition in E. coli), coral reef ecosystem evolution analysis, and mechanism research for maintaining cooperative behavior in evolutionary game theory, providing a key mathematical model for nonlinear dynamics and nonequilibrium statistical physics to demonstrate how neutral stability, limit cycles, and stochasticity jointly maintain biodiversity.</p>
+<p><img alt="Classroom Video Screenshot" src="../../../assets/images/remote/4ac734d5-a64f-4ead-953c-d587e84ddaee-96a9fa1c7f.jpg" /></p>
+<p>This simple game rule—rock beats scissors, scissors beat paper, paper beats rock—has widespread analogies in nature. For example, in certain E. coli strains, some strains produce toxins (rock) that kill sensitive strains (scissors); sensitive strains grow faster and can outcompete toxin-producing but slow-growing strains (paper); while a third strain is immune to toxins but grows slower than sensitive strains (paper beats rock).</p>
+<p><img alt="Classroom PPT Screenshot" src="../../../assets/images/remote/c1b76320-4924-4187-911d-d26c57ad54ab-81e268a561.jpg" /></p>
+<p>The May-Leonard model is renowned for producing rich, far-from-equilibrium spatiotemporal structures and is an ideal "touchstone" for testing stochastic population dynamics theory.</p>
+<p>The model contains three species A, B, C (analogous to rock, paper, scissors), whose interactions follow cyclic dominance rules. According to the PPT shown by the professor in class, these interactions can be divided into three categories:</p>
+<p><img alt="Classroom PPT Screenshot" src="../../../assets/images/remote/c8d6c693-1abd-4f84-8eb0-a19eaa788b16-81a920281d.png" /></p>
+<ol>
+<li>
+<p><strong>Competition (Contest Competition / Predation)</strong>: Predator meets prey, prey is removed.</p>
+<ul>
+<li><span class="arithmatex">\(A + B \xrightarrow{\sigma} A + \emptyset\)</span> (A preys on B)</li>
+<li><span class="arithmatex">\(B + C \xrightarrow{\sigma} B + \emptyset\)</span> (B preys on C)</li>
+<li><span class="arithmatex">\(C + A \xrightarrow{\sigma} C + \emptyset\)</span> (C preys on A)</li>
+</ul>
+</li>
+<li>
+<p><strong>Reproduction (Scramble Competition / Reproduction)</strong>: Individuals produce offspring on available space (empty sites <span class="arithmatex">\(\emptyset\)</span>).</p>
+<ul>
+<li><span class="arithmatex">\(A + \emptyset \xrightarrow{\mu} A + A\)</span></li>
+<li><span class="arithmatex">\(B + \emptyset \xrightarrow{\mu} B + B\)</span></li>
+<li><span class="arithmatex">\(C + \emptyset \xrightarrow{\mu} C + C\)</span></li>
+</ul>
+</li>
+<li>
+<p><strong>Mobility (Mobility / Diffusion)</strong>: Individuals move in space, exchanging positions.</p>
+<ul>
+<li><span class="arithmatex">\(A_i \leftrightarrow A_j\)</span> (where <span class="arithmatex">\(i, j\)</span> represent spatial lattice sites)</li>
+</ul>
+</li>
+</ol>
+<h2 id="41-mean-field-dynamics-the-deterministic-death-spiral">4.1 Mean-Field Dynamics: The Deterministic "Death Spiral"<a class="headerlink" href="#41-mean-field-dynamics-the-deterministic-death-spiral" title="Permanent link">&para;</a></h2>
+<p>Before delving into the complete stochastic dynamics, we first analyze a simplified version: a <strong>mean-field</strong> or <strong>well-mixed</strong> system. This approximation assumes that particles in the system can interact instantaneously with any other particle, thus ignoring spatial structure and random fluctuations.</p>
+<p><img alt="Classroom PPT Screenshot" src="../../../assets/images/remote/71008cd7-d470-4ff0-b59d-33630bf6279a-cb0da8b5cf.png" /></p>
+<p>According to the law of mass action, we can write the deterministic rate equations for population densities <span class="arithmatex">\(a, b, c\)</span>:</p>
+<div class="arithmatex">\[
+\partial_t a = a[\mu(1 - \rho) - \sigma c] \\
+\partial_t b = b[\mu(1 - \rho) - \sigma a] \\
+\partial_t c = c[\mu(1 - \rho) - \sigma b]
+\]</div>
+<ul>
+<li><span class="arithmatex">\(\rho = a+b+c\)</span> is the total density.</li>
+<li><span class="arithmatex">\(a\mu(1 - \rho)\)</span> represents the logistic growth of species A in available space <span class="arithmatex">\((1 - \rho)\)</span> (reproduction term).</li>
+<li><span class="arithmatex">\(-\sigma a c\)</span> represents species A being consumed by its predator C (competition term).</li>
+</ul>
+<p>Performing stability analysis on this dynamical system, we can find several fixed points:</p>
+<ul>
+<li>
+<p><strong>Complete extinction fixed point</strong>: <span class="arithmatex">\((0, 0, 0)\)</span>.</p>
+</li>
+<li>
+<p><strong>Single-species absorbing fixed points</strong>: <span class="arithmatex">\((1, 0, 0), (0, 1, 0), (0, 0, 1)\)</span>. These are stable fixed points.</p>
+</li>
+<li>
+<p><strong>Coexistence fixed point</strong>: There exists a three-species coexistence fixed point at the center of phase space, but it is unstable.</p>
+</li>
+</ul>
+<h3 id="physical-meaning-heteroclinic-cycle">Physical meaning: Heteroclinic cycle<a class="headerlink" href="#physical-meaning-heteroclinic-cycle" title="Permanent link">&para;</a></h3>
+<p>Since the central coexistence point is unstable, any small perturbation will cause the system state to leave this point. The system's phase space trajectories exhibit outwardly diverging spiral lines, a structure called a <strong>heteroclinic cycle</strong>. Physically, this means that population numbers will experience oscillations with increasing amplitude: an increase in A's numbers leads to a decrease in its prey B; B's decrease reduces C's natural enemies, so C begins to increase; C's increase leads to A's decrease, completing a cycle.</p>
+<p>In the deterministic mean-field description, this oscillation will continue indefinitely with increasing amplitude, and the trajectory will asymptotically approach the boundary composed of three absorbing states, leading to the extinction of two species and leaving only one winner. In finite but large populations, the time scale for such random extinction can be estimated as <span class="arithmatex">\(T \sim \ln N\)</span>.</p>
+<p><img alt="Classroom Video" src="../../../assets/images/remote/heteroclinic%20cycle.mp4" /></p>
+<h2 id="42-spatial-stochastic-dynamics-emergence-of-spiral-waves-and-species-coexistence">4.2 Spatial Stochastic Dynamics: Emergence of Spiral Waves and Species Coexistence<a class="headerlink" href="#42-spatial-stochastic-dynamics-emergence-of-spiral-waves-and-species-coexistence" title="Permanent link">&para;</a></h2>
+<p>Mean-field theory (Section 4.1) depicts the "skeleton" of the system—a deterministic "death spiral" leading to species extinction. However, this theory has two fatal simplifications: it ignores <strong>demographic noise</strong> (random birth-death events in finite populations) and <strong>spatial structure</strong> (locality of interactions).</p>
+<p>To explore how these two factors fundamentally change the system's fate, we need to upgrade from a 0-dimensional "well-mixed" model to a 2-dimensional <strong>spatial stochastic model</strong>. We will no longer track the total species numbers of the entire system, but simulate on a two-dimensional grid where each lattice site is occupied by a certain species and how they react with their <strong>neighbors</strong>. We use a <strong>cellular automaton</strong> approach that captures the dynamics of such local interactions.</p>
+<h3 id="spatial-simulation-method-and-code">Spatial Simulation Method and Code<a class="headerlink" href="#spatial-simulation-method-and-code" title="Permanent link">&para;</a></h3>
+<p>Unlike the Gillespie algorithm that tracks the next reaction of the entire system, cellular automata update each lattice site's state in discrete time steps based on the states of its surrounding neighbors. The core rules are as follows:</p>
+<ol>
+<li><strong>Initialization</strong>: Create a two-dimensional grid and randomly place a species (A, B, C) or leave empty (<span class="arithmatex">\(\emptyset\)</span>) at each lattice site.</li>
+<li><strong>Evolution</strong>: At each time step, calculate state changes for all lattice sites on the grid simultaneously:<ul>
+<li><strong>Predation</strong>: The more a lattice site is surrounded by its "natural enemy" neighbors, the higher the probability it becomes empty in this step.</li>
+<li><strong>Reproduction</strong>: The more a lattice site is surrounded by neighbors of a certain species, the higher the probability it is occupied by that species in this step.</li>
+<li><strong>Mobility</strong>: Individuals on lattice sites have a certain probability of exchanging positions with neighboring empty sites.</li>
+</ul>
+</li>
+<li><strong>Update</strong>: Apply all calculated changes to a new grid, completing one time step of evolution.</li>
+</ol>
+<p>The following Python code implements this spatial model and has been optimized to stably reproduce the spiral wave animations shown in class.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">animation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">ListedColormap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.signal</span><span class="w"> </span><span class="kn">import</span> <span class="n">convolve2d</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_spatial_rps_spirals</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">rates</span><span class="p">,</span> <span class="n">steps</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simulates the spatial Rock-Paper-Scissors model.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        grid_size (int): The width and height of the grid.</span>
+<span class="sd">        rates (dict): A dictionary of probabilities {&#39;repro&#39;, &#39;pred&#39;, &#39;mobil&#39;}.</span>
+<span class="sd">        steps (int): The number of animation frames to generate.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: A history of the grid states for animation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Grid states: 0=Empty, 1=A (Rock/Red), 2=B (Paper/Blue), 3=C (Scissors/Yellow)</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">))</span>
+    <span class="n">history</span> <span class="o">=</span> <span class="p">[</span><span class="n">grid</span><span class="o">.</span><span class="n">copy</span><span class="p">()]</span>
+
+    <span class="c1"># Kernel for counting neighbors</span>
+    <span class="n">kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                       <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                       <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
+        <span class="c1"># Create a copy to store the changes for this step</span>
+        <span class="n">new_grid</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="c1"># --- 1. Reaction Phase ---</span>
+        <span class="c1"># Count neighbors for each species</span>
+        <span class="n">neighbors_A</span> <span class="o">=</span> <span class="n">convolve2d</span><span class="p">((</span><span class="n">grid</span> <span class="o">==</span> <span class="mi">1</span><span class="p">),</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">boundary</span><span class="o">=</span><span class="s1">&#39;wrap&#39;</span><span class="p">)</span>
+        <span class="n">neighbors_B</span> <span class="o">=</span> <span class="n">convolve2d</span><span class="p">((</span><span class="n">grid</span> <span class="o">==</span> <span class="mi">2</span><span class="p">),</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">boundary</span><span class="o">=</span><span class="s1">&#39;wrap&#39;</span><span class="p">)</span>
+        <span class="n">neighbors_C</span> <span class="o">=</span> <span class="n">convolve2d</span><span class="p">((</span><span class="n">grid</span> <span class="o">==</span> <span class="mi">3</span><span class="p">),</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">boundary</span><span class="o">=</span><span class="s1">&#39;wrap&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Identify predators for each species</span>
+        <span class="c1"># Predators: C(3) for A(1), A(1) for B(2), B(2) for C(3)</span>
+        <span class="n">predators_for_A</span> <span class="o">=</span> <span class="n">neighbors_C</span>
+        <span class="n">predators_for_B</span> <span class="o">=</span> <span class="n">neighbors_A</span>
+        <span class="n">predators_for_C</span> <span class="o">=</span> <span class="n">neighbors_B</span>
+
+        <span class="c1"># Calculate probabilities of events for each cell</span>
+        <span class="c1"># Predation happens to non-empty cells</span>
+        <span class="n">prob_predation_A</span> <span class="o">=</span> <span class="n">rates</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">predators_for_A</span>
+        <span class="n">prob_predation_B</span> <span class="o">=</span> <span class="n">rates</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">predators_for_B</span>
+        <span class="n">prob_predation_C</span> <span class="o">=</span> <span class="n">rates</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">predators_for_C</span>
+
+        <span class="c1"># Reproduction happens in empty cells</span>
+        <span class="n">prob_repro_A</span> <span class="o">=</span> <span class="n">rates</span><span class="p">[</span><span class="s1">&#39;repro&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">neighbors_A</span>
+        <span class="n">prob_repro_B</span> <span class="o">=</span> <span class="n">rates</span><span class="p">[</span><span class="s1">&#39;repro&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">neighbors_B</span>
+        <span class="n">prob_repro_C</span> <span class="o">=</span> <span class="n">rates</span><span class="p">[</span><span class="s1">&#39;repro&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">neighbors_C</span>
+
+        <span class="c1"># Generate random numbers for all cells at once</span>
+        <span class="n">rand_field</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">)</span>
+
+        <span class="c1"># Apply predation rules</span>
+        <span class="n">new_grid</span><span class="p">[(</span><span class="n">grid</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">rand_field</span> <span class="o">&lt;</span> <span class="n">prob_predation_A</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">new_grid</span><span class="p">[(</span><span class="n">grid</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">rand_field</span> <span class="o">&lt;</span> <span class="n">prob_predation_B</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">new_grid</span><span class="p">[(</span><span class="n">grid</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">rand_field</span> <span class="o">&lt;</span> <span class="n">prob_predation_C</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Apply reproduction rules (only to cells that are still empty)</span>
+        <span class="c1"># Find empty cells and rank reproduction probabilities</span>
+        <span class="n">empty_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">new_grid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">repro_chances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">prob_repro_A</span><span class="p">,</span> <span class="n">prob_repro_B</span><span class="p">,</span> <span class="n">prob_repro_C</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># The species with the most neighbors has the best chance to reproduce</span>
+        <span class="n">colonizer</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">repro_chances</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="c1"># Check if the max probability is &gt; 0 and beats a random threshold</span>
+        <span class="n">max_prob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">repro_chances</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">new_grid</span><span class="p">[</span><span class="n">empty_mask</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">rand_field</span> <span class="o">&lt;</span> <span class="n">max_prob</span><span class="p">)]</span> <span class="o">=</span> <span class="n">colonizer</span><span class="p">[</span><span class="n">empty_mask</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">rand_field</span> <span class="o">&lt;</span> <span class="n">max_prob</span><span class="p">)]</span>
+
+        <span class="c1"># --- 2. Mobility Phase ---</span>
+        <span class="c1"># A fraction of individuals try to move into empty spaces</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">grid_size</span> <span class="o">*</span> <span class="n">grid_size</span> <span class="o">*</span> <span class="n">rates</span><span class="p">[</span><span class="s1">&#39;mobil&#39;</span><span class="p">])):</span>
+            <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="c1"># Only non-empty sites can move</span>
+            <span class="k">if</span> <span class="n">new_grid</span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># Pick a random neighbor</span>
+                <span class="n">dr</span><span class="p">,</span> <span class="n">dc</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)][</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+                <span class="n">nr</span><span class="p">,</span> <span class="n">nc</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">dr</span><span class="p">)</span> <span class="o">%</span> <span class="n">grid_size</span><span class="p">,</span> <span class="p">(</span><span class="n">c</span> <span class="o">+</span> <span class="n">dc</span><span class="p">)</span> <span class="o">%</span> <span class="n">grid_size</span>
+                <span class="c1"># If neighbor is empty, swap</span>
+                <span class="k">if</span> <span class="n">new_grid</span><span class="p">[</span><span class="n">nr</span><span class="p">,</span> <span class="n">nc</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">new_grid</span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">],</span> <span class="n">new_grid</span><span class="p">[</span><span class="n">nr</span><span class="p">,</span> <span class="n">nc</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_grid</span><span class="p">[</span><span class="n">nr</span><span class="p">,</span> <span class="n">nc</span><span class="p">],</span> <span class="n">new_grid</span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">]</span>
+
+        <span class="n">grid</span> <span class="o">=</span> <span class="n">new_grid</span>
+        <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">50</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Step </span><span class="si">{</span><span class="n">step</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">steps</span><span class="si">}</span><span class="s2"> completed.&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">history</span>
+
+<span class="c1"># --- Simulation Parameters ---</span>
+<span class="n">GRID_SIZE</span> <span class="o">=</span> <span class="mi">150</span>
+<span class="c1"># These rates are chosen to favor spiral formation</span>
+<span class="n">RATES</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;repro&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;pred&#39;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s1">&#39;mobil&#39;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">}</span>
+<span class="n">ANIMATION_STEPS</span> <span class="o">=</span> <span class="mi">500</span>
+
+<span class="c1"># --- Run Simulation ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting spatial simulation for spirals...&quot;</span><span class="p">)</span>
+<span class="n">simulation_history</span> <span class="o">=</span> <span class="n">simulate_spatial_rps_spirals</span><span class="p">(</span><span class="n">GRID_SIZE</span><span class="p">,</span> <span class="n">RATES</span><span class="p">,</span> <span class="n">ANIMATION_STEPS</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Simulation finished. Creating animation...&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- Create and Save Animation ---</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">([</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">])</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">simulation_history</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">title</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Spatial Rock-Paper-Scissors (Step 0)&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
+    <span class="n">im</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">simulation_history</span><span class="p">[</span><span class="n">frame</span><span class="p">])</span>
+    <span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Spatial Rock-Paper-Scissors (Step </span><span class="si">{</span><span class="n">frame</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">im</span><span class="p">,</span> <span class="n">title</span><span class="p">]</span>
+
+<span class="n">ani</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">simulation_history</span><span class="p">),</span> <span class="n">interval</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ani</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;spatial_rps_spirals.gif&#39;</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="s1">&#39;pillow&#39;</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Animation saved as &#39;spatial_rps_spirals.gif&#39;&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="Code Output" src="../../../assets/images/remote/spatial_rps_spirals.gif" /></p>
+<ol>
+<li>
+<p><strong>From chaos to order</strong>: The simulation starts from a randomly distributed "salt-and-pepper noise" state. Within a short time, species begin to form small patches of aggregation.</p>
+</li>
+<li>
+<p><strong>Formation of chasing wave fronts</strong>: At the boundaries between different species aggregation regions, predation reactions begin to occur. One can see a red "wave front" beginning to erode blue regions, while blue wave fronts erode yellow regions, and yellow wave fronts in turn erode red regions, forming a <strong>"chase-escape"</strong> dynamic chain.</p>
+</li>
+<li>
+<p><strong>Emergence of spiral waves</strong>: Due to random fluctuations, these straight wave fronts become unstable and begin to curl. Eventually, they self-organize into magnificent, stably propagating <strong>spiral waves</strong>. The center of the spiral wave acts like a pacemaker, continuously emitting cyclic species waves outward.</p>
+</li>
+</ol>
+<p>Unlike mean-field and well-mixed models that ultimately lead to species extinction, <strong>spatial models achieve stable species coexistence through spiral wave formation</strong>. Why does space have such magic?</p>
+<ul>
+<li>
+<p><strong>Locality creates "refuges"</strong>: In spatial models, predators can only attack their <strong>direct neighbors</strong>. This means that species groups far from their natural enemies can safely exist in "refuges." A species does not face "encirclement" from all natural enemies in the entire system.</p>
+</li>
+<li>
+<p><strong>Spiral waves are dynamic refuges</strong>: Spiral wave structures are dynamic, self-sustaining refuges. Wave propagation ensures that no species can occupy the entire space, and there are always prey that can "escape" to regions not yet reached by predators, thus providing opportunities for species continuation.</p>
+</li>
+</ul>
+<p>Therefore, the spatial dimension is not a dispensable detail; it fundamentally changes the system's dynamical behavior and ultimate fate, transforming a system destined to lose diversity into a complex ecosystem that can maintain dynamic balance and species coexistence.</p>
+<p>In the next section, we will formally introduce the <strong>spatial dimension</strong> into our theoretical framework, laying the foundation for understanding the formation mechanisms of beautiful spatiotemporal patterns like spiral waves observed in simulations.</p>
+<h1 id="5-introducing-space-into-theory-diffusion-and-locality">5. Introducing Space into Theory: Diffusion and Locality<a class="headerlink" href="#5-introducing-space-into-theory-diffusion-and-locality" title="Permanent link">&para;</a></h1>
+<p>In the numerical simulations of Section 4.2, we saw that when spatial dimensions were introduced, the three species that were destined for extinction in "well-mixed" systems achieved stable coexistence through spiral wave formation. This indicates that space is not a dispensable detail but a key factor that fundamentally changes the system's macroscopic behavior and ultimate fate.</p>
+<p>Therefore, to enable path integral theory to describe these rich spatiotemporal phenomena, we must formally incorporate <strong>spatial structure</strong> and <strong>local interactions</strong> into the model. The goal of this lecture is to extend the 0-dimensional theory that only considers total particle numbers into a complete theory defined on spatial lattices.</p>
+<h2 id="51-lattice-discretization-and-new-state-description">5.1 Lattice Discretization and New State Description<a class="headerlink" href="#51-lattice-discretization-and-new-state-description" title="Permanent link">&para;</a></h2>
+<p>To incorporate spatial structure into the model, we define dynamics on a (e.g., two-dimensional square) <strong>lattice</strong>.</p>
+<p><img alt="Classroom Blackboard Screenshot" src="../../../assets/images/remote/94612ee2-f16e-4e75-9574-c1be39e13ea6-160af7b52c.png" /></p>
+<p>The system's state description also changes accordingly. The state is no longer a single particle number vector <span class="arithmatex">\(\boldsymbol{n}\)</span>, but is jointly described by the number of particles <span class="arithmatex">\(n_i^\sigma\)</span> of each species <span class="arithmatex">\(\sigma\)</span> at each lattice site <span class="arithmatex">\(i\)</span>.</p>
+<p><strong>Physical meaning</strong>:</p>
+<ul>
+<li>
+<p>The system's complete state is now a very high-dimensional vector containing information about particle numbers of all species at all positions—a snapshot of the entire "ecological map."</p>
+</li>
+<li>
+<p>Previously defined "on-site" reactions (such as predation, reproduction) are now understood as local events occurring within the same lattice site <span class="arithmatex">\(i\)</span> or between adjacent lattice sites <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(j\)</span>.</p>
+</li>
+</ul>
+<h2 id="52-formalizing-diffusion-as-chemical-reactions">5.2 Formalizing Diffusion as "Chemical Reactions"<a class="headerlink" href="#52-formalizing-diffusion-as-chemical-reactions" title="Permanent link">&para;</a></h2>
+<p>In addition to local reactions, we need to introduce the process of particles moving between different lattice sites, i.e., <strong>diffusion</strong> or <strong>mobility</strong>. In our theoretical framework, diffusion can be elegantly formalized as another type of "chemical reaction"—namely, a particle of species <span class="arithmatex">\(\sigma\)</span> "jumping" from lattice site <span class="arithmatex">\(i\)</span> to its neighboring lattice site <span class="arithmatex">\(j\)</span>:</p>
+<div class="arithmatex">\[
+A_i^\sigma \xrightarrow{D_{i \to j}^\sigma} A_j^\sigma
+\]</div>
+<ul>
+<li>
+<p><span class="arithmatex">\(A_i^\sigma\)</span> represents a particle of species <span class="arithmatex">\(\sigma\)</span> located at lattice site <span class="arithmatex">\(i\)</span>.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(D_{i \to j}^\sigma\)</span> is the <strong>hopping rate</strong> for this jumping event. The specific form of this rate depends on our assumptions about the system's physical properties.</p>
+</li>
+</ul>
+<h3 id="different-choices-for-hopping-rate-d_i-to-jsigma">Different Choices for Hopping Rate <span class="arithmatex">\(D_{i \to j}^\sigma\)</span><a class="headerlink" href="#different-choices-for-hopping-rate-d_i-to-jsigma" title="Permanent link">&para;</a></h3>
+<p>The choice of hopping rate profoundly reflects whether the system is in equilibrium or nonequilibrium.</p>
+<ol>
+<li>
+<p><strong>Simplest nonequilibrium model</strong>:
+    In many studies of nonequilibrium models (including the May-Leonard model), the simplest assumption is that the hopping rate is a constant <span class="arithmatex">\(D\)</span>, independent of species, position, and direction.
+    <span class="arithmatex">\(<span class="arithmatex">\(D_{i \to j}^{\sigma} = D\)</span>\)</span>
+    This assumption means particles perform unbiased, pure random walks.</p>
+</li>
+<li>
+<p><strong>Equilibrium model (satisfying detailed balance)</strong>:</p>
+</li>
+</ol>
+<p>If the system has an energy landscape (e.g., each lattice site <span class="arithmatex">\(i\)</span> has a potential energy <span class="arithmatex">\(U_i\)</span>), and we require the system to relax to thermodynamic equilibrium (i.e., Boltzmann distribution) after long-time evolution, then the hopping rate must satisfy the <strong>detailed balance</strong> condition.</p>
+<p><img alt="Classroom Blackboard Screenshot" src="../../../assets/images/remote/94a726da-7fca-4718-981a-bb1a1a349a04-09012b3ee7.png" /></p>
+<p>Detailed balance requires that the forward probability flow from <span class="arithmatex">\(j\)</span> to <span class="arithmatex">\(i\)</span> equals the reverse probability flow from <span class="arithmatex">\(i\)</span> to <span class="arithmatex">\(j\)</span>, i.e., <span class="arithmatex">\(D_{ij} e^{-\beta U_j} = D_{ji} e^{-\beta U_i}\)</span>. There are various choices for hopping rates satisfying this condition, for example:</p>
+<div class="arithmatex">\[D_{ij} = D \exp\left[-\frac{1}{2}\beta(U_i - U_j)\right]\]</div>
+<p>This form ensures that particles are more likely to jump from high-energy positions to low-energy positions, enabling the system to eventually reach the lowest-energy equilibrium state.</p>
+<p><strong>Important distinction</strong>: It must be emphasized that the May-Leonard model, due to its cyclic predation reaction rules, is an <strong>intrinsically nonequilibrium system</strong> that does not have a minimizable "energy" function, so its dynamics <strong>does not obey detailed balance</strong>. Therefore, when studying its nonequilibrium properties, adopting a simple constant hopping rate <span class="arithmatex">\(D\)</span> is a reasonable and effective starting point.</p>
+<h2 id="53-how-space-changes-system-fate-refuges-and-pattern-formation">5.3 How Space Changes System Fate: Refuges and Pattern Formation<a class="headerlink" href="#53-how-space-changes-system-fate-refuges-and-pattern-formation" title="Permanent link">&para;</a></h2>
+<p>Introducing spatial dimensions and local interactions fundamentally changes the system's behavior.</p>
+<ul>
+<li>
+<p>In well-mixed models, the dominant species can indiscriminately attack <strong>all</strong> prey in the system, quickly leading to global population collapse and species extinction.</p>
+</li>
+<li>
+<p>But in spatial models, an individual can only reproduce or prey with its <strong>neighboring</strong> individuals.</p>
+</li>
+</ul>
+<p>This <strong>locality</strong> allows prey to find <strong>"refuges"</strong> in regions far from predator populations. A species' patches can flourish in regions not yet reached by their natural enemies.</p>
+<p>The combination of such local interactions with diffusion ultimately prevents the global extinction seen in well-mixed systems and gives rise to rich self-organized spatiotemporal patterns, such as the <strong>spiral waves</strong> we saw in the simulations of Section 4.2. In these spiral waves, the three species dynamically coexist on a global scale, although they are constantly replacing each other on a local scale.</p>
+<p>Therefore, the transition from well-mixed models to spatial models is not merely a detail correction but a <strong>qualitative change</strong> in the system's dynamical behavior. After understanding how to formalize spatial dynamics, we have gathered all the necessary ingredients to construct a complete spatiotemporal path integral.</p>
+<h1 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h1>
+<p>This lecture successfully generalized the path integral formalism from describing single-species stochastic processes to handling arbitrarily complex multi-species interaction systems. The core of this generalization lies in elevating scalar state variables and operators to vector form while keeping the basic structure of the action unchanged.</p>
+<p>Through this process, a universal, algorithmic procedure was established for constructing the corresponding Liouville operator based on any given reaction network. This "compiler"-style tool directly translates reaction rules from physics, chemistry, or biology into mathematical generators of stochastic dynamics, greatly enhancing the practicality and universality of this theoretical framework.</p>
+<p>Through in-depth analysis of the May-Leonard (Rock-Paper-Scissors) model, the powerful capabilities of this theoretical framework were fully demonstrated. Different levels of theory reveal dramatically different system fates:</p>
+<ul>
+<li>
+<p><strong>Mean-field theory</strong> reveals the deterministic skeleton of the system—a <strong>heteroclinic cycle</strong> leading to species extinction.</p>
+</li>
+<li>
+<p><strong>Spatial stochastic simulation</strong> shows a completely opposite picture: <strong>local interactions</strong> and <strong>demographic noise</strong> jointly promote the emergence of <strong>spiral waves</strong>, enabling <strong>stable coexistence</strong> of species.</p>
+</li>
+</ul>
+<p>This stark contrast clearly demonstrates that for understanding the fate of such nonequilibrium systems, a complete stochastic description that includes spatial structure and random fluctuations is indispensable. In summary, this lecture not only provides a powerful theoretical tool—multi-species path integrals—but also deepens understanding of the roles of stochasticity, interactions, and spatial structure in complex systems through a classic nonequilibrium model.</p>
+<p>In this lecture, all necessary physical ingredients—local reactions and diffusion between lattice sites—have been formally defined on discrete lattices. This naturally leads to the next question: <strong>How to construct a complete path integral on this discrete lattice system and derive macroscopic field-theoretic descriptions from it?</strong></p>
+<p><strong>Next lecture (Lecture 39) "Path Integrals on Lattices: From Hopping to Continuous Field Theory"</strong> will directly answer this question. The multi-species action developed in this lecture will be combined with the concept of spatial lattices to construct a path integral describing spatiotemporal stochastic processes.</p>
+<p>Furthermore, the course will explore the transition from this discrete, particle-based description to a continuous, field-based description. By performing a <strong>continuum limit</strong>—i.e., coarse-graining lattice spacing and particle numbers—we will ultimately derive <strong>stochastic partial differential equations (SPDEs)</strong> describing spatiotemporal fluctuations of population density fields and their corresponding field theory.</p>
+<p>This will complete the entire theoretical construction journey from microscopic particle rules (master equation) to macroscopic continuous fields (stochastic field theory), opening the door for using powerful modern field-theoretic tools like renormalization groups to analyze critical behavior and phase transitions in nonequilibrium systems.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.highlight"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../assets/javascripts/mathjax.js"></script>
+      
+        <script src="../../assets/javascripts/language-nav.js"></script>
+      
+        <script src="../../assets/javascripts/video-init.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

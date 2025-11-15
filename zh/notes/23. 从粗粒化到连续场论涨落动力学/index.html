@@ -1,0 +1,3436 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Course Notes and Code (Erwin Frey, LMU Munich, 2025)">
+      
+      
+        <meta name="author" content="Zhihang Liu">
+      
+      
+        <link rel="canonical" href="https://liu-zhihang.github.io/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/notes/23.%20%E4%BB%8E%E7%B2%97%E7%B2%92%E5%8C%96%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA%E6%B6%A8%E8%90%BD%E5%8A%A8%E5%8A%9B%E5%AD%A6/">
+      
+      
+        <link rel="prev" href="../22.%20%E5%90%AB%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/">
+      
+      
+        <link rel="next" href="../24.%20%E6%98%82%E8%90%A8%E6%A0%BC%E7%B3%BB%E6%95%B0%E3%80%81%E5%80%92%E6%98%93%E5%85%B3%E7%B3%BB%E4%B8%8E%E5%8A%A8%E6%80%81%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/">
+      
+      
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en">
+        
+          <link rel="alternate" href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>23. 从粗粒化到连续场论涨落动力学 - Nonequilibrium Field Theories and Stochastic Dynamics</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/video.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-header__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nonequilibrium Field Theories and Stochastic Dynamics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              23. 从粗粒化到连续场论涨落动力学
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Nonequilibrium Field Theories and Stochastic Dynamics" class="md-nav__button md-logo" aria-label="Nonequilibrium Field Theories and Stochastic Dynamics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nonequilibrium Field Theories and Stochastic Dynamics
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/1.%20Course%20Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/2.%20Simple%20Random%20Walk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Simple Random Walk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/3.%20Gaussian%20Random%20Walk%20and%20Poisson%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Gaussian Random Walk and Poisson Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/4.%20Gillespie%20Algorithm%2C%20Master%20Equation%2C%20Generating%20Functions%20and%20Population%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie Algorithm, Master Equation, Generating Functions and Population Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/5.%20Population%20Dynamics%20-%20Linear%20Death%20Process%20and%20Lotka-Volterra%20System/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Population Dynamics - Linear Death Process and Lotka-Volterra System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/6.%20Fundamental%20Equations%20of%20Markov%20Processes%20%E2%80%94%20Chapman%E2%80%93Kolmogorov%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Fundamental Equations of Markov Processes — Chapman–Kolmogorov Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/7.%20Forward%20Master%20Equation%20and%20the%20Q%20Matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Forward Master Equation and the Q Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/8.%20Perron%E2%80%93Frobenius%20Theorem%2C%20Steady%20States%2C%20and%20Detailed%20Balance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Perron–Frobenius Theorem, Steady States, and Detailed Balance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/9.%20Nonequilibrium%20States%20%E2%80%94%20Irreversibility%20and%20Entropy%20Production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Nonequilibrium States — Irreversibility and Entropy Production
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/10.%20Ehrenfest%20Model%2C%20Entropy%2C%20and%20KL%20Divergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Ehrenfest Model, Entropy, and KL Divergence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/11.%20Continuous%20Markov%20Processes%20and%20the%20Fokker%E2%80%93Planck%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Continuous Markov Processes and the Fokker–Planck Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/12.%20Brownian%20Motion%20and%20the%20Ornstein%E2%80%93Uhlenbeck%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Brownian Motion and the Ornstein–Uhlenbeck Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/13.%20Monte%20Carlo%20Sampling%20as%20a%20Stochastic%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Monte Carlo Sampling as a Stochastic Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/14.%20Hamiltonian%20Monte%20Carlo%20Sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Hamiltonian Monte Carlo Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/15.%20Chemotaxis%2C%20Run-and-Tumble%20Motion%2C%20and%20the%20Keller%E2%80%93Segel%20Model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Chemotaxis, Run-and-Tumble Motion, and the Keller–Segel Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/16.%20The%20Schnitzer%20Model%2C%20Anomalous%20Diffusion%2C%20and%20Motility%E2%80%91Induced%20Phase%20Separation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. The Schnitzer Model, Anomalous Diffusion, and Motility‑Induced Phase Separation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/17.%20Langevin%20Equation%2C%20Brownian%20Particle%2C%20and%20the%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Langevin Equation, Brownian Particle, and the Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/18.%20Fokker%E2%80%93Planck%20Equation%20and%20the%20Smoluchowski%20Equation%20%E2%80%94%20From%20Random%20Trajectories%20to%20Probability%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Fokker–Planck Equation and the Smoluchowski Equation — From Random Trajectories to Probability Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/19.%20Path%20Integral%20Formulation%20of%20Stochastic%20Processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Path Integral Formulation of Stochastic Processes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/20.%20Stochastic%20Differential%20Equations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Stochastic Differential Equations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/21.%20Ito%20Integral%20and%20Unified%20Stochastic%20Process%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Ito Integral and Unified Stochastic Process Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/22.%20Path%20Integrals%20for%20Systems%20with%20Multiplicative%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Path Integrals for Systems with Multiplicative Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/23.%20From%20Coarse-Graining%20to%20Fluctuation%20Dynamics%20of%20Continuous%20Field%20Theories/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. From Coarse-Graining to Fluctuation Dynamics of Continuous Field Theories
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/24.%20Onsager%20Coefficients%2C%20Reciprocity%2C%20and%20the%20Dynamic%20Fluctuation%E2%80%93Dissipation%20Theorem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Onsager Coefficients, Reciprocity, and the Dynamic Fluctuation–Dissipation Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/25.%20Gradient%20Dynamics%2C%20Phase%20Transitions%2C%20and%20Relaxation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. Gradient Dynamics, Phase Transitions, and Relaxation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/26.%20Critical%20Slowing%20Down%2C%20Dynamic%20Response%2C%20and%20Conservation%20Laws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Critical Slowing Down, Dynamic Response, and Conservation Laws
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/27.%20Hydrodynamics%20of%20Simple%20Fluids%2C%20Inviscid%20Flow%2C%20and%20the%20Euler%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. Hydrodynamics of Simple Fluids, Inviscid Flow, and the Euler Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/28.%20Viscous%20Fluids%2C%20the%20Navier%E2%80%93Stokes%20Equation%2C%20Entropy%20Balance%2C%20and%20Heat%20Conduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. Viscous Fluids, the Navier–Stokes Equation, Entropy Balance, and Heat Conduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/29.%20Irreversible%20Linear%20Thermodynamics%20and%20Dry%20Diffusive%20Particle%20Systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. Irreversible Linear Thermodynamics and Dry Diffusive Particle Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/30.%20Brownian%20Particles%20Suspended%20in%20a%20Fluid%20%E2%80%94%20Model%20H/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. Brownian Particles Suspended in a Fluid — Model H
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/31.%20Dynamical%20Functionals%2C%20Additive%E2%80%91Noise%20Field%20Theory%2C%20and%20the%20Onsager%E2%80%93Machlup%20Functional/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. Dynamical Functionals, Additive‑Noise Field Theory, and the Onsager–Machlup Functional
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/32.%20Janssen%E2%80%93De%20Dominicis%20Response%20Functional%20and%20the%20Fluctuation%E2%80%93Dissipation%20Relation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen–De Dominicis Response Functional and the Fluctuation–Dissipation Relation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/33.%20Nonequilibrium%20Work%20and%20Fluctuation%20Theorems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. Nonequilibrium Work and Fluctuation Theorems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/34.%20Directed%20Percolation%2C%20Absorbing%20States%2C%20and%20Spectral%20Methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. Directed Percolation, Absorbing States, and Spectral Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/35.%20Path-Integral%20Representation%20of%20the%20Master%20Equation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. Path-Integral Representation of the Master Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/36.%20Coherent-State%20Path%20Integrals%2C%20Operator%20Algebra%2C%20and%20Imaginary%20Noise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. Coherent-State Path Integrals, Operator Algebra, and Imaginary Noise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/37.%20Kramers-Moyal%20Expansion%20and%20the%20Low-Noise%20Limit%20of%20Path%20Integrals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal Expansion and the Low-Noise Limit of Path Integrals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/38.%20Multi-Species%20Path%20Integrals%20and%20Cyclic%20Competition%20Dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. Multi-Species Path Integrals and Cyclic Competition Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/39.%20From%20Particle%20Jumps%20to%20Continuous%20Field%20Theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. From Particle Jumps to Continuous Field Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/40.%20Unified%20Field%20Theory%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. Unified Field Theory Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    中文笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.%20%E8%AF%BE%E7%A8%8B%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 课程导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.%20%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 简单随机游走
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20%E9%AB%98%E6%96%AF%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0%E4%B8%8E%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 高斯随机游走与泊松过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20Gillespie%20%E7%AE%97%E6%B3%95%E3%80%81%E4%B8%BB%E6%96%B9%E7%A8%8B%E3%80%81%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%8D%E7%BE%A4%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Gillespie 算法、主方程、生成函数与种群动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.%20%E7%A7%8D%E7%BE%A4%E5%8A%A8%E6%80%81%E5%AD%A6%EF%BC%9A%E7%BA%BF%E6%80%A7%E6%AD%BB%E4%BA%A1%E8%BF%87%E7%A8%8B%E4%B8%8ELotka-Volterra%20%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 种群动态学：线性死亡过程与Lotka-Volterra 系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.%20%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E7%A8%8B%EF%BC%9A%E6%9F%A5%E6%99%AE%E6%9B%BC-%E7%A7%91%E5%B0%94%E8%8E%AB%E6%88%88%E7%BD%97%E5%A4%AB%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 马尔可夫过程的基本方程：查普曼-科尔莫戈罗夫方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.%20%E5%89%8D%E5%90%91%E4%B8%BB%E6%96%B9%E7%A8%8B%E4%B8%8EQ%E7%9F%A9%E9%98%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 前向主方程与Q矩阵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.%20%E4%BD%A9%E9%BE%99-%E5%BC%97%E7%BD%97%E8%B4%9D%E5%B0%BC%E4%B9%8C%E6%96%AF%E5%AE%9A%E7%90%86%E3%80%81%E7%A8%B3%E6%80%81%E4%B8%8E%E7%BB%86%E8%87%B4%E5%B9%B3%E8%A1%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 佩龙-弗罗贝尼乌斯定理、稳态与细致平衡
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81%EF%BC%9A%E4%B8%8D%E5%8F%AF%E9%80%86%E6%80%A7%E4%B8%8E%E7%86%B5%E4%BA%A7%E7%94%9F%E7%9A%84%E6%8E%A8%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 非平衡态：不可逆性与熵产生的推论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.%20%E5%9F%83%E4%BC%A6%E8%B4%B9%E6%96%AF%E7%89%B9%E6%A8%A1%E5%9E%8B%E3%80%81%E7%86%B5%E4%B8%8EKL%E6%95%A3%E5%BA%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 埃伦费斯特模型、熵与KL散度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.%20%E8%BF%9E%E7%BB%AD%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B%E4%B8%8E%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. 连续马尔可夫过程与福克-普朗克方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12.%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8%E4%B8%8E%E5%A5%A5%E6%81%A9%E6%96%AF%E5%9D%A6-%E4%B9%8C%E4%BC%A6%E8%B4%9D%E5%85%8B%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. 布朗运动与奥恩斯坦-乌伦贝克过程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13.%20%E4%BD%9C%E4%B8%BA%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. 作为随机过程的蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14.%20%E5%93%88%E5%AF%86%E5%B0%94%E9%A1%BF%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. 哈密尔顿蒙特卡洛采样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15.%20%E8%B6%8B%E5%8C%96%E6%80%A7%E3%80%81%E8%B7%91%E5%8A%A8-%E7%BF%BB%E6%BB%9A%E8%BF%90%E5%8A%A8%E4%B8%8EKeller-Segel%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. 趋化性、跑动-翻滚运动与Keller-Segel模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16.%20Schnitzer%E6%A8%A1%E5%9E%8B%E3%80%81%E5%8F%8D%E5%B8%B8%E6%89%A9%E6%95%A3%E4%B8%8E%E8%BF%90%E5%8A%A8%E8%AF%B1%E5%AF%BC%E7%9B%B8%E5%88%86%E7%A6%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Schnitzer模型、反常扩散与运动诱导相分离
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17.%20%E6%9C%97%E4%B9%8B%E4%B8%87%E6%96%B9%E7%A8%8B%E3%80%81%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. 朗之万方程、布朗粒子与涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18.%20%E7%A6%8F%E5%85%8B-%E6%99%AE%E6%9C%97%E5%85%8B%E6%96%B9%E7%A8%8B%E4%B8%8E%E6%96%AF%E6%91%A9%E6%A3%B1%E9%9C%8D%E5%A4%AB%E6%96%AF%E5%9F%BA%E6%96%B9%E7%A8%8B%EF%BC%9A%E4%BB%8E%E9%9A%8F%E6%9C%BA%E8%BD%A8%E8%BF%B9%E5%88%B0%E6%A6%82%E7%8E%87%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. 福克-普朗克方程与斯摩棱霍夫斯基方程：从随机轨迹到概率动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19.%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. 随机过程的路径积分表述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20.%20%E9%9A%8F%E6%9C%BA%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. 随机微分方程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21.%20%E4%BC%8A%E8%97%A4%E7%A7%AF%E5%88%86%E4%B8%8E%E7%BB%9F%E4%B8%80%E7%9A%84%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. 伊藤积分与统一的随机过程框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22.%20%E5%90%AB%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. 含乘性噪声系统的路径积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. 从粗粒化到连续场论涨落动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24.%20%E6%98%82%E8%90%A8%E6%A0%BC%E7%B3%BB%E6%95%B0%E3%80%81%E5%80%92%E6%98%93%E5%85%B3%E7%B3%BB%E4%B8%8E%E5%8A%A8%E6%80%81%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. 昂萨格系数、倒易关系与动态涨落-耗散定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25.%20%E6%A2%AF%E5%BA%A6%E5%8A%A8%E5%8A%9B%E5%AD%A6%E3%80%81%E7%9B%B8%E5%8F%98%E4%B8%8E%E5%BC%9B%E8%B1%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. 梯度动力学、相变与弛豫
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26.%20%E4%B8%B4%E7%95%8C%E6%85%A2%E5%8C%96%E3%80%81%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%B8%8E%E5%AE%88%E6%81%92%E5%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. 临界慢化、动态响应与守恒律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27.%20%E7%AE%80%E5%8D%95%E6%B5%81%E4%BD%93%E3%80%81%E6%97%A0%E6%91%A9%E6%93%A6%E6%B5%81%E4%BD%93%E4%B8%8E%E6%AC%A7%E6%8B%89%E6%96%B9%E7%A8%8B%E7%9A%84%E6%B5%81%E4%BD%93%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. 简单流体、无摩擦流体与欧拉方程的流体动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28.%20%E7%B2%98%E6%80%A7%E6%B5%81%E4%BD%93%E3%80%81%E7%BA%B3%E7%BB%B4-%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%96%B9%E7%A8%8B%E3%80%81%E7%86%B5%E5%B9%B3%E8%A1%A1%E4%B8%8E%E7%83%AD%E4%BC%A0%E5%AF%BC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. 粘性流体、纳维-斯托克斯方程、熵平衡与热传导
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29.%20%E4%B8%8D%E5%8F%AF%E9%80%86%E7%BA%BF%E6%80%A7%E7%83%AD%E5%8A%9B%E5%AD%A6%E4%B8%8E%E5%B9%B2%E6%80%A7%E6%89%A9%E6%95%A3%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. 不可逆线性热力学与干性扩散粒子系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30.%20%E6%82%AC%E6%B5%AE%E5%9C%A8%E6%B5%81%E4%BD%93%E4%B8%AD%E7%9A%84%E5%B8%83%E6%9C%97%E7%B2%92%E5%AD%90%20%E2%80%94%20H%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. 悬浮在流体中的布朗粒子 — H模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31.%20%E5%8A%A8%E6%80%81%E6%B3%9B%E5%87%BD%E3%80%81%E5%8A%A0%E6%80%A7%E5%99%AA%E5%A3%B0%E5%9C%BA%E8%AE%BA%E4%B8%8EOnsager-Machlup%E6%B3%9B%E5%87%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. 动态泛函、加性噪声场论与Onsager-Machlup泛函
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32.%20Janssen-De%20Dominicis%20%E5%93%8D%E5%BA%94%E6%B3%9B%E5%87%BD%E4%B8%8E%E6%B6%A8%E8%90%BD-%E8%80%97%E6%95%A3%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Janssen-De Dominicis 响应泛函与涨落-耗散关系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33.%20%E9%9D%9E%E5%B9%B3%E8%A1%A1%E5%8A%9F%E4%B8%8E%E6%B6%A8%E8%90%BD%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. 非平衡功与涨落定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../34.%20%E6%9C%89%E5%90%91%E6%B8%97%E6%B5%81%E3%80%81%E5%90%B8%E6%94%B6%E6%80%81%E4%B8%8E%E8%B0%B1%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. 有向渗流、吸收态与谱方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../35.%20%E4%B8%BB%E6%96%B9%E7%A8%8B%E7%9A%84%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E7%A4%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. 主方程的路径积分表示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../36.%20%E7%9B%B8%E5%B9%B2%E6%80%81%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E3%80%81%E7%AE%97%E7%AC%A6%E4%BB%A3%E6%95%B0%E4%B8%8E%E8%99%9A%E5%99%AA%E5%A3%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. 相干态路径积分、算符代数与虚噪声
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../37.%20Kramers-Moyal%20%E5%B1%95%E5%BC%80%E4%B8%8E%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E7%9A%84%E4%BD%8E%E5%99%AA%E5%A3%B0%E6%9E%81%E9%99%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Kramers-Moyal 展开与路径积分的低噪声极限
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../38.%20%E5%A4%9A%E7%89%A9%E7%A7%8D%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E4%B8%8E%E5%BE%AA%E7%8E%AF%E7%AB%9E%E4%BA%89%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. 多物种路径积分与循环竞争动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../39.%20%E4%BB%8E%E7%B2%92%E5%AD%90%E8%B7%B3%E8%B7%83%E5%88%B0%E8%BF%9E%E7%BB%AD%E5%9C%BA%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. 从粒子跳跃到连续场论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../40.%20%E7%BB%9F%E4%B8%80%E7%9A%84%E5%9C%BA%E8%AE%BA%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40. 统一的场论框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="_1">引言：从微观粒子到连续场<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>这节课是我们随机动力学课程的一个关键转折点。在前面的课程中（特别是第17讲到第23讲），我们已经建立了一套强大的理论工具，包括朗之万方程、福克-普朗克方程以及路径积分表述。现在，我们将运用这些工具来解决物理学中的一个核心问题：<strong>一个多体系统的集体行为，是如何从其构成粒子各自的随机动力学中涌现出来的。</strong></p>
+<p><strong>因此，这节课要回答的核心问题是：我们如何描述一个由大量相互作用粒子组成的系统（例如溶液中的胶体颗粒或细胞中的蛋白质）在其热力学平衡态附近的涨落行为？</strong> </p>
+<p>为了解答这个问题，Erwin Frey 教授介绍了两种互补的强大视角，将在这节课中深入探讨并建立它们之间的联系 ：  </p>
+<ul>
+<li>
+<p><strong>（A）微观的“自下而上”（Bottom-Up）方法：</strong>我们从描述单个粒子的已知物理定律（朗之万方程）出发，通过一种称为<strong>粗粒化（coarse-graining）</strong>的步骤，推导出宏观系统的动力学方程。我们将这个离散的、基于粒子的描述转化为一个连续的场论描述，最终得到一个描述粒子密度场演化的随机偏微分方程。这种方法的好处是物理图像清晰，能让我们直观地看到宏观行为如何从微观规则中产生。</p>
+</li>
+<li>
+<p><strong>（B）宏观的“自上而下”（Top-Down）方法：</strong>我们直接从宏观层面入手，利用热力学和对称性的基本原理（由Onsager等人开创）来约束宏观动力学方程可能具有的形式。利用热力学和对称性的基本原理来构建一个关于涨落的普适理论，其强大之处在于它不依赖于任何具体的微观模型细节。只要系统接近一个稳定的热平衡态，其涨落行为就必须遵循某些普适的规律。</p>
+</li>
+</ul>
+<p>首先，教授将展示方法（A）如何从粒子图像自然地过渡到一个连续的场论描述。接着，发展方法（B）的普适性框架，用于描述任何系统在平衡态附近的涨落。最后，我们将运用这个框架，通过时间关联函数和基本对称性的视角，来理解这些涨落的动力学特性。从微观粒子到连续场，描述的是单个粒子运动的微观随机动力学与系统的宏观热力学性质。<strong>我们将看到，系统的集体行为，如密度涨落，可以从底层的粒子相互作用中涌现出来，并最终由普适的热力学原理所支配。</strong></p>
+<h1 id="1">1. 从相互作用粒子到连续场论<a class="headerlink" href="#1" title="Permanent link">&para;</a></h1>
+<p>从描述离散粒子的方程过渡到描述连续场的方程，这不仅仅是一种数学上的便利，它体现了一个深刻的物理概念——<strong>粗粒化</strong>。这个过程有意地忽略了系统中高频、短波长的微观信息（例如每个粒子的精确位置），转而关注那些决定系统宏观行为的、缓慢变化的、长波长的集体变量（例如局域的粒子密度）。在这个过程中，一个名为<strong>自由能泛函<span class="arithmatex">\(F[\rho]\)</span></strong> 的量会自然而然地出现，它扮演了这个粗粒化场论的有效“哈密顿量”或“作用量”的角色，主导着系统的平衡态和动力学演化。</p>
+<p>对于一个包含 <span class="arithmatex">\(N\)</span> 个粒子的朗之万系统，当 <span class="arithmatex">\(N\)</span> 很大时，直接求解是计算上和解析上都难以处理的，因为自由度太多了。然而，对于许多物理现象，如扩散或相分离，我们并不关心第1,304,567号粒子的精确坐标。我们关心的是在一个小体积内的<strong>平均密度</strong>。将粒子坐标在小体积内进行平均，从而定义一个连续的密度场 <span class="arithmatex">\(\rho(\mathbf{x}, t)\)</span>，这正是粗粒化的核心思想。</p>
+<p>一旦我们有了密度场 <span class="arithmatex">\(\rho\)</span>，原来基于粒子间相互作用势的力也必须被某种作用在场上的等效驱动力所取代。在朗之万方程中，漂移项 <span class="arithmatex">\(-\mu \nabla V\)</span> 是由<strong>势能梯度</strong>驱动的。那么，对于密度场 <span class="arithmatex">\(\rho\)</span> 而言，等效的驱动力是什么呢？热力学告诉我们，系统会演化以使其自由能最小化。因此，<span class="arithmatex">\(\rho\)</span> 的动力学必须被一个自由能“地形”的“下坡”方向所驱动。这个地形不是一个简单的函数，而是一个<strong>泛函</strong> <span class="arithmatex">\(F[\rho]\)</span>，它为每一个可能的密度分布函数 <span class="arithmatex">\(\rho(\mathbf{x}, t)\)</span> 赋予一个标量值（即系统的总自由能）。这个泛函的导数，<span class="arithmatex">\(\frac{\delta F}{\delta \rho}\)</span>，扮演了广义力（即<strong>化学势</strong>）的角色，驱动系统朝向使 <span class="arithmatex">\(F\)</span> 最小化的那个密度分布演化。这一过程优雅地将微观的粒子相互作用与宏观的热力学驱动力联系在了一起。</p>
+<h2 id="11">1.1 微观视角：相互作用的布朗粒子系统<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
+<p>我们从一个由 <span class="arithmatex">\(N\)</span> 个布朗粒子组成的具体模型开始。这些粒子悬浮于一个恒定温度 <span class="arithmatex">\(T\)</span> 的粘性流体（热库）中。我们考虑的是<strong>过阻尼极限（overdamped limit）</strong>，这意味着流体的粘滞阻力非常大，以至于粒子的惯性（<span class="arithmatex">\(m\mathbf{a}\)</span>）可以完全忽略。在这种情况下，粒子的速度 <span class="arithmatex">\(d\mathbf{x}/dt\)</span> 瞬时地与其受到的总力成正比，而不是由牛顿第二定律描述。</p>
+<p>每个粒子 <span class="arithmatex">\(i\)</span> 的运动轨迹 <span class="arithmatex">\(\mathbf{x}_i(t)\)</span> 由一组耦合的朗之万方程描述：</p>
+<div class="arithmatex">\[
+\frac{d\mathbf{x}_i}{dt} = \mu \sum_{j \neq i} \mathbf{F}_{ij} + \boldsymbol{\xi}_i(t)
+\]</div>
+<p>其中：</p>
+<div class="arithmatex">\[
+\mathbf{F}_{ij} = -\nabla_i V(\mathbf{x}_i - \mathbf{x}_j)
+\]</div>
+<p>这个方程精确地描述了两种基本物理过程的平衡：</p>
+<p><strong>确定性漂移 (Deterministic Drift)：</strong>方程的第一项 <span class="arithmatex">\(\mu \sum \mathbf{F}_{ij}\)</span> 代表由系统内部保守力驱动的确定性运动。</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(\mathbf{F}_{ij} = -\nabla_i V(\ldots)\)</span> 是粒子 <span class="arithmatex">\(j\)</span> 对粒子 <span class="arithmatex">\(i\)</span> 施加的力，它由一个成对相互作用势 <span class="arithmatex">\(V(r)\)</span> 的负梯度给出。这个势能可以是Lennard-Jones势、库仑力或简单的硬球排斥势。</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\sum_{j \neq i}\)</span> 表示对所有其他粒子施加在粒子 <span class="arithmatex">\(i\)</span> 上的力的矢量和。正是这一项耦合了所有粒子的运动，使得系统成为一个复杂的多体问题。</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\mu\)</span> 是<strong>迁移率 (mobility)，</strong>它量化了粒子在单位力驱动下的速度，即 <span class="arithmatex">\(\mathbf{v} = \mu \mathbf{F}\)</span>。它与流体的粘滞（摩擦）系数 <span class="arithmatex">\(\gamma\)</span> 成反比，<span class="arithmatex">\(\mu = 1/\gamma\)</span>，完全由溶剂的性质决定。</p>
+</li>
+</ul>
+<p><strong>随机力 (Stochastic Force)：</strong><span class="arithmatex">\(\boldsymbol{\xi}_i(t)\)</span>，也称为朗之万力，是一个随机项。它代表了来自周围溶剂分子的、无数次快速且无规的碰撞的集体效应。我们无法追踪每一次微观碰撞，因此将其建模为一个随机过程。</p>
+<h3 id="_2">噪声的统计性质<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>我们通常假设随机力 <span class="arithmatex">\(\boldsymbol{\xi}_i(t)\)</span> 是一个高斯白噪声，其统计特性由其一阶矩和二阶矩（关联函数）完全定义：</p>
+<ol>
+<li>
+<p><strong>零均值</strong>: <span class="arithmatex">\(\langle \xi_{i\alpha}(t) \rangle = 0\)</span></p>
+</li>
+<li>
+<p>物理上，这意味着热库的碰撞在任何方向上都没有偏好，长时间平均的合力为零。否则，系统将存在一个净的驱动力，这会违反热力学第二定律。</p>
+</li>
+<li>
+<p><strong>时空关联</strong>: <span class="arithmatex">\(\langle \xi_i^\alpha(t) \xi_j^\beta(t') \rangle = 2 \mu k_B T \, \delta_{ij} \, \delta^{\alpha\beta} \, \delta(t - t')\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\delta(t - t')\)</span> 体现了噪声在时间上的<strong>“白”</strong>特性：任意两个不同时刻的随机力是完全不相关的。这是一个有效的近似，其假设是溶剂分子碰撞的时间尺度远小于布朗粒子位置发生显著变化的时间尺度。</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\delta_{ij}\)</span> 和 <span class="arithmatex">\(\delta^{\alpha\beta}\)</span> 分别表示不同粒子之间、以及同一粒子不同空间分量（如x, y, z）上的随机力是相互独立的。这反映了热库的碰撞是局域且各向同性的。</p>
+</li>
+</ol>
+<h3 id="-">物理核心：涨落-耗散定理<a class="headerlink" href="#-" title="Permanent link">&para;</a></h3>
+<p>噪声关联函数中的系数 <span class="arithmatex">\(2\mu k_B T\)</span> 并非任意选择，它是<strong>涨落-耗散定理 (Fluctuation-Dissipation Theorem, FDT)</strong> 的直接体现，是连接微观随机性与宏观热力学的桥梁。</p>
+<p>该定理指出，溶剂对布朗粒子有两个看似对立的作用：</p>
+<ol>
+<li>
+<p><strong>耗散 (Dissipation)：</strong>当粒子运动时，溶剂会产生粘滞阻力，使粒子的动能耗散成热量。这种效应的强度由摩擦系数 <span class="arithmatex">\(\gamma\)</span> 或其倒数迁移率 <span class="arithmatex">\(\mu\)</span> 来量化。</p>
+</li>
+<li>
+<p><strong>涨落 (Fluctuation)：</strong>由于溶剂分子自身在进行热运动（温度 <span class="arithmatex">\(T\)</span> 的体现），它们会对粒子进行永不停歇的随机碰撞，导致粒子做无规的布朗运动。这种效应的强度由噪声关联函数的大小来量化。</p>
+</li>
+</ol>
+<p><strong>FDT的深刻内涵是：这两个过程源自同一种微观物理机制（与溶剂分子的相互作用），因此它们的强度必须严格相关。</strong> 一个具有强耗散（高粘滞性）的系统，必然也经历着强烈的热涨落。</p>
+<p>这个定理确保了系统在没有外力的情况下，会自发地演化到一个热力学平衡态。随机力的“踢动”不断地为系统注入能量，而粘滞阻力则不断地将能量耗散掉。在平衡态下，这两种过程达到动态平衡，使得系统的平均动能与温度 <span class="arithmatex">\(T\)</span> 保持一致，最终粒子的空间分布遵循玻尔兹曼分布。如果这个关系不成立，系统要么会无限升温，要么会“冻结”到绝对零度。</p>
+<h3 id="_3">从粒子到场的演化方程<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><img alt="课堂板书截图" src="../../../assets/images/remote/3675f539-3d3d-42b4-97bc-5d1bd996a64f-9531c67f44.png" /></p>
+<p>经过粗粒化之后，我们的目标是得到一个描述密度场 <span class="arithmatex">\(\rho(\mathbf{x}, t)\)</span> 演化的方程。由于粒子总数是守恒的，这个方程必须是一个<strong>连续性方程</strong>的形式：
+$$
+\frac{\partial \rho}{\partial t} = -\nabla \cdot \mathbf{J}
+$$</p>
+<p>这个方程的物理意义是：某个区域内密度的变化率，等于流入该区域的净粒子流 <span class="arithmatex">\(\mathbf{J}\)</span>。因此，问题的核心就变成了：<strong>这个宏观的粒子流 <span class="arithmatex">\(\mathbf{J}\)</span> 是由什么决定的？</strong></p>
+<p>通过对底层的朗之万方程进行系统性的粗粒化推导，可以得到 <span class="arithmatex">\(\mathbf{J}\)</span> 的表达式，进而得到密度场的完整演化方程，即一个<strong>随机偏微分方程 (SPDE)：</strong></p>
+<div class="arithmatex">\[
+\frac{\partial \rho}{\partial t} = \nabla \cdot \left[ \mu \rho \nabla \left( \int d\mathbf{y} \, V(\mathbf{x} - \mathbf{y}) \rho(\mathbf{y}, t) \right) \right] + D \nabla^2 \rho + \nabla \cdot \left( \sqrt{2 D \rho} \, \boldsymbol{\eta}(\mathbf{x}, t) \right)
+\]</div>
+<p>其中 <span class="arithmatex">\(D = \mu k_B T\)</span> 是扩散系数，<span class="arithmatex">\(\boldsymbol{\eta}\)</span> 是一个标准化的时空高斯白噪声。</p>
+<p>上面这个方程通常被称为迪恩-川崎方程 (Dean-Kawasaki equation)，它把微观世界里单个粒子的随机运动（朗之万方程描述的）和宏观世界里我们能观察到的密度变化连接了起来。</p>
+<ul>
+<li>
+<p><strong>第一项：相互作用项 (Drift Term)</strong></p>
+<div class="arithmatex">\[
+\nabla \cdot \left[ \mu \rho(x, t) \nabla \left( \int dy \, V(x - y) \rho(y, t) \right) \right]
+\]</div>
+<p>这部分描述的是粒子之间的“社交行为”。<span class="arithmatex">\(\nabla\)</span> 是它们之间的相互作用力（比如是互相排斥还是互相吸引）。这一整项说明了粒子会因为周围其他粒子的作用力而移动，从而导致密度发生变化。</p>
+</li>
+<li>
+<p><strong>第二项：扩散项 (Diffusion Term)</strong></p>
+<div class="arithmatex">\[
+D \nabla^2 \rho(x, t)
+\]</div>
+<p>是经典的菲克扩散定律。它描述的是粒子因为无规则的热运动，会自发地从密度高的地方跑到密度低的地方，就像一滴墨水在清水中散开一样。</p>
+</li>
+<li>
+<p><strong>第三项：涨落项/噪声项 (Noise Term)</strong></p>
+<div class="arithmatex">\[
+\nabla \cdot \left( \sqrt{2D\rho(x,t)} \eta(x,t) \right)
+\]</div>
+<p>这正是这个方程“随机”的灵魂所在。它告诉我们，密度的变化不是完全平滑和确定的，而是有随机的“抖动”或“涨落”。这是因为我们描述的系统是由一个个分立的粒子组成的，而不是真正连续的“密度膏”。这个噪声项的大小和局部密度 <span class="arithmatex">\(\rho\)</span> 的平方根有关，这也很直观：没有粒子的地方 (<span class="arithmatex">\(\rho=0\)</span>)，当然也就没有粒子数目的随机涨落啦！</p>
+</li>
+</ul>
+<p>注意<span class="arithmatex">\(\frac{\partial \rho}{\partial t}\)</span>经常写为<span class="arithmatex">\(\partial_t \rho(\vec{x}, t)\)</span>，<span class="arithmatex">\(\frac{\partial \rho}{\partial t}\)</span>是更经典、更正式的写法，叫做莱布尼茨表示法 (Leibniz's notation)。它非常清晰地表明了“对 <span class="arithmatex">\(\rho\)</span> 这个量求关于时间 <span class="arithmatex">\(t\)</span> 的偏导数”。</p>
+<p><span class="arithmatex">\(\partial_t \rho(\vec{x}, t)\)</span>：这是一种更简洁的写法，在物理学，尤其是场论和连续介质力学中非常流行，叫做下标表示法 (Subscript notation)。这里的下标 <span class="arithmatex">\(t\)</span> 就代表了对时间求偏导。写成 <span class="arithmatex">\(\rho(\vec{x}, t)\)</span> 是为了时刻提醒我们，密度 <span class="arithmatex">\(\rho\)</span> 不仅和时间 <span class="arithmatex">\(t\)</span> 有关，还和空间位置 <span class="arithmatex">\(\vec{x}\)</span> 有关。</p>
+<h2 id="12">1.2 自由能泛函：一个更深刻的组织原则<a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
+<p>上面的SPDE看起来非常复杂，各个项似乎来源不同。然而，物理学的美妙之处在于，这些看似无关的确定性项可以被一个更深刻、更统一的原则所支配——<strong>系统总是向着总自由能 <span class="arithmatex">\(F\)</span> 减小的方向演化</strong>。</p>
+<p><img alt="课堂板书截图" src="../../../assets/images/remote/77ef7a5b-20ec-4600-9e79-706e7077c4fb-5a9d03f00d.jpg" /></p>
+<p>我们引入一个<strong>自由能泛函 (Free Energy Functional)</strong> <span class="arithmatex">\(F[\rho]\)</span>，它为每一种可能的密度分布 <span class="arithmatex">\(\rho(\mathbf{x})\)</span> 赋予一个数值——即该分布下系统的总自由能。对于我们所考虑的系统，其自由能泛函由两部分构成：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+F[\rho] &amp;= \underbrace{\frac{1}{2} \int d\mathbf{x} \int d\mathbf{y} \, \rho(\mathbf{x}) V(\mathbf{x} - \mathbf{y}) \rho(\mathbf{y})}_{\text{能量项 } E[\rho] \text{ (类焓)}} - \underbrace{T S[\rho]}_{\text{熵贡献}} \\
+&amp;= \frac{1}{2} \int d\mathbf{x} \int d\mathbf{y} \, \rho(\mathbf{x}) V(\mathbf{x} - \mathbf{y}) \rho(\mathbf{y}) + k_B T \int d\mathbf{x} \, [\rho(\mathbf{x}) \ln \rho(\mathbf{x}) - \rho(\mathbf{x})]
+\end{aligned}
+\]</div>
+<p>我们来回忆一下，在热力学里，一个很重要的自由能——吉布斯自由能 (Gibbs Free Energy) <span class="arithmatex">\(G\)</span> 的定义是：<span class="arithmatex">\(G = H - TS\)</span>。<span class="arithmatex">\(H\)</span> 是焓，代表了系统的总能量内容（包括内能和为了维持体积与压强所做的功）。它是一个能量项。<span class="arithmatex">\(TS\)</span> 是熵贡献项，代表了系统的混乱程度或不确定性。上面的泛函和吉布斯自由能相似。</p>
+<p><strong><span class="arithmatex">\(F[\rho]\)</span> 的物理诠释——一场能量与熵的“拔河”</strong>：</p>
+<ol>
+<li>
+<p><strong>能量项 <span class="arithmatex">\(E[\rho]\)</span>：</strong>这是系统中所有粒子对之间相互作用能的平均值。</p>
+</li>
+<li>
+<p>如果相互作用 <span class="arithmatex">\(V\)</span> 是<strong>吸引</strong>的（如范德华力），这一项会倾向于让粒子<strong>聚集</strong>在一起，形成高密度团簇，以降低总能量。</p>
+</li>
+<li>
+<p>如果相互作用 <span class="arithmatex">\(V\)</span> 是<strong>排斥</strong>的（如库仑力），这一项会倾向于让粒子<strong>彼此远离</strong>，保持均匀分布。</p>
+</li>
+<li>
+<p><strong>熵项 <span class="arithmatex">\(-TS[\rho]\)</span>：</strong>这一项源于统计力学中的构型熵。热力学第二定律告诉我们，系统总是倾向于熵增的方向。</p>
+</li>
+<li>
+<p>熵代表了系统的“无序度”。对于大量粒子来说，将它们均匀地散布在空间中的微观状态数量远远多于将它们聚集在某个角落的状态数量。</p>
+</li>
+<li>
+<p>因此，<strong>熵的贡献总是倾向于将任何密度不均匀性“抹平”</strong>，使系统趋向于一个完全均匀的密度分布，以最大化其无序度。</p>
+</li>
+</ol>
+<p>系统的动力学，正是在这场<strong>能量最小化</strong>和<strong>熵最大化</strong>之间的竞争中展开。</p>
+<h2 id="13">1.3 用自由能重写动力学方程<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
+<p>有了自由能泛函，我们可以将确定性的粒子流 <span class="arithmatex">\(\mathbf{J}_{\text{det}}\)</span> 写成一个非常简洁优美的形式：</p>
+<div class="arithmatex">\[
+\mathbf{J}_{\text{det}} = -\mu \rho(\mathbf{x}, t) \nabla \left( \frac{\delta F[\rho]}{\delta \rho(\mathbf{x}, t)} \right)
+\]</div>
+<p>这里的泛函导数 <span class="arithmatex">\(\frac{\delta F[\rho]}{\delta \rho}\)</span> 正是系统的<strong>局域化学势</strong>。化学势的梯度 <span class="arithmatex">\(\nabla (\delta F/\delta \rho)\)</span> 构成了驱动粒子流动的广义热力学力。可以证明，对我们定义的 <span class="arithmatex">\(F[\rho]\)</span> 求泛函导数，然后代入上式，恰好就能得到SPDE中的前两项（相互作用流和扩散流）。</p>
+<p>最终，包含随机项在内的总粒子流可以写为：</p>
+<div class="arithmatex">\[
+\mathbf{J} = -\mu \rho \nabla \left( \frac{\delta F[\rho]}{\delta \rho} \right) + \sqrt{2 \mu k_B T \rho} \, \boldsymbol{\eta}(\mathbf{x}, t)
+\]</div>
+<p><strong>这个形式清晰地揭示了物理图像：密度场的演化，可以被看作是 <span class="arithmatex">\(\rho(\mathbf{x}, t)\)</span> 在由 <span class="arithmatex">\(F[\rho]\)</span> 构成的无穷维“自由能地貌”上，沿着最陡峭的“下坡”方向滚动，同时被永不停歇的热噪声所“摇晃”。系统的最终平衡态 <span class="arithmatex">\(\rho_{\text{eq}}(\mathbf{x})\)</span>，就是这个自由能地貌的最低点。</strong></p>
+<p>而，“<strong>近热平衡</strong>”(near-equilibrium)描述的是一个系统处于其最稳定、最“平静”的平衡状态附近，但又存在着微小、永不停歇的随机“抖动”或“涨落”的情景。你可以把它想象成一颗安静地待在碗底的弹珠，当你非常轻微地晃动碗时，弹珠并不会飞出去，而只是在碗底附近来回滚动。在这个状态下，系统的宏观性质（如密度、温度）不是绝对不变的，而是在其平衡平均值附近微小地波动。最关键的是，因为系统离“碗底”很近，所以它总能感受到一股强大的恢复力，时刻将它拉向最稳定的中心点，这使得这些微小的涨落行为遵循着非常普适和简洁的规律。</p>
+<h1 id="2">2. 近热平衡涨落的普适框架<a class="headerlink" href="#2" title="Permanent link">&para;</a></h1>
+<p><img alt="课堂板书截图" src="../../../assets/images/remote/b74ec1e3-a00f-40f1-a9e3-69236a0fdc6d-0cb5106cc6.png" /></p>
+<p>上一节，我们已经完成了“自下而上”的旅程：从<span class="arithmatex">\(N\)</span>个相互作用的布朗粒子的朗之万方程出发，通过“粗粒化”这一略显复杂的数学推导，最终得到了一个描述密度场 <span class="arithmatex">\(ρ\)</span> 演化的随机偏微分方程(SPDE)。这个方程虽然精确，但形式复杂，并且它的推导依赖于我们对微观相互作用势 <span class="arithmatex">\(V\)</span> 的了解。核心问题是： <strong>假设我们对微观细节一无所知，能否仅凭热力学的基本原理，就构建一个理论来描述任何系统在稳定平衡态附近的涨落行为？</strong></p>
+<p>这一节我们转向更普适的视角——<strong>“自上而下”</strong>的方法。这一部分的核心思想在于其<strong>普适性</strong>。通过从相互作用粒子的具体细节中抽离出来，转而关注一组通用的、演化缓慢的<strong>“介观变量” <span class="arithmatex">\(\phi_a\)</span></strong></p>
+<h2 id="21-phi_a">2.1 从密度场到普适的介观变量<span class="arithmatex">\(\{\phi_a\}\)</span><a class="headerlink" href="#21-phi_a" title="Permanent link">&para;</a></h2>
+<p>在第一部分，我们关心的宏观量是密度场 <span class="arithmatex">\(\rho(\mathbf{x}, t)\)</span>。为了和现在这个更普适的框架联系起来，你可以想象把空间划分成许多小格子，每个格子里的密度 <span class="arithmatex">\(\rho(\mathbf{x}, t)\)</span> 就是一个宏观变量。这样一来，密度场就可以看作是无数个宏观变量的集合。</p>
+<p>现在我们进行推广。我们不再局限于粒子密度，而是考虑任何一组能够描述介观尺度系统状态的、演化缓慢的宏观变量，记为 <span class="arithmatex">\(\{\phi_a\}\)</span>。这些 <span class="arithmatex">\(\phi_a\)</span> 代表了系统状态对其平衡平均值的偏离，因此在平衡态系综平均下 <span class="arithmatex">\(\langle \phi_a \rangle_{\text{eq}} = 0\)</span>。这些<span class="arithmatex">\(\{\phi_a\}\)</span> 可以是磁体中的局域磁化强度，
+元混合液体中的浓度差，发生相变时描述有序程度的序参量</p>
+<p>此框架的核心假设是<strong>局域热平衡</strong>：尽管整个系统可能处于轻微的非平衡态（即某些 <span class="arithmatex">\(\phi_a \neq 0\)</span>），但系统的任何一个足够小的部分都近似处于局域的平衡中，并且可以用标准的热力学变量来描述。</p>
+<h2 id="22">2.2 作为组织原则的熵：构建涨落的“势能地貌”<a class="headerlink" href="#22" title="Permanent link">&para;</a></h2>
+<p>在第1节中，我们看到自由能泛函 <span class="arithmatex">\(F[ρ]\)</span> 扮演了驱动系统演化的“势能”。对于一个宏观的孤立系统，扮演这个角色的普适的热力学量是熵 <span class="arithmatex">\(S\)</span>。</p>
+<h3 id="-_1">爱因斯坦-玻尔兹曼关系<a class="headerlink" href="#-_1" title="Permanent link">&para;</a></h3>
+<p>系统的基本公设是，在平衡态下，观测到一组特定涨落 <span class="arithmatex">\(\{\phi_a\}\)</span> 的概率由爱因斯坦对玻尔兹曼分布的推广给出：</p>
+<div class="arithmatex">\[
+P_{\text{eq}}(\{\phi_a\}) \propto \exp \left( \frac{S(\{\phi_a\})}{k_B} \right)
+\]</div>
+<p><strong>物理意义：</strong> 这个公式是连接宏观热力学（熵 <span class="arithmatex">\(S\)</span>）和统计力学（概率 <span class="arithmatex">\(P\)</span>）的桥梁。它告诉我们，熵越大的宏观态，出现的概率也越高。系统的平衡态，正是那个熵最大、最可能出现的宏观态。</p>
+<h3 id="_4">熵的高斯近似<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>如前所述，任何处于热力学平衡的孤立系统，其熵 <span class="arithmatex">\(S\)</span> 必然处于极大值。我们可以围绕这个极大值点（定义为 <span class="arithmatex">\(\phi = 0\)</span>）对熵进行泰勒展开。由于<span class="arithmatex">\(\phi = 0\)</span>是极大值点，熵的一阶导数为零。围绕这个熵的极大值点对 <span class="arithmatex">\(S\)</span> 进行泰勒展开：</p>
+<div class="arithmatex">\[
+S(\{\phi_a\}) = S_0 + \left.\frac{\partial S}{\partial \phi_a}\right|_{\phi=0} \phi_a + \frac{1}{2} \left.\frac{\partial^2 S}{\partial \phi_a \partial \phi_b}\right|_{\phi=0} \phi_a \phi_b + \ldots
+\]</div>
+<p>由于系统在 <span class="arithmatex">\(\phi = 0\)</span> 处达到熵的极大值，一阶导数项 <span class="arithmatex">\(\left.\frac{\partial S}{\partial \phi_a}\right|_{\phi=0}\)</span> 必然为零。对于微小的涨落，我们可以忽略 <span class="arithmatex">\(\phi^3\)</span> 及更高阶的项。这样，熵就可以近似为一个简单的二次型：</p>
+<div class="arithmatex">\[
+S(\{\phi_a\}) \approx S_0 - \frac{1}{2} \Gamma_{ab} \phi_a \phi_b
+\]</div>
+<p>其中，我们定义了矩阵 <span class="arithmatex">\(\Gamma_{ab} = -\left.\frac{\partial^2 S}{\partial \phi_a \partial \phi_b}\right|_{\phi=0}\)</span>。</p>
+<p>这里，<span class="arithmatex">\(S_0\)</span> 是平衡态时的最大熵，我们采用了爱因斯坦求和约定（对重复出现的指标求和）。</p>
+<p><strong>物理意义：</strong> 这个公式的含义是，在任何稳定平衡点附近，热力学的“熵地貌”局部都可以近似为一个倒扣的抛物面（二次型）。这个近似的普适性，正是整个理论框架强大威力的来源。</p>
+<h3 id="gamma_ab">稳定性矩阵 <span class="arithmatex">\(\Gamma_{ab}\)</span><a class="headerlink" href="#gamma_ab" title="Permanent link">&para;</a></h3>
+<p>矩阵 <span class="arithmatex">\(\Gamma_{ab} = -\left.\frac{\partial^2 S}{\partial \phi_a \partial \phi_b}\right|_{\phi=0}\)</span> 被称为稳定性矩阵或热力学稳定性矩阵。</p>
+<p>它描述了熵地貌在平衡点处的 曲率，衡量了熵“山峰”的陡峭程度。</p>
+<p>它是一个对称矩阵（<span class="arithmatex">\(\Gamma_{ab} = \Gamma_{ba}\)</span>），并且是正定的，这确保了 <span class="arithmatex">\(\phi = 0\)</span> 确实是熵的极大值点（而不是鞍点），从而是一个 稳定 的平衡态。如果它不正定，系统就会“滚下山坡”，不会停留在平衡点。</p>
+<h2 id="23">2.3 热力学力、感受率与平衡关联：从地貌到动力学响应<a class="headerlink" href="#23" title="Permanent link">&para;</a></h2>
+<p>有了熵地貌，我们就可以定义出驱动系统回归平衡的“力”，并衡量系统对这个力的“响应”，最终揭示涨落本身的性质。</p>
+<h3 id="mu_a">广义恢复力<span class="arithmatex">\(\mu_a\)</span><a class="headerlink" href="#mu_a" title="Permanent link">&para;</a></h3>
+<p>与变量 <span class="arithmatex">\(\phi_a\)</span> 共轭的热力学力被定义为熵的梯度：</p>
+<div class="arithmatex">\[
+\mu_a = \frac{\partial S}{\partial \phi_a}
+\]</div>
+<p>这个 <span class="arithmatex">\(\mu_a\)</span> 扮演了广义恢复力的角色。它总是试图将系统拉回到熵最大的平衡状态。在我们对熵的二次近似下，这个力与偏离位移 <span class="arithmatex">\(\phi\)</span> 呈线性关系：</p>
+<div class="arithmatex">\[
+\mu_a = -\Gamma_{ab} \phi_b
+\]</div>
+<p><strong>物理意义：</strong>这就是广义的 胡克定律 (<span class="arithmatex">\(F = -kx\)</span>)！它表明，系统偏离平衡越远（ <span class="arithmatex">\(\phi_a\)</span>  越大），把它拉回来的恢复力 <span class="arithmatex">\(\mu_a\)</span> 就越强。稳定性矩阵 <span class="arithmatex">\(\Gamma\)</span> 在此扮演了弹簧劲度系数矩阵的角色。一个非常稳定的系统（<span class="arithmatex">\(\Gamma\)</span> 很大），就像一个很硬的弹簧，会产生巨大的恢复力。</p>
+<h3 id="chi_ab">感受率矩阵 <span class="arithmatex">\(\chi_{ab}\)</span><a class="headerlink" href="#chi_ab" title="Permanent link">&para;</a></h3>
+<p>有“力”和“位移”，自然就可以定义“响应”。稳定性矩阵的逆矩阵被称为 感受率矩阵 (susceptibility matrix)：</p>
+<div class="arithmatex">\[\chi = \Gamma^{-1}\]</div>
+<p>它可以从 <span class="arithmatex">\(\mu = -\Gamma\phi\)</span> 反解出 <span class="arithmatex">\(\phi = -\Gamma⁻^{-1}\mu = -\chi \mu\)</span>。</p>
+<p><strong>物理意义：</strong> 感受率 <span class="arithmatex">\(\chi\)</span> 衡量了系统对外界扰动（由 <span class="arithmatex">\(\mu_a\)</span> 体现）的“柔顺性”或响应能力。一个感受率很大的系统，就像一根很软的弹簧，一点点力就能让它产生很大的形变。</p>
+<h3 id="_5">平衡关联函数<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>现在，我们利用利用高斯形式的平衡概率分布 <span class="arithmatex">\(P_{\text{eq}} \propto \exp\left(-\frac{1}{2} \Gamma_{ab} \phi_a \phi_b\right)\)</span>，涨落自身的统计性质（即方差和协方差），奇迹即将发生：</p>
+<div class="arithmatex">\[
+\langle \phi_a \phi_b \rangle_{\text{eq}} = (\Gamma^{-1})_{ab} \equiv \chi_{ab}
+\]</div>
+<p><strong>物理意义：</strong> 这是一个极为深刻和美妙的结果！它构成了<strong>涨落-耗散定理</strong>的又一种核心表现形式。它告诉我们：</p>
+<p>衡量系统对一个确定性外力响应的“柔顺度”（感受率 <span class="arithmatex">\(chi\)</span>），竟然完全等同于系统在没有外力时，自发热涨落的幅度（关联函数 <span class="arithmatex">\(⟨\phi\phi⟩\)</span>）。一个在内部“活蹦乱跳”（涨落大）的系统，在外部“推”它一下时，也必然会“摇晃”得很厉害（响应大）。</p>
+<p>其他重要的关联函数也可以直接导出：</p>
+<div class="arithmatex">\[
+\langle \phi_a \mu_b \rangle_{\text{eq}} = \langle \phi_a (-\Gamma_{bc} \phi_c) \rangle = -\Gamma_{bc} \langle \phi_a \phi_c \rangle = -\Gamma_{bc} (\Gamma^{-1})_{ac} = -\delta_{ab}
+\]</div>
+<p><strong>物理意义：</strong> 一个涨落位移 <span class="arithmatex">\(\phi_a\)</span> 与其自身的恢复力 <span class="arithmatex">\(\mu_a\)</span> 是完全反相关的（<span class="arithmatex">\(a=b\)</span> 时结果为-1），但与其他方向的恢复力 <span class="arithmatex">\(\mu_{b≠a}\)</span> 不相关。这非常直观：你往东偏离，恢复力就把你往西拉。</p>
+<div class="arithmatex">\[
+\langle \mu_a \mu_b \rangle_{\text{eq}} = \langle (-\Gamma_{ac}\phi_c)(-\Gamma_{bd}\phi_d) \rangle = \Gamma_{ac}\Gamma_{bd} \langle \phi_c \phi_d \rangle = \Gamma_{ac}\Gamma_{bd} (\Gamma^{-1})_{cd} = \Gamma_{ab}
+\]</div>
+<p><strong>物理意义：</strong> 恢复力自身的涨落幅度由稳定性矩阵 <span class="arithmatex">\(\Gamma\)</span> 决定。在一个非常稳定的系统里（<span class="arithmatex">\(\Gamma\)</span> 很大，熵山峰很陡），即使位移涨落 <span class="arithmatex">\(\phi_a\)</span> 很小，恢复力 <span class="arithmatex">\(\mu\)</span> 的涨落也会非常剧烈。</p>
+<p>由此，<strong>我们构建了一个适用于各种近平衡系统（例如磁体中的磁化强度、混合物中的浓度差、相变过程中的序参量等）的统一理论框架。其核心是，在任何稳定平衡点附近，热力学“地貌”（由熵 <span class="arithmatex">\(S\)</span> 描述）局部总可以近似为一个二次型。熵 <span class="arithmatex">\(S\)</span> 扮演着势能的角色，而其曲率——</strong>稳定性矩阵<strong> <span class="arithmatex">\(\Gamma\)</span>——则定义了将系统拉回平衡的恢复力以及涨落的幅度。将这个二次型的熵代入玻尔兹曼分布 <span class="arithmatex">\(P_{\text{eq}} \propto \exp(S/k_B)\)</span>，</strong>我们立即发现，涨落变量 <span class="arithmatex">\(\{\phi_a\}\)</span> 的平衡概率分布是一个多变量高斯分布。**这是一个对于任何处在稳定平衡态附近的系统都成立的普适性结论。</p>
+<h1 id="3">3. 涨落的动力学：时间关联函数<a class="headerlink" href="#3" title="Permanent link">&para;</a></h1>
+<p>我们到目前通过熵 <span class="arithmatex">\(S\)</span> 构建了一个描述平衡态涨落的普适静态框架，得到了一个强大的结论：系统在某一时刻的涨落关联<span class="arithmatex">\(⟨\phi_a(0)\phi_b(0)⟩\)</span>等于其对外界扰动的响应（感受率 <span class="arithmatex">\(\chi_{ab}\)</span>）。但目前获得的统计规律无法回答下面的问题：</p>
+<p><strong>如果一个涨落此刻出现，它将如何随时间演化、最终消失？</strong></p>
+<p><strong>系统的“记忆”能持续多久？此刻的涨落与一秒钟后的涨落之间有何关联？</strong></p>
+<p>为了回答这些关于动力学 (dynamics) 的问题，需要引入一个强大的新工具——时间关联函数。这些函数的性质并非随意，它们身上深刻地烙印着微观世界最基本的<strong>对称性</strong>，尤其是<strong>时间反演对称性</strong>。</p>
+<h2 id="31">3.1 时间关联函数：：衡量系统的“记忆”<a class="headerlink" href="#31" title="Permanent link">&para;</a></h2>
+<h3 id="_6">定义<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>为了刻画涨落的动力学特征，我们引入时间关联函数：</p>
+<div class="arithmatex">\[
+C_{ab}(t - t') := \langle \phi_a(t) \phi_b(t') \rangle
+\]</div>
+<p>这里的系综平均 <span class="arithmatex">\(\langle \ldots \rangle\)</span> 是在热平衡态下进行的。它衡量了在 <span class="arithmatex">\(t'\)</span> 时刻的涨落 <span class="arithmatex">\(\phi_b\)</span> 与在稍晚的 <span class="arithmatex">\(t\)</span> 时刻的涨落 <span class="arithmatex">\(\phi_a\)</span> 之间的统计关联性。</p>
+<p><strong>物理意义：</strong> 这个函数是衡量系统“记忆能力”的标尺。它回答了一个核心问题：“如果我在0时刻观测到了一个值为 <span class="arithmatex">\(\phi_b(0)\)</span> 的涨落，那么在 <span class="arithmatex">\(t\)</span> 时刻之后，我期望观测到的涨落 <span class="arithmatex">\(\phi_a(t)\)</span> 的平均值会是多少？”</p>
+<p>如果 <span class="arithmatex">\(t\)</span> 很小，系统“记忆犹新”，<span class="arithmatex">\(C_{ab}(t)\)</span> 的值就可能很大。</p>
+<p>如果 <span class="arithmatex">\(t\)</span> 很大，系统早已“忘记”了最初的涨落，回归到了随机的平衡态，那么 <span class="arithmatex">\(\phi_a(t)\)</span> 和 <span class="arithmatex">\(\phi_b(0)\)</span> 将变得毫不相关，<span class="arithmatex">\(C_{ab}(t)\)</span> 会趋向于 <span class="arithmatex">\(⟨\phi_a⟩⟨\phi_b⟩ = 0\)</span>。</p>
+<p><strong>重要连接：</strong> 这个函数是第2节静态关联的自然推广。当时间差为零时，它就退化为我们熟悉的感受率：</p>
+<div class="arithmatex">\[
+C_{ab}(0) = \langle \phi_a(0) \phi_b(0) \rangle = \chi_{ab}
+\]</div>
+<h3 id="stationarity">定常性 (Stationarity)<a class="headerlink" href="#stationarity" title="Permanent link">&para;</a></h3>
+<p>对于一个处于定常态（平衡态）的系统，它的统计性质不应随时间的推移而改变。这意味着关联函数只依赖于时间差 <span class="arithmatex">\(\tau = t - t'\)</span>，而与起始时刻 <span class="arithmatex">\(0\)</span> 的选择无关因此这个性质被称为定常性(Stationarity)。我们可以令 <span class="arithmatex">\(t' = 0\)</span>：</p>
+<p>由定常性，我们可以进行一个简单的推导：
+$$
+C_{ab}(t) = \langle \phi_a(t) \phi_b(0) \rangle
+$$</p>
+<p>由于统计规律不随时间平移而改变，我们可以把整个系统的时间轴向前移动 <span class="arithmatex">\(t\)</span>：
+$$
+\langle \phi_a(t) \phi_b(0) \rangle = \langle \phi_a(0) \phi_b(-t) \rangle
+$$
+而 <span class="arithmatex">\(\langle \phi_a(0) \phi_b(-t) \rangle\)</span>按照定义就是 <span class="arithmatex">\(C_ba(-t)\)</span>。于是我们得到了第一个重要的对称关系：
+$$
+C_{ab}(t) = C_{ba}(-t)
+$$</p>
+<p><strong>物理意义：</strong> 这个关系告诉我们，测量 <span class="arithmatex">\(b\)</span> 事件发生 <span class="arithmatex">\(t\)</span> 时间后 <span class="arithmatex">\(a\)</span> 事件的关联，与测量 <span class="arithmatex">\(a\)</span> 事件发生 <span class="arithmatex">\(t\)</span> 时间前 <span class="arithmatex">\(b\)</span> 事件的关联是完全一样的。这是平衡态系统<strong>时间平移不变性</strong>的直接体现。</p>
+<h2 id="32">3.2 时间对称性的烙印：微观可逆性<a class="headerlink" href="#32" title="Permanent link">&para;</a></h2>
+<p>现在，我们来看一个更深刻、更惊人的对称性，它源于一个看似矛盾的事实：我们生活的宏观世界里“时间之箭”是单向的（比如覆水难收），但支配所有粒子运动的微观物理定律却是时间对称的。</p>
+<h3 id="_7">微观可逆性原理<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>微观世界的动力学方程（无论是牛顿力学还是哈密顿力学）在时间反演变换（<span class="arithmatex">\(t \rightarrow -t\)</span>，同时反转所有粒子的动量<span class="arithmatex">\(\vec{p} \rightarrow -\vec{p}\)</span>）下保持形式不变。这意味着，如果你录下一段两个分子碰撞的视频然后倒着播放，看到的景象完全符合物理定律，是可能发生的。这就是<strong>微观可逆性原理(microscopic reversibility)。</strong></p>
+<h3 id="epsilon_a">变量的宇称 (<span class="arithmatex">\(\epsilon_a\)</span>)<a class="headerlink" href="#epsilon_a" title="Permanent link">&para;</a></h3>
+<p>当微观时间倒流时，由大量粒子构成的宏观变量 <span class="arithmatex">\(\phi_a\)</span> 也会以特定的方式变换，有的变量不变，有的变量会反号。其变换性质由宇称 (parity) <span class="arithmatex">\(\epsilon_a = \pm 1\)</span> 来刻画：</p>
+<div class="arithmatex">\[
+\phi_a(t) \xrightarrow{\text{Time Reversal}} \epsilon_a \phi_a(-t)
+\]</div>
+<p>在时间反演下为<strong>偶宇称</strong>（<span class="arithmatex">\(\epsilon_a = +1\)</span>）的变量包括位置、密度、能量等。为<strong>奇宇称</strong>（<span class="arithmatex">\(\epsilon_a = -1\)</span>）的变量包括速度、动量、角动量等。</p>
+<h3 id="-onsager-casimir-reciprocal-relations">昂萨格-卡西米尔倒易关系 (Onsager-Casimir Reciprocal Relations)<a class="headerlink" href="#-onsager-casimir-reciprocal-relations" title="Permanent link">&para;</a></h3>
+<p>既然微观动力学是时间可逆的，那么一个宏观关联函数的统计平均值，应该和其所有组分都经历了时间反演后的统计平均值完全相等：</p>
+<p>既然微观动力学是时间可逆的，那么一个宏观关联函数的统计平均值，应该和其所有组分都经历了时间反演后的统计平均值完全相等。据此，我们有：</p>
+<div class="arithmatex">\[
+\langle \phi_a(t) \phi_b(0) \rangle = \langle (T\text{-reversed } \phi_a(t)) (T\text{-reversed } \phi_b(0)) \rangle
+\]</div>
+<p>代入宇称的定义，上式变为：</p>
+<div class="arithmatex">\[
+\langle \phi_a(t) \phi_b(0) \rangle = \langle \epsilon_a \phi_a(-t) \epsilon_b \phi_b(0) \rangle = \epsilon_a \epsilon_b \langle \phi_a(-t) \phi_b(0) \rangle
+\]</div>
+<p>于是我们得到</p>
+<div class="arithmatex">\[
+( C_{ab}(t) = \epsilon_a \epsilon_b C_{ab}(-t)
+\]</div>
+<p>现在，我们将这个新关系与上一节的定常性关系 <span class="arithmatex">\(C_{ab}(-t) = C_{ba}(t)\)</span>  结合起来，便得到了物理学中一个极其重要的<strong>对称性原理——昂萨格-卡西米尔倒易关系</strong>：</p>
+<div class="arithmatex">\[
+C_{ab}(t) = \epsilon_a \epsilon_b C_{ba}(t)
+\]</div>
+<p><strong>物理意义：</strong> 这个关系式如同一座桥梁，它将宏观层面不可逆的“时间之箭”（体现在关联函数 <span class="arithmatex">\(C(t)\)</span> 通常随时间衰减）与微观层面可逆的时间对称性（体现在宇称 <span class="arithmatex">\(\epsilon\)</span> ）联系了起来。它告诉我们，即使我们无法看到微观世界的细节，微观世界的对称性也必然会以这种严格的方式，为我们能在宏观上测量的动力学关联施加一个强大的、不可违背的约束。</p>
+<p>举个例子：让我们考虑位置 <span class="arithmatex">\(\mathbf{r}\)</span> （宇称 <span class="arithmatex">\(\epsilon_{\mathbf{r}} = +1\)</span> ）和速度 <span class="arithmatex">\(\mathbf{v}\)</span> （宇称 <span class="arithmatex">\(\epsilon_{\mathbf{v}} = -1\)</span> ）的关联。根据倒易关系：</p>
+<div class="arithmatex">\[
+C_{\mathbf{r}\mathbf{v}}(t) = (+1)(-1) C_{\mathbf{v}\mathbf{r}}(t) = -C_{\mathbf{v}\mathbf{r}}(t)
+\]</div>
+<div class="arithmatex">\[
+\langle \mathbf{r}(t) \mathbf{v}(0) \rangle = -\langle \mathbf{v}(t) \mathbf{r}(0) \rangle
+\]</div>
+<p>这是一个非平庸的物理预言：知道粒子此刻的速度，去预测它未来的位置，得到的关联值；与知道粒子此刻的位置，去预测它未来的速度，得到的关联值，两者竟是相反数！因为速度在时间反演下会变号，所以这两个关联的数值就必须是相反数。</p>
+<p><strong>正着放的“物理过程电影”和倒着放的“物理过程电影”，在统计上是无法区分的。昂萨格关系 <span class="arithmatex">\(\langle \mathbf{r}(t) \mathbf{v}(0) \rangle = -\langle \mathbf{v}(t) \mathbf{r}(0) \rangle\)</span> 正是这个深刻的时间对称性在宏观统计数据上留下的一个“数学指纹”。它本质上说的是，系统“忘记”过去的方式，和系统“走向”未来的方式，被同一个底层的、时间对称的物理学所支配，但符号会发生改变。</strong></p>
+<p><strong>表1：常见物理量在时间反演下的宇称</strong></p>
+<p>为了将抽象的宇称因子 <span class="arithmatex">\(\epsilon_a\)</span> 具体化，下表列出了一些常见物理量在时间反演变换下的行为。这对于将昂萨格关系应用于具体物理问题至关重要。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">物理量</th>
+<th style="text-align: left;">符号</th>
+<th style="text-align: left;">时间反演下的行为 <span class="arithmatex">\((t \to -t)\)</span></th>
+<th style="text-align: left;">宇称 <span class="arithmatex">\((\epsilon)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">位置</td>
+<td style="text-align: left;"><span class="arithmatex">\(\vec{r}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\vec{r}(-t) = \vec{r}(t)\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(+1\)</span> (偶)</td>
+</tr>
+<tr>
+<td style="text-align: left;">速度</td>
+<td style="text-align: left;"><span class="arithmatex">\(\vec{v}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\vec{v}(-t) = -\vec{v}(t)\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(-1\)</span> (奇)</td>
+</tr>
+<tr>
+<td style="text-align: left;">动量</td>
+<td style="text-align: left;"><span class="arithmatex">\(\vec{p}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\vec{p}(-t) = -\vec{p}(t)\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(-1\)</span> (奇)</td>
+</tr>
+<tr>
+<td style="text-align: left;">加速度</td>
+<td style="text-align: left;"><span class="arithmatex">\(\vec{a}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\vec{a}(-t) = \vec{a}(t)\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(+1\)</span> (偶)</td>
+</tr>
+<tr>
+<td style="text-align: left;">力</td>
+<td style="text-align: left;"><span class="arithmatex">\(\vec{F}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\vec{F}(-t) = \vec{F}(t)\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(+1\)</span> (偶)</td>
+</tr>
+<tr>
+<td style="text-align: left;">能量</td>
+<td style="text-align: left;"><span class="arithmatex">\(E\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(E(-t) = E(t)\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(+1\)</span> (偶)</td>
+</tr>
+<tr>
+<td style="text-align: left;">粒子密度</td>
+<td style="text-align: left;"><span class="arithmatex">\(\rho\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\rho(-t) = \rho(t)\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(+1\)</span> (偶)</td>
+</tr>
+<tr>
+<td style="text-align: left;">角动量</td>
+<td style="text-align: left;"><span class="arithmatex">\(\vec{L}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\vec{L}(-t) = -\vec{L}(t)\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(-1\)</span> (奇)</td>
+</tr>
+<tr>
+<td style="text-align: left;">电场</td>
+<td style="text-align: left;"><span class="arithmatex">\(\vec{E}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\vec{E}(-t) = \vec{E}(t)\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(+1\)</span> (偶)</td>
+</tr>
+<tr>
+<td style="text-align: left;">磁场</td>
+<td style="text-align: left;"><span class="arithmatex">\(\vec{B}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\vec{B}(-t) = -\vec{B}(t)\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(-1\)</span> (奇)</td>
+</tr>
+</tbody>
+</table>
+<h1 id="4">４．动态模拟粗粒化<a class="headerlink" href="#4" title="Permanent link">&para;</a></h1>
+<p>下面将模拟一个由　<span class="arithmatex">\(N\)</span>　个相互作用的、处在过阻尼极限下的布朗粒子组成的系统。通过“欧拉-丸山法” (Euler-Maruyama method)　进行数值离散化。</p>
+<p>在每个微小的时间步 <span class="arithmatex">\(dt\)</span> 里，一个粒子的移动都由两部分叠加而成：</p>
+<p><strong>确定性的漂移 (Deterministic Drift):</strong> 它来自于周围所有其他粒子对它的推力。我们将用一个简单的排斥势来计算这个力，防止粒子们互相“穿越”。</p>
+<p><strong>随机的踢动 (Stochastic Kick):</strong>　它模拟了来自恒温热库的、永不停歇的随机碰撞。我们将用一个高斯分布的随机数来生成这个踢动，其强度由我们设定的温度 T 决定。</p>
+<h3 id="_8">代码实现<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Python script to simulate interacting Brownian particles (Langevin dynamics)</span>
+<span class="sd">and visualize their microscopic motion alongside the coarse-grained macroscopic density field.</span>
+<span class="sd">The final output is a GIF animation.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="kn">import</span> <span class="n">FuncAnimation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.ndimage</span><span class="w"> </span><span class="kn">import</span> <span class="n">gaussian_filter</span>
+
+<span class="c1"># --- 1. Simulation Parameters ---</span>
+
+<span class="c1"># System parameters</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>          <span class="c1"># Number of particles</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mf">20.0</span>         <span class="c1"># Size of the simulation box (2D)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mf">1.0</span>          <span class="c1"># Temperature (we set Boltzmann constant k_B=1)</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">1.0</span>         <span class="c1"># Mobility</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">T</span>       <span class="c1"># Diffusion coefficient, from Einstein relation</span>
+
+<span class="c1"># Simulation parameters</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.02</span>        <span class="c1"># Timestep length</span>
+<span class="n">n_steps</span> <span class="o">=</span> <span class="mi">1000</span>   <span class="c1"># Total simulation steps</span>
+<span class="n">save_interval</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># Save trajectory every &#39;save_interval&#39; steps for animation</span>
+
+<span class="c1"># Interaction parameters (Weeks-Chandler-Andersen potential, a purely repulsive force)</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">1.0</span>      <span class="c1"># Characteristic size of a particle</span>
+<span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1.0</span>    <span class="c1"># Interaction strength</span>
+<span class="n">rcut</span> <span class="o">=</span> <span class="n">sigma</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">))</span> <span class="c1"># Cutoff distance for the force</span>
+
+<span class="c1"># Visualization parameters</span>
+<span class="n">grid_bins</span> <span class="o">=</span> <span class="mi">50</span>   <span class="c1"># Number of bins for the density grid</span>
+<span class="n">blur_sigma</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="c1"># Sigma for the Gaussian filter to smooth the density field</span>
+
+
+<span class="c1"># --- 2. Core Functions ---</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_forces</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">box_size</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">r_cut</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the total force on each particle using the WCA potential</span>
+<span class="sd">    and applies periodic boundary conditions (minimum image convention).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">forces</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span>
+    <span class="n">r_cut2</span> <span class="o">=</span> <span class="n">r_cut</span><span class="o">**</span><span class="mi">2</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+            <span class="c1"># Displacement vector between particle i and j</span>
+            <span class="n">dr</span> <span class="o">=</span> <span class="n">positions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">positions</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+
+            <span class="c1"># Apply periodic boundary conditions</span>
+            <span class="n">dr</span> <span class="o">=</span> <span class="n">dr</span> <span class="o">-</span> <span class="n">box_size</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">dr</span> <span class="o">/</span> <span class="n">box_size</span><span class="p">)</span>
+
+            <span class="n">r_sq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dr</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+            <span class="c1"># Calculate force only if particles are closer than the cutoff distance</span>
+            <span class="k">if</span> <span class="n">r_sq</span> <span class="o">&lt;</span> <span class="n">r_cut2</span><span class="p">:</span>
+                <span class="n">r_sq_inv</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">r_sq</span>
+                <span class="n">sig_r6</span> <span class="o">=</span> <span class="p">(</span><span class="n">sig</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">r_sq_inv</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span>
+
+                <span class="c1"># Force magnitude from the derivative of the WCA potential</span>
+                <span class="n">force_mag</span> <span class="o">=</span> <span class="mi">48</span> <span class="o">*</span> <span class="n">eps</span> <span class="o">*</span> <span class="n">r_sq_inv</span> <span class="o">*</span> <span class="p">(</span><span class="n">sig_r6</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">sig_r6</span><span class="p">)</span>
+                <span class="n">force_vec</span> <span class="o">=</span> <span class="n">force_mag</span> <span class="o">*</span> <span class="n">dr</span>
+
+                <span class="c1"># Apply force according to Newton&#39;s third law</span>
+                <span class="n">forces</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">force_vec</span>
+                <span class="n">forces</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-=</span> <span class="n">force_vec</span>
+
+    <span class="k">return</span> <span class="n">forces</span>
+
+<span class="c1"># --- 3. Initialization ---</span>
+
+<span class="c1"># Set a random seed for reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Initialize particle positions randomly within the box [0, L] x [0, L]</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">L</span>
+
+<span class="c1"># --- 4. Run Simulation &amp; Store Trajectory ---</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running simulation to generate trajectory...&quot;</span><span class="p">)</span>
+<span class="c1"># Store the trajectory for the animation</span>
+<span class="c1"># We pre-calculate the trajectory to make the animation rendering smoother</span>
+<span class="n">trajectory</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos</span><span class="o">.</span><span class="n">copy</span><span class="p">()]</span>
+<span class="n">num_frames</span> <span class="o">=</span> <span class="n">n_steps</span> <span class="o">//</span> <span class="n">save_interval</span>
+
+<span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_steps</span><span class="p">):</span>
+    <span class="c1"># Calculate deterministic forces</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">calculate_forces</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">rcut</span><span class="p">)</span>
+
+    <span class="c1"># Calculate drift and random kick terms</span>
+    <span class="n">drift</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">F</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="n">random_kick</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">D</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Update particle positions</span>
+    <span class="n">pos</span> <span class="o">+=</span> <span class="n">drift</span> <span class="o">+</span> <span class="n">random_kick</span>
+
+    <span class="c1"># Enforce periodic boundary conditions on positions</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">pos</span> <span class="o">%</span> <span class="n">L</span>
+
+    <span class="c1"># Store the current frame in the trajectory</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">save_interval</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">trajectory</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+
+<span class="n">trajectory</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">trajectory</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Simulation finished. Trajectory shape: </span><span class="si">{</span><span class="n">trajectory</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># --- 5. Animation Setup ---</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setting up animation...&quot;</span><span class="p">)</span>
+<span class="c1"># Create the figure and subplots</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Setup for the left subplot (Microscopic View)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Microscopic View: Particle Dynamics&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X position&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y position&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="n">adjustable</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
+<span class="n">scatter</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">trajectory</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">trajectory</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;royalblue&#39;</span><span class="p">)</span>
+
+<span class="c1"># Setup for the right subplot (Macroscopic View)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Macroscopic View: Coarse-Grained Density&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X position&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y position&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="n">adjustable</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create the grid for the heatmap</span>
+<span class="n">grid_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">grid_bins</span><span class="p">)</span>
+<span class="n">grid_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">grid_bins</span><span class="p">)</span>
+
+<span class="c1"># Initial density field</span>
+<span class="n">hist</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span>
+    <span class="n">trajectory</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">trajectory</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">grid_x</span><span class="p">,</span> <span class="n">grid_y</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">density_field</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">hist</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">blur_sigma</span><span class="p">)</span>
+<span class="n">heatmap</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">density_field</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">heatmap</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Particle Density&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add a time display</span>
+<span class="n">time_text</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax1</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span>
+                     <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s1">&#39;round,pad=0.5&#39;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;wheat&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">))</span>
+
+
+<span class="c1"># --- 6. Animation Update Function ---</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function is called for each frame of the animation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Get current positions from the pre-computed trajectory</span>
+    <span class="n">current_pos</span> <span class="o">=</span> <span class="n">trajectory</span><span class="p">[</span><span class="n">frame</span><span class="p">]</span>
+
+    <span class="c1"># --- Update Microscopic View ---</span>
+    <span class="n">scatter</span><span class="o">.</span><span class="n">set_offsets</span><span class="p">(</span><span class="n">current_pos</span><span class="p">)</span>
+
+    <span class="c1"># --- Update Macroscopic View ---</span>
+    <span class="c1"># 1. Coarse-graining: create a histogram</span>
+    <span class="n">hist</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span>
+        <span class="n">current_pos</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">current_pos</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">grid_x</span><span class="p">,</span> <span class="n">grid_y</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="c1"># 2. Smoothing: apply Gaussian filter</span>
+    <span class="n">density_field</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">hist</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">blur_sigma</span><span class="p">)</span>
+
+    <span class="c1"># 3. Update heatmap data</span>
+    <span class="n">heatmap</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">density_field</span><span class="p">)</span>
+
+    <span class="c1"># Update the color limits to match the new data range for better contrast</span>
+    <span class="n">heatmap</span><span class="o">.</span><span class="n">set_clim</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">density_field</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">density_field</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+    <span class="c1"># Update time text</span>
+    <span class="n">time_text</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Step: </span><span class="si">{</span><span class="n">frame</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">save_interval</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">scatter</span><span class="p">,</span> <span class="n">heatmap</span><span class="p">,</span> <span class="n">time_text</span>
+
+
+<span class="c1"># --- 7. Create and Save Animation ---</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Creating and saving animation... This may take a few minutes.&quot;</span><span class="p">)</span>
+<span class="c1"># Create the animation object</span>
+
+<span class="n">anim</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span>
+    <span class="n">fig</span><span class="p">,</span>
+    <span class="n">update</span><span class="p">,</span>
+    <span class="n">frames</span><span class="o">=</span><span class="n">num_frames</span><span class="p">,</span>
+    <span class="n">interval</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="c1"># milliseconds between frames</span>
+    <span class="n">blit</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="c1"># Save the animation as a GIF</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">anim</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;particle_dynamics.gif&#39;</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="s1">&#39;imagemagick&#39;</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Animation successfully saved as &#39;particle_dynamics.gif&#39;!&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Error saving GIF: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="运行代码输出" src="../../../assets/images/remote/particle_dynamics.gif" /></p>
+<p>在一个恒温热库中，<span class="arithmatex">\(N\)</span> 个相互作用粒子的过阻尼朗之万动力学 (overdamped Langevin dynamics)。每个粒子的无规则运动是两种力的叠加：一是来自周围溶剂分子的永恒随机力 (stochastic force)，导致了布朗运动；二是来自其他粒子的确定性排斥力 (deterministic force)，这阻止了粒子间的重叠并产生了液体般的结构。整个系统正在热平衡态附近不断地探索其所有可能的微观构型。</p>
+<p>右侧的“宏观视角”面板 是左侧微观世界的粗粒化 (coarse-graining) 结果，它展示了演化中的连续密度场 <span class="arithmatex">\(\rho(\mathbf{x}, t)\)</span>。图上不断出现、变化和消失的亮黄色“热点”，正是理论中描述的热力学密度涨落 (thermal density fluctuations)。这些涨落是系统围绕其均匀的平均密度（即平衡态）发生的、自发的、暂时的局部密度偏离。</p>
+<h1 id="_9">结论：粗粒化与重整化群<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h1>
+<p>这节课从描述 <span class="arithmatex">\(N\)</span> 个相互作用布朗粒子的具体朗之万模型出发，通过粗粒化方法，将其演化为一个由自由能泛函主导的连续场论。随后，我们从中提炼出核心原理，构建了一个基于熵的、适用于任何近平衡系统的普适性涨落理论。最后，我们利用时间关联函数这一工具，分析了这些涨落的动力学行为，并揭示了它们如何受到微观世界基本对称性（如时间反演对称性）的深刻制约。</p>
+<p>本讲所建立的理论框架是现代统计物理学的基石之一。它清晰地展示了宏观世界中不可逆的弛豫过程和有色（非白噪声）的涨落，是如何从时间对称的微观动力学定律中涌现出来的。</p>
+<p>初学者可能会将<strong>粗粒化（Coarse-Graining）</strong> 与统计物理一个重要的理论 <strong>重整化群（Renormalization Group, RG）</strong> 相联系。这两者在思想上有着非常紧密的联系，但一个是方法一个是理论框架。</p>
+<p>本质上，它们都遵循着一个核心思想：<strong>通过系统地忽略（或积分掉）小尺度（高能量）的自由度，来得到一个只描述大尺度（低能量）物理行为的有效理论。</strong></p>
+<h3 id="_10">联系：共同的哲学——尺度分离<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>消除微观细节</strong>：两者都旨在从一个复杂的、包含所有微观细节的理论出发，推导出一个更简单、只描述宏观或长波行为的理论。“粗粒化”就是将大量分立的粒子坐标 <span class="arithmatex">\(\mathbf{x}_i\)</span> 替换为平滑的连续密度场 <span class="arithmatex">\(\rho(\mathbf{x})\)</span>。这个过程“忘记”了每个粒子的身份和精确位置。重整化群在动量空间中做的也是类似的事情：它会积分掉（平均掉）高动量（短波长）的涨落模式。</p>
+</li>
+<li>
+<p><strong>有效理论的产生</strong>：经过操作后，得到的都是一个“有效理论”。在粗粒化中，你得到了一个关于密度场 <span class="arithmatex">\(\rho\)</span> 的随机偏微分方程，其中的参数（如扩散系数、迁移率）以及自由能泛函 <span class="arithmatex">\(F[\rho]\)</span> 的形式，都是从底层粒子相互作用中“涌现”出来的。在重整化群中，每一步变换后，也会得到一个新的哈密顿量（或作用量），它的耦合常数会发生改变（即所谓的“重整化”），这个新的哈密顿量就是描述下一个更大尺度的有效理论。</p>
+</li>
+</ol>
+<h3 id="_11">区别：目标与方法的不同<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">特征</th>
+<th style="text-align: left;">粗粒化 (Coarse-Graining)</th>
+<th style="text-align: left;">重整化群 (Renormalization Group)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>主要目标</strong></td>
+<td style="text-align: left;">从一个<strong>具体的微观模型</strong>（如朗之万方程）推导出一个<strong>宏观动力学方程</strong>（如关于密度的SPDE）。重点在于连接微观与宏观。</td>
+<td style="text-align: left;">研究系统在<strong>不同尺度下的行为</strong>，特别是寻找物理量如何随观测尺度变化的规律（标度律），以及寻找理论的不动点（通常对应相变点）。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>操作方式</strong></td>
+<td style="text-align: left;">通常是一次性的、固定的空间或时间平均。比如，把盒子划分成 <span class="arithmatex">\(10 \times 10\)</span> 的网格，然后就不再改变这个网格大小。</td>
+<td style="text-align: left;">一个<strong>迭代和动态</strong>的过程。它包含两个关键步骤：1. <strong>粗粒化</strong>（积分掉高动量模式）；2. <strong>尺度重标</strong>（将系统“放大”回原来的大小以便比较）。这个过程会反复进行，形成一个“流”（RG flow）。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>核心问题</strong></td>
+<td style="text-align: left;">“这个多粒子系统的宏观行为是什么样的？”</td>
+<td style="text-align: left;">“当系统接近临界点（相变点）时，它的物理性质（如比热、磁化率）是如何随温度发散的？这种发散行为背后有什么普适的规律？”</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>应用场景</strong></td>
+<td style="text-align: left;">软物质物理、流体力学、化学动力学等，用于推导宏观连续介质模型。</td>
+<td style="text-align: left;">临界现象（相变理论）、量子场论、高能物理。RG是理解<strong>普适性（Universality）</strong>——即不同微观系统在临界点附近表现出相同行为——的关键工具。</td>
+</tr>
+</tbody>
+</table>
+<p>综上，<strong>粗粒化</strong> 就像是用一台<strong>固定分辨率的相机</strong>去拍摄一张非常高清的画，得到了一个分辨率较低但依然能看清轮廓的图像。这个过程只做了一次。</p>
+<p><strong>重整化群</strong> 就像用一个<strong>变焦镜头</strong>。先离得很远拍一张（粗粒化），然后<strong>向前走一步并调整焦距</strong>，使得照片里的物体看起来和第一张一样大（尺度重标）。然后再重复这个过程：再离远一点拍，再走近并变焦... 通过观察在反复“变焦-走近”的过程中，图像的哪些特征保持不变，哪些特征变得模糊或锐利，就能理解这幅画的内在结构和尺度对称性。</p>
+<p><strong>粗粒化</strong>是作为一个具体的数学步骤，用来从已知的粒子动力学推导场论方程。而<strong>重整化群</strong>则是一个更抽象、更强大的理论框架，它本身就包含“粗粒化”这一思想作为其操作步骤之一，但其最终目的是研究系统在跨越多个尺度时的对称性和普适规律，尤其是在相变点附近。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.highlight"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../../assets/javascripts/mathjax.js"></script>
+      
+        <script src="../../../assets/javascripts/language-nav.js"></script>
+      
+        <script src="../../../assets/javascripts/video-init.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>
