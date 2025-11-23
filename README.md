@@ -1,6 +1,6 @@
 # Nonequilibrium Field Theories and Stochastic Dynamics
 
-These are self-study notes for the course [**Nonequilibrium Field Theories and Stochastic Dynamics (Prof. Erwin Frey, LMU Munich, Summer Semester 2025)**](https://www.theorie.physik.uni-muenchen.de/lsfrey/teaching/index.html). [**Prof. Erwin Frey**](https://www.theorie.physik.uni-muenchen.de/lsfrey/members/group_leaders/erwin_frey/index.html) prefers chalkboard lectures. To document my learning, I organized my notes into articles and wrote Python code to deepen understanding. There are 40 chapters in total; this chapter is the course introduction.
+These are self-study notes for the course [**Nonequilibrium Field Theories and Stochastic Dynamics (Prof. Erwin Frey, LMU Munich, Summer Semester 2025)**](https://www.theorie.physik.uni-muenchen.de/lsfrey/teaching/index.html). [**Prof. Erwin Frey**](https://www.theorie.physik.uni-muenchen.de/lsfrey/members/group_leaders/erwin_frey/index.html) prefers chalkboard lectures. To document my learning, I organized my notes into articles and wrote Python code to deepen understanding. 
 
 ![Course link: https://www.youtube.com/watch?v=-pEPKnuN1iY&list=PL2IEUF-u3gRdSbgtuqH5RNTuT798s0GqX](docs/assets/images/remote/977886f7-e278-42d9-91f9-f61731ec8b97-0c84ad685f.png)
 
@@ -11,18 +11,18 @@ These are self-study notes for the course [**Nonequilibrium Field Theories and S
 
 **Course Playlist:** [YouTube Playlist](https://www.youtube.com/watch?v=-pEPKnuN1iY&list=PL2IEUF-u3gRdSbgtuqH5RNTuT798s0GqX)
 
-**Official Course Link:** https://lsf.verwaltung.uni-muenchen.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=1075902&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung
+**Official Course Link:** [LMU Munich - Nonequilibrium Field Theories and Stochastic Dynamics](https://lsf.verwaltung.uni-muenchen.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=1075902&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung)
 
 ## Course Outline
 
-![Course Outline](../site/assets/images/Course_Outline.jpg)
+![Course Outline](docs/assets/images/Course_Outline.jpg)
 
 
 ## Course Contents
 
 This lecture series explores the fundamental principles and advanced concepts of nonequilibrium field theories and stochastic dynamics. The course focuses on stochastic processes in particle and field systems, emphasizing mathematical formalisms such as Langevin equations, Fokker-Planck equations, and path integrals. Additionally, the lectures cover applications in soft matter physics, active matter, and non-equilibrium statistical mechanics.
 
-
+The notes consist of four parts, totaling forty lectures:
 
 **Part I: Foundations of Stochastic Processes.** From random walks and Brownian motion (Bernoulli or Gaussian walks; diffusion equation) through elementary stochastic models (Poisson processes, birth-death dynamics, molecular motors) to Markov processes and master equations (Chapman-Kolmogorov; discrete and continuous state spaces).
 
@@ -95,7 +95,7 @@ Here are some code output demonstrations:
 ![code/26.CriticalSlowingDown1.py](docs/assets/images/remote/critical_slowing_down.gif)
 
 
-<video src="docs/assets/images/remote/fluid_simulation.mp4"></video>
+<video src="docs/assets/images/remote/fluid_simulation.mp4" controls="controls" style="max-width: 100%;"></video>
 <p><strong>code/27.ScalarField.py</strong></p>
 
 ![code/28.VortexDecayDemo.py](docs/assets/images/remote/vortex_decay_detailed.gif)
@@ -112,7 +112,7 @@ Here are some code output demonstrations:
 
 ![code/39.ReactionFront.py](docs/assets/images/remote/reaction_front_comparison.gif)
 
-<video src="docs/assets/images/remote/Starling.mp4"></video>
+<video src="docs/assets/images/remote/Starling.mp4" controls="controls" style="max-width: 100%;"></video>
 <p><strong>code/40.InertialSpin.py</strong></p>
 
 
