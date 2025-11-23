@@ -1,142 +1,134 @@
-# 非平衡场论与随机动力学
+这是课程 [**非平衡场论与随机动力学** **Nonequilibrium Field Theories and Stochastic Dynamics, Prof. Erwin Frey, LMU Munich, Summer Semester 2025**](https://www.theorie.physik.uni-muenchen.de/lsfrey/teaching/index.html)的自学笔记。[**Erwin Frey 教授**](https://www.theorie.physik.uni-muenchen.de/lsfrey/members/group_leaders/erwin_frey/index.html)喜欢在黑板上写板书，为记录学习过程，将所学笔记整理为文，并撰写python代码加深理解。
 
-**课程**: Nonequilibrium Field Theories and Stochastic Dynamics  
-**授课教师**: Prof. Erwin Frey  
-**学校**: Ludwig-Maximilians-Universität München (LMU Munich)  
-**学期**: 2025年夏季学期
 
-## 课程视频
 
-<div style="text-align: center; margin: 20px 0;">
-  <a href="https://www.youtube.com/watch?v=MZUqBwZMN_o&ab_channel=PhysicsOfLifeLMU" target="_blank">
-    <img src="../assets/images/remote/977886f7-e278-42d9-91f9-f61731ec8b97-0c84ad685f.png" 
-         alt="课程概览" 
-         style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-  </a>
-  <p><strong>YouTube播放列表</strong>: <a href="https://www.youtube.com/watch?v=-pEPKnuN1iY&list=PL2IEUF-u3gRdSbgtuqH5RNTuT798s0GqX" target="_blank">完整课程视频</a></p>
-</div>
+![课程链接：https://www.youtube.com/watch?v=-pEPKnuN1iY&list=PL2IEUF-u3gRdSbgtuqH5RNTuT798s0GqX](../assets/images/remote/977886f7-e278-42d9-91f9-f61731ec8b97-0c84ad685f.png)
 
-## 关于本网站
+**注：**需要说明的是，本人只在Youtube上学习该课程，并没有讲义，都是先听课做笔记，再撰文章，原始笔记示例如下：
 
-本网站包含**非平衡场论与随机动力学**课程的完整学习资料，涵盖40讲详细的中文学习笔记和对应的Python代码实现。
+![个人笔记示例](../assets/images/remote/18cc2947-7f4d-40d0-ab59-51347e927534-cc2cae9ca4.png)
 
-### 课程内容
+**课程播放列表：** [YouTube 播放列表](https://www.youtube.com/watch?v=-pEPKnuN1iY&list=PL2IEUF-u3gRdSbgtuqH5RNTuT798s0GqX)
 
-本课程探索非平衡场论和随机动力学的基本原理和高级概念，重点关注粒子和场系统中的随机过程，强调数学形式主义，如朗之万方程、福克-普朗克方程和路径积分。此外，讲座还涵盖了软物质物理、活性物质和非平衡统计力学的应用。
+[哔哩哔哩链接](https://www.bilibili.com/video/BV18X8wzSEa3/?spm_id_from=333.1387.0.0)
 
-### 学习资料
+**官方课程链接：** [LMU Munich - Nonequilibrium Field Theories and Stochastic Dynamics](https://lsf.verwaltung.uni-muenchen.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=1075902&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung)
 
-- **40章中文学习笔记**: 详细的理论推导、物理解释和数学证明
-- **65个Python代码实现**: 与每讲对应的计算实验和可视化
-- **完整图片资源**: 课程中使用的所有图表和示意图
-- **术语表**: 中英文对照的专业术语
 
-### 课程结构
+## 课程大纲
 
-#### 第一部分：随机过程基础 (第1-10讲)
-- 随机游走与布朗运动
-- 基础随机模型  
-- 马尔可夫过程与主方程
+![课程大纲](../assets/images/Course_Outline.jpg)
 
-#### 第二部分：粒子的随机动力学 (第11-25讲)
-- 朗之万与福克-普朗克方程
-- 随机模拟技术
-- 随机热力学
 
-#### 第三部分：从离散态到场 (第26-35讲)
-- 反应网络与场论
-- 场的粗粒化动力学
+## 课程简介
 
-#### 第四部分：非平衡系统的场论 (第36-40讲)
-- 动态泛函与MSR形式
-- 流体动力学与涨落流体
-- 非平衡模式形成
-- 活性物质场论
 
-## 课程视频标题
+这门课介绍非平衡场论和随机动力学的基本原理和高级概念，重点关注粒子和场系统中的随机过程，特别是朗之万方程、福克-普朗克方程和路径积分等数学形式。
 
-基于课程结构和仓库内容，讲座系列包括以下主题：
+内容涵盖从基础随机过程理论到现代非平衡场论方法的完整知识体系，包括动态泛函和涨落定理等高级理论方法。特别关注Kardar-Parisi-Zhang方程，该方程描述了非平衡生长过程的普适性特征。此外，还将探讨活性物质系统，其中集体行为从非平衡相互作用中涌现。
 
-### I. 随机过程基础 (第1-10讲)
+应用领域包括软物质物理、活性物质和非平衡统计力学，为理解从生物过程到湍流流体等复杂系统提供理论基础。学习路径从基础随机模型开始，逐步深入马尔可夫过程的基本方程，最终探索包括动态泛函和涨落定理在内的高级场论方法。
 
-1. **热力学、统计力学、非平衡物理学与教学理念** (43分钟)
-2. **简单随机游走** (41分钟)
-3. **高斯随机游走、泊松过程、Gillespie算法** (45分钟)
-4. **Gillespie算法、主方程、生成函数、种群动力学** (45分钟)
-5. **种群动力学：线性死亡过程、Lotka-Volterra过程** (58分钟)
-6. **马尔可夫过程的基本方程：查普曼-科尔莫戈罗夫方程** (36分钟)
-7. **前向主方程、线性生灭过程的Q矩阵、主方程的一般性质** (41分钟)
-8. **佩龙-弗罗贝尼乌斯定理、不可分解Q矩阵、可逆与平稳过程、细致平衡** (48分钟)
-9. **细致平衡的推论、不可逆性与熵产生** (42分钟)
-10. **埃伦费斯特模型、熵与Kullback-Leibler散度** (37分钟)
+笔记分为四个部分，共计四十讲：
 
-### II. 粒子的随机动力学 (第11-25讲)
+**第一部分：随机过程基础 (Foundations of Stochastic Processes)** 建立了描述随机性的数学语言。从**随机游走与布朗运动 (Random Walks and Brownian Motion)** 开始，我们学习伯努利/高斯游走和扩散方程等基本模型。**基础随机模型 (Elementary Stochastic Models)** 引入泊松过程、生灭动力学和分子马达等具体例子。**马尔可夫过程与主方程 (Markov Processes and Master Equations)** 则建立了Chapman-Kolmogorov方程和离散/连续状态空间的统一框架。
 
-11. **马尔可夫链蒙特卡洛、跳跃过程、扩散过程、福克-普朗克方程** (54分钟)
-12. **布朗运动（维纳过程）、奥恩斯坦-乌伦贝克过程、爱因斯坦-斯托克斯关系** (35分钟)
-13. **作为随机过程的蒙特卡洛采样** (44分钟)
-14. **哈密尔顿蒙特卡洛采样** (49分钟)
-15. **趋化性、跑动-翻滚运动作为双态过程、Keller-Segel模型** (47分钟)
-16. **Schnitzer模型、反常扩散、运动诱导相分离** (33分钟)
-17. **朗之万方程、布朗粒子、涨落-耗散定理** (43分钟)
-18. **布朗粒子的福克-普朗克方程、过阻尼朗之万方程、斯摩棱霍夫斯基方程** (39分钟)
-19. **朗之万方程的路径积分表述** (45分钟)
-20. **随机微分方程、伊藤引理、随机积分、伊藤与斯特拉托诺维奇** (42分钟)
-21. **伊藤公式、斯特拉托诺维奇与伊藤表述之间的变换** (47分钟)
-22. **含乘性噪声系统的路径积分** (27分钟)
-23. **相互作用的布朗粒子、平衡附近的涨落、涨落的时间关联** (47分钟)
-24. **昂萨格系数与对称关系、涨落-耗散定理的动态形式** (45分钟)
-25. **梯度动力学、模型A、经典伊辛模型、金兹堡-朗道方程、Allen-Cahn方程** (54分钟)
+- [1. 课程导论](notes/1.%20课程导论.md)
+- [2. 简单随机游走](notes/2.%20简单随机游走.md)
+- [3. 高斯随机游走与泊松过程](notes/3.%20高斯随机游走与泊松过程.md)
+- [4. Gillespie 算法、主方程、生成函数与种群动力学](notes/4.%20Gillespie%20算法、主方程、生成函数与种群动力学.md)
+- [5. 种群动态学：线性死亡过程与Lotka-Volterra 系统](notes/5.%20种群动态学：线性死亡过程与Lotka-Volterra%20系统.md)
+- [6. 马尔可夫过程的基本方程：查普曼-科尔莫戈罗夫方程](notes/6.%20马尔可夫过程的基本方程：查普曼-科尔莫戈罗夫方程.md)
+- [7. 前向主方程与Q矩阵](notes/7.%20前向主方程与Q矩阵.md)
+- [8. 佩龙-弗罗贝尼乌斯定理、稳态与细致平衡](notes/8.%20佩龙-弗罗贝尼乌斯定理、稳态与细致平衡.md)
+- [9. 非平衡态：不可逆性与熵产生的推论](notes/9.%20非平衡态：不可逆性与熵产生的推论.md)
+- [10. 埃伦费斯特模型、熵与KL散度](notes/10.%20埃伦费斯特模型、熵与KL散度.md)
 
-### III. 从离散态到场 (第26-35讲)
+**第二部分：粒子的随机动力学 (Stochastic Dynamics of Particles)** 将抽象的数学工具应用于具体的物理对象。**朗之万与福克-普朗克方程 (Langevin and Fokker-Planck Equations)** 处理路径积分和乘性噪声问题。**随机模拟技术 (Stochastic Simulation Techniques)** 介绍Gillespie算法和随机积分方法。**随机热力学 (Stochastic Thermodynamics)** 则在轨迹层面讨论熵产生、细节平衡和涨落定理。
 
-26. **临界慢化、响应函数、动态磁化率、模型B** (39分钟)
-27. **简单流体的流体动力学、无摩擦流体、欧拉方程** (51分钟)
-28. **粘性流体、纳维-斯托克斯方程、熵平衡与热传导** (41分钟)
-29. **不可逆线性热力学、干性扩散粒子系统** (46分钟)
-30. **悬浮在流体中的布朗粒子、模型H** (30分钟)
-31. **加性噪声场论的动态泛函、Onsager-Machlup泛函** (1小时3分钟)
-32. **Janssen-De Dominicis响应泛函、涨落-耗散关系** (25分钟)
-33. **非平衡功与涨落定理、Jarzynski功关系、Crooks涨落定理** (1小时19分钟)
-34. **有向渗流、线性死亡过程的谱方法** (1小时6分钟)
-35. **主方程的路径积分表示** (31分钟)
+- [11. 连续马尔可夫过程与福克-普朗克方程](notes/11.%20连续马尔可夫过程与福克-普朗克方程.md)
+- [12. 布朗运动与奥恩斯坦-乌伦贝克过程](notes/12.%20布朗运动与奥恩斯坦-乌伦贝克过程.md)
+- [13. 作为随机过程的蒙特卡洛采样](notes/13.%20作为随机过程的蒙特卡洛采样.md)
+- [14. 哈密尔顿蒙特卡洛采样](notes/14.%20哈密尔顿蒙特卡洛采样.md)
+- [15. 趋化性、跑动-翻滚运动与Keller-Segel模型](notes/15.%20趋化性、跑动-翻滚运动与Keller-Segel模型.md)
+- [16. Schnitzer模型、反常扩散与运动诱导相分离](notes/16.%20Schnitzer模型、反常扩散与运动诱导相分离.md)
+- [17. 朗之万方程、布朗粒子与涨落-耗散定理](notes/17.%20朗之万方程、布朗粒子与涨落-耗散定理.md)
+- [18. 福克-普朗克方程与斯摩棱霍夫斯基方程：从随机轨迹到概率动力学](notes/18.%20福克-普朗克方程与斯摩棱霍夫斯基方程：从随机轨迹到概率动力学.md)
+- [19. 随机过程的路径积分表述](notes/19.%20随机过程的路径积分表述.md)
+- [20. 随机微分方程](notes/20.%20随机微分方程.md)
+- [21. 伊藤积分与统一的随机过程框架](notes/21.%20伊藤积分与统一的随机过程框架.md)
+- [22. 含乘性噪声系统的路径积分](notes/22.%20含乘性噪声系统的路径积分.md)
 
-### IV. 非平衡系统的场论 (第36-40讲)
+**第三部分：从离散态到场 (From Discrete States to Fields)** 实现了关键的抽象跃迁。**反应网络与场论 (Reaction Networks and Field Theories)** 通过主方程和Kramers-Moyal展开将离散过程连续化。**场的粗粒化动力学 (Coarse-Grained Dynamics of Fields)** 研究弛豫动力学以及守恒场与非守恒场的区别。
 
-36. **相干态路径积分、算符代数与虚噪声** (40分钟)
-37. **Kramers-Moyal展开与路径积分的低噪声极限** (41分钟)
-38. **多物种路径积分、石头-剪刀-布** (49分钟)
-39. **格点上的路径积分：从跳跃到连续场论** (43分钟)
-40. **Kramers-Moyal路径积分方法、相互作用粒子的场论** (32分钟)
+- [23. 从粗粒化到连续场论涨落动力学](notes/23.%20从粗粒化到连续场论涨落动力学.md)
+- [24. 昂萨格系数、倒易关系与动态涨落-耗散定理](notes/24.%20昂萨格系数、倒易关系与动态涨落-耗散定理.md)
+- [25. 梯度动力学、相变与弛豫](notes/25.%20梯度动力学、相变与弛豫.md)
+- [26. 临界慢化、动态响应与守恒律](notes/26.%20临界慢化、动态响应与守恒律.md)
+- [27. 简单流体、无摩擦流体与欧拉方程的流体动力学](notes/27.%20简单流体、无摩擦流体与欧拉方程的流体动力学.md)
+- [28. 粘性流体、纳维-斯托克斯方程、熵平衡与热传导](notes/28.%20粘性流体、纳维-斯托克斯方程、熵平衡与热传导.md)
+- [29. 不可逆线性热力学与干性扩散粒子系统](notes/29.%20不可逆线性热力学与干性扩散粒子系统.md)
+- [30. 悬浮在流体中的布朗粒子 — H模型](notes/30.%20悬浮在流体中的布朗粒子%20—%20H模型.md)
 
-## 技术特性
+**第四部分：非平衡系统的场论 (Field Theories of Nonequilibrium Systems)** 运用最先进的理论工具。**动态泛函与MSR形式 (Dynamical Functionals and MSR Formalism)** 发展Onsager-Machlup和Janssen-de Dominicis路径积分方法。**流体动力学与涨落流体 (Hydrodynamics and Fluctuating Fluids)** 应用模型H、动量守恒和悬浮动力学。**非平衡模式形成 (Nonequilibrium Pattern Formation)** 研究失稳和非平衡稳态。**活性物质场论 (Field Theory of Active Matter)** 则探讨自推进和自组织现象。
 
-- **响应式设计**: 支持桌面和移动设备
-- **深色/浅色主题**: 可切换的界面主题
-- **数学公式渲染**: 基于MathJax的高质量数学显示
-- **代码高亮**: 语法高亮的Python代码
-- **一键复制**: 代码片段可快速复制
-- **多语言支持**: 中英文双语界面
+- [31. 动态泛函、加性噪声场论与Onsager-Machlup泛函](notes/31.%20动态泛函、加性噪声场论与Onsager-Machlup泛函.md)
+- [32. Janssen-De Dominicis 响应泛函与涨落-耗散关系](notes/32.%20Janssen-De%20Dominicis%20响应泛函与涨落-耗散关系.md)
+- [33. 非平衡功与涨落定理](notes/33.%20非平衡功与涨落定理.md)
+- [34. 有向渗流、吸收态与谱方法](notes/34.%20有向渗流、吸收态与谱方法.md)
+- [35. 主方程的路径积分表示](notes/35.%20主方程的路径积分表示.md)
+- [36. 相干态路径积分、算符代数与虚噪声](notes/36.%20相干态路径积分、算符代数与虚噪声.md)
+- [37. Kramers-Moyal 展开与路径积分的低噪声极限](notes/37.%20Kramers-Moyal%20展开与路径积分的低噪声极限.md)
+- [38. 多物种路径积分与循环竞争动力学](notes/38.%20多物种路径积分与循环竞争动力学.md)
+- [39. 从粒子跳跃到连续场论](notes/39.%20从粒子跳跃到连续场论.md)
+- [40. 统一的场论框架](notes/40.%20统一的场论框架.md)
 
 ## 使用说明
 
-1. **导航**: 使用左侧目录按讲次浏览内容
-2. **搜索**: 点击顶部搜索图标查找特定内容
-3. **主题切换**: 使用右上角按钮切换深色/浅色主题
-4. **代码运行**: 复制代码到Python环境中运行
-5. **数学公式**: 公式支持缩放和交互式查看
+每个 Python 文件对应于讲座系列中涵盖的特定主题。这些代码是根据 YouTube 视频中介绍的理论概念而实现的，作为自学和学习笔记的一部分而开发。
 
-## 致谢与引用
+以下是一些代码输出演示：
 
-### 课程来源
-本学习资料基于Erwin Frey教授在LMU Munich的课程制作，所有理论内容归功于原课程。
+![code/5.PhaseDiagram.py](../assets/images/remote/a7249f6d-3693-4c80-b256-49f91f882052-06432353d7.png)
 
-### 风格参考
-网站设计风格参考了[Physics-based Deep Learning](https://physicsbaseddeeplearning.org/intro.html)项目。
+![code/13.MCMC_LotkaVolterra.py](../assets/images/remote/75e9b1b2-4ff7-4b3f-aa6c-7a7c1988bb4d-43bd03f19f.png)
 
-### 开源协议
-本项目采用[Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/)开源协议。
+![code/16.MIPS.py](../assets/images/remote/48116ba2-bc10-4987-b72a-17b84e6e4fcb-3eade8b3cf.gif)
 
----
 
-*注：本网站为教育目的，包含Erwin Frey教授在LMU Munich的"非平衡场论与随机动力学"课程的学习材料。*
+![code/19.OverdampedLangevinEquation.py](../assets/images/remote/c65ac76c-2634-45ca-8c51-b0578a929cf3-982dfc9b72.png)
+
+
+![code/26.CriticalSlowingDown1.py](../assets/images/remote/critical_slowing_down.gif)
+
+
+<video src="../assets/images/remote/fluid_simulation.mp4" controls="controls" style="max-width: 100%;"></video>
+<p><strong>code/27.Eulerian_Fluid_Simulation.py</strong></p>
+
+
+
+![code/28.VortexDecayDemo.py](../assets/images/remote/vortex_decay_detailed.gif)
+
+
+![code/30.AdvectionAndDiffusion.py](../assets/images/remote/brownian_particles_comet.gif)
+
+![code/35.Schlöglmodel.py](../assets/images/remote/schlogl_bistability_evolution.gif)
+
+![code/37.PercolationFieldTheory.py](../assets/images/remote/directed_percolation_field.gif)
+
+![code/38.Rock-Paper-Scissors.py](../assets/images/remote/spatial_rps_spirals.gif)
+
+
+![code/39.ReactionFront.py](../assets/images/remote/reaction_front_comparison.gif)
+
+<video src="../assets/images/remote/Starling.mp4" controls="controls" style="max-width: 100%;"></video>
+<p><strong>Starling Simulation</strong></p>
+
+
+
+## 学习所需基础
+
+- 统计力学与热力学
+- 概率论与随机过程
+- 微分方程
+- 场论基础知识（有帮助但非必需）
