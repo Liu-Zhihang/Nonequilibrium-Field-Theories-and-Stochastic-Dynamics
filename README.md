@@ -1,183 +1,120 @@
 # Nonequilibrium Field Theories and Stochastic Dynamics
 
-This repository contains learning notes and self-written code based on the YouTube lecture series "Nonequilibrium Field Theories and Stochastic Dynamics" taught by Prof. Erwin Frey at Ludwig-Maximilians-Universität München (LMU Munich) in Summer Semester 2025.
+These are self-study notes for the course [**Nonequilibrium Field Theories and Stochastic Dynamics (Prof. Erwin Frey, LMU Munich, Summer Semester 2025)**](https://www.theorie.physik.uni-muenchen.de/lsfrey/teaching/index.html). [**Prof. Erwin Frey**](https://www.theorie.physik.uni-muenchen.de/lsfrey/members/group_leaders/erwin_frey/index.html) prefers chalkboard lectures. To document my learning, I organized my notes into articles and wrote Python code to deepen understanding. There are 40 chapters in total; this chapter is the course introduction.
+
+![Course link: https://www.youtube.com/watch?v=-pEPKnuN1iY&list=PL2IEUF-u3gRdSbgtuqH5RNTuT798s0GqX](docs/assets/images/remote/977886f7-e278-42d9-91f9-f61731ec8b97-0c84ad685f.png)
+
+**Note:** I followed the course on YouTube only; there is no official handout. Everything here comes from notes taken while watching the videos. A sample of the original notes is below:
+
+![Personal notes sample](docs/assets/images/remote/18cc2947-7f4d-40d0-ab59-51347e927534-cc2cae9ca4.png)
+
 
 **Course Playlist:** [YouTube Playlist](https://www.youtube.com/watch?v=-pEPKnuN1iY&list=PL2IEUF-u3gRdSbgtuqH5RNTuT798s0GqX)
 
-## Course Video Titles
-
-Based on the course structure and repository contents, the lecture series includes the following topics:
-
-### I. Foundations of Stochastic Processes (Lectures 1-10)
-
-1. **Thermodynamics, Statistical Mechanics, Nonequilibrium Physics and Teaching Philosophy** (43 min)
-2. **Simple Random Walk** (41 min)
-3. **Gaussian Random Walk, Poisson Process, Gillespie Algorithm** (45 min)
-4. **Gillespie Algorithm, Master Equation, Generating Function, Population Dynamics** (45 min)
-5. **Population Dynamics: Linear Death Process, The Lotka-Volterra Process** (58 min)
-6. **Fundamental Equations For Markov Processes: Chapman-Kolmogorov Equation** (36 min)
-7. **Forward Master Eq., Q-matrix for Linear Birth-death Process, General Properties of Master Eq.** (41 min)
-8. **Perron-Frobenius thm., Indecomposable Q-matrices, Rev. & Stationary Procs., Detailed Balance** (48 min)
-9. **Consequences of Detailed Balance, Irreversibility and Entropy Production** (42 min)
-10. **The Ehrenfest Model, Entropy and Kullback-Leibler Divergence** (37 min)
-
-### II. Stochastic Dynamics of Particles (Lectures 11-25)
-
-11. **Markov Chain Monte Carlo, Jump Processes, Diffusion Processes, Fokker-Planck Equation** (54 min)
-12. **Brownian Motion (Wiener Process), Ornstein-Uhlenbeck Process, Einstein-Stokes Relation** (35 min)
-13. **Monte Carlo Sampling as Stochastic Process** (44 min)
-14. **Hamiltonian Monte Carlo Sampling** (49 min)
-15. **Chemotaxis, Run-and-Tumble Motion as Two-State Process, Keller–Segel model** (47 min)
-16. **Schnitzer Model, Anti-Diffusion, Motility-Induced Phase Separation** (33 min)
-17. **Langevin Equation, Brownian Particle, Fluctuation–Dissipation Theorem** (43 min)
-18. **Fokker-Planck Equation of Brownian Particle, Overdamped Langevin Equation, Smoluchowsky equation** (39 min)
-19. **Path Integral Formulation of Langevin Equations** (45 min)
-20. **Stochastic Differential Equations, Ito's Lemma, Stochastic integrals, Ito and Stratonovich** (42 min)
-21. **Ito's Formulas, Transformation Between Stratonovich and Ito Formulation** (47 min)
-22. **Path Integrals for Systems with Multiplicative Noise** (27 min)
-23. **Interacting Brownian Particles, Fluctuations Near Equilibrium, Time Correlations of Fluctuations** (47 min)
-24. **Onsager Coefficients and Symmetry Relations, Dynamic Form of the Fluctuation–Dissipation Theorem** (45 min)
-25. **Gradient Dynamics, Model A, Classical Ising model, Ginzburg–Landau Equation, Allen–Cahn Equation** (54 min)
-
-### III. From Discrete States to Fields (Lectures 26-35)
-
-26. **Critical Slowing Down, Response Function, Dynamic Susceptibility, Model B** (39 min)
-27. **Hydrodynamics of Simple Fluids, Frictionless Fluids, Euler Equation** (51 min)
-28. **Viscous Fluid, Navier-Stokes Equation, Entropy Balance and Heat Conduction** (41 min)
-29. **Irreversible Linear Thermodynamics, Dry Diffusive Particles Systems** (46 min)
-30. **Brownian Particles Suspended in a Fluid, Model H** (30 min)
-31. **Dynamic Functionals for Field Theories with Additive Noise, Onsager-Machlup Functional** (1h 3min)
-32. **Janssen-De Dominicis Response Functional, Fluctuation-Dissipation Relation** (25 min)
-33. **Non-Equilibrium Work and Fluctuation Theorem, Jarzynski's Work Relation, Crooks' Fluct. Theorem** (1h 19min)
-34. **Directed Percolation, Spectral Method for Linear Death Process** (1h 6min)
-35. **Path Integral for Master Equation** (31 min)
-
-### IV. Field Theories of Nonequilibrium Systems (Lectures 36-40)
-
-36. **Coherent State Path Integral, Operator Algebra and the Imaginary Noise** (40 min)
-37. **Kramers-Moyal Expansion and the Low Noise Limit of the Path Integral** (41 min)
-38. **Multi-Species Path Integrals, Rock-Paper-Scissors** (49 min)
-39. **Path Integrals on a Lattice: From Hopping to Continuous Field Theories** (43 min)
-40. **Kramers-Moyal Path Integral Approach, Field Theory for Interacting Particles** (32 min)
+**Official Course Link:** https://lsf.verwaltung.uni-muenchen.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=1075902&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung
 
 ## Course Outline
 
-![Course Outline](images/Course_Outline.jpg)
+![Course Outline](../site/assets/images/Course_Outline.jpg)
+
 
 ## Course Contents
 
 This lecture series explores the fundamental principles and advanced concepts of nonequilibrium field theories and stochastic dynamics. The course focuses on stochastic processes in particle and field systems, emphasizing mathematical formalisms such as Langevin equations, Fokker-Planck equations, and path integrals. Additionally, the lectures cover applications in soft matter physics, active matter, and non-equilibrium statistical mechanics.
 
-The course consists of 40 lectures organized according to the following curriculum structure:
 
-### I. Foundations of Stochastic Processes (Lectures 1-10)
 
-**1. Random Walks and Brownian Motion**
-*Bernoulli/Gaussian walks, diffusion equation*
+**Part I: Foundations of Stochastic Processes.** From random walks and Brownian motion (Bernoulli or Gaussian walks; diffusion equation) through elementary stochastic models (Poisson processes, birth-death dynamics, molecular motors) to Markov processes and master equations (Chapman-Kolmogorov; discrete and continuous state spaces).
 
-- **Lecture 1:** Thermodynamics, Statistical Mechanics, Nonequilibrium Physics and My Teaching Philosophy (43 min)
-- **Lecture 2:** Simple Random Walk (41 min)
-- **Lecture 3:** Gaussian Random Walk, Poisson Process, Gillespie algorithm (45 min)
+- [1. Introduction to Stochastic Processes](docs/notes/1.%20Course%20Introduction.md)
+- [2. Simple Random Walk](docs/notes/2.%20Simple%20Random%20Walk.md)
+- [3. Gaussian Random Walk and Poisson Process](docs/notes/3.%20Gaussian%20Random%20Walk%20and%20Poisson%20Process.md)
+- [4. Gillespie Algorithm, Master Equation, Generating Functions, and Population Dynamics](docs/notes/4.%20Gillespie%20Algorithm,%20Master%20Equation,%20Generating%20Functions%20and%20Population%20Dynamics.md)
+- [5. Population Dynamics: Linear Death Process and Lotka-Volterra System](docs/notes/5.%20Population%20Dynamics%20-%20Linear%20Death%20Process%20and%20Lotka-Volterra%20System.md)
+- [6. Fundamental Equations of Markov Processes: Chapman-Kolmogorov](docs/notes/6.%20Fundamental%20Equations%20of%20Markov%20Processes%20—%20Chapman–Kolmogorov%20Equation.md)
+- [7. Forward Master Equation and the Q Matrix](docs/notes/7.%20Forward%20Master%20Equation%20and%20the%20Q%20Matrix.md)
+- [8. Perron-Frobenius Theorem, Steady States, and Detailed Balance](docs/notes/8.%20Perron–Frobenius%20Theorem,%20Steady%20States,%20and%20Detailed%20Balance.md)
+- [9. Nonequilibrium States: Irreversibility and Entropy Production](docs/notes/9.%20Nonequilibrium%20States%20—%20Irreversibility%20and%20Entropy%20Production.md)
+- [10. Ehrenfest Model, Entropy, and KL Divergence](docs/notes/10.%20Ehrenfest%20Model,%20Entropy,%20and%20KL%20Divergence.md)
 
-**2. Elementary Stochastic Models**
-*Poisson process, birth-death dynamics, molecular motors*
+**Part II: Stochastic Dynamics of Particles.** Langevin and Fokker-Planck equations (path integrals; multiplicative noise), stochastic simulation (Gillespie algorithm; stochastic integration), and stochastic thermodynamics (entropy production, detailed balance, fluctuation theorems).
 
-- **Lecture 4:** Gillespie Algorithm, Master Equation, Generating Function, Population Dynamics (45 min)
-- **Lecture 5:** Population Dynamics: Linear Death Process, The Lotka-Volterra Process (58 min)
+- [11. Continuous Markov Processes and the Fokker-Planck Equation](docs/notes/11.%20Continuous%20Markov%20Processes%20and%20the%20Fokker–Planck%20Equation.md)
+- [12. Brownian Motion and the Ornstein-Uhlenbeck Process](docs/notes/12.%20Brownian%20Motion%20and%20the%20Ornstein–Uhlenbeck%20Process.md)
+- [13. Monte Carlo Sampling as a Stochastic Process](docs/notes/13.%20Monte%20Carlo%20Sampling%20as%20a%20Stochastic%20Process.md)
+- [14. Hamiltonian Monte Carlo](docs/notes/14.%20Hamiltonian%20Monte%20Carlo%20Sampling.md)
+- [15. Chemotaxis, Run-and-Tumble, and the Keller-Segel Model](docs/notes/15.%20Chemotaxis,%20Run-and-Tumble%20Motion,%20and%20the%20Keller–Segel%20Model.md)
+- [16. Schnitzer Model, Anomalous Diffusion, and Motility-Induced Phase Separation](docs/notes/16.%20The%20Schnitzer%20Model,%20Anomalous%20Diffusion,%20and%20Motility‑Induced%20Phase%20Separation.md)
+- [17. Langevin Equation, Brownian Particles, and the Fluctuation-Dissipation Theorem](docs/notes/17.%20Langevin%20Equation,%20Brownian%20Particle,%20and%20the%20Fluctuation–Dissipation%20Theorem.md)
+- [18. Fokker-Planck and Smoluchowski: From Trajectories to Probability Dynamics](docs/notes/18.%20Fokker–Planck%20Equation%20and%20the%20Smoluchowski%20Equation%20—%20From%20Random%20Trajectories%20to%20Probability%20Dynamics.md)
+- [19. Path-Integral Formulation of Stochastic Processes](docs/notes/19.%20Path%20Integral%20Formulation%20of%20Stochastic%20Processes.md)
+- [20. Stochastic Differential Equations](docs/notes/20.%20Stochastic%20Differential%20Equations.md)
+- [21. Ito Integrals and a Unified Framework](docs/notes/21.%20Ito%20Integral%20and%20Unified%20Stochastic%20Process%20Framework.md)
+- [22. Path Integrals for Systems with Multiplicative Noise](docs/notes/22.%20Path%20Integrals%20for%20Systems%20with%20Multiplicative%20Noise.md)
 
-**3. Markov Processes and Master Equations**
-*Chapman-Kolmogorov, discrete & continuous state spaces*
+**Part III: From Discrete States to Fields.** Reaction networks to field theories via the master equation and Kramers-Moyal expansion; coarse-grained field dynamics (relaxational dynamics; conserved vs. non-conserved fields).
 
-- **Lecture 6:** Fundamental Equations For Markov Processes: Chapman-Kolmogorov Equation (36 min)
-- **Lecture 7:** Forward Master Eq., Q-matrix for Linear Birth-death Process, General Properties of Master Eq. (41 min)
-- **Lecture 8:** Perron-Frobenius thm., Indecomposable Q-matrices, Rev. & Stationary Procs., Detailed Balance (48 min)
-- **Lecture 9:** Consequences of Detailed Balance, Irreversibility and Entropy Production (42 min)
-- **Lecture 10:** The Ehrenfest Model, Entropy and Kullback-Leibler Divergence (37 min)
+- [23. From Coarse Graining to Fluctuating Continuum Theories](docs/notes/23.%20From%20Coarse-Graining%20to%20Fluctuation%20Dynamics%20of%20Continuous%20Field%20Theories.md)
+- [24. Onsager Coefficients, Reciprocity, and the Dynamic FDT](docs/notes/24.%20Onsager%20Coefficients,%20Reciprocity,%20and%20the%20Dynamic%20Fluctuation–Dissipation%20Theorem.md)
+- [25. Gradient Dynamics, Phase Transitions, and Relaxation](docs/notes/25.%20Gradient%20Dynamics,%20Phase%20Transitions,%20and%20Relaxation.md)
+- [26. Critical Slowing Down, Dynamic Response, and Conservation Laws](docs/notes/26.%20Critical%20Slowing%20Down,%20Dynamic%20Response,%20and%20Conservation%20Laws.md)
+- [27. Simple Fluids, Inertial Fluids, and Eulerian Hydrodynamics](docs/notes/27.%20Hydrodynamics%20of%20Simple%20Fluids,%20Inviscid%20Flow,%20and%20the%20Euler%20Equation.md)
+- [28. Viscous Fluids, Navier-Stokes, Entropy Balance, and Heat Conduction](docs/notes/28.%20Viscous%20Fluids,%20the%20Navier–Stokes%20Equation,%20Entropy%20Balance,%20and%20Heat%20Conduction.md)
+- [29. Irreversible Linear Thermodynamics and Dry Diffusive Particle Systems](docs/notes/29.%20Irreversible%20Linear%20Thermodynamics%20and%20Dry%20Diffusive%20Particle%20Systems.md)
+- [30. Brownian Particles in Fluids - Model H](docs/notes/30.%20Brownian%20Particles%20Suspended%20in%20a%20Fluid%20—%20Model%20H.md)
 
-### II. Stochastic Dynamics of Particles (Lectures 11-25)
+**Part IV: Field Theories of Nonequilibrium Systems.** Dynamical functionals and MSR formalism (Onsager-Machlup; Janssen-de Dominicis), fluctuating hydrodynamics and Model H, nonequilibrium pattern formation, and active-matter field theory.
 
-**4. Langevin and Fokker-Planck Equations**
-*Path integrals, multiplicative noise*
+- [31. Dynamical Functionals, Additive-Noise Field Theory, and the Onsager-Machlup Functional](docs/notes/31.%20Dynamical%20Functionals,%20Additive‑Noise%20Field%20Theory,%20and%20the%20Onsager–Machlup%20Functional.md)
+- [32. Janssen-De Dominicis Response Functional and Fluctuation-Dissipation Relations](docs/notes/32.%20Janssen–De%20Dominicis%20Response%20Functional%20and%20the%20Fluctuation–Dissipation%20Relation.md)
+- [33. Nonequilibrium Work and Fluctuation Theorems](docs/notes/33.%20Nonequilibrium%20Work%20and%20Fluctuation%20Theorems.md)
+- [34. Directed Percolation, Absorbing States, and Spectral Methods](docs/notes/34.%20Directed%20Percolation,%20Absorbing%20States,%20and%20Spectral%20Methods.md)
+- [35. Path-Integral Representation of the Master Equation](docs/notes/35.%20Path-Integral%20Representation%20of%20the%20Master%20Equation.md)
+- [36. Coherent-State Path Integrals, Operator Algebras, and Imaginary Noise](docs/notes/36.%20Coherent-State%20Path%20Integrals,%20Operator%20Algebra,%20and%20Imaginary%20Noise.md)
+- [37. Kramers-Moyal Expansion and the Low-Noise Limit](docs/notes/37.%20Kramers-Moyal%20Expansion%20and%20the%20Low-Noise%20Limit%20of%20Path%20Integrals.md)
+- [38. Multi-Species Path Integrals and Cyclic Competition Dynamics](docs/notes/38.%20Multi-Species%20Path%20Integrals%20and%20Cyclic%20Competition%20Dynamics.md)
+- [39. From Particle Jumps to Continuum Field Theories](docs/notes/39.%20From%20Particle%20Jumps%20to%20Continuous%20Field%20Theory.md)
+- [40. A Unified Field-Theoretic Framework](docs/notes/40.%20Unified%20Field%20Theory%20Framework.md)
 
-- **Lecture 11:** Markov Chain Monte Carlo, Jump Processes, Diffusion Processes, Fokker-Planck Equation (54 min)
-- **Lecture 12:** Brownian Motion (Wiener Process), Ornstein-Uhlenbeck Process, Einstein-Stokes Relation (35 min)
-- **Lecture 17:** Langevin Equation, Brownian Particle, Fluctuation–Dissipation Theorem (43 min)
-- **Lecture 18:** Fokker-Planck Equation of Brownian Particle, Overdamped Langevin Equation, Smoluchowsky equation (39 min)
-- **Lecture 19:** Path Integral Formulation of Langevin Equations (45 min)
-- **Lecture 20:** Stochastic Differential Equations, Ito's Lemma, Stochastic integrals, Ito and Stratonovich (42 min)
-- **Lecture 21:** Ito's Formulas, Transformation Between Stratonovich and Ito Formulation (47 min)
-- **Lecture 22:** Path Integrals for Systems with Multiplicative Noise (27 min)
+## Usage
 
-**5. Stochastic Simulation Techniques**
-*Gillespie algorithm, stochastic integration*
+Each Python file corresponds to specific topics covered in the lecture series. The code serves as practical implementations of the theoretical concepts presented in the YouTube videos, developed as part of self-study and learning notes.
 
-- **Lecture 13:** Monte Carlo Sampling as Stochastic Process (44 min)
-- **Lecture 14:** Hamiltonian Monte Carlo Sampling (49 min)
-- **Lecture 15:** Chemotaxis, Run-and-Tumble Motion as Two-State Process, Keller–Segel model (47 min)
-- **Lecture 16:** Schnitzer Model, Anti-Diffusion, Motility-Induced Phase Separation (33 min)
+Here are some code output demonstrations:
 
-**6. Stochastic Thermodynamics (Trajectory Level)**
-*Entropy production, detailed balance, fluctuation theorems*
+![code/5.PhaseDiagram.py](docs/assets/images/remote/a7249f6d-3693-4c80-b256-49f91f882052-06432353d7.png)
 
-- **Lecture 23:** Interacting Brownian Particles, Fluctuations Near Equilibrium, Time Correlations of Fluctuations (47 min)
-- **Lecture 24:** Onsager Coefficients and Symmetry Relations, Dynamic Form of the Fluctuation–Dissipation Theorem (45 min)
-- **Lecture 25:** Gradient Dynamics, Model A, Classical Ising model, Ginzburg–Landau Equation, Allen–Cahn Equation (54 min)
+![code/13.MCMC_LotkaVolterra.py](docs/assets/images/remote/75e9b1b2-4ff7-4b3f-aa6c-7a7c1988bb4d-43bd03f19f.png)
 
-### III. From Discrete States to Fields (Lectures 26-35)
+![code/16.MIPS.py](docs/assets/images/remote/48116ba2-bc10-4987-b72a-17b84e6e4fcb-3eade8b3cf.gif)
 
-**7. Reaction Networks and Field Theories**
-*Master equations, Kramers-Moyal expansion*
 
-- **Lecture 34:** Directed Percolation, Spectral Method for Linear Death Process (1h 6min)
-- **Lecture 35:** Path Integral for Master Equation (31 min)
-- **Lecture 37:** Kramers-Moyal Expansion and the Low Noise Limit of the Path Integral (41 min)
-- **Lecture 38:** Multi-Species Path Integrals, Rock-Paper-Scissors (49 min)
-- **Lecture 39:** Path Integrals on a Lattice: From Hopping to Continuous Field Theories (43 min)
+![code/19.OverdampedLangevinEquation.py](docs/assets/images/remote/c65ac76c-2634-45ca-8c51-b0578a929cf3-982dfc9b72.png)
 
-**8. Coarse-Grained Dynamics of Fields**
-*Relaxational dynamics, conserved vs. non-conserved fields*
 
-- **Lecture 26:** Critical Slowing Down, Response Function, Dynamic Susceptibility, Model B (39 min)
-- **Lecture 27:** Hydrodynamics of Simple Fluids, Frictionless Fluids, Euler Equation (51 min)
-- **Lecture 28:** Viscous Fluid, Navier-Stokes Equation, Entropy Balance and Heat Conduction (41 min)
-- **Lecture 29:** Irreversible Linear Thermodynamics, Dry Diffusive Particles Systems (46 min)
-- **Lecture 30:** Brownian Particles Suspended in a Fluid, Model H (30 min)
+![code/26.CriticalSlowingDown1.py](docs/assets/images/remote/critical_slowing_down.gif)
 
-### IV. Field Theories of Nonequilibrium Systems (Lectures 31-40)
 
-**9. Dynamical Functionals and MSR Formalism**
-*Onsager-Machlup, Janssen-de Dominicis, path integrals*
+<video src="docs/assets/images/remote/fluid_simulation.mp4"></video>
+<p><strong>code/27.ScalarField.py</strong></p>
 
-- **Lecture 31:** Dynamic Functionals for Field Theories with Additive Noise, Onsager-Machlup Functional (1h 3min)
-- **Lecture 32:** Janssen-De Dominicis Response Functional, Fluctuation-Dissipation Relation (25 min)
-- **Lecture 36:** Coherent State Path Integral, Operator Algebra and the Imaginary Noise (40 min)
+![code/28.VortexDecayDemo.py](docs/assets/images/remote/vortex_decay_detailed.gif)
 
-**10. Hydrodynamics and Fluctuating Fluids**
-*Model H, momentum conservation, suspension dynamics*
 
-- **Lecture 40:** Kramers-Moyal Path Integral Approach, Field Theory for Interacting Particles (32 min)
+![code/30.AdvectionAndDiffusion.py](docs/assets/images/remote/brownian_particles_comet.gif)
 
-**11. Nonequilibrium Pattern Formation**
-*Instabilities, non-equilibrium steady states*
+![code/35.Schlöglmodel.py](docs/assets/images/remote/schlogl_bistability_evolution.gif)
 
-- **Lecture 33:** Non-Equilibrium Work and Fluctuation Theorem, Jarzynski's Work Relation, Crooks' Fluct. Theorem (1h 19min)
+![code/37.PercolationFieldTheory.py](docs/assets/images/remote/directed_percolation_field.gif)
 
-**12. Field Theory of Active Matter**
-*Self-propulsion, self-organisation*
+![code/38.Rock-Paper-Scissors.py](docs/assets/images/remote/spatial_rps_spirals.gif)
 
-*Note: Some topics from the theoretical outline may be distributed across multiple lectures or covered in integrated discussions within the video series.*
 
-## Repository Structure
+![code/39.ReactionFront.py](docs/assets/images/remote/reaction_front_comparison.gif)
 
-This repository contains Python implementations and Jupyter notebooks that illustrate the concepts covered in the course:
+<video src="docs/assets/images/remote/Starling.mp4"></video>
+<p><strong>code/40.InertialSpin.py</strong></p>
 
-- **Random Walks and Stochastic Processes:** Simple random walk, Gaussian random walk, Poisson processes
-- **Population Dynamics:** Birth-death processes, Lotka-Volterra models, Gillespie algorithm
-- **Markov Processes:** Master equations, Q-matrices, detailed balance
-- **Brownian Motion:** Wiener processes, Ornstein-Uhlenbeck processes, diffusion
-- **Monte Carlo Methods:** MCMC, Hamiltonian Monte Carlo
-- **Active Matter:** Run-and-tumble motion, chemotaxis, MIPS (Motility-Induced Phase Separation)
-- **Field Theories:** Ising model, Ginzburg-Landau equations, critical dynamics
 
 ## Prerequisites
 
@@ -186,19 +123,7 @@ This repository contains Python implementations and Jupyter notebooks that illus
 - Differential equations
 - Basic knowledge of field theory (helpful but not required)
 
-## Usage
 
-Each Python file corresponds to specific topics covered in the lecture series. The code serves as practical implementations of the theoretical concepts presented in the YouTube videos, developed as part of self-study and learning notes.
-
-## License
-
-This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License. See the [LICENSE](LICENSE) file for details.
-
-**Summary:** You are free to share and adapt this material for non-commercial purposes, but you must give appropriate credit and indicate if changes were made.
-
----
-
-**Note:** This repository is for educational purposes and contains study materials for the course "Nonequilibrium Field Theories and Stochastic Dynamics" by Prof. Erwin Frey at LMU Munich.
 
 
 
