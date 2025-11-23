@@ -1,7 +1,9 @@
 这是课程 [**非平衡场论与随机动力学** **Nonequilibrium Field Theories and Stochastic Dynamics, Prof. Erwin Frey, LMU Munich, Summer Semester 2025**](https://www.theorie.physik.uni-muenchen.de/lsfrey/teaching/index.html)的自学笔记。[**Erwin Frey 教授**](https://www.theorie.physik.uni-muenchen.de/lsfrey/members/group_leaders/erwin_frey/index.html)喜欢在黑板上写板书，为记录学习过程，将所学笔记整理为文，并撰写python代码加深理解。
 
 <div style="text-align: center;">
+
 [English README](README.md) | [English Notes](https://zhihangliu.cn/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/) | [中文笔记合集](https://zhihangliu.cn/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/)
+
 </div>
 
 
