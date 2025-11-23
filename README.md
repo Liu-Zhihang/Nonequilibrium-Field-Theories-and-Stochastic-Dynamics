@@ -1,5 +1,9 @@
 # Nonequilibrium Field Theories and Stochastic Dynamics
 
+[中文README](README_CN.md) | [English Notes](https://zhihangliu.cn/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/) | [中文笔记合集](https://zhihangliu.cn/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/)
+
+
+
 These are self-study notes for the course [**Nonequilibrium Field Theories and Stochastic Dynamics (Prof. Erwin Frey, LMU Munich, Summer Semester 2025)**](https://www.theorie.physik.uni-muenchen.de/lsfrey/teaching/index.html). [**Prof. Erwin Frey**](https://www.theorie.physik.uni-muenchen.de/lsfrey/members/group_leaders/erwin_frey/index.html) prefers chalkboard lectures. To document my learning, I organized my notes into articles and wrote Python code to deepen understanding. 
 
 ![Course link: https://www.youtube.com/watch?v=-pEPKnuN1iY&list=PL2IEUF-u3gRdSbgtuqH5RNTuT798s0GqX](docs/assets/images/remote/977886f7-e278-42d9-91f9-f61731ec8b97-0c84ad685f.png)
@@ -95,8 +99,7 @@ Here are some code output demonstrations:
 ![code/26.CriticalSlowingDown1.py](docs/assets/images/remote/critical_slowing_down.gif)
 
 
-https://github.com/user-attachments/assets/60959c6b-10bc-44ad-81c2-12b1e7c10682
-
+![code/27.Eulerian_Fluid_Simulation.py](docs/assets/images/remote/fluid_simulation.mp4)
 
 https://github.com/user-attachments/assets/60959c6b-10bc-44ad-81c2-12b1e7c10682
 
@@ -116,8 +119,6 @@ https://github.com/user-attachments/assets/60959c6b-10bc-44ad-81c2-12b1e7c10682
 ![code/39.ReactionFront.py](docs/assets/images/remote/reaction_front_comparison.gif)
 
 ![Starling Simulation](docs/assets/images/remote/Starling.mp4)
-
-https://github.com/user-attachments/assets/b4975fff-73cc-495b-b26d-a27c5cd46e96
 
 https://github.com/user-attachments/assets/b4975fff-73cc-495b-b26d-a27c5cd46e96
 
