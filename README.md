@@ -1,6 +1,8 @@
 # Nonequilibrium Field Theories and Stochastic Dynamics
 
+<div style="text-align: center;">
 [中文README](README_CN.md) | [English Notes](https://zhihangliu.cn/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/) | [中文笔记合集](https://zhihangliu.cn/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics/zh/)
+</div>
 
 
 
