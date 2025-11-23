@@ -95,8 +95,7 @@ Here are some code output demonstrations:
 ![code/26.CriticalSlowingDown1.py](docs/assets/images/remote/critical_slowing_down.gif)
 
 
-<video src="docs/assets/images/remote/fluid_simulation.mp4" controls="controls" style="max-width: 100%;"></video>
-<p><strong>code/27.ScalarField.py</strong></p>
+![fluid simulation](docs/assets/images/remote/fluid_simulation.mp4)
 
 ![code/28.VortexDecayDemo.py](docs/assets/images/remote/vortex_decay_detailed.gif)
 
@@ -112,8 +111,7 @@ Here are some code output demonstrations:
 
 ![code/39.ReactionFront.py](docs/assets/images/remote/reaction_front_comparison.gif)
 
-<video src="docs/assets/images/remote/Starling.mp4" controls="controls" style="max-width: 100%;"></video>
-<p><strong>code/40.InertialSpin.py</strong></p>
+![Starling Simulation](docs/assets/images/remote/Starling.mp4)
 
 
 ## Prerequisites
