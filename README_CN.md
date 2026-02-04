@@ -89,7 +89,7 @@
 
 ## 使用说明
 
-每个 Python 文件对应于讲座系列中涵盖的特定主题。这些代码是 YouTube 视频中介绍的理论概念的实际实现，作为自学和学习笔记的一部分而开发。
+每个 Python 文件对应于讲座系列中涵盖的特定主题。这些代码是根据 YouTube 视频中介绍的理论概念而实现的，作为自学和学习笔记的一部分而开发。
 
 以下是一些代码输出演示：
 
@@ -136,3 +136,12 @@ https://github.com/user-attachments/assets/b4975fff-73cc-495b-b26d-a27c5cd46e96
 - 概率论与随机过程
 - 微分方程
 - 场论基础知识（有帮助但非必需）
+
+## 许可证
+
+本项目采用 [CC BY-NC-ND 4.0](LICENSE) 许可证。
+
+## 致谢
+
+- 感谢慕尼黑大学 Erwin Frey 教授及其 Physics of Life 研究组提供的精彩课程
+- 感谢 [PhysicsOfLifeLMU YouTube 频道](https://www.youtube.com/@PhysicsOfLifeLMU) 公开发布这些课程

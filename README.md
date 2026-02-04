@@ -135,6 +135,14 @@ https://github.com/user-attachments/assets/b4975fff-73cc-495b-b26d-a27c5cd46e96
 - Basic knowledge of field theory (helpful but not required)
 
 
+## License
+
+This project is licensed under the [CC BY-NC-ND 4.0](LICENSE) License.
+
+## Acknowledgments
+
+- Prof. Erwin Frey and the Physics of Life group at LMU Munich for the excellent lecture series
+- [PhysicsOfLifeLMU YouTube Channel](https://www.youtube.com/@PhysicsOfLifeLMU) for making these lectures publicly available
 
 
 
