@@ -134,3 +134,17 @@ This project is licensed under the [CC BY-NC-ND 4.0](../LICENSE) License.
 
 - Prof. Erwin Frey and the Physics of Life group at LMU Munich for the excellent lecture series
 - [PhysicsOfLifeLMU YouTube Channel](https://www.youtube.com/@PhysicsOfLifeLMU) for making these lectures publicly available
+
+## Citation
+
+If you find this repository useful, you may cite it in BibTeX format:
+
+```bibtex
+@misc{liu2025nonequilibrium,
+  author = {Liu, Zhihang},
+  title = {Nonequilibrium Field Theories and Stochastic Dynamics: Course Notes and Code},
+  year = {2025},
+  url = {https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics},
+  note = {Self-study notes for the course by Prof. Erwin Frey, LMU Munich}
+}
+```

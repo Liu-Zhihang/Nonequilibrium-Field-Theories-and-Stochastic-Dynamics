@@ -141,3 +141,17 @@
 
 - 感谢慕尼黑大学 Erwin Frey 教授及其 Physics of Life 研究组提供的精彩课程
 - 感谢 [PhysicsOfLifeLMU YouTube 频道](https://www.youtube.com/@PhysicsOfLifeLMU) 公开发布这些课程
+
+## Citation（引用）
+
+若本仓库对您有帮助，可使用如下 BibTeX 格式引用：
+
+```bibtex
+@misc{liu2025nonequilibrium,
+  author = {Liu, Zhihang},
+  title = {Nonequilibrium Field Theories and Stochastic Dynamics: Course Notes and Code},
+  year = {2025},
+  url = {https://github.com/Liu-Zhihang/Nonequilibrium-Field-Theories-and-Stochastic-Dynamics},
+  note = {Self-study notes for the course by Prof. Erwin Frey, LMU Munich}
+}
+```
